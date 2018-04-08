@@ -332,10 +332,12 @@
 			master.used_environ += amount
 
 /area/Exit(A)
-	if(istype(A,/mob/living))
-		var/mob/living/L = A
-		if(L.ckey)
-			L << sound(null, repeat = 0, wait = 0, volume = 15, channel = 1)
+	if(istype(src, /area/stalker/sidor))
+		if(istype(A,/mob/living))
+			var/mob/living/L = A
+			if(L.ckey)
+				L << sound(null, repeat = 0, wait = 0, volume = 15, channel = 1)
+				L.client.played = 0
 	. = ..()
 
 /area/Entered(A)

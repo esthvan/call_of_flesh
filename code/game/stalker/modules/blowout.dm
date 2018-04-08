@@ -10,8 +10,8 @@ var/global/isblowout = 0
 
 datum/subsystem/blowout
 	var/blowoutphase = 1
-	var/couldownmin = 18000
-	var/couldownmax = 36000
+	var/couldownmin = 180//00
+	var/couldownmax = 360//00
 	var/list/ambient = list('sound/stalker/blowout/blowout_amb_01.ogg', 'sound/stalker/blowout/blowout_amb_02.ogg',
 						'sound/stalker/blowout/blowout_amb_03.ogg', 'sound/stalker/blowout/blowout_amb_04.ogg',
 						'sound/stalker/blowout/blowout_amb_05.ogg', 'sound/stalker/blowout/blowout_amb_06.ogg',
@@ -51,12 +51,14 @@ datum/subsystem/blowout/proc/StartBlowout()
 	for(var/area/stalker/A in sortedAreas)
 		if(istype(A, /area/stalker/blowout))
 			A.StartBlowout()
-	world << "<span class='danger'>Начинаетс&#255; выброс! Скорее найдите укрытие!</span>"
-	world << 'sound/stalker/pda/sms.ogg'
-	world << 'sound/stalker/blowout/blowout_begin_02.ogg'
-	world << 'sound/stalker/blowout/blowout_siren.ogg'
+
+	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "ВНИМАНИЕ, СТАЛКЕРЫ! Начинаетс&#x44F; выброс! Скорее найдите укрытие!")
+	//world << "<span class='danger'>Начинаетс&#255; выброс! Скорее найдите укрытие!</span>"
+	//world << 'sound/stalker/pda/sms.ogg'
+	world << sound('sound/stalker/blowout/blowout_begin_02.ogg', wait = 0, channel = 17, volume = 70)
+	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 18, volume = 70)
 	spawn(980)
-		world << 'sound/stalker/blowout/blowout_particle_wave.ogg'
+		world << sound('sound/stalker/blowout/blowout_particle_wave.ogg', wait = 0, channel = 17, volume = 70)
 	spawn(1200)
 		StopBlowout()
 
@@ -64,14 +66,19 @@ datum/subsystem/blowout/proc/StopBlowout()
 	for(var/area/stalker/A in sortedAreas)
 		if(istype(A, /area/stalker/blowout))
 			A.StopBlowout(blowoutphase)
-	world << 'sound/stalker/blowout/blowout_impact_02.ogg'
-	world << 'sound/stalker/blowout/blowout_outro.ogg'
+	world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
+	world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
 	spawn(300)
 		for(var/obj/anomaly/An in anomalies)
 			An.SpawnArtifact()
 		isblowout = 0
-		world << "Выброс закончилс&#255;!"
-		world << 'sound/stalker/pda/sms.ogg'
+		add_lenta_message(null, "0", "Sidorovich", "Одиночки", "Все! Выброс закончилс&#x44F;! Выходите из укрытий.")
+		world << sound(null, wait = 0, channel = 19, volume = 70)
+		world << sound(null, wait = 0, channel = 20, volume = 70)
+		world << sound(null, wait = 0, channel = 21, volume = 70)
+		world << sound(null, wait = 0, channel = 22, volume = 70)
+		world << sound(null, wait = 0, channel = 23, volume = 70)
+		world << sound(null, wait = 0, channel = 24, volume = 70)
 	Cycle()
 
 area/proc/StartBlowout()
@@ -94,8 +101,8 @@ area/proc/StopBlowout(blowoutphase)
 				H.apply_damage(300, BURN)
 				//H.stat = DEAD
 		if(BLOWOUTHIGH)
-			for(var/mob/living/carbon/human/H in src.contents)
-				H.gib()
+			for(var/mob/living/C in src.contents)
+				C.gib()
 
 area/proc/ProcessBlowout()
 	if(blowout)
@@ -103,22 +110,28 @@ area/proc/ProcessBlowout()
 			shake_camera(H, 1, 1)
 			spawn(980)
 			shake_camera(H, 10, 1)
-		spawn(10)
+		spawn(15)
 			ProcessBlowout()
 	if(prob(10))
-		world << pick(StalkerBlowout.ambient)
+		var/a = pick(StalkerBlowout.ambient)
+		world << sound(a, wait = 1, channel = 19, volume = 70)
 
 	if(prob(20))
-		world << pick(StalkerBlowout.wave)
+		var/a = pick(StalkerBlowout.wave)
+		world << sound(a, wait = 1, channel = 20, volume = 70)
 
 	if(prob(10))
-		world << pick(StalkerBlowout.wind)
+		var/a = pick(StalkerBlowout.wind)
+		world << sound(a, wait = 1, channel = 21, volume = 70)
 
 	if(prob(20))
-		world << pick(StalkerBlowout.rumble)
+		var/a = pick(StalkerBlowout.rumble)
+		world << sound(a, wait = 1, channel = 22, volume = 70)
 
 	if(prob(30))
-		world << pick(StalkerBlowout.boom)
+		var/a = pick(StalkerBlowout.boom)
+		world << sound(a, wait = 1, channel = 23, volume = 70)
 
 	if(prob(30))
-		world << pick(StalkerBlowout.lightning)
+		var/a = pick(StalkerBlowout.lightning)
+		world << sound(a, wait = 1, channel = 24, volume = 70)

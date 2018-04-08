@@ -48,7 +48,8 @@ var/global/lentahtml = ""
 /datum/asset/simple/kpk
 	assets = list(
 		"kpk_background.png"	= 'icons/stalker/kpk.png',
-		"nodata.png"			= 'icons/stalker/nodata.png'
+		"nodata.png"			= 'icons/stalker/nodata.png',
+		"photo_o"				= 'icons/stalker/sidor.png'
 	)
 
 
@@ -79,6 +80,7 @@ var/global/lentahtml = ""
 /obj/item/device/stalker_pda/attack_hand(mob/living/user)
 	if(src.loc == user)
 		attack_self(user)
+		user.set_machine(src)
 	else
 		..()
 
@@ -87,8 +89,6 @@ var/global/lentahtml = ""
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
 	assets.send(user)
 
-	//user.client.prefs.update_preview_icon()
-	//user << browse_rsc(preview_icon, "previewicon.png")
 
 	var/rep_color_s
 	var/rep_name_s
@@ -572,7 +572,6 @@ var/global/lentahtml = ""
 						H << "<B>Пароль к КПК</B>: <span class='danger'>\"[pass]\"</span>"
 						H.mind.store_memory("<b>Пароль к КПК</b>: \"[pass]\"")
 						KPKs += src
-						attack_self(H)
 					else
 						for(var/datum/data/record/sk in data_core.stalkers)
 							if(sk.fields["pass"] == t)
@@ -590,11 +589,8 @@ var/global/lentahtml = ""
 								photo_owner_west.photocreate(null, icon(image, dir = WEST))
 
 								KPKs += src
-								attack_self(H)
-								return
 							else
 								H << "<span class='warning'>Неверный пароль.</span>"
-								return
 				else
 					H << "<span class='warning'>Ваш пароль не подходит. Введите пароль еще раз.</span>"
 					return
@@ -612,8 +608,6 @@ var/global/lentahtml = ""
 				hacked = 0
 				password = null
 				activated = 0
-				attack_self(H)
-				return
 
 			if("password_check")
 				var/t = message_input(H, "password", 10)
@@ -623,7 +617,6 @@ var/global/lentahtml = ""
 					H << "<span class='warning'>Вы не владелец КПК.</span>"
 				else
 					H << "<span class='warning'>Неверный пароль.</span>"
-				attack_self(H)
 
 			if("rotate")
 				switch(rotation)
@@ -635,64 +628,20 @@ var/global/lentahtml = ""
 						rotation = "east"
 					if("east")
 						rotation = "front"
-				attack_self(H)
 
 			if("make_avatar")
 				make_avatar(H)
-				attack_self(H)
 
 			if("lenta_add")
 				//if(money>=0 && lenta_cooldown == 0)
 				var/t = message_input(H, "message", 250)
 				if(!t)
 					H << "<span class='warning'>Введите сообщение.</span>"
-					attack_self(H)
-					return
 				else
-					//lenta_id++
-					//for(var/datum/data/record/R in data_core.stalkers)
-					//	if(R.fields["sid"] == sid)
-					//var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
-					//H << browse_rsc(P1.img, "photo_front")
-					//var/list/obj/item/weapon/photo/photos += R.fields["photo_front"]
-					//H << browse_rsc(P1.img, "photo_[sid_p]")
-					//var/msg = "<p><img height=24 width=24 border=1 src=photo_[sid_p]><b>[n] ([faction_s])</b>:<br> [t]</p>"
 					if ( !(last_lenta && world.time < last_lenta + 450) )
 						last_lenta = world.time
 
-						var/n = registered_name//R.fields["name"]
-						var/sid_p = sid//R.fields["sid"]
-						var/factioncolor = "#afb2a1"
-						for(var/obj/item/device/stalker_pda/KPK in KPKs)
-							src.show_lenta_message(KPK, t, sid_p)
-
-						switch(faction_s)
-							if("Бандиты")
-								factioncolor = "#8c8c8c"
-							if("Одиночки")
-								factioncolor = "#ff7733"
-							if("Наёмники")
-								factioncolor = "#3399ff"
-							if("Долг")
-								factioncolor = "#ff4d4d"
-
-						//<p class=\"lentamsg\"><img height=24 width=24 border=1 src=photo_[sid_p]><b><font color = \"[factioncolor]\">[n]\[[faction_s]\]</font></b>:<br><font color = \"#afb2a1\">[t]</font></p>" + lentahtml
-
-						lentahtml = "<table  style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
-						<tr style=\"border: 0px solid black;\">\
-		                <td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
-						<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_p]>\
-		                </td>\
-		                \
-		                <td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
-		         		\
-						<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[n]\[[faction_s]\]</font></b>:<br><font color = \"#afb2a1\">[t]</font></p>\
-		                \
-		                </td>\
-		                \
-		                </tr>\
-		                </table>" + lentahtml
-						attack_self(H)
+						add_lenta_message(src, sid, registered_name, faction_s, t)
 
 					else
 						var/lefttime = round((450 + last_lenta - world.time)/10)
@@ -712,22 +661,17 @@ var/global/lentahtml = ""
 				ratinghtml = ""
 				if(!isnull(data_core.stalkers))
 					refresh_rating(H)
-				attack_self(H)
 
 			if("1")			//ПРОФИЛЬ
 				mode = 1
-				attack_self(H)
 
 			if("2")			//ЭНЦИКЛОПЕДИЯ
 				mode = 2
-				attack_self(H)
 
 			if("3")			//РЕЙТИНГ
 				if(!isnull(data_core.stalkers))
 					refresh_rating(H)
 				mode = 3
-				attack_self(H)
-				return
 
 			if("4")			//ЛЕНТА
 				for(var/datum/data/record/R in data_core.stalkers)
@@ -735,12 +679,13 @@ var/global/lentahtml = ""
 					var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
 					H << browse_rsc(P1.img, "photo_[sid_p]")
 				mode = 4
-				attack_self(H)
 
 			if("5")			//КАРТА
 				SSminimap.sendMinimaps(H)
 				mode = 5
-				attack_self(H)
+
+		H.set_machine(src)
+		updateUsrDialog()
 		return
 	else
 		hacked = 0
@@ -757,41 +702,74 @@ var/global/lentahtml = ""
 		return
 	return t
 
-/obj/item/device/stalker_pda/proc/show_lenta_message(var/obj/item/device/stalker_pda/KPK, msg, sid_p, selfsound = 0)
+/proc/add_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
+	//var/n = registered_name//R.fields["name"]
+	//var/sid_p = sid//R.fields["sid"]
+	var/factioncolor = "#afb2a1"
+
+	for(var/obj/item/device/stalker_pda/KPK in KPKs)
+		show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg)
+
+	switch(faction_owner)
+		if("Бандиты")
+			factioncolor = "#8c8c8c"
+		if("Одиночки")
+			factioncolor = "#ff7733"
+		if("Наёмники")
+			factioncolor = "#3399ff"
+		if("Долг")
+			factioncolor = "#ff4d4d"
+
+	lentahtml = "<table  style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
+	<tr style=\"border: 0px solid black;\">\
+    <td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
+	<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
+    </td>\
+    \
+    <td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
+	\
+	<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+    \
+    </td>\
+    \
+    </tr>\
+    </table>" + lentahtml
+
+/proc/show_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/obj/item/device/stalker_pda/KPK, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
+
 	var/mob/living/carbon/C = null
+
+	/*
+	if(sid_owner)
+		for(var/datum/data/record/sk in data_core.stalkers)
+			if(sk.fields["sid"] == sid_owner)
+				var/obj/item/weapon/photo/P1 = sk.fields["photo_front"]
+				C << browse_rsc(P1.img, "photo_[sid_owner].png")
+	*/
+
+
 	if(KPK.loc && isliving(KPK.loc))
 		C = KPK.loc
 	if(C && C.stat != UNCONSCIOUS)
-		var/n
-		var/f
-		var/t
-		//var/icon/I = new()
-		for(var/datum/data/record/sk in data_core.stalkers)
-			if(sk.fields["sid"] == C.sid)
-				var/obj/item/weapon/photo/P1 = sk.fields["photo_front"]
-				C << browse_rsc(P1.img, "photo_[sid_p].png")
-				n = sk.fields["name"]
-				f = sk.fields["faction_s"]
-				t = msg
 
-				var/factioncolor = "#ff7733"
-				switch(faction_s)
-					if("Бандиты")
-						factioncolor = "#8c8c8c"
-					if("Одиночки")
-						factioncolor = "#ff7733"
-					if("Наёмники")
-						factioncolor = "#3399ff"
-					if("Долг")
-						factioncolor = "#ff4d4d"
+		var/factioncolor = "#ff7733"
+		switch(faction_owner)
+			if("Бандиты")
+				factioncolor = "#8c8c8c"
+			if("Одиночки")
+				factioncolor = "#ff7733"
+			if("Наёмники")
+				factioncolor = "#3399ff"
+			if("Долг")
+				factioncolor = "#ff4d4d"
 
-				//C << "<img width=32px height=32px src=\ref[C.icon] iconstate='[C.icon_state]'>"
-				//I = icon(L, null, north_dir, null, null)
-				//C << "<img height=32 width=32 border=1 src=photo_[sid_p].png>" + russian_html2text("<p><b><font color=\"#006699\">[n]</font>\[[f]\]</b>:<br><font color=\"#006699\"> \"[t]\"</font></p>")
-				C << russian_html2text("<p>\icon[src]<b><font color=\"[factioncolor]\">[n]\[[f]\]</font></b>:<br><font color=\"#006699\"> \"[t]\"</font></p>")
-				//C << russian_html2text(text("<img width=32px height=32px src=\ref[]><p>[]</font>\[[]\]</b>:<br><font color=\"#006699\"> \"[]\"</font></p>", "icon(photo_[sid_p].png, dir = SOUTH)", n, f, t))
-		if((KPK != src || selfsound) && lenta_sound == 1)
-			C << sound('sound/stalker/pda/sms.ogg', volume = 30)
+		C << russian_html2text("<p>\icon[KPK]<b><font color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
+		if(KPK_owner)
+			if((KPK != KPK_owner || selfsound) && KPK.lenta_sound == 1)
+				C << sound('sound/stalker/pda/sms.ogg', volume = 30)
+		else
+			if(KPK.lenta_sound)
+				C << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
 /obj/item/device/stalker_pda/proc/refresh_rating(var/mob/living/carbon/human/H)
 	var/count = 0

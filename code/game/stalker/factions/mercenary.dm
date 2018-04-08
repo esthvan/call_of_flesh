@@ -9,7 +9,8 @@
 	selection_color = "#2e708b"
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
-	whitelist_only = 1
+	whitelist_only = 0
+	limit_per_player = 2
 	outfit = /datum/outfit/job/mercenary
 
 /datum/outfit/job/mercenary
@@ -28,14 +29,11 @@
 	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
 	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
-	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
+	//suit_store = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
-	backpack_contents = list(/obj/item/ammo_box/magazine/stalker/sc45 = 2,
-							/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b = 1,
-							/obj/item/weapon/gun/projectile/automatic/pistol/sip = 1,
+	backpack_contents = list(/obj/item/weapon/gun/projectile/automatic/pistol/sip = 1,
 							/obj/item/device/flashlight/seclite = 1)
 	r_pocket = /obj/item/weapon/stalker/bolts
-	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/outfit/mercenary  // For select_equipment
 	name = "Mercenary"

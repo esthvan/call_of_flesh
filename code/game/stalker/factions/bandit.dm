@@ -56,8 +56,7 @@ Assistant
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	mask = /obj/item/clothing/mask/balaclava
 	back = /obj/item/weapon/storage/backpack/stalker
-	backpack_contents = list(/obj/item/stack/spacecash/c1000 = 1, /obj/item/ammo_box/magazine/stalker/m9x18pm = 2, /obj/item/weapon/stalker/bolts = 1, /obj/item/device/flashlight/seclite = 1)
-	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/stack/medical/gauze/bint,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
+	backpack_contents = list(/obj/item/weapon/stalker/bolts = 1)
 	r_pocket = /obj/item/weapon/gun/projectile/automatic/pistol/pm
 
 /datum/outfit/job/bandit_pahan

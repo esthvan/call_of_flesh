@@ -83,7 +83,6 @@
 	if(((S.durability/initial(S.durability))*100 - 50) > 0)
 		S.durability = ((S.durability/initial(S.durability))*100 - 50) / 100 * initial(S.durability)
 	else
-		world << "[((S.durability/initial(S.durability))*100 - 50)]"
 		S.durability = 0
 		qdel(S)
 		update_icons()

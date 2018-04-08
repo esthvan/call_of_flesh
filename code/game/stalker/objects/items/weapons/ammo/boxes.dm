@@ -92,3 +92,11 @@
 	icon_state = "556x45ap"
 	max_ammo = 90
 	multiple_sprites = 2
+
+/obj/item/ammo_box/stalker/b939
+	name = "ammo box (9x39mm)"
+	desc = "—тандартный патрон калибра 9 мм, имеет повышенное останавливающее действие."
+	ammo_type = /obj/item/ammo_casing/sp9x39
+	icon_state = "9x39"
+	max_ammo = 60
+	multiple_sprites = 2

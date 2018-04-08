@@ -145,7 +145,7 @@
 	origin_tech = "materials=1;engineering=1"
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	sharpness = IS_SHARP
-
+/*
 /obj/item/weapon/shovel/attack_self(mob/living/carbon/user)
 	for(var/atom/A in loc)
 		if(istype(A, /obj/structure/closet/grave))
@@ -154,7 +154,7 @@
 	if(!do_after(user, 50, 1, get_turf(loc)))	return
 	new /obj/structure/closet/grave(get_turf(loc))
 	user.visible_message("<span class='notice'>[user] выкопал могилу.</span>", "<span class='notice'>Вы выкопали могилу.</span>")
-
+*/
 /obj/item/weapon/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."

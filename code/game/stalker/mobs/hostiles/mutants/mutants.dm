@@ -6,11 +6,13 @@
 	var/deletable = 1 //Self-deletable dead bodies
 	speak_chance = 1
 
+/*
 /mob/living/simple_animal/hostile/mutant/death(gibbed)
 	..()
 	if(deletable)
 		spawn(300)
 			qdel(src)
+*/
 
 /mob/living/simple_animal/hostile/mutant/AttackingTarget()
 	..()

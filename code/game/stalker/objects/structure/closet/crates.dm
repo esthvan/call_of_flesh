@@ -50,8 +50,8 @@
 				/obj/item/weapon/gun/projectile/automatic/ak74 = 2,
 				/obj/item/weapon/gun/projectile/automatic/ak74/m = 2,
 				/obj/item/weapon/gun/projectile/automatic/ak74/green = 2,
-				/obj/item/weapon/gun/projectile/automatic/abakan = 2,
-				/obj/item/weapon/gun/projectile/automatic/tpc301 = 2,
+				/obj/item/weapon/gun/projectile/automatic/abakan = 1,
+				/obj/item/weapon/gun/projectile/automatic/tpc301 = 1,
 				/obj/item/ammo_box/stalker/b545ap = 8,
 				/obj/item/ammo_box/stalker/b55645ap = 8,
 				/obj/item/clothing/suit/hooded/kombez = 2,
@@ -61,6 +61,15 @@
 				/obj/nothing = 15
 				)
 	rating_add = 100
+
+/obj/structure/closet/crate/stalker/blue/stash/high
+	lootdoubles = 0
+	lootcount = 2
+	loot = list(
+				/obj/item/weapon/gun/projectile/automatic/tpc301 = 2,
+				/obj/nothing = 5
+				)
+	rating_add = 500
 
 
 /obj/structure/closet/crate/stalker/blue/stash/New()
@@ -83,7 +92,8 @@
 		if(istype(H.wear_id, /obj/item/device/stalker_pda))
 			var/obj/item/device/stalker_pda/KPK = H.wear_id
 			if(KPK.activated)
-				KPK.show_lenta_message(KPK, "Вы обнаружили тайник!", H.sid, selfsound = 1)
+				show_lenta_message(null, KPK, null, "КПК", "Система", "Вы обнаружили тайник!", selfsound = 1)
+
 
 		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 		if(sk)

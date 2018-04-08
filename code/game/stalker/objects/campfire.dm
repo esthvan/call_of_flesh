@@ -1,4 +1,4 @@
-/mob/living/carbon/var/campfireplaying = 0
+/client/var/campfireplaying = 0
 
 /obj/machinery/campfire
 	name = "Campfire"
@@ -41,7 +41,7 @@ obj/machinery/campfire/barrel
 		on = !on
 		update_icon()
 		set_light(0)
-		for (var/mob/living/carbon/C in campers)
+		for (var/client/C in campers)
 			C.campfireplaying = 0
 			C << sound(null, 0, 0 , 5, 80)
 			campers -= C
@@ -83,18 +83,24 @@ obj/machinery/campfire/barrel
 		else
 			M.playsound_local(get_turf(M.loc), null, 80, 0, 0, 0, 0, 777, 1)
 	*/
-	for (var/mob/living/carbon/C in view(5, src))
-		if(!C || !C.client)
+	for (var/mob/M in view(5, src))
+		if(!M || !M.client)
 			continue
-		if(!C.campfireplaying)
-			C.campfireplaying = 1
-			campers += C
-			C << sound('sound/stalker/objects/campfire.ogg', 1, 0 , 5, 80)
 
-	for (var/mob/living/carbon/C in campers)
-		if(!C || !C.client)
+		if(!M.client.campfireplaying)
+			M.client.campfireplaying = 1
+			campers += M.client
+			M << sound('sound/stalker/objects/campfire.ogg', 1, 0 , 5, 80)
+
+	for (var/client/C in campers)
+		//if(!C)
+		//	campers -= M
+		//	continue
+
+		if(!C)
 			campers -= C
 			continue
+
 		if(!(C in view(5, src)))
 			C.campfireplaying = 0
 			C << sound(null, 0, 0 , 5, 80)
@@ -175,6 +181,9 @@ obj/machinery/campfire/proc/Think()
 
 
 obj/machinery/campfire/process()
+	if(!on)
+		SSmachine.processing.Remove(src)
+		return
 	src.RefreshSound()
 	//if(!on || (stat & BROKEN))
 	//	return

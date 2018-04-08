@@ -50,15 +50,21 @@
 		////////////////////////////////  Патроны  /////////////////////////////////////////
 		new /datum/data/stalker_equipment("Коробка 9x18",				/obj/item/ammo_box/stalker/b9x18,						3750, 0),
 		new /datum/data/stalker_equipment("Коробка 9x18 Бронебойные",	/obj/item/ammo_box/stalker/b9x18P,						7500, 0),
-		new /datum/data/stalker_equipment("Магазин к ПМм/ПБ1с",		/obj/item/ammo_box/magazine/stalker/m9x18pm,				750, 0),
-		new /datum/data/stalker_equipment("Магазин к Форе 12",		/obj/item/ammo_box/magazine/stalker/m9x18fort,				1000, 0),
 		new /datum/data/stalker_equipment("Коробка 9x19",				/obj/item/ammo_box/stalker/b9x19,						4000, 0),
-		new /datum/data/stalker_equipment("Магазин к Гадюке",		/obj/item/ammo_box/magazine/stalker/m9x19mp5,				2000, 1000),
 		new /datum/data/stalker_equipment("Коробка дроби 12x70",		/obj/item/ammo_box/stalker/b12x70,						3000, 0),
 		new /datum/data/stalker_equipment("Коробка 5.45x39",			/obj/item/ammo_box/stalker/b545,						5750, 1000),
+		new /datum/data/stalker_equipment("Коробка 5.45x39 Бронебойные",			/obj/item/ammo_box/stalker/b545ap,			7500, 4000),
+		new /datum/data/stalker_equipment("Коробка 5.56x45",			/obj/item/ammo_box/stalker/b55645,						6000, 1000),
+		new /datum/data/stalker_equipment("Коробка 5.56x45 Бронебойные",			/obj/item/ammo_box/stalker/b55645ap,		8000, 4000),
+		new /datum/data/stalker_equipment("Коробка 9x39 ПАБ-9",			/obj/item/ammo_box/stalker/b939,		9000, 4000),
+		new /datum/data/stalker_equipment("Магазин к ПМм/ПБ1с",		/obj/item/ammo_box/magazine/stalker/m9x18pm,				750, 0),
+		new /datum/data/stalker_equipment("Магазин к Форе 12",		/obj/item/ammo_box/magazine/stalker/m9x18fort,				1000, 0),
+		new /datum/data/stalker_equipment("Магазин к Гадюке",		/obj/item/ammo_box/magazine/stalker/m9x19mp5,				2000, 1000),
 		new /datum/data/stalker_equipment("Магазин к АК 74/2;AK 74/2У;АС 96/2",/obj/item/ammo_box/magazine/stalker/m545,		2250, 1000),
 		new /datum/data/stalker_equipment("Магазин к ИЛ-86 и ТПС-301",/obj/item/ammo_box/magazine/stalker/m556x45,				2500, 1000),
-		new /datum/data/stalker_equipment("Коробка 5.56x45",			/obj/item/ammo_box/stalker/b55645,						6000, 1000),
+		new /datum/data/stalker_equipment("Магазин к АС \"ВАЛ\"",/obj/item/ammo_box/magazine/stalker/sp9x39val,					3500, 7000),
+		new /datum/data/stalker_equipment("Магазин к ОЦ \"ГРОЗА\"",/obj/item/ammo_box/magazine/stalker/sp9x39groza,				3500, 7000),
+		new /datum/data/stalker_equipment("Магазин к винторезу",/obj/item/ammo_box/magazine/stalker/sp9x39vint,					3000, 7000),
 		new /datum/data/stalker_equipment("Магазин к коре-919 и сип-т",/obj/item/ammo_box/magazine/stalker/sc45,				1400, 1000),
 		new /datum/data/stalker_equipment("Магазин к марте"			,/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, 4000),
 		new /datum/data/stalker_equipment("Магазин к юсп-матч"		,/obj/item/ammo_box/magazine/stalker/usp45,					1500, 4000),
@@ -69,7 +75,7 @@
 
 		new /datum/data/stalker_equipment("Кожанка",				/obj/item/clothing/suit/hooded/kozhanka,					5000, 0),
 		new /datum/data/stalker_equipment("Бела&#x44F; кожанка",	/obj/item/clothing/suit/hooded/kozhanka/white,				5000, 0),
-		new	/datum/data/stalker_equipment("Бандитска#x44F; кожанка",/obj/item/clothing/suit/hooded/kozhanka/banditka,			5000, 0),
+		new	/datum/data/stalker_equipment("Бандитска&#x44F; кожанка",/obj/item/clothing/suit/hooded/kozhanka/banditka,			5000, 0),
 		new	/datum/data/stalker_equipment("Армейский комбинезон",	/obj/item/clothing/suit/army,								6000, 0, "Военные"),
 		new /datum/data/stalker_equipment("Комбинезон \"Зар&#x44F;\"",/obj/item/clothing/suit/hooded/kombez,					40000, 1000),
 		new /datum/data/stalker_equipment("Комбинезон наемника", 	/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, 1000, "Наёмники"),
@@ -143,9 +149,16 @@
 		new /datum/data/stalker_equipment("Детектор \"Отклик\"",							/obj/item/device/detector/blink,				4000, 0),
 		new /datum/data/stalker_equipment("Детектор \"Медведь\"",							/obj/item/device/detector/bear,					8000, 1000),
 		)
+	var/list/loot_list = list(
+	/////////////////////////////////  Лут с мутантов  ///////////////////////////////////////////
+		new /datum/data/stalker_equipment("Песий хвост",								/obj/item/weapon/stalker/loot/dog_tail,				3000, 0, sale_price = 1500),
+		new /datum/data/stalker_equipment("Плотий глаз",										/obj/item/weapon/stalker/loot/flesh_eye,	3000, 0, sale_price = 1500),
+		new /datum/data/stalker_equipment("Кабаний ног",										/obj/item/weapon/stalker/loot/boar_leg,		6000, 0, sale_price = 3000),
+
+		)
 
 	var/list/artifacts_list = list(
-		/////////////////////////////////  Детекторы  ///////////////////////////////////////////
+		/////////////////////////////////  Артефакты  ///////////////////////////////////////////
 		new /datum/data/stalker_equipment("Медуза",										/obj/item/weapon/artifact/meduza,					5000, 0, sale_price = 2500),
 		new /datum/data/stalker_equipment("Каменный цветок",							/obj/item/weapon/artifact/stoneflower,				10000, 0, sale_price = 5000),
 		new /datum/data/stalker_equipment("Ночная звезда",								/obj/item/weapon/artifact/nightstar,				30000, 0, sale_price = 15000),

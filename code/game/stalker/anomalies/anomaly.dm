@@ -25,6 +25,7 @@
 	var/active_invisibility = 0
 	var/inactive_invisibility = 0
 	var/list/loot
+	var/anomaly_color = null
 	icon = 'icons/stalker/anomalies.dmi'
 	unacidable = 1
 	anchored = 1
@@ -33,18 +34,15 @@
 
 /obj/anomaly/New()
 	..()
-	SSobj.processing.Remove(src)
+	//SSobj.processing.Remove(src)
 	anomalies += src
 	//if(prob(30))
 	//	if(attachedSpawner)
 	//		new attachedSpawner(src)
 	icon_state = inactive_icon_state
 	invisibility = inactive_invisibility
+	set_light(idle_luminosity, l_color = anomaly_color)
 	SpawnArtifact()
-
-/obj/anomaly/Destroy()
-	..()
-	SSobj.processing.Remove(src)
 
 /obj/anomaly/proc/SpawnArtifact()
 	if(loot)
@@ -85,11 +83,14 @@
 	if(istype(A,/obj/item))
 		invisibility = active_invisibility
 		icon_state = active_icon_state
-		src.set_light(src.activated_luminosity)
+		set_light(activated_luminosity, l_color = anomaly_color)
+
+
 		spawn(10)
 			invisibility = inactive_invisibility
 			icon_state = inactive_icon_state
-			src.set_light(src.idle_luminosity)
+			set_light(idle_luminosity, l_color = anomaly_color)
+
 		src.lasttime = world.time
 
 		playsound(src.loc, src.sound, 50, 1, channel = 0)
@@ -118,7 +119,7 @@
 		var/mob/living/M = A
 		src.trapped.Add(M)
 		if(src.trapped.len >= 1)
-			SSobj.processing |= src
+			Think()
 		//else
 		//	src.trapped.Remove(M)
 		return
@@ -129,28 +130,34 @@
 	if (istype(A,/mob/living))
 		var/mob/living/M = A
 		src.trapped.Remove(M)
-		SSobj.processing.Remove(src)
+		//SSobj.processing.Remove(src)
 //	if (istype(A,/obj/item) && !istype(A,/obj/item/projectile) && !istype(A,/obj/item/weapon/artifact))
 //		var/obj/item/O = A
 //		src.trapped.Remove(O)
 
-/obj/anomaly/process()
+/obj/anomaly/proc/Think()
 
 	if(src.trapped.len <= 0)
-		SSobj.processing.Remove(src)
+		//SSobj.processing.Remove(src)
 		return
 
-	if(lasttime + cooldown > world.time)
+	if(lasttime + (cooldown * 10) > world.time)
+		spawn(lasttime + (cooldown * 10) - world.time)
+			Think()
 		return
 
 	invisibility = active_invisibility
 	icon_state = active_icon_state
 	update_icon()
-	src.set_light(src.activated_luminosity)
+
+	set_light(activated_luminosity, l_color = anomaly_color)
+
+
 	spawn(10)
 		invisibility = inactive_invisibility
 		icon_state = inactive_icon_state
-		src.set_light(src.idle_luminosity)
+
+		set_light(idle_luminosity, l_color = anomaly_color)
 
 	playsound(src.loc, src.sound, 50, 1, channel = 0)
 
@@ -161,6 +168,9 @@
 			if(istype(A, /mob/living))
 				var/mob/living/M = A
 				//spawn(src.delay * 10)
+				if(M.stat == 2)
+					src.trapped.Remove(M)
+					return
 				switch(src.damage_type)
 					if(DMG_TYPE_ENERGY)
 						M.apply_damage(src.damage_amount, BURN, null, M.getarmor(null, "electro"))
@@ -175,6 +185,11 @@
 						A.fire_act()
 						if(istype(A, /mob/living/simple_animal/hostile))
 							M.apply_damage(40, BURN, null, 0)
+
+				spawn(src.cooldown * 10)
+					if(src.trapped.len <= 0)
+						return
+					Think()
 	return
 
 /obj/anomaly/electro
@@ -184,6 +199,7 @@
 	sound = 'sound/stalker/anomalies/electra_blast1.ogg'
 	idle_luminosity = 1
 	activated_luminosity = 2
+	anomaly_color = "#bdeaf9"
 	damage_type = DMG_TYPE_ENERGY
 	inactive_icon_state = "electra0"
 	active_icon_state = "electra1"
@@ -225,6 +241,7 @@
 	luminosity = 2
 	idle_luminosity = 3
 	activated_luminosity = 5
+	anomaly_color = "#FFAA33"
 	damage_type = DMG_TYPE_IGNITION
 	icon = 'icons/stalker/anomalies.dmi'
 	inactive_icon_state = "jarka0"
@@ -238,9 +255,11 @@
 
 /obj/anomaly/holodec
 	name = "anomaly"
+	cooldown = 0.5
 	luminosity = 3
 	idle_luminosity = 3
 	activated_luminosity = 5
+	anomaly_color = "#98c958"
 	sound = 'sound/stalker/anomalies/buzz_hit.ogg'
 	damage_type = DMG_TYPE_BIO
 	damage_amount = 30
@@ -256,6 +275,7 @@
 
 /obj/anomaly/puh
 	name = "anomaly"
+	cooldown = 0.5
 	sound = 'sound/stalker/anomalies/buzz_hit.ogg'
 	damage_type = DMG_TYPE_BIO
 	damage_amount = 15
@@ -265,10 +285,16 @@
 	active_invisibility = 0
 	inactive_invisibility = 0
 
+/obj/anomaly/puh/New()
+	inactive_icon_state = pick("puh","puh2")
+	if(inactive_icon_state == "puh2")
+		active_icon_state = "puh2"
+/*
 /obj/anomaly/puh/puh2
 	icon = 'icons/stalker/anomalies.dmi'
 	inactive_icon_state = "puh2"
 	active_icon_state = "puh2"
+*/
 /*
 /obj/anomaly/fake
 	name = "anomaly"
