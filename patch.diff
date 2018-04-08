@@ -1,0 +1,674 @@
+From b0ef29a3572e5f9984fdaec559e8f5ede6d95f77 Mon Sep 17 00:00:00 2001
+From: Viol <viol.de.gambo@gmail.com>
+Date: Sat, 24 Dec 2016 19:37:46 +0500
+Subject: [PATCH] Update tgstation_schema_prefixed.sql
+
+---
+ SQL/tgstation_schema_prefixed.sql | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/SQL/tgstation_schema_prefixed.sql b/SQL/tgstation_schema_prefixed.sql
+index fe40d2f..f605339 100644
+--- a/SQL/tgstation_schema_prefixed.sql
++++ b/SQL/tgstation_schema_prefixed.sql
+@@ -261,6 +261,7 @@ CREATE TABLE `SS13_poll_question` (
+   `createdby_ckey` varchar(45) NULL DEFAULT NULL,
+   `createdby_ip` varchar(45) NULL DEFAULT NULL,
+   `for_trialmin` varchar(45) NULL DEFAULT NULL,
++  `dontshow` tinyint(1) NOT NULL DEFAULT '0',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+@@ -355,9 +356,19 @@ CREATE TABLE `SS13_notes` (
+   `last_editor` varchar(32),
+   `edits` text,
+   `server` varchar(50) NOT NULL,
++  `secret` tinyint(1) NOT NULL DEFAULT  '1',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+-
++DROP TABLE IF EXISTS `SS13_ipintel`;
++/*!40101 SET @saved_cs_client     = @@character_set_client */;
++/*!40101 SET character_set_client = utf8 */;
++CREATE TABLE  `SS13_ipintel` (
++`ip` INT UNSIGNED NOT NULL ,
++`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL ,
++`intel` REAL NOT NULL DEFAULT  '0',
++PRIMARY KEY (  `ip` )
++) ENGINE = INNODB;
++/*!40101 SET character_set_client = @saved_cs_client */;
+ -- Dump completed on 2013-03-24 18:02:35
+-- 
+2.7.4.windows.1
+
+From b0ef29a3572e5f9984fdaec559e8f5ede6d95f77 Mon Sep 17 00:00:00 2001
+From: Viol <viol.de.gambo@gmail.com>
+Date: Sat, 24 Dec 2016 19:37:46 +0500
+Subject: [PATCH] Update tgstation_schema_prefixed.sql
+
+---
+ SQL/tgstation_schema_prefixed.sql | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/SQL/tgstation_schema_prefixed.sql b/SQL/tgstation_schema_prefixed.sql
+index fe40d2f..f605339 100644
+--- a/SQL/tgstation_schema_prefixed.sql
++++ b/SQL/tgstation_schema_prefixed.sql
+@@ -261,6 +261,7 @@ CREATE TABLE `SS13_poll_question` (
+   `createdby_ckey` varchar(45) NULL DEFAULT NULL,
+   `createdby_ip` varchar(45) NULL DEFAULT NULL,
+   `for_trialmin` varchar(45) NULL DEFAULT NULL,
++  `dontshow` tinyint(1) NOT NULL DEFAULT '0',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+@@ -355,9 +356,19 @@ CREATE TABLE `SS13_notes` (
+   `last_editor` varchar(32),
+   `edits` text,
+   `server` varchar(50) NOT NULL,
++  `secret` tinyint(1) NOT NULL DEFAULT  '1',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+-
++DROP TABLE IF EXISTS `SS13_ipintel`;
++/*!40101 SET @saved_cs_client     = @@character_set_client */;
++/*!40101 SET character_set_client = utf8 */;
++CREATE TABLE  `SS13_ipintel` (
++`ip` INT UNSIGNED NOT NULL ,
++`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL ,
++`intel` REAL NOT NULL DEFAULT  '0',
++PRIMARY KEY (  `ip` )
++) ENGINE = INNODB;
++/*!40101 SET character_set_client = @saved_cs_client */;
+ -- Dump completed on 2013-03-24 18:02:35
+-- 
+2.7.4.windows.1
+
+From b0ef29a3572e5f9984fdaec559e8f5ede6d95f77 Mon Sep 17 00:00:00 2001
+From: Viol <viol.de.gambo@gmail.com>
+Date: Sat, 24 Dec 2016 19:37:46 +0500
+Subject: [PATCH] Update tgstation_schema_prefixed.sql
+
+---
+ SQL/tgstation_schema_prefixed.sql | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/SQL/tgstation_schema_prefixed.sql b/SQL/tgstation_schema_prefixed.sql
+index fe40d2f..f605339 100644
+--- a/SQL/tgstation_schema_prefixed.sql
++++ b/SQL/tgstation_schema_prefixed.sql
+@@ -261,6 +261,7 @@ CREATE TABLE `SS13_poll_question` (
+   `createdby_ckey` varchar(45) NULL DEFAULT NULL,
+   `createdby_ip` varchar(45) NULL DEFAULT NULL,
+   `for_trialmin` varchar(45) NULL DEFAULT NULL,
++  `dontshow` tinyint(1) NOT NULL DEFAULT '0',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+@@ -355,9 +356,19 @@ CREATE TABLE `SS13_notes` (
+   `last_editor` varchar(32),
+   `edits` text,
+   `server` varchar(50) NOT NULL,
++  `secret` tinyint(1) NOT NULL DEFAULT  '1',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+-
++DROP TABLE IF EXISTS `SS13_ipintel`;
++/*!40101 SET @saved_cs_client     = @@character_set_client */;
++/*!40101 SET character_set_client = utf8 */;
++CREATE TABLE  `SS13_ipintel` (
++`ip` INT UNSIGNED NOT NULL ,
++`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL ,
++`intel` REAL NOT NULL DEFAULT  '0',
++PRIMARY KEY (  `ip` )
++) ENGINE = INNODB;
++/*!40101 SET character_set_client = @saved_cs_client */;
+ -- Dump completed on 2013-03-24 18:02:35
+-- 
+2.7.4.windows.1
+
+From b0ef29a3572e5f9984fdaec559e8f5ede6d95f77 Mon Sep 17 00:00:00 2001
+From: Viol <viol.de.gambo@gmail.com>
+Date: Sat, 24 Dec 2016 19:37:46 +0500
+Subject: [PATCH] Update tgstation_schema_prefixed.sql
+
+---
+ SQL/tgstation_schema_prefixed.sql | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/SQL/tgstation_schema_prefixed.sql b/SQL/tgstation_schema_prefixed.sql
+index fe40d2f..f605339 100644
+--- a/SQL/tgstation_schema_prefixed.sql
++++ b/SQL/tgstation_schema_prefixed.sql
+@@ -261,6 +261,7 @@ CREATE TABLE `SS13_poll_question` (
+   `createdby_ckey` varchar(45) NULL DEFAULT NULL,
+   `createdby_ip` varchar(45) NULL DEFAULT NULL,
+   `for_trialmin` varchar(45) NULL DEFAULT NULL,
++  `dontshow` tinyint(1) NOT NULL DEFAULT '0',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+@@ -355,9 +356,19 @@ CREATE TABLE `SS13_notes` (
+   `last_editor` varchar(32),
+   `edits` text,
+   `server` varchar(50) NOT NULL,
++  `secret` tinyint(1) NOT NULL DEFAULT  '1',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+-
++DROP TABLE IF EXISTS `SS13_ipintel`;
++/*!40101 SET @saved_cs_client     = @@character_set_client */;
++/*!40101 SET character_set_client = utf8 */;
++CREATE TABLE  `SS13_ipintel` (
++`ip` INT UNSIGNED NOT NULL ,
++`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL ,
++`intel` REAL NOT NULL DEFAULT  '0',
++PRIMARY KEY (  `ip` )
++) ENGINE = INNODB;
++/*!40101 SET character_set_client = @saved_cs_client */;
+ -- Dump completed on 2013-03-24 18:02:35
+-- 
+2.7.4.windows.1
+
+From b0ef29a3572e5f9984fdaec559e8f5ede6d95f77 Mon Sep 17 00:00:00 2001
+From: Viol <viol.de.gambo@gmail.com>
+Date: Sat, 24 Dec 2016 19:37:46 +0500
+Subject: [PATCH] Update tgstation_schema_prefixed.sql
+
+---
+ SQL/tgstation_schema_prefixed.sql | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/SQL/tgstation_schema_prefixed.sql b/SQL/tgstation_schema_prefixed.sql
+index fe40d2f..f605339 100644
+--- a/SQL/tgstation_schema_prefixed.sql
++++ b/SQL/tgstation_schema_prefixed.sql
+@@ -261,6 +261,7 @@ CREATE TABLE `SS13_poll_question` (
+   `createdby_ckey` varchar(45) NULL DEFAULT NULL,
+   `createdby_ip` varchar(45) NULL DEFAULT NULL,
+   `for_trialmin` varchar(45) NULL DEFAULT NULL,
++  `dontshow` tinyint(1) NOT NULL DEFAULT '0',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+@@ -355,9 +356,19 @@ CREATE TABLE `SS13_notes` (
+   `last_editor` varchar(32),
+   `edits` text,
+   `server` varchar(50) NOT NULL,
++  `secret` tinyint(1) NOT NULL DEFAULT  '1',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+-
++DROP TABLE IF EXISTS `SS13_ipintel`;
++/*!40101 SET @saved_cs_client     = @@character_set_client */;
++/*!40101 SET character_set_client = utf8 */;
++CREATE TABLE  `SS13_ipintel` (
++`ip` INT UNSIGNED NOT NULL ,
++`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL ,
++`intel` REAL NOT NULL DEFAULT  '0',
++PRIMARY KEY (  `ip` )
++) ENGINE = INNODB;
++/*!40101 SET character_set_client = @saved_cs_client */;
+ -- Dump completed on 2013-03-24 18:02:35
+-- 
+2.7.4.windows.1
+
+From 847abfce9d950f6041f2c5b2f8672275df7977ab Mon Sep 17 00:00:00 2001
+From: Viol <viol.de.gambo@gmail.com>
+Date: Sat, 24 Dec 2016 19:36:43 +0500
+Subject: [PATCH] Update tgstation_schema.sql
+
+---
+ SQL/tgstation_schema.sql | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/SQL/tgstation_schema.sql b/SQL/tgstation_schema.sql
+index ca89d72..60dcde0 100644
+--- a/SQL/tgstation_schema.sql
++++ b/SQL/tgstation_schema.sql
+@@ -266,6 +266,7 @@ CREATE TABLE `poll_question` (
+   `createdby_ckey` varchar(45) NULL DEFAULT NULL,
+   `createdby_ip` varchar(45) NULL DEFAULT NULL,
+   `for_trialmin` varchar(45) NULL DEFAULT NULL,
++  `dontshow` tinyint(1) NOT NULL DEFAULT '0',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+@@ -360,9 +361,19 @@ CREATE TABLE `notes` (
+   `last_editor` varchar(32),
+   `edits` text,
+   `server` varchar(50) NOT NULL,
++  `secret` tinyint(1) NOT NULL DEFAULT  '1',
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+-
++DROP TABLE IF EXISTS `ipintel`;
++/*!40101 SET @saved_cs_client     = @@character_set_client */;
++/*!40101 SET character_set_client = utf8 */;
++CREATE TABLE  `ipintel` (
++`ip` INT UNSIGNED NOT NULL ,
++`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL ,
++`intel` REAL NOT NULL DEFAULT  '0',
++PRIMARY KEY (  `ip` )
++) ENGINE = INNODB;
++/*!40101 SET character_set_client = @saved_cs_client */;
+ -- Dump completed on 2013-03-24 18:02:35
+-- 
+2.7.4.windows.1
+
+From 39a9e50553ad37346713566a0a8a702c29d1c515 Mon Sep 17 00:00:00 2001
+From: Viol <viol.de.gambo@gmail.com>
+Date: Sat, 24 Dec 2016 19:32:42 +0500
+Subject: [PATCH] Update dbconfig.txt
+
+Fix#1
+---
+ config/dbconfig.txt | 22 +++++-----------------
+ 1 file changed, 5 insertions(+), 17 deletions(-)
+
+diff --git a/config/dbconfig.txt b/config/dbconfig.txt
+index cc28dc4..cc99422 100644
+--- a/config/dbconfig.txt
++++ b/config/dbconfig.txt
+@@ -2,32 +2,20 @@
+ ## This is used for stats, feedback gathering,
+ ## administration, and the in game library.
+ 
+-## Should SQL be enabled? Uncomment to enable.
+-#SQL_ENABLED
++SQL_ENABLED
+ 
+ ## Server the MySQL database can be found at.
+ # Examples: localhost, 200.135.5.43, www.mysqldb.com, etc.
+-ADDRESS localhost
++ADDRESS 127.0.0.1
+ 
+ ## MySQL server port (default is 3306).
+ PORT 3306
+ 
+ ## Database for all SQL functions, not just feedback.
+-FEEDBACK_DATABASE feedback
+-
+-## Prefix to be added to the name of every table, older databases will require this be set to erro_
+-## if left out defaults to erro_ for legacy reasons, if you want no table prefix, give a blank prefix rather then comment out
+-## Note, this does not change the table names in the database, you will have to do that yourself.
+-##IE:
+-##	FEEDBACK_TABLEPREFIX erro_
+-##	FEEDBACK_TABLEPREFIX 
+-##	FEEDBACK_TABLEPREFIX SS13_
+-##
+-## Leave as is if you are using the standard schema file.
+-FEEDBACK_TABLEPREFIX 
++DATABASE white
+ 
+ ## Username/Login used to access the database.
+-FEEDBACK_LOGIN username
++LOGIN root
+ 
+ ## Password used to access the database.
+-FEEDBACK_PASSWORD password
+\ No newline at end of file
++PASSWORD 
+-- 
+2.7.4.windows.1
+
+From 9da8f1efcb8e746744f32976ee334559dda3081e Mon Sep 17 00:00:00 2001
+From: narcissf <savmax004@gmail.com>
+Date: Sat, 24 Dec 2016 16:11:22 +0400
+Subject: [PATCH] =?UTF-8?q?=D0=A7=D0=B8=D0=BD=D0=B8=D0=BC=20=D0=B1=D0=B4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ SQL/errofreedatabase.sql          |  15 +++++
+ SQL/tgstation_schema_prefixed.sql | 118 +++++++++++++++++++-------------------
+ 2 files changed, 74 insertions(+), 59 deletions(-)
+ create mode 100644 SQL/errofreedatabase.sql
+
+diff --git a/SQL/errofreedatabase.sql b/SQL/errofreedatabase.sql
+new file mode 100644
+index 0000000..7d6ea45
+--- /dev/null
++++ b/SQL/errofreedatabase.sql
+@@ -0,0 +1,15 @@
++ALTER TABLE erro_admin RENAME TO SS13_admin;
++ALTER TABLE erro_admin_log RENAME TO SS13_admin_log;
++ALTER TABLE erro_admin_ranks RENAME TO SS13_admin_ranks;
++ALTER TABLE erro_ban RENAME TO SS13_ban;
++ALTER TABLE erro_connection_log RENAME TO SS13_connection_log;
++ALTER TABLE erro_death RENAME TO SS13_death;
++ALTER TABLE erro_feedback RENAME TO SS13_feedback;
++ALTER TABLE erro_legacy_population RENAME TO SS13_legacy_population;
++ALTER TABLE erro_library RENAME TO SS13_library;
++ALTER TABLE erro_player RENAME TO SS13_player;
++ALTER TABLE erro_poll_option RENAME TO SS13_poll_option;
++ALTER TABLE erro_poll_question RENAME TO SS13_poll_question;
++ALTER TABLE erro_poll_textreply RENAME TO SS13_poll_textreply;
++ALTER TABLE erro_poll_vote RENAME TO SS13_poll_vote;
++ALTER TABLE erro_watch RENAME TO SS13_watch;
+\ No newline at end of file
+diff --git a/SQL/tgstation_schema_prefixed.sql b/SQL/tgstation_schema_prefixed.sql
+index 72e7c6e..fe40d2f 100644
+--- a/SQL/tgstation_schema_prefixed.sql
++++ b/SQL/tgstation_schema_prefixed.sql
+@@ -13,13 +13,13 @@ USE `feedback`;
+ /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+ 
+ --
+--- Table structure for table `erro_admin`
++-- Table structure for table `SS13_admin`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_admin`;
++DROP TABLE IF EXISTS `SS13_admin`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_admin` (
++CREATE TABLE `SS13_admin` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `ckey` varchar(32) NOT NULL,
+   `rank` varchar(32) NOT NULL DEFAULT 'Administrator',
+@@ -31,13 +31,13 @@ CREATE TABLE `erro_admin` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_admin_log`
++-- Table structure for table `SS13_admin_log`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_admin_log`;
++DROP TABLE IF EXISTS `SS13_admin_log`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_admin_log` (
++CREATE TABLE `SS13_admin_log` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `datetime` datetime NOT NULL,
+   `adminckey` varchar(32) NOT NULL,
+@@ -48,13 +48,13 @@ CREATE TABLE `erro_admin_log` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_admin_ranks`
++-- Table structure for table `SS13_admin_ranks`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_admin_ranks`;
++DROP TABLE IF EXISTS `SS13_admin_ranks`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_admin_ranks` (
++CREATE TABLE `SS13_admin_ranks` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `rank` varchar(40) NOT NULL,
+   `flags` int(16) NOT NULL DEFAULT '0',
+@@ -62,23 +62,23 @@ CREATE TABLE `erro_admin_ranks` (
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+-insert into erro_admin_ranks (rank, flags) values ('Moderator',2);
+-insert into erro_admin_ranks (rank, flags) values ('Admin Candidate',2);
+-insert into erro_admin_ranks (rank, flags) values ('Trial Admin',5638);
+-insert into erro_admin_ranks (rank, flags) values ('Badmin',5727);
+-insert into erro_admin_ranks (rank, flags) values ('Game Admin',8063);
+-insert into erro_admin_ranks (rank, flags) values ('Game Master',65535);
+-insert into erro_admin_ranks (rank, flags) values ('Host',65535);
+-insert into erro_admin_ranks (rank, flags) values ('Coder',5168);
++insert into SS13_admin_ranks (rank, flags) values ('Moderator',2);
++insert into SS13_admin_ranks (rank, flags) values ('Admin Candidate',2);
++insert into SS13_admin_ranks (rank, flags) values ('Trial Admin',5638);
++insert into SS13_admin_ranks (rank, flags) values ('Badmin',5727);
++insert into SS13_admin_ranks (rank, flags) values ('Game Admin',8063);
++insert into SS13_admin_ranks (rank, flags) values ('Game Master',65535);
++insert into SS13_admin_ranks (rank, flags) values ('Host',65535);
++insert into SS13_admin_ranks (rank, flags) values ('Coder',5168);
+ 
+ --
+--- Table structure for table `erro_ban`
++-- Table structure for table `SS13_ban`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_ban`;
++DROP TABLE IF EXISTS `SS13_ban`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_ban` (
++CREATE TABLE `SS13_ban` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `bantime` datetime NOT NULL,
+   `serverip` varchar(32) NOT NULL,
+@@ -107,13 +107,13 @@ CREATE TABLE `erro_ban` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_connection_log`
++-- Table structure for table `SS13_connection_log`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_connection_log`;
++DROP TABLE IF EXISTS `SS13_connection_log`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_connection_log` (
++CREATE TABLE `SS13_connection_log` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `datetime` datetime DEFAULT NULL,
+   `serverip` varchar(45) DEFAULT NULL,
+@@ -125,13 +125,13 @@ CREATE TABLE `erro_connection_log` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_death`
++-- Table structure for table `SS13_death`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_death`;
++DROP TABLE IF EXISTS `SS13_death`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_death` (
++CREATE TABLE `SS13_death` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `pod` text NOT NULL COMMENT 'Place of death',
+   `coord` text NOT NULL COMMENT 'X, Y, Z POD',
+@@ -152,13 +152,13 @@ CREATE TABLE `erro_death` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_feedback`
++-- Table structure for table `SS13_feedback`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_feedback`;
++DROP TABLE IF EXISTS `SS13_feedback`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_feedback` (
++CREATE TABLE `SS13_feedback` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `time` datetime NOT NULL,
+   `round_id` int(8) NOT NULL,
+@@ -170,13 +170,13 @@ CREATE TABLE `erro_feedback` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_legacy_population`
++-- Table structure for table `SS13_legacy_population`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_legacy_population`;
++DROP TABLE IF EXISTS `SS13_legacy_population`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_legacy_population` (
++CREATE TABLE `SS13_legacy_population` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `playercount` int(11) DEFAULT NULL,
+   `admincount` int(11) DEFAULT NULL,
+@@ -186,11 +186,11 @@ CREATE TABLE `erro_legacy_population` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_library`
++-- Table structure for table `SS13_library`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_library`;
+-CREATE TABLE `erro_library` (
++DROP TABLE IF EXISTS `SS13_library`;
++CREATE TABLE `SS13_library` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `author` varchar(45) NOT NULL,
+   `title` varchar(45) NOT NULL,
+@@ -203,13 +203,13 @@ CREATE TABLE `erro_library` (
+ ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ 
+ --
+--- Table structure for table `erro_player`
++-- Table structure for table `SS13_player`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_player`;
++DROP TABLE IF EXISTS `SS13_player`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_player` (
++CREATE TABLE `SS13_player` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `ckey` varchar(32) NOT NULL,
+   `firstseen` datetime NOT NULL,
+@@ -223,13 +223,13 @@ CREATE TABLE `erro_player` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_poll_option`
++-- Table structure for table `SS13_poll_option`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_poll_option`;
++DROP TABLE IF EXISTS `SS13_poll_option`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_poll_option` (
++CREATE TABLE `SS13_poll_option` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `pollid` int(11) NOT NULL,
+   `text` varchar(255) NOT NULL,
+@@ -244,13 +244,13 @@ CREATE TABLE `erro_poll_option` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_poll_question`
++-- Table structure for table `SS13_poll_question`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_poll_question`;
++DROP TABLE IF EXISTS `SS13_poll_question`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_poll_question` (
++CREATE TABLE `SS13_poll_question` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `polltype` varchar(16) NOT NULL DEFAULT 'OPTION',
+   `starttime` datetime NOT NULL,
+@@ -266,13 +266,13 @@ CREATE TABLE `erro_poll_question` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_poll_textreply`
++-- Table structure for table `SS13_poll_textreply`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_poll_textreply`;
++DROP TABLE IF EXISTS `SS13_poll_textreply`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_poll_textreply` (
++CREATE TABLE `SS13_poll_textreply` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `datetime` datetime NOT NULL,
+   `pollid` int(11) NOT NULL,
+@@ -285,13 +285,13 @@ CREATE TABLE `erro_poll_textreply` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_poll_vote`
++-- Table structure for table `SS13_poll_vote`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_poll_vote`;
++DROP TABLE IF EXISTS `SS13_poll_vote`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_poll_vote` (
++CREATE TABLE `SS13_poll_vote` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `datetime` datetime NOT NULL,
+   `pollid` int(11) NOT NULL,
+@@ -305,13 +305,13 @@ CREATE TABLE `erro_poll_vote` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_watch`
++-- Table structure for table `SS13_watch`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_watch`;
++DROP TABLE IF EXISTS `SS13_watch`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_watch` (
++CREATE TABLE `SS13_watch` (
+   `ckey` varchar(32) NOT NULL,
+   `reason` text NOT NULL,
+   `timestamp` datetime NOT NULL,
+@@ -323,13 +323,13 @@ CREATE TABLE `erro_watch` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_memo`
++-- Table structure for table `SS13_memo`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_memo`;
++DROP TABLE IF EXISTS `SS13_memo`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_memo` (
++CREATE TABLE `SS13_memo` (
+   `ckey` varchar(32) NOT NULL,
+   `memotext` text NOT NULL,
+   `timestamp` datetime NOT NULL,
+@@ -340,13 +340,13 @@ CREATE TABLE `erro_memo` (
+ /*!40101 SET character_set_client = @saved_cs_client */;
+ 
+ --
+--- Table structure for table `erro_notes`
++-- Table structure for table `SS13_notes`
+ --
+ 
+-DROP TABLE IF EXISTS `erro_notes`;
++DROP TABLE IF EXISTS `SS13_notes`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+ /*!40101 SET character_set_client = utf8 */;
+-CREATE TABLE `erro_notes` (
++CREATE TABLE `SS13_notes` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `ckey` varchar(32) NOT NULL,
+   `notetext` text NOT NULL,
+-- 
+2.7.4.windows.1
+

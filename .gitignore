@@ -1,0 +1,14 @@
+###Files and folders specified here will never be tracked.
+
+#Ignore everything in datafolder and subdirectories
+/data/logs/**/*
+/data/minimaps/**/*
+/data/player_saves/**/*
+
+#Ignore compiled files and other files generated during compilation.
+*.dmb
+*.rsc
+*.lk
+*.int
+*.backup
+*.int
