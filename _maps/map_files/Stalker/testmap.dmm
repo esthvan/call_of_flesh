@@ -17,7 +17,7 @@
 "aq" = (/obj/structure/table/stalker/wood,/obj/machinery/stalker/sidormat{pixel_y = 8},/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/outdoor)
 "ar" = (/obj/structure/table/stalker/wood,/obj/item/stack/spacecash/c5000{amount = 50},/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/outdoor)
 "as" = (/obj/anomaly/electro,/turf/stalker/floor/gryaz/gryaz2,/area/stalker/blowout/outdoor)
-"at" = (/obj/anomaly/puh/puh2,/turf/stalker/floor/gryaz/gryaz2,/area/stalker/blowout/outdoor)
+"at" = (/obj/anomaly/puh,/turf/stalker/floor/gryaz/gryaz2,/area/stalker/blowout/outdoor)
 "au" = (/obj/effect/landmark/latejoin/petrovich,/turf/stalker/floor/wood/oldvert,/area/stalker/kordon/buildings)
 "av" = (/turf/stalker/floor/wood/oldvert,/area/stalker/kordon/buildings)
 "aw" = (/obj/machinery/door/poddoor/sidor,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/outdoor)

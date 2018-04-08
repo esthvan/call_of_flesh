@@ -185,7 +185,7 @@
 "dC" = (/obj/effect/decal/warning_stripes{tag = "icon-border2"; icon_state = "border2"},/turf/stalker/floor/gryaz,/area/stalker/blowout/outdoor)
 "dD" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,/turf/stalker/floor/wood/oldvert,/area/stalker)
 "dE" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/army,/obj/item/clothing/suit/army,/obj/item/clothing/suit/army,/turf/stalker/floor/wood/oldvert,/area/stalker)
-"dF" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/army/army2,/obj/item/clothing/suit/army/army2,/obj/item/clothing/suit/army/army2,/turf/stalker/floor/wood/oldvert,/area/stalker)
+"dF" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/army,/turf/stalker/floor/wood/oldvert,/area/stalker)
 "dG" = (/obj/item/clothing/head/skathelmet,/obj/item/clothing/head/skathelmet,/obj/item/clothing/head/skathelmet,/obj/structure/table/stalker/wood,/turf/stalker/floor/wood/oldvert,/area/stalker)
 "dH" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/berill,/turf/stalker/floor/wood/oldvert,/area/stalker)
 "dI" = (/obj/structure/table/stalker/wood,/obj/item/clothing/mask/gas/stalker,/obj/item/clothing/mask/gas/stalker,/obj/item/clothing/mask/gas/stalker,/turf/stalker/floor/wood/oldvert,/area/stalker)

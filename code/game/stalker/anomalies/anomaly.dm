@@ -262,7 +262,7 @@
 	anomaly_color = "#98c958"
 	sound = 'sound/stalker/anomalies/buzz_hit.ogg'
 	damage_type = DMG_TYPE_BIO
-	damage_amount = 30
+	damage_amount = 60
 	icon = 'icons/stalker/anomalies.dmi'
 	inactive_icon_state = "holodec"
 	active_icon_state = "holodec" //need activation icon
@@ -278,7 +278,7 @@
 	cooldown = 0.5
 	sound = 'sound/stalker/anomalies/buzz_hit.ogg'
 	damage_type = DMG_TYPE_BIO
-	damage_amount = 15
+	damage_amount = 65
 	icon = 'icons/stalker/anomalies.dmi'
 	inactive_icon_state = "puh"
 	active_icon_state = "puh" //need activation icon

@@ -31,11 +31,14 @@ var/global/lentahtml = ""
 	var/password = null
 	var/hacked = 0
 	var/activated = 0
-	var/isregistered = 0
+	var/rep_color_s = "#ffe100"
+	var/rep_name_s = "Нейтральна&#x44F;"
+	var/rank_name_s = "Новичок"
+	//var/isregistered = 0
 
 	//ЛЕНТА
 	var/lenta_sound = 1
-	var/last_lenta
+	var/last_lenta = 0
 	var/lenta_id = 0
 	var/msg_name = "message"
 	var/max_length = 10
@@ -88,62 +91,6 @@ var/global/lentahtml = ""
 	icon_state = "kpk_on"
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
 	assets.send(user)
-
-
-	var/rep_color_s
-	var/rep_name_s
-	var/rank_name_s
-	if(!isnull(data_core.stalkers))
-		for(var/datum/data/record/sk in data_core.stalkers)
-			if(sk.fields["sid"] == sid)
-				rating		= sk.fields["rating"]
-				money		= sk.fields["money"]
-				reputation	= sk.fields["reputation"]
-
-				var/obj/item/weapon/photo/P1 = sk.fields["photo_front"]
-				var/obj/item/weapon/photo/P2 = sk.fields["photo_west"]
-				var/obj/item/weapon/photo/P3 = sk.fields["photo_east"]
-				var/obj/item/weapon/photo/P4 = sk.fields["photo_back"]
-
-				user << browse_rsc(P1.img, "photo_front")
-				user << browse_rsc(P2.img, "photo_west")
-				user << browse_rsc(P3.img, "photo_east")
-				user << browse_rsc(P4.img, "photo_back")
-
-				switch(sk.fields["reputation"])
-					if(2000 to INFINITY)
-						rep_name_s = "Свой пацан"
-						rep_color_s = "#00abdb" //#00abdb
-					if(1500 to 2000)
-						rep_name_s = "Очень хороша&#x44F;"
-						rep_color_s = "#b6ff38" //#6ddb00
-					if(1100 to 1500)
-						rep_name_s = "Хороша&#x44F;"
-						rep_color_s = "#daff21" //#b6db00
-					if(900 to 1100)
-						rep_name_s = "Нейтральна&#x44F;"
-						rep_color_s = "#ffe100" //#ffb200
-					if(500 to 900)
-						rep_name_s = "Плоха&#x44F;"
-						rep_color_s = "#ff6b3a" //#db5700
-					if(0 to 500)
-						rep_name_s = "Очень плоха&#x44F;"
-						rep_color_s = "#db2b00" //#db2b00
-					if(0)
-						rep_name_s = "Гнида"
-						rep_color_s = "#7c0000"
-
-				switch(sk.fields["rating"])
-					if(10000 to INFINITY)
-						rank_name_s = "Легенда Зоны"
-					if(5000 to 9999)
-						rank_name_s = "Мастер"
-					if(3000 to 4999)
-						rank_name_s = "Ветеран"
-					if(1000 to 2999)
-						rank_name_s = "Опытный"
-					if(0 to 999)
-						rank_name_s = "Новичок"
 
 	user.set_machine(src)
 	mainhtml ="<html> \
@@ -303,7 +250,7 @@ var/global/lentahtml = ""
 					<tr>\
 					<td valign=\"top\" align=\"left\">\
 					<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=exit'>\[ВЫЙТИ ИЗ АККАУНТА\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
-					<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=rotate'>Повернуть фото профиля</a> | <a href='byond://?src=\ref[src];choice=make_avatar'>Сменить фото профил&#x44F;</a> | </div>\
+					<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=rotate'>Повернуть фото профил&#x44F;</a> | <a href='byond://?src=\ref[src];choice=make_avatar'>Сменить фото профил&#x44F;</a> | </div>\
 					</td>\
 					</tr>\
 					<tr valign=\"top\">\
@@ -335,7 +282,7 @@ var/global/lentahtml = ""
                     \
 					<tr>\
 					<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопедия</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
+						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
 					<div align=\"center\"></div>\
 					</td>\
 					</tr>"
@@ -355,7 +302,7 @@ var/global/lentahtml = ""
 					\
 					<tr>\
 					<td colspan=\"2\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопедия</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
+						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
 					<div align=\"center\"></div>\
 					</td>\
 					</tr>"
@@ -383,7 +330,7 @@ var/global/lentahtml = ""
 					</tr>\
 					<tr>\
 					<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопедия</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
+						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
 					<div align=\"center\"></div>\
 					</td>\
 					</tr>"
@@ -412,7 +359,7 @@ var/global/lentahtml = ""
 					\
 					<tr>\
 					<td colspan=\"2\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопедия</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
+						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
 					<div align=\"center\"></div>"
 					*/
 
@@ -439,7 +386,7 @@ var/global/lentahtml = ""
 					\
 					<tr>\
 					<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопедия</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
+						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
 					<div align=\"center\"></div>\
 					</td>\
 					</tr>"
@@ -475,7 +422,7 @@ var/global/lentahtml = ""
 					</tr>\
 					<tr>\
 					<td colspan=\"2\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопедия</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
+						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
 					<div align=\"center\"></div>\
 					</td>\
 					</tr>"
@@ -518,7 +465,7 @@ var/global/lentahtml = ""
 
 	//var/mob/living/U = usr
 	var/mob/living/carbon/human/H = usr
-	//isregistered = 0
+	var/isregistered = 0
 	if(usr.canUseTopic(src))
 		add_fingerprint(H)
 		H.set_machine(src)
@@ -544,7 +491,7 @@ var/global/lentahtml = ""
 					for(var/datum/data/record/sk in data_core.stalkers)
 						if(sk.fields["sid"] == H.sid)
 							isregistered = 1
-					if(activated == 0)
+					if(!isregistered)
 						password = t
 						var/pass = password
 						data_core.manifest_inject(H, pass)
@@ -574,26 +521,27 @@ var/global/lentahtml = ""
 						KPKs += src
 					else
 						for(var/datum/data/record/sk in data_core.stalkers)
-							if(sk.fields["pass"] == t)
-								password = t
-								var/datum/job/J = SSjob.GetJob(H.job)
-								access = J.get_access()
+							if(sk.fields["sid"] == H.sid)
+								if(sk.fields["pass"] == t)
+									password = t
+									var/datum/job/J = SSjob.GetJob(H.job)
+									access = J.get_access()
 
-								registered_name = H.real_name
-								faction_s = H.faction_s
-								rating = sk.fields["rating"]
-								owner = H
+									registered_name = H.real_name
+									faction_s = H.faction_s
+									rating = sk.fields["rating"]
+									owner = H
+									activated = 1
 
-								var/image = get_id_photo(H)
-								photo_owner_front.photocreate(null, icon(image, dir = SOUTH))
-								photo_owner_west.photocreate(null, icon(image, dir = WEST))
+									var/image = get_id_photo(H)
+									photo_owner_front.photocreate(null, icon(image, dir = SOUTH))
+									photo_owner_west.photocreate(null, icon(image, dir = WEST))
 
-								KPKs += src
-							else
-								H << "<span class='warning'>Неверный пароль.</span>"
+									KPKs += src
+								else
+									H << "<span class='warning'>Неверный пароль.</span>"
 				else
 					H << "<span class='warning'>Ваш пароль не подходит. Введите пароль еще раз.</span>"
-					return
 
 			if("exit")
 				registered_name = null
@@ -663,6 +611,57 @@ var/global/lentahtml = ""
 					refresh_rating(H)
 
 			if("1")			//ПРОФИЛЬ
+				for(var/datum/data/record/sk in data_core.stalkers)
+					if(H.sid == sk.fields["sid"])
+						var/obj/item/weapon/photo/P1 = sk.fields["photo_front"]
+						var/obj/item/weapon/photo/P2 = sk.fields["photo_west"]
+						var/obj/item/weapon/photo/P3 = sk.fields["photo_east"]
+						var/obj/item/weapon/photo/P4 = sk.fields["photo_back"]
+
+						H << browse_rsc(P1.img, "photo_front")
+						H << browse_rsc(P2.img, "photo_west")
+						H << browse_rsc(P3.img, "photo_east")
+						H << browse_rsc(P4.img, "photo_back")
+
+						rating		= sk.fields["rating"]
+						money		= sk.fields["money"]
+						reputation	= sk.fields["reputation"]
+
+						switch(sk.fields["reputation"])
+							if(2000 to INFINITY)
+								rep_name_s = "Свой пацан"
+								rep_color_s = "#00abdb" //#00abdb
+							if(1500 to 2000)
+								rep_name_s = "Очень хороша&#x44F;"
+								rep_color_s = "#b6ff38" //#6ddb00
+							if(1100 to 1500)
+								rep_name_s = "Хороша&#x44F;"
+								rep_color_s = "#daff21" //#b6db00
+							if(900 to 1100)
+								rep_name_s = "Нейтральна&#x44F;"
+								rep_color_s = "#ffe100" //#ffb200
+							if(500 to 900)
+								rep_name_s = "Плоха&#x44F;"
+								rep_color_s = "#ff6b3a" //#db5700
+							if(0 to 500)
+								rep_name_s = "Очень плоха&#x44F;"
+								rep_color_s = "#db2b00" //#db2b00
+							if(0)
+								rep_name_s = "Гнида"
+								rep_color_s = "#7c0000"
+
+						switch(sk.fields["rating"])
+							if(10000 to INFINITY)
+								rank_name_s = "Легенда Зоны"
+							if(5000 to 9999)
+								rank_name_s = "Мастер"
+							if(3000 to 4999)
+								rank_name_s = "Ветеран"
+							if(1000 to 2999)
+								rank_name_s = "Опытный"
+							if(0 to 999)
+								rank_name_s = "Новичок"
+
 				mode = 1
 
 			if("2")			//ЭНЦИКЛОПЕДИЯ
@@ -684,12 +683,13 @@ var/global/lentahtml = ""
 				SSminimap.sendMinimaps(H)
 				mode = 5
 
-		H.set_machine(src)
+		//usr.set_machine(src)
 		updateUsrDialog()
 		return
 	else
 		hacked = 0
 		H.unset_machine()
+		updateSelfDialog()
 		H << browse(null, "window=mainhtml")
 
 /obj/item/device/stalker_pda/proc/message_input(mob/living/U = usr, msg_name, max_length)

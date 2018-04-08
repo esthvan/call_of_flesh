@@ -147,6 +147,10 @@ var/global/num_sid = 0
 			usr << "<span class='danger'>The round is either not ready, or has already finished...</span>"
 			return
 
+		if(isblowout)
+			usr << "<span class='danger'>The blowout is ongoing in the Zone!</span>"
+			return
+
 		if(href_list["late_join"] == "override")
 			LateChoices()
 			return

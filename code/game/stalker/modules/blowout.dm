@@ -10,8 +10,8 @@ var/global/isblowout = 0
 
 datum/subsystem/blowout
 	var/blowoutphase = 1
-	var/couldownmin = 180//00
-	var/couldownmax = 360//00
+	var/cooldownmin = 18000
+	var/cooldownmax = 36000
 	var/list/ambient = list('sound/stalker/blowout/blowout_amb_01.ogg', 'sound/stalker/blowout/blowout_amb_02.ogg',
 						'sound/stalker/blowout/blowout_amb_03.ogg', 'sound/stalker/blowout/blowout_amb_04.ogg',
 						'sound/stalker/blowout/blowout_amb_05.ogg', 'sound/stalker/blowout/blowout_amb_06.ogg',
@@ -40,7 +40,7 @@ datum/subsystem/blowout/New()
 	Cycle()
 
 datum/subsystem/blowout/proc/Cycle()
-	spawn(rand(couldownmin, couldownmax))
+	spawn(rand(cooldownmin, cooldownmin))
 		StartBlowout()
 	blowoutphase++
 	if(blowoutphase > 3)
