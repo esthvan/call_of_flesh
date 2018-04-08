@@ -55,9 +55,10 @@ Assistant
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
-	backpack_contents = list(pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/stack/medical/gauze/bint,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton))
-	back = /obj/item/weapon/storage/backpack/stalker
+	backpack_contents = list()
+	//back = /obj/item/weapon/storage/backpack/stalker
 	l_pocket = /obj/item/weapon/stalker/bolts
+	r_pocket =pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/stack/medical/gauze/bint,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/outfit/stalker  // For select_equipment
 	name = "Stalker"

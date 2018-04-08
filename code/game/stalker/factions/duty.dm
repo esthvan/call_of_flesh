@@ -28,7 +28,7 @@ Assistant
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	back = /obj/item/weapon/storage/backpack/stalker
+	//back = /obj/item/weapon/storage/backpack/stalker
 	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/nothing)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,

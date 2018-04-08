@@ -142,8 +142,8 @@
 	back = /obj/item/weapon/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 
-	var/backpack = /obj/item/weapon/storage/backpack
-	var/satchel  = /obj/item/weapon/storage/backpack/satchel_norm
+	var/backpack = /obj/item/weapon/storage/backpack/stalker
+	var/satchel  = /obj/item/weapon/storage/backpack/satchel/stalker
 	var/box = /obj/item/weapon/storage/box/survival
 
 	var/pda_slot = slot_belt

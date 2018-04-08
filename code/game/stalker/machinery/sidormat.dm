@@ -255,7 +255,7 @@ var/list/sidormatitems = list()
 			if(rating >= prize.rating)
 				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
-	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Патроны</b></center></td><td></td><td></td></tr>"
+	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Боеприпасы</b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in ammo_list)
 		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
 			if(rating >= prize.rating)

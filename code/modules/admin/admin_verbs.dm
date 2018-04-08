@@ -24,6 +24,8 @@ var/list/admin_verbs_default = list(
 var/list/admin_verbs_admin = list(
 	/client/proc/GetRank,
 	/client/proc/SetRank,
+	/client/proc/SetMinCooldownBlowout,
+	/client/proc/SetMaxCooldownBlowout,
 	/client/proc/ResetSidorRooms,
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
 	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
@@ -345,6 +347,26 @@ var/list/admin_verbs_hideable = list(
 			src << "<span class='interface'>Рейтинг успешно обновлен.</span>"
 			return
 	src << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+
+/client/proc/SetMinCooldownBlowout()
+	set name = "Set Blowout Cooldown (min)"
+	set category = "Stalker"
+
+	var/cooldownmin = input(usr, "Введите минимальный кулдаун.", "Blowout") as num
+
+	StalkerBlowout.cooldownmin = cooldownmin
+	if(cooldownmin >= StalkerBlowout.cooldownmax)
+		StalkerBlowout.cooldownmax = cooldownmin + 18000
+	src << "<span class='interface'>Кулдаун (мин) выброса успешно изменен.</span>"
+
+/client/proc/SetMaxCooldownBlowout()
+	set name = "Set Blowout Cooldown (max)"
+	set category = "Stalker"
+
+	var/cooldownmax = input(usr, "Введите максимальный кулдаун.", "Blowout") as num
+
+	StalkerBlowout.cooldownmax = cooldownmax
+	src << "<span class='interface'>Кулдаун (макс) выброса успешно изменен.</span>"
 
 /client/proc/ResetSidorRooms()
 	set category = "Stalker"

@@ -402,8 +402,8 @@ var/global/lentahtml = ""
 					<div align=\"right\">\
 					<a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
 					<div align = \"center\">\
-					| <a href='byond://?src=\ref[src];' onclick=\"zoomin()\"> Zoom In</a> | \
-					<a href='byond://?src=\ref[src];' onclick=\"zoomout()\"> Zoom Out</a> | \
+					| <a href='byond://?src=\ref[src];choice=zoom' onclick=\"zoomin()\"> Zoom In</a> | \
+					<a href='byond://?src=\ref[src];choice=zoom' onclick=\"zoomout()\"> Zoom Out</a> | \
 					</div>\
 					</td>\
 					</tr>\
@@ -483,6 +483,7 @@ var/global/lentahtml = ""
 				H.unset_machine()
 				hacked = 0
 				H << browse(null, "window=mainhtml")
+				return
 
 			if("password_input")
 				var/t = message_input(H, "password", 10)
@@ -519,6 +520,10 @@ var/global/lentahtml = ""
 						H << "<B>Пароль к КПК</B>: <span class='danger'>\"[pass]\"</span>"
 						H.mind.store_memory("<b>Пароль к КПК</b>: \"[pass]\"")
 						KPKs += src
+
+						for(var/datum/data/record/sk in data_core.stalkers)
+							if(H.sid == sk.fields["sid"])
+								set_owner_info(sk)
 					else
 						for(var/datum/data/record/sk in data_core.stalkers)
 							if(sk.fields["sid"] == H.sid)
@@ -538,6 +543,8 @@ var/global/lentahtml = ""
 									photo_owner_west.photocreate(null, icon(image, dir = WEST))
 
 									KPKs += src
+
+									set_owner_info(sk)
 								else
 									H << "<span class='warning'>Неверный пароль.</span>"
 				else
@@ -610,57 +617,13 @@ var/global/lentahtml = ""
 				if(!isnull(data_core.stalkers))
 					refresh_rating(H)
 
+			if("zoom")
+				return
+
 			if("1")			//ПРОФИЛЬ
 				for(var/datum/data/record/sk in data_core.stalkers)
 					if(H.sid == sk.fields["sid"])
-						var/obj/item/weapon/photo/P1 = sk.fields["photo_front"]
-						var/obj/item/weapon/photo/P2 = sk.fields["photo_west"]
-						var/obj/item/weapon/photo/P3 = sk.fields["photo_east"]
-						var/obj/item/weapon/photo/P4 = sk.fields["photo_back"]
-
-						H << browse_rsc(P1.img, "photo_front")
-						H << browse_rsc(P2.img, "photo_west")
-						H << browse_rsc(P3.img, "photo_east")
-						H << browse_rsc(P4.img, "photo_back")
-
-						rating		= sk.fields["rating"]
-						money		= sk.fields["money"]
-						reputation	= sk.fields["reputation"]
-
-						switch(sk.fields["reputation"])
-							if(2000 to INFINITY)
-								rep_name_s = "Свой пацан"
-								rep_color_s = "#00abdb" //#00abdb
-							if(1500 to 2000)
-								rep_name_s = "Очень хороша&#x44F;"
-								rep_color_s = "#b6ff38" //#6ddb00
-							if(1100 to 1500)
-								rep_name_s = "Хороша&#x44F;"
-								rep_color_s = "#daff21" //#b6db00
-							if(900 to 1100)
-								rep_name_s = "Нейтральна&#x44F;"
-								rep_color_s = "#ffe100" //#ffb200
-							if(500 to 900)
-								rep_name_s = "Плоха&#x44F;"
-								rep_color_s = "#ff6b3a" //#db5700
-							if(0 to 500)
-								rep_name_s = "Очень плоха&#x44F;"
-								rep_color_s = "#db2b00" //#db2b00
-							if(0)
-								rep_name_s = "Гнида"
-								rep_color_s = "#7c0000"
-
-						switch(sk.fields["rating"])
-							if(10000 to INFINITY)
-								rank_name_s = "Легенда Зоны"
-							if(5000 to 9999)
-								rank_name_s = "Мастер"
-							if(3000 to 4999)
-								rank_name_s = "Ветеран"
-							if(1000 to 2999)
-								rank_name_s = "Опытный"
-							if(0 to 999)
-								rank_name_s = "Новичок"
+						set_owner_info(sk)
 
 				mode = 1
 
@@ -683,13 +646,12 @@ var/global/lentahtml = ""
 				SSminimap.sendMinimaps(H)
 				mode = 5
 
-		//usr.set_machine(src)
-		updateUsrDialog()
+		usr.set_machine(src)
+		updateSelfDialog()
 		return
 	else
 		hacked = 0
 		H.unset_machine()
-		updateSelfDialog()
 		H << browse(null, "window=mainhtml")
 
 /obj/item/device/stalker_pda/proc/message_input(mob/living/U = usr, msg_name, max_length)
@@ -904,3 +866,53 @@ var/global/lentahtml = ""
 /obj/item/device/stalker_pda/proc/get_avatar(var/mob/living/carbon/human/H, var/datum/outfit/avatar)
 	var/datum/preferences/P = H.client.prefs
 	return get_flat_human_icon(null, avatar, P)
+
+/obj/item/device/stalker_pda/proc/set_owner_info(var/datum/data/record/sk)
+	var/obj/item/weapon/photo/P1 = sk.fields["photo_front"]
+	var/obj/item/weapon/photo/P2 = sk.fields["photo_west"]
+	var/obj/item/weapon/photo/P3 = sk.fields["photo_east"]
+	var/obj/item/weapon/photo/P4 = sk.fields["photo_back"]
+
+	usr << browse_rsc(P1.img, "photo_front")
+	usr << browse_rsc(P2.img, "photo_west")
+	usr << browse_rsc(P3.img, "photo_east")
+	usr << browse_rsc(P4.img, "photo_back")
+
+	rating		= sk.fields["rating"]
+	money		= sk.fields["money"]
+	reputation	= sk.fields["reputation"]
+
+	switch(sk.fields["reputation"])
+		if(2000 to INFINITY)
+			rep_name_s = "Свой пацан"
+			rep_color_s = "#00abdb" //#00abdb
+		if(1500 to 2000)
+			rep_name_s = "Очень хороша&#x44F;"
+			rep_color_s = "#b6ff38" //#6ddb00
+		if(1100 to 1500)
+			rep_name_s = "Хороша&#x44F;"
+			rep_color_s = "#daff21" //#b6db00
+		if(900 to 1100)
+			rep_name_s = "Нейтральна&#x44F;"
+			rep_color_s = "#ffe100" //#ffb200
+		if(500 to 900)
+			rep_name_s = "Плоха&#x44F;"
+			rep_color_s = "#ff6b3a" //#db5700
+		if(0 to 500)
+			rep_name_s = "Очень плоха&#x44F;"
+			rep_color_s = "#db2b00" //#db2b00
+		if(0)
+			rep_name_s = "Гнида"
+			rep_color_s = "#7c0000"
+
+	switch(sk.fields["rating"])
+		if(10000 to INFINITY)
+			rank_name_s = "Легенда Зоны"
+		if(5000 to 9999)
+			rank_name_s = "Мастер"
+		if(3000 to 4999)
+			rank_name_s = "Ветеран"
+		if(1000 to 2999)
+			rank_name_s = "Опытный"
+		if(0 to 999)
+			rank_name_s = "Новичок"

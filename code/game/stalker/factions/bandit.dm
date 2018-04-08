@@ -55,9 +55,10 @@ Assistant
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	mask = /obj/item/clothing/mask/balaclava
-	back = /obj/item/weapon/storage/backpack/stalker
-	backpack_contents = list(/obj/item/weapon/stalker/bolts = 1)
+	//back = /obj/item/weapon/storage/backpack/stalker
+	backpack_contents = list()
 	r_pocket = /obj/item/weapon/gun/projectile/automatic/pistol/pm
+	l_pocket = /obj/item/weapon/stalker/bolts
 
 /datum/outfit/job/bandit_pahan
 	name = "Pahan"
