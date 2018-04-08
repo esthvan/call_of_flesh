@@ -147,7 +147,7 @@
 		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
 		return
 		*/
-	apply_damage(fire_stacks * 5, BURN)
+	apply_damage(fire_stacks * 3.5, BURN)
 	//var/turf/location = get_turf(src)
 
 
