@@ -88,9 +88,14 @@
 	attacktext = "кусает"
 	search_objects = 1
 	speak_emote = list("скулит", "рычит")
-	emote_see = list("лает")
+	emote_see = list("лает!")
 	faction = list("stalker_mutants1")
-	attack_sound = 'sound/stalker/mobs/mutants/dog_attack.ogg'
+	attack_sound = 'sound/stalker/mobs/mutants/attack/dog_attack.ogg'
+	idle_sounds = list('sound/stalker/mobs/mutants/idle/bdog_idle_1.ogg',
+						'sound/stalker/mobs/mutants/idle/bdog_idle_2.ogg',
+						'sound/stalker/mobs/mutants/idle/bdog_idle_3.ogg',
+						'sound/stalker/mobs/mutants/idle/bdog_idle_4.ogg')
+	death_sound = 'sound/stalker/mobs/mutants/death/dog_death.ogg'
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	maxHealth = 25
@@ -100,7 +105,7 @@
 	robust_searching = 1
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 4
-	deathmessage = "Собака издаёт истошный вой."
+	deathmessage = "Собака издаёт истошный вой!"
 	del_on_death = 0
 	minbodytemp = 0
 	maxbodytemp = 1500
@@ -125,7 +130,11 @@
 	maxHealth = 70
 	healable = 1
 	melee_damage_lower = 20
-	attack_sound = 'sound/stalker/mobs/mutants/flesh_attack.ogg'
+	attack_sound = 'sound/stalker/mobs/mutants/attack/snork_attack.ogg'
+	idle_sounds = list('sound/stalker/mobs/mutants/idle/snork_idle_1.ogg',
+						'sound/stalker/mobs/mutants/idle/snork_idle_2.ogg',
+						'sound/stalker/mobs/mutants/idle/snork_idle_3.ogg')
+	death_sound = 'sound/stalker/mobs/mutants/death/snork_death.ogg'
 	melee_damage_upper = 30
 	fearborder = 10
 	see_invisible = SEE_INVISIBLE_MINIMUM
@@ -136,7 +145,7 @@
 	del_on_death = 0
 	//environment_smash = 1
 	robust_searching = 1
-	deathmessage = "Снорк издает истошный вопль и падает навзничь."
+	deathmessage = "Снорк издает истошный вопль и падает навзничь!"
 	layer = MOB_LAYER - 0.1
 	loot = list(/obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing)
 	random_loot = 1
@@ -195,11 +204,14 @@
 	icon_dead = "plot_dead"
 	attacktext = "бьет"
 	speak_emote = list("хрюкает")
-	emote_see = list("агрессивно визжит")
+	emote_see = list("агрессивно визжит!")
 	maxHealth = 40
 	healable = 5
 	melee_damage_lower = 20
-	attack_sound = 'sound/stalker/mobs/mutants/flesh_attack.ogg'
+	attack_sound = 'sound/stalker/mobs/mutants/attack/flesh_attack.ogg'
+	idle_sounds = list('sound/stalker/mobs/mutants/idle/flesh_idle_1.ogg',
+						'sound/stalker/mobs/mutants/idle/flesh_idle_2.ogg')
+	death_sound = 'sound/stalker/mobs/mutants/death/flesh_death.ogg'
 	melee_damage_upper = 30
 	fearborder = 18
 	see_invisible = SEE_INVISIBLE_MINIMUM
@@ -210,7 +222,7 @@
 	del_on_death = 0
 	environment_smash = 1
 	robust_searching = 0
-	deathmessage = "Плоть издает предсмертный визг."
+	deathmessage = "Плоть издает предсмертный визг!"
 	layer = MOB_LAYER - 0.1
 	loot = list(/obj/item/weapon/stalker/loot/flesh_eye, /obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing)
 	random_loot = 1
@@ -228,11 +240,15 @@
 	icon_dead = "kaban_dead"
 	attacktext = "бьет"
 	speak_emote = list("хрюкает")
-	emote_see = list("агрессивно визжит")
+	emote_see = list("агрессивно визжит!")
 	maxHealth = 150
 	healable = 1
 	melee_damage_lower = 20
-	attack_sound = 'sound/stalker/mobs/mutants/flesh_attack.ogg'
+	attack_sound = 'sound/stalker/mobs/mutants/attack/boar_attack.ogg'
+	idle_sounds = list('sound/stalker/mobs/mutants/idle/boar_idle_1.ogg',
+						'sound/stalker/mobs/mutants/idle/boar_idle_2.ogg',
+						'sound/stalker/mobs/mutants/idle/boar_idle_3.ogg')
+	death_sound = 'sound/stalker/mobs/mutants/death/boar_death.ogg'
 	melee_damage_upper = 45
 	fearborder = 18
 	see_invisible = SEE_INVISIBLE_MINIMUM
@@ -243,7 +259,7 @@
 	del_on_death = 0
 	environment_smash = 1
 	robust_searching = 0
-	deathmessage = "Кабан издает предсмертный визг."
+	deathmessage = "Кабан издает предсмертный визг!"
 	layer = MOB_LAYER - 0.1
 	loot = list(/obj/item/weapon/stalker/loot/boar_leg, /obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing)
 	random_loot = 1

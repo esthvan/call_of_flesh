@@ -84,6 +84,7 @@
 		S.durability = ((S.durability/initial(S.durability))*100 - 50) / 100 * initial(S.durability)
 	else
 		S.durability = 0
+		src << "<span class='warning'>[src] развалилс&#255; пр&#255; на вас!</span>"
 		qdel(S)
 		update_icons()
 

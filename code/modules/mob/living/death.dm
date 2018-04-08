@@ -1,6 +1,6 @@
 /mob/living/gib(animation = 1)
 	var/prev_lying = lying
-	src << "¬ы будете воскрешены через некоторое врем&#255;."
+	//src << "¬ы будете воскрешены через некоторое врем&#255;."
 	death(1)
 	//spawn(200)
 	//	var/mob/new_player/NP = new()

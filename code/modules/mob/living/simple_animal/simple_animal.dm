@@ -48,6 +48,8 @@
 	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1) // 1 for full damage , 0 for none , -1 for 1:1 heal from that source
 	var/attacktext = "attacks"
 	var/attack_sound = null
+	var/death_sound = null
+	var/list/idle_sounds = list()
 	var/friendly = "nuzzles" //If the mob does no damage with it's attack
 	var/environment_smash = 0 //Set to 1 to allow breaking of crates,lockers,racks,tables; 2 for walls; 3 for Rwalls
 
@@ -155,6 +157,10 @@
 /mob/living/simple_animal/proc/handle_automated_speech()
 	if(speak_chance)
 		if(rand(0,200) < speak_chance)
+
+			var/s = pick(idle_sounds)
+			playsound(src, s, 75, 1)
+
 			if(speak && speak.len)
 				if((emote_hear && emote_hear.len) || (emote_see && emote_see.len))
 					var/length = speak.len
@@ -444,6 +450,7 @@
 			for(var/i in loot)
 				new i(loc)
 	*/
+	playsound(src, death_sound, 75, 1)
 	if(deathmessage && !gibbed)
 		visible_message("<span class='danger'>[deathmessage]</span>")
 	else if(!del_on_death)

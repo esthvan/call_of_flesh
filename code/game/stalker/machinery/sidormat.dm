@@ -65,7 +65,7 @@
 		new /datum/data/stalker_equipment("Магазин к АС \"ВАЛ\"",/obj/item/ammo_box/magazine/stalker/sp9x39val,					3500, 7000),
 		new /datum/data/stalker_equipment("Магазин к ОЦ \"ГРОЗА\"",/obj/item/ammo_box/magazine/stalker/sp9x39groza,				3500, 7000),
 		new /datum/data/stalker_equipment("Магазин к винторезу",/obj/item/ammo_box/magazine/stalker/sp9x39vint,					3000, 7000),
-		new /datum/data/stalker_equipment("Магазин к коре-919 и сип-т",/obj/item/ammo_box/magazine/stalker/sc45,				1400, 1000),
+		new /datum/data/stalker_equipment("Магазин к коре-919 и сип-т",/obj/item/ammo_box/magazine/stalker/sc45,				1400, 0),
 		new /datum/data/stalker_equipment("Магазин к марте"			,/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, 4000),
 		new /datum/data/stalker_equipment("Магазин к юсп-матч"		,/obj/item/ammo_box/magazine/stalker/usp45,					1500, 4000),
 		)

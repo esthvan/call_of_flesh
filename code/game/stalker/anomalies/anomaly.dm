@@ -255,7 +255,7 @@
 
 /obj/anomaly/holodec
 	name = "anomaly"
-	cooldown = 0.5
+	cooldown = 0.75
 	luminosity = 3
 	idle_luminosity = 3
 	activated_luminosity = 5
@@ -275,7 +275,7 @@
 
 /obj/anomaly/puh
 	name = "anomaly"
-	cooldown = 0.5
+	cooldown = 0.75
 	sound = 'sound/stalker/anomalies/buzz_hit.ogg'
 	damage_type = DMG_TYPE_BIO
 	damage_amount = 65

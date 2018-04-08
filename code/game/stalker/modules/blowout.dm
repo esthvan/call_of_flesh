@@ -99,10 +99,16 @@ area/proc/StopBlowout(blowoutphase)
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
 				H.apply_damage(300, BURN)
+			for(var/obj/item/weapon/artifact/A in src.contents)
+				qdel(A)
+			for(var/mob/living/L in src.contents)
+				L.gib()
 				//H.stat = DEAD
 		if(BLOWOUTHIGH)
-			for(var/mob/living/C in src.contents)
-				C.gib()
+			for(var/obj/item/weapon/artifact/A in src.contents)
+				qdel(A)
+			for(var/mob/living/L in src.contents)
+				L.gib()
 
 area/proc/ProcessBlowout()
 	if(blowout)

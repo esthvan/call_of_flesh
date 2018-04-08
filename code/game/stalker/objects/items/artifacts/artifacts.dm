@@ -50,7 +50,8 @@
 	//invisibility = 100
 
 /obj/item/weapon/artifact/pickup(mob/user)
-	invisibility = 0
+	if(invisibility)
+		invisibility = 0
 
 	/////////////////////////////////////////Гравитационные артефакты/////////////////////////////////////////
 /obj/item/weapon/artifact/meduza
