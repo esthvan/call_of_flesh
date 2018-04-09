@@ -37,7 +37,7 @@
 		new /datum/data/stalker_equipment("АС \"Вал\"",				/obj/item/weapon/gun/projectile/automatic/val,				65000, 7000),
 
 		/////////////////////////////// **Дробовики** /////////////////////////////////////
-		new /datum/data/stalker_equipment("Обрез",					/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,		8000, 0),
+		new /datum/data/stalker_equipment("Обрез",					/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,		6000, 0),
 		new /datum/data/stalker_equipment("БМ-16",					/obj/item/weapon/gun/projectile/revolver/bm16,				12000, 0),
 		new /datum/data/stalker_equipment("ТОЗ-34", 				/obj/item/weapon/gun/projectile/revolver/bm16/toz34, 		18000, 1000),
 		new /datum/data/stalker_equipment("Чейзер-13",				/obj/item/weapon/gun/projectile/shotgun/chaser,				25000, 1000),

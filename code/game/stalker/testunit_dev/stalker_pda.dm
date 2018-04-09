@@ -586,6 +586,9 @@ var/global/lentahtml = ""
 
 			if("make_avatar")
 				make_avatar(H)
+				for(var/datum/data/record/sk in data_core.stalkers)
+					if(H.sid == sk.fields["sid"])
+						set_owner_info(sk)
 
 			if("lenta_add")
 				//if(money>=0 && lenta_cooldown == 0)

@@ -206,10 +206,10 @@
 	if(usr.incapacitated())
 		return
 
-	var/datum/topic_input/filter = new /datum/topic_input(href,href_list)
+	//var/datum/topic_input/filter = new /datum/topic_input(href,href_list)
 
-	if(in_range(src, usr))
-
+	//if(in_range(src, usr))
+		/*
 		if(href_list["req_access"] && add_req_access)
 			output_access_dialog(filter.getObj("id_card"),filter.getMob("user"))
 
@@ -244,10 +244,11 @@
 			add_req_access = 0
 			var/mob/user = filter.getMob("user")
 			user << browse(null,"window=exosuit_add_access")
+		*/
 
 	if(usr != occupant)
 		return
-
+	/*
 	if(href_list["update_content"])
 		send_byjax(src.occupant,"exosuit.browser","content",src.get_stats_part())
 
@@ -318,4 +319,4 @@
 			else
 				occupant_message("<span class='warning'>Recalibration failed!</span>")
 				log_message("Recalibration of coordination system failed with 1 error.",1)
-
+	*/

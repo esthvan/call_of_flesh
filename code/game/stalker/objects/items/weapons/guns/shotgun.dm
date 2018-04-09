@@ -13,7 +13,7 @@
 	randomspread = 0
 	spread = 10
 	damagelose = 0.3
-	distro = 30
+	distro = 25
 	fire_sound = 'sound/stalker/weapons/bm16_shot.ogg'
 	loadsound = 'sound/stalker/weapons/load/obrez_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/obrez_open.ogg'
@@ -70,7 +70,7 @@
 	spread = 10
 	force = 85
 	damagelose = 0.3
-	distro = 15
+	distro = 16
 	//fire_sound = 'sound/stalker/weapons/winchester1300_shot.ogg'
 	loadsound = 'sound/stalker/weapons/load/chaser_load.ogg'
 	pumpsound = 'sound/stalker/weapons/pump/chaser_pump.ogg'
@@ -87,7 +87,7 @@
 	force = 50
 	spread = 20
 	damagelose = 0.45
-	distro = 40
+	distro = 35
 
 /obj/item/weapon/gun/projectile/revolver/bm16/sawnoff/New()
 	..()
