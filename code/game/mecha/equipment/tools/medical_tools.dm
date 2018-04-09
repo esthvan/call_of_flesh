@@ -99,7 +99,8 @@
 
 /obj/item/mecha_parts/mecha_equipment/sleeper/Topic(href,href_list)
 	..()
-	var/datum/topic_input/filter = new /datum/topic_input(href,href_list)
+	//var/datum/topic_input/filter = new /datum/topic_input(href,href_list)
+	/*
 	if(filter.get("eject"))
 		go_out()
 	if(filter.get("view_stats"))
@@ -108,6 +109,7 @@
 		return
 	if(filter.get("inject"))
 		inject_reagent(filter.getType("inject",/datum/reagent),filter.getObj("source"))
+	*/
 	return
 
 /obj/item/mecha_parts/mecha_equipment/sleeper/proc/get_patient_stats()
@@ -348,7 +350,8 @@
 
 /obj/item/mecha_parts/mecha_equipment/syringe_gun/Topic(href,href_list)
 	..()
-	var/datum/topic_input/filter = new (href,href_list)
+	//var/datum/topic_input/filter = new (href,href_list)
+	/*
 	if(filter.get("toggle_mode"))
 		mode = !mode
 		update_equip_info()
@@ -382,6 +385,7 @@
 	if(filter.get("purge_all"))
 		reagents.clear_reagents()
 		return
+	*/
 	return
 
 /obj/item/mecha_parts/mecha_equipment/syringe_gun/proc/get_reagents_page()

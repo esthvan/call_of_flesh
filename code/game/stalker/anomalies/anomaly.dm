@@ -259,7 +259,7 @@
 	luminosity = 3
 	idle_luminosity = 3
 	activated_luminosity = 5
-	anomaly_color = "#98c958"
+	anomaly_color = "#70cc33"
 	sound = 'sound/stalker/anomalies/buzz_hit.ogg'
 	damage_type = DMG_TYPE_BIO
 	damage_amount = 60
@@ -286,6 +286,7 @@
 	inactive_invisibility = 0
 
 /obj/anomaly/puh/New()
+	..()
 	inactive_icon_state = pick("puh","puh2")
 	if(inactive_icon_state == "puh2")
 		active_icon_state = "puh2"

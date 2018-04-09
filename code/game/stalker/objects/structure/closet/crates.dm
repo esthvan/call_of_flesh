@@ -66,8 +66,15 @@
 	lootdoubles = 0
 	lootcount = 2
 	loot = list(
-				/obj/item/weapon/gun/projectile/automatic/tpc301 = 2,
-				/obj/nothing = 5
+				/obj/item/weapon/gun/projectile/shotgun/spsa = 1,
+				/obj/item/clothing/suit/hooded/kombez/ecolog = 1,
+				/obj/item/clothing/suit/hooded/kombez/seva = 1,
+				/obj/item/clothing/suit/hooded/kombez/psz9md = 1,
+				/obj/item/clothing/suit/skat = 1,
+				/obj/item/weapon/gun/projectile/automatic/val = 1,
+				/obj/item/weapon/gun/projectile/automatic/vintorez = 1,
+				/obj/item/weapon/gun/projectile/automatic/groza = 1,
+				/obj/nothing = 2
 				)
 	rating_add = 500
 

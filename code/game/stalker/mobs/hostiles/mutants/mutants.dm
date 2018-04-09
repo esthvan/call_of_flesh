@@ -151,15 +151,16 @@
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ranged = 1
-	ranged_cooldown = 2 //By default, start the Goliath with his cooldown off so that people can run away quickly on first sight
-	ranged_cooldown_cap = 8
+	ranged_cooldown = 1 //By default, start the Goliath with his cooldown off so that people can run away quickly on first sight
+	ranged_cooldown_cap = 4
 
 	var/leaping = 0
 
 /mob/living/simple_animal/hostile/mutant/snork/OpenFire()
 	if(get_dist(src, target) <= 4)
 		leaping = 1
-		throw_at_fast(target, 7, 1)
+		//throw_at_fast(target, 7, 1)
+		throw_at(target, 7, 1, spin=1, diagonals_first = 1)
 		leaping = 0
 		ranged_cooldown = ranged_cooldown_cap
 	return
@@ -180,7 +181,7 @@
 					blocked = 1
 			if(!blocked)
 				L.visible_message("<span class ='danger'>[src] pounces on [L]!</span>", "<span class ='userdanger'>[src] pounces on you!</span>")
-				L.Weaken(5)
+				L.Weaken(2)
 				sleep(2)//Runtime prevention (infinite bump() calls on hulks)
 				step_towards(src,L)
 		else if(A.density && !A.CanPass(src))
