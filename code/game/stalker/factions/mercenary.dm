@@ -15,7 +15,7 @@
 
 /datum/outfit/job/mercenary
 	name = "Mercenary"
-	faction_s = "Наемники"
+	faction_s = "Наёмники"
 
 /datum/outfit/job/mercenary/pre_equip(mob/living/carbon/human/H)
 	..()
