@@ -265,3 +265,10 @@
 	loot = list(/obj/item/weapon/stalker/loot/boar_leg, /obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing)
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+
+	/*Код крашера с колониал маринов
+	Раскидывает мобов с дороги в стороны
+	for(var/o=0, o<10, o++)
+		target = get_turf(get_step(target,cur_dir))
+	L.throw_at(target, 200, 100)
+	*/

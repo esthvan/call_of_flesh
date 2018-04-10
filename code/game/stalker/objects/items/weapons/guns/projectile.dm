@@ -168,12 +168,69 @@
 
 ///////////////////////////// Автоматы, ПП //////////////////////////////////////////
 
+/obj/item/weapon/gun/projectile/automatic
+	var/image/mag_overlay = null
+	var/image/mag_overlay_inhands = null
+	var/image/silencer_overlay = null
+	var/image/colored_overlay = null
+	var/colored = null
+
+/obj/item/weapon/gun/projectile/automatic/New()
+	..()
+	mag_overlay = image('icons/stalker/projectile_overlays.dmi', "[initial(icon_state)]-mag", layer = FLOAT_LAYER)
+	if(can_suppress)
+		silencer_overlay = image('icons/stalker/projectile_overlays.dmi', "[initial(icon_state)]-silencer", layer = FLOAT_LAYER)
+	if(colored)
+		colored_overlay = image('icons/stalker/projectile_overlays.dmi', "[initial(icon_state)]-[colored]", layer = FLOAT_LAYER)
+		overlays += colored_overlay
+	update_icon()
+
+/obj/item/weapon/gun/projectile/automatic/update_icon()
+	..()
+	overlays.Cut()
+	/*
+	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
+	*/
+	item_state = "[initial(item_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"		//Пока не разберусь с оверлеями на мобах, будет так
+
+	/*
+	if(!magazine && mag_overlay in overlays)
+		overlays.Remove(mag_overlay)
+
+	if(!suppressed && silencer_overlay in overlays)
+		overlays.Remove(silencer_overlay)
+	*/
+	if(colored)
+		overlays += colored_overlay
+
+	if(!istype(src, /obj/item/weapon/gun/projectile/automatic/pistol) && magazine && mag_overlay)
+		overlays += mag_overlay
+
+	if(!suppressed && silencer_overlay)
+		overlays += silencer_overlay
+
+	if(istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
+		icon_state = "[initial(icon_state)][magazine ? "-[magazine.max_ammo]" : ""][chambered ? "" : "-e"]"
+
+	return
+/*
+/obj/item/weapon/gun/projectile/automatic/worn_overlays(var/isinhands = TRUE)
+	. = list()
+	if(!isinhands)
+		if(magazine )
+			overlays += mag_overlay
+
+		if(suppressed )
+			overlays += silencer_overlay
+        . += image(icon = 'icons/effects/effects.dmi', icon_state = "[shield_state]")
+*/
 
 /obj/item/weapon/gun/projectile/automatic/ak74  // AK-74
 	name = "AK 74/2"
 	desc = "Автомат складной образца 1974 года под патрон 5,45x39мм. Представл&#255;ет собой простое и надёжное оружие, хот&#255; дешевизна в производстве несколько сказалась на удобстве использовани&#255; и точности бо&#255;. В Зоне это основное оружие военных сталкеров и многих одиночек."
 	icon_state = "ak74"
 	item_state = "ak74"
+	colored = "normal"
 	slot_flags = SLOT_BACK//|SLOT_BELT
 	force = 10
 	origin_tech = "combat=5;materials=1"
@@ -190,20 +247,15 @@
 	damagelose = 0.25
 	drawsound = 'sound/stalker/weapons/draw/ak74_draw.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/ak74/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return
 
 /obj/item/weapon/gun/projectile/automatic/ak74/green  // AK-74 - зеленый цвет
-	icon_state = "ak74-green"
+	colored = "green"
 	item_state = "ak74-green"
 	mag_type = /obj/item/ammo_box/magazine/stalker/m545
 
 /obj/item/weapon/gun/projectile/automatic/ak74/m  // AK-74M
-	icon_state = "ak74m"
-	item_state = "ak74m"
+	colored = "m"
+	item_state = "ak74-m"
 	mag_type = /obj/item/ammo_box/magazine/stalker/m545
 
 /obj/item/weapon/gun/projectile/automatic/aksu74  // АКС74У
@@ -226,14 +278,8 @@
 	damagelose = 0.5
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/aksu74/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return
-
 /obj/item/weapon/gun/projectile/automatic/aksu74/green  // АКС74У - зеленый цвет
-	icon_state = "aksu74-green"
+	colored = "green"
 	item_state = "aksu74-green"
 	mag_type = /obj/item/ammo_box/magazine/stalker/m545
 
@@ -254,11 +300,6 @@
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
-
-/obj/item/weapon/gun/projectile/automatic/mp5/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return
 
 /obj/item/weapon/gun/projectile/automatic/tpc301  // Эмка
 	name = "TPc-301"
@@ -281,12 +322,6 @@
 	drawsound = 'sound/stalker/weapons/draw/tpc301_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/tpc301_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/tpc301_open.ogg'
-
-/obj/item/weapon/gun/projectile/automatic/tpc301/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return
 
 /obj/item/weapon/gun/projectile/automatic/abakan  // Абакан
 	name = "AC-96/2"
@@ -312,8 +347,21 @@
 
 /obj/item/weapon/gun/projectile/automatic/abakan/update_icon()
 	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
+
 	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
+
+	if(!magazine && mag_overlay in overlays)
+		overlays.Remove(mag_overlay)
+
+	if(!suppressed && silencer_overlay in overlays)
+		overlays.Remove(silencer_overlay)
+
+	if(magazine && mag_overlay)
+		overlays += mag_overlay
+
+	if(suppressed && silencer_overlay)
+		overlays += silencer_overlay
+
 	return
 
 /obj/item/weapon/gun/projectile/automatic/il86  // ИЛ86
@@ -337,12 +385,6 @@
 	drawsound = 'sound/stalker/weapons/draw/l85_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
-
-/obj/item/weapon/gun/projectile/automatic/il86/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return
 
 
 ///////////////////////////// Снайперские винтовки //////////////////////////////////////////
@@ -368,12 +410,6 @@
 	loadsound = 'sound/stalker/weapons/load/val_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/val_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/val/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return
-
 /obj/item/weapon/gun/projectile/automatic/vintorez  // ВСС Винторез
 	name = "VSS Vintorez"
 	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной стрельбы и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает бронежилет любой степени защиты. Очень ценимое сталкерами любого уровн&#255; оружие."
@@ -396,12 +432,6 @@
 	loadsound = 'sound/stalker/weapons/load/val_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/val_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/vintorez/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return
-
 /obj/item/weapon/gun/projectile/automatic/groza  // ОЦ-14 Гроза
 	name = "Grom C14"
 	desc = "Автоматно-гранатомётный комплекс - очень удачный в услови&#255;х Зоны вариант штурмовой винтовки: компактный, надёжный, и в то же врем&#255; универсальный и мощный. 'Гром' очень люб&#255;т военные сталкеры."
@@ -422,13 +452,6 @@
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/groza/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return
-
-
 
 
 
@@ -446,9 +469,3 @@
 	force = 10
 	w_class = 3
 	spread = 10
-
-/obj/item/weapon/gun/projectile/automatic/testgun/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	return

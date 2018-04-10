@@ -18,6 +18,7 @@
 /obj/item/weapon/gun/projectile/automatic/proto/unrestricted
 	pin = /obj/item/device/firing_pin
 
+/*
 /obj/item/weapon/gun/projectile/automatic/update_icon()
 	..()
 	overlays.Cut()
@@ -25,8 +26,10 @@
 		overlays += "[initial(icon_state)]semi"
 	if(select == 1)
 		overlays += "[initial(icon_state)]burst"
-	icon_state = "[initial(icon_state)][magazine ? "-[magazine.max_ammo]" : ""][chambered ? "" : "-e"][suppressed ? "-suppressed" : ""]"
+	if(istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
+		icon_state = "[initial(icon_state)][magazine ? "-[magazine.max_ammo]" : ""][chambered ? "" : "-e"]"
 	return
+*/
 
 /obj/item/weapon/gun/projectile/automatic/attackby(obj/item/A, mob/user, params)
 	. = ..()

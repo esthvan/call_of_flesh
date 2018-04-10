@@ -20,9 +20,9 @@
 /obj/item/weapon/gun/projectile/update_icon()
 	..()
 	if(current_skin)
-		icon_state = "[current_skin][suppressed ? "-suppressed" : ""][sawn_state ? "-sawn" : ""]"
+		icon_state = "[current_skin][sawn_state ? "-sawn" : ""]"
 	else
-		icon_state = "[initial(icon_state)][suppressed ? "-suppressed" : ""][sawn_state ? "-sawn" : ""]"
+		icon_state = "[initial(icon_state)][sawn_state ? "-sawn" : ""]"
 
 
 /obj/item/weapon/gun/projectile/process_chamber(eject_casing = 1, empty_chamber = 1)
@@ -210,7 +210,6 @@
 	w_class = 2
 	var/oldsound = null
 	var/initial_w_class = null
-
 
 /obj/item/weapon/suppressor/specialoffer
 	name = "cheap suppressor"
