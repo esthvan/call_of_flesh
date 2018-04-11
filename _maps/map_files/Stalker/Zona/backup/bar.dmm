@@ -336,7 +336,7 @@
 "gx" = (/obj/structure/stalker/radiation/stop,/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
 "gy" = (/obj/effect/decal/warning_stripes/bordur/side/west,/obj/structure/stalker/radio{layer = 3.2; pixel_x = 4; pixel_y = 18},/turf/stalker/floor/road,/area/stalker/blowout/outdoor)
 "gz" = (/obj/rad/rad_high,/obj/structure/closet/stalker/shkaf,/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b,/turf/stalker/floor/wood/oldgor,/area/stalker/byadt/buildings)
-"gA" = (/obj/rad/rad_high,/obj/anomaly/puh/puh2,/turf/stalker/floor/wood/oldgor,/area/stalker/byadt/buildings)
+"gA" = (/obj/rad/rad_high,/obj/anomaly/puh,/turf/stalker/floor/wood/oldgor,/area/stalker/byadt/buildings)
 "gB" = (/obj/structure/stalker/blocks/vanish/pipe/pipe2{tag = "icon-truba2 (NORTH)"; icon_state = "truba2"; dir = 1},/turf/stalker/floor/gryaz,/area/stalker/blowout/outdoor)
 "gC" = (/obj/effect/decal/warning_stripes/bordur/side/west,/obj/structure/stalker/cars/uaz{tag = "icon-0,0"; icon_state = "0,0"},/turf/stalker/floor/road,/area/stalker/blowout/outdoor)
 "gD" = (/obj/structure/stalker/cars/uaz{tag = "icon-1,0"; icon_state = "1,0"},/turf/stalker/floor/road,/area/stalker/blowout/outdoor)

@@ -56,7 +56,7 @@
 "bd" = (/obj/item/weapon/storage/backpack/polka,/turf/stalker/floor/sidor{name = "floor"},/area/stalker/sidor)
 "be" = (/obj/item/weapon/storage/backpack/polka,/obj/machinery/light{dir = 1; icon_state = "tube1"; tag = "icon-tube1 (EAST)"},/turf/stalker/floor/sidor{name = "floor"},/area/stalker/sidor)
 "bf" = (/obj/structure/table,/obj/item/clothing/suit/hooded/kombez/mercenary,/turf/stalker/floor/plasteel/plitka,/area/stalker/sidor)
-"bg" = (/obj/structure/table,/obj/item/weapon/gun/projectile/automatic/ak74/m,/obj/item/weapon/gun/projectile/automatic/ak74/m,/obj/machinery/light{dir = 1; icon_state = "tube1"; tag = "icon-tube1 (EAST)"},/turf/stalker/floor/plasteel/plitka,/area/stalker/sidor)
+"bg" = (/obj/structure/table,/obj/item/weapon/gun/projectile/automatic/ak74,/obj/machinery/light{dir = 1; icon_state = "tube1"; tag = "icon-tube1 (EAST)"},/turf/stalker/floor/plasteel/plitka,/area/stalker/sidor)
 "bh" = (/obj/structure/table,/obj/item/weapon/gun/projectile/shotgun/chaser,/obj/item/weapon/gun/projectile/shotgun/chaser,/turf/stalker/floor/plasteel/plitka,/area/stalker/sidor)
 "bi" = (/obj/structure/table,/obj/item/weapon/gun/projectile/automatic/pistol/fort12/unique,/obj/machinery/light{dir = 1; icon_state = "tube1"; tag = "icon-tube1 (EAST)"},/turf/stalker/floor/plasteel/plitka,/area/stalker/sidor)
 "bj" = (/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (NORTH)"; icon_state = "ladder"; dir = 1},/area/stalker/byadt/bar)
