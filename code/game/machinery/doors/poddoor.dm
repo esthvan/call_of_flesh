@@ -52,7 +52,7 @@
 	operating = 1
 	flick("opening", src)
 	icon_state = "open"
-	SetOpacity(0)
+	set_opacity(0)
 	sleep(5)
 	density = 0
 	sleep(5)
@@ -79,7 +79,7 @@
 	operating = 1
 	flick("closing", src)
 	icon_state = "closed"
-	SetOpacity(1)
+	set_opacity(1)
 	sleep(5)
 	density = 1
 	sleep(5)

@@ -142,12 +142,23 @@ var/list/global_huds = list(
 
 	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
+	var/list/obj/screen/plane_master/plane_masters = list()
 
 /datum/hud/New(mob/owner)
 	mymob = owner
 	instantiate()
+	for(var/mytype in subtypesof(/obj/screen/plane_master))
+		var/obj/screen/plane_master/instance = new mytype()
+		plane_masters["[instance.plane]"] = instance
+		mymob.client.screen |= instance
 	..()
 
+/datum/hud/Destroy()
+	if(plane_masters.len)
+		for(var/thing in plane_masters)
+			qdel(plane_masters[thing])
+		plane_masters.Cut()
+	return ..()
 
 /datum/hud/proc/hidden_inventory_update()
 	if(!mymob)
@@ -248,7 +259,6 @@ var/list/global_huds = list(
 		display_hud_version = hud_version + 1
 	if(display_hud_version > HUD_VERSIONS)	//If the requested version number is greater than the available versions, reset back to the first version
 		display_hud_version = 1
-
 	switch(display_hud_version)
 		if(HUD_STYLE_STANDARD)	//Default HUD
 			hud_shown = 1	//Governs behavior of other procs
@@ -318,8 +328,6 @@ var/list/global_huds = list(
 			persistant_inventory_update()
 			mymob.update_action_buttons()
 			reorganize_alerts()
-	hud_version = display_hud_version
-
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"

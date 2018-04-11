@@ -18,7 +18,6 @@
 
 	//Properties for both
 	var/temperature = T20C
-	var/dynamic_lighting = 1
 	var/blocks_air = 0
 	var/PathNode/PNode = null //associated PathNode in the A* algorithm
 
