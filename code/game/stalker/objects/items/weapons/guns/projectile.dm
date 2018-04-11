@@ -230,7 +230,7 @@
 	desc = "Автомат складной образца 1974 года под патрон 5,45x39мм. Представл&#255;ет собой простое и надёжное оружие, хот&#255; дешевизна в производстве несколько сказалась на удобстве использовани&#255; и точности бо&#255;. В Зоне это основное оружие военных сталкеров и многих одиночек."
 	icon_state = "ak74"
 	item_state = "ak74"
-	colored = "normal"
+	colored = 0//"normal"
 	slot_flags = SLOT_BACK//|SLOT_BELT
 	force = 10
 	origin_tech = "combat=5;materials=1"
@@ -246,11 +246,6 @@
 	randomspread = 0
 	damagelose = 0.25
 	drawsound = 'sound/stalker/weapons/draw/ak74_draw.ogg'
-
-/obj/item/weapon/gun/projectile/automatic/ak74/m  // AK-74M
-	colored = "m"
-	item_state = "ak74-m"
-	mag_type = /obj/item/ammo_box/magazine/stalker/m545
 
 /obj/item/weapon/gun/projectile/automatic/aksu74  // АКС74У
 	name = "AK 74/2y"
@@ -272,10 +267,12 @@
 	damagelose = 0.5
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
 
+/*
 /obj/item/weapon/gun/projectile/automatic/aksu74/black  // АКС74У - черный цвет
 	colored = "black"
 	item_state = "aksu74-black"
 	mag_type = /obj/item/ammo_box/magazine/stalker/m545
+*/
 
 /obj/item/weapon/gun/projectile/automatic/mp5  // MP5
 	name = "Gaduka 5"

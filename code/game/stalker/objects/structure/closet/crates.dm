@@ -21,8 +21,7 @@
 	lootdoubles = 1
 	lootcount = 5
 	loot = list(
-				/obj/item/weapon/gun/projectile/automatic/aksu74 = 1,
-				/obj/item/weapon/gun/projectile/automatic/aksu74/black = 1,
+				/obj/item/weapon/gun/projectile/automatic/aksu74 = 2,
 				/obj/item/weapon/gun/projectile/automatic/mp5 = 2,
 				/obj/item/weapon/gun/projectile/revolver/bm16 = 2,
 				/obj/item/ammo_box/stalker/b9x18P = 10,
@@ -47,8 +46,7 @@
 				/obj/item/weapon/gun/projectile/automatic/pistol/sip  = 2,
 				/obj/item/weapon/gun/projectile/automatic/pistol/cora = 2,
 				/obj/item/weapon/gun/projectile/automatic/pistol/marta = 2,
-				/obj/item/weapon/gun/projectile/automatic/ak74 = 3,
-				/obj/item/weapon/gun/projectile/automatic/ak74/m = 3,
+				/obj/item/weapon/gun/projectile/automatic/ak74 = 4,
 				/obj/item/weapon/gun/projectile/automatic/abakan = 1,
 				/obj/item/weapon/gun/projectile/automatic/tpc301 = 1,
 				/obj/item/ammo_box/stalker/b545ap = 8,
