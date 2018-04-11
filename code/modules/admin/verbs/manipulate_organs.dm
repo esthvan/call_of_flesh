@@ -7,7 +7,7 @@
 	switch(operation)
 		if("add organ")
 			for(var/path in subtypesof(/obj/item/organ/internal))
-				var/dat = replacetext510("[path]", "/obj/item/organ/internal/", ":")
+				var/dat = replacetext("[path]", "/obj/item/organ/internal/", ":")
 				organs[dat] = path
 
 			var/obj/item/organ/internal/organ = input("Select organ type:", "Organ Manipulation", null) in organs
@@ -17,7 +17,7 @@
 
 		if("add implant")
 			for(var/path in subtypesof(/obj/item/weapon/implant))
-				var/dat = replacetext510("[path]", "/obj/item/weapon/implant/", ":")
+				var/dat = replacetext("[path]", "/obj/item/weapon/implant/", ":")
 				organs[dat] = path
 
 			var/obj/item/weapon/implant/organ = input("Select implant type:", "Organ Manipulation", null) in organs

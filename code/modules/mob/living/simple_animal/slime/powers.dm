@@ -165,7 +165,7 @@
 				M.Friends = Friends.Copy()
 				babies += M
 				M.mutation_chance = Clamp(mutation_chance+(rand(5,-5)),0,100)
-				feedback_add_details("slime_babies_born","slimebirth_[replacetext510(M.colour," ","_")]")
+				feedback_add_details("slime_babies_born","slimebirth_[replacetext(M.colour," ","_")]")
 
 			var/mob/living/simple_animal/slime/new_slime = pick(babies)
 			new_slime.a_intent = "harm"

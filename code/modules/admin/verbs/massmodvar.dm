@@ -195,7 +195,7 @@
 				varsvars = string2listofvars(new_value, O)
 				if(varsvars.len)
 					for(var/V in varsvars)
-						new_value = replacetext510(new_value,"\[[V]]","[O.vars[V]]")
+						new_value = replacetext(new_value,"\[[V]]","[O.vars[V]]")
 
 			O.vars[variable] = new_value
 
@@ -209,7 +209,7 @@
 							if(process_vars)
 								if(unique)
 									for(var/V in varsvars)
-										new_value = replacetext510(new_value,"\[[V]]","[M.vars[V]]")
+										new_value = replacetext(new_value,"\[[V]]","[M.vars[V]]")
 								else
 									new_value = O.vars[variable] //We already processed the non-unique form for O, reuse it
 
@@ -223,7 +223,7 @@
 							if(process_vars)
 								if(unique)
 									for(var/V in varsvars)
-										new_value = replacetext510(new_value,"\[[V]]","[A.vars[V]]")
+										new_value = replacetext(new_value,"\[[V]]","[A.vars[V]]")
 								else
 									new_value = O.vars[variable]
 
@@ -237,7 +237,7 @@
 							if(process_vars)
 								if(unique)
 									for(var/V in varsvars)
-										new_value = replacetext510(new_value,"\[[V]]","[A.vars[V]]")
+										new_value = replacetext(new_value,"\[[V]]","[A.vars[V]]")
 								else
 									new_value = O.vars[variable]
 
@@ -251,7 +251,7 @@
 							if(process_vars)
 								if(unique)
 									for(var/V in varsvars)
-										new_value = replacetext510(new_value,"\[[V]]","[M.vars[V]]")
+										new_value = replacetext(new_value,"\[[V]]","[M.vars[V]]")
 								else
 									new_value = O.vars[variable]
 
@@ -265,7 +265,7 @@
 							if(process_vars)
 								if(unique)
 									for(var/V in varsvars)
-										new_value = replacetext510(new_value,"\[[V]]","[A.vars[V]]")
+										new_value = replacetext(new_value,"\[[V]]","[A.vars[V]]")
 								else
 									new_value = O.vars[variable]
 
@@ -279,7 +279,7 @@
 							if(process_vars)
 								if(unique)
 									for(var/V in varsvars)
-										new_value = replacetext510(new_value,"\[[V]]","[A.vars[V]]")
+										new_value = replacetext(new_value,"\[[V]]","[A.vars[V]]")
 								else
 									new_value = O.vars[variable]
 

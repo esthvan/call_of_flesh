@@ -617,7 +617,7 @@ for(var/t in test_times)
 		// list2text() --> "A dog said hi name]!"
 		// text2list() --> list("A","dog","said","hi","name]!")
 
-		t_string = replacetext510(t_string,"\[","\[ ")//Necessary to resolve "word[var_name]" scenarios
+		t_string = replacetext(t_string,"\[","\[ ")//Necessary to resolve "word[var_name]" scenarios
 		var/list/list_value = text2list(t_string,"\[")
 		var/intermediate_stage = list2text(list_value)
 

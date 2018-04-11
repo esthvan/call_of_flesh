@@ -270,5 +270,5 @@
 	req_tech = list("combat" = 6, "engineering" = 5, "syndicate" = 3)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 2000, MAT_SILVER = 500)
-	build_path = /obj/item/weapon/suppressor
+	build_path = /obj/item/weapon/attachment/suppressor
 	category = list("Weapons")

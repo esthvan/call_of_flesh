@@ -47,13 +47,13 @@
 
 	regex_replaceall(str, exp, fmt)
 		return call(LIBREGEX_LIBRARY, "regex_replaceall")(str, exp, fmt)
-
+/*
 	replacetextEx510(str, exp, fmt)
 		return call(LIBREGEX_LIBRARY, "regEx_replaceallliteral")(str, exp, fmt)
 
-	replacetext510(str, exp, fmt)
+	replacetext(str, exp, fmt)
 		return call(LIBREGEX_LIBRARY, "regex_replaceallliteral")(str, exp, fmt)
-
+*/
 	regEx_replace(str, exp, fmt)
 		return call(LIBREGEX_LIBRARY, "regEx_replace")(str, exp, fmt)
 

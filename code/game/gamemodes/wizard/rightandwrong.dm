@@ -52,7 +52,7 @@
 					G = new /obj/item/weapon/gun/energy/pulse(get_turf(H))
 				if("suppressed")
 					G = new /obj/item/weapon/gun/projectile/automatic/pistol(get_turf(H))
-					new /obj/item/weapon/suppressor(get_turf(H))
+					new /obj/item/weapon/attachment/suppressor(get_turf(H))
 				if("doublebarrel")
 					G = new /obj/item/weapon/gun/projectile/revolver/doublebarrel(get_turf(H))
 				if("shotgun")

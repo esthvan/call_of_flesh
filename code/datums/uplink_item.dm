@@ -589,7 +589,7 @@ var/list/uplink_items = list()
 /datum/uplink_item/stealthy_weapons/suppressor
 	name = "Universal Suppressor"
 	desc = "Fitted for use on any small caliber weapon with a threaded barrel, this suppressor will silence the shots of the weapon for increased stealth and superior ambushing capability."
-	item = /obj/item/weapon/suppressor
+	item = /obj/item/weapon/attachment/suppressor
 	cost = 3
 	surplus = 10
 

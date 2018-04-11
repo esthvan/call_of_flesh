@@ -60,9 +60,8 @@
 
 //Автоматы
 /obj/item/weapon/gun/projectile/automatic/ak74									//14000 рублей	АКМ 74/2
-/obj/item/weapon/gun/projectile/automatic/ak74/green							//14000 рублей	АКМ 74/2 перекрашенный
 /obj/item/weapon/gun/projectile/automatic/aksu74								//17000 рублей	АКМ 74/2у
-/obj/item/weapon/gun/projectile/automatic/aksu74/green							//17000 рублей	АКМ 74/2у перекрашенный
+/obj/item/weapon/gun/projectile/automatic/aksu74/black							//17000 рублей	АКМ 74/2у перекрашенный
 /obj/item/weapon/gun/projectile/automatic/mp5									//12000 рублей	Гадюка 5
 /obj/item/weapon/gun/projectile/automatic/groza									//32000 рублей	Гром С14
 

@@ -12,10 +12,6 @@
     cost = 14000
     words = list("Калаш" = 5, "калаш" = 5, "ак74" = 5, "ak74" = 5, "автомат" = 5, " Автомат" = 5, "Калашникова" = 5, "Калашников" = 5, "калашникова" = 5, "Калашникова" = 10)
 
-/sidoritem/ak74/green
-    itemtype = /obj/item/weapon/gun/projectile/automatic/ak74/green
-    words = list("Зеленый" = 5, "зеленый" = 5, "Калаш" = 5, "калаш" = 5, "ак74" = 5, "ak74" = 5, "автомат" = 5, " Автомат" = 5, "Калашникова" = 5, "Калашников" = 5, "калашникова" = 5, "Калашникова" = 10)
-
 /sidoritem/aksu74
     name = "Akm74/2y"
     itemtype = /obj/item/weapon/gun/projectile/automatic/aksu74
@@ -23,7 +19,7 @@
     words = list("укороченный" = 5, "Укороченный" = 5, "Калаш" = 5, "калаш" = 5, "ак74" = 5, "ak74" = 5, "автомат" = 5, " Автомат" = 5, "Калашникова" = 5, "Калашников" = 5, "калашникова" = 5, "Калашникова" = 10)
 
 /sidoritem/aksu74/green
-    itemtype = /obj/item/weapon/gun/projectile/automatic/aksu74/green
+    itemtype = /obj/item/weapon/gun/projectile/automatic/aksu74/black
     words = list("укороченный" = 5, "зеленый" = 5, "калаш" = 5, "Укороченный" = 5, "Зеленый" = 5, "Калаш" = 5, "ак74" = 5, "ak74" = 5, "автомат" = 5, "Автомат" = 5, "Калашникова" = 5, "Калашников" = 5, "калашникова" = 5, "Калашникова" = 10)
 
 /sidoritem/mp5

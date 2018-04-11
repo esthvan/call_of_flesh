@@ -52,7 +52,7 @@ var/global/lentahtml = ""
 	assets = list(
 		"kpk_background.png"	= 'icons/stalker/kpk.png',
 		"nodata.png"			= 'icons/stalker/nodata.png',
-		"photo_o"				= 'icons/stalker/sidor.png'
+		"photo_0"				= 'icons/stalker/sidor.png'
 	)
 
 

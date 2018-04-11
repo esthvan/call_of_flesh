@@ -26,9 +26,8 @@
 		///////////////////////////// **Àâòîìàòû, ÏÏ** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Ãàäşêà 5",				/obj/item/weapon/gun/projectile/automatic/mp5,				18000, 0),
 		new /datum/data/stalker_equipment("ÀÊ 74/2 Ó",				/obj/item/weapon/gun/projectile/automatic/aksu74 ,			20000, 1000),
-		new /datum/data/stalker_equipment("ÀÊ 74/2 Ó (Çåëåíûé)",	/obj/item/weapon/gun/projectile/automatic/aksu74/green,		20000, 1000),
+		new /datum/data/stalker_equipment("ÀÊ 74/2 Ó (×¸ğíûé)",		/obj/item/weapon/gun/projectile/automatic/aksu74/black,		20000, 1000),
 		new /datum/data/stalker_equipment("ÀÊ 74/2",				/obj/item/weapon/gun/projectile/automatic/ak74,				25000, 1000),
-		new /datum/data/stalker_equipment("ÀÊ 74/2 (Çåëåíûé)",		/obj/item/weapon/gun/projectile/automatic/ak74/green,		25000, 1000),
 		new /datum/data/stalker_equipment("ÀÑ 96/2",				/obj/item/weapon/gun/projectile/automatic/abakan,			35000, 4000),
 		new /datum/data/stalker_equipment("ÒÏÑ-301",				/obj/item/weapon/gun/projectile/automatic/tpc301,			40000, 4000),
 		new /datum/data/stalker_equipment("ÈË86",					/obj/item/weapon/gun/projectile/automatic/il86,				40000, 4000),

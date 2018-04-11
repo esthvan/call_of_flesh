@@ -275,7 +275,6 @@ var/list/sidorRooms = list()
 
 var/global/sidoritems = list(
 		new /sidoritem/ak74,
-        new /sidoritem/ak74/green,
         new /sidoritem/aksu74,
         new /sidoritem/aksu74/green,
         new /sidoritem/mp5,

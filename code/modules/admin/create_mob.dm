@@ -4,9 +4,9 @@
 		var/mobjs = null
 		mobjs = list2text(typesof(/mob), ";")
 		create_mob_html = file2text('html/create_object.html')
-		create_mob_html = replacetext510(create_mob_html, "null /* object types */", "\"[mobjs]\"")
+		create_mob_html = replacetext(create_mob_html, "null /* object types */", "\"[mobjs]\"")
 
-	user << browse(replacetext510(create_mob_html, "/* ref src */", "\ref[src]"), "window=create_mob;size=425x475")
+	user << browse(replacetext(create_mob_html, "/* ref src */", "\ref[src]"), "window=create_mob;size=425x475")
 
 /proc/randomize_human(mob/living/carbon/human/H)
 	H.gender = pick(MALE, FEMALE)

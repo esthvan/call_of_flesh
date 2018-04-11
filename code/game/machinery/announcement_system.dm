@@ -99,8 +99,8 @@ var/list/announcement_systems = list()
 		Interact(user)
 
 /obj/machinery/announcement_system/proc/CompileText(str, user, rank) //replaces user-given variables with actual thingies.
-	str = replacetext510(str, "%PERSON", "[user]")
-	str = replacetext510(str, "%RANK", "[rank]")
+	str = replacetext(str, "%PERSON", "[user]")
+	str = replacetext(str, "%RANK", "[rank]")
 	return str
 
 /obj/machinery/announcement_system/proc/announce(message_type, user, rank, list/channels)

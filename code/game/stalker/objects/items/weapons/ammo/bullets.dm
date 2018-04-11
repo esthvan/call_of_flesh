@@ -40,7 +40,7 @@
 /obj/item/projectile/bullet/bullet12x70d
 	name = "slug"
 	damage = 80
-	armour_penetration = 60
+	armour_penetration = 20
 	range = 56
 	spread = 4
 

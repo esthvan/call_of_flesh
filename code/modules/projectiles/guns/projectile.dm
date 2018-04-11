@@ -6,9 +6,57 @@
 	w_class = 3
 	var/loadsound = 'sound/stalker/weapons/load/ak74_load.ogg'
 	var/opensound = 'sound/stalker/weapons/unload/ak74_open.ogg'
+	var/list/obj/item/weapon/attachment/addons = list()
 
 	var/mag_type = /obj/item/ammo_box/magazine/m10mm //Removes the need for max_ammo and caliber info
 	var/obj/item/ammo_box/magazine/magazine
+
+/obj/item/weapon/gun/projectile/verb/verb_deattach()
+	set src in usr.contents
+	set category = "Object"
+	set name = "Deattach Addon"
+
+	if(usr.stat || usr.restrained() || !Adjacent(usr) || usr.stunned || usr.weakened || usr.lying)
+		return
+
+	if(usr.get_active_hand() == null || usr.get_inactive_hand() == null) // Let me know if this has any problems -Yota
+		switch(addons.len)
+			if(2 to INFINITY)
+				var/selection = input("Please, select addon to deattach!", "Gun", null, null) as null|anything in addons
+				if(istype(selection, /obj/item/weapon/attachment/suppressor))
+					var/obj/item/weapon/attachment/suppressor/S = selection
+					if(usr.l_hand != src && usr.r_hand != src)
+						..()
+						return
+					usr << "<span class='notice'>You unscrew [suppressed] from [src].</span>"
+					playsound (src.loc, 'sound/stalker/weapons/detach_addon.ogg', 50, 1, 0)
+					usr.put_in_hands(S)
+					fire_sound = S.oldsound
+					suppressed = 0
+					addons.Remove(S)
+
+			if(1)
+				//ƒќƒ≈Ћј“№
+				for (var/obj/item/weapon/attachment/A in addons)
+					if(istype(A, /obj/item/weapon/attachment/suppressor))
+						var/obj/item/weapon/attachment/suppressor/S = A
+						if(usr.l_hand != src && usr.r_hand != src)
+							..()
+							return
+						usr << "<span class='notice'>You unscrew [suppressed] from [src].</span>"
+						playsound (src.loc, 'sound/stalker/weapons/detach_addon.ogg', 50, 1, 0)
+						usr.put_in_hands(S)
+						fire_sound = S.oldsound
+						suppressed = 0
+						addons.Remove(S)
+			if(0)
+				//нужно что-то написать здесь
+				return
+	else
+		usr << "<span class='notice'>ќсвободите руку.</span>"
+	update_icon()
+	return
+
 
 /obj/item/weapon/gun/projectile/New()
 	..()
@@ -74,8 +122,8 @@
 			return 1
 		else if (magazine)
 			user << "<span class='notice'>There's already a magazine in \the [src].</span>"
-	if(istype(A, /obj/item/weapon/suppressor))
-		var/obj/item/weapon/suppressor/S = A
+	if(istype(A, /obj/item/weapon/attachment/suppressor))
+		var/obj/item/weapon/attachment/suppressor/S = A
 		if(can_suppress)
 			if(!suppressed)
 				if(!user.unEquip(A))
@@ -86,9 +134,10 @@
 				S.oldsound = fire_sound
 				S.initial_w_class = w_class
 				fire_sound = 'sound/stalker/weapons/silencer.ogg'
-				w_class = 3 //so pistols do not fit in pockets when suppressed
+				//w_class = 3 //so pistols do not fit in pockets when suppressed
 				A.loc = src
 				update_icon()
+				addons += S
 				return
 			else
 				user << "<span class='warning'>[src] already has a suppressor!</span>"
@@ -99,6 +148,7 @@
 	return 0
 
 /obj/item/weapon/gun/projectile/attack_hand(mob/user)
+	/*
 	if(loc == user)
 		if(suppressed && can_unsuppress)
 			var/obj/item/weapon/suppressor/S = suppressed
@@ -113,6 +163,7 @@
 			suppressed = 0
 			update_icon()
 			return
+	*/
 	..()
 
 /obj/item/weapon/gun/projectile/attack_self(mob/living/user)
@@ -202,7 +253,7 @@
 			. = 1
 
 
-/obj/item/weapon/suppressor
+/obj/item/weapon/attachment/suppressor
 	name = "suppressor"
 	desc = "A universal syndicate small-arms suppressor for maximum espionage."
 	icon = 'icons/obj/guns/projectile.dmi'
@@ -211,7 +262,7 @@
 	var/oldsound = null
 	var/initial_w_class = null
 
-/obj/item/weapon/suppressor/specialoffer
+/obj/item/weapon/attachment/suppressor/specialoffer
 	name = "cheap suppressor"
 	desc = "A foreign knock-off suppressor, it feels flimsy, cheap, and brittle. Still fits all weapons."
 	icon = 'icons/obj/guns/projectile.dmi'

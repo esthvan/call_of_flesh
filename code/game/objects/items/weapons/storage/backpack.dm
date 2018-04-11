@@ -435,7 +435,7 @@
 	new /obj/item/ammo_box/magazine/smgm45(src)
 	new /obj/item/ammo_box/magazine/smgm45(src)
 	new /obj/item/weapon/gun/projectile/automatic/c20r(src)
-	new /obj/item/weapon/suppressor/specialoffer(src)
+	new /obj/item/weapon/attachment/suppressor/specialoffer(src)
 	return
 
 /obj/item/weapon/storage/backpack/dufflebag/syndie/m90glbundle

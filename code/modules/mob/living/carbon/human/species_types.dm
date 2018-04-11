@@ -375,7 +375,7 @@ datum/species/human/spec_death(gibbed, mob/living/carbon/human/H)
 		return 1
 
 /datum/species/fly/handle_speech(message)
-	return replacetext510(message, "z", stutter("zz"))
+	return replacetext(message, "z", stutter("zz"))
 
 /*
  SKELETONS

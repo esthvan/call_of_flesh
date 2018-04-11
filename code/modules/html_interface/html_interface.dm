@@ -230,7 +230,7 @@ mob/verb/test()
 			//src._renderLayout(hclient)
 
 		hclient.is_loaded = FALSE
-		hclient.client << output(replacetextEx510(replacetextEx510(file2text('html_interface.html'), "\[hsrc\]", "\ref[src]"), "</head>", "[head]</head>"), "browser_\ref[src].browser")
+		hclient.client << output(replacetextEx(replacetextEx(file2text('html_interface.html'), "\[hsrc\]", "\ref[src]"), "</head>", "[head]</head>"), "browser_\ref[src].browser")
 
 		winshow(hclient.client, "browser_\ref[src]", TRUE)
 

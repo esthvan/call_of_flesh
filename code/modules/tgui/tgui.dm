@@ -196,7 +196,7 @@
  **/
 /datum/tgui/proc/get_html()
 	// Poplate HTML with JSON.
-	return replacetextEx510(SStgui.html, "{}", get_json(initial_data))
+	return replacetextEx(SStgui.html, "{}", get_json(initial_data))
 
  /**
   * private
@@ -242,7 +242,7 @@
 
 	// Generate the JSON; replace bad characters.
 	var/json = JSON.stringify(json_data)
-	json = replacetextEx510(json, "\improper", "")
+	json = replacetextEx(json, "\improper", "")
 
 	return json
 

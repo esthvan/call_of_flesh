@@ -28,8 +28,8 @@ Assistant
 	head = /obj/item/clothing/head/beret_ua
 	suit = /obj/item/clothing/suit/skat
 	gloves = /obj/item/clothing/gloves/fingerless
-	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/ak74, /obj/item/weapon/gun/projectile/automatic/ak74/green)
-	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/ak74, /obj/item/weapon/gun/projectile/automatic/ak74/green)
+	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/ak74)
+	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/ak74)
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545ap = 1,
 							/obj/item/ammo_box/magazine/stalker/m545 = 2,
 							/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b = 1,
@@ -50,8 +50,8 @@ Assistant
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
-	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/aksu74/green)
-	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/aksu74/green)
+	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/aksu74/black)
+	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/aksu74/black)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
 							/obj/item/ammo_box/magazine/stalker/m545 = 2,
@@ -87,8 +87,8 @@ Assistant
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
-	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/aksu74/green)
-	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/aksu74/green)
+	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/aksu74/black)
+	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/aksu74/black)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545ap = 1,
 							/obj/item/ammo_box/magazine/stalker/m545 = 2,

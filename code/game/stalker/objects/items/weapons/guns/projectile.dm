@@ -247,12 +247,6 @@
 	damagelose = 0.25
 	drawsound = 'sound/stalker/weapons/draw/ak74_draw.ogg'
 
-
-/obj/item/weapon/gun/projectile/automatic/ak74/green  // AK-74 - зеленый цвет
-	colored = "green"
-	item_state = "ak74-green"
-	mag_type = /obj/item/ammo_box/magazine/stalker/m545
-
 /obj/item/weapon/gun/projectile/automatic/ak74/m  // AK-74M
 	colored = "m"
 	item_state = "ak74-m"
@@ -278,9 +272,9 @@
 	damagelose = 0.5
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/aksu74/green  // АКС74У - зеленый цвет
-	colored = "green"
-	item_state = "aksu74-green"
+/obj/item/weapon/gun/projectile/automatic/aksu74/black  // АКС74У - черный цвет
+	colored = "black"
+	item_state = "aksu74-black"
 	mag_type = /obj/item/ammo_box/magazine/stalker/m545
 
 /obj/item/weapon/gun/projectile/automatic/mp5  // MP5
@@ -344,25 +338,6 @@
 	drawsound = 'sound/stalker/weapons/draw/abakan_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/abakan_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/abakan_open.ogg'
-
-/obj/item/weapon/gun/projectile/automatic/abakan/update_icon()
-	..()
-
-	item_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-
-	if(!magazine && mag_overlay in overlays)
-		overlays.Remove(mag_overlay)
-
-	if(!suppressed && silencer_overlay in overlays)
-		overlays.Remove(silencer_overlay)
-
-	if(magazine && mag_overlay)
-		overlays += mag_overlay
-
-	if(suppressed && silencer_overlay)
-		overlays += silencer_overlay
-
-	return
 
 /obj/item/weapon/gun/projectile/automatic/il86  // ИЛ86
 	name = "IL86"
