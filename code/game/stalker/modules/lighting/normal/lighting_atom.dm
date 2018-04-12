@@ -107,8 +107,15 @@
 
 /atom/movable/Moved(atom/OldLoc, Dir)
 	. = ..()
-	for (var/datum/light_source/L in light_sources) // Cycle through the light sources on this atom and tell them to update.
-		L.source_atom.update_light()
+	if (istype(src, /mob/living/carbon/human))
+		for (var/datum/light_source/L in light_sources) // Cycle through the light sources on this atom and tell them to update.
+			L.top_atom = src
+			L.source_turf = loc
+			L.fast_update()
+	else
+		for (var/datum/light_source/L in light_sources) // Cycle through the light sources on this atom and tell them to update.
+			L.source_atom.update_light()
+
 /*
 /atom/vv_edit_var(var_name, var_value)
 	switch (var_name)

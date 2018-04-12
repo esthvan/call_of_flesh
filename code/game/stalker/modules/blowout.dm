@@ -92,23 +92,30 @@ area/proc/StopBlowout(blowoutphase)
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
 				H.apply_damage(150, BURN)
+				CHECK_TICK
 				//H.stat = DEAD
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
+				CHECK_TICK
 		if(BLOWOUTNORMAL)
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
 				H.apply_damage(300, BURN)
+				CHECK_TICK
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
+				CHECK_TICK
 			for(var/mob/living/L in src.contents)
 				L.gib()
+				CHECK_TICK
 				//H.stat = DEAD
 		if(BLOWOUTHIGH)
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
+				CHECK_TICK
 			for(var/mob/living/L in src.contents)
 				L.gib()
+				CHECK_TICK
 
 area/proc/ProcessBlowout()
 	if(blowout)

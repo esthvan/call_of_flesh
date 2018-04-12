@@ -39,6 +39,7 @@
 	hood.loc = src
 
 /obj/item/clothing/suit/hooded/dropped()
+	. = ..()
 	RemoveHood()
 
 /obj/item/clothing/suit/hooded/proc/ToggleHood()
@@ -144,6 +145,7 @@
 	helmet.loc = src
 
 /obj/item/clothing/suit/space/hardsuit/dropped()
+	. = ..()
 	RemoveHelmet()
 
 /obj/item/clothing/suit/space/hardsuit/proc/ToggleHelmet()

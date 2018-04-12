@@ -165,6 +165,7 @@
 		I.dropped(src)
 		if(I)
 			I.layer = initial(I.layer)
+			I.plane = GAME_PLANE
 	return 1
 
 

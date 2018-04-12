@@ -159,7 +159,7 @@
 // As such this all gets counted as a single line.
 // The braces and semicolons are there to be able to do this on a single line.
 
-#define APPLY_CORNER(C)              \
+#define APPLY_CORNER(C, fast_update)              \
 	. = LUM_FALLOFF(C, source_turf); \
                                      \
 	. *= light_power;                \
@@ -170,23 +170,25 @@
 	(                                \
 		. * applied_lum_r,           \
 		. * applied_lum_g,           \
-		. * applied_lum_b            \
+		. * applied_lum_b,\
+		fast_update            \
 	);
 
 // I don't need to explain what this does, do I?
-#define REMOVE_CORNER(C)             \
+#define REMOVE_CORNER(C, fast_update)             \
 	. = -effect_str[C];              \
 	C.update_lumcount                \
 	(                                \
 		. * applied_lum_r,           \
 		. * applied_lum_g,           \
-		. * applied_lum_b            \
+		. * applied_lum_b,            \
+		fast_update\
 	);
 
 // This is the define used to calculate falloff.
 #define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
 
-/datum/light_source/proc/apply_lum()
+/datum/light_source/proc/apply_lum(var/fast_update = FALSE)
 	var/static/update_gen = 1
 	applied = 1
 
@@ -210,7 +212,7 @@
 				effect_str[C] = 0
 				continue
 
-			APPLY_CORNER(C)
+			APPLY_CORNER(C, fast_update)
 
 		if (!T.affecting_lights)
 			T.affecting_lights = list()
@@ -220,7 +222,7 @@
 
 	update_gen++
 
-/datum/light_source/proc/remove_lum()
+/datum/light_source/proc/remove_lum(var/fast_update = FALSE)
 	applied = FALSE
 
 	for (var/turf/T in affecting_turfs)
@@ -232,7 +234,7 @@
 	affecting_turfs.Cut()
 
 	for (var/datum/lighting_corner/C in effect_str)
-		REMOVE_CORNER(C)
+		REMOVE_CORNER(C, fast_update)
 
 		C.affecting -= src
 
@@ -240,11 +242,14 @@
 
 /datum/light_source/proc/recalc_corner(var/datum/lighting_corner/C)
 	if (effect_str.Find(C)) // Already have one.
-		REMOVE_CORNER(C)
+		REMOVE_CORNER(C, FALSE)
 
-	APPLY_CORNER(C)
+	APPLY_CORNER(C, FALSE)
 
-/datum/light_source/proc/smart_vis_update()
+/datum/light_source/proc/fast_update()
+	remove_lum(TRUE)
+	apply_lum(TRUE)
+/datum/light_source/proc/smart_vis_update(var/fast_update = FALSE)
 	var/list/datum/lighting_corner/corners = list()
 	var/list/turf/turfs                    = list()
 	FOR_DVIEW(var/turf/T, light_range, source_turf, 0)
@@ -272,10 +277,10 @@
 			effect_str[C] = 0
 			continue
 
-		APPLY_CORNER(C)
+		APPLY_CORNER(C, fast_update)
 
 	for (var/datum/lighting_corner/C in effect_str - corners) // Old, now gone, corners.
-		REMOVE_CORNER(C)
+		REMOVE_CORNER(C, fast_update)
 		C.affecting -= src
 		effect_str -= C
 

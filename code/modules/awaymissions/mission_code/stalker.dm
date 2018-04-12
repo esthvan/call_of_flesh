@@ -12,6 +12,7 @@
 	icon_state = "outdoor"
 	requires_power = 1
 	luminosity = 1
+	open_space = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 //	l_sounds = list('sound/stalker/ambience/rnd_outdoor/rnd_bird_1.ogg','sound/stalker/ambience/rnd_outdoor/rnd_bird_2.ogg',
 //					'sound/stalker/ambience/rnd_outdoor/rnd_bird_3.ogg','sound/stalker/ambience/rnd_outdoor/rnd_bird_4.ogg',

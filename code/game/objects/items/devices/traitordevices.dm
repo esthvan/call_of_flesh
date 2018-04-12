@@ -187,6 +187,7 @@ effective or pretty fucking useless.
 	user = null
 
 /obj/item/device/shadowcloak/dropped(mob/user)
+	. = ..()
 	if(user && user.get_item_by_slot(slot_belt) != src)
 		Deactivate()
 

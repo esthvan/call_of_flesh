@@ -1,7 +1,7 @@
 /area
 	luminosity           = TRUE
 	var/dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	var/open_space		 = TRUE
+	var/open_space		 = FALSE
 
 /area/proc/set_dynamic_lighting(var/new_dynamic_lighting = DYNAMIC_LIGHTING_ENABLED)
 	if (new_dynamic_lighting == dynamic_lighting)

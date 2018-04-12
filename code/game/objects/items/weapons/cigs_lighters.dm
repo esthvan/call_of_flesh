@@ -74,6 +74,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		SSobj.processing.Remove(src)
 
 /obj/item/weapon/match/dropped(mob/user)
+	. = ..()
 	if(lit == 1)
 		user.add_light_range(-2)
 		lit = -1
@@ -565,6 +566,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 
 /obj/item/weapon/lighter/dropped(mob/user)
+	. = ..()
 	if(lit)
 		if(user)
 			user.add_light_range(-1)

@@ -64,7 +64,8 @@ var/list/datum/time_of_day/time_cycle_steps = list(new /datum/time_of_day/mornin
 	initialized = TRUE
 
 	..()
-
+proc/set_time_of_day(var/step)
+	SSsunlight.set_time_of_day(step)
 /datum/subsystem/sunlight/proc/set_time_of_day(var/step)
 	if(step > time_cycle_steps.len)
 		step = STEP_DAY
@@ -151,12 +152,11 @@ var/list/datum/time_of_day/time_cycle_steps = list(new /datum/time_of_day/mornin
 
 		O.update_overlay()
 		O.needs_update = FALSE
-		if (MC_TICK_CHECK)
-			return
 #if defined(LIGHTING_ANIMATION)
-	for(var/atom/movable/sunlighting_overlay/O in sunlighting_update_overlays)
 		O.animate_color()
 #endif
+		if (MC_TICK_CHECK)
+			return
 	resuming_stage = 0
 
 
