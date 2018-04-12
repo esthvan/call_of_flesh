@@ -206,9 +206,9 @@
 	active_invisibility = 0
 	inactive_invisibility = 0
 	loot = list(/obj/item/weapon/artifact/flash = 6,
-				/obj/item/weapon/artifact/moonlight = 3,
-				/obj/item/weapon/artifact/battery = 0.5,
-				/obj/item/weapon/artifact/pustishka = 0.5,
+				/obj/item/weapon/artifact/moonlight = 3.5,
+				/obj/item/weapon/artifact/battery = 0.25,
+				/obj/item/weapon/artifact/pustishka = 0.25,
 				/obj/nothing = 90)
 
 /obj/anomaly/electro/New()
@@ -229,9 +229,9 @@
 	active_invisibility = 0
 	inactive_invisibility = 101
 	loot = list(/obj/item/weapon/artifact/meduza = 6,
-				/obj/item/weapon/artifact/stoneflower = 2.5,
+				/obj/item/weapon/artifact/stoneflower = 2.75,
 				/obj/item/weapon/artifact/nightstar = 1,
-				/obj/item/weapon/artifact/maminibusi = 0.5,
+				/obj/item/weapon/artifact/maminibusi = 0.25,
 				/obj/nothing = 90)
 
 /obj/anomaly/jarka
@@ -248,9 +248,9 @@
 	active_icon_state = "jarka1"
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/item/weapon/artifact/droplet = 6,
+	loot = list(/obj/item/weapon/artifact/droplet = 6.5,
 				/obj/item/weapon/artifact/fireball = 3,
-				/obj/item/weapon/artifact/crystal = 1,
+				/obj/item/weapon/artifact/crystal = 0.5,
 				/obj/nothing = 90)
 
 /obj/anomaly/holodec
@@ -268,9 +268,9 @@
 	active_icon_state = "holodec" //need activation icon
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/item/weapon/artifact/stone_blood = 6,
+	loot = list(/obj/item/weapon/artifact/stone_blood = 6.5,
 				/obj/item/weapon/artifact/soul = 3,
-				/obj/item/weapon/artifact/bubble = 1,
+				/obj/item/weapon/artifact/bubble = 0.5,
 				/obj/nothing = 90)
 
 /obj/anomaly/puh
