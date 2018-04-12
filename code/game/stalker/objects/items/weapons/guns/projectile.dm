@@ -206,8 +206,11 @@
 	if(!istype(src, /obj/item/weapon/gun/projectile/automatic/pistol) && magazine && mag_overlay)
 		overlays += mag_overlay
 
-	if(!suppressed && silencer_overlay)
+	if(suppressed && silencer_overlay)
 		overlays += silencer_overlay
+
+	if(unique)
+		overlays += image('icons/stalker/projectile_overlays.dmi', "unique", layer = FLOAT_LAYER)
 
 	if(istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
 		icon_state = "[initial(icon_state)][magazine ? "-[magazine.max_ammo]" : ""][chambered ? "" : "-e"]"
@@ -242,7 +245,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 150
 	w_class = 4
-	spread = 7
+	spread = 8
 	randomspread = 0
 	damagelose = 0.25
 	drawsound = 'sound/stalker/weapons/draw/ak74_draw.ogg'
@@ -263,7 +266,8 @@
 	pin = /obj/item/device/firing_pin
 	durability = 80
 	w_class = 4
-	spread = 10
+	randomspread = 0
+	spread = 14
 	damagelose = 0.5
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
 
@@ -286,7 +290,7 @@
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
-	spread = 8
+	spread = 10
 	damagelose = 0.4
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
@@ -308,7 +312,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 90
 	w_class = 4
-	spread = 3
+	spread = 5
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/tpc301_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/tpc301_load.ogg'
@@ -347,6 +351,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
 	fire_sound = 'sound/stalker/weapons/il86_shoot.ogg'
 	can_suppress = 1
+	zoomable = 1
 	burst_size = 2
 	fire_delay = 1.5
 	pin = /obj/item/device/firing_pin
@@ -391,6 +396,7 @@
 	suppressed = 1
 	can_suppress = 0
 	can_unsuppress = 0
+	zoomable = 1
 	burst_size = 1
 	durability = 110
 	slot_flags = SLOT_BACK

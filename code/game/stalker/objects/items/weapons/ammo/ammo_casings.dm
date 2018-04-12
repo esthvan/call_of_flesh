@@ -34,7 +34,6 @@
 	desc = "A 12x70mm dart bullet casing."
 	icon_state = "stunshell"
 	pellets = 1
-	variance = 25
 	projectile_type = /obj/item/projectile/bullet/bullet12x70d
 
 /obj/item/ammo_casing/c9x19
@@ -55,6 +54,10 @@
 	desc = "A .45 ACP bullet casing"
 	caliber = ".45"
 	projectile_type = /obj/item/projectile/bullet/bulletacp45
+
+/obj/item/ammo_casing/acp45/P
+	desc = "A .45 ACP Hydroshock bullet casing"
+	projectile_type = /obj/item/projectile/bullet/bulletacp45P
 
 /obj/item/ammo_casing/testgun
 	desc = "testgun casing"

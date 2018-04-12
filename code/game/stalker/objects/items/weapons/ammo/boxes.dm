@@ -100,3 +100,19 @@
 	icon_state = "9x39"
 	max_ammo = 60
 	multiple_sprites = 2
+
+/obj/item/ammo_box/stalker/bacp45
+	name = "ammo box (.45 ACP)"
+	desc = "ѕистолетный патрон калибра 11,43 мм."
+	ammo_type = /obj/item/ammo_casing/acp45
+	icon_state = "45_ACP"
+	max_ammo = 30
+	multiple_sprites = 2
+
+/obj/item/ammo_box/stalker/bacp45ap
+	name = "ammo box (.45 ACP Hydroshock)"
+	desc = "Ёкспансивный патрон калибра 11,43 мм., который используетс&#255; в убойных пистолетах."
+	ammo_type = /obj/item/ammo_casing/acp45/P
+	icon_state = "45_ACP_hydroshock"
+	max_ammo = 30
+	multiple_sprites = 2
