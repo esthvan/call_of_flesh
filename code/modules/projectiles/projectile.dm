@@ -115,8 +115,10 @@
 
 	if(isturf(A) && hitsound_wall)
 		var/volume = Clamp(vol_by_damage() + 20, 0, 100)
+		/*
 		if(suppressed)
 			volume = 5
+		*/
 		playsound(loc, hitsound_wall, volume, 1, -1)
 
 	var/turf/target_turf = get_turf(A)
@@ -140,7 +142,7 @@
 /obj/item/projectile/Process_Spacemove(var/movement_dir = 0)
 	return 1 //Bullets don't drift in space
 
-/obj/item/projectile/proc/fire(var/setAngle, damagelose)
+/obj/item/projectile/proc/fire(var/setAngle, damagelose, var/pellets)
 	if(setAngle)
 		Angle = setAngle
 	if(!legacy) //new projectiles
@@ -150,10 +152,10 @@
 				if((!( current ) || loc == current))
 					current = locate(Clamp(x+xo,1,world.maxx),Clamp(y+yo,1,world.maxy),z)
 
-				if(!Angle)
-					Angle=round(Get_Angle(src,current))
-				if(spread)
-					Angle += (rand() - 0.5) * spread
+				if(!Angle && pellets <= 1)
+					Angle=round(Get_Angle(src,current) + rand(-1, 1) * spread)
+				//if(spread)
+				//	Angle += rand(-1, 1) * spread
 				var/matrix/M = new
 				M.Turn(Angle)
 				transform = M

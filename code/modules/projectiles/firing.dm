@@ -25,12 +25,12 @@
 	for (var/i = max(1, pellets), i > 0, i--)
 		var/targloc = get_turf(target)
 		ready_proj(target, user, quiet, zone_override)
-		if(distro) //We have to spread a pixel-precision bullet. throw_proj was called before so angles should exist by now...
+		if(distro && pellets > 1) //We have to spread a pixel-precision bullet. throw_proj was called before so angles should exist by now...
 			if(randomspread)
 				spread = round((rand() - 0.5) * distro)
 			else if (pellets > 1) //Smart spread
-				spread = ((i / pellets - 0.5) * distro)
-		if(!throw_proj(target, targloc, user, params, spread, damagelose))
+				spread = ((i / pellets) * distro)
+		if(!throw_proj(target, targloc, user, params, spread, damagelose, distro))
 			return 0
 		if(i > 1)
 			newshot()
@@ -57,7 +57,7 @@
 		reagents.trans_to(BB, reagents.total_volume) //For chemical darts/bullets
 		qdel(reagents)
 
-/obj/item/ammo_casing/proc/throw_proj(atom/target, turf/targloc, mob/living/user, params, spread, damagelose)
+/obj/item/ammo_casing/proc/throw_proj(atom/target, turf/targloc, mob/living/user, params, spread, damagelose, distro)
 	var/turf/curloc = get_turf(user)
 	if (!istype(targloc) || !istype(curloc) || !BB)
 		return 0
@@ -69,9 +69,9 @@
 		BB = null
 		return 1
 
-	BB.preparePixelProjectile(target, targloc, user, params, spread)
+	BB.preparePixelProjectile(target, targloc, user, params, spread, pellets, distro)
 	if(BB)
-		BB.fire(BB.Angle, damagelose)
+		BB.fire(BB.Angle, damagelose, pellets)
 	BB = null
 	return 1
 
@@ -80,7 +80,7 @@
 	var/dy = abs(target.y - current.y)
 	return locate(target.x + round(gaussian(0, distro) * (dy+2)/8, 1), target.y + round(gaussian(0, distro) * (dx+2)/8, 1), target.z)
 
-/obj/item/projectile/proc/preparePixelProjectile(atom/target, var/turf/targloc, mob/living/user, params, spread)
+/obj/item/projectile/proc/preparePixelProjectile(atom/target, var/turf/targloc, mob/living/user, params, spread, var/pellets, var/distro)
 	var/turf/curloc = get_turf(user)
 	src.loc = get_turf(user)
 	src.starting = get_turf(user)
@@ -116,5 +116,7 @@
 			var/angle = Atan2(y - oy, x - ox)
 			//world << "Angle: [angle]"
 			src.Angle = angle
-	if(spread)
-		src.Angle += spread
+	if(spread && pellets <= 1)
+		Angle += round(rand(-spread, spread))
+	else if(spread && pellets > 1)
+		Angle = Angle + spread - distro/2

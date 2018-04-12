@@ -33,7 +33,7 @@
 	var/weapon_weight = WEAPON_LIGHT
 
 	var/spread = 0						//Spread induced by the gun itself.
-	var/randomspread = 1				//Set to 0 for shotguns. This is used for weapons that don't fire all their bullets at once.
+	var/randomspread = 0				//Set to 0 for shotguns. This is used for weapons that don't fire all their bullets at once.
 
 	var/unique_rename = 0 //allows renaming with a pen
 	var/unique_reskin = 0 //allows one-time reskinning
@@ -68,7 +68,13 @@
 	var/distro = 0			 //Зазор между дробью для дробовиков
 	var/durability = 100     //durability of a gun
 	var/jam = 0              //is weapon jammed or not
+	var/unique = 0
 
+	var/list/l_sounds_shots = list('sound/stalker/weapons/fading/rnd_shooting_1.ogg','sound/stalker/weapons/fading/rnd_shooting_2.ogg',
+								'sound/stalker/weapons/fading/rnd_shooting_4.ogg','sound/stalker/weapons/fading/rnd_shooting_5.ogg',
+								'sound/stalker/weapons/fading/rnd_shooting_6.ogg','sound/stalker/weapons/fading/rnd_shooting_7.ogg',
+								'sound/stalker/weapons/fading/rnd_shooting_9.ogg','sound/stalker/weapons/fading/rnd_shooting_10.ogg',
+								'sound/stalker/weapons/fading/rnd_shooting_11.ogg')
 
 /obj/item/weapon/gun/New()
 	..()
@@ -124,11 +130,7 @@
 
 
 /obj/item/weapon/gun/proc/shoot_live_shot(mob/living/user as mob|obj, pointblank = 0, mob/pbtarget = null, message = 1)
-	var/list/l_sounds_shots = list('sound/stalker/weapons/fading/rnd_shooting_1.ogg','sound/stalker/weapons/fading/rnd_shooting_2.ogg',
-									'sound/stalker/weapons/fading/rnd_shooting_4.ogg','sound/stalker/weapons/fading/rnd_shooting_5.ogg',
-									'sound/stalker/weapons/fading/rnd_shooting_6.ogg','sound/stalker/weapons/fading/rnd_shooting_7.ogg',
-									'sound/stalker/weapons/fading/rnd_shooting_9.ogg','sound/stalker/weapons/fading/rnd_shooting_10.ogg',
-									'sound/stalker/weapons/fading/rnd_shooting_11.ogg')
+
 	var/shot_sound = pick(l_sounds_shots)
 	var/delay_sound = 0
 	var/turf/epicenter = get_turf(user)
@@ -153,7 +155,7 @@
 		else
 			user.visible_message("<span class='danger'>[user] fires [src]!</span>", "<span class='danger'>You fire [src]!</span>", "You hear a [istype(src, /obj/item/weapon/gun/energy) ? "laser blast" : "gunshot"]!")
 			var/frequency = get_rand_frequency()
-			for(var/mob/M in player_list)
+			for(var/mob/M in range(20))
 				// Double check for client
 				if(M && M.client)
 					var/turf/M_turf = get_turf(M)
@@ -288,7 +290,7 @@ obj/item/weapon/gun/proc/newshot()
 				if(randomspread)
 					sprd = round((rand() - 0.5) * spread)
 				else //Smart spread
-					sprd = round((i / burst_size - 0.5) * spread)
+					sprd = round((i / burst_size - rand(-1, 1)) * spread)
 				durability_check(user)
 				if(!chambered.fire(target, user, params, distro, suppressed, zone_override, sprd, damagelose))
 					shoot_with_empty_chamber(user)
@@ -318,7 +320,7 @@ obj/item/weapon/gun/proc/newshot()
 	else
 		if(chambered)
 			durability_check(user)
-			var/sprd = 0
+			var/sprd = round(rand(-1, 1) * spread)
 			if(!chambered.fire(target, user, params, distro, suppressed, zone_override, sprd, damagelose))
 				shoot_with_empty_chamber(user)
 				return
@@ -593,8 +595,6 @@ obj/item/weapon/gun/proc/newshot()
 /datum/action/toggle_scope_zoom/Remove(mob/living/L)
 	gun.zoom(L, FALSE)
 	..()
-
-
 
 /obj/item/weapon/gun/proc/zoom(mob/living/user, forced_zoom)
 	if(!user || !user.client)
