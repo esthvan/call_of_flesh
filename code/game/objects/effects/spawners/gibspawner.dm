@@ -2,7 +2,7 @@
 
 /obj/effect/gibspawner/generic
 	gibtypes = list(/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs/core)
-	gibamounts = list(2,2,1)
+	gibamounts = list(0,1,1)
 
 /obj/effect/gibspawner/generic/New()
 	playsound(src, 'sound/effects/blobattack.ogg', 40, 1)
@@ -11,7 +11,7 @@
 
 /obj/effect/gibspawner/human
 	gibtypes = list(/obj/effect/decal/cleanable/blood/gibs/up,/obj/effect/decal/cleanable/blood/gibs/down,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs,/obj/effect/decal/cleanable/blood/gibs/body,/obj/effect/decal/cleanable/blood/gibs/limb,/obj/effect/decal/cleanable/blood/gibs/core)
-	gibamounts = list(1,1,1,1,1,1,1)
+	gibamounts = list(1,0,1,0,1,1,1)
 
 /obj/effect/gibspawner/human/New()
 	playsound(src, 'sound/effects/blobattack.ogg', 50, 1)
