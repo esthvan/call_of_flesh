@@ -249,16 +249,14 @@ var/list/sidorRooms = list()
 	if(Room)
 		A.loc = Room.loc
 		Room.occupant = A
+		sleep(5)
 
 /obj/sidor_enter/proc/GetEmptyRoom(roomtype)
 	for(var/obj/sidor_exit/R in sidorRooms)
 		if(R.roomtype != roomtype)
 			continue
-		if(!R.occupant)
+		if(!R.occupant || R.occupant.stat == DEAD)
 			return R
-		else if(R.occupant.stat == DEAD)
-			return R
-
 
 /obj/sidor_exit
 	var/roomtype = "sidor"
@@ -271,7 +269,7 @@ var/list/sidorRooms = list()
 /obj/sidor_exit/Crossed(atom/movable/A)
 	if(istype(A, /mob/living/carbon/human))
 		A.loc = A.previous_teleport_dest
-	occupant = null
+		occupant = null
 
 var/global/sidoritems = list(
 		new /sidoritem/ak74,
