@@ -6,11 +6,13 @@
 	var/hud_type = null
 
 /obj/item/clothing/glasses/hud/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
 	if(hud_type && slot == slot_glasses)
 		var/datum/atom_hud/H = huds[hud_type]
 		H.add_hud_to(user)
 
 /obj/item/clothing/glasses/hud/dropped(mob/living/carbon/human/user)
+	. = ..()
 	if(hud_type && istype(user) && user.glasses == src)
 		var/datum/atom_hud/H = huds[hud_type]
 		H.remove_hud_from(user)

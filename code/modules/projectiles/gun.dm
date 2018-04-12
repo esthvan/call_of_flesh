@@ -489,6 +489,7 @@ obj/item/weapon/gun/proc/newshot()
 		azoom.Grant(user)
 
 /obj/item/weapon/gun/dropped(mob/user)
+	. = ..()
 	if(F)
 		if(F.on)
 			user.add_light_range(-F.brightness_on)

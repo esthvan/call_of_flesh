@@ -215,6 +215,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		user.add_light_range(f_lum)
 
 /obj/item/device/pda/dropped(mob/user)
+	. = ..()
 	if(fon)
 		user.add_light_range(-f_lum)
 		set_light(f_lum)

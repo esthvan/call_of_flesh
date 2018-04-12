@@ -31,6 +31,7 @@
 		set_light(0)
 
 /obj/item/clothing/head/hardhat/dropped(mob/user)
+	. = ..()
 	if(on)
 		user.add_light_range(-brightness_on)
 		set_light(brightness_on)

@@ -427,6 +427,7 @@
 	var/datum/martial_art/boxing/style = new
 
 /obj/item/clothing/gloves/boxing/equipped(mob/user, slot)
+	. = ..()
 	if(!ishuman(user))
 		return
 	if(slot == slot_gloves)
@@ -435,6 +436,7 @@
 	return
 
 /obj/item/clothing/gloves/boxing/dropped(mob/user)
+	. = ..()
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
@@ -447,6 +449,7 @@
 	var/datum/martial_art/wrestling/style = new
 
 /obj/item/weapon/storage/belt/champion/wrestling/equipped(mob/user, slot)
+	. = ..()
 	if(!ishuman(user))
 		return
 	if(slot == slot_belt)
@@ -456,6 +459,7 @@
 	return
 
 /obj/item/weapon/storage/belt/champion/wrestling/dropped(mob/user)
+	. = ..()
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user

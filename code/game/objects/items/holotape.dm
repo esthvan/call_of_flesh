@@ -45,9 +45,11 @@
 	icon_base = "engineering"
 
 /obj/item/tapeproj/dropped()
+	. = ..()
 	reset()
 
 /obj/item/tapeproj/equipped()
+	. = ..()
 	reset()
 
 /obj/item/tapeproj/proc/reset()

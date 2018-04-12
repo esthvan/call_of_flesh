@@ -158,6 +158,7 @@
 		loc.visible_message("<span class='warning'>A grotesque blade forms around [loc.name]\'s arm!</span>", "<span class='warning'>Our arm twists and mutates, transforming it into a deadly blade.</span>", "<span class='italics'>You hear organic matter ripping and tearing!</span>")
 
 /obj/item/weapon/melee/arm_blade/dropped(mob/user)
+	. = ..()
 	qdel(src)
 
 /obj/item/weapon/melee/arm_blade/afterattack(atom/target, mob/user, proximity)
@@ -237,6 +238,7 @@
 		loc.visible_message("<span class='warning'>The end of [loc.name]\'s hand inflates rapidly, forming a huge shield-like mass!</span>", "<span class='warning'>We inflate our hand into a strong shield.</span>", "<span class='italics'>You hear organic matter ripping and tearing!</span>")
 
 /obj/item/clothing/head/helmet/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/weapon/shield/changeling/hit_reaction()
@@ -287,6 +289,7 @@
 	SSobj.processing += src
 
 /obj/item/clothing/suit/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/clothing/suit/space/changeling/process()
@@ -303,6 +306,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 
 /obj/item/clothing/head/helmet/space/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 
@@ -342,6 +346,7 @@
 		loc.visible_message("<span class='warning'>[loc.name]\'s flesh turns black, quickly transforming into a hard, chitinous mass!</span>", "<span class='warning'>We harden our flesh, creating a suit of armor!</span>", "<span class='italics'>You hear organic matter ripping and tearing!</span>")
 
 /obj/item/clothing/suit/armor/changeling/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/clothing/head/helmet/changeling
@@ -354,4 +359,5 @@
 	flags_cover = HEADCOVERSEYES
 
 /obj/item/clothing/head/helmet/changeling/dropped()
+	. = ..()
 	qdel(src)

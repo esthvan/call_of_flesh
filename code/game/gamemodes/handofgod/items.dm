@@ -154,9 +154,11 @@
 		if(speak2god)
 			speak2god.Grant(user)
 			user << "<span class='boldnotice'>You gain the ability to speak to the god this hat belongs to!</span>"
+	. = ..()
 
 
 /obj/item/clothing/head/helmet/plate/crusader/prophet/dropped(mob/user)
+	. = ..()
 	if(speak2god)
 		if(speak2god.owner == user)
 			speak2god.Remove(user)

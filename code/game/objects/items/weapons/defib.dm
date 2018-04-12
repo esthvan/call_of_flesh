@@ -178,6 +178,7 @@
 	return new /obj/item/weapon/twohanded/shockpaddles(src)
 
 /obj/item/weapon/defibrillator/equipped(mob/user, slot)
+	. = ..()
 	if(slot != slot_back)
 		remove_paddles(user)
 		update_icon()
@@ -319,8 +320,9 @@
 	return (OXYLOSS)
 
 /obj/item/weapon/twohanded/shockpaddles/dropped(mob/user)
+	. = ..()
 	if(!req_defib)
-		return ..()
+		return .
 	if(user)
 		var/obj/item/weapon/twohanded/O = user.get_inactive_hand()
 		if(istype(O))

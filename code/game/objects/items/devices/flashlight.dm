@@ -106,6 +106,7 @@
 
 
 /obj/item/device/flashlight/dropped(mob/user)
+	. = ..()
 	if(on)
 		user.add_light_range(-brightness_on)
 		set_light(brightness_on)

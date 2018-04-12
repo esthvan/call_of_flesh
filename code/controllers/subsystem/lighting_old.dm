@@ -71,7 +71,7 @@ var/datum/subsystem/lighting/SSlighting
 //z-levels with the z_level argument
 /datum/subsystem/lighting/Initialize(timeofday, z_level)
 	for(var/area/A in world)
-		if (A.lighting_use_dynamic == DYNAMIC_LIGHTING_IFSTARLIGHT)
+		if (A.dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
 			if (config.starlight)
 				A.SetDynamicLighting()
 
