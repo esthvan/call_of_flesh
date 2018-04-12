@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-##/tg/stlker v0.5 
+/tg/stalker v0.5 
 
 
 **Website:** https://discord.gg/e9d4q <BR>
@@ -119,6 +118,3 @@ All code before commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at
 including tools unless their readme specifies otherwise. See LICENSE-AGPLv3.txt and LICENSE-GPLv3.txt for more details.
 All content including icons and sound is under a Creative Commons 3.0 BY-SA
 license (http://creativecommons.org/licenses/by-sa/3.0/).
-=======
-# callofflesh
->>>>>>> e76b96c54a1f287104c0012f1cea0e607667e431
