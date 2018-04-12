@@ -83,11 +83,12 @@ var/next_mob_id = 0
 		return
 
 	var/multiplier = 0.27
-	if(job == user.job)
-		if(hostiles[user] > 5)
-			multiplier = 3
-		else
-			multiplier = 0.3
+	if(user)
+		if(job == user.job)
+			if(hostiles[user] > 5)
+				multiplier = 3
+			else
+				multiplier = 0.3
 
 	if(!hostiles.Find(user.ckey) && what_done != "fed")
 		hostiles.Add(user.ckey)
