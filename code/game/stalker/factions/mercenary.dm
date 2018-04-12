@@ -9,8 +9,8 @@
 	selection_color = "#2e708b"
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
-	whitelist_only = 0
-	limit_per_player = 2
+	whitelist_only = 1
+	limit_per_player = 5
 	outfit = /datum/outfit/job/mercenary
 
 /datum/outfit/job/mercenary
