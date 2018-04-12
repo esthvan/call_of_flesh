@@ -48,14 +48,10 @@ var/list/lighting_update_overlays  = list() // List of lighting overlays queued 
 
 
 /datum/subsystem/lighting/fire()
-	currentrun_lights   = lighting_update_lights
-	lighting_update_lights   = list()
 
-	resuming_stage = STAGE_SOURCES
-
-	while (currentrun_lights.len)
-		var/datum/light_source/L = currentrun_lights[currentrun_lights.len]
-		currentrun_lights.len--
+	while (lighting_update_lights.len)
+		var/datum/light_source/L = lighting_update_lights[lighting_update_lights.len]
+		lighting_update_lights.len--
 
 		if (L.check() || L.destroyed || L.force_update)
 			L.remove_lum()
@@ -72,40 +68,29 @@ var/list/lighting_update_overlays  = list() // List of lighting overlays queued 
 		if (MC_TICK_CHECK)
 			return
 
-	currentrun_corners  = lighting_update_corners
-	lighting_update_corners  = list()
-
-	resuming_stage = STAGE_CORNERS
-
-	while (currentrun_corners.len)
-		var/datum/lighting_corner/C = currentrun_corners[currentrun_corners.len]
-		currentrun_corners.len--
+	while (lighting_update_corners.len)
+		var/datum/lighting_corner/C = lighting_update_corners[lighting_update_corners.len]
+		lighting_update_corners.len--
 
 		C.update_overlays()
 		C.needs_update = FALSE
 		if (MC_TICK_CHECK)
 			return
 
-	currentrun_overlays = lighting_update_overlays.Copy()
-
 	resuming_stage = STAGE_OVERLAYS
 
-	while (currentrun_overlays.len)
-		var/atom/movable/lighting_overlay/O = currentrun_overlays[currentrun_overlays.len]
-		currentrun_overlays.len--
+	while (lighting_update_overlays.len)
+		var/atom/movable/lighting_overlay/O = lighting_update_overlays[lighting_update_overlays.len]
+		lighting_update_overlays.len--
 
 		if (qdeleted(O))
 			continue
 
 		O.update_overlay()
+		O.animate_color()
 		O.needs_update = FALSE
 		if (MC_TICK_CHECK)
 			return
-#if defined(LIGHTING_ANIMATION)
-	for(var/atom/movable/lighting_overlay/O in lighting_update_overlays)
-		O.animate_color()
-#endif
-	lighting_update_overlays.Cut()
 	resuming_stage = 0
 
 

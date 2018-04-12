@@ -43,7 +43,7 @@
 
 		top_atom.light_sources += src
 
-	source_turf = top_atom
+	source_turf = get_turf(top_atom)
 	light_power = source_atom.light_power
 	light_range = source_atom.light_range
 	light_color = source_atom.light_color
@@ -120,10 +120,10 @@
 
 	if (isturf(top_atom))
 		if (source_turf != top_atom)
-			source_turf = top_atom
+			source_turf = get_turf(top_atom)
 			. = 1
 	else if (top_atom.loc != source_turf)
-		source_turf = top_atom.loc
+		source_turf = get_turf(top_atom.loc)
 		. = 1
 
 	if (source_atom.light_power != light_power)
