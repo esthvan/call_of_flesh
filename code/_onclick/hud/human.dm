@@ -357,6 +357,7 @@
 	mymob.client.screen += list( mymob.zone_sel, mymob.healths, mymob.healthdoll, mymob.blind, mymob.flash, mymob.damageoverlay, mymob.nightvision, mymob.whitenoise, mymob.pulseimage, lingchemdisplay, lingstingdisplay, mymob.staminas) //, mymob.hands, mymob.rest, mymob.sleep) //, mymob.mach )
 	mymob.client.screen += adding + hotkeybuttons
 	mymob.client.screen += mymob.client.void
+
 	inventory_shown = 0;
 
 

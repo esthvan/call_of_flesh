@@ -298,6 +298,7 @@
 
 
 /obj/item/clothing/head/helmet/dropped(mob/user)
+	. = ..()
 	if(F)
 		if(F.on)
 			user.add_light_range(-F.brightness_on)

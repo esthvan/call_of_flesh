@@ -17,6 +17,7 @@
 	erased_minds += M
 
 /obj/item/weapon/chrono_eraser/dropped()
+	. = ..()
 	if(PA)
 		qdel(PA)
 
@@ -59,6 +60,7 @@
 		qdel(src)
 
 /obj/item/weapon/gun/energy/chrono_gun/dropped()
+	. = ..()
 	qdel(src)
 
 /obj/item/weapon/gun/energy/chrono_gun/update_icon()

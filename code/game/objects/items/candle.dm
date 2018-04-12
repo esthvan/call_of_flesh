@@ -98,6 +98,7 @@
 
 
 /obj/item/candle/dropped(mob/user)
+	. = ..()
 	if(lit)
 		user.add_light_range(-CANDLE_LUMINOSITY)
 		set_light(CANDLE_LUMINOSITY)

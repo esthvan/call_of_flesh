@@ -355,6 +355,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 	return
 
 /obj/item/proc/dropped(mob/user)
+	src.plane = GAME_PLANE
 	..()
 
 // called just as an item is picked up (loc is not yet changed)
@@ -379,7 +380,8 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 // for items that can be placed in multiple slots
 // note this isn't called during the initial dressing of a player
 /obj/item/proc/equipped(mob/user, slot)
-	return
+	src.plane = HUD_PLANE
+	. = ..()
 
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.
 //If you are making custom procs but would like to retain partial or complete functionality of this one, include a 'return ..()' to where you want this to happen.

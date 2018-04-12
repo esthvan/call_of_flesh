@@ -144,6 +144,7 @@
 	return
 
 /obj/item/device/detector/dropped(mob/user)
+	. = ..()
 	on = 0
 	stop()
 

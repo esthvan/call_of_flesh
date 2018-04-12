@@ -34,6 +34,7 @@
 	qdel(src)
 
 /obj/item/weapon/melee/touch_attack/dropped()
+	. = ..()
 	if(attached_spell)
 		attached_spell.attached_hand = null
 	qdel(src)

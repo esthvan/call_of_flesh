@@ -75,8 +75,8 @@ calculate the longest number of ticks the MC can wait between each cycle without
 
 	sleep(0)
 
-	DncUpdateHard()
-	DayNightCycle(1)
+//	DncUpdateHard()
+//	DayNightCycle(1)
 	process()
 
 //used for smoothing out the cost values so they don't fluctuate wildly

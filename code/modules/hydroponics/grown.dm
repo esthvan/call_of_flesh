@@ -312,6 +312,7 @@
 	user.add_light_range(round(potency / 5,1))
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/berries/glow/dropped(mob/user)
+	. = ..()
 	user.add_light_range(round(-potency / 5,1))
 	src.set_light(round(potency / 5,1))
 
@@ -1216,6 +1217,7 @@ obj/item/weapon/reagent_containers/food/snacks/grown/shell/eggy/add_juice()
 	user.add_light_range(round(potency / 10,1))
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
+	. = ..()
 	user.add_light_range(round(-potency / 10,1))
 	set_light(round(potency / 10,1))
 
