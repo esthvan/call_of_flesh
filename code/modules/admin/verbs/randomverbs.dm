@@ -730,7 +730,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(!check_rights(R_DEBUG))	return
 
-	latejoin.Cut()
+	var/confirm = alert(src, "Remove latejoin spawnpoints?", "Message", "Yes", "No")
+	if(confirm != "Yes")
+		latejoin.Cut()
 
 	log_admin("[key_name(usr)] removed latejoin spawnpoints.")
 	message_admins("[key_name_admin(usr)] removed latejoin spawnpoints.")
