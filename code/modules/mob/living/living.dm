@@ -919,11 +919,14 @@ Sorry Giacom. Please don't be mad :(
 	return
 
 mob/living/proc/let_justice_be_done(var/mob/killed_one)
+
 	var/mob/killer = get_killer()
 
 	if(istype(killer, /mob/living/carbon/human))
 		var/mob/living/carbon/human/killer_h = killer
 		var/datum/data/record/sk = find_record("sid", killer_h.sid, data_core.stalkers)
+		if(sk)
+			data_core.stalkers -= sk
 		if(istype(killed_one, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = killed_one
 			if(killer_h.faction_s == H.faction_s)
