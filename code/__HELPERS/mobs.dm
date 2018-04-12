@@ -62,9 +62,15 @@
 
 /proc/random_facial_hair_style(gender)
 	switch(gender)
-		if(MALE)	return pick(facial_hair_styles_male_list)
-		if(FEMALE)	return pick(facial_hair_styles_female_list)
-		else		return pick(facial_hair_styles_list)
+		if(MALE)
+			if(!isnull(facial_hair_styles_male_list))
+				return pick(facial_hair_styles_male_list)
+		if(FEMALE)
+			if(!isnull(facial_hair_styles_female_list))
+				return pick(facial_hair_styles_female_list)
+		else
+			if (!isnull(facial_hair_styles_list))
+				return pick(facial_hair_styles_list)
 
 /proc/random_unique_name(gender, attempts_to_find_unique_name=10)
 	for(var/i=1, i<=attempts_to_find_unique_name, i++)
