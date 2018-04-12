@@ -556,6 +556,7 @@ var/global/lentahtml = ""
 				faction_s = null
 				rating = null
 				owner = null
+				money = null
 				photo_owner_front = null
 				photo_owner_west = null
 				photo_owner_east = null
