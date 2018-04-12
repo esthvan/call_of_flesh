@@ -151,7 +151,7 @@
 	icon_state = "buildings"
 
 /area/stalker/byadt/buildings/mercenary
-	name = "Merceary"
+	name = "Mercenary"
 	icon_state = "mercenary"
 
 /area/stalker/blowout/outdoor/bar
