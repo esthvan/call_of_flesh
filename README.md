@@ -1,30 +1,15 @@
 <<<<<<< HEAD
-##/tg/station v1.0.1 
-
-[![Build Status](https://travis-ci.org/tgstation/-tg-station.png)](https://travis-ci.org/tgstation/-tg-station)
+##/tg/stlker v0.5 
 
 
-**Website:** http://www.tgstation13.org <BR>
-**Code:** https://github.com/tgstation/-tg-station <BR>
-**Wiki** http://tgstation13.org/wiki/Main_Page <BR>
-**IRC:** irc://irc.rizon.net/coderbus or if you dont have an IRC client, you can click  [here](https://kiwiirc.com/client/irc.rizon.net:6667/?&theme=cli#coderbus).<BR>
+**Website:** https://discord.gg/e9d4q <BR>
+**Code:** https://github.com/esthvan/call_of_flesh/ <BR>
 
 
 ##DOWNLOADING
 
-There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at http://www.tgstation13.org/wiki/Downloading_the_source_code
-
-Option 1:
-Follow this: http://www.tgstation13.org/wiki/Setting_up_git
-
-Option 2:
-Install GitHub::windows from http://windows.github.com/
-It handles most of the setup and configuraton of Git for you.
-Then you simply search for the -tg-station repository and click the big clone
-button.
-
 Option 3: Download the source code as a zip by clicking the ZIP button in the
-code tab of https://github.com/tgstation/-tg-station
+code tab of https://github.com/esthvan/call_of_flesh/
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
@@ -44,8 +29,7 @@ tgstation.dmb - 0 errors, 0 warnings
 ```
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt
-download or the files extracted wrong. If problems persist, ask for assistance
-in irc://irc.rizon.net/coderbus
+download or the files extracted wrong.
 
 Once that's done, open up the config folder.  You'll want to edit config.txt to
 set the probabilities for different gamemodes in Secret and to set your server
