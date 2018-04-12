@@ -536,6 +536,7 @@ var/global/lentahtml = ""
 									faction_s = H.faction_s
 									rating = sk.fields["rating"]
 									owner = H
+									sid = H.sid
 									activated = 1
 
 									var/image = get_id_photo(H)
