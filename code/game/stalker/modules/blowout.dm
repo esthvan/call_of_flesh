@@ -110,6 +110,7 @@ area/proc/StopBlowout(blowoutphase)
 				CHECK_TICK
 				//H.stat = DEAD
 		if(BLOWOUTHIGH)
+			lentahtml = ""
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
 				CHECK_TICK
