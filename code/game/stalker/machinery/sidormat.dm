@@ -47,14 +47,19 @@
 	var/list/ammo_list = list(
 		////////////////////////////////  Патроны  /////////////////////////////////////////
 		new /datum/data/stalker_equipment("Коробка 9x18",				/obj/item/ammo_box/stalker/b9x18,						3750, 0),
-		new /datum/data/stalker_equipment("Коробка 9x18 Бронебойные",	/obj/item/ammo_box/stalker/b9x18P,						7500, 0),
+		new /datum/data/stalker_equipment("Коробка 9x18 Бронебойные",	/obj/item/ammo_box/stalker/b9x18P,						7500, 1000),
 		new /datum/data/stalker_equipment("Коробка 9x19",				/obj/item/ammo_box/stalker/b9x19,						4000, 0),
+		new /datum/data/stalker_equipment("Коробка 9x19 Бронебойные",	/obj/item/ammo_box/stalker/b9x19P,						4000, 1000),
+		new /datum/data/stalker_equipment("Коробка .45 ACP",			/obj/item/ammo_box/stalker/bacp45,						4000, 0),
+		new /datum/data/stalker_equipment("Коробка .45 ACP Hydroshock",	/obj/item/ammo_box/stalker/bacp45ap,					5000, 1000),
 		new /datum/data/stalker_equipment("Коробка дроби 12x70",		/obj/item/ammo_box/stalker/b12x70,						3000, 0),
-		new /datum/data/stalker_equipment("Коробка 5.45x39",			/obj/item/ammo_box/stalker/b545,						5750, 1000),
+		new /datum/data/stalker_equipment("Коробка дроби 12x70 Бронебойные",/obj/item/ammo_box/stalker/b12x70P,					4000, 1000),
+		new /datum/data/stalker_equipment("Коробка дроби 12x70 Дротик",		/obj/item/ammo_box/stalker/b12x70D,					5000, 1000),
+		new /datum/data/stalker_equipment("Коробка 5.45x39",			/obj/item/ammo_box/stalker/b545,						5750, 0),
 		new /datum/data/stalker_equipment("Коробка 5.45x39 Бронебойные",			/obj/item/ammo_box/stalker/b545ap,			7500, 4000),
-		new /datum/data/stalker_equipment("Коробка 5.56x45",			/obj/item/ammo_box/stalker/b55645,						6000, 1000),
+		new /datum/data/stalker_equipment("Коробка 5.56x45",			/obj/item/ammo_box/stalker/b55645,						6000, 0),
 		new /datum/data/stalker_equipment("Коробка 5.56x45 Бронебойные",			/obj/item/ammo_box/stalker/b55645ap,		8000, 4000),
-		new /datum/data/stalker_equipment("Коробка 9x39 ПАБ-9",			/obj/item/ammo_box/stalker/b939,		9000, 4000),
+		new /datum/data/stalker_equipment("Коробка 9x39 ПАБ-9",			/obj/item/ammo_box/stalker/b939,						9000, 4000),
 		new /datum/data/stalker_equipment("Магазин к ПМм/ПБ1с",		/obj/item/ammo_box/magazine/stalker/m9x18pm,				750, 0),
 		new /datum/data/stalker_equipment("Магазин к Форе 12",		/obj/item/ammo_box/magazine/stalker/m9x18fort,				1000, 0),
 		new /datum/data/stalker_equipment("Магазин к Гадюке",		/obj/item/ammo_box/magazine/stalker/m9x19mp5,				2000, 1000),
@@ -170,7 +175,7 @@
 		new /datum/data/stalker_equipment("Кристалл",									/obj/item/weapon/artifact/crystal,					100000, 0, sale_price = 50000),
 		new /datum/data/stalker_equipment("Кровь Камн&#x44F;",							/obj/item/weapon/artifact/stone_blood,				4000, 0, sale_price = 2000),
 		new /datum/data/stalker_equipment("Душа",										/obj/item/weapon/artifact/soul,						8000, 0, sale_price = 4000),
-		new /datum/data/stalker_equipment("Каменный цветок",							/obj/item/weapon/artifact/bubble,					30000, 0, sale_price = 15000),
+		new /datum/data/stalker_equipment("Пузырь",										/obj/item/weapon/artifact/bubble,					30000, 0, sale_price = 15000),
 
 		)
 
