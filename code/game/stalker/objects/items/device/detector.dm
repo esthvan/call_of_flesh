@@ -216,7 +216,7 @@
 				var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 				//var/obj/item/device/stalker_pda/KPK = H.wear_id
 				if(sk)
-					sk.fields["rating"] += (2 ** my_target.level_s) * 25
+					sk.fields["rating"] += (2 ** my_target.level_s) * 50
 
 		my_target.invisibility = 0
 		qdel(src)

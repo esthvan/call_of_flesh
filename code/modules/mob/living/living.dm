@@ -937,26 +937,26 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 
 				//var/temp_rep = text2num(sk_H.fields["rating"])
 				switch(sk_H.fields["rating"])
-					if(1000 to INFINITY)
+					if(10000 to INFINITY)
 						sk.fields["rating"] = sk.fields["rating"] + 5000
 					if(5000 to 9999)
-						sk.fields["rating"] = sk.fields["rating"] + 1000
+						sk.fields["rating"] = sk.fields["rating"] + 2500
 					if(3000 to 4999)
 						sk.fields["rating"] = sk.fields["rating"] + 500
 					if(1000 to 2999)
-						sk.fields["rating"] = sk.fields["rating"] + 100
+						sk.fields["rating"] = sk.fields["rating"] + 250
 					if(0 to 999)
 						sk.fields["rating"] = sk.fields["rating"] + 50
 		else
 			if(sk)
 				if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/dog))
-					sk.fields["rating"] = sk.fields["rating"] + 5
+					sk.fields["rating"] = sk.fields["rating"] + 10
 
 				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/snork))
-					sk.fields["rating"] = sk.fields["rating"] + 25
+					sk.fields["rating"] = sk.fields["rating"] + 50
 
 				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/flesh))
-					sk.fields["rating"] = sk.fields["rating"] + 5
+					sk.fields["rating"] = sk.fields["rating"] + 10
 
 				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/kaban))
-					sk.fields["rating"] = sk.fields["rating"] + 15
+					sk.fields["rating"] = sk.fields["rating"] + 30

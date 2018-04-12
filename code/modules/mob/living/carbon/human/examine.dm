@@ -353,7 +353,7 @@
 								font_color = "#7c0000"
 						var/rank_name_s
 						switch(R.fields["rating"])
-							if(1000 to INFINITY)
+							if(10000 to INFINITY)
 								rank_name_s = "Легенда Зоны"
 							if(5000 to 9999)
 								rank_name_s = "Мастер"

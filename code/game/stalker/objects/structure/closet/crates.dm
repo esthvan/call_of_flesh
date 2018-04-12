@@ -57,7 +57,7 @@
 				/obj/item/clothing/head/hardhat/tacticalhelmet = 2,
 				/obj/nothing = 15
 				)
-	rating_add = 100
+	rating_add = 200
 
 /obj/structure/closet/crate/stalker/blue/stash/high
 	lootdoubles = 0
@@ -73,7 +73,7 @@
 				/obj/item/weapon/gun/projectile/automatic/groza = 1,
 				/obj/nothing = 2
 				)
-	rating_add = 500
+	rating_add = 1000
 
 
 /obj/structure/closet/crate/stalker/blue/stash/New()
