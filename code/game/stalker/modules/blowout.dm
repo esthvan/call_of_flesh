@@ -97,6 +97,10 @@ area/proc/StopBlowout(blowoutphase)
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
 				CHECK_TICK
+			for(var/mob/living/L in src.contents)
+				if(L.stat == DEAD)
+					L.gib()
+					CHECK_TICK
 		if(BLOWOUTNORMAL)
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
