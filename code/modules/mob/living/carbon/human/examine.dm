@@ -351,15 +351,15 @@
 							if(0)
 								rep = "Гнида"
 								font_color = "#7c0000"
-						var/rank_name_s
+						var/rank_name_s = "Новичок"
 						switch(R.fields["rating"])
 							if(10000 to INFINITY)
 								rank_name_s = "Легенда Зоны"
-							if(5000 to 9999)
+							if(7000 to 9999)
 								rank_name_s = "Мастер"
-							if(3000 to 4999)
+							if(4000 to 6999)
 								rank_name_s = "Ветеран"
-							if(1000 to 2999)
+							if(1000 to 3999)
 								rank_name_s = "Опытный"
 							if(0 to 999)
 								rank_name_s = "Новичок"
