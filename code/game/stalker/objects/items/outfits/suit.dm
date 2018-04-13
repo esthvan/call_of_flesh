@@ -506,19 +506,3 @@
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	icon_state = "winterhood_combez_bandit"
-	
-
-/obj/item/clothing/suit/hooded/kombez/mercenary
-	name = "mercenary leader armor"
-	desc = "Обычная наемничья броня с накинутым поверх кожаным плащом. Вы задумываетесь, почему никто другой в зоне не накидывает плащи на легкую броню, словно этому что-то мешает..."
-	icon_state = "mercleader"
-	item_state = "syndicate-black"
-	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	max_heat_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
-	strip_delay = 80
-	put_on_delay = 60
-	flags_inv = HIDEJUMPSUIT
-	armor = list(melee = 20, bullet = 45, laser = 10,burn = 15, bomb = 10, bio = 0, rad = 0, electro = 15)
-	durability = 150
