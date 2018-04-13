@@ -78,6 +78,10 @@
 
 /obj/structure/closet/crate/stalker/blue/stash/New()
 	..()
+	if(prob(40))
+		qdel(src)
+		return
+
 	if(loot && loot.len)
 		for(var/i = lootcount, i > 0, i--)
 			if(!loot.len) break
