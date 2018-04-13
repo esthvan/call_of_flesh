@@ -842,6 +842,7 @@
 #include "code\game\stalker\objects\items\food\reagents.dm"
 #include "code\game\stalker\objects\items\medicine\firstaid.dm"
 #include "code\game\stalker\objects\items\medicine\radiation.dm"
+#include "code\game\stalker\objects\items\misc\addons.dm"
 #include "code\game\stalker\objects\items\misc\aptechka.dm"
 #include "code\game\stalker\objects\items\misc\bolt.dm"
 #include "code\game\stalker\objects\items\misc\repair_kit.dm"
