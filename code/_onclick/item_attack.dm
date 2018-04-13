@@ -73,7 +73,7 @@
 
 /obj/item/proc/attack(mob/living/M, mob/living/user, def_zone)
 
-	if (istype(get_area(user.loc), /area/stalker/blowout/outdoor/bar))
+	if(istype(get_area(user.loc), /area/stalker/sidor) ||  istype(get_area(user.loc), /area/stalker/byadt/bar) || istype(get_area(user.loc), /area/stalker/blowout/outdoor/safezone) || istype(get_area(user.loc), /area/stalker/blowout/buildings/safezone) || istype(get_area(user.loc), /area/stalker/buildings/safezone))
 		user << "<span class='warning'>Вы не можете дратьс&#255; в этой зоне!</span>"
 		return 0
 

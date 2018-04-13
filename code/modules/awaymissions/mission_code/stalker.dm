@@ -41,7 +41,21 @@
 /area/stalker/deathzone
 	name = "Afterlife"
 	icon_state = "deathzone"
+
+/area/stalker/blowout/outdoor/safezone
+	name = "Safezone"
+	icon_state = "safezone"
 	requires_power= 1
+
+/area/stalker/blowout/buildings/safezone
+	name = "Safezone"
+	icon_state = "safezone_buildings"
+	requires_power = 1
+
+/area/stalker/buildings/safezone
+	name = "Safezone"
+	icon_state = "safezone_buildings_no_blowout"
+	requires_power = 1
 	///ÊÎÐÄÎÍ\\\
 
 
@@ -85,7 +99,7 @@
 
 /area/stalker/blowout/svalka/buildings/bar
 	name = "Bar"
-	icon_state = "buildings_svalka_bar"
+	icon_state = "buildings"
 
 /area/stalker/svalka/cellar
 	name = "Cellar"
@@ -155,7 +169,8 @@
 	name = "Mercenary"
 	icon_state = "mercenary"
 
-/area/stalker/blowout/outdoor/bar
+
+/area/stalker/blowout/outdoor/safezone/bar
 	name = "Bar Outdoor"
 	icon_state = "bar_outdoor"
 	requires_power = 1
