@@ -19,9 +19,9 @@
 
 /obj/structure/closet/crate/stalker/blue/stash/low
 	lootdoubles = 1
-	lootcount = 5
+	lootcount = 4
 	loot = list(
-				/obj/item/weapon/gun/projectile/automatic/aksu74 = 2,
+				/obj/item/weapon/gun/projectile/automatic/aksu74 = 1,
 				/obj/item/weapon/gun/projectile/automatic/mp5 = 2,
 				/obj/item/weapon/gun/projectile/revolver/bm16 = 2,
 				/obj/item/ammo_box/stalker/b9x18P = 10,
@@ -34,14 +34,14 @@
 				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat = 1,
 				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown = 1,
 				/obj/item/clothing/mask/gas/stalker = 2,
-				/obj/item/device/detector/bear = 2,
+				/obj/item/device/detector/bear = 1,
 				/obj/nothing = 20
 				)
-	rating_add = 50
+	rating_add = 100
 
 /obj/structure/closet/crate/stalker/blue/stash/medium
 	lootdoubles = 1
-	lootcount = 4
+	lootcount = 3
 	loot = list(
 				/obj/item/weapon/gun/projectile/automatic/pistol/sip  = 2,
 				/obj/item/weapon/gun/projectile/automatic/pistol/cora = 2,
@@ -55,9 +55,9 @@
 				/obj/item/clothing/suit/hooded/kombez/strazh = 2,
 				/obj/item/clothing/suit/berill = 2,
 				/obj/item/clothing/head/hardhat/tacticalhelmet = 2,
-				/obj/nothing = 15
+				/obj/nothing = 12
 				)
-	rating_add = 200
+	rating_add = 250
 
 /obj/structure/closet/crate/stalker/blue/stash/high
 	lootdoubles = 0
