@@ -330,7 +330,7 @@ var/list/sidormatitems = list()
 	if(istype(H.wear_id, /obj/item/device/stalker_pda))
 		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 		var/obj/item/device/stalker_pda/KPK = H.wear_id
-		if(sk)
+		if(sk && KPK.activated)
 			if(KPK.sid == H.sid)
 				if(href_list["choice"])
 					if(href_list["choice"] == "take")
