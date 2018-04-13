@@ -503,7 +503,9 @@ var/global/lentahtml = ""
 					if(!isregistered)
 						password = t
 						var/pass = password
+
 						data_core.manifest_inject(H, pass)
+
 						var/datum/job/J = SSjob.GetJob(H.job)
 						access = J.get_access()
 
@@ -539,7 +541,7 @@ var/global/lentahtml = ""
 									access = J.get_access()
 
 									registered_name = H.real_name
-									faction_s = H.faction_s
+									faction_s = sk.fields["faction"]
 									rating = sk.fields["rating"]
 									owner = H
 									sid = H.sid
@@ -896,6 +898,7 @@ var/global/lentahtml = ""
 	usr << browse_rsc(P3.img, "photo_east")
 	usr << browse_rsc(P4.img, "photo_back")
 
+	faction_s	= sk.fields["faction_s"]
 	rating		= sk.fields["rating"]
 	money		= sk.fields["money"]
 	reputation	= sk.fields["reputation"]
@@ -926,11 +929,11 @@ var/global/lentahtml = ""
 	switch(sk.fields["rating"])
 		if(10000 to INFINITY)
 			rank_name_s = "Легенда Зоны"
-		if(5000 to 9999)
+		if(7000 to 9999)
 			rank_name_s = "Мастер"
-		if(3000 to 4999)
+		if(4000 to 6999)
 			rank_name_s = "Ветеран"
-		if(1000 to 2999)
+		if(1000 to 3999)
 			rank_name_s = "Опытный"
 		if(0 to 999)
 			rank_name_s = "Новичок"
