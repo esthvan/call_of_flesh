@@ -12,170 +12,170 @@
 	var/balance = 0
 	var/rating = 0
 	var/list/weapon_list = list(
-		///////////////////////////////  Оружие  /////////////////////////////////////////
+		///////////////////////////////  ГЋГ°ГіГ¦ГЁГҐ  /////////////////////////////////////////
 
-		///////////////////////////// **Пистолеты** /////////////////////////////////////
-		new /datum/data/stalker_equipment("ПМм",					/obj/item/weapon/gun/projectile/automatic/pistol/pm,		3000, 0),
-		new /datum/data/stalker_equipment("Фора 12",				/obj/item/weapon/gun/projectile/automatic/pistol/fort12,	6500, 0),
-		new /datum/data/stalker_equipment("ПБ1с",					/obj/item/weapon/gun/projectile/automatic/pistol/pb1s,		4500, 0),
-		new /datum/data/stalker_equipment("Сип-Т М200",				/obj/item/weapon/gun/projectile/automatic/pistol/sip,		7500, 1000),
-		new /datum/data/stalker_equipment("Кора-919",				/obj/item/weapon/gun/projectile/automatic/pistol/cora,		8000, 1000),
-		new /datum/data/stalker_equipment("Марта",					/obj/item/weapon/gun/projectile/automatic/pistol/marta,		10000, 1000),
+		///////////////////////////// **ГЏГЁГ±ГІГ®Г«ГҐГІГ»** /////////////////////////////////////
+		new /datum/data/stalker_equipment("ГЏГЊГ¬",					/obj/item/weapon/gun/projectile/automatic/pistol/pm,		3000, 0),
+		new /datum/data/stalker_equipment("Г”Г®Г°Г  12",				/obj/item/weapon/gun/projectile/automatic/pistol/fort12,	6500, 0),
+		new /datum/data/stalker_equipment("ГЏГЃ1Г±",					/obj/item/weapon/gun/projectile/automatic/pistol/pb1s,		4500, 0),
+		new /datum/data/stalker_equipment("Г‘ГЁГЇ-Г’ ГЊ200",				/obj/item/weapon/gun/projectile/automatic/pistol/sip,		7500, 1000),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г -919",				/obj/item/weapon/gun/projectile/automatic/pistol/cora,		8000, 1000),
+		new /datum/data/stalker_equipment("ГЊГ Г°ГІГ ",					/obj/item/weapon/gun/projectile/automatic/pistol/marta,		10000, 1000),
 		new /datum/data/stalker_equipment("USP-match",				/obj/item/weapon/gun/projectile/automatic/pistol/usp_match, 9000, 1000),
 
-		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
-		new /datum/data/stalker_equipment("Гадюка 5",				/obj/item/weapon/gun/projectile/automatic/mp5,				18000, 0),
-		new /datum/data/stalker_equipment("АК 74/2 У",				/obj/item/weapon/gun/projectile/automatic/aksu74 ,			20000, 1000),
-		new /datum/data/stalker_equipment("АК 74/2",				/obj/item/weapon/gun/projectile/automatic/ak74,				25000, 1000),
-		new /datum/data/stalker_equipment("АС 96/2",				/obj/item/weapon/gun/projectile/automatic/abakan,			35000, 4000),
-		new /datum/data/stalker_equipment("ТПС-301",				/obj/item/weapon/gun/projectile/automatic/tpc301,			40000, 4000),
-		new /datum/data/stalker_equipment("ИЛ86",					/obj/item/weapon/gun/projectile/automatic/il86,				40000, 4000),
-		new /datum/data/stalker_equipment("ОЦ-14 Гроза",			/obj/item/weapon/gun/projectile/automatic/groza,			30000, 7000),
-		new /datum/data/stalker_equipment("Винторез",				/obj/item/weapon/gun/projectile/automatic/vintorez,			50000, 7000),
-		new /datum/data/stalker_equipment("АС \"Вал\"",				/obj/item/weapon/gun/projectile/automatic/val,				65000, 7000),
+		///////////////////////////// **ГЂГўГІГ®Г¬Г ГІГ», ГЏГЏ** /////////////////////////////////////
+		new /datum/data/stalker_equipment("ГѓГ Г¤ГѕГЄГ  5",				/obj/item/weapon/gun/projectile/automatic/mp5,				18000, 0),
+		new /datum/data/stalker_equipment("ГЂГЉ 74/2 Г“",				/obj/item/weapon/gun/projectile/automatic/aksu74 ,			20000, 1000),
+		new /datum/data/stalker_equipment("ГЂГЉ 74/2",				/obj/item/weapon/gun/projectile/automatic/ak74,				25000, 1000),
+		new /datum/data/stalker_equipment("ГЂГ‘ 96/2",				/obj/item/weapon/gun/projectile/automatic/abakan,			35000, 4000),
+		new /datum/data/stalker_equipment("Г’ГЏГ‘-301",				/obj/item/weapon/gun/projectile/automatic/tpc301,			40000, 4000),
+		new /datum/data/stalker_equipment("Г€Г‹86",					/obj/item/weapon/gun/projectile/automatic/il86,				40000, 4000),
+		new /datum/data/stalker_equipment("ГЋГ–-14 ГѓГ°Г®Г§Г ",			/obj/item/weapon/gun/projectile/automatic/groza,			30000, 7000),
+		new /datum/data/stalker_equipment("Г‚ГЁГ­ГІГ®Г°ГҐГ§",				/obj/item/weapon/gun/projectile/automatic/vintorez,			50000, 7000),
+		new /datum/data/stalker_equipment("ГЂГ‘ \"Г‚Г Г«\"",				/obj/item/weapon/gun/projectile/automatic/val,				65000, 7000),
 
-		/////////////////////////////// **Дробовики** /////////////////////////////////////
-		new /datum/data/stalker_equipment("Обрез",					/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,		6000, 0),
-		new /datum/data/stalker_equipment("БМ-16",					/obj/item/weapon/gun/projectile/revolver/bm16,				12000, 0),
-		new /datum/data/stalker_equipment("ТОЗ-34", 				/obj/item/weapon/gun/projectile/revolver/bm16/toz34, 		18000, 1000),
-		new /datum/data/stalker_equipment("Чейзер-13",				/obj/item/weapon/gun/projectile/shotgun/chaser,				25000, 1000),
-		new /datum/data/stalker_equipment("СПСА-12", 				/obj/item/weapon/gun/projectile/shotgun/spsa, 				40000, 4000),
-		/////////////////////////////// **Другое** /////////////////////////////////////
-		new /datum/data/stalker_equipment("Нож",					/obj/item/weapon/stalker/knife,								2000, 0)
+		/////////////////////////////// **Г„Г°Г®ГЎГ®ГўГЁГЄГЁ** /////////////////////////////////////
+		new /datum/data/stalker_equipment("ГЋГЎГ°ГҐГ§",					/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,		6000, 0),
+		new /datum/data/stalker_equipment("ГЃГЊ-16",					/obj/item/weapon/gun/projectile/revolver/bm16,				12000, 0),
+		new /datum/data/stalker_equipment("Г’ГЋГ‡-34", 				/obj/item/weapon/gun/projectile/revolver/bm16/toz34, 		18000, 1000),
+		new /datum/data/stalker_equipment("Г—ГҐГ©Г§ГҐГ°-13",				/obj/item/weapon/gun/projectile/shotgun/chaser,				25000, 1000),
+		new /datum/data/stalker_equipment("Г‘ГЏГ‘ГЂ-12", 				/obj/item/weapon/gun/projectile/shotgun/spsa, 				40000, 4000),
+		/////////////////////////////// **Г„Г°ГіГЈГ®ГҐ** /////////////////////////////////////
+		new /datum/data/stalker_equipment("ГЌГ®Г¦",					/obj/item/weapon/stalker/knife,								2000, 0)
 		)
 
 	var/list/ammo_list = list(
-		////////////////////////////////  Патроны  /////////////////////////////////////////
-		new /datum/data/stalker_equipment("Коробка 9x18",				/obj/item/ammo_box/stalker/b9x18,						3750, 0),
-		new /datum/data/stalker_equipment("Коробка 9x18 Бронебойные",	/obj/item/ammo_box/stalker/b9x18P,						7500, 1000),
-		new /datum/data/stalker_equipment("Коробка 9x19",				/obj/item/ammo_box/stalker/b9x19,						4000, 0),
-		new /datum/data/stalker_equipment("Коробка 9x19 Бронебойные",	/obj/item/ammo_box/stalker/b9x19P,						4000, 1000),
-		new /datum/data/stalker_equipment("Коробка .45 ACP",			/obj/item/ammo_box/stalker/bacp45,						4000, 0),
-		new /datum/data/stalker_equipment("Коробка .45 ACP Hydroshock",	/obj/item/ammo_box/stalker/bacp45ap,					5000, 1000),
-		new /datum/data/stalker_equipment("Коробка дроби 12x70",		/obj/item/ammo_box/stalker/b12x70,						3000, 0),
-		new /datum/data/stalker_equipment("Коробка дроби 12x70 Бронебойные",/obj/item/ammo_box/stalker/b12x70P,					4000, 1000),
-		new /datum/data/stalker_equipment("Коробка дроби 12x70 Дротик",		/obj/item/ammo_box/stalker/b12x70D,					5000, 1000),
-		new /datum/data/stalker_equipment("Коробка 5.45x39",			/obj/item/ammo_box/stalker/b545,						5750, 0),
-		new /datum/data/stalker_equipment("Коробка 5.45x39 Бронебойные",			/obj/item/ammo_box/stalker/b545ap,			7500, 4000),
-		new /datum/data/stalker_equipment("Коробка 5.56x45",			/obj/item/ammo_box/stalker/b55645,						6000, 0),
-		new /datum/data/stalker_equipment("Коробка 5.56x45 Бронебойные",			/obj/item/ammo_box/stalker/b55645ap,		8000, 4000),
-		new /datum/data/stalker_equipment("Коробка 9x39 ПАБ-9",			/obj/item/ammo_box/stalker/b939,						9000, 4000),
-		new /datum/data/stalker_equipment("Магазин к ПМм/ПБ1с",		/obj/item/ammo_box/magazine/stalker/m9x18pm,				750, 0),
-		new /datum/data/stalker_equipment("Магазин к Форе 12",		/obj/item/ammo_box/magazine/stalker/m9x18fort,				1000, 0),
-		new /datum/data/stalker_equipment("Магазин к Гадюке",		/obj/item/ammo_box/magazine/stalker/m9x19mp5,				2000, 1000),
-		new /datum/data/stalker_equipment("Магазин к АК 74/2;AK 74/2У;АС 96/2",/obj/item/ammo_box/magazine/stalker/m545,		2250, 1000),
-		new /datum/data/stalker_equipment("Магазин к ИЛ-86 и ТПС-301",/obj/item/ammo_box/magazine/stalker/m556x45,				2500, 1000),
-		new /datum/data/stalker_equipment("Магазин к АС \"ВАЛ\"",/obj/item/ammo_box/magazine/stalker/sp9x39val,					3500, 7000),
-		new /datum/data/stalker_equipment("Магазин к ОЦ \"ГРОЗА\"",/obj/item/ammo_box/magazine/stalker/sp9x39groza,				3500, 7000),
-		new /datum/data/stalker_equipment("Магазин к винторезу",/obj/item/ammo_box/magazine/stalker/sp9x39vint,					3000, 7000),
-		new /datum/data/stalker_equipment("Магазин к коре-919 и сип-т",/obj/item/ammo_box/magazine/stalker/sc45,				1400, 0),
-		new /datum/data/stalker_equipment("Магазин к марте"			,/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, 4000),
-		new /datum/data/stalker_equipment("Магазин к юсп-матч"		,/obj/item/ammo_box/magazine/stalker/usp45,					1500, 4000),
+		////////////////////////////////  ГЏГ ГІГ°Г®Г­Г»  /////////////////////////////////////////
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  9x18",				/obj/item/ammo_box/stalker/b9x18,						3750, 0),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  9x18 ГЃГ°Г®Г­ГҐГЎГ®Г©Г­Г»ГҐ",	/obj/item/ammo_box/stalker/b9x18P,						7500, 1000),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  9x19",				/obj/item/ammo_box/stalker/b9x19,						4000, 0),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  9x19 ГЃГ°Г®Г­ГҐГЎГ®Г©Г­Г»ГҐ",	/obj/item/ammo_box/stalker/b9x19P,						4000, 1000),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  .45 ACP",			/obj/item/ammo_box/stalker/bacp45,						4000, 0),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  .45 ACP Hydroshock",	/obj/item/ammo_box/stalker/bacp45ap,					5000, 1000),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  Г¤Г°Г®ГЎГЁ 12x70",		/obj/item/ammo_box/stalker/b12x70,						3000, 0),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  Г¤Г°Г®ГЎГЁ 12x70 ГЃГ°Г®Г­ГҐГЎГ®Г©Г­Г»ГҐ",/obj/item/ammo_box/stalker/b12x70P,					4000, 1000),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  Г¤Г°Г®ГЎГЁ 12x70 Г„Г°Г®ГІГЁГЄ",		/obj/item/ammo_box/stalker/b12x70D,					5000, 1000),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  5.45x39",			/obj/item/ammo_box/stalker/b545,						5750, 0),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  5.45x39 ГЃГ°Г®Г­ГҐГЎГ®Г©Г­Г»ГҐ",			/obj/item/ammo_box/stalker/b545ap,			7500, 4000),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  5.56x45",			/obj/item/ammo_box/stalker/b55645,						6000, 0),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  5.56x45 ГЃГ°Г®Г­ГҐГЎГ®Г©Г­Г»ГҐ",			/obj/item/ammo_box/stalker/b55645ap,		8000, 4000),
+		new /datum/data/stalker_equipment("ГЉГ®Г°Г®ГЎГЄГ  9x39 ГЏГЂГЃ-9",			/obj/item/ammo_box/stalker/b939,						9000, 4000),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ ГЏГЊГ¬/ГЏГЃ1Г±",		/obj/item/ammo_box/magazine/stalker/m9x18pm,				750, 0),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ Г”Г®Г°ГҐ 12",		/obj/item/ammo_box/magazine/stalker/m9x18fort,				1000, 0),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ ГѓГ Г¤ГѕГЄГҐ",		/obj/item/ammo_box/magazine/stalker/m9x19mp5,				2000, 1000),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ ГЂГЉ 74/2;AK 74/2Г“;ГЂГ‘ 96/2",/obj/item/ammo_box/magazine/stalker/m545,		2250, 1000),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ Г€Г‹-86 ГЁ Г’ГЏГ‘-301",/obj/item/ammo_box/magazine/stalker/m556x45,				2500, 1000),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ ГЂГ‘ \"Г‚ГЂГ‹\"",/obj/item/ammo_box/magazine/stalker/sp9x39val,					3500, 7000),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ ГЋГ– \"ГѓГђГЋГ‡ГЂ\"",/obj/item/ammo_box/magazine/stalker/sp9x39groza,				3500, 7000),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ ГўГЁГ­ГІГ®Г°ГҐГ§Гі",/obj/item/ammo_box/magazine/stalker/sp9x39vint,					3000, 7000),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ ГЄГ®Г°ГҐ-919 ГЁ Г±ГЁГЇ-ГІ",/obj/item/ammo_box/magazine/stalker/sc45,				1400, 0),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ Г¬Г Г°ГІГҐ"			,/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, 4000),
+		new /datum/data/stalker_equipment("ГЊГ ГЈГ Г§ГЁГ­ ГЄ ГѕГ±ГЇ-Г¬Г ГІГ·"		,/obj/item/ammo_box/magazine/stalker/usp45,					1500, 4000),
 		)
 
 	var/list/armor_list = list(
-		///////////////////////////////  Броня  /////////////////////////////////////////
+		///////////////////////////////  ГЃГ°Г®Г­Гї  /////////////////////////////////////////
 
-		new /datum/data/stalker_equipment("Кожанка",				/obj/item/clothing/suit/hooded/kozhanka,					5000, 0),
-		new /datum/data/stalker_equipment("Бела&#x44F; кожанка",	/obj/item/clothing/suit/hooded/kozhanka/white,				5000, 0),
-		new	/datum/data/stalker_equipment("Бандитска&#x44F; кожанка",/obj/item/clothing/suit/hooded/kozhanka/banditka,			5000, 0),
-		new	/datum/data/stalker_equipment("Армейский комбинезон",	/obj/item/clothing/suit/army,								6000, 0, "Военные"),
-		new /datum/data/stalker_equipment("Комбинезон \"Зар&#x44F;\"",/obj/item/clothing/suit/hooded/kombez,					40000, 1000),
-		new /datum/data/stalker_equipment("Комбинезон наемника", 	/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, 1000, "Наёмники"),
-		new /datum/data/stalker_equipment("Комбинезон бандита",		/obj/item/clothing/suit/hooded/kombez/kombez_bandit,		25000, 1000, "Бандиты"),
-		new /datum/data/stalker_equipment("Темный плащ",			/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, 0, "Бандиты"),
-		new /datum/data/stalker_equipment("Коричневый плащ",		/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown,12500, 0),
-		new /datum/data/stalker_equipment("Берилл-5М",				/obj/item/clothing/suit/berill,								50000, 1000),
-		new /datum/data/stalker_equipment("Страж свободы",			/obj/item/clothing/suit/hooded/kombez/strazh,				70000, 4000),//, "Свобода"),
-		new /datum/data/stalker_equipment("ПЗ-1",					/obj/item/clothing/suit/hooded/kombez/monolit,				35000, 1000, "Монолит"),
-		new /datum/data/stalker_equipment("ПСЗ-9Д",					/obj/item/clothing/suit/hooded/kombez/psz9d,				70000, 4000, "Долг"),
-		new /datum/data/stalker_equipment("СКАТ-М9",				/obj/item/clothing/suit/skat,								90000, 4000),
-		new	/datum/data/stalker_equipment("ПСЗ-9МД",				/obj/item/clothing/suit/hooded/kombez/psz9md,				80000, 4000, "Долг"),
-		new	/datum/data/stalker_equipment("Сева",					/obj/item/clothing/suit/hooded/kombez/seva,					90000, 4000),
-		new	/datum/data/stalker_equipment("СCП-99 \"Эколог\"",		/obj/item/clothing/suit/hooded/kombez/ecolog,				110000, 7000),
-		new	/datum/data/stalker_equipment("СCП-99М \"Эколог\"",		/obj/item/clothing/suit/hooded/kombez/ecologm,				130000, 7000),
-		new	/datum/data/stalker_equipment("Экзоскелет",				/obj/item/clothing/suit/hooded/kombez/exoskelet,			160000, 7000),
-		)
+		new /datum/data/stalker_equipment("ГЉГ®Г¦Г Г­ГЄГ ",				/obj/item/clothing/suit/hooded/kozhanka,					5000, 0),
+		new /datum/data/stalker_equipment("ГЃГҐГ«Г &#x44F; ГЄГ®Г¦Г Г­ГЄГ ",	/obj/item/clothing/suit/hooded/kozhanka/white,				5000, 0),
+		new	/datum/data/stalker_equipment("ГЃГ Г­Г¤ГЁГІГ±ГЄГ &#x44F; ГЄГ®Г¦Г Г­ГЄГ ",/obj/item/clothing/suit/hooded/kozhanka/banditka,			5000, 0),
+		new	/datum/data/stalker_equipment("ГЂГ°Г¬ГҐГ©Г±ГЄГЁГ© ГЄГ®Г¬ГЎГЁГ­ГҐГ§Г®Г­",	/obj/item/clothing/suit/army,								15000, 0, "Г‚Г®ГҐГ­Г­Г»ГҐ"),
+		new /datum/data/stalker_equipment("ГЉГ®Г¬ГЎГЁГ­ГҐГ§Г®Г­ \"Г‡Г Г°&#x44F;\"",/obj/item/clothing/suit/hooded/kombez,					35000, 1000),
+		new /datum/data/stalker_equipment("ГЉГ®Г¬ГЎГЁГ­ГҐГ§Г®Г­ Г­Г ГҐГ¬Г­ГЁГЄГ ", 	/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, 1000, "ГЌГ ВёГ¬Г­ГЁГЄГЁ"),
+		new /datum/data/stalker_equipment("ГЉГ®Г¬ГЎГЁГ­ГҐГ§Г®Г­ ГЎГ Г­Г¤ГЁГІГ ",		/obj/item/clothing/suit/hooded/kombez/kombez_bandit,		25000, 1000, "ГЃГ Г­Г¤ГЁГІГ»"),
+		new /datum/data/stalker_equipment("Г’ГҐГ¬Г­Г»Г© ГЇГ«Г Г№",			/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, 0, "ГЃГ Г­Г¤ГЁГІГ»"),
+		new /datum/data/stalker_equipment("ГЉГ®Г°ГЁГ·Г­ГҐГўГ»Г© ГЇГ«Г Г№",		/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown,12500, 0),
+		new /datum/data/stalker_equipment("ГЃГҐГ°ГЁГ«Г«-5ГЊ",				/obj/item/clothing/suit/berill,								50000, 1000),
+		new /datum/data/stalker_equipment("Г‘ГІГ°Г Г¦ Г±ГўГ®ГЎГ®Г¤Г»",			/obj/item/clothing/suit/hooded/kombez/strazh,				25000, 4000),//, "Г‘ГўГ®ГЎГ®Г¤Г "),
+		new /datum/data/stalker_equipment("ГЏГ‡-1",					/obj/item/clothing/suit/hooded/kombez/monolit,				25000, 1000, "ГЊГ®Г­Г®Г«ГЁГІ"),
+		new /datum/data/stalker_equipment("ГЏГ‘Г‡-9Г„",					/obj/item/clothing/suit/hooded/kombez/psz9d,				25000, 1000, "Г„Г®Г«ГЈ"),
+		new /datum/data/stalker_equipment("Г‘ГЉГЂГ’-ГЊ9",				/obj/item/clothing/suit/skat,								75000, 4000),
+		new	/datum/data/stalker_equipment("ГЏГ‘Г‡-9ГЊГ„",				/obj/item/clothing/suit/hooded/kombez/psz9md,				75000, 4000, "Г„Г®Г«ГЈ"),
+		new	/datum/data/stalker_equipment("Г‘CГЏ-99 \"ГќГЄГ®Г«Г®ГЈ\"",		/obj/item/clothing/suit/hooded/kombez/ecolog,				750000, 4000),
+		new	/datum/data/stalker_equipment("Г‘CГЏ-99ГЊ \"ГќГЄГ®Г«Г®ГЈ\"",		/obj/item/clothing/suit/hooded/kombez/ecologm,				100000, 4000),
+		new	/datum/data/stalker_equipment("Г‘ГҐГўГ ",					/obj/item/clothing/suit/hooded/kombez/seva,					150000, 7000),
+		new	/datum/data/stalker_equipment("ГќГЄГ§Г®Г±ГЄГҐГ«ГҐГІ",				/obj/item/clothing/suit/hooded/kombez/exoskelet,			150000, 7000),
+)
 
 	var/list/helmet_list = list(
-		//////////////////////////// Маски, Шлемы /////////////////////////////////////
-		new /datum/data/stalker_equipment("Противогаз",				/obj/item/clothing/mask/gas/stalker,						7500, 0),
-		new /datum/data/stalker_equipment("Противогаз наемника",	/obj/item/clothing/mask/gas/stalker/mercenary,				7500, 1000),
-		new /datum/data/stalker_equipment("Тактический шлем",		/obj/item/clothing/head/hardhat/tacticalhelmet,				20000, 1000),
-		new /datum/data/stalker_equipment("Сфера М12",				/obj/item/clothing/head/spherahelmet,						25000, 4000),
-		new /datum/data/stalker_equipment("СКАТ-М9 (шлем)",			/obj/item/clothing/head/skathelmet,							35000, 4000),
+		//////////////////////////// ГЊГ Г±ГЄГЁ, ГГ«ГҐГ¬Г» /////////////////////////////////////
+		new /datum/data/stalker_equipment("ГЏГ°Г®ГІГЁГўГ®ГЈГ Г§",				/obj/item/clothing/mask/gas/stalker,						7500, 0),
+		new /datum/data/stalker_equipment("ГЏГ°Г®ГІГЁГўГ®ГЈГ Г§ Г­Г ГҐГ¬Г­ГЁГЄГ ",	/obj/item/clothing/mask/gas/stalker/mercenary,				7500, 1000),
+		new /datum/data/stalker_equipment("Г’Г ГЄГІГЁГ·ГҐГ±ГЄГЁГ© ГёГ«ГҐГ¬",		/obj/item/clothing/head/hardhat/tacticalhelmet,				20000, 1000),
+		new /datum/data/stalker_equipment("Г‘ГґГҐГ°Г  ГЊ12",				/obj/item/clothing/head/spherahelmet,						25000, 4000),
+		new /datum/data/stalker_equipment("Г‘ГЉГЂГ’-ГЊ9 (ГёГ«ГҐГ¬)",			/obj/item/clothing/head/skathelmet,							35000, 4000),
 		)
 
 	var/list/med_list = list(
-		///////////////////////////////  Медикаменты  /////////////////////////////////////////
-		new /datum/data/stalker_equipment("Аптечка",				/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r,			1000, 0),
-		new /datum/data/stalker_equipment("Армейска&#x44F; аптечка",	/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b,		2000, 1000),
-		new /datum/data/stalker_equipment("Тактическа&#x44F; аптечка",	/obj/item/weapon/reagent_containers/pill/stalker/aptechka_y,		4000, 4000),
-		new /datum/data/stalker_equipment("Бинт",					/obj/item/stack/medical/gauze/bint,										500, 0),
-		//new /datum/data/stalker_equipment("Мазь",					/obj/item/stack/medical/ointment,										500),
-		new /datum/data/stalker_equipment("Антирад. препараты",		/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,	3000, 0)
+		///////////////////////////////  ГЊГҐГ¤ГЁГЄГ Г¬ГҐГ­ГІГ»  /////////////////////////////////////////
+		new /datum/data/stalker_equipment("ГЂГЇГІГҐГ·ГЄГ ",				/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r,			1000, 0),
+		new /datum/data/stalker_equipment("ГЂГ°Г¬ГҐГ©Г±ГЄГ &#x44F; Г ГЇГІГҐГ·ГЄГ ",	/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b,		2000, 1000),
+		new /datum/data/stalker_equipment("Г’Г ГЄГІГЁГ·ГҐГ±ГЄГ &#x44F; Г ГЇГІГҐГ·ГЄГ ",	/obj/item/weapon/reagent_containers/pill/stalker/aptechka_y,		4000, 4000),
+		new /datum/data/stalker_equipment("ГЃГЁГ­ГІ",					/obj/item/stack/medical/gauze/bint,										500, 0),
+		//new /datum/data/stalker_equipment("ГЊГ Г§Гј",					/obj/item/stack/medical/ointment,										500),
+		new /datum/data/stalker_equipment("ГЂГ­ГІГЁГ°Г Г¤. ГЇГ°ГҐГЇГ Г°Г ГІГ»",		/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,	3000, 0)
 		)
 
 	var/list/food_list = list(
-		/////////////////////////////////  Еда  ///////////////////////////////////////////
-		new /datum/data/stalker_equipment("Тушенка",				/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,				500, 0),
-		new /datum/data/stalker_equipment("Шпроты",					/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti,		800, 0),
-		//new /datum/data/stalker_equipment("Консерв. суп",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/soup,			900),
-		//new /datum/data/stalker_equipment("Консерв. бобы",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/bobi,			800),
-		//new /datum/data/stalker_equipment("Консерв. гов&#x44F;дина",	/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/govyadina2,	900),
-		//new /datum/data/stalker_equipment("Консерв. рыба",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/fish,			800),
-		new /datum/data/stalker_equipment("Водка 'Казаки'",			/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kazaki,			1000, 0),
-		new /datum/data/stalker_equipment("Энергетик NonStop",		/obj/item/weapon/reagent_containers/food/drinks/soda_cans/energetic,			500, 0),
-		new /datum/data/stalker_equipment("Сникерс",				/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/snikers,	300, 1000),
-		new /datum/data/stalker_equipment("Колбаса",				/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,				400, 0),
-		new /datum/data/stalker_equipment("Батон",					/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,					300, 0),
-		//new /datum/data/stalker_equipment("Плавленый сыр",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/sirok,	400)
+		/////////////////////////////////  Г…Г¤Г   ///////////////////////////////////////////
+		new /datum/data/stalker_equipment("Г’ГіГёГҐГ­ГЄГ ",				/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,				500, 0),
+		new /datum/data/stalker_equipment("ГГЇГ°Г®ГІГ»",					/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti,		800, 0),
+		//new /datum/data/stalker_equipment("ГЉГ®Г­Г±ГҐГ°Гў. Г±ГіГЇ",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/soup,			900),
+		//new /datum/data/stalker_equipment("ГЉГ®Г­Г±ГҐГ°Гў. ГЎГ®ГЎГ»",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/bobi,			800),
+		//new /datum/data/stalker_equipment("ГЉГ®Г­Г±ГҐГ°Гў. ГЈГ®Гў&#x44F;Г¤ГЁГ­Г ",	/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/govyadina2,	900),
+		//new /datum/data/stalker_equipment("ГЉГ®Г­Г±ГҐГ°Гў. Г°Г»ГЎГ ",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/fish,			800),
+		new /datum/data/stalker_equipment("Г‚Г®Г¤ГЄГ  'ГЉГ Г§Г ГЄГЁ'",			/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kazaki,			1000, 0),
+		new /datum/data/stalker_equipment("ГќГ­ГҐГ°ГЈГҐГІГЁГЄ NonStop",		/obj/item/weapon/reagent_containers/food/drinks/soda_cans/energetic,			500, 0),
+		new /datum/data/stalker_equipment("Г‘Г­ГЁГЄГҐГ°Г±",				/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/snikers,	300, 1000),
+		new /datum/data/stalker_equipment("ГЉГ®Г«ГЎГ Г±Г ",				/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,				400, 0),
+		new /datum/data/stalker_equipment("ГЃГ ГІГ®Г­",					/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,					300, 0),
+		//new /datum/data/stalker_equipment("ГЏГ«Г ГўГ«ГҐГ­Г»Г© Г±Г»Г°",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/sirok,	400)
 		)
 
 	var/list/misc_list = list(
-		/////////////////////////////////  Другое  /////////////////////////////////////////
-		new /datum/data/stalker_equipment("Рем. комплект дл&#x44F; бронекостюмов и шлемов",/obj/item/device/repair_kit/clothing,				35000, 0),
-		new /datum/data/stalker_equipment("Рем. комплект дл&#x44F; огнестрельного оружи&#x44F;",/obj/item/device/repair_kit/gun,				15000, 0),
-		new /datum/data/stalker_equipment("Гитара",							/obj/item/device/instrument/guitar,									2000, 0),
-		new /datum/data/stalker_equipment("Дозиметр",						/obj/item/device/geiger_counter,									2000, 0),
-		//new /datum/data/stalker_equipment("Лопата",							/obj/item/weapon/shovel,										800),
-		new /datum/data/stalker_equipment("Фонарик",						/obj/item/device/flashlight/seclite,								1000, 0),
-		new /datum/data/stalker_equipment("По&#x44F;с дл&#x44F; артефактов",	/obj/item/weapon/storage/belt/stalker,							12000, 0),
-		//new /datum/data/stalker_equipment("Раци&#x44F;",						/obj/item/device/radio,											10000),
-		new /datum/data/stalker_equipment("Спички",							/obj/item/weapon/storage/box/matches,								200, 0),
-		new /datum/data/stalker_equipment("Сигареты",						/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,			1000, 0),
-		new /datum/data/stalker_equipment("Сигары",							/obj/item/weapon/storage/fancy/cigarettes/cigars,					5000, 0),
+		/////////////////////////////////  Г„Г°ГіГЈГ®ГҐ  /////////////////////////////////////////
+		new /datum/data/stalker_equipment("ГђГҐГ¬. ГЄГ®Г¬ГЇГ«ГҐГЄГІ Г¤Г«&#x44F; ГЎГ°Г®Г­ГҐГЄГ®Г±ГІГѕГ¬Г®Гў ГЁ ГёГ«ГҐГ¬Г®Гў",/obj/item/device/repair_kit/clothing,				35000, 0),
+		new /datum/data/stalker_equipment("ГђГҐГ¬. ГЄГ®Г¬ГЇГ«ГҐГЄГІ Г¤Г«&#x44F; Г®ГЈГ­ГҐГ±ГІГ°ГҐГ«ГјГ­Г®ГЈГ® Г®Г°ГіГ¦ГЁ&#x44F;",/obj/item/device/repair_kit/gun,				15000, 0),
+		new /datum/data/stalker_equipment("ГѓГЁГІГ Г°Г ",							/obj/item/device/instrument/guitar,									2000, 0),
+		new /datum/data/stalker_equipment("Г„Г®Г§ГЁГ¬ГҐГІГ°",						/obj/item/device/geiger_counter,									2000, 0),
+		//new /datum/data/stalker_equipment("Г‹Г®ГЇГ ГІГ ",							/obj/item/weapon/shovel,										800),
+		new /datum/data/stalker_equipment("Г”Г®Г­Г Г°ГЁГЄ",						/obj/item/device/flashlight/seclite,								1000, 0),
+		new /datum/data/stalker_equipment("ГЏГ®&#x44F;Г± Г¤Г«&#x44F; Г Г°ГІГҐГґГ ГЄГІГ®Гў",	/obj/item/weapon/storage/belt/stalker,							12000, 0),
+		//new /datum/data/stalker_equipment("ГђГ Г¶ГЁ&#x44F;",						/obj/item/device/radio,											10000),
+		new /datum/data/stalker_equipment("Г‘ГЇГЁГ·ГЄГЁ",							/obj/item/weapon/storage/box/matches,								200, 0),
+		new /datum/data/stalker_equipment("Г‘ГЁГЈГ Г°ГҐГІГ»",						/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,			1000, 0),
+		new /datum/data/stalker_equipment("Г‘ГЁГЈГ Г°Г»",							/obj/item/weapon/storage/fancy/cigarettes/cigars,					5000, 0),
 		)
 
 	var/list/detector_list = list(
-		/////////////////////////////////  Детекторы  ///////////////////////////////////////////
-		new /datum/data/stalker_equipment("Детектор \"Отклик\"",							/obj/item/device/detector/blink,				4000, 0),
-		new /datum/data/stalker_equipment("Детектор \"Медведь\"",							/obj/item/device/detector/bear,					8000, 1000),
+		/////////////////////////////////  Г„ГҐГІГҐГЄГІГ®Г°Г»  ///////////////////////////////////////////
+		new /datum/data/stalker_equipment("Г„ГҐГІГҐГЄГІГ®Г° \"ГЋГІГЄГ«ГЁГЄ\"",							/obj/item/device/detector/blink,				4000, 0),
+		new /datum/data/stalker_equipment("Г„ГҐГІГҐГЄГІГ®Г° \"ГЊГҐГ¤ГўГҐГ¤Гј\"",							/obj/item/device/detector/bear,					8000, 1000),
 		)
 	var/list/loot_list = list(
-	/////////////////////////////////  Лут с мутантов  ///////////////////////////////////////////
-		new /datum/data/stalker_equipment("Песий хвост",								/obj/item/weapon/stalker/loot/dog_tail,				3000, 0, sale_price = 1500),
-		new /datum/data/stalker_equipment("Плотий глаз",										/obj/item/weapon/stalker/loot/flesh_eye,	3000, 0, sale_price = 1500),
-		new /datum/data/stalker_equipment("Кабаний ног",										/obj/item/weapon/stalker/loot/boar_leg,		6000, 0, sale_price = 3000),
+	/////////////////////////////////  Г‹ГіГІ Г± Г¬ГіГІГ Г­ГІГ®Гў  ///////////////////////////////////////////
+		new /datum/data/stalker_equipment("ГЏГҐГ±ГЁГ© ГµГўГ®Г±ГІ",								/obj/item/weapon/stalker/loot/dog_tail,				3000, 0, sale_price = 1500),
+		new /datum/data/stalker_equipment("ГЏГ«Г®ГІГЁГ© ГЈГ«Г Г§",										/obj/item/weapon/stalker/loot/flesh_eye,	3000, 0, sale_price = 1500),
+		new /datum/data/stalker_equipment("ГЉГ ГЎГ Г­ГЁГ© Г­Г®ГЈ",										/obj/item/weapon/stalker/loot/boar_leg,		6000, 0, sale_price = 3000),
 
 		)
 
 	var/list/artifacts_list = list(
-		/////////////////////////////////  Артефакты  ///////////////////////////////////////////
-		new /datum/data/stalker_equipment("Медуза",										/obj/item/weapon/artifact/meduza,					5000, 0, sale_price = 2500),
-		new /datum/data/stalker_equipment("Каменный цветок",							/obj/item/weapon/artifact/stoneflower,				10000, 0, sale_price = 5000),
-		new /datum/data/stalker_equipment("Ночная звезда",								/obj/item/weapon/artifact/nightstar,				30000, 0, sale_price = 15000),
-		new /datum/data/stalker_equipment("Мамины бусы",								/obj/item/weapon/artifact/maminibusi,				80000, 0, sale_price = 40000),
-		new /datum/data/stalker_equipment("Вспышка",									/obj/item/weapon/artifact/flash,					6000, 0, sale_price = 3000),
-		new /datum/data/stalker_equipment("Лунный свет",								/obj/item/weapon/artifact/moonlight,				12000, 0, sale_price = 6000),
-		new /datum/data/stalker_equipment("Пустышка",									/obj/item/weapon/artifact/pustishka,				90000, 0, sale_price = 45000),
-		new /datum/data/stalker_equipment("Батарейка",									/obj/item/weapon/artifact/battery,					90000, 0, sale_price = 45000),
-		new /datum/data/stalker_equipment("Капл&#x44F;",								/obj/item/weapon/artifact/droplet,					7000, 0, sale_price = 3500),
-		new /datum/data/stalker_equipment("Огненный шар",								/obj/item/weapon/artifact/fireball,					15000, 0, sale_price = 7500),
-		new /datum/data/stalker_equipment("Кристалл",									/obj/item/weapon/artifact/crystal,					100000, 0, sale_price = 50000),
-		new /datum/data/stalker_equipment("Кровь Камн&#x44F;",							/obj/item/weapon/artifact/stone_blood,				4000, 0, sale_price = 2000),
-		new /datum/data/stalker_equipment("Душа",										/obj/item/weapon/artifact/soul,						8000, 0, sale_price = 4000),
-		new /datum/data/stalker_equipment("Пузырь",										/obj/item/weapon/artifact/bubble,					30000, 0, sale_price = 15000),
+		/////////////////////////////////  ГЂГ°ГІГҐГґГ ГЄГІГ»  ///////////////////////////////////////////
+		new /datum/data/stalker_equipment("ГЊГҐГ¤ГіГ§Г ",										/obj/item/weapon/artifact/meduza,					5000, 0, sale_price = 2500),
+		new /datum/data/stalker_equipment("ГЉГ Г¬ГҐГ­Г­Г»Г© Г¶ГўГҐГІГ®ГЄ",							/obj/item/weapon/artifact/stoneflower,				10000, 0, sale_price = 5000),
+		new /datum/data/stalker_equipment("ГЌГ®Г·Г­Г Гї Г§ГўГҐГ§Г¤Г ",								/obj/item/weapon/artifact/nightstar,				30000, 0, sale_price = 15000),
+		new /datum/data/stalker_equipment("ГЊГ Г¬ГЁГ­Г» ГЎГіГ±Г»",								/obj/item/weapon/artifact/maminibusi,				80000, 0, sale_price = 40000),
+		new /datum/data/stalker_equipment("Г‚Г±ГЇГ»ГёГЄГ ",									/obj/item/weapon/artifact/flash,					6000, 0, sale_price = 3000),
+		new /datum/data/stalker_equipment("Г‹ГіГ­Г­Г»Г© Г±ГўГҐГІ",								/obj/item/weapon/artifact/moonlight,				12000, 0, sale_price = 6000),
+		new /datum/data/stalker_equipment("ГЏГіГ±ГІГ»ГёГЄГ ",									/obj/item/weapon/artifact/pustishka,				90000, 0, sale_price = 45000),
+		new /datum/data/stalker_equipment("ГЃГ ГІГ Г°ГҐГ©ГЄГ ",									/obj/item/weapon/artifact/battery,					90000, 0, sale_price = 45000),
+		new /datum/data/stalker_equipment("ГЉГ ГЇГ«&#x44F;",								/obj/item/weapon/artifact/droplet,					7000, 0, sale_price = 3500),
+		new /datum/data/stalker_equipment("ГЋГЈГ­ГҐГ­Г­Г»Г© ГёГ Г°",								/obj/item/weapon/artifact/fireball,					15000, 0, sale_price = 7500),
+		new /datum/data/stalker_equipment("ГЉГ°ГЁГ±ГІГ Г«Г«",									/obj/item/weapon/artifact/crystal,					100000, 0, sale_price = 50000),
+		new /datum/data/stalker_equipment("ГЉГ°Г®ГўГј ГЉГ Г¬Г­&#x44F;",							/obj/item/weapon/artifact/stone_blood,				4000, 0, sale_price = 2000),
+		new /datum/data/stalker_equipment("Г„ГіГёГ ",										/obj/item/weapon/artifact/soul,						15000, 0, sale_price = 7500),
+		new /datum/data/stalker_equipment("ГЏГіГ§Г»Г°Гј",										/obj/item/weapon/artifact/bubble,					30000, 0, sale_price = 15000),
 
 		)
 
@@ -186,10 +186,10 @@ var/list/sidormatitems = list()
 	var/equipment_path = null
 	var/cost = 0
 	var/rating = 0
-	var/faction = "Одиночки"
+	var/faction = "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ"
 	var/sale_price = 0
 
-/datum/data/stalker_equipment/New(name, path, cost, rating, faction = "Одиночки", sale_price = 0)
+/datum/data/stalker_equipment/New(name, path, cost, rating, faction = "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ", sale_price = 0)
 	src.equipment_name = name
 	src.equipment_path = path
 	src.cost = cost
@@ -218,11 +218,11 @@ var/list/sidormatitems = list()
 				if(KPK.sid == H.sid)
 					interact(user)
 				else
-					say("Отказано в доступе.")
+					say("ГЋГІГЄГ Г§Г Г­Г® Гў Г¤Г®Г±ГІГіГЇГҐ.")
 			else
-				say("Активируйте профиль на КПК.")
+				say("ГЂГЄГІГЁГўГЁГ°ГіГ©ГІГҐ ГЇГ°Г®ГґГЁГ«Гј Г­Г  ГЉГЏГЉ.")
 		else
-			say("Наденьте КПК.")
+			say("ГЌГ Г¤ГҐГ­ГјГІГҐ ГЉГЏГЉ.")
 
 /obj/machinery/stalker/sidormat/interact(mob/user)
 	var/mob/living/carbon/human/H = usr
@@ -234,71 +234,71 @@ var/list/sidormatitems = list()
 				balance = sk.fields["money"]
 				rating = text2num(sk.fields["rating"])
 			else
-				say("Отказано в доступе.")
+				say("ГЋГІГЄГ Г§Г Г­Г® Гў Г¤Г®Г±ГІГіГЇГҐ.")
 		else
-			say("Активируйте профиль на КПК.")
+			say("ГЂГЄГІГЁГўГЁГ°ГіГ©ГІГҐ ГЇГ°Г®ГґГЁГ«Гј Г­Г  ГЉГЏГЉ.")
 	else
-		say("Наденьте КПК.")
+		say("ГЌГ Г¤ГҐГ­ГјГІГҐ ГЉГЏГЉ.")
 
 	var/dat
 	dat +="<div class='statusDisplay'>"
-	dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар.</b></A><br>"
+	dat +="<A href='?src=\ref[src];choice=take'><b>Г‘ГЎГ»ГІГј ГµГ ГЎГ Г°.</b></A><br>"
 
-	dat += "На счету: [balance] р.<br>"
-		//<A href='?src=\ref[src];choice=eject'>Вернуть деньги.</A>
+	dat += "ГЌГ  Г±Г·ГҐГІГі: [balance] Г°.<br>"
+		//<A href='?src=\ref[src];choice=eject'>Г‚ГҐГ°Г­ГіГІГј Г¤ГҐГ­ГјГЈГЁ.</A>
 	//else
-	//	dat += "На счету отсутствуют деньги.  <A href='?src=\ref[src];choice=insert'>Вставьте купюру.</A><br>"
+	//	dat += "ГЌГ  Г±Г·ГҐГІГі Г®ГІГ±ГіГІГ±ГІГўГіГѕГІ Г¤ГҐГ­ГјГЈГЁ.  <A href='?src=\ref[src];choice=insert'>Г‚Г±ГІГ ГўГјГІГҐ ГЄГіГЇГѕГ°Гі.</A><br>"
 
-	dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе." // Забирать деньги и купленные вещи - на <b>правом</b>.
+	dat += "<br><br>Г€ГЌГ‘Г’ГђГ“ГЉГ–Г€Гџ: Г•Г ГЎГ Г° Г±ГЄГ«Г Г¤Г»ГўГ ГІГј - Г­Г  <b>Г«ГҐГўГ®Г¬</b> Г±ГІГ®Г«ГҐ." // Г‡Г ГЎГЁГ°Г ГІГј Г¤ГҐГ­ГјГЈГЁ ГЁ ГЄГіГЇГ«ГҐГ­Г­Г»ГҐ ГўГҐГ№ГЁ - Г­Г  <b>ГЇГ°Г ГўГ®Г¬</b>.
 	dat += "</div>"
-	dat += "<br><b>Список предметов:</b><BR><table border='0' width='400'>"
-	dat += "<tr><td><center><b>Оружие</b></center></td><td></td><td></td></tr>"
+	dat += "<br><b>Г‘ГЇГЁГ±Г®ГЄ ГЇГ°ГҐГ¤Г¬ГҐГІГ®Гў:</b><BR><table border='0' width='400'>"
+	dat += "<tr><td><center><b>ГЋГ°ГіГ¦ГЁГҐ</b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in weapon_list)
-		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+		if(H.faction_s == prize.faction || prize.faction == "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ")
 			if(rating >= prize.rating)
-				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>ГЉГіГЇГЁГІГј</A></td></tr>"
 
-	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Боеприпасы</b></center></td><td></td><td></td></tr>"
+	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>ГЃГ®ГҐГЇГ°ГЁГЇГ Г±Г»</b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in ammo_list)
-		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+		if(H.faction_s == prize.faction || prize.faction == "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ")
 			if(rating >= prize.rating)
-				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>ГЉГіГЇГЁГІГј</A></td></tr>"
 
-	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Бронекостюмы</b></center></td><td></td><td></td></tr>"
+	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>ГЃГ°Г®Г­ГҐГЄГ®Г±ГІГѕГ¬Г»</b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in armor_list)
-		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+		if(H.faction_s == prize.faction || prize.faction == "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ")
 			if(rating >= prize.rating)
-				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>ГЉГіГЇГЁГІГј</A></td></tr>"
 
-	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Шлемы и противогазы</b></center></td><td></td><td></td></tr>"
+	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>ГГ«ГҐГ¬Г» ГЁ ГЇГ°Г®ГІГЁГўГ®ГЈГ Г§Г»</b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in helmet_list)
-		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+		if(H.faction_s == prize.faction || prize.faction == "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ")
 			if(rating >= prize.rating)
-				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>ГЉГіГЇГЁГІГј</A></td></tr>"
 
-	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Медикаменты</b></center></td><td></td><td></td></tr>"
+	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>ГЊГҐГ¤ГЁГЄГ Г¬ГҐГ­ГІГ»</b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in med_list)
-		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+		if(H.faction_s == prize.faction || prize.faction == "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ")
 			if(rating >= prize.rating)
-				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>ГЉГіГЇГЁГІГј</A></td></tr>"
 
-	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Еда</b></center></td><td></td><td></td></tr>"
+	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Г…Г¤Г </b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in food_list)
-		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+		if(H.faction_s == prize.faction || prize.faction == "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ")
 			if(rating >= prize.rating)
-				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>ГЉГіГЇГЁГІГј</A></td></tr>"
 
-	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Детекторы</b></center></td><td></td><td></td></tr>"
+	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Г„ГҐГІГҐГЄГІГ®Г°Г»</b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in detector_list)
-		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+		if(H.faction_s == prize.faction || prize.faction == "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ")
 			if(rating >= prize.rating)
-				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>ГЉГіГЇГЁГІГј</A></td></tr>"
 
-	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Другое</b></center></td><td></td><td></td></tr>"
+	dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Г„Г°ГіГЈГ®ГҐ</b></center></td><td></td><td></td></tr>"
 	for(var/datum/data/stalker_equipment/prize in misc_list)
-		if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+		if(H.faction_s == prize.faction || prize.faction == "ГЋГ¤ГЁГ­Г®Г·ГЄГЁ")
 			if(rating >= prize.rating)
-				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
+				dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>ГЉГіГЇГЁГІГј</A></td></tr>"
 
 	dat += "</table>"
 
@@ -326,17 +326,17 @@ var/list/sidormatitems = list()
 					if (!prize)
 						return
 					if(prize.cost > balance)
-						say("На вашем счету недостаточно денег.")
+						say("ГЌГ  ГўГ ГёГҐГ¬ Г±Г·ГҐГІГі Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ.")
 					else
 						sk.fields["money"] -= prize.cost
 						balance = sk.fields["money"]
 						new prize.equipment_path(itemloc2)
 			else
-				say("Отказано в доступе.")
+				say("ГЋГІГЄГ Г§Г Г­Г® Гў Г¤Г®Г±ГІГіГЇГҐ.")
 		else
-			say("Активируйте профиль на КПК.")
+			say("ГЂГЄГІГЁГўГЁГ°ГіГ©ГІГҐ ГЇГ°Г®ГґГЁГ«Гј Г­Г  ГЉГЏГЉ.")
 	else
-		say("Наденьте КПК.")
+		say("ГЌГ Г¤ГҐГ­ГјГІГҐ ГЉГЏГЉ.")
 	updateUsrDialog()
 	return
 
@@ -355,14 +355,14 @@ var/list/sidormatitems = list()
 					return
 				balance += (I.worth * I.amount)
 				qdel(I)
-			else usr << "<span class='danger'>Нет купюры.</span>"
+			else usr << "<span class='danger'>ГЌГҐГІ ГЄГіГЇГѕГ°Г».</span>"
 	if(href_list["purchase"])
 		if(balance)
 			var/datum/data/stalker_equipment/prize = locate(href_list["purchase"])
 			if (!prize)
 				return
 			if(prize.cost > balance)
-				say("На вашем счету недостаточно денег")
+				say("ГЌГ  ГўГ ГёГҐГ¬ Г±Г·ГҐГІГі Г­ГҐГ¤Г®Г±ГІГ ГІГ®Г·Г­Г® Г¤ГҐГ­ГҐГЈ")
 			else
 				balance -= prize.cost
 				new prize.equipment_path(itemloc2)
@@ -398,15 +398,15 @@ var/list/sidormatitems = list()
 					balance = sk.fields["money"]
 					for(var/I in ontable)
 						qdel(I)
-					say("Хабар сбыт успешно.")
+					say("Г•Г ГЎГ Г° Г±ГЎГ»ГІ ГіГ±ГЇГҐГёГ­Г®.")
 				else
-					say("Хабар не был сбыт успешно.")
+					say("Г•Г ГЎГ Г° Г­ГҐ ГЎГ»Г« Г±ГЎГ»ГІ ГіГ±ГЇГҐГёГ­Г®.")
 			else
-				say("Отказано в доступе.")
+				say("ГЋГІГЄГ Г§Г Г­Г® Гў Г¤Г®Г±ГІГіГЇГҐ.")
 		else
-			say("Активируйте профиль на КПК.")
+			say("ГЂГЄГІГЁГўГЁГ°ГіГ©ГІГҐ ГЇГ°Г®ГґГЁГ«Гј Г­Г  ГЉГЏГЉ.")
 	else
-		say("Наденьте КПК.")
+		say("ГЌГ Г¤ГҐГ­ГјГІГҐ ГЉГЏГЉ.")
 
 /obj/machinery/stalker/sidormat/proc/GetItemsOnTable()
 	var/list/ontable = list()
@@ -416,7 +416,7 @@ var/list/sidormatitems = list()
 			if(istype(AM, /obj/item/clothing))
 				var/obj/item/clothing/C = AM
 				if((C.durability / initial(C.durability)) * 100 < 75)
-					//say("Костюм слишком изношен дл&#255; продажи.")
+					//say("ГЉГ®Г±ГІГѕГ¬ Г±Г«ГЁГёГЄГ®Г¬ ГЁГ§Г­Г®ГёГҐГ­ Г¤Г«&#255; ГЇГ°Г®Г¤Г Г¦ГЁ.")
 					continue
 
 			ontable.Add(AM)
