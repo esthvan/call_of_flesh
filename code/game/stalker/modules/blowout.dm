@@ -106,8 +106,9 @@ area/proc/StopBlowout(blowoutphase)
 				qdel(A)
 				CHECK_TICK
 			for(var/mob/living/L in src.contents)
-				L.gib()
-				CHECK_TICK
+				if(L.stat == DEAD)
+					L.gib()
+					CHECK_TICK
 				//H.stat = DEAD
 		if(BLOWOUTHIGH)
 			lentahtml = ""
@@ -115,8 +116,9 @@ area/proc/StopBlowout(blowoutphase)
 				qdel(A)
 				CHECK_TICK
 			for(var/mob/living/L in src.contents)
-				L.gib()
-				CHECK_TICK
+				if(L.stat == DEAD)
+					L.gib()
+					CHECK_TICK
 
 area/proc/ProcessBlowout()
 	if(blowout)

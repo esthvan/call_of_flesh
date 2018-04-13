@@ -214,7 +214,7 @@ var/list/sidormatitems = list()
 		if(istype(H.wear_id, /obj/item/device/stalker_pda))
 			var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 			var/obj/item/device/stalker_pda/KPK = H.wear_id
-			if(sk)
+			if(sk && KPK.activated)
 				if(KPK.sid == H.sid)
 					interact(user)
 				else
@@ -225,14 +225,14 @@ var/list/sidormatitems = list()
 			say("Наденьте КПК.")
 
 /obj/machinery/stalker/sidormat/interact(mob/user)
-	var/mob/living/carbon/human/H = usr
+	var/mob/living/carbon/human/H = user
 	if(istype(H.wear_id, /obj/item/device/stalker_pda))
 		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 		var/obj/item/device/stalker_pda/KPK = H.wear_id
-		if(sk)
+		if(sk && KPK.activated)
 			if(KPK.sid == H.sid)
 				balance = sk.fields["money"]
-				rating = text2num(sk.fields["rating"])
+				rating = sk.fields["rating"]
 			else
 				say("Отказано в доступе.")
 		else

@@ -88,6 +88,11 @@ var/global/lentahtml = ""
 		..()
 
 /obj/item/device/stalker_pda/attack_self(mob/user)
+	for(var/datum/data/record/sk in data_core.stalkers)
+		var/mob/living/carbon/human/H = user
+		if(H.sid == sk.fields["sid"])
+			set_owner_info(sk)
+
 	icon_state = "kpk_on"
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
 	assets.send(user)
@@ -451,7 +456,10 @@ var/global/lentahtml = ""
 	</body>\
 	\
 	</html>"
-	user << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=0")
+	if(show_title)
+		user << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=1")
+	else
+		user << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=0")
 
 	//625x305
 	//<div style=\"overflow: hidden; height: 200px; width: 180px;\" ><img height=200 width=200 src=\"http://www.clubstalker.ru/images/resize/photo/640x480/de573c3358fd4160fe545f04b864fd69.jpg\"></div>\
@@ -500,8 +508,6 @@ var/global/lentahtml = ""
 						access = J.get_access()
 
 						registered_name = H.real_name
-						faction_s = H.faction_s
-						rating = 0
 						owner = H
 						sid = H.sid
 						activated = 1
@@ -540,8 +546,15 @@ var/global/lentahtml = ""
 									activated = 1
 
 									var/image = get_id_photo(H)
-									photo_owner_front.photocreate(null, icon(image, dir = SOUTH))
-									photo_owner_west.photocreate(null, icon(image, dir = WEST))
+									var/obj/item/weapon/photo/owner_photo_front = new()
+									var/obj/item/weapon/photo/owner_photo_west = new()
+									var/obj/item/weapon/photo/owner_photo_east = new()
+									var/obj/item/weapon/photo/owner_photo_back = new()
+
+									owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
+									owner_photo_west.photocreate(null, icon(image, dir = WEST))
+									owner_photo_east.photocreate(null, icon(image, dir = EAST))
+									owner_photo_back.photocreate(null, icon(image, dir = NORTH))
 
 									KPKs += src
 
@@ -556,7 +569,7 @@ var/global/lentahtml = ""
 				faction_s = null
 				rating = null
 				owner = null
-				money = null
+				money = 0
 				photo_owner_front = null
 				photo_owner_west = null
 				photo_owner_east = null
