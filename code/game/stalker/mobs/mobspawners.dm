@@ -35,7 +35,7 @@
 		else
 			ids.Add(id_)
 		id_++
-	if(ids.len >= 1)
+	if(spawned_loot && ids.len >= 1)
 		for(var/id in ids)
 			spawned_loot.Cut(id, id)
 	return max_spawned - count
