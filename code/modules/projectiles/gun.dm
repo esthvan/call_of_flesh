@@ -597,6 +597,14 @@ obj/item/weapon/gun/proc/newshot()
 	gun.zoom(L, FALSE)
 	..()
 
+/datum/action/toggle_scope_zoom/Checks()
+	. = ..()
+
+	if(owner.get_active_hand() != gun)
+		return 0
+
+	reutn .
+
 /obj/item/weapon/gun/proc/zoom(mob/living/user, forced_zoom)
 	if(!user || !user.client)
 		return

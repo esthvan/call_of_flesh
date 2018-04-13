@@ -112,8 +112,11 @@
 
 			var/ox = round(screenview/2) //"origin" x
 			var/oy = round(screenview/2) //"origin" y
+
+			var/o_x = user.client.pixel_x
+			var/o_y = user.client.pixel_y		//Прицелы
 			//world << "Pixel position: [x] [y]"
-			var/angle = Atan2(y - oy, x - ox)
+			var/angle = Atan2(y - oy + o_x, x - ox + o_y)
 			//world << "Angle: [angle]"
 			src.Angle = angle
 	if(spread && pellets <= 1)
