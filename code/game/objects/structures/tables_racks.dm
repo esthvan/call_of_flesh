@@ -148,9 +148,9 @@
 	qdel(I)
 
 /obj/structure/table/attackby(obj/item/I, mob/user, params)
-	if (istype(I, /obj/item/weapon/grab))
-		tablepush(I, user)
-		return
+	//if (istype(I, /obj/item/weapon/grab))
+	//	tablepush(I, user)
+	//	return
 	if(!(flags&NODECONSTRUCT))
 		if (istype(I, /obj/item/weapon/screwdriver))
 			if(istype(src, /obj/structure/table/reinforced))
