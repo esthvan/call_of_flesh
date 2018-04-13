@@ -23,10 +23,10 @@
 	w_class = 2
 	fire_sound = 'sound/stalker/weapons/pm_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x18pm
-	can_suppress = 0
+	can_suppress = 1
+	can_unsuppress = 1
 	durability = 50
 	spread = 10
-	randomspread = 1
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
@@ -44,8 +44,10 @@
 	w_class = 2
 	fire_sound = 'sound/stalker/weapons/sig220_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sc45
-	can_suppress = 0
+	can_suppress = 1
+	can_unsuppress = 1
 	durability = 100
+	spread = 6
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/sig220_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
@@ -64,7 +66,9 @@
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/colt1911_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sc45
-	can_suppress = 0
+	can_suppress = 1
+	can_unsuppress = 1
+	spread = 6
 	durability = 85
 	damagelose = 0.15
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
@@ -85,7 +89,9 @@
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/marta_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19marta
-	can_suppress = 0
+	can_suppress = 1
+	can_unsuppress = 1
+	spread = 7
 	damagelose = 0.2
 	durability = 85
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
@@ -104,7 +110,9 @@
 	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
 	w_class = 2
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x18fort
-	can_suppress = 0
+	can_suppress = 1
+	can_unsuppress = 1
+	spread = 8
 	durability = 50
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/fort_draw.ogg'
@@ -136,6 +144,7 @@
 	suppressed = 1
 	can_suppress = 0
 	can_unsuppress = 0
+	spread = 8
 	durability = 50
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
@@ -153,7 +162,9 @@
 	icon_state = "usp-match"
 	w_class = 2
 	mag_type = /obj/item/ammo_box/magazine/stalker/usp45
-	can_suppress = 0
+	can_suppress = 1
+	can_unsuppress = 1
+	spread = 8
 	durability = 100
 	damagelose = 0.15
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
@@ -240,12 +251,13 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m545
 	fire_sound = 'sound/stalker/weapons/ak74_shot.ogg'
 	can_suppress = 1
+	can_unsuppress = 1
 	burst_size = 3
 	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	durability = 150
 	w_class = 4
-	spread = 8
+	spread = 7
 	randomspread = 0
 	damagelose = 0.25
 	drawsound = 'sound/stalker/weapons/draw/ak74_draw.ogg'
@@ -266,8 +278,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 80
 	w_class = 4
-	randomspread = 0
-	spread = 14
+	spread = 12
 	damagelose = 0.5
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
 
@@ -290,7 +301,7 @@
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
-	spread = 10
+	spread = 8
 	damagelose = 0.4
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
@@ -334,7 +345,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 200
 	w_class = 4
-	spread = 5
+	spread = 6
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/abakan_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/abakan_load.ogg'
@@ -424,7 +435,7 @@
 	burst_size = 3
 	pin = /obj/item/device/firing_pin
 	w_class = 4
-	spread = 6
+	spread = 8
 	damagelose = 0.35
 	drawsound = 'sound/stalker/weapons/draw/groza_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'

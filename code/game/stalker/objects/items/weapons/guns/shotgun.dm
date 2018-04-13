@@ -11,7 +11,7 @@
 	durability = 150
 	sawn_desc = "Значительно компактней и легче новой двустволки, но эффективен только в ближнем бою. Один из самых распространённых видов оружи&#255; у новичков."
 	randomspread = 0
-	spread = 13
+	spread = 12
 	damagelose = 0.3
 	distro = 25
 	fire_sound = 'sound/stalker/weapons/bm16_shot.ogg'
@@ -53,7 +53,7 @@
 	item_state = "toz34"
 	force = 100
 	durability = 150
-	spread = 8
+	spread = 6
 	damagelose = 0.15
 	distro = 10
 
