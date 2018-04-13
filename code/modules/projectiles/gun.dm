@@ -603,7 +603,7 @@ obj/item/weapon/gun/proc/newshot()
 	if(owner.get_active_hand() != gun)
 		return 0
 
-	reutn .
+	return .
 
 /obj/item/weapon/gun/proc/zoom(mob/living/user, forced_zoom)
 	if(!user || !user.client)
