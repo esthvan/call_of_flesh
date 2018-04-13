@@ -8,6 +8,18 @@
 	desc = "A universal suppressor."
 	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "suppressor"
+	types = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm,
+	 /obj/item/weapon/gun/projectile/automatic/pistol/fort12,
+	  /obj/item/weapon/gun/projectile/automatic/pistol/marta,
+	   /obj/item/weapon/gun/projectile/automatic/pistol/sip,
+	    /obj/item/weapon/gun/projectile/automatic/pistol/cora,
+	     /obj/item/weapon/gun/projectile/automatic/pistol/usp_match,
+	      /obj/item/weapon/gun/projectile/automatic/mp5,
+	       /obj/item/weapon/gun/projectile/automatic/groza,
+	        /obj/item/weapon/gun/projectile/automatic/ak74,
+	         /obj/item/weapon/gun/projectile/automatic/aksu74,
+	          /obj/item/weapon/gun/projectile/automatic/abakan,
+	           /obj/item/weapon/gun/projectile/automatic/tpc301)
 	var/oldsound = null
 	var/initial_w_class = null
 
@@ -27,7 +39,7 @@
 	zoom_add = 3
 
 /obj/item/weapon/attachment/scope/PS
-	types = list(, /obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/ak74, /obj/item/weapon/gun/projectile/automatic/abakan, /obj/item/weapon/gun/projectile/automatic/val, /obj/item/weapon/gun/projectile/automatic/groza)
+	types = list(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/ak74, /obj/item/weapon/gun/projectile/automatic/abakan, /obj/item/weapon/gun/projectile/automatic/val, /obj/item/weapon/gun/projectile/automatic/groza)
 	zoom_add = 2
 
 /obj/item/weapon/attachment/scope/PS/U1

@@ -133,27 +133,22 @@
 	if(istype(A, /obj/item/weapon/attachment/suppressor))
 		var/obj/item/weapon/attachment/suppressor/S = A
 		if(type in S.types)
-			if(can_suppress)
-				if(!suppressed)
-					if(!user.unEquip(A))
-						return
-					user << "<span class='notice'>You screw [S] onto [src].</span>"
-					playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
-					suppressed = A
-					S.oldsound = fire_sound
-					S.initial_w_class = w_class
-					fire_sound = 'sound/stalker/weapons/silencer.ogg'
-					//w_class = 3 //so pistols do not fit in pockets when suppressed
-					A.loc = src
-					update_icon()
-					addons += S
+			if(!suppressed)
+				if(!user.unEquip(A))
 					return
-				else
-					user << "<span class='warning'>[src] already has a suppressor!</span>"
-					return
-
+				user << "<span class='notice'>You screw [S] onto [src].</span>"
+				playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
+				suppressed = A
+				S.oldsound = fire_sound
+				S.initial_w_class = w_class
+				fire_sound = 'sound/stalker/weapons/silencer.ogg'
+				//w_class = 3 //so pistols do not fit in pockets when suppressed
+				A.loc = src
+				update_icon()
+				addons += S
+				return
 			else
-				user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
+				user << "<span class='warning'>[src] already has a suppressor!</span>"
 				return
 		else
 			user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
@@ -161,26 +156,22 @@
 	if(istype(A, /obj/item/weapon/attachment/scope))
 		var/obj/item/weapon/attachment/scope/S = A
 		if(type in S.types)
-			if(can_scope)
-				if(!zoomable)
-					if(!user.unEquip(A))
-						return
-					user << "<span class='notice'>You screw [S] onto [src].</span>"
-					playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
-					zoomable = 1
-					A.loc = src
-					update_icon()
-					addons += S
-					rebuild_zooming()
-					azoom = new()
-					azoom.gun = src
-					azoom.Grant(user)
+			if(!zoomable)
+				if(!user.unEquip(A))
 					return
-				else
-					user << "<span class='warning'>[src] already has a scope!</span>"
-					return
+				user << "<span class='notice'>You screw [S] onto [src].</span>"
+				playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
+				zoomable = 1
+				A.loc = src
+				update_icon()
+				addons += S
+				rebuild_zooming()
+				azoom = new()
+				azoom.gun = src
+				azoom.Grant(user)
+				return
 			else
-				user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
+				user << "<span class='warning'>[src] already has a scope!</span>"
 				return
 		else
 			user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"

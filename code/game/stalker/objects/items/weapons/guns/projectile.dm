@@ -304,14 +304,14 @@
 	item_state = "gun"
 	fire_sound = 'sound/stalker/weapons/mp5_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
-	can_suppress = 0
+	can_suppress = 1
 	burst_size = 2
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
 	spread = 8
 	damagelose = 0.4
-	can_scope = 0
+	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
