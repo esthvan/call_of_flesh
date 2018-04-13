@@ -60,6 +60,7 @@
 	var/zoomed = FALSE //Zoom toggle
 	var/zoom_amt = 3 //Distance in TURFs to move the user's screen forward (the "zoom" effect)
 	var/datum/action/toggle_scope_zoom/azoom
+	var/can_scope = 0
 
 	///////////////////////STALKER////////////////////////////////
 
@@ -69,6 +70,7 @@
 	var/durability = 100     //durability of a gun
 	var/jam = 0              //is weapon jammed or not
 	var/unique = 0
+	var/list/obj/item/weapon/attachment/addons = list()
 
 	var/list/l_sounds_shots = list('sound/stalker/weapons/fading/rnd_shooting_1.ogg','sound/stalker/weapons/fading/rnd_shooting_2.ogg',
 								'sound/stalker/weapons/fading/rnd_shooting_4.ogg','sound/stalker/weapons/fading/rnd_shooting_5.ogg',
@@ -81,7 +83,7 @@
 	if(pin)
 		pin = new pin(src)
 
-	build_zooming()
+	rebuild_zooming()
 
 
 /obj/item/weapon/gun/CheckParts(list/parts_list)
@@ -638,10 +640,16 @@ obj/item/weapon/gun/proc/newshot()
 
 
 //Proc, so that gun accessories/scopes/etc. can easily add zooming.
-/obj/item/weapon/gun/proc/build_zooming()
+/obj/item/weapon/gun/proc/rebuild_zooming()
 	if(azoom)
+		if(!zoomable)
+			zoom_amt = initial(zoom_amt)
+			zoom(usr, FALSE)
+			azoom = null
 		return
 
 	if(zoomable)
+		for(var/obj/item/weapon/attachment/scope/S in addons)
+			zoom_amt += S.zoom_add
 		azoom = new()
 		azoom.gun = src

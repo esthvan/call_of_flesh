@@ -6,12 +6,12 @@
 	w_class = 3
 	var/loadsound = 'sound/stalker/weapons/load/ak74_load.ogg'
 	var/opensound = 'sound/stalker/weapons/unload/ak74_open.ogg'
-	var/list/obj/item/weapon/attachment/addons = list()
+
 
 	var/mag_type = /obj/item/ammo_box/magazine/m10mm //Removes the need for max_ammo and caliber info
 	var/obj/item/ammo_box/magazine/magazine
 
-/obj/item/weapon/gun/projectile/verb/verb_deattach()
+/obj/item/weapon/gun/projectile/verb/deattach()
 	set src in usr.contents
 	set category = "Object"
 	set name = "Deattach Addon"
@@ -23,40 +23,48 @@
 		switch(addons.len)
 			if(2 to INFINITY)
 				var/selection = input("Please, select addon to deattach!", "Gun", null, null) as null|anything in addons
-				if(istype(selection, /obj/item/weapon/attachment/suppressor))
-					var/obj/item/weapon/attachment/suppressor/S = selection
-					if(usr.l_hand != src && usr.r_hand != src)
-						..()
-						return
-					usr << "<span class='notice'>You unscrew [suppressed] from [src].</span>"
-					playsound (src.loc, 'sound/stalker/weapons/detach_addon.ogg', 50, 1, 0)
-					usr.put_in_hands(S)
-					fire_sound = S.oldsound
-					suppressed = 0
-					addons.Remove(S)
+				deattach_attachment(selection)
 
 			if(1)
 				//ƒќƒ≈Ћј“№
 				for (var/obj/item/weapon/attachment/A in addons)
-					if(istype(A, /obj/item/weapon/attachment/suppressor))
-						var/obj/item/weapon/attachment/suppressor/S = A
-						if(usr.l_hand != src && usr.r_hand != src)
-							..()
-							return
-						usr << "<span class='notice'>You unscrew [suppressed] from [src].</span>"
-						playsound (src.loc, 'sound/stalker/weapons/detach_addon.ogg', 50, 1, 0)
-						usr.put_in_hands(S)
-						fire_sound = S.oldsound
-						suppressed = 0
-						addons.Remove(S)
+					deattach_attachment(A)
 			if(0)
 				//нужно что-то написать здесь
+				usr << "<span class='notice'>There are no attachments.</span>"
 				return
 	else
 		usr << "<span class='notice'>ќсвободите руку.</span>"
 	update_icon()
 	return
 
+/obj/item/weapon/gun/projectile/proc/deattach_attachment(var/obj/item/weapon/attachment/A)
+	if(istype(A, /obj/item/weapon/attachment/suppressor))
+		var/obj/item/weapon/attachment/suppressor/S = A
+		if(usr.l_hand != src && usr.r_hand != src)
+			..()
+			return
+		usr << "<span class='notice'>You unscrew [A] from [src].</span>"
+		playsound (src.loc, 'sound/stalker/weapons/detach_addon.ogg', 50, 1, 0)
+		usr.put_in_hands(S)
+		fire_sound = S.oldsound
+		suppressed = 0
+		addons.Remove(S)
+		return
+
+	if(istype(A, /obj/item/weapon/attachment/scope))
+		var/obj/item/weapon/attachment/scope/S =A
+		if(usr.l_hand != src && usr.r_hand != src)
+			..()
+			return
+		usr << "<span class='notice'>You unscrew [A] from [src].</span>"
+		playsound (src.loc, 'sound/stalker/weapons/detach_addon.ogg', 50, 1, 0)
+		azoom.Remove(usr)
+		usr.put_in_hands(S)
+		zoomable = 0
+		addons.Remove(S)
+		rebuild_zooming()
+		return
 
 /obj/item/weapon/gun/projectile/New()
 	..()
@@ -124,23 +132,55 @@
 			user << "<span class='notice'>There's already a magazine in \the [src].</span>"
 	if(istype(A, /obj/item/weapon/attachment/suppressor))
 		var/obj/item/weapon/attachment/suppressor/S = A
-		if(can_suppress)
-			if(!suppressed)
-				if(!user.unEquip(A))
+		if(type in S.types)
+			if(can_suppress)
+				if(!suppressed)
+					if(!user.unEquip(A))
+						return
+					user << "<span class='notice'>You screw [S] onto [src].</span>"
+					playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
+					suppressed = A
+					S.oldsound = fire_sound
+					S.initial_w_class = w_class
+					fire_sound = 'sound/stalker/weapons/silencer.ogg'
+					//w_class = 3 //so pistols do not fit in pockets when suppressed
+					A.loc = src
+					update_icon()
+					addons += S
 					return
-				user << "<span class='notice'>You screw [S] onto [src].</span>"
-				playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
-				suppressed = A
-				S.oldsound = fire_sound
-				S.initial_w_class = w_class
-				fire_sound = 'sound/stalker/weapons/silencer.ogg'
-				//w_class = 3 //so pistols do not fit in pockets when suppressed
-				A.loc = src
-				update_icon()
-				addons += S
-				return
+				else
+					user << "<span class='warning'>[src] already has a suppressor!</span>"
+					return
+
 			else
-				user << "<span class='warning'>[src] already has a suppressor!</span>"
+				user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
+				return
+		else
+			user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
+			return
+	if(istype(A, /obj/item/weapon/attachment/scope))
+		var/obj/item/weapon/attachment/scope/S = A
+		if(type in S.types)
+			if(can_scope)
+				if(!zoomable)
+					if(!user.unEquip(A))
+						return
+					user << "<span class='notice'>You screw [S] onto [src].</span>"
+					playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
+					zoomable = 1
+					A.loc = src
+					update_icon()
+					addons += S
+					rebuild_zooming()
+					azoom = new()
+					azoom.gun = src
+					azoom.Grant(user)
+					return
+				else
+					user << "<span class='warning'>[src] already has a scope!</span>"
+					return
+			else
+				user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
 				return
 		else
 			user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
@@ -251,16 +291,6 @@
 		if(AC.BB)
 			process_fire(user, user,0)
 			. = 1
-
-
-/obj/item/weapon/attachment/suppressor
-	name = "suppressor"
-	desc = "A universal syndicate small-arms suppressor for maximum espionage."
-	icon = 'icons/obj/guns/projectile.dmi'
-	icon_state = "suppressor"
-	w_class = 2
-	var/oldsound = null
-	var/initial_w_class = null
 
 /obj/item/weapon/attachment/suppressor/specialoffer
 	name = "cheap suppressor"

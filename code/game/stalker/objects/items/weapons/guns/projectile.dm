@@ -180,19 +180,22 @@
 ///////////////////////////// Автоматы, ПП //////////////////////////////////////////
 
 /obj/item/weapon/gun/projectile/automatic
-	var/image/mag_overlay = null
-	var/image/mag_overlay_inhands = null
-	var/image/silencer_overlay = null
-	var/image/colored_overlay = null
-	var/colored = null
+	var/image/mag_overlay 			= null
+	var/image/mag_overlay_inhands 	= null
+	var/image/silencer_overlay 		= null
+	var/image/scope_overlay 		= null
+	var/image/colored_overlay 		= null
+	var/colored 					= null
 
 /obj/item/weapon/gun/projectile/automatic/New()
 	..()
-	mag_overlay = image('icons/stalker/projectile_overlays.dmi', "[initial(icon_state)]-mag", layer = FLOAT_LAYER)
+	mag_overlay = image('icons/stalker/projectile_overlays32x32.dmi', "[initial(icon_state)]-mag", layer = FLOAT_LAYER)
 	if(can_suppress)
-		silencer_overlay = image('icons/stalker/projectile_overlays.dmi', "[initial(icon_state)]-silencer", layer = FLOAT_LAYER)
+		silencer_overlay = image('icons/stalker/projectile_overlays48x48.dmi', "[initial(icon_state)]-silencer", layer = FLOAT_LAYER)
+	if(can_scope)
+		scope_overlay = image('icons/stalker/projectile_overlays32x32.dmi', "[initial(icon_state)]-scope", layer = FLOAT_LAYER)
 	if(colored)
-		colored_overlay = image('icons/stalker/projectile_overlays.dmi', "[initial(icon_state)]-[colored]", layer = FLOAT_LAYER)
+		colored_overlay = image('icons/stalker/projectile_overlays32x32.dmi', "[initial(icon_state)]-[colored]", layer = FLOAT_LAYER)
 		overlays += colored_overlay
 	update_icon()
 
@@ -202,7 +205,7 @@
 	/*
 	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
 	*/
-	item_state = "[initial(item_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"		//Пока не разберусь с оверлеями на мобах, будет так
+	item_state = "[initial(item_state)][magazine ? "" : "-e"]"		//Пока не разберусь с оверлеями на мобах, будет так
 
 	/*
 	if(!magazine && mag_overlay in overlays)
@@ -220,8 +223,11 @@
 	if(suppressed && silencer_overlay)
 		overlays += silencer_overlay
 
+	if(zoomable && scope_overlay)
+		overlays += scope_overlay
+
 	if(unique)
-		overlays += image('icons/stalker/projectile_overlays.dmi', "unique", layer = FLOAT_LAYER)
+		overlays += image('icons/stalker/projectile_overlays32x32.dmi', "unique", layer = FLOAT_LAYER)
 
 	if(istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
 		icon_state = "[initial(icon_state)][magazine ? "-[magazine.max_ammo]" : ""][chambered ? "" : "-e"]"
@@ -260,6 +266,7 @@
 	spread = 7
 	randomspread = 0
 	damagelose = 0.25
+	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/ak74_draw.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/aksu74  // АКС74У
@@ -280,6 +287,7 @@
 	w_class = 4
 	spread = 12
 	damagelose = 0.5
+	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
 
 /*
@@ -303,6 +311,7 @@
 	w_class = 3
 	spread = 8
 	damagelose = 0.4
+	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
@@ -325,6 +334,7 @@
 	w_class = 4
 	spread = 5
 	damagelose = 0.2
+	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/tpc301_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/tpc301_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/tpc301_open.ogg'
@@ -347,6 +357,7 @@
 	w_class = 4
 	spread = 6
 	damagelose = 0.2
+	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/abakan_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/abakan_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/abakan_open.ogg'
@@ -363,6 +374,7 @@
 	fire_sound = 'sound/stalker/weapons/il86_shoot.ogg'
 	can_suppress = 1
 	zoomable = 1
+	zoom_amt = 9
 	burst_size = 2
 	fire_delay = 1.5
 	pin = /obj/item/device/firing_pin
@@ -370,6 +382,7 @@
 	w_class = 4
 	spread = 3
 	damagelose = 0
+	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/l85_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
@@ -394,6 +407,7 @@
 	w_class = 4
 	spread = 4
 	damagelose = 0.1
+	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/val_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/val_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/val_open.ogg'
@@ -408,6 +422,7 @@
 	can_suppress = 0
 	can_unsuppress = 0
 	zoomable = 1
+	zoom_amt = 7
 	burst_size = 1
 	durability = 110
 	slot_flags = SLOT_BACK
@@ -417,6 +432,7 @@
 	w_class = 4
 	spread = 3
 	damagelose = 0
+	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/val_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/val_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/val_open.ogg'
@@ -437,6 +453,7 @@
 	w_class = 4
 	spread = 8
 	damagelose = 0.35
+	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/groza_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
