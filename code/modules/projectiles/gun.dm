@@ -226,8 +226,8 @@
 
 
 /obj/item/weapon/gun/proc/can_trigger_gun(mob/living/carbon/user)
-	if (!user.IsAdvancedToolUser())
-		user << "<span class='warning'>You don't have the dexterity to do this!</span>"
+	if (istype(get_area(user.loc), /area/stalker/blowout/outdoor/bar))
+		user << "<span class='warning'>Вы не можете стрел&#255;ть в этой зоне!</span>"
 		return 0
 
 	if(!handle_pins(user))

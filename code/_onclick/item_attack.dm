@@ -73,6 +73,10 @@
 
 /obj/item/proc/attack(mob/living/M, mob/living/user, def_zone)
 
+	if (istype(get_area(user.loc), /area/stalker/blowout/outdoor/bar))
+		user << "<span class='warning'>Вы не можете дратьс&#255; в этой зоне!</span>"
+		return 0
+
 	if (!istype(M)) // not sure if this is the right thing...
 		return
 
