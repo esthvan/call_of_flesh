@@ -330,38 +330,38 @@
 						var/rep = "Нейтральна&#255;"
 						var/font_color = "#ffd400"
 						switch(R.fields["reputation"])
-							if(2000 to INFINITY)
+							if(AMAZING to INFINITY)
 								rep = "Свой пацан"
 								font_color = "#00abdb" //#00abdb
-							if(1500 to 2000)
+							if(VERYGOOD to AMAZING)
 								rep = "Очень хороша&#255;"
 								font_color = "#45ad00" //#6ddb00
-							if(1100 to 1500)
+							if(GOOD to VERYGOOD)
 								rep = "Хороша&#255;"
 								font_color = "#bddb00" //#b6db00
-							if(900 to 1100)
+							if(NEUTRAL to GOOD)
 								rep = "Нейтральна&#255;"
 								font_color = "#b7a200" //#ffb200
-							if(500 to 900)
+							if(BAD to NEUTRAL)
 								rep = "Плоха&#255;"
 								font_color = "#db5700" //#db5700
-							if(0 to 500)
+							if(VERYBAD to BAD)
 								rep = "Очень плоха&#255;"
 								font_color = "#db2b00" //#db2b00
-							if(0)
+							if(DISGUSTING)
 								rep = "Гнида"
 								font_color = "#7c0000"
 						var/rank_name_s = "Новичок"
 						switch(R.fields["rating"])
-							if(10000 to INFINITY)
+							if(ZONE_LEGEND to INFINITY)
 								rank_name_s = "Легенда Зоны"
-							if(7000 to 9999)
+							if(MASTER to ZONE_LEGEND)
 								rank_name_s = "Мастер"
-							if(4000 to 6999)
+							if(VETERAN to MASTER)
 								rank_name_s = "Ветеран"
-							if(1000 to 3999)
+							if(EXPERT to VETERAN)
 								rank_name_s = "Опытный"
-							if(0 to 999)
+							if(NEWBIE to EXPERT)
 								rank_name_s = "Новичок"
 						var/faction_s = R.fields["faction_s"]
 

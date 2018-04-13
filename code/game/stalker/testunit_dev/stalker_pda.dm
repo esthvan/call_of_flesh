@@ -769,39 +769,39 @@ var/global/lentahtml = ""
 
 		var/rep_color
 		switch(R.fields["reputation"])
-			if(2000 to INFINITY)
+			if(AMAZING to INFINITY)
 				rep = "Свой пацан"
 				rep_color = "#00abdb" //#00abdb
-			if(1500 to 2000)
+			if(VERYGOOD to AMAZING)
 				rep = "Очень хороша&#x44F;"
 				rep_color = "#b6ff38" //#6ddb00
-			if(1100 to 1500)
+			if(GOOD to VERYGOOD)
 				rep = "Хороша&#x44F;"
 				rep_color = "#daff21" //#b6db00
-			if(900 to 1100)
+			if(NEUTRAL to GOOD)
 				rep = "Нейтральна&#x44F;"
 				rep_color = "#ffe100" //#ffb200
-			if(500 to 900)
+			if(BAD to NEUTRAL)
 				rep = "Плоха&#x44F;"
 				rep_color = "#ff6b3a" //#db5700
-			if(0 to 500)
+			if(VERYBAD to BAD)
 				rep = "Очень плоха&#x44F;"
 				rep_color = "#db2b00" //#db2b00
-			if(0)
+			if(DISGUSTING)
 				rep = "Гнида"
 				rep_color = "#7c0000"
 
 		var/rank_name
 		switch(r)
-			if(10000 to INFINITY)
+			if(ZONE_LEGEND to INFINITY)
 				rank_name = "Легенда Зоны"
-			if(7000 to 9999)
+			if(MASTER to ZONE_LEGEND)
 				rank_name = "Мастер"
-			if(4000 to 6999)
+			if(VETERAN to MASTER)
 				rank_name = "Ветеран"
-			if(1000 to 3999)
+			if(EXPERT to VETERAN)
 				rank_name = "Опытный"
-			if(0 to 999)
+			if(NEWBIE to EXPERT)
 				rank_name = "Новичок"
 
 		ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
@@ -904,36 +904,36 @@ var/global/lentahtml = ""
 	reputation	= sk.fields["reputation"]
 
 	switch(sk.fields["reputation"])
-		if(2000 to INFINITY)
+		if(AMAZING to INFINITY)
 			rep_name_s = "Свой пацан"
 			rep_color_s = "#00abdb" //#00abdb
-		if(1500 to 2000)
+		if(VERYGOOD to AMAZING)
 			rep_name_s = "Очень хороша&#x44F;"
 			rep_color_s = "#b6ff38" //#6ddb00
-		if(1100 to 1500)
+		if(GOOD to VERYGOOD)
 			rep_name_s = "Хороша&#x44F;"
 			rep_color_s = "#daff21" //#b6db00
-		if(900 to 1100)
+		if(NEUTRAL to GOOD)
 			rep_name_s = "Нейтральна&#x44F;"
 			rep_color_s = "#ffe100" //#ffb200
-		if(500 to 900)
+		if(BAD to NEUTRAL)
 			rep_name_s = "Плоха&#x44F;"
 			rep_color_s = "#ff6b3a" //#db5700
-		if(0 to 500)
+		if(DISGUSTING to VERYBAD)
 			rep_name_s = "Очень плоха&#x44F;"
 			rep_color_s = "#db2b00" //#db2b00
-		if(0)
+		if(DISGUSTING)
 			rep_name_s = "Гнида"
 			rep_color_s = "#7c0000"
 
 	switch(sk.fields["rating"])
-		if(10000 to INFINITY)
+		if(ZONE_LEGEND to INFINITY)
 			rank_name_s = "Легенда Зоны"
-		if(7000 to 9999)
+		if(MASTER to ZONE_LEGEND)
 			rank_name_s = "Мастер"
-		if(4000 to 6999)
+		if(VETERAN to MASTER)
 			rank_name_s = "Ветеран"
-		if(1000 to 3999)
+		if(EXPERT to VETERAN)
 			rank_name_s = "Опытный"
-		if(0 to 999)
+		if(NEWBIE to EXPERT)
 			rank_name_s = "Новичок"
