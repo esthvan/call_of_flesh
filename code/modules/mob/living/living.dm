@@ -922,11 +922,13 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 
 	var/mob/killer = get_killer()
 
+	/*Не самая лучшая реализация
 	if(istype(killed_one, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H1 = killed_one
 		var/datum/data/record/sk = find_record("sid", H1.sid, data_core.stalkers)
 		if(sk)
 			data_core.stalkers -= sk
+	*/
 
 	if(istype(killer, /mob/living/carbon/human))
 		var/mob/living/carbon/human/killer_h = killer
@@ -944,26 +946,26 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 
 				//var/temp_rep = text2num(sk_H.fields["rating"])
 				switch(sk_H.fields["rating"])
-					if(10000 to INFINITY)
-						sk.fields["rating"] = sk.fields["rating"] + 5000
-					if(5000 to 9999)
-						sk.fields["rating"] = sk.fields["rating"] + 2500
-					if(3000 to 4999)
+					if(ZONE_LEGEND to INFINITY)
+						sk.fields["rating"] = sk.fields["rating"] + 2000
+					if(MASTER to ZONE_LEGEND)
+						sk.fields["rating"] = sk.fields["rating"] + 1000
+					if(VETERAN to MASTER)
 						sk.fields["rating"] = sk.fields["rating"] + 500
-					if(1000 to 2999)
+					if(EXPERT to VETERAN)
 						sk.fields["rating"] = sk.fields["rating"] + 250
-					if(0 to 999)
+					if(NEWBIE to EXPERT)
 						sk.fields["rating"] = sk.fields["rating"] + 50
 		else
 			if(sk)
 				if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/dog))
-					sk.fields["rating"] = sk.fields["rating"] + 10
+					sk.fields["rating"] = sk.fields["rating"] + 20
 
 				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/snork))
-					sk.fields["rating"] = sk.fields["rating"] + 50
+					sk.fields["rating"] = sk.fields["rating"] + 100
 
 				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/flesh))
-					sk.fields["rating"] = sk.fields["rating"] + 10
+					sk.fields["rating"] = sk.fields["rating"] + 20
 
 				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/kaban))
-					sk.fields["rating"] = sk.fields["rating"] + 30
+					sk.fields["rating"] = sk.fields["rating"] + 60
