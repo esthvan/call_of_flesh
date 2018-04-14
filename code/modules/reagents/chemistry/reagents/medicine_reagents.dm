@@ -376,7 +376,7 @@
 
 /datum/reagent/medicine/potass_iodide/on_mob_life(mob/living/M)
 	if(M.radiation > 0)
-		M.radiation--
+		M.radiation -= 6
 	if(M.radiation < 0)
 		M.radiation = 0
 	..()
@@ -392,7 +392,7 @@
 
 /datum/reagent/medicine/pen_acid/on_mob_life(mob/living/M)
 	if(M.radiation > 0)
-		M.radiation -= 4
+		M.radiation -= 12
 	M.adjustToxLoss(-2*REM)
 	if(M.radiation < 0)
 		M.radiation = 0

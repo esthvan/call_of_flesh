@@ -238,29 +238,16 @@
 				dna.temporary_mutations.Remove(mut)
 
 	if(radiation)
-
+		radiation -= 0.5
 		switch(radiation)
+			if(100 to INFINITY)
+				adjustFireLoss(radiation*0.004)
+				updatehealth()
 			if(10 to 100)
-				//radiation--
-				radiation -= 0.25
-				if(prob(25))
-					adjustFireLoss(1)
-					updatehealth()
-
-			if(100 to 200)
-				adjustFireLoss(2)
+				adjustFireLoss(1)
 				updatehealth()
 
-			if(200 to 300)
-				//radiation -= 3
-				adjustFireLoss(4)
-				updatehealth()
-
-			if(300 to INFINITY)
-				adjustFireLoss(6)
-				updatehealth()
-
-		radiation = Clamp(radiation, 0, 100)
+		radiation = Clamp(radiation, 0, 750)
 
 
 /mob/living/carbon/handle_chemicals_in_body()
@@ -494,7 +481,7 @@
 				damageoverlay.overlays += black
 		var/whitenoisealpha = 0
 		if(stat != DEAD)
-			whitenoisealpha = 100 - health + radiation
+			whitenoisealpha = 100 - health + (radiation*0.125)
 		whitenoise.alpha = whitenoisealpha
 
 	..()

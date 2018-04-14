@@ -4,8 +4,8 @@
 	icon = 'icons/stalker/items.dmi'
 	icon_state = "antirad"
 	item_state = "antirad"
-	amount_per_transfer_from_this = 10
-	volume = 10
+	amount_per_transfer_from_this = 18
+	volume = 18
 	ignore_flags = 1 //so you can medipen through hardsuits
 	flags = null
-	list_reagents = list("pen_acid" = 10)
+	list_reagents = list("pen_acid" = 18)

@@ -383,7 +383,7 @@
 	var/damage_amount = 0 				//Сколько дамажит
 	var/damage_type = DMG_TYPE_RADIATION	//Тип дамага
 	var/activated_icon_state = null 	//Спрайт при активации
-	var/cooldown = 5 					//Кулдаун
+	var/cooldown = 2.5					//Кулдаун
 	var/lasttime = 0
 	var/list/trapped = new/list()
 	var/idle_luminosity = 0
@@ -400,17 +400,17 @@
 	pass_flags = PASSTABLE | PASSGRILLE
 
 /obj/rad/rad_low
-	damage_amount = 1
+	damage_amount = 10
 	sound = 'sound/stalker/pda/geiger_1.ogg'
 	icon_state = "rad_low"
 
 /obj/rad/rad_medium
-	damage_amount = 4
+	damage_amount = 25
 	sound = 'sound/stalker/pda/geiger_4.ogg'
 	icon_state = "rad_medium"
 
 /obj/rad/rad_high
-	damage_amount = 8
+	damage_amount = 75
 	sound = 'sound/stalker/pda/geiger_6.ogg'
 	icon_state = "rad_high"
 

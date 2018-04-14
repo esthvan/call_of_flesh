@@ -29,9 +29,28 @@
 /atom/proc/rad_act(var/severity)
 	return 1
 
-/mob/living/rad_act(amount)
+/mob/living/carbon/human/rad_act(amount)
 	if(amount)
-		var/blocked = run_armor_check(null, "rad"/*, "Your clothes feel warm.", "Your clothes feel warm."*/)
-		apply_effect(amount, IRRADIATE, blocked)
+		//var/blocked = run_armor_check(null, "rad"/*, "Your clothes feel warm.", "Your clothes feel warm."*/)
+		var/blocked = getarmor_rad()
+		//blocked += src.global_armor[attack_flag]
+
+		amount = (amount / 0.75) - blocked
+		if(amount < 0)
+			amount = 0
+
+		apply_effect(amount, IRRADIATE, 0)
 		for(var/obj/I in src) //Radiation is also applied to items held by the mob
 			I.rad_act(amount)
+
+/mob/living/carbon/human/proc/getarmor_rad()
+	var/armorval = 0
+	var/organnum = 0
+
+	for(var/obj/item/organ/limb/organ in organs)
+		//if(istype(organ, /obj/item/organ/limb/head))
+		//	armorval += 2 * checkarmor(organ, "rad")
+
+		armorval += checkarmor(organ, "rad")
+		organnum++
+	return (armorval/max(organnum, 1))
