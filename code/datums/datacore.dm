@@ -289,6 +289,7 @@ var/record_id_num = 1001
 		sk.fields["photo_back"] = photo_back
 		sk.fields["pass"]		= pass
 		sk.fields["money"]		= 5000
+		sk.fields["lastlogin"]	= world.time
 		stalkers += sk
 	return
 
