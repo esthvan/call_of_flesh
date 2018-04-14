@@ -47,6 +47,7 @@ var/global/lentahtml = ""
 	//РЕЙТИНГ
 	var/sortBy = "rating"
 	var/order = 1
+	var/lastlogin = 0
 
 /datum/asset/simple/kpk
 	assets = list(
@@ -92,6 +93,7 @@ var/global/lentahtml = ""
 		var/mob/living/carbon/human/H = user
 		if(H.sid == sk.fields["sid"])
 			set_owner_info(sk)
+			sk.fields["lastlogin"] = world.time
 
 	icon_state = "kpk_on"
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
@@ -804,23 +806,24 @@ var/global/lentahtml = ""
 			if(NEWBIE to EXPERT)
 				rank_name = "Новичок"
 
-		ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
-				<tr style=\"border: 1px solid black;\">\
-                \
-                <td width=64 height=64 align=\"top\">\
-				<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
-                </td>\
-                \
-                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
-         		\
-                <b>\[[count]\]</b> [n] ([f])<br>\
-				<b>Рейтинг:</b> [rank_name] ([r])<br>\
-                <b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
-                \
-                </td>\
-                \
-                </tr>\
-                </table>"
+		if(R.fields["lastlogin"] + 12000 >= world.time)
+			ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
+					<tr style=\"border: 1px solid black;\">\
+	                \
+	                <td width=64 height=64 align=\"top\">\
+					<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
+	                </td>\
+	                \
+	                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
+	         		\
+	                <b>\[[count]\]</b> [n] ([f])<br>\
+					<b>Рейтинг:</b> [rank_name] ([r])<br>\
+	                <b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
+	                \
+	                </td>\
+	                \
+	                </tr>\
+	                </table>"
 	/*СТАРЫЙ РЕЙТИНГ
 		ratinghtml += "<tr style=#2e2e38>\
 		<td><img id=\"ratingimg\" height=24 width=24 border=1 src=photo_[sid_p]>[n]</td>\
