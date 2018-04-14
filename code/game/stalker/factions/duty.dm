@@ -13,7 +13,7 @@ Assistant
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	whitelist_only = 0
-	limit_per_player = 1
+	limit_per_player = 3
 	outfit = /datum/outfit/job/duty
 
 /datum/outfit/job/duty
@@ -21,6 +21,7 @@ Assistant
 	faction_s = "Долг"
 
 /datum/outfit/job/duty/pre_equip(mob/living/carbon/human/H)
+	..()
 	head = null
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
 	suit = /obj/item/clothing/suit/hooded/kombez/psz9d
@@ -81,6 +82,7 @@ Assistant
 	faction_s = "Одиночки"
 
 /datum/outfit/job/barman2/pre_equip(mob/living/carbon/human/H)
+	..()
 	head = null
 	uniform = /obj/item/clothing/under/color/switer/dark
 	suit = /obj/item/clothing/suit/jacket/sidor
