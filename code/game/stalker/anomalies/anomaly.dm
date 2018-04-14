@@ -238,7 +238,7 @@
 					new_dir = pick(EAST, NORTH, WEST, SOUTH)
 					target = get_turf(get_step(target, new_dir))
 
-				M.throw_at(target, 10, 1, spin=1, diagonals_first = 1)
+				M.throw_at(target, 6, 1, spin=1, diagonals_first = 1)
 				M.Weaken(2)
 
 
@@ -294,7 +294,7 @@
 	name = "anomaly"
 	damage_amount = 20
 	cooldown = 2
-	delay = 0
+	delay = 0.25
 	sound = 'sound/stalker/anomalies/gravi_blowout1.ogg'
 	idle_luminosity = 0
 	activated_luminosity = 0
