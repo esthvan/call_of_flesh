@@ -624,15 +624,18 @@ var/global/lentahtml = ""
 						var/lefttime = round((450 + last_lenta - world.time)/10)
 						var/ending = ""
 						switch (lefttime % 10)
+							if(2 to 4)
+								ending = "ы"
 							if(1)
 								ending = "у"
-							if(2)
-								ending = "ы"
-							if(3)
-								ending = "ы"
-							if(4)
-								ending = "ы"
 						H << "<span class='warning'>Вы сможете отправить следующее сообщение через [round((450 + last_lenta - world.time)/10)] секунд[ending].</span>"
+
+			if("lenta_sound")
+				lenta_sound = !lenta_sound
+				if(lenta_sound)
+					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
+				else
+					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте включен.</span>"
 
 			if("refresh_rating")
 				ratinghtml = ""
@@ -659,9 +662,10 @@ var/global/lentahtml = ""
 
 			if("4")			//ЛЕНТА
 				for(var/datum/data/record/R in data_core.stalkers)
-					var/sid_p = R.fields["sid"]
-					var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
-					H << browse_rsc(P1.img, "photo_[sid_p]")
+					if(R.fields["lastlogin"] + 18000 <= world.time)
+						var/sid_p = R.fields["sid"]
+						var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
+						H << browse_rsc(P1.img, "photo_[sid_p]")
 				mode = 4
 
 			if("5")			//КАРТА
