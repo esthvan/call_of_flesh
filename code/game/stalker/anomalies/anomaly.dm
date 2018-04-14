@@ -294,7 +294,7 @@
 	name = "anomaly"
 	damage_amount = 20
 	cooldown = 2
-	delay = 0.25
+	delay = 0.3
 	sound = 'sound/stalker/anomalies/gravi_blowout1.ogg'
 	idle_luminosity = 0
 	activated_luminosity = 0
