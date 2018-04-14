@@ -192,6 +192,62 @@
 					Think()
 	return
 
+/obj/anomaly/tramplin/Think()
+
+	if(src.trapped.len <= 0)
+		//SSobj.processing.Remove(src)
+		return
+
+	if(lasttime + (cooldown * 10) > world.time)
+		spawn(lasttime + (cooldown * 10) - world.time)
+			Think()
+		return
+
+	invisibility = active_invisibility
+	icon_state = active_icon_state
+	update_icon()
+
+	set_light(activated_luminosity, l_color = anomaly_color)
+
+
+	spawn(10)
+		invisibility = inactive_invisibility
+		icon_state = inactive_icon_state
+
+		set_light(idle_luminosity, l_color = anomaly_color)
+
+	playsound(src.loc, src.sound, 50, 1, channel = 0)
+
+	lasttime = world.time
+
+	spawn(src.delay * 10)
+		for(var/atom/A in src.trapped)
+			if(istype(A, /mob/living))
+				var/mob/living/M = A
+				//spawn(src.delay * 10)
+				if(M.stat == 2)
+					src.trapped.Remove(M)
+					return
+
+				M.apply_damage(src.damage_amount, BRUTE, null, 0)
+
+				var/new_dir = NORTH
+				var/target = get_turf(src)
+
+				for(var/o=0, o<8, o++)
+					new_dir = pick(EAST, NORTH, WEST, SOUTH)
+					target = get_turf(get_step(target, new_dir))
+
+				M.throw_at(target, 10, 1, spin=1, diagonals_first = 1)
+				M.Weaken(2)
+
+
+				spawn(src.cooldown * 10)
+					if(src.trapped.len <= 0)
+						return
+					Think()
+	return
+
 /obj/anomaly/electro
 	name = "anomaly"
 	damage_amount = 40
@@ -215,7 +271,7 @@
 	..()
 	src.set_light(luminosity)
 
-/obj/anomaly/tramplin
+/obj/anomaly/karusel
 	name = "anomaly"
 	damage_amount = 40
 	cooldown = 2
@@ -228,15 +284,34 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/item/weapon/artifact/meduza = 6,
-				/obj/item/weapon/artifact/stoneflower = 2.75,
-				/obj/item/weapon/artifact/nightstar = 1,
-				/obj/item/weapon/artifact/maminibusi = 0.25,
+	loot = list(/obj/item/weapon/artifact/meduza = 5,
+				/obj/item/weapon/artifact/stoneflower = 3,
+				/obj/item/weapon/artifact/nightstar = 1.5,
+				/obj/item/weapon/artifact/maminibusi = 0.5,
+				/obj/nothing = 90)
+
+/obj/anomaly/tramplin
+	name = "anomaly"
+	damage_amount = 20
+	cooldown = 2
+	delay = 0
+	sound = 'sound/stalker/anomalies/gravi_blowout1.ogg'
+	idle_luminosity = 0
+	activated_luminosity = 0
+	inactive_icon_state = "tramplin0"
+	active_icon_state = "tramplin1"
+	damage_type = DMG_TYPE_GIB
+	active_invisibility = 0
+	inactive_invisibility = 101
+	loot = list(/obj/item/weapon/artifact/meduza = 5,
+				/obj/item/weapon/artifact/stoneflower = 3,
+				/obj/item/weapon/artifact/nightstar = 1.5,
+				/obj/item/weapon/artifact/maminibusi = 0.5,
 				/obj/nothing = 90)
 
 /obj/anomaly/jarka
 	name = "anomaly"
-	cooldown = 1
+	cooldown = 0.75
 	sound = 'sound/stalker/anomalies/zharka1.ogg'
 	luminosity = 2
 	idle_luminosity = 3
@@ -288,6 +363,7 @@
 /obj/anomaly/puh/New()
 	..()
 	inactive_icon_state = pick("puh","puh2")
+	icon_state = inactive_icon_state
 	if(inactive_icon_state == "puh2")
 		active_icon_state = "puh2"
 /*
