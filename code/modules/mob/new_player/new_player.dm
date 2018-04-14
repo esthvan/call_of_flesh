@@ -290,7 +290,7 @@ var/global/num_sid = 0
 					if(job.limit_per_player > jobnamelatejoincount[usr.client.ckey + rank])
 						jobnamelatejoincount[usr.client.ckey + rank]++
 					else
-						usr << "Лимит ваших возрождений для роли [rank] исчерпан."
+						usr << "Лимит ваших возрождений дл&#255; роли [rank] исчерпан."
 						return
 
 
