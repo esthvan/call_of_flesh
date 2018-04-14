@@ -24,6 +24,7 @@ var/list/admin_verbs_default = list(
 var/list/admin_verbs_admin = list(
 	/client/proc/GetRank,
 	/client/proc/SetRank,
+	/client/proc/SetMoney,
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
 	/client/proc/ResetSidorRooms,
@@ -66,8 +67,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_local_narrate,	/*sends text to all mobs within view of atom*/
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/toggle_antag_hud, 	/*toggle display of the admin antag hud*/
-	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
-	/client/proc/set_daytime
+	/client/proc/toggle_AI_interact /*toggle admin ability to interact with machines as an AI*/
+	///client/proc/set_daytime
 	)
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
@@ -324,35 +325,53 @@ var/list/admin_verbs_hideable = list(
 	set name = "Get Rank"
 	set category = "Stalker"
 
-	var/id0 = input(usr, "Введите номер сталкера.", "Ок.") as num
+	var/id0 = input(usr, "Введите номер сталкера.", "Система S.T.A.L.K.E.R.") as num
 
 	for(var/datum/data/record/sk in data_core.stalkers)
 		if(sk.fields["sid"] == id0)
 			var/sk_name = sk.fields["name"]
 			var/sk_rating = sk.fields["rating"]
-			src << "<span class='interface'>Рейтинг [sk_name] - [sk_rating].</span>"
+			usr << "<span class='interface'>Рейтинг [sk_name] - [sk_rating].</span>"
 			return
-	src << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
 /client/proc/SetRank()
 	set name = "Set Rank"
 	set category = "Stalker"
 
-	var/id0 = input(usr, "Введите номер сталкера.", "Rating System") as num
+	var/id0 = input(usr, "Введите номер сталкера.", "Система S.T.A.L.K.E.R.") as num
 	var/newrank = input(usr, "Введите новый ранг сталкера от 0 до бесконечности.", "Rating System") as num
 
 	for(var/datum/data/record/sk in data_core.stalkers)
 		if(sk.fields["sid"] == id0)
 			sk.fields["rating"] = newrank
-			src << "<span class='interface'>Рейтинг успешно обновлен.</span>"
+			usr << "<span class='interface'>Рейтинг успешно обновлен.</span>"
 			return
-	src << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+
+/client/proc/SetMoney()
+	set name = "Set Money"
+	set category = "Stalker"
+
+	var/id0 = input(usr, "Введите номер сталкера.", "Система S.T.A.L.K.E.R.") as num
+
+	for(var/datum/data/record/sk in data_core.stalkers)
+		if(sk.fields["sid"] == id0)
+			var/sk_name = sk.fields["name"]
+			var/sk_money = sk.fields["money"]
+			src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
+			var/newbalance = input(usr, "Введите новое количество RU на счету сталкера.", "Система S.T.A.L.K.E.R.") as num
+			sk.fields["money"] = newbalance
+			usr << "<span class='interface'>Баланс на счету успешно обновлен.</span>"
+			return
+	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+
 
 /client/proc/SetMinCooldownBlowout()
 	set name = "Set Blowout Cooldown (min)"
 	set category = "Stalker"
 
-	var/cooldownmin = input(usr, "Введите минимальный кулдаун.", "Blowout") as num
+	var/cooldownmin = input(usr, "Введите минимальный кулдаун.", "Система S.T.A.L.K.E.R.") as num
 
 	StalkerBlowout.cooldownmin = cooldownmin
 	if(cooldownmin >= StalkerBlowout.cooldownmax)
@@ -363,7 +382,7 @@ var/list/admin_verbs_hideable = list(
 	set name = "Set Blowout Cooldown (max)"
 	set category = "Stalker"
 
-	var/cooldownmax = input(usr, "Введите максимальный кулдаун.", "Blowout") as num
+	var/cooldownmax = input(usr, "Введите максимальный кулдаун.", "Система S.T.A.L.K.E.R.") as num
 
 	StalkerBlowout.cooldownmax = cooldownmax
 	src << "<span class='interface'>Кулдаун (макс) выброса успешно изменен.</span>"
@@ -374,7 +393,7 @@ var/list/admin_verbs_hideable = list(
 	for(var/obj/sidor_exit/R in sidorRooms)
 		R.occupant = null
 
-
+/*
 /client/proc/set_daytime()
 	set category = "Weather"
 	set name = "Set Daytime"
@@ -389,7 +408,7 @@ var/list/admin_verbs_hideable = list(
 	world << "<b>Происходит смена времени суток, могут быть лаги (10-20 секунд).</b>"
 	currentDncStage = modes[daytime]
 	DncUpdateHard()
-
+*/
 
 /client/proc/admin_ghost()
 	set category = "Admin"
