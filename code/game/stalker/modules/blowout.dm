@@ -57,9 +57,9 @@ datum/subsystem/blowout/proc/StartBlowout()
 	//world << 'sound/stalker/pda/sms.ogg'
 	world << sound('sound/stalker/blowout/blowout_begin_02.ogg', wait = 0, channel = 17, volume = 70)
 	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 18, volume = 70)
-	spawn(980)
+	spawn(1200)	//980
 		world << sound('sound/stalker/blowout/blowout_particle_wave.ogg', wait = 0, channel = 17, volume = 70)
-	spawn(1200)
+	spawn(1520)	//1200
 		StopBlowout()
 
 datum/subsystem/blowout/proc/StopBlowout()
@@ -116,6 +116,10 @@ area/proc/StopBlowout(blowoutphase)
 				//H.stat = DEAD
 		if(BLOWOUTHIGH)
 			lentahtml = ""
+			for(var/mob/living/carbon/human/H in src.contents)
+				H.radiation += 100
+				H.apply_damage(300, BURN)
+				CHECK_TICK
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
 				CHECK_TICK
@@ -128,7 +132,7 @@ area/proc/ProcessBlowout()
 	if(blowout)
 		for(var/mob/living/carbon/human/H in src.contents)
 			shake_camera(H, 1, 1)
-			spawn(980)
+			spawn(1100)	//980
 			shake_camera(H, 10, 1)
 		spawn(15)
 			ProcessBlowout()
