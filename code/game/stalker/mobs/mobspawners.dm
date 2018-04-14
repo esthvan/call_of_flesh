@@ -35,9 +35,9 @@
 		else
 			ids.Add(id_)
 		id_++
-	if(spawned_loot && ids.len >= 1)
+	if(spawned_loot && ids.len > 1)
 		for(var/id in ids)
-			spawned_loot.Cut(id, id)
+			spawned_loot.Remove(id)
 	return max_spawned - count
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/flesh_spawner
