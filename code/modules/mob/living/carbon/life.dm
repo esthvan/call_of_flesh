@@ -244,7 +244,7 @@
 				adjustFireLoss(radiation*0.004)
 				updatehealth()
 			if(10 to 100)
-				adjustFireLoss(1)
+				radiation -= 0.25
 				updatehealth()
 
 		radiation = Clamp(radiation, 0, 750)
