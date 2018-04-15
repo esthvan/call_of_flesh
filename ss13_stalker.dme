@@ -15,7 +15,6 @@
 // BEGIN_INCLUDE
 #include "_maps\__MAP_DEFINES.dm"
 #include "_maps\testmap2.dm"
-#include "_maps\map_files\Stalker\Zona\backwater.dmm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"
 #include "code\setup.dm"
