@@ -14,6 +14,11 @@
 			qdel(src)
 */
 
+/mob/living/simple_animal/hostile/mutant/Move(atom/NewLoc, direct)
+	if(istype(get_area(NewLoc), /area/stalker/blowout/outdoor/safezone) || istype(get_area(NewLoc), /area/stalker/blowout/buildings/safezone) || istype(get_area(NewLoc), /area/stalker/buildings/safezone) || istype(get_area(NewLoc), /area/stalker/byadt/bar) || istype(get_area(NewLoc), /area/stalker/sidor))
+		return 0
+	. = ..()
+
 /mob/living/simple_animal/hostile/mutant/AttackingTarget()
 	..()
 	if(istype(target, /mob/living))
