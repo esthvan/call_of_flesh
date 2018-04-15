@@ -39,7 +39,7 @@
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/flesh_spawner
 	name = "flesh mutant"
-	lootcount = 3
+	lootcount = 2
 	radius = 10 //Радиус разброса лута
 	cooldown = 6000 //Кол-во минут * 1000 - кд шитспавна
 	loot = list(/mob/living/simple_animal/hostile/mutant/flesh = 100)
