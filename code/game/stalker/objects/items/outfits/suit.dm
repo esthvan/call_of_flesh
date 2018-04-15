@@ -505,7 +505,7 @@
 	icon_state = "winterhood_combez_bandit"
 
 
-/obj/item/clothing/suit/hooded/kombez/mercenary
+/obj/item/clothing/suit/hooded/kombez/mercenary/leader
 	name = "mercenary leader armor"
 	desc = "ќбычна€ брон€ наемника с наброшенным поверх плащом в весьма потрепанном состо€нии. ¬ы задумываетесь, почему никто другой не додумалс€ ранее носить плащ поверх легкой брони... неужели этому что-то мешает?"
 	icon_state = "mercleader"
