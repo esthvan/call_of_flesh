@@ -25,9 +25,9 @@
 
 		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Гадюка 5",				/obj/item/weapon/gun/projectile/automatic/mp5,				18000, NEWBIE),
-		new /datum/data/stalker_equipment("АК 74/2 У",				/obj/item/weapon/gun/projectile/automatic/aksu74 ,			20000, EXPERT),
-		new /datum/data/stalker_equipment("АК 74/2",				/obj/item/weapon/gun/projectile/automatic/ak74,				25000, EXPERT),
-		new /datum/data/stalker_equipment("АС 96/2",				/obj/item/weapon/gun/projectile/automatic/abakan,			35000, VETERAN),
+		new /datum/data/stalker_equipment("АК 74/2 У",				/obj/item/weapon/gun/projectile/automatic/aksu74 ,			20000, NEWBIE),
+		new /datum/data/stalker_equipment("АК 74/2",				/obj/item/weapon/gun/projectile/automatic/ak74,				25000, NEWBIE),
+		new /datum/data/stalker_equipment("АС 96/2",				/obj/item/weapon/gun/projectile/automatic/abakan,			35000, EXPERT),
 		new /datum/data/stalker_equipment("ТПС-301",				/obj/item/weapon/gun/projectile/automatic/tpc301,			40000, EXPERT),
 		new /datum/data/stalker_equipment("ИЛ86",					/obj/item/weapon/gun/projectile/automatic/il86,				40000, VETERAN),
 		new /datum/data/stalker_equipment("ОЦ-14 Гроза",			/obj/item/weapon/gun/projectile/automatic/groza,			30000, VETERAN),
@@ -69,8 +69,8 @@
 		new /datum/data/stalker_equipment("Магазин к ОЦ \"ГРОЗА\"",/obj/item/ammo_box/magazine/stalker/sp9x39groza,				3500, VETERAN),
 		new /datum/data/stalker_equipment("Магазин к винторезу",/obj/item/ammo_box/magazine/stalker/sp9x39vint,					3000, VETERAN),
 		new /datum/data/stalker_equipment("Магазин к коре-919 и сип-т",/obj/item/ammo_box/magazine/stalker/sc45,				1400, NEWBIE),
-		new /datum/data/stalker_equipment("Магазин к марте"			,/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, VETERAN),
-		new /datum/data/stalker_equipment("Магазин к юсп-матч"		,/obj/item/ammo_box/magazine/stalker/usp45,					1500, VETERAN),
+		new /datum/data/stalker_equipment("Магазин к марте"			,/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, NEWBIE),
+		new /datum/data/stalker_equipment("Магазин к юсп-матч"		,/obj/item/ammo_box/magazine/stalker/usp45,					1500, NEWBIE),
 		)
 
 	var/list/armor_list = list(
@@ -80,17 +80,17 @@
 		new /datum/data/stalker_equipment("Бела&#x44F; кожанка",	/obj/item/clothing/suit/hooded/kozhanka/white,				5000, NEWBIE),
 		new	/datum/data/stalker_equipment("Бандитска&#x44F; кожанка",/obj/item/clothing/suit/hooded/kozhanka/banditka,			5000, NEWBIE),
 		new	/datum/data/stalker_equipment("Армейский комбинезон",	/obj/item/clothing/suit/army,								15000, NEWBIE, "Военные"),
-		new /datum/data/stalker_equipment("Комбинезон \"Зар&#x44F;\"",/obj/item/clothing/suit/hooded/kombez,					35000, EXPERT),
-		new /datum/data/stalker_equipment("Комбинезон наемника", 	/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, EXPERT, "Наёмники"),
-		new /datum/data/stalker_equipment("Комбинезон бандита",		/obj/item/clothing/suit/hooded/kombez/kombez_bandit,		25000, EXPERT, "Бандиты"),
+		new /datum/data/stalker_equipment("Комбинезон \"Зар&#x44F;\"",/obj/item/clothing/suit/hooded/kombez,					35000, NEWBIE),
+		new /datum/data/stalker_equipment("Комбинезон наемника", 	/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, NEWBIE, "Наёмники"),
+		new /datum/data/stalker_equipment("Комбинезон бандита",		/obj/item/clothing/suit/hooded/kombez/kombez_bandit,		25000, NEWBIE, "Бандиты"),
 		new /datum/data/stalker_equipment("Темный плащ",			/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, NEWBIE, "Бандиты"),
 		new /datum/data/stalker_equipment("Коричневый плащ",		/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown,12500, NEWBIE),
 		new /datum/data/stalker_equipment("Берилл-5М",				/obj/item/clothing/suit/berill,								50000, EXPERT),
 		new /datum/data/stalker_equipment("Страж свободы",			/obj/item/clothing/suit/hooded/kombez/strazh,				25000, EXPERT),//, "Свобода"),
 		new /datum/data/stalker_equipment("ПЗ-1",					/obj/item/clothing/suit/hooded/kombez/monolit,				25000, EXPERT, "Монолит"),
 		new /datum/data/stalker_equipment("ПС5-М",					/obj/item/clothing/suit/hooded/kombez/psz9d,				25000, EXPERT, "Долг"),
-		new /datum/data/stalker_equipment("СКАТ-М9",				/obj/item/clothing/suit/skat,								75000, MASTER),
-		new	/datum/data/stalker_equipment("ПСЗ-9МД",				/obj/item/clothing/suit/hooded/kombez/psz9md,				75000, MASTER, "Долг"),
+		new /datum/data/stalker_equipment("СКАТ-М9",				/obj/item/clothing/suit/skat,								75000, VETERAN),
+		new	/datum/data/stalker_equipment("ПСЗ-9МД",				/obj/item/clothing/suit/hooded/kombez/psz9md,				75000, VETERAN, "Долг"),
 		new	/datum/data/stalker_equipment("СCП-99 \"Эколог\"",		/obj/item/clothing/suit/hooded/kombez/ecolog,				75000, MASTER),
 		new	/datum/data/stalker_equipment("СCП-99М \"Эколог-М\"",		/obj/item/clothing/suit/hooded/kombez/ecologm,			100000, MASTER),
 		new	/datum/data/stalker_equipment("Сева",					/obj/item/clothing/suit/hooded/kombez/seva,					150000, MASTER),
@@ -100,9 +100,9 @@
 	var/list/helmet_list = list(
 		////////////////////////////	Маски, Шлемы	/////////////////////////////////////
 		new /datum/data/stalker_equipment("Противогаз",				/obj/item/clothing/mask/gas/stalker,						7500, NEWBIE),
-		new /datum/data/stalker_equipment("Противогаз наемника",	/obj/item/clothing/mask/gas/stalker/mercenary,				7500, EXPERT),
+		new /datum/data/stalker_equipment("Противогаз наёмника",	/obj/item/clothing/mask/gas/stalker/mercenary,				7500, NEWBIE),
 		new /datum/data/stalker_equipment("Тактический шлем",		/obj/item/clothing/head/hardhat/tacticalhelmet,				20000, EXPERT),
-		new /datum/data/stalker_equipment("Сфера М12",				/obj/item/clothing/head/spherahelmet,						25000, VETERAN),
+		new /datum/data/stalker_equipment("Сфера М12",				/obj/item/clothing/head/spherahelmet,						25000, EXPERT),
 		new /datum/data/stalker_equipment("СКАТ-М9 (шлем)",			/obj/item/clothing/head/skathelmet,							35000, VETERAN),
 		)
 
@@ -144,7 +144,7 @@
 	var/list/detector_list = list(
 		/////////////////////////////////	Детекторы	///////////////////////////////////////////
 		new /datum/data/stalker_equipment("Детектор \"Отклик\"",							/obj/item/device/detector/blink,				4000, NEWBIE),
-		new /datum/data/stalker_equipment("Детектор \"Медведь\"",							/obj/item/device/detector/bear,					8000, EXPERT),
+		new /datum/data/stalker_equipment("Детектор \"Медведь\"",							/obj/item/device/detector/bear,					9000, EXPERT),
 		)
 	var/list/loot_list = list(
 	/////////////////////////////////	Лут с мутантов	///////////////////////////////////////////
