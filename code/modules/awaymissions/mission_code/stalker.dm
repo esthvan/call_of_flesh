@@ -54,6 +54,12 @@
 	icon_state = "safezone_buildings"
 	requires_power = 1
 
+/area/stalker/buildings
+	name = "Buildings"
+	icon_state = "buildings_no_blowout"
+	requires_power = 1
+	///ÊÎĞÄÎÍ\\\\
+
 /area/stalker/buildings/safezone
 	name = "Safezone"
 	icon_state = "safezone_buildings_no_blowout"
