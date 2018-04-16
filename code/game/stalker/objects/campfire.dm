@@ -66,23 +66,7 @@ obj/machinery/campfire/barrel
 		sound_playing = 0
 
 /obj/machinery/campfire/proc/RefreshSound()
-	/*
-	for (var/P in player_list)
-		var/mob/M = P
-		var/turf/turf_source = get_turf(src.loc)
-		if(sound_playing)
-		 	// Looping through the player list has the added bonus of working for mobs inside containers
-			if(!M || !M.client)
-				continue
-			if(get_dist(M, turf_source) <= 3)
-				var/turf/T = get_turf(M)
-				if(T && T.z == turf_source.z)
-					M.playsound_local(get_turf(M.loc), 'sound/stalker/objects/campfire.ogg', 80, 0, 0, 0, 0, 777, 1)
-			else
-				M.playsound_local(get_turf(M.loc), null, 80, 0, 0, 0, 0, 777, 1)
-		else
-			M.playsound_local(get_turf(M.loc), null, 80, 0, 0, 0, 0, 777, 1)
-	*/
+
 	for (var/mob/M in view(5, src))
 		if(!M || !M.client)
 			continue
@@ -93,15 +77,11 @@ obj/machinery/campfire/barrel
 			M << sound('sound/stalker/objects/campfire.ogg', 1, 0 , 5, 80)
 
 	for (var/client/C in campers)
-		//if(!C)
-		//	campers -= M
-		//	continue
-
 		if(!C)
 			campers -= C
 			continue
 
-		if(!(C in view(5, src)))
+		if(!(C.mob in view(5, src)))
 			C.campfireplaying = 0
 			C << sound(null, 0, 0 , 5, 80)
 			campers -= C
