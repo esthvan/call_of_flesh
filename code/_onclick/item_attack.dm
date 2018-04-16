@@ -73,9 +73,11 @@
 
 /obj/item/proc/attack(mob/living/M, mob/living/user, def_zone)
 
-	if(istype(get_area(user.loc), /area/stalker/sidor) ||  istype(get_area(user.loc), /area/stalker/byadt/bar) || istype(get_area(user.loc), /area/stalker/blowout/outdoor/safezone) || istype(get_area(user.loc), /area/stalker/blowout/buildings/safezone) || istype(get_area(user.loc), /area/stalker/buildings/safezone))
-		user << "<span class='warning'>Вы не можете дратьс&#255; в этой зоне!</span>"
-		return 0
+	var/area/B = get_area(user.loc)
+	for(var/A in safezones)
+		if(B.type == A)
+			user << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
+			return 0
 
 	if (!istype(M)) // not sure if this is the right thing...
 		return

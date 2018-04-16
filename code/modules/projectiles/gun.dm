@@ -228,10 +228,11 @@
 
 
 /obj/item/weapon/gun/proc/can_trigger_gun(mob/living/carbon/user)
-	if(istype(get_area(user.loc), /area/stalker/sidor) || istype(get_area(user.loc), /area/stalker/byadt/bar) || istype(get_area(user.loc), /area/stalker/blowout/outdoor/safezone) || istype(get_area(user.loc), /area/stalker/blowout/buildings/safezone) || istype(get_area(user.loc), /area/stalker/buildings/safezone))
-		user << "<span class='warning'>Вы не можете стрел&#255;ть в этой зоне!</span>"
-		return 0
-
+	var/area/B = get_area(user.loc)
+	for(var/A in safezones)
+		if(B.type == A)
+			user << "<span class='warning'>Вы не можете стрел&#255;ть в этой зоне!</span>"
+			return 0
 	if(!handle_pins(user))
 		return 0
 
