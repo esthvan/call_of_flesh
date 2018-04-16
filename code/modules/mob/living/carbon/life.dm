@@ -241,10 +241,7 @@
 		radiation -= 0.5
 		switch(radiation)
 			if(100 to INFINITY)
-				adjustFireLoss(radiation*0.004)
-				updatehealth()
-			if(10 to 100)
-				radiation -= 0.25
+				adjustFireLoss(radiation*0.002)
 				updatehealth()
 
 		radiation = Clamp(radiation, 0, 750)
