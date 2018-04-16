@@ -184,7 +184,7 @@
 					l_sound = pick(l_sounds_ugrnd)
 					A << sound(l_sound, repeat = 0, wait = 1,volume = 65, channel = 8)
 			if (istype(get_area(src.loc), /area/stalker/blowout/outdoor/safezone/bar))
-				if (prob(1))
+				if (prob(0.3))
 					l_sound = pick(l_sounds_bar)
 					A << sound(l_sound, repeat = 0, wait = 1,volume = 65, channel = 8)
 
@@ -197,8 +197,6 @@
 					H.inshelter = 0
 
 			if(istype(H.shoes, /obj/item/clothing/shoes))
-				if(istype(H.shoes, /obj/item/clothing/shoes/space_ninja)) return
-				if(istype(H.shoes, /obj/item/clothing/shoes/sneakers/mime)) return
 				if(M.m_intent == "run")
 					if(M.footstep >= 3)
 						M.footstep = 0
