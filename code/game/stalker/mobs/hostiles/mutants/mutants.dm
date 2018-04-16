@@ -15,8 +15,11 @@
 */
 
 /mob/living/simple_animal/hostile/mutant/Move(atom/NewLoc, direct)
-	if(istype(get_area(NewLoc), /area/stalker/blowout/outdoor/safezone) || istype(get_area(NewLoc), /area/stalker/blowout/buildings/safezone) || istype(get_area(NewLoc), /area/stalker/buildings/safezone) || istype(get_area(NewLoc), /area/stalker/byadt/bar) || istype(get_area(NewLoc), /area/stalker/sidor))
-		return 0
+	var/area/B = get_area(NewLoc)
+	for(var/A in safezones)
+		if(B.type == A)
+			src << "<span class='warning'>Вы не можете находитьc&#255; в этой зоне!</span>"
+			return 0
 	. = ..()
 
 /mob/living/simple_animal/hostile/mutant/AttackingTarget()
