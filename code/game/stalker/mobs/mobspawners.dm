@@ -24,22 +24,17 @@
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/CanSpawn()
 	var/count = 0
-	var/id_ = 0
-	var/list/ids = new()
 	for(var/mob/living/M in spawned_loot)
-		if(!M || M.stat != 2)
+		if(M && M.stat != 2)
 			count++
 		else
-			ids.Add(id_)
-		id_++
-	if(spawned_loot && ids.len > 1)
-		for(var/id in ids)
-			spawned_loot.Cut(id, id)
-	return max_spawned - count
+			spawned_loot.Remove(M)
+	var/r = Clamp(lootcount - count, 0, lootcount)
+	return r
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/flesh_spawner
 	name = "flesh mutant"
-	lootcount = 3
+	lootcount = 2
 	radius = 10 //Радиус разброса лута
 	cooldown = 6000 //Кол-во минут * 1000 - кд шитспавна
 	loot = list(/mob/living/simple_animal/hostile/mutant/flesh = 100)
