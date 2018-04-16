@@ -1,3 +1,5 @@
+/var/global/list/safezones = list(/area/stalker/sidor, /area/stalker/blowout/outdoor/safezone, /area/stalker/blowout/buildings/safezone, /area/stalker/buildings/safezone, /area/stalker/blowout/outdoor/safezone/bar, /area/stalker/byadt/bar)
+
 /area/stalker
 	icon = 'icons/stalker/areas.dmi'
 	name = "Strange Location"

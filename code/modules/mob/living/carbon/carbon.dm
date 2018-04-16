@@ -239,6 +239,13 @@
 
 /mob/living/carbon/throw_item(atom/target)
 	throw_mode_off()
+
+	for(var/A in safezones)
+		var/area/B = get_area(src.loc)
+		if(B.type == A)
+			src << "<span class='warning'>Вы не можете кидатьc&#255; в этой зоне!</span>"
+			return
+
 	if(!target || !isturf(loc))
 		return
 	if(istype(target, /obj/screen)) return

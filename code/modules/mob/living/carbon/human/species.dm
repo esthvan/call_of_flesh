@@ -952,6 +952,11 @@
 				M.do_cpr(H)
 
 		if("grab")
+			for(var/A in safezones)
+				var/area/B = get_area(H.loc)
+				if(B.type == A)
+					M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
+					return 0
 			if(attacker_style && attacker_style.grab_act(M,H))
 				return 1
 			else
@@ -959,6 +964,11 @@
 				return 1
 
 		if("harm")
+			for(var/A in safezones)
+				var/area/B = get_area(H.loc)
+				if(B.type == A)
+					M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
+					return 0
 			if(attacker_style && attacker_style.harm_act(M,H))
 				return 1
 			else
@@ -994,6 +1004,11 @@
 				else if(H.lying)
 					H.forcesay(hit_appends)
 		if("disarm")
+			for(var/A in safezones)
+				var/area/B = get_area(H.loc)
+				if(B.type == A)
+					M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
+					return 0
 			if(attacker_style && attacker_style.disarm_act(M,H))
 				return 1
 			else
