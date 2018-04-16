@@ -1,4 +1,4 @@
-	/obj/effect/spawner/lootdrop/stalker/mobspawner
+/obj/effect/spawner/lootdrop/stalker/mobspawner
 	name = "mob spawner"
 	cooldown = 1000
 
@@ -34,7 +34,7 @@
 		id_++
 	if(spawned_loot && ids.len > 1)
 		for(var/id in ids)
-			spawned_loot.Remove(id)
+			spawned_loot.Cut(id, id)
 	return max_spawned - count
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/flesh_spawner
