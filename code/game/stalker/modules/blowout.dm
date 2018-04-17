@@ -48,9 +48,14 @@ datum/subsystem/blowout/proc/Cycle()
 
 datum/subsystem/blowout/proc/StartBlowout()
 	isblowout = 1
+
+	ProcessBlowout()
+
+	/*
 	for(var/area/stalker/A in sortedAreas)
 		if(istype(A, /area/stalker/blowout))
 			A.StartBlowout()
+	*/
 
 	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "ВНИМАНИЕ, СТАЛКЕРЫ! Начинаетс&#x44F; выброс! Скорее найдите укрытие!")
 	//world << "<span class='danger'>Начинаетс&#255; выброс! Скорее найдите укрытие!</span>"
@@ -63,18 +68,20 @@ datum/subsystem/blowout/proc/StartBlowout()
 		StopBlowout()
 
 datum/subsystem/blowout/proc/StopBlowout()
+	/*
 	for(var/area/stalker/A in blowoutAreas)
 		A.StopBlowout(blowoutphase)
 		CHECK_TICK
+	*/
+	for(var/mob/living/carbon/human/H in player_list)
+		shake_camera(H, 10, 1)
+		if(istype(get_area(H.loc), /area/stalker/blowout))
+			H.radiation += 100
+			H.apply_damage(300, BURN)
+			CHECK_TICK
 
-	for(var/mob/living/L in living_mob_list)
+	for(var/mob/living/L in dead_mob_list)
 		if(istype(get_area(L.loc), /area/stalker/blowout))
-			if(istype(L, /mob/living/carbon/human))
-				var/mob/living/carbon/human/H = L
-				H.radiation += 100
-				H.apply_damage(300, BURN)
-				CHECK_TICK
-				continue
 			if(L.stat == DEAD)
 				L.gib()
 				CHECK_TICK
@@ -98,12 +105,43 @@ datum/subsystem/blowout/proc/StopBlowout()
 		world << sound(null, wait = 0, channel = 24, volume = 70)
 		Cycle()
 
+datum/subsystem/blowout/proc/ProcessBlowout()
+	if(isblowout)
+		for(var/mob/living/carbon/human/H in player_list)
+			shake_camera(H, 1, 1)
+		spawn(15)
+			ProcessBlowout()
+	if(prob(10))
+		var/a = pick(StalkerBlowout.ambient)
+		world << sound(a, wait = 1, channel = 19, volume = 70)
+
+	if(prob(20))
+		var/a = pick(StalkerBlowout.wave)
+		world << sound(a, wait = 1, channel = 20, volume = 70)
+
+	if(prob(10))
+		var/a = pick(StalkerBlowout.wind)
+		world << sound(a, wait = 1, channel = 21, volume = 70)
+
+	if(prob(20))
+		var/a = pick(StalkerBlowout.rumble)
+		world << sound(a, wait = 1, channel = 22, volume = 70)
+
+	if(prob(30))
+		var/a = pick(StalkerBlowout.boom)
+		world << sound(a, wait = 1, channel = 23, volume = 70)
+
+	if(prob(30))
+		var/a = pick(StalkerBlowout.lightning)
+		world << sound(a, wait = 1, channel = 24, volume = 70)
+/*
 area/proc/StartBlowout()
 	blowout = 1
 	ProcessBlowout()
-
+*/ /*
 area/proc/StopBlowout(blowoutphase)
 	blowout = 0
+*/
 	/*
 	for(var/mob/living/L in src.contents)
 		if(istype(L, /mob/living/carbon/human))
@@ -162,6 +200,7 @@ area/proc/StopBlowout(blowoutphase)
 				qdel(A)
 				continue
 	*/
+/*
 area/proc/ProcessBlowout()
 	if(blowout)
 		for(var/mob/living/carbon/human/H in src.contents)
@@ -193,3 +232,4 @@ area/proc/ProcessBlowout()
 	if(prob(30))
 		var/a = pick(StalkerBlowout.lightning)
 		world << sound(a, wait = 1, channel = 24, volume = 70)
+*/
