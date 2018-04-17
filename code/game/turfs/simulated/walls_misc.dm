@@ -112,6 +112,14 @@
 	walltype = "shuttle"
 	smooth = SMOOTH_FALSE
 
+/turf/simulated/wall/stalker/ship
+	name = "hull"
+	desc = "A huge chunk of hull"
+	icon = 'icons/stalker/barzha.dmi'
+	icon_state = "hull"
+	walltype = "barzha"
+	canSmoothWith = list(/turf/simulated/wall/stalker/ship)
+
 //sub-type to be used for interior shuttle walls
 //won't get an underlay of the destination turf on shuttle move
 /turf/simulated/wall/shuttle/interior/copyTurf(turf/T)
