@@ -144,7 +144,7 @@
 			user.add_light_range(-2 + light_range_old)
 
 	if(recoil)
-		shake_camera(user, recoil + 1, recoil)
+		shake_camera(user, 2 + recoil * 8, recoil)
 
 	if(suppressed)
 		playsound(user, fire_sound, 10, 1)
