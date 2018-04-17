@@ -306,7 +306,7 @@
 	if(sleeping)
 		throw_alert("asleep", /obj/screen/alert/asleep)
 		handle_dreams()
-		if(buckled.type == /obj/structure/bed/stalker/matras || buckled.type == /obj/structure/bed/stalker/metal/matras)
+		if(buckled && (buckled.type == /obj/structure/bed/stalker/matras || buckled.type == /obj/structure/bed/stalker/metal/matras))
 			adjustStaminaLoss(-10)
 			adjustCloneLoss(-1)
 			adjustBruteLoss(-1)
