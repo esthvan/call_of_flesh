@@ -15,11 +15,12 @@
 					return
 				var/mob/living/M = new lootspawn(T)
 				spawned_loot.Add(M)
+				sleep(5)
 				//RandomMove(M)
 		if(!enable_cooldown)
 			SpawnLoot()
 		else
-			spawn(cooldown)
+			spawn(rand(cooldown, cooldown + 30))
 				SpawnLoot()
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/CanSpawn()
@@ -29,6 +30,7 @@
 			count++
 		else
 			spawned_loot.Remove(M)
+
 	var/r = Clamp(lootcount - count, 0, lootcount)
 	return r
 
@@ -36,7 +38,7 @@
 	name = "flesh mutant"
 	lootcount = 2
 	radius = 10 //Радиус разброса лута
-	cooldown = 6000 //Кол-во минут * 1000 - кд шитспавна
+	cooldown = 60//00 //Кол-во минут * 1000 - кд шитспавна
 	loot = list(/mob/living/simple_animal/hostile/mutant/flesh = 100)
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/dog_spawner
