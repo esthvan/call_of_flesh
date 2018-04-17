@@ -48,7 +48,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(melee = 10, bullet = 10, laser = 10,burn = 10, bomb = 10, bio = 10, rad = 0, electro = 10)
+	armor = list(melee = 10, bullet = 10, laser = 10,burn = 10, bomb = 10, bio = 10, rad = 10, electro = 10)
 	allowed = list(/obj/item/weapon/gun/projectile,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/lighter,/obj/item/weapon/stalker/knife)
 	hooded = 1
 	action_button_name = "Toggle Hood"
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/head/winterhood/stalker/kozhanka
 	icon_state = "winterhood_kozhanka"
-	armor = list(melee = 10, bullet = 0, laser = 10,burn = 10, bomb = 0, bio = 10, rad = 0, electro = 10)
+	armor = list(melee = 10, bullet = 0, laser = 10,burn = 10, bomb = 0, bio = 10, rad = 10, electro = 10)
 
 /obj/item/clothing/suit/hooded/kozhanka/white
 	icon_state = "kozhanka_wh"
@@ -72,7 +72,7 @@
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/kozhanka_wh
 
 /obj/item/clothing/head/winterhood/stalker/kozhanka_wh
-	armor = list(melee = 10, bullet = 0, laser = 10,burn = 10, bomb = 0, bio = 10, rad = 0, electro = 10)
+	armor = list(melee = 10, bullet = 0, laser = 10,burn = 10, bomb = 0, bio = 10, rad = 10, electro = 10)
 	icon_state = "winterhood_kozhanka_wh"
 
 /obj/item/clothing/suit/hooded/kozhanka/banditka
@@ -80,25 +80,25 @@
 	desc = "“радиционна&#255; одежда бандита - кожана&#255; куртка со вшитыми броневыми элементами. ƒаЄт защиту, крайне недостаточную в жЄстких услови&#255;х «оны."
 	icon_state = "banditka"
 	item_state = "ro_suit"
-	armor = list(melee = 15, bullet = 15, laser = 10,burn = 10, bomb = 10, bio = 10, rad = 0, electro = 10)
+	armor = list(melee = 15, bullet = 15, laser = 10,burn = 10, bomb = 10, bio = 10, rad = 10, electro = 10)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/banditka
 	durability = 75
 
 /obj/item/clothing/head/winterhood/stalker/banditka
-	armor = list(melee = 15, bullet = 0, laser = 10,burn = 10, bomb = 10, bio = 10, rad = 0, electro = 10)
+	armor = list(melee = 15, bullet = 0, laser = 10,burn = 10, bomb = 10, bio = 10, rad = 10, electro = 10)
 	icon_state = "winterhood_banditka"
 
 /obj/item/clothing/suit/hooded/kozhanka/banditka/unique
 	name = "chain-mail jacket"
 	desc = "ќбычный слабенький бандитский бронежилет, но в подкладку вшито кольчужное полотно. —делать такой под силу почти каждому, но терпени&#255; хватит далеко не всем."
 	icon_state = "banditka_unique"
-	armor = list(melee = 15, bullet = 28, laser = 10,burn = 10, bomb = 10, bio = 10, rad = 0, electro = 10)
+	armor = list(melee = 15, bullet = 28, laser = 10,burn = 10, bomb = 10, bio = 10, rad = 10, electro = 10)
 
 /obj/item/clothing/suit/hooded/kozhanka/unique
 	name = "anomaly jacket"
 	desc = "Ёту куртку сн&#255;ли с трупа одного из сталкеров, умерших в аномалии 'кисель'. ѕролежав долгое врем&#255; в аномалии, куртка обрела свойство ускор&#255;ть метаболизм."
 	icon_state = "kozhanka_unique"
-	armor = list(melee = 10, bullet = 10, laser = 10,burn = 10, bomb = 20, bio = 20, rad = 0, electro = 10)
+	armor = list(melee = 10, bullet = 10, laser = 10,burn = 10, bomb = 20, bio = 20, rad = 10, electro = 10)
 
 /obj/item/clothing/suit/hooded/kombez
 	name = "sunrise"
