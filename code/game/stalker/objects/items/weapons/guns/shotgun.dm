@@ -4,10 +4,11 @@
 	icon_state = "bm16"
 	item_state = "bm16"
 	w_class = 4
-	force = 70
+	force = 15
 	flags = CONDUCT
 	slot_flags = SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/stalker/bm16
+	recoil = 1
 	durability = 150
 	sawn_desc = "Значительно компактней и легче новой двустволки, но эффективен только в ближнем бою. Один из самых распространённых видов оружи&#255; у новичков."
 	randomspread = 0
@@ -51,7 +52,8 @@
 	desc = "Внутрикурковое двуствольное охотничье ружье с вертикально расположенными стволами. Широко распространённое и ничем особо не примечательное охотничье ружьё - 'вертикалка'."
 	icon_state = "toz34"
 	item_state = "toz34"
-	force = 100
+	recoil = 0.6
+	force = 15
 	durability = 150
 	spread = 6
 	damagelose = 0.15
@@ -65,10 +67,11 @@
 	durability = 100
 	slot_flags = SLOT_BELT|SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/chaser
+	recoil = 0.8
 	w_class = 4
 	randomspread = 0
 	spread = 10
-	force = 85
+	force = 15
 	damagelose = 0.3
 	distro = 16
 	//fire_sound = 'sound/stalker/weapons/winchester1300_shot.ogg'
@@ -84,8 +87,9 @@
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = 3
 	durability = 75
-	force = 50
+	force = 15
 	spread = 20
+	recoil = 2.5
 	damagelose = 0.45
 	distro = 35
 
@@ -101,10 +105,11 @@
 	durability = 150
 	slot_flags = SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/spsa
+	recoil = 0.6
 	w_class = 4
 	randomspread = 0
 	spread = 8
-	force = 85
+	force = 15
 	damagelose = 0.35
 	distro = 12
 	fire_sound = 'sound/stalker/weapons/spsa_shot.ogg'
