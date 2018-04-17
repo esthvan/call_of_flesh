@@ -20,7 +20,7 @@
 		if(!enable_cooldown)
 			SpawnLoot()
 		else
-			spawn(rand(cooldown, cooldown + 30))
+			spawn(rand(cooldown, cooldown + 3000))
 				SpawnLoot()
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/CanSpawn()
@@ -38,7 +38,7 @@
 	name = "flesh mutant"
 	lootcount = 2
 	radius = 10 //Радиус разброса лута
-	cooldown = 60//00 //Кол-во минут * 1000 - кд шитспавна
+	cooldown = 6000 //Кол-во минут * 1000 - кд шитспавна
 	loot = list(/mob/living/simple_animal/hostile/mutant/flesh = 100)
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/dog_spawner

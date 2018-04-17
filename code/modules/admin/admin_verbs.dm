@@ -25,6 +25,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/GetRank,
 	/client/proc/SetRank,
 	/client/proc/SetMoney,
+	/client/proc/GetMoney,
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
 	/client/proc/ResetSidorRooms,
@@ -366,6 +367,19 @@ var/list/admin_verbs_hideable = list(
 			return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
+/client/proc/GetMoney()
+	set name = "Get Money"
+	set category = "Stalker"
+
+	var/id0 = input(usr, "Введите номер сталкера.", "Система S.T.A.L.K.E.R.") as num
+
+	for(var/datum/data/record/sk in data_core.stalkers)
+		if(sk.fields["sid"] == id0)
+			var/sk_name = sk.fields["name"]
+			var/sk_money = sk.fields["money"]
+			src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
+			return
+	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
 /client/proc/SetMinCooldownBlowout()
 	set name = "Set Blowout Cooldown (min)"

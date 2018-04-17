@@ -24,3 +24,4 @@ cre77 = Duty
 eldronso = Mercenary
 hypela42 = Mercenary
 allahboom = Mercenary
+narcissf = Mercenary

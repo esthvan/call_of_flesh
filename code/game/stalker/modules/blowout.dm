@@ -65,7 +65,7 @@ datum/subsystem/blowout/proc/StartBlowout()
 datum/subsystem/blowout/proc/StopBlowout()
 	for(var/area/stalker/A in blowoutAreas)
 		A.StopBlowout(blowoutphase)
-		sleep(0.1)
+		CHECK_TICK
 
 
 	world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
