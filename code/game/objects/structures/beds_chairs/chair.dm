@@ -148,6 +148,7 @@
 /obj/structure/bed/chair/office/dark
 	icon_state = "officechair_dark"
 
+/*
 /obj/structure/bed/chair/bed/metal
 	name = "bed"
 	desc = "Обычна&#255; металлическа&#255; кровать без матраса, не слишком удобна&#255; дл&#255; сна."
@@ -165,6 +166,7 @@
 	desc = "Обычный пружинный матрас средней комфортабельности."
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "matras"
+*/
 
 /obj/structure/bed/chair/brevno
 	name = "log"
