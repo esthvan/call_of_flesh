@@ -6,6 +6,7 @@
 #define DMG_TYPE_IGNITION 32
 #define DMG_TYPE_BIO 64
 /var/list/obj/anomaly/anomalies = list()
+/var/list/obj/item/weapon/spawned_artifacts = list()
 
 /obj/anomaly
 	name = "Anomaly"
@@ -55,6 +56,8 @@
 			if(!istype(O, /obj/nothing) && O.z < O.level_s)
 				qdel(O)
 				SpawnArtifact()
+				return
+			spawned_artifacts += O
 
 /obj/anomaly/proc/RandomMove(spawned)
 	if(spawned)
@@ -64,12 +67,6 @@
 			var/new_x = T.x + rand(-1, 1)
 			var/new_y = T.y + rand(-1, 1)
 			O.Move(locate(new_x, new_y, T.z))
-		else
-			if(istype(spawned, /mob))
-				var/mob/M = spawned
-				var/new_x = T.x + rand(-1, 1)
-				var/new_y = T.y + rand(-1, 1)
-				M.Move(locate(new_x, new_y, T.z))
 	return spawned
 
 /obj/anomaly/Crossed(atom/A)

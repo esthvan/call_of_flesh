@@ -67,6 +67,21 @@ datum/subsystem/blowout/proc/StopBlowout()
 		A.StopBlowout(blowoutphase)
 		CHECK_TICK
 
+	for(var/mob/living/L in living_mob_list)
+		if(istype(get_area(L.loc), /area/stalker/blowout))
+			if(istype(L, /mob/living/carbon/human))
+				var/mob/living/carbon/human/H = L
+				H.radiation += 100
+				H.apply_damage(300, BURN)
+				CHECK_TICK
+				continue
+			if(L.stat == DEAD)
+				L.gib()
+				CHECK_TICK
+
+	for(var/obj/item/weapon/artifact/A in spawned_artifacts)
+		spawned_artifacts.Remove(A)
+		qdel(A)
 
 	world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
 	world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
@@ -89,18 +104,20 @@ area/proc/StartBlowout()
 
 area/proc/StopBlowout(blowoutphase)
 	blowout = 0
-
+	/*
 	for(var/mob/living/L in src.contents)
 		if(istype(L, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = L
 			H.radiation += 100
-			H.apply_damage(200, BURN)
+			H.apply_damage(300, BURN)
 			continue
 		if(L.stat == DEAD)
 			L.gib()
-
+	*/
+	/*
 	for(var/obj/item/weapon/artifact/A in src.contents)
 		qdel(A)
+	*/
 	/*
 	switch(blowoutphase)
 

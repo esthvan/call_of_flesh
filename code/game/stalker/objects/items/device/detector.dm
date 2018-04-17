@@ -209,6 +209,9 @@
 
 	if(user.get_active_hand() == null) // Let me know if this has any problems -Yota
 		user.UnarmedAttack(my_target)
+		my_target.invisibility = 0
+		qdel(src)
+		spawned_artifacts.Remove(my_target)
 
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -218,9 +221,6 @@
 				//var/obj/item/device/stalker_pda/KPK = H.wear_id
 				if(sk)
 					sk.fields["rating"] += (2 ** my_target.level_s) * 50
-
-		my_target.invisibility = 0
-		qdel(src)
 
 /*
 
