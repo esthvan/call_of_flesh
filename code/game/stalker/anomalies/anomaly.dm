@@ -255,7 +255,7 @@
 	sound = 'sound/stalker/anomalies/electra_blast1.ogg'
 	idle_luminosity = 1
 	activated_luminosity = 2
-	anomaly_color = "#bdeaf9"
+	anomaly_color = "#7ac8e2"
 	damage_type = DMG_TYPE_ENERGY
 	inactive_icon_state = "electra0"
 	active_icon_state = "electra1"
