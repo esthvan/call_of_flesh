@@ -9,7 +9,7 @@ var/global/isblowout = 0
 	var/inshelter = 0
 
 datum/subsystem/blowout
-	var/blowoutphase = 1
+	var/blowoutphase = 0
 	var/cooldownmin = 18000
 	var/cooldownmax = 36000
 	var/list/ambient = list('sound/stalker/blowout/blowout_amb_01.ogg', 'sound/stalker/blowout/blowout_amb_02.ogg',
@@ -63,9 +63,11 @@ datum/subsystem/blowout/proc/StartBlowout()
 		StopBlowout()
 
 datum/subsystem/blowout/proc/StopBlowout()
-	for(var/area/stalker/A in sortedAreas)
-		if(istype(A, /area/stalker/blowout))
-			A.StopBlowout(blowoutphase)
+	for(var/area/stalker/A in blowoutAreas)
+		A.StopBlowout(blowoutphase)
+		sleep(0.1)
+
+
 	world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
 	world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
 	spawn(300)
@@ -79,7 +81,7 @@ datum/subsystem/blowout/proc/StopBlowout()
 		world << sound(null, wait = 0, channel = 22, volume = 70)
 		world << sound(null, wait = 0, channel = 23, volume = 70)
 		world << sound(null, wait = 0, channel = 24, volume = 70)
-	Cycle()
+		Cycle()
 
 area/proc/StartBlowout()
 	blowout = 1
@@ -87,62 +89,68 @@ area/proc/StartBlowout()
 
 area/proc/StopBlowout(blowoutphase)
 	blowout = 0
+
+	for(var/mob/living/L in src.contents)
+		if(istype(L, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = L
+			H.radiation += 100
+			H.apply_damage(200, BURN)
+			continue
+		if(L.stat == DEAD)
+			L.gib()
+
+	for(var/obj/item/weapon/artifact/A in src.contents)
+		qdel(A)
+	/*
 	switch(blowoutphase)
+
 		if(BLOWOUTLOW)
 
 			for(var/mob/living/L in src.contents)
-				if(L.stat == DEAD)
-					L.gib()
-					continue
 				if(istype(L, /mob/living/carbon/human))
 					var/mob/living/carbon/human/H = L
 					H.radiation += 100
 					H.apply_damage(150, BURN)
-				CHECK_TICK
+					continue
+				L.gib()
 
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
-				CHECK_TICK
 
 		if(BLOWOUTNORMAL)
 
 			for(var/mob/living/L in src.contents)
-				if(L.stat == DEAD)
-					L.gib()
-					continue
 				if(istype(L, /mob/living/carbon/human))
 					var/mob/living/carbon/human/H = L
-					H.radiation += 350
-					H.apply_damage(300, BURN)
-				CHECK_TICK
+					H.radiation += 100
+					H.apply_damage(150, BURN)
+					continue
+				L.gib()
 
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
-				CHECK_TICK
 
 		if(BLOWOUTHIGH)
 			lentahtml = ""
 
 			for(var/mob/living/L in src.contents)
-				if(L.stat == DEAD)
-					L.gib()
-					continue
 				if(istype(L, /mob/living/carbon/human))
 					var/mob/living/carbon/human/H = L
-					H.radiation += 350
-					H.apply_damage(300, BURN)
-				CHECK_TICK
+					H.radiation += 100
+					H.apply_damage(150, BURN)
+					continue
+				L.gib()
 
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
-				CHECK_TICK
-
+				continue
+	*/
 area/proc/ProcessBlowout()
 	if(blowout)
 		for(var/mob/living/carbon/human/H in src.contents)
 			shake_camera(H, 1, 1)
 			spawn(1100)	//980
-			shake_camera(H, 10, 1)
+				shake_camera(H, 10, 1)
 		spawn(15)
 			ProcessBlowout()
 	if(prob(10))
