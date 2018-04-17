@@ -334,7 +334,7 @@ var/list/sidormatitems = list()
 					var/datum/data/stalker_equipment/prize = locate(href_list["purchase"])
 					if (!prize)
 						return
-					if(prize.cost > balance)
+					if(prize.cost > sk.fields["money"])
 						say("На вашем счету недостаточно денег.")
 					else
 						sk.fields["money"] -= prize.cost

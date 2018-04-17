@@ -571,30 +571,30 @@
 						var/datum/data/record/R_H = find_record("sid", H.sid, data_core.stalkers)
 
 
+						if(KPK_src.activated && KPK.activated && R && R_H)
+							if(href_list["money_transfer"])
+								var/sum = input(H, "Input money amount for transfer.", "KPK", null) as num
+								if(isnum(sum) && sum > 0)
+									if(R_H.fields["money"] - sum >= 0)
+										R.fields["money"] += sum
+										R_H.fields["money"] -= sum
+										var/n_src = R.fields["name"]
+										var/f_src = R.fields["faction_s"]
+										var/n = R_H.fields["name"]
+										var/f = R_H.fields["faction_s"]
 
-						if(href_list["money_transfer"])
-							var/sum = input(H, "Input money amount for transfer.", "KPK", null) as num
-							if(isnum(sum) && sum > 0)
-								if(R_H.fields["money"] - sum >= 0)
-									R.fields["money"] += sum
-									R_H.fields["money"] -= sum
-									var/n_src = R.fields["name"]
-									var/f_src = R.fields["faction_s"]
-									var/n = R_H.fields["name"]
-									var/f = R_H.fields["faction_s"]
+										src << russian_html2text("<p>\icon[KPK_src]<b><font color=\"#006699\">[n_src]</font>\[[f_src]\]</b><br><font color=\"#006699\">Перевёл вам [sum] р. на счёт.</font></p>")
+										if(KPK_src.lenta_sound == 1)
+											src << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
-									src << russian_html2text("<p>\icon[KPK_src]<b><font color=\"#006699\">[n_src]</font>\[[f_src]\]</b><br><font color=\"#006699\">Перевёл вам [sum] р. на счёт.</font></p>")
-									if(KPK_src.lenta_sound == 1)
-										src << sound('sound/stalker/pda/sms.ogg', volume = 30)
+										H << russian_html2text("<p>\icon[KPK]<b><font color=\"#006699\">[n]</font>\[[f]\]</b><br><font color=\"#006699\">С вашего счёта списано [sum] р.</font></p>")
+										if(KPK.lenta_sound == 1)
+											H << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
-									H << russian_html2text("<p>\icon[KPK]<b><font color=\"#006699\">[n]</font>\[[f]\]</b><br><font color=\"#006699\">С вашего счёта списано [sum] р.</font></p>")
-									if(KPK.lenta_sound == 1)
-										H << sound('sound/stalker/pda/sms.ogg', volume = 30)
-
+									else
+										usr << "<span class='warning'>На вашем счету недостаточно средств дл&#255; перевода.</span>"
 								else
-									usr << "<span class='warning'>На вашем счету недостаточно средств дл&#255; перевода.</span>"
-							else
-								usr << "<span class='warning'>Введите НОРМАЛЬНУЮ сумму дл&#255; перевода.</span>"
+									usr << "<span class='warning'>Введите НОРМАЛЬНУЮ сумму дл&#255; перевода.</span>"
 
 						var/lefttime
 						var/ending

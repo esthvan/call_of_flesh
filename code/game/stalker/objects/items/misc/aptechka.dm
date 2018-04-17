@@ -20,13 +20,13 @@ obj/item/weapon/reagent_containers/pill/stalker/canconsume(mob/eater, mob/user)
 	name = "first aid kit"
 	icon_state = "aptechkar"
 	//item_state = "bandaid"
-	list_reagents = list("cryoxadone" = 9)
+	list_reagents = list("cryoxadone" = 16)
 
 /obj/item/weapon/reagent_containers/pill/stalker/aptechka_b
 	name = "army kit"
 	icon_state = "aptechkab"
 	//item_state = "bandaid"
-	list_reagents = list("cryoxadoneb" = 6)
+	list_reagents = list("cryoxadoneb" = 8)
 
 /obj/item/weapon/reagent_containers/pill/stalker/aptechka_y
 	name = "science kit"
