@@ -109,8 +109,8 @@
 /datum/reagent/medicine/cryoxadone/on_mob_life(mob/living/M)
 	M.adjustCloneLoss(-4)
 	M.adjustOxyLoss(-10)
-	M.adjustBruteLoss(-2)
-	M.adjustFireLoss(-2)
+	M.adjustBruteLoss(-2.5)
+	M.adjustFireLoss(-2.5)
 	M.adjustToxLoss(-3)
 	M.status_flags &= ~DISFIGURED
 	..()
@@ -125,8 +125,8 @@
 /datum/reagent/medicine/cryoxadoneb/on_mob_life(mob/living/M)
 	M.adjustCloneLoss(-4)
 	M.adjustOxyLoss(-10)
-	M.adjustBruteLoss(-4)
-	M.adjustFireLoss(-4)
+	M.adjustBruteLoss(-4.5)
+	M.adjustFireLoss(-4.5)
 	M.adjustToxLoss(-3)
 	M.status_flags &= ~DISFIGURED
 	..()
