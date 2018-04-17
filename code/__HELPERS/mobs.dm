@@ -56,9 +56,15 @@
 
 /proc/random_hair_style(gender)
 	switch(gender)
-		if(MALE)	return pick(hair_styles_male_list)
-		if(FEMALE)	return pick(hair_styles_female_list)
-		else		return pick(hair_styles_list)
+		if(MALE)
+			if(!isnull(facial_hair_styles_male_list))
+				return pick(hair_styles_male_list)
+		if(FEMALE)
+			if(!isnull(facial_hair_styles_male_list))
+				return pick(hair_styles_female_list)
+		else
+			if(!isnull(facial_hair_styles_male_list))
+				return pick(hair_styles_list)
 
 /proc/random_facial_hair_style(gender)
 	switch(gender)
