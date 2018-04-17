@@ -31,6 +31,7 @@ Assistant
 	id = /obj/item/device/stalker_pda
 	//back = /obj/item/weapon/storage/backpack/stalker
 	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/nothing)
+	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
 							/obj/item/device/flashlight/seclite = 1)
@@ -57,7 +58,7 @@ Assistant
 	..()
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
 	suit = /obj/item/clothing/suit/hooded/kombez/psz9d
-	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/nothing)
+	//back2 = /obj/item/weapon/gun/projectile/automatic/aksu74
 	ears = null
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 	r_pocket =/obj/item/weapon/stalker/bolts
