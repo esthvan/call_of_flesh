@@ -633,9 +633,9 @@ var/global/lentahtml = ""
 			if("lenta_sound")
 				lenta_sound = !lenta_sound
 				if(lenta_sound)
-					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
-				else
 					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте включен.</span>"
+				else
+					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
 
 			if("refresh_rating")
 				ratinghtml = ""
