@@ -73,7 +73,7 @@ datum/subsystem/blowout/proc/StopBlowout()
 		A.StopBlowout(blowoutphase)
 		CHECK_TICK
 	*/
-	for(var/mob/living/carbon/human/H in player_list)
+	for(var/mob/living/carbon/human/H in living_mob_list)
 		shake_camera(H, 10, 1)
 		if(istype(get_area(H.loc), /area/stalker/blowout))
 			H.radiation += 100
@@ -89,6 +89,7 @@ datum/subsystem/blowout/proc/StopBlowout()
 	for(var/obj/item/weapon/artifact/A in spawned_artifacts)
 		spawned_artifacts.Remove(A)
 		qdel(A)
+		CHECK_TICK
 
 	world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
 	world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
