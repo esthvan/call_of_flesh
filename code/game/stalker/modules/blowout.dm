@@ -133,7 +133,7 @@ area/proc/ProcessBlowout()
 		for(var/mob/living/carbon/human/H in src.contents)
 			shake_camera(H, 1, 1)
 			spawn(1100)	//980
-			shake_camera(H, 10, 1)
+				shake_camera(H, 10, 1)
 		spawn(15)
 			ProcessBlowout()
 	if(prob(10))
