@@ -3,7 +3,7 @@
 	cooldown = 1000
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/SpawnLoot(enable_cooldown = 1)
-	sleep(10)
+	sleep(rand(10, 100))
 	if(loot && loot.len)
 		for(var/k = 0, k < CanSpawn(), k++)
 			if(!loot.len) return
@@ -15,7 +15,7 @@
 					return
 				var/mob/living/M = new lootspawn(T)
 				spawned_loot.Add(M)
-				sleep(5)
+				sleep(rand(5, 50))
 				//RandomMove(M)
 		if(!enable_cooldown)
 			SpawnLoot()
