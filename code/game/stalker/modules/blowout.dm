@@ -9,7 +9,7 @@ var/global/isblowout = 0
 	var/inshelter = 0
 
 datum/subsystem/blowout
-	var/blowoutphase = 0
+	var/blowoutphase = 1
 	var/cooldownmin = 18000
 	var/cooldownmax = 36000
 	var/list/ambient = list('sound/stalker/blowout/blowout_amb_01.ogg', 'sound/stalker/blowout/blowout_amb_02.ogg',
@@ -48,14 +48,9 @@ datum/subsystem/blowout/proc/Cycle()
 
 datum/subsystem/blowout/proc/StartBlowout()
 	isblowout = 1
-
-	ProcessBlowout()
-
-	/*
 	for(var/area/stalker/A in sortedAreas)
 		if(istype(A, /area/stalker/blowout))
 			A.StartBlowout()
-	*/
 
 	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "ВНИМАНИЕ, СТАЛКЕРЫ! Начинаетс&#x44F; выброс! Скорее найдите укрытие!")
 	//world << "<span class='danger'>Начинаетс&#255; выброс! Скорее найдите укрытие!</span>"
@@ -68,29 +63,9 @@ datum/subsystem/blowout/proc/StartBlowout()
 		StopBlowout()
 
 datum/subsystem/blowout/proc/StopBlowout()
-	/*
-	for(var/area/stalker/A in blowoutAreas)
-		A.StopBlowout(blowoutphase)
-		CHECK_TICK
-	*/
-	for(var/mob/living/carbon/human/H in living_mob_list)
-		shake_camera(H, 10, 1)
-		if(istype(get_area(H.loc), /area/stalker/blowout))
-			H.radiation += 100
-			H.apply_damage(300, BURN)
-		CHECK_TICK
-
-	for(var/mob/living/L in dead_mob_list)
-		if(istype(get_area(L.loc), /area/stalker/blowout))
-			if(L.stat == DEAD)
-				L.gib()
-		CHECK_TICK
-
-	for(var/obj/item/weapon/artifact/A in spawned_artifacts)
-		spawned_artifacts.Remove(A)
-		qdel(A)
-		CHECK_TICK
-
+	for(var/area/stalker/A in sortedAreas)
+		if(istype(A, /area/stalker/blowout))
+			A.StopBlowout(blowoutphase)
 	world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
 	world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
 	spawn(300)
@@ -104,109 +79,61 @@ datum/subsystem/blowout/proc/StopBlowout()
 		world << sound(null, wait = 0, channel = 22, volume = 70)
 		world << sound(null, wait = 0, channel = 23, volume = 70)
 		world << sound(null, wait = 0, channel = 24, volume = 70)
-		Cycle()
+	Cycle()
 
-datum/subsystem/blowout/proc/ProcessBlowout()
-	if(isblowout)
-		spawn(100)
-			ProcessBlowout()
-
-	if(prob(10))
-		var/a = pick(StalkerBlowout.ambient)
-		world << sound(a, wait = 1, channel = 19, volume = 70)
-
-	if(prob(20))
-		var/a = pick(StalkerBlowout.wave)
-		world << sound(a, wait = 1, channel = 20, volume = 70)
-
-	if(prob(10))
-		var/a = pick(StalkerBlowout.wind)
-		world << sound(a, wait = 1, channel = 21, volume = 70)
-
-	if(prob(20))
-		var/a = pick(StalkerBlowout.rumble)
-		world << sound(a, wait = 1, channel = 22, volume = 70)
-
-	if(prob(30))
-		var/a = pick(StalkerBlowout.boom)
-		world << sound(a, wait = 1, channel = 23, volume = 70)
-
-	if(prob(30))
-		var/a = pick(StalkerBlowout.lightning)
-		world << sound(a, wait = 1, channel = 24, volume = 70)
-/*
 area/proc/StartBlowout()
 	blowout = 1
 	ProcessBlowout()
-*/ /*
+
 area/proc/StopBlowout(blowoutphase)
 	blowout = 0
-*/
-	/*
-	for(var/mob/living/L in src.contents)
-		if(istype(L, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = L
-			H.radiation += 100
-			H.apply_damage(300, BURN)
-			continue
-		if(L.stat == DEAD)
-			L.gib()
-	*/
-	/*
-	for(var/obj/item/weapon/artifact/A in src.contents)
-		qdel(A)
-	*/
-	/*
 	switch(blowoutphase)
-
 		if(BLOWOUTLOW)
-
-			for(var/mob/living/L in src.contents)
-				if(istype(L, /mob/living/carbon/human))
-					var/mob/living/carbon/human/H = L
-					H.radiation += 100
-					H.apply_damage(150, BURN)
-					continue
-				L.gib()
-
+			for(var/mob/living/carbon/human/H in src.contents)
+				H.radiation += 100
+				H.apply_damage(150, BURN)
+				CHECK_TICK
+				//H.stat = DEAD
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
-
+				CHECK_TICK
+			for(var/mob/living/L in src.contents)
+				if(L.stat == DEAD)
+					L.gib()
+					CHECK_TICK
 		if(BLOWOUTNORMAL)
-
-			for(var/mob/living/L in src.contents)
-				if(istype(L, /mob/living/carbon/human))
-					var/mob/living/carbon/human/H = L
-					H.radiation += 100
-					H.apply_damage(150, BURN)
-					continue
-				L.gib()
-
+			for(var/mob/living/carbon/human/H in src.contents)
+				H.radiation += 100
+				H.apply_damage(300, BURN)
+				CHECK_TICK
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
-
+				CHECK_TICK
+			for(var/mob/living/L in src.contents)
+				if(L.stat == DEAD)
+					L.gib()
+					CHECK_TICK
+				//H.stat = DEAD
 		if(BLOWOUTHIGH)
 			lentahtml = ""
-
-			for(var/mob/living/L in src.contents)
-				if(istype(L, /mob/living/carbon/human))
-					var/mob/living/carbon/human/H = L
-					H.radiation += 100
-					H.apply_damage(150, BURN)
-					continue
-				L.gib()
-
+			for(var/mob/living/carbon/human/H in src.contents)
+				H.radiation += 100
+				H.apply_damage(300, BURN)
+				CHECK_TICK
 			for(var/obj/item/weapon/artifact/A in src.contents)
 				qdel(A)
-				continue
-	*/
-/*
+				CHECK_TICK
+			for(var/mob/living/L in src.contents)
+				if(L.stat == DEAD)
+					L.gib()
+					CHECK_TICK
+
 area/proc/ProcessBlowout()
 	if(blowout)
 		for(var/mob/living/carbon/human/H in src.contents)
 			shake_camera(H, 1, 1)
 			spawn(1100)	//980
-				shake_camera(H, 10, 1)
+			shake_camera(H, 10, 1)
 		spawn(15)
 			ProcessBlowout()
 	if(prob(10))
@@ -232,4 +159,3 @@ area/proc/ProcessBlowout()
 	if(prob(30))
 		var/a = pick(StalkerBlowout.lightning)
 		world << sound(a, wait = 1, channel = 24, volume = 70)
-*/
