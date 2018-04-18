@@ -19,7 +19,7 @@
 	var/moving			= null
 	var/adminobs		= null
 	var/area			= null
-	var/lang			= english
+	var/lang			= "english"
 
 		///////////////
 		//SOUND STUFF//

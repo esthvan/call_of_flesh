@@ -138,7 +138,7 @@
 		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,					200, NEWBIE),
 		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,1000, NEWBIE),
 		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,		5000, NEWBIE),
-
+		)
 
 	var/list/detector_list = list(
 		/////////////////////////////////	Детекторы	///////////////////////////////////////////
@@ -192,7 +192,7 @@ var/list/sidormatitems = list()
 	var/faction = "Одиночки"
 	var/sale_price = 0
 
-/datum/data/stalker_equipment/New(name, path, cost, rating, faction = "Одиночки", sale_price = 0)
+/datum/data/stalker_equipment/New(equipment_name_eng, name, path, cost, rating, faction = "Одиночки", sale_price = 0)
 	src.equipment_name_eng = equipment_name_eng
 	src.equipment_name = name
 	src.equipment_path = path
@@ -238,7 +238,7 @@ var/list/sidormatitems = list()
 				balance = sk.fields["money"]
 				rating = sk.fields["rating"]
 			else
-					say("No access.")
+				say("No access.")
 		else
 			say("Activate your profile in KPK.")
 	else
@@ -254,7 +254,7 @@ var/list/sidormatitems = list()
 	//	dat += "На счету отсутствуют деньги.  <A href='?src=\ref[src];choice=insert'>Вставьте купюру.</A><br>"
 
 	dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе." // Забирать деньги и купленные вещи - на <b>правом</b>.
-	dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table."
+	dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table." // Забирать деньги и купленные вещи - на <b>правом</b>.
 	dat += "</div>"
 	dat += "<br><b>Список предметов:</b><BR><table border='0' width='400'>"
 	dat += "<tr><td><center><b>Оружие</b></center></td><td></td><td></td></tr>"
@@ -343,7 +343,7 @@ var/list/sidormatitems = list()
 						balance = sk.fields["money"]
 						new prize.equipment_path(itemloc2)
 			else
-					say("No access.")
+				say("No access.")
 		else
 			say("Activate your profile in KPK.")
 	else
@@ -414,7 +414,7 @@ var/list/sidormatitems = list()
 				else
 					say("Habar was not sold.")
 			else
-					say("No access.")
+				say("No access.")
 		else
 			say("Activate your profile in KPK.")
 	else
