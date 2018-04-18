@@ -78,13 +78,13 @@ datum/subsystem/blowout/proc/StopBlowout()
 		if(istype(get_area(H.loc), /area/stalker/blowout))
 			H.radiation += 100
 			H.apply_damage(300, BURN)
-			CHECK_TICK
+		CHECK_TICK
 
 	for(var/mob/living/L in dead_mob_list)
 		if(istype(get_area(L.loc), /area/stalker/blowout))
 			if(L.stat == DEAD)
 				L.gib()
-				CHECK_TICK
+		CHECK_TICK
 
 	for(var/obj/item/weapon/artifact/A in spawned_artifacts)
 		spawned_artifacts.Remove(A)
