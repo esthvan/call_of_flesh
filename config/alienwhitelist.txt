@@ -32,3 +32,4 @@ wolforbykot = Duty
 hypela42 = Duty
 congrulation = Duty
 xrenoid = Duty
+jshepard = Duty
