@@ -702,18 +702,12 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /proc/SortAreas()
 	for(var/area/A in world)
 		sortedAreas.Add(A)
-		if(istype(A, /area/stalker/blowout))
-			blowoutAreas.Add(A)
 
 	sortTim(sortedAreas, /proc/cmp_name_asc)
-	sortTim(blowoutAreas, /proc/cmp_name_asc)
 
 /area/proc/addSorted()
 	sortedAreas.Add(src)
-	blowoutAreas.Add(src)
 	sortTim(sortedAreas, /proc/cmp_name_asc)
-	sortTim(blowoutAreas, /proc/cmp_name_asc)
-
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all areas of that type in the world.
 /proc/get_areas(areatype)
