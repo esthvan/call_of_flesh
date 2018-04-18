@@ -108,10 +108,9 @@ datum/subsystem/blowout/proc/StopBlowout()
 
 datum/subsystem/blowout/proc/ProcessBlowout()
 	if(isblowout)
-		for(var/mob/living/carbon/human/H in player_list)
-			shake_camera(H, 1, 1)
-		spawn(15)
+		spawn(100)
 			ProcessBlowout()
+
 	if(prob(10))
 		var/a = pick(StalkerBlowout.ambient)
 		world << sound(a, wait = 1, channel = 19, volume = 70)
