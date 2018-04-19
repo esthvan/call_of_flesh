@@ -672,7 +672,7 @@
 
 /datum/species/proc/handle_vision(mob/living/carbon/human/H)
 	if( H.stat == DEAD )
-		if(src.client && src.client.holder)
+		if(H.client && H.client.holder)
 			H.sight |= (SEE_TURFS|SEE_MOBS|SEE_OBJS)
 		H.see_in_dark = 8
 		if(!H.druggy)		H.see_invisible = SEE_INVISIBLE_LEVEL_TWO
