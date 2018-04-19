@@ -345,8 +345,11 @@ var/list/admin_verbs_hideable = list(
 
 	for(var/datum/data/record/sk in data_core.stalkers)
 		if(sk.fields["sid"] == id0)
+			var/oldrank = sk.fields["rating"]
 			sk.fields["rating"] = newrank
-			usr << "<span class='interface'>Рейтинг успешно обновлен.</span>"
+			usr << "<span class='interface'>Рейтинг успешно обновлен с [oldrank] до [newrank].</span>"
+			log_admin("[key_name(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
+			message_admins("[key_name_admin(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
 			return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
@@ -364,6 +367,8 @@ var/list/admin_verbs_hideable = list(
 			var/newbalance = input(usr, "Введите новое количество RU на счету сталкера.", "Система S.T.A.L.K.E.R.") as num
 			sk.fields["money"] = newbalance
 			usr << "<span class='interface'>Баланс на счету успешно обновлен.</span>"
+			log_admin("[key_name(usr)] changed [sk_name] money balance from [sk_money] to [newbalance].")
+			message_admins("[key_name_admin(usr)] changed [sk_name] money balance from [sk_money] to [newbalance].")
 			return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 

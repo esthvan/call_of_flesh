@@ -124,7 +124,7 @@
 		if(O.loc == src.loc)
 			count++
 		else
-			spawned_loot.Remove(id)
+			spawned_loot.Remove(I)
 
 	return Clamp(lootcount - count, 0, lootcount)
 
