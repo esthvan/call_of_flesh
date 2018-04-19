@@ -530,6 +530,7 @@ var/global/lentahtml = ""
 						H << "<B>Пароль к КПК</B>: <span class='danger'>\"[pass]\"</span>"
 						H.mind.store_memory("<b>Пароль к КПК</b>: \"[pass]\"")
 						KPKs += src
+						KPK_mobs += H
 
 						for(var/datum/data/record/sk in data_core.stalkers)
 							if(H.sid == sk.fields["sid"])
