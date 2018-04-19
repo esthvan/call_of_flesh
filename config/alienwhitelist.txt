@@ -34,3 +34,4 @@ congrulation = Duty
 xrenoid = Duty
 jshepard = Duty
 miloshevich447 = Duty
+themanwhosoldthehorns = Duty
