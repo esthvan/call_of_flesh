@@ -26,6 +26,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/SetRank,
 	/client/proc/SetMoney,
 	/client/proc/GetMoney,
+	/client/proc/SetFaction,
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
 	/client/proc/ResetSidorRooms,
@@ -387,8 +388,8 @@ var/list/admin_verbs_hideable = list(
 			return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
-/client/proc/SetMoney()
-	set name = "Set Money"
+/client/proc/SetFaction()
+	set name = "Set Faction"
 	set category = "Stalker"
 
 	var/id0 = input(usr, "Введите номер сталкера.", "Система S.T.A.L.K.E.R.") as num
