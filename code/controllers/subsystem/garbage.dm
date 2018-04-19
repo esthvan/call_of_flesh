@@ -3,12 +3,13 @@ var/datum/subsystem/garbage_collector/SSgarbage
 /datum/subsystem/garbage_collector
 	name = "Garbage"
 	can_fire = 1
-	wait = 5
+	wait = 10
 	dwait_upper = 10
+	dwait_lower = 5
 	priority = -1
 
 	var/collection_timeout = 300// deciseconds to wait to let running procs finish before we just say fuck it and force del() the object
-	var/max_run_time = 1		// how long, in deciseconds, can we run before waiting for the next tick
+	var/max_run_time = 4		// how long, in deciseconds, can we run before waiting for the next tick
 	var/delslasttick = 0		// number of del()'s we've done this tick
 	var/gcedlasttick = 0		// number of things that gc'ed last tick
 	var/totaldels = 0
