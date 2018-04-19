@@ -20,7 +20,7 @@
 
 /obj/item/weapon/reagent_containers/food/drinks/soda_cans/voda
 	name = "Bottle"
-	desc = "Тонизирующа&#255; вода 'Шишкин Лес'"
+	desc = "Тонизирующа&#255; вода \"Шишкин Лес\""
 	icon = 'icons/stalker/food.dmi'
 	icon_state = "voda"
 	list_reagents = list("energetic" = 3, "water" = 37)
