@@ -807,7 +807,6 @@
 #include "code\game\stalker\factions\duty.dm"
 #include "code\game\stalker\factions\jobs.dm"
 #include "code\game\stalker\factions\mercenary.dm"
-#include "code\game\stalker\factions\mystical.dm"
 #include "code\game\stalker\factions\phantoms.dm"
 #include "code\game\stalker\factions\survivor.dm"
 #include "code\game\stalker\machinery\door.dm"
