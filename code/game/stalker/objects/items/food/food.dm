@@ -276,12 +276,3 @@
 	icon_state = "baton_stalker"
 	w_class = 2
 	list_reagents = list("nutriment" = 8, "omnizine" = 0.2)
-
-/obj/item/weapon/reagent_containers/food/snacks/stalker/shit //Тот, кто добавил это - нехороший человек и извращенец
-	name = "shit"
-	desc = "Ммм, как вкусно..."
-	//weight = 1
-	icon = 'icons/stalker/items.dmi'
-	icon_state = "shit"
-	w_class = 1
-	list_reagents = list("nutriment" = 1, "toxin" = 2)
