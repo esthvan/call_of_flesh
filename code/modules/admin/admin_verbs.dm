@@ -346,6 +346,7 @@ var/list/admin_verbs_hideable = list(
 	for(var/datum/data/record/sk in data_core.stalkers)
 		if(sk.fields["sid"] == id0)
 			var/oldrank = sk.fields["rating"]
+			var/sk_name = sk.fields["name"]
 			sk.fields["rating"] = newrank
 			usr << "<span class='interface'>Рейтинг успешно обновлен с [oldrank] до [newrank].</span>"
 			log_admin("[key_name(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
@@ -385,6 +386,26 @@ var/list/admin_verbs_hideable = list(
 			src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
 			return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+
+/client/proc/SetMoney()
+	set name = "Set Money"
+	set category = "Stalker"
+
+	var/id0 = input(usr, "Введите номер сталкера.", "Система S.T.A.L.K.E.R.") as num
+
+	for(var/datum/data/record/sk in data_core.stalkers)
+		if(sk.fields["sid"] == id0)
+			var/sk_name = sk.fields["name"]
+			var/sk_faction_s = sk.fields["faction_s"]
+			src << "<span class='interface'>[sk_name] состоит в [sk_faction_s].</span>"
+			var/newfaction = input(usr, "Введите новую фракцию сталкера.", "Система S.T.A.L.K.E.R.") as text
+			sk.fields["faction_s"] = newfaction
+			usr << "<span class='interface'>Фракция успешно обновлена.</span>"
+			log_admin("[key_name(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
+			message_admins("[key_name_admin(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
+			return
+	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+
 
 /client/proc/SetMinCooldownBlowout()
 	set name = "Set Blowout Cooldown (min)"
