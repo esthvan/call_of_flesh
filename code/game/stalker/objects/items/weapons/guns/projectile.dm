@@ -34,11 +34,6 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/pistol/pm/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
-
 /obj/item/weapon/gun/projectile/automatic/pistol/sip  // Sig-Sauer
 	name = "SIG-Sauer P220"
 	desc = "Модель, разработанна&#255; ещё в 1975 году, но до сих пор попул&#255;рна&#255; во всём мире. Магазин недостаточно ёмкий, зато механизм надёжен как швейцарские часы; вторым плюсом &#255;вл&#255;етс&#255; использование мощного кольтовского патрона .45 калибра."
@@ -57,12 +52,6 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/pistol/sip/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
-
-
 /obj/item/weapon/gun/projectile/automatic/pistol/cora  // Colt1911A
 	name = "Colt M1911"
 	desc = "Классический автоматический «кольт», с честью прошедший все вооружённые конфликты XX века и уверенно вошедший в новое столетие. Невысока&#255; ёмкость магазина в определённой степени компенсируетс&#255; использованием мощного патрона."
@@ -80,12 +69,6 @@
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
-
-
-/obj/item/weapon/gun/projectile/automatic/pistol/cora/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
 
 /obj/item/weapon/gun/projectile/automatic/pistol/marta  // Beretta92FS
 	name = "Beretta 92FS"
@@ -106,11 +89,6 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/pistol/marta/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
-
 /obj/item/weapon/gun/projectile/automatic/pistol/fort12  // Фора12
 	name = "Fort-12"
 	desc = "Пистолет полицейского назначени&#255; украинского производства, пришедший на смену ПМм. Обладает лучшими по сравнению с последним точностью бо&#255;, эргономикой и более вместительным магазином, однако менее надёжен."
@@ -129,20 +107,10 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/pistol/fort12/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
-
 /obj/item/weapon/gun/projectile/automatic/pistol/fort12/unique  // Фора12 - расширенный магазин
 	desc = "Экспериментальный прототип пистолета Фора. Единичный экземпл&#255;р."
 	icon_state = "fort12_unique"
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x18fort_u
-
-/obj/item/weapon/gun/projectile/automatic/pistol/fort12/unique/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
 
 /obj/item/weapon/gun/projectile/automatic/pistol/pb1s  //ПБ1С
 	name = "PB1s"
@@ -163,11 +131,6 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/pistol/pb1s/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
-
 /obj/item/weapon/gun/projectile/automatic/pistol/usp_match  // USP Match
 	name = "H&K USP Match"
 	desc = "Матчева&#255; модификаци&#255; известного немецкого пистолета, калибра .45. Имеет специальную насадку, котора&#255; уменьшает подброс ствола при стрельбе за счёт своего веса. Увеличенный магазин на 15 патронов. На руко&#255;тке инициалы - L.C."
@@ -185,11 +148,6 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/pistol/usp_match/update_icon()
-	..()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-	return
-
 
 ///////////////////////////// Автоматы, ПП //////////////////////////////////////////
 
@@ -203,14 +161,19 @@
 
 /obj/item/weapon/gun/projectile/automatic/New()
 	..()
-	mag_overlay = image('icons/stalker/projectile_overlays32x32.dmi', "[initial(icon_state)]-mag", layer = FLOAT_LAYER)
+	if(!istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
+		mag_overlay = image('icons/stalker/projectile_overlays32x32.dmi', "[initial(icon_state)]-mag", layer = FLOAT_LAYER)
+
 	if(can_suppress)
 		silencer_overlay = image('icons/stalker/projectile_overlays48x48.dmi', "[initial(icon_state)]-silencer", layer = FLOAT_LAYER)
+
 	if(can_scope)
 		scope_overlay = image('icons/stalker/projectile_overlays32x32.dmi', "[initial(icon_state)]-scope", layer = FLOAT_LAYER)
+
 	if(colored)
 		colored_overlay = image('icons/stalker/projectile_overlays32x32.dmi', "[initial(icon_state)]-[colored]", layer = FLOAT_LAYER)
 		overlays += colored_overlay
+
 	update_icon()
 
 /obj/item/weapon/gun/projectile/automatic/update_icon()
@@ -219,7 +182,10 @@
 	/*
 	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
 	*/
-	item_state = "[initial(item_state)][magazine ? "" : "-e"]"		//Пока не разберусь с оверлеями на мобах, будет так
+	if(!istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
+		item_state = "[initial(item_state)][magazine ? "" : "-e"]"		//Пока не разберусь с оверлеями на мобах, будет так
+	else
+		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 
 	/*
 	if(!magazine && mag_overlay in overlays)
@@ -231,7 +197,7 @@
 	if(colored)
 		overlays += colored_overlay
 
-	if(!istype(src, /obj/item/weapon/gun/projectile/automatic/pistol) && magazine && mag_overlay)
+	if(magazine && mag_overlay)
 		overlays += mag_overlay
 
 	if(suppressed && silencer_overlay)
