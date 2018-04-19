@@ -412,7 +412,7 @@ var/const/GALOSHES_DONT_HELP = 4
 		buckled.user_unbuckle_mob(src,src)
 
 /mob/living/carbon/resist_fire()
-	fire_stacks -= 5
+	fire_stacks = 0
 	Weaken(3,1)
 	spin(32,2)
 	visible_message("<span class='danger'>[src] rolls on the floor, trying to put themselves out!</span>", \
