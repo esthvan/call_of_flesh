@@ -32,19 +32,25 @@ obj/machinery/campfire/barrel
 	if(on && !KOSTIL)
 		user.visible_message("<span class='notice'>[user] начал тушить костёр...</span>", "<span class='notice'>Вы начали тушить костёр...</span>")
 		KOSTIL = 1
+
 		if(!do_after(user, 10, 1, src))
 			KOSTIL = 0
 			return
+
 		KOSTIL = 0
+
 		user.visible_message("<span class='green'>[user] потушил костёр.</span>", "<span class='green'>Вы потушили костёр.</span>")
 		desc = "Бочка с парой сухих дровишек внутри. Можно зажечь спичками или зажигалкой."
+
 		on = !on
 		update_icon()
 		set_light(0)
+
 		for (var/client/C in campers)
 			C.campfireplaying = 0
 			C << sound(null, 0, 0 , 5, 80)
 			campers -= C
+
 		SSmachine.processing.Remove(src)
 
 /obj/machinery/campfire/update_icon()
@@ -67,7 +73,7 @@ obj/machinery/campfire/barrel
 
 /obj/machinery/campfire/proc/RefreshSound()
 
-	for (var/mob/M in view(5, src))
+	for(var/mob/M in view(5, src))
 		if(!M || !M.client)
 			continue
 
@@ -86,28 +92,32 @@ obj/machinery/campfire/barrel
 			C << sound(null, 0, 0 , 5, 80)
 			campers -= C
 
-/obj/machinery/campfire/Crossed(atom/A)
-	src.trapped.Add(A)
-	if(src.trapped.len > 0 && !incooldown)
-		src.Think()
-
-obj/machinery/campfire/Uncrossed(atom/A)
-	if (istype(A,/mob/living/carbon))
-		var/mob/living/carbon/M = A
-		src.trapped.Remove(M)
-
-obj/machinery/campfire/proc/Think()
-	for(var/A in src.trapped)
-		var/mob/living/carbon/M = A
-		if(on)
-			M.fire_act()
-		src.incooldown = 1
-		spawn(src.cooldown * 10)
-			src.incooldown = 0
-			if(src.trapped.len > 0)
-				src.Think()
-
-	return
+obj/machinery/campfire/process()
+	if(!on)
+		SSmachine.processing.Remove(src)
+		return
+	src.RefreshSound()
+	//if(!on || (stat & BROKEN))
+	//	return
+	//if(on)
+		/*
+		if(src.wood > 750)
+			set_light(5, 1, firecolor)
+		else
+			if(src.wood > 500)
+				set_light(4, 1, firecolor)
+			else
+				if(src.wood > 250)
+					set_light(3, 1, firecolor)
+				else
+					if(src.wood > 0)
+						set_light(2, 1, firecolor)
+		*/
+	/*
+	if(wood < 0)
+		on = FALSE
+		update_icon()
+	*/
 
 /obj/machinery/campfire/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stack/sheet/mineral/wood))
@@ -158,31 +168,38 @@ obj/machinery/campfire/proc/Think()
 					if(on)
 						I.fire_act()
 
+/obj/machinery/campfire/Crossed(atom/A)
+	if(istype(A,/mob))
+		src.trapped.Add(A)
+		if(src.trapped.len >= 1 && !incooldown)
+			src.Think()
+	return
 
+obj/machinery/campfire/Uncrossed(atom/A)
+	if(istype(A,/mob))
+		var/mob/M = A
+		src.trapped.Remove(M)
+	return
 
-obj/machinery/campfire/process()
-	if(!on)
-		SSmachine.processing.Remove(src)
-		return
-	src.RefreshSound()
-	//if(!on || (stat & BROKEN))
-	//	return
-	//if(on)
-		/*
-		if(src.wood > 750)
-			set_light(5, 1, firecolor)
-		else
-			if(src.wood > 500)
-				set_light(4, 1, firecolor)
-			else
-				if(src.wood > 250)
-					set_light(3, 1, firecolor)
-				else
-					if(src.wood > 0)
-						set_light(2, 1, firecolor)
-		*/
-	/*
-	if(wood < 0)
-		on = FALSE
-		update_icon()
-	*/
+obj/machinery/campfire/proc/Think()
+	for(var/A in src.trapped)
+
+		if(!istype(A, /mob))
+			return
+
+		var/mob/M = A
+
+		if(on)
+			M.fire_act()
+
+		src.incooldown = 1
+
+		///////////////////////
+		sleep(src.cooldown * 10)
+		///////////////////////
+
+		src.incooldown = 0
+		if(src.trapped.len >= 1)
+			src.Think()
+
+	return

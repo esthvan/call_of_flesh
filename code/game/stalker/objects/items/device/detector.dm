@@ -90,7 +90,7 @@
 	min_dist = 8
 	target = null
 
-	for (var/obj/item/weapon/artifact/a in range(7, user))
+	for(var/obj/item/weapon/artifact/a in range(7, user))
 		//a.invisibility = 0
 		if(level_s >= a.level_s)
 			arts += a

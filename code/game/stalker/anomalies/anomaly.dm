@@ -15,7 +15,7 @@
 	var/activated_icon_state = null 	//Спрайт при активации
 	var/cooldown = 5
 	var/lasttime = 0
-	var/list/trapped = new/list()
+	var/list/mob/living/trapped = new/list()
 	var/idle_luminosity = 0
 	var/activated_luminosity = 0
 	var/sound = null
@@ -106,143 +106,159 @@
 					var/obj/item/weapon/storage/S = Q
 					S.do_quick_empty()
 				qdel(Q)
-				//trapped.Remove(Q)
 				spawn(src.cooldown * 10 - 5)
 					qdel(I)
 		return
 
 	if(istype(A,/mob/living))
-		//playsound(src.loc, src.sound, 50, 1, channel = 0)
-		var/mob/living/M = A
-		src.trapped.Add(M)
+		var/mob/living/L = A
+		src.trapped.Add(L)
 		if(src.trapped.len >= 1)
 			Think()
-		//else
-		//	src.trapped.Remove(M)
-		return
+		else
+			src.trapped.Remove(L)
 	return
 
 /obj/anomaly/Uncrossed(atom/A)
 	..()
-	if (istype(A,/mob/living))
-		var/mob/living/M = A
-		src.trapped.Remove(M)
-		//SSobj.processing.Remove(src)
-//	if (istype(A,/obj/item) && !istype(A,/obj/item/projectile) && !istype(A,/obj/item/weapon/artifact))
-//		var/obj/item/O = A
-//		src.trapped.Remove(O)
+	if(istype(A, /mob/living))
+		var/mob/living/L = A
+		src.trapped.Remove(L)
+	return
 
 /obj/anomaly/proc/Think()
 
-	if(src.trapped.len <= 0)
-		//SSobj.processing.Remove(src)
+	if(src.trapped.len < 1)
 		return
 
 	if(lasttime + (cooldown * 10) > world.time)
-		spawn(lasttime + (cooldown * 10) - world.time)
-			Think()
+
+		//////////////////////////////////////////////
+		sleep(lasttime + (cooldown * 10) - world.time)
+		//////////////////////////////////////////////
+
+		Think()
 		return
 
 	invisibility = active_invisibility
 	icon_state = active_icon_state
 	update_icon()
-
 	set_light(activated_luminosity, l_color = anomaly_color)
-
 
 	spawn(10)
 		invisibility = inactive_invisibility
 		icon_state = inactive_icon_state
-
+		update_icon()
 		set_light(idle_luminosity, l_color = anomaly_color)
 
 	playsound(src.loc, src.sound, 50, 1, channel = 0)
 
 	lasttime = world.time
 
-	spawn(src.delay * 10)
-		for(var/atom/A in src.trapped)
-			if(istype(A, /mob/living))
-				var/mob/living/M = A
-				//spawn(src.delay * 10)
-				if(M.stat == 2)
-					src.trapped.Remove(M)
-					return
-				switch(src.damage_type)
-					if(DMG_TYPE_ENERGY)
-						M.apply_damage(src.damage_amount, BURN, null, M.getarmor(null, "electro"))
-					if(DMG_TYPE_BIO)
-						M.apply_damage(src.damage_amount, BURN, null, M.getarmor(null, "bio"))
-					if(DMG_TYPE_RADIATION)
-						M.rad_act(src.damage_amount)
-					if(DMG_TYPE_GIB)
-						M.gib()
-						trapped.Remove(M)
-					if(DMG_TYPE_IGNITION)
-						A.fire_act()
-						if(istype(A, /mob/living/simple_animal/hostile))
-							M.apply_damage(40, BURN, null, 0)
+	////////////////////
+	sleep(src.delay * 10)
+	////////////////////
 
-				spawn(src.cooldown * 10)
-					if(src.trapped.len <= 0)
-						return
-					Think()
+	for(var/atom/A in src.trapped)
+
+		if(!istype(A, /mob/living))
+			continue
+
+		var/mob/living/L = A
+
+		if(L.stat == 2)
+			src.trapped.Remove(L)
+			continue
+
+		switch(src.damage_type)
+			if(DMG_TYPE_ENERGY)
+				L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "electro"))
+			if(DMG_TYPE_BIO)
+				L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "bio"))
+			if(DMG_TYPE_RADIATION)
+				L.rad_act(src.damage_amount)
+			if(DMG_TYPE_GIB)
+				L.gib()
+				trapped.Remove(L)
+			if(DMG_TYPE_IGNITION)
+				if(istype(L, /mob/living/simple_animal/hostile))
+					L.apply_damage(40, BURN, null, 0)
+				else
+					L.fire_act()
+		///////////////////////
+		sleep(src.cooldown * 10)
+		///////////////////////
+
+	if(src.trapped.len < 1)
+		return
+
+	Think()
 	return
 
 /obj/anomaly/tramplin/Think()
 
-	if(src.trapped.len <= 0)
-		//SSobj.processing.Remove(src)
+	if(src.trapped.len < 1)
 		return
 
 	if(lasttime + (cooldown * 10) > world.time)
-		spawn(lasttime + (cooldown * 10) - world.time)
-			Think()
+
+		//////////////////////////////////////////////
+		sleep(lasttime + (cooldown * 10) - world.time)
+		//////////////////////////////////////////////
+
+		Think()
 		return
 
 	invisibility = active_invisibility
 	icon_state = active_icon_state
 	update_icon()
-
 	set_light(activated_luminosity, l_color = anomaly_color)
 
 
 	spawn(10)
 		invisibility = inactive_invisibility
 		icon_state = inactive_icon_state
-
 		set_light(idle_luminosity, l_color = anomaly_color)
 
 	playsound(src.loc, src.sound, 50, 1, channel = 0)
 
 	lasttime = world.time
 
-	spawn(src.delay * 10)
-		for(var/atom/A in src.trapped)
-			if(istype(A, /mob/living))
-				var/mob/living/M = A
-				//spawn(src.delay * 10)
-				if(M.stat == 2)
-					src.trapped.Remove(M)
-					return
+	sleep(src.delay * 10)
 
-				M.apply_damage(src.damage_amount, BRUTE, null, 0)
+	for(var/atom/A in src.trapped)
 
-				var/new_dir = NORTH
-				var/target = get_turf(src)
+		if(!(A in src.trapped))
+			continue
 
-				for(var/o=0, o<8, o++)
-					new_dir = pick(EAST, NORTH, WEST, SOUTH)
-					target = get_turf(get_step(target, new_dir))
+		if(!istype(A, /mob/living))
+			continue
 
-				M.throw_at(target, 6, 1, spin=1, diagonals_first = 1)
-				M.Weaken(2)
+		var/mob/living/L = A
+		if(L.stat == 2)
+			src.trapped.Remove(L)
+			continue
 
+		L.apply_damage(src.damage_amount, BRUTE, null, 0)
 
-				spawn(src.cooldown * 10)
-					if(src.trapped.len <= 0)
-						return
-					Think()
+		var/new_dir = NORTH
+		var/target = get_turf(src)
+
+		for(var/o=0, o<8, o++)
+			new_dir = pick(EAST, NORTH, WEST, SOUTH)
+			target = get_turf(get_step(target, new_dir))
+
+		L.throw_at(target, 6, 1, spin=1, diagonals_first = 1)
+		L.Weaken(2)
+
+		///////////////////////
+		sleep(src.cooldown * 10)
+		///////////////////////
+
+	if(src.trapped.len < 1)
+		return
+
+	Think()
 	return
 
 /obj/anomaly/electro
@@ -382,7 +398,7 @@
 	var/activated_icon_state = null 	//Спрайт при активации
 	var/cooldown = 2.5					//Кулдаун
 	var/lasttime = 0
-	var/list/trapped = new/list()
+	var/list/mob/living/carbon/human/trapped = new/list()
 	var/idle_luminosity = 0
 	var/activated_luminosity = 0
 	var/sound = null
@@ -424,33 +440,41 @@
 	if(lasttime + cooldown > world.time)
 		return
 
-	if(istype(A,/mob/living/carbon))
-		var/mob/living/carbon/M = A
-		src.trapped.Add(M)
+	if(istype(A,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = A
+		src.trapped.Add(H)
 		if(src.trapped.len >= 1)
 			SSobj.processing |= src
 
 /obj/rad/Uncrossed(atom/A)
 	..()
-	if (istype(A,/mob/living/carbon))
-		var/mob/living/carbon/M = A
-		src.trapped.Remove(M)
+	if (istype(A,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = A
+		src.trapped.Remove(H)
 		SSobj.processing.Remove(src)
 
 /obj/rad/process()
-	if(src.trapped.len <= 0)
+	if(src.trapped.len < 1)
 		SSobj.processing.Remove(src)
 		return
 
-	if(lasttime + cooldown > world.time)
-		return
-
 	for(var/atom/A in src.trapped)
-		//if(istype(A, /mob/living))
-		var/mob/living/M = A
-		M.rad_act(src.damage_amount)
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(istype(H.wear_id,/obj/item/device/stalker_pda))
-				M << sound(src.sound, repeat = 0, wait = 0, volume = 50, channel = 3)
+
+		if(lasttime + cooldown > world.time)
+			return
+
+		if(!istype(A, /mob/living/carbon/human))
+			continue
+
+		var/mob/living/carbon/human/H = A
+
+		if(H.stat == 2)
+			src.trapped.Remove(H)
+			continue
+
+		H.rad_act(src.damage_amount)
+
+		if(istype(H.wear_id,/obj/item/device/stalker_pda))
+			H << sound(src.sound, repeat = 0, wait = 0, volume = 50, channel = 3)
+
 		src.lasttime = world.time

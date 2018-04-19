@@ -73,42 +73,60 @@
 	SpawnLoot()
 
 /obj/effect/spawner/lootdrop/stalker/proc/SpawnLoot(enable_cooldown = 1)
-	if(loot && loot.len)
-		if(!enable_cooldown)
-			for(var/k = 0, k < lootcount, k++)
-				if(!loot.len) return
-				var/lootspawn = pickweight(loot)
-				if(lootspawn)
-					var/turf/T = get_turf(src)
-					var/obj/O = new lootspawn(T)
-					spawned_loot.Add(O)
-					RandomMove(O)
-		else
-			spawn(cooldown)
-				for(var/k = 0, k < lootcount, k++)
-					if(!loot.len) return
-					var/lootspawn = pickweight(loot)
-					if(lootspawn)
-						var/turf/T = get_turf(src)
-						var/obj/O = new lootspawn(T)
-						spawned_loot.Add(O)
-						RandomMove(O)
-				SpawnLoot()
+	if(!loot || !loot.len)
+		return
+
+	if(!enable_cooldown)
+		for(var/k = 0, k < lootcount, k++)
+
+			if(!loot.len)
+				return
+
+			var/lootspawn = pickweight(loot)
+
+			if(!lootspawn)
+				continue
+
+			var/turf/T = get_turf(src)
+			var/obj/O = new lootspawn(T)
+			spawned_loot.Add(O)
+			RandomMove(O)
+	else
+		////////////////////////////////////////////
+		sleep(rand(cooldown, cooldown + cooldown/2))
+		////////////////////////////////////////////
+
+		for(var/k = 0, k < lootcount, k++)
+
+			if(!loot.len)
+				return
+
+			var/lootspawn = pickweight(loot)
+
+			if(!lootspawn)
+				continue
+
+			var/turf/T = get_turf(src)
+			var/obj/O = new lootspawn(T)
+			spawned_loot.Add(O)
+			RandomMove(O)
+
+		SpawnLoot()
+	return
 
 /obj/effect/spawner/lootdrop/stalker/proc/CanSpawn()
 	var/count = 0
-	var/i = 0
-	var/list/ids = new()
+
 	for(var/I in spawned_loot)
+
 		var/obj/O = I
+
 		if(O.loc == src.loc)
 			count++
 		else
-			ids.Add(i)
-		i++
-	for(var/id in ids)
-		spawned_loot.Cut(id, id)
-	return max_spawned - count
+			spawned_loot.Remove(id)
+
+	return Clamp(lootcount - count, 0, lootcount)
 
 
 /obj/effect/spawner/lootdrop/stalker/proc/RandomMove(spawned)

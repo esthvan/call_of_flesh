@@ -25,14 +25,14 @@
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/CanSpawn()
 	var/count = 0
-	for(var/mob/living/M in spawned_loot)
-		if(M && M.stat != 2)
-			count++
-		else
-			spawned_loot.Remove(M)
+	if(!isnull(spawned_loot))
+		for(var/mob/living/M in spawned_loot)
+			if(M && M.stat != 2)
+				count++
+			else
+				spawned_loot.Remove(M)
 
-	var/r = Clamp(lootcount - count, 0, lootcount)
-	return r
+	return Clamp(lootcount - count, 0, lootcount)
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/flesh_spawner
 	name = "flesh mutant"
