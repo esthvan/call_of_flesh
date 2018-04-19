@@ -942,7 +942,7 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 						sk.fields["reputation"] -= 50
 
 			var/datum/data/record/sk_H = find_record("sid", H.sid, data_core.stalkers)
-			if(sk_H)
+			if(sk && sk_H)
 
 				//var/temp_rep = text2num(sk_H.fields["rating"])
 				switch(sk_H.fields["rating"])
