@@ -179,21 +179,7 @@
 /obj/item/weapon/gun/projectile/automatic/update_icon()
 	..()
 	overlays.Cut()
-	/*
-	icon_state = "[initial(icon_state)][magazine ? "" : "-e"][suppressed ? "-silenced" : ""]"
-	*/
-	if(!istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
-		item_state = "[initial(item_state)][magazine ? "" : "-e"]"		//Пока не разберусь с оверлеями на мобах, будет так
-	else
-		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 
-	/*
-	if(!magazine && mag_overlay in overlays)
-		overlays.Remove(mag_overlay)
-
-	if(!suppressed && silencer_overlay in overlays)
-		overlays.Remove(silencer_overlay)
-	*/
 	if(colored)
 		overlays += colored_overlay
 
@@ -210,7 +196,9 @@
 		overlays += image('icons/stalker/projectile_overlays32x32.dmi', "unique", layer = FLOAT_LAYER)
 
 	if(istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
-		icon_state = "[initial(icon_state)][magazine ? "-[magazine.max_ammo]" : ""][chambered ? "" : "-e"]"
+		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+	else
+		item_state = "[initial(item_state)][magazine ? "" : "-e"]"	//Пока не разберусь с оверлеями на мобах, будет так
 
 	return
 /*

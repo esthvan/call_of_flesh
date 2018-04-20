@@ -9,12 +9,12 @@
 	burst_size = 1
 	fire_delay = 0
 	action_button_name = null
-
+/*
 /obj/item/weapon/gun/projectile/automatic/pistol/update_icon()
 	..()
 	icon_state = "[initial(icon_state)][chambered ? "" : "-e"][suppressed ? "-suppressed" : ""]"
 	return
-
+*/
 /obj/item/weapon/gun/projectile/automatic/pistol/m1911
 	name = "\improper M1911"
 	desc = "A classic .45 handgun with a small magazine capacity."
