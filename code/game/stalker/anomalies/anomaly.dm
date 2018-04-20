@@ -67,7 +67,12 @@
 			var/new_x = T.x + rand(-1, 1)
 			var/new_y = T.y + rand(-1, 1)
 			O.Move(locate(new_x, new_y, T.z))
-	return spawned
+
+			if(istype(get_turf(O), /turf/simulated/mineral) || istype(get_turf(O), /turf/simulated/wall))
+				sleep(5)
+				RandomMove(spawned)
+				return
+	return
 
 /obj/anomaly/Crossed(atom/A)
 	..()
