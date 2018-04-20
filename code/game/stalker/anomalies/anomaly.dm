@@ -62,7 +62,7 @@
 /obj/anomaly/proc/RandomMove(spawned)
 	if(spawned)
 		var/turf/T = get_turf(src)
-		if(istype(spawned, /obj))
+		if(T && istype(spawned, /obj))
 			var/obj/O = spawned
 			var/new_x = T.x + rand(-1, 1)
 			var/new_y = T.y + rand(-1, 1)
