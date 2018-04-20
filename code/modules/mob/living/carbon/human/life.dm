@@ -55,6 +55,7 @@
 		//Артефакты
 		handle_artifacts()
 
+		//Прочность костюмов
 		handle_suit_durability()
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
