@@ -113,6 +113,15 @@
 	src << "You will [(prefs.toggles & MIDROUND_ANTAG) ? "now" : "no longer"] be considered for midround antagonist positions."
 	feedback_add_details("admin_verb","TMidroundA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/verb/changelanguage()
+	set name = "Change game language"
+	set category = "Preferences"
+	set desc = "Changes game language."
+	prefs.chat_toggles ^= CHAT_LANGUAGE
+	prefs.save_preferences()
+	src << "Your game language is changed to [(prefs.chat_toggles & CHAT_LANGUAGE) ? "English" : "Russian"]."
+	feedback_add_details("admin_verb","ChangeLang") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/verb/toggletitlemusic()
 	set name = "Hear/Silence LobbyMusic"
 	set category = "Preferences"

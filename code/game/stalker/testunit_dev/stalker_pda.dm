@@ -202,13 +202,21 @@ var/global/lentahtml = ""
 	}\
 	</style>"
 	if (!owner || !password)
-		mainhtml +="\
-		<body>\
+		mainhtml +="<body>\
 		<table border=0 height=\"314\" width=\"455\">\
 		<tr>\
 		<td valign=\"top\" align=\"center\">\
 	    <div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div><br>\
-	    <div class=\"relative\" align=\"center\">ВВЕДИТЕ ПАРОЛЬ</div>\
+	    <div class=\"relative\" align=\"center\">"
+
+
+		if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+			mainhtml += "ENTER THE PASSWORD"
+		else
+			mainhtml += "ВВЕДИТЕ ПАРОЛЬ"
+
+		mainhtml +="\
+	    </div>\
 		</td>\
 		</tr>\
 		<tr>\
@@ -220,9 +228,7 @@ var/global/lentahtml = ""
 	else
 
 		if (user != owner && hacked == 0)
-			mainhtml +="\
-			\
-			<body>\
+			mainhtml +="<body>\
 			\
 			<table border=0 height=\"314\" width=\"455\">\
 			<tr>\
@@ -230,11 +236,24 @@ var/global/lentahtml = ""
 			<div style=\"overflow: hidden; height: 200px; width: 180px;\" ><img height=80 width=80 border=4 src=photo_front><img height=80 width=80 border=4 background src=photo_side></div>\
 			</td>\
 			<td valign=\"top\" align=\"left\">\
-			 <div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div><br>\
-			 <b>Им&#x44F;:</b> [registered_name]<br><br>\
-			 <b>Группировка:</b> [faction_s]<br><br>\
-			 <b>Ранг:</b> [rating]<br><br>\
-			 <b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s]</font>\
+			 <div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div><br>"
+
+			if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+				mainhtml +="\
+				 <b>Name:</b> [registered_name]<br><br>\
+				 <b>Faction:</b> [faction_s]<br><br>\
+				 <b>Rank:</b> [rating]<br><br>\
+				 <b>Reputation:</b> <font color=\"[rep_color_s]\">[rep_name_s]</font>"
+			else
+				mainhtml +="\
+				 <b>Им&#x44F;:</b> [registered_name]<br><br>\
+				 <b>Группировка:</b> [faction_s]<br><br>\
+				 <b>Ранг:</b> [rating]<br><br>\
+				 <b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s]</font>"
+
+
+			 mainhtml +="\
+			 \
 			</td>\
 			</tr>\
 			\
@@ -255,9 +274,17 @@ var/global/lentahtml = ""
 					\
 					<table border=0 height=\"314\" width=\"455\">\
 					<tr>\
-					<td valign=\"top\" align=\"left\">\
-					<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=exit'>\[ВЫЙТИ ИЗ АККАУНТА\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
-					<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=rotate'>Повернуть фото профил&#x44F;</a> | <a href='byond://?src=\ref[src];choice=make_avatar'>Сменить фото профил&#x44F;</a> | </div>\
+					<td valign=\"top\" align=\"left\">"
+					if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+						mainhtml +="\
+						<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=exit'>\[EXIT\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=rotate'>Rotate photo</a> | <a href='byond://?src=\ref[src];choice=make_avatar'>Change profile photo</a> | </div>"
+					else
+						mainhtml +="\
+						<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=exit'>\[ВЫХОД\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=rotate'>Повернуть фото профил&#x44F;</a> | <a href='byond://?src=\ref[src];choice=make_avatar'>Сменить фото профил&#x44F;</a> | </div>"
+
+					mainhtml +="\
 					</td>\
 					</tr>\
 					<tr valign=\"top\">\
@@ -270,14 +297,24 @@ var/global/lentahtml = ""
 					<img style=\"margin-left: auto; margin-right: auto;\" height=80 width=80 border=4 src=photo_[rotation]>\
 					<br>\
                     </td>\
-                    <td>\
-					\
+                    <td>"
+					if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+						mainhtml+="\
+                     <b>Name:</b> [registered_name]<br>\
+                     <b>Faction:</b> [faction_s]<br>\
+                     <b>Rank:</b> [rank_name_s] ([rating])<br>\
+                     <b>Reputation:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
+                     <b>Money:</b> [money] RU<br>"
+
+					else
+						mainhtml+="\
                      <b>Им&#x44F;:</b> [registered_name]<br>\
                      <b>Группировка:</b> [faction_s]<br>\
                      <b>Ранг:</b> [rank_name_s] ([rating])<br>\
                      <b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
-                     <b>Деньги на счету:</b> [money] р.<br>\
-					\
+                     <b>Деньги на счету:</b> [money] RU<br>"
+
+					mainhtml +="\
                     </td>\
                     </tr>\
                     \
@@ -285,14 +322,7 @@ var/global/lentahtml = ""
                     \
                     \
                     </td>\
-                    </tr>\
-                    \
-					<tr>\
-					<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
-					<div align=\"center\"></div>\
-					</td>\
-					</tr>"
+                    </tr>"
 
 		//ТРАНЗАКЦИИ
 
@@ -304,13 +334,6 @@ var/global/lentahtml = ""
 					<tr>\
 					<td align=\"left\" width=200>\
 					\
-					</td>\
-					</tr>\
-					\
-					<tr>\
-					<td colspan=\"2\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
-					<div align=\"center\"></div>\
 					</td>\
 					</tr>"
 
@@ -334,41 +357,7 @@ var/global/lentahtml = ""
 	             	</div>\
 	                \
 	                </td>\
-					</tr>\
-					<tr>\
-					<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
-					<div align=\"center\"></div>\
-					</td>\
 					</tr>"
-
-					/*
-					mainhtml +="\
-					<body>\
-					\
-					<table border=0 height=\"314\" width=\"455\">\
-					<tr>\
-					<td valign=\"top\" align=\"left\">\
-					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
-					<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>\
-					<div id=\"lenta\">\
-					<span id='maintable_data_archive'>\
-					<table id='maintable_data' style=\"text-align:center;\" border=\"1\" cellspacing=\"0\" width=\"100%\">\
-					<tr>\
-					<th><A href='?src=\ref[src];choice=Sorting;sort=name'>Им&#x44F;</A></th>\
-					<th><A href='?src=\ref[src];choice=Sorting;sort=rating'>Рейтинг</A></th>\
-					<th><A href='?src=\ref[src];choice=Sorting;sort=rating'>Репутаци&#x44F;</A></th>\
-					<th><A href='?src=\ref[src];choice=Sorting;sort=faction'>Группировка</A></th>\
-					</tr>\
-					[ratinghtml]</div>\
-					</td>\
-					</tr>\
-					\
-					<tr>\
-					<td colspan=\"2\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
-					<div align=\"center\"></div>"
-					*/
 
 		//ЛЕНТА
 
@@ -388,13 +377,6 @@ var/global/lentahtml = ""
 					<div id=\"lenta\">"
 					mainhtml +="[lentahtml]\
 					</div>\
-					</td>\
-					</tr>\
-					\
-					<tr>\
-					<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
-					<div align=\"center\"></div>\
 					</td>\
 					</tr>"
 
@@ -426,14 +408,25 @@ var/global/lentahtml = ""
 					</div>\
 					</div>\
 					</td>\
-					</tr>\
-					<tr>\
-					<td colspan=\"2\" align=\"center\" id=\"table-bottom1\" height=60>\
-						| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
-					<div align=\"center\"></div>\
-					</td>\
 					</tr>"
 
+
+			if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+				mainhtml +="\
+				<tr>\
+				<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
+					| <a href='byond://?src=\ref[src];choice=1'>Profile</a> | <a href='byond://?src=\ref[src];choice=2'>Enciclopedie</a> | <a href='byond://?src=\ref[src];choice=3'>Rating</a> | <a href='byond://?src=\ref[src];choice=4'>Feed</a> | <a href='byond://?src=\ref[src];choice=5'>Map</a> |<br>\
+				<div align=\"center\"></div>\
+				</td>\
+				</tr>"
+			else
+				mainhtml +="\
+				<tr>\
+				<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
+					| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
+				<div align=\"center\"></div>\
+				</td>\
+				</tr>"
 
 	mainhtml +="\
 	</table>\

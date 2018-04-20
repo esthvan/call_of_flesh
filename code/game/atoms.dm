@@ -7,6 +7,7 @@
 	var/list/fingerprintshidden
 	var/fingerprintslast = null
 	var/list/blood_DNA
+	var/eng_desc = ""
 
 	///Chemistry.
 	var/datum/reagents/reagents = null
@@ -161,7 +162,13 @@
 	user << "\icon[src] That's [f_name]"
 
 	if(desc)
-		user << desc
+		if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+			user << desc
+		else
+			if(eng_desc)
+				user << eng_desc
+			else
+				user << desc
 	// *****RM
 	//user << "[name]: Dn:[density] dir:[dir] cont:[contents] icon:[icon] is:[icon_state] loc:[loc]"
 
