@@ -337,7 +337,8 @@
 			var/mob/living/L = A
 			if(L.ckey)
 				L << sound(null, repeat = 0, wait = 0, volume = 15, channel = 1)
-				L.client.played = 0
+				if(L && L.client)
+					L.client.played = 0
 	. = ..()
 
 /area/Entered(A)
