@@ -7,7 +7,7 @@
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	action_button_name = "Toggle Light"
-	armor = list(melee = 30, bullet = 30, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 40)
+	armor = list(melee = 50, bullet = 50, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 40)
 	brightness_on = 2 //luminosity when on
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
@@ -33,7 +33,7 @@
 	icon_state = "sphera"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 35, bullet = 30, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 50)
+	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 50)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
@@ -44,7 +44,7 @@
 	icon_state = "helmet_skat"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 70, bullet = 55, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 10, electro = 70)
+	armor = list(melee = 70, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 10, electro = 70)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
