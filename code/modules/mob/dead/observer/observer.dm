@@ -27,7 +27,10 @@ var/list/image/ghost_darkness_images = list() //this is a list of images for thi
 	var/ghost_orbit = GHOST_ORBIT_CIRCLE
 
 /mob/dead/observer/New(mob/body)
-	if(body.client && body.client.holder)
+	if(body)
+		if(body.client && body.client.holder)
+			sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
+	else
 		sight |= SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = 100

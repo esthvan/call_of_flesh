@@ -20,6 +20,15 @@
 	..()
 	SSmachine.processing.Remove(src)
 
+/obj/machinery/campfire/Destroy()
+	for (var/client/C in campers)
+		C.campfireplaying = 0
+		C << sound(null, 0, 0 , 5, 80)
+		campers -= C
+
+	SSmachine.processing.Remove(src)
+	..()
+
 obj/machinery/campfire/barrel
 	name = "barrel"
 	icon = 'icons/stalker/bochka.dmi'
@@ -87,7 +96,7 @@ obj/machinery/campfire/barrel
 			campers -= C
 			continue
 
-		if(!(C.mob in view(5, src)))
+		if(!on || !(C.mob in view(5, src)))
 			C.campfireplaying = 0
 			C << sound(null, 0, 0 , 5, 80)
 			campers -= C
@@ -104,7 +113,6 @@ obj/machinery/campfire/barrel
 obj/machinery/campfire/process()
 	if(!on)
 		SSmachine.processing.Remove(src)
-		return
 	src.RefreshSound()
 	//if(!on || (stat & BROKEN))
 	//	return
