@@ -149,6 +149,8 @@ obj/machinery/campfire/process()
 				usr.visible_message("[usr] разжигает костёр.", "<span class='notice'>Вы разожгли костёр.</span>")
 				desc = "От костра исходит тёпло и м&#255;гкий свет."
 				update_icon()
+				set_light(4, 1, firecolor)
+				SSmachine.processing |= src
 		else
 			if(istype(I, /obj/item/weapon/match))
 				var/obj/item/weapon/match/M = I
