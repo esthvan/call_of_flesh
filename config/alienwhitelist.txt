@@ -39,9 +39,12 @@ mintt = Duty
 wasyand = Duty
 Firefroge = Duty
 MegaOmega005 = Duty
- ChemicalCooker = Duty
-mejka - ¬чера в 22:21
+ChemicalCooker = Duty
 MegaOmega005 = Duty
 Cereter = Duty
 ICYSHINE187 = Duty
 NoName1488137 = Duty
+firefroge = Duty
+corporaldead = Duty
+furrydog = Duty
+def0lt = Duty
