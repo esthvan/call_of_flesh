@@ -121,7 +121,7 @@
 		return 0
 	return 1
 
-/mob/proc/unEquip(obj/item/I, force) //Force overrides NODROP for things like wizarditis and admin undress.
+/mob/proc/unEquip(obj/item/I, force, forced_s) //Force overrides NODROP for things like wizarditis and admin undress.
 	if(!I) //If there's nothing to drop, the drop is automatically succesfull. If(unEquip) should generally be used to check for NODROP.
 		return 1
 
@@ -131,25 +131,26 @@
 	var/ahand = get_active_hand()
 	var/IH = get_item_by_slot(ahand)
 
-	if(I && istype(I, /obj/item/weapon/gun) && !istype(I, IH) && !force && I != r_hand && I != l_hand) //&& !istype(I, /obj/item/weapon/gun/projectile/automatic/pistol))
-		var/obj/item/weapon/gun/W = I
-		if (!istype(I, /obj/item/weapon/gun/projectile/automatic/pistol))
-			playsound(src.loc, 'sound/stalker/weapons/draw/generic_draw.ogg', 30, 1)
-			visible_message("<span class='danger'>[src] начинает доставать [I] из-за спины!</span>", "<span class='notice'>¬ы начинаете доставать [I] из-за спины...</span>")
-			if(do_after_inventory(src, 10, 1, I))
-				playsound(src, W.drawsound, 30, 1)
-				visible_message("<span class='danger'>[src] достал [I] из-за спины!</span>", "<span class='notice'>¬ы достали [I] из-за спины.</span>")
-				if(client)
-					client.screen -= I
-				I.loc = loc
-				I.dropped(src)
-				if(I)
-					I.layer = initial(I.layer)
+	if(!forced_s)
+		if(I && istype(I, /obj/item/weapon/gun) && !istype(I, IH) && !force && I != r_hand && I != l_hand) //&& !istype(I, /obj/item/weapon/gun/projectile/automatic/pistol))
+			var/obj/item/weapon/gun/W = I
+			if (!istype(I, /obj/item/weapon/gun/projectile/automatic/pistol))
+				playsound(src.loc, 'sound/stalker/weapons/draw/generic_draw.ogg', 30, 1)
+				visible_message("<span class='danger'>[src] начинает доставать [I] из-за спины!</span>", "<span class='notice'>¬ы начинаете доставать [I] из-за спины...</span>")
+				if(do_after_inventory(src, 10, 1, I))
+					playsound(src, W.drawsound, 30, 1)
+					visible_message("<span class='danger'>[src] достал [I] из-за спины!</span>", "<span class='notice'>¬ы достали [I] из-за спины.</span>")
+					if(client)
+						client.screen -= I
+					I.loc = loc
+					I.dropped(src)
+					if(I)
+						I.layer = initial(I.layer)
+				else
+					return 0
 			else
-				return 0
-		else
-			visible_message("<span class='danger'>[src] вз&#255;л в руки [I]!</span>", "<span class='notice'>¬ы вз&#255;ли в руки [I].</span>")
-			playsound(src.loc, W.drawsound, 30, 1)
+				visible_message("<span class='danger'>[src] вз&#255;л в руки [I]!</span>", "<span class='notice'>¬ы вз&#255;ли в руки [I].</span>")
+				playsound(src.loc, W.drawsound, 30, 1)
 
 	if(I == r_hand)
 		r_hand = null

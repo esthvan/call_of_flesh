@@ -713,7 +713,7 @@ Sorry Giacom. Please don't be mad :(
 	what.add_fingerprint(src)
 	if(do_mob(src, who, what.strip_delay))
 		if(what && what == who.get_item_by_slot(where) && Adjacent(who))
-			who.unEquip(what)
+			who.unEquip(what, 0, 1)
 			add_logs(src, who, "stripped", addition="of [what]")
 
 // The src mob is trying to place an item on someone
