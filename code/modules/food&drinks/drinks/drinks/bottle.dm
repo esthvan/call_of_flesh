@@ -53,9 +53,10 @@
 	if(!target)
 		return
 
+	/*
 	if(user.a_intent != "harm" || !isGlass)
 		return ..()
-
+	*/
 
 	force = 15 //Smashing bottles over someoen's head hurts.
 
