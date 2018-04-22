@@ -35,23 +35,36 @@
 	desc = "Оптический прицел фиксированной кратности (4 диоптрии). Чаще всего используетс&#255; дл&#255; ведени&#255; прицельного огн&#255; из лёгкого стрелкового оружи&#255; на средние и большие дистанции. Устанавливаетс&#255; на планку Пикатинни."
 	icon = 'icons/stalker/weapon_mods.dmi'
 	icon_state = "susat"
-	types = list(/obj/item/weapon/gun/projectile/automatic/tpc301, /obj/item/weapon/gun/projectile/automatic/mp5)
+	types = list(/obj/item/weapon/gun/projectile/automatic/tpc301,
+					 /obj/item/weapon/gun/projectile/automatic/mp5)
 	zoom_add = 3
 
 /obj/item/weapon/attachment/scope/PS
-	types = list(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/ak74, /obj/item/weapon/gun/projectile/automatic/abakan, /obj/item/weapon/gun/projectile/automatic/val, /obj/item/weapon/gun/projectile/automatic/groza)
+	types = list(/obj/item/weapon/gun/projectile/automatic/aksu74,
+				 /obj/item/weapon/gun/projectile/automatic/ak74,
+				 /obj/item/weapon/gun/projectile/automatic/abakan,
+				 /obj/item/weapon/gun/projectile/automatic/val,
+				 /obj/item/weapon/gun/projectile/automatic/groza)
 	zoom_add = 2
 
 /obj/item/weapon/attachment/scope/PS/U1
 	name = "PSU-1"
 	desc = "Оптический прицел фиксированной кратности (2,7 диоптрии). Оптимизирован дл&#255; бо&#255; на средних дистанци&#255;х, а также дл&#255; использовани&#255; в услови&#255;х городской застройки. Дл&#255; установки на оружие используетс&#255; стандартное в странах Варшавского договора крепление типа «ласточкин хвост»."
 	icon_state = "PSU1"
-	types = list(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/ak74, /obj/item/weapon/gun/projectile/automatic/abakan, /obj/item/weapon/gun/projectile/automatic/val, /obj/item/weapon/gun/projectile/automatic/groza)
+	types = list(/obj/item/weapon/gun/projectile/automatic/aksu74,
+				/obj/item/weapon/gun/projectile/automatic/ak74,
+				/obj/item/weapon/gun/projectile/automatic/abakan,
+				/obj/item/weapon/gun/projectile/automatic/val,
+				/obj/item/weapon/gun/projectile/automatic/groza)
 	zoom_add = 2
 
 /obj/item/weapon/attachment/scope/PS/O1
 	name = "PSO-1"
 	desc = "Широко распространённый оптический прицел советского производства фиксированной кратности (5). Оснащён шкалой дл&#255; определени&#255; дальности до цели. Дл&#255; установки на оружие используетс&#255; стандартное в странах Варшавского договора крепление типа «ласточкин хвост»."
 	icon_state = "PSO1"
-	types = list(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/item/weapon/gun/projectile/automatic/ak74, /obj/item/weapon/gun/projectile/automatic/abakan, /obj/item/weapon/gun/projectile/automatic/val, /obj/item/weapon/gun/projectile/automatic/groza)
+	types = list(/obj/item/weapon/gun/projectile/automatic/aksu74,
+				 /obj/item/weapon/gun/projectile/automatic/ak74,
+				 /obj/item/weapon/gun/projectile/automatic/abakan,
+				 /obj/item/weapon/gun/projectile/automatic/val,
+				 /obj/item/weapon/gun/projectile/automatic/groza)
 	zoom_add = 4
