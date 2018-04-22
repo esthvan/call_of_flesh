@@ -931,17 +931,41 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 	*/
 
 	if(istype(killer, /mob/living/carbon/human))
+
+		////////////////////////ÏÐÎÔÈËÜ ÓÁÈÉÖÛ///////////////////////////////////////
 		var/mob/living/carbon/human/killer_h = killer
 		var/datum/data/record/sk = find_record("sid", killer_h.sid, data_core.stalkers)
+		/////////////////////////////////////////////////////////////////////////////
+
 		if(istype(killed_one, /mob/living/carbon/human))
+
+			////////////////////ÏÐÎÔÈËÜ ÓÁÈÒÎÃÎ//////////////////////////////////////
 			var/mob/living/carbon/human/H = killed_one
-			if(killer_h.faction_s == H.faction_s)
-				if(sk)
-
-					if((sk.fields["reputation"] - 50) > 0)
-						sk.fields["reputation"] -= 50
-
 			var/datum/data/record/sk_H = find_record("sid", H.sid, data_core.stalkers)
+			/////////////////////////////////////////////////////////////////////////
+
+			if(sk)
+				switch(sk_H.fields["reputation"])
+					if(AMAZING)
+						sk.fields["reputation"] -= 800
+					if(VERYGOOD to AMAZING)
+						sk.fields["reputation"] -= 400
+					if(GOOD to VERYGOOD)
+						sk.fields["reputation"] -= 200
+					if(BAD to GOOD)
+						sk.fields["reputation"] -= 50
+					if(VERYBAD to BAD)
+						sk.fields["reputation"] += 50
+					if(DISGUSTING to VERYBAD)
+						sk.fields["reputation"] += 150
+					if(DISGUSTING)
+						sk.fields["reputation"] += 300
+
+			if(killer_h.faction_s == H.faction_s)
+				sk.fields["reputation"] -= 50
+
+			sk.fields["reputation"] = Clamp(sk.fields["reputation"], DISGUSTING, AMAZING)
+
 			if(sk && sk_H)
 
 				//var/temp_rep = text2num(sk_H.fields["rating"])
