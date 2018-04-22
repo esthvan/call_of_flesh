@@ -944,7 +944,7 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 			var/datum/data/record/sk_H = find_record("sid", H.sid, data_core.stalkers)
 			/////////////////////////////////////////////////////////////////////////
 
-			if(sk)
+			if(sk && sk_H)
 				switch(sk_H.fields["reputation"])
 					if(AMAZING)
 						sk.fields["reputation"] -= 800
@@ -961,10 +961,10 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 					if(DISGUSTING)
 						sk.fields["reputation"] += 300
 
-			if(killer_h.faction_s == H.faction_s)
-				sk.fields["reputation"] -= 50
+				if(killer_h.faction_s == H.faction_s)
+					sk.fields["reputation"] -= 50
 
-			sk.fields["reputation"] = Clamp(sk.fields["reputation"], DISGUSTING, AMAZING)
+				sk.fields["reputation"] = Clamp(sk.fields["reputation"], DISGUSTING, AMAZING)
 
 			if(sk && sk_H)
 
