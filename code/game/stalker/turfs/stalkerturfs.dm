@@ -346,3 +346,11 @@ var/global/list/GryazEdgeCache
 
 /turf/stalker/floor/agroprom/gryaz/New()
 	icon_state = "gryaz[rand(1, 11)]"
+
+/turf/stalker/floor/lattice
+	name = "lattice"
+	icon = 'icons/stalker/floor.dmi'
+	icon_state = "lattice1"
+
+/turf/stalker/floor/lattice/New()
+	icon_state = "lattice[rand(1, 4)]"
