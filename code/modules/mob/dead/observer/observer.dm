@@ -95,6 +95,7 @@ Works together with spawning an observer, noted above.
 			ghost.can_reenter_corpse = can_reenter_corpse
 			ghost.key = key
 			ghost.timeofdeath = timeofdeath
+
 			return ghost
 
 /*
