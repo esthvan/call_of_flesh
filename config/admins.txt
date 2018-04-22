@@ -9,5 +9,4 @@
 ###############################################################################################
 xrenoid = Host
 narciss_f = Host
-felizio = TrialAdmin
 blyeberry = TrialAdmin
