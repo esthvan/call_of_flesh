@@ -30,9 +30,10 @@
 		new /datum/data/stalker_equipment("AC 96/2", 		"АС 96/2",			/obj/item/weapon/gun/projectile/automatic/abakan,					35000, EXPERT),
 		new /datum/data/stalker_equipment("LR-300",			"ЛР-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
 		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, VETERAN),
-		new /datum/data/stalker_equipment("Tunder S14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					30000, VETERAN),
-		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					50000, VETERAN),
-		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						65000, VETERAN),
+		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						50000, VETERAN),
+		new /datum/data/stalker_equipment("Tunder S14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					50000, VETERAN),
+		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					65000, MASTER),
+		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/fnf2000,					70000, MASTER),
 
 		/////////////////////////////// **Дробовики** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Sawn off", 		"Обрез",			/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,				6000, NEWBIE),

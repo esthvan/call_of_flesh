@@ -109,7 +109,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/pistol/fort12/unique  // Фора12 - расширенный магазин
 	desc = "Экспериментальный прототип пистолета Фора. Единичный экземпл&#255;р."
-	icon_state = "fort12_unique"
+	unique = 1
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x18fort_u
 
 /obj/item/weapon/gun/projectile/automatic/pistol/pb1s  //ПБ1С
@@ -361,6 +361,29 @@
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
 
+/obj/item/weapon/gun/projectile/automatic/fnf2000  // fnf2000
+	name = "FN-F2000"
+	desc = "ФТ-200М — по-своему идеальное оружие. Оснащённа&#255; прицелом средней кратности и интегрированным подствольным гранатометом, ФТ-200М поможет быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; среди НПС лучшим оружием в Зоне. В ЗП у ФТ-200М была заметно уменьшена убойна&#255; сила, однако открылс&#255; широкий спектр дл&#255; модификации. Например, по&#255;вилась возможность установить тепловизор, который будет издалека распознавать живых существ."
+	icon_state = "fnf2000"
+	item_state = "fnf2000"
+	slot_flags = SLOT_BACK
+	force = 15
+	origin_tech = "combat=6"
+	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
+	fire_sound = 'sound/stalker/weapons/fnf2000_shoot.ogg'
+	can_suppress = 0
+	burst_size = 3
+	fire_delay = 1
+	pin = /obj/item/device/firing_pin
+	durability = 300
+	w_class = 4
+	spread = 2
+	recoil = 0.5
+	damagelose = 0.15
+	can_scope = 0
+	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
 
 ///////////////////////////// Снайперские винтовки //////////////////////////////////////////
 /obj/item/weapon/gun/projectile/automatic/val  // Вал

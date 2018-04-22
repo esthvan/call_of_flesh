@@ -130,29 +130,32 @@
 			return 1
 		else if (magazine)
 			user << "<span class='notice'>There's already a magazine in \the [src].</span>"
+
 	if(istype(A, /obj/item/weapon/attachment/suppressor))
 		var/obj/item/weapon/attachment/suppressor/S = A
-		if(type in S.types)
-			if(!suppressed)
-				if(!user.unEquip(A))
+		for(var/atype in S.types)
+			if(ispath(type, atype))
+				if(!suppressed)
+					if(!user.unEquip(A))
+						return
+					user << "<span class='notice'>You screw [S] onto [src].</span>"
+					playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
+					suppressed = A
+					S.oldsound = fire_sound
+					S.initial_w_class = w_class
+					fire_sound = 'sound/stalker/weapons/silencer.ogg'
+					//w_class = 3 //so pistols do not fit in pockets when suppressed
+					A.loc = src
+					update_icon()
+					addons += S
 					return
-				user << "<span class='notice'>You screw [S] onto [src].</span>"
-				playsound (src.loc, 'sound/stalker/weapons/attach_addon.ogg', 50, 1, 0)
-				suppressed = A
-				S.oldsound = fire_sound
-				S.initial_w_class = w_class
-				fire_sound = 'sound/stalker/weapons/silencer.ogg'
-				//w_class = 3 //so pistols do not fit in pockets when suppressed
-				A.loc = src
-				update_icon()
-				addons += S
-				return
-			else
-				user << "<span class='warning'>[src] already has a suppressor!</span>"
-				return
-		else
-			user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
-			return
+				else
+					user << "<span class='warning'>[src] already has a suppressor!</span>"
+					return
+
+		user << "<span class='warning'>You can't seem to figure out how to fit [S] on [src]!</span>"
+		return
+
 	if(istype(A, /obj/item/weapon/attachment/scope))
 		var/obj/item/weapon/attachment/scope/S = A
 		if(type in S.types)
