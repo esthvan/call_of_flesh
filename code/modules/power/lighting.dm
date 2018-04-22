@@ -315,6 +315,7 @@
 		user.do_attack_animation(src)
 		if(W.damtype == STAMINA)
 			return
+		/*
 		if(prob(1+W.force * 5))
 
 			user.visible_message("<span class='danger'>[user.name] smashed the light!</span>", \
@@ -325,8 +326,9 @@
 					electrocute_mob(user, get_area(src), src, 0.3)
 			broken()
 
-		else
-			user.visible_message("<span class='danger'>[user.name] hits the light!</span>")
+		else*/
+
+		user.visible_message("<span class='danger'>[user.name] hits the light!</span>")
 
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
@@ -418,7 +420,7 @@
 
 	// make it burn hands if not wearing fire-insulated gloves
 	if(on)
-		var/prot = 0
+		//var/prot = 0
 		var/mob/living/carbon/human/H = user
 
 		if(istype(H))
@@ -429,19 +431,20 @@
 					prot = (G.max_heat_protection_temperature > 360)
 		else
 			prot = 1
-
+		/*
 		if(prot > 0)
 			user << "<span class='notice'>You remove the light [fitting].</span>"
 		else if(istype(user) && user.dna.check_mutation(TK))
 			user << "<span class='notice'>You telekinetically remove the light [fitting].</span>"
 		else
-			user << "<span class='warning'>You try to remove the light [fitting], but you burn your hand on it!</span>"
+		*/
+		user << "<span class='warning'>You try to remove the light [fitting], but you burn your hand on it!</span>"
 
-			var/obj/item/organ/limb/affecting = H.get_organ("[user.hand ? "l" : "r" ]_arm")
-			if(affecting.take_damage( 0, 5 ))		// 5 burn damage
-				H.update_damage_overlays(0)
-			H.updatehealth()
-			return				// if burned, don't remove the light
+		var/obj/item/organ/limb/affecting = H.get_organ("[user.hand ? "l" : "r" ]_arm")
+		if(affecting.take_damage( 0, 5 ))		// 5 burn damage
+			H.update_damage_overlays(0)
+		H.updatehealth()
+		return				// if burned, don't remove the light
 	else
 		user << "<span class='notice'>You remove the light [fitting].</span>"
 	// create a light tube/bulb item and put it in the user's hand
