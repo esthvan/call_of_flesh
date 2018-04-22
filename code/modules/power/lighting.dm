@@ -420,7 +420,7 @@
 
 	// make it burn hands if not wearing fire-insulated gloves
 	if(on)
-		//var/prot = 0
+		var/prot = 0
 		var/mob/living/carbon/human/H = user
 
 		if(istype(H))
