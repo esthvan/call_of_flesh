@@ -946,7 +946,7 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 
 			if(sk && sk_H)
 				switch(sk_H.fields["reputation"])
-					if(AMAZING)
+					if(AMAZING to INFINITY)
 						sk.fields["reputation"] -= 800
 					if(VERYGOOD to AMAZING)
 						sk.fields["reputation"] -= 400

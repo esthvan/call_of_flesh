@@ -997,6 +997,7 @@
 
 				H.apply_damage(damage, BRUTE, affecting, armor_block)
 				add_logs(M, H, "punched")
+				/*
 				if((H.stat != DEAD) && damage >= 9)
 					H.visible_message("<span class='danger'>[M] has weakened [H]!</span>", \
 									"<span class='userdanger'>[M] has weakened [H]!</span>")
@@ -1004,6 +1005,7 @@
 					H.forcesay(hit_appends)
 				else if(H.lying)
 					H.forcesay(hit_appends)
+				*/
 		if("disarm")
 			for(var/A in safezones)
 				var/area/B = get_area(H.loc)
@@ -1117,6 +1119,7 @@
 
 		switch(hit_area)
 			if("head")	//Harder to score a stun but if you do it lasts a bit longer
+				/*
 				if(H.stat == CONSCIOUS && armor_block < 50)
 					if(prob(I.force))
 						H.visible_message("<span class='danger'>[H] has been knocked unconscious!</span>", \
@@ -1124,6 +1127,7 @@
 						H.apply_effect(20, PARALYZE, armor_block)
 					if(prob(I.force + ((100 - H.health)/2)) && H != user && I.damtype == BRUTE)
 						ticker.mode.remove_revolutionary(H.mind)
+				*/
 
 				if(bloody)	//Apply blood
 					if(H.wear_mask)

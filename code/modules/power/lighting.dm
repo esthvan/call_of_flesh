@@ -420,9 +420,9 @@
 
 	// make it burn hands if not wearing fire-insulated gloves
 	if(on)
-		var/prot = 0
+		//var/prot = 0
 		var/mob/living/carbon/human/H = user
-
+		/*
 		if(istype(H))
 
 			if(H.gloves)
@@ -431,7 +431,7 @@
 					prot = (G.max_heat_protection_temperature > 360)
 		else
 			prot = 1
-		/*
+
 		if(prot > 0)
 			user << "<span class='notice'>You remove the light [fitting].</span>"
 		else if(istype(user) && user.dna.check_mutation(TK))

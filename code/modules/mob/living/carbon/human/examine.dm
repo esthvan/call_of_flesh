@@ -327,48 +327,27 @@
 				var/datum/data/record/R_H = find_record("sid", H.sid, data_core.stalkers)
 				if(KPK.hacked == 1 || H.sid == KPK.sid)
 					if(R && R_H)
-						var/rep = "Нейтральна&#255;"
-						var/font_color = "#ffd400"
-						switch(R.fields["reputation"])
-							if(AMAZING to INFINITY)
-								rep = "Свой пацан"
-								font_color = "#00abdb" //#00abdb
-							if(VERYGOOD to AMAZING)
-								rep = "Очень хороша&#255;"
-								font_color = "#45ad00" //#6ddb00
-							if(GOOD to VERYGOOD)
-								rep = "Хороша&#255;"
-								font_color = "#bddb00" //#b6db00
-							if(NEUTRAL to GOOD)
-								rep = "Нейтральна&#255;"
-								font_color = "#b7a200" //#ffb200
-							if(BAD to NEUTRAL)
-								rep = "Плоха&#255;"
-								font_color = "#db5700" //#db5700
-							if(VERYBAD to BAD)
-								rep = "Очень плоха&#255;"
-								font_color = "#db2b00" //#db2b00
-							if(DISGUSTING)
-								rep = "Гнида"
-								font_color = "#7c0000"
-						var/rank_name_s = "Новичок"
-						switch(R.fields["rating"])
-							if(ZONE_LEGEND to INFINITY)
-								rank_name_s = "Легенда Зоны"
-							if(MASTER to ZONE_LEGEND)
-								rank_name_s = "Мастер"
-							if(VETERAN to MASTER)
-								rank_name_s = "Ветеран"
-							if(EXPERT to VETERAN)
-								rank_name_s = "Опытный"
-							if(NEWBIE to EXPERT)
-								rank_name_s = "Новичок"
-						var/faction_s = R.fields["faction_s"]
 
-						msg += "\nFaction: [faction_s]\n"
-						msg += "Reputation: <font color=\"[font_color]\">[rep]</font><a href='?src=\ref[src];KPK=1;addition_rep=1'><font color=\"green\">\[+\]</font></a><a href='?src=\ref[src];KPK=1;subtraction_rep=1'><font color=\"red\">\[-\]</font></a>\n"
-						msg += "Rating: [rank_name_s]\n\n"
-						msg += "<a href='?src=\ref[src];KPK=1;money_transfer=1'>Совершить денежный перевод</a>\n"
+						var/rep = get_rep_name(R.fields["reputation"])
+						var/eng_rep = get_eng_rep_name(R.fields["reputation"])
+						var/font_color = get_rep_color(R.fields["reputation"])
+
+						var/rank_name_s 	= get_rank_name(R.fields["rating"])
+						var/eng_rank_name_s = get_eng_rank_name(R.fields["rating"])
+
+						var/faction_s 		= R.fields["faction_s"]
+						var/eng_faction_s	= get_eng_faction(faction_s)
+
+						if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+							msg += "\nFaction: [eng_faction_s]\n"
+							msg += "Reputation: <font color=\"[font_color]\">[eng_rep]</font><a href='?src=\ref[src];KPK=1;addition_rep=1'><font color=\"green\">\[+\]</font></a><a href='?src=\ref[src];KPK=1;subtraction_rep=1'><font color=\"red\">\[-\]</font></a>\n"
+							msg += "Rating: [eng_rank_name_s]\n\n"
+							msg += "<a href='?src=\ref[src];KPK=1;money_transfer=1'>Commit money transfer</a>\n"
+						else
+							msg += "\nFaction: [faction_s]\n"
+							msg += "Reputation: <font color=\"[font_color]\">[rep]</font><a href='?src=\ref[src];KPK=1;addition_rep=1'><font color=\"green\">\[+\]</font></a><a href='?src=\ref[src];KPK=1;subtraction_rep=1'><font color=\"red\">\[-\]</font></a>\n"
+							msg += "Rating: [rank_name_s]\n\n"
+							msg += "<a href='?src=\ref[src];KPK=1;money_transfer=1'>Совершить денежный перевод</a>\n"
 				else
 					msg += "\n<span class='warning'>NO ACCESS!</span>\n"
 

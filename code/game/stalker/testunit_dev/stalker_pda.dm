@@ -33,7 +33,10 @@ var/global/lentahtml = ""
 	var/activated = 0
 	var/rep_color_s = "#ffe100"
 	var/rep_name_s = "Нейтральна&#x44F;"
+	var/eng_rep_name_s = "Neutral"
 	var/rank_name_s = "Новичок"
+	var/eng_rank_name_s = "Rookie"
+	var/eng_faction_s = "Loners"
 	//var/isregistered = 0
 
 	//ЛЕНТА
@@ -241,9 +244,9 @@ var/global/lentahtml = ""
 			if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 				mainhtml +="\
 				 <b>Name:</b> [registered_name]<br><br>\
-				 <b>Faction:</b> [faction_s]<br><br>\
+				 <b>Faction:</b> [eng_faction_s]<br><br>\
 				 <b>Rank:</b> [rating]<br><br>\
-				 <b>Reputation:</b> <font color=\"[rep_color_s]\">[rep_name_s]</font>"
+				 <b>Reputation:</b> <font color=\"[rep_color_s]\">[eng_rep_name_s]</font>"
 			else
 				mainhtml +="\
 				 <b>Им&#x44F;:</b> [registered_name]<br><br>\
@@ -301,9 +304,9 @@ var/global/lentahtml = ""
 					if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						mainhtml+="\
                      <b>Name:</b> [registered_name]<br>\
-                     <b>Faction:</b> [faction_s]<br>\
-                     <b>Rank:</b> [rank_name_s] ([rating])<br>\
-                     <b>Reputation:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
+                     <b>Faction:</b> [eng_faction_s]<br>\
+                     <b>Rank:</b> [eng_rank_name_s] ([rating])<br>\
+                     <b>Reputation:</b> <font color=\"[rep_color_s]\">[eng_rep_name_s] ([reputation])</font><br>\
                      <b>Money:</b> [money] RU<br>"
 
 					else
@@ -346,8 +349,14 @@ var/global/lentahtml = ""
 					<table border=0 height=\"314\" width=\"455\">\
 					<tr>\
 					<td valign=\"top\" align=\"left\">\
-					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
-					<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>\
+					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
+					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						mainhtml +="\
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>"
+					else
+						mainhtml +="\
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>"
+					mainhtml +="\
 					</td>\
 					</tr>\
 					<tr valign=\"top\">\
@@ -368,8 +377,14 @@ var/global/lentahtml = ""
 					<table border=0 height=\"314\" width=\"455\">\
 					<tr>\
 					<td valign=\"top\" align=\"left\">\
-					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
-					<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=lenta_add'>Написать в ленту</a> | <a href='byond://?src=\ref[src];choice=lenta_sound'>Вкл/Выкл звуковой сигнал</a> |</div>\
+					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
+					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						mainhtml +="\
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=lenta_add'>Send feed message</a> | <a href='byond://?src=\ref[src];choice=lenta_sound'>Turn on/off feed sound</a> |</div>"
+					else
+						mainhtml +="\
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=lenta_add'>Написать в ленту</a> | <a href='byond://?src=\ref[src];choice=lenta_sound'>Вкл/Выкл звуковой сигнал</a> |</div>"
+					mainhtml +="\
 					</td>\
 					</tr>\
 					<tr style=\"border: 0px;\" valign=\"top\">\
@@ -455,13 +470,6 @@ var/global/lentahtml = ""
 		user << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=1")
 	else
 		user << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=0")
-
-	//625x305
-	//<div style=\"overflow: hidden; height: 200px; width: 180px;\" ><img height=200 width=200 src=\"http://www.clubstalker.ru/images/resize/photo/640x480/de573c3358fd4160fe545f04b864fd69.jpg\"></div>\
-	//background: #000000;\
-
-	//padding: 15px;\
-	//margin-bottom: 10px;\
 
 /obj/item/device/stalker_pda/Topic(href, href_list)
 	..()
@@ -685,22 +693,12 @@ var/global/lentahtml = ""
 	return t
 
 /proc/add_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
-	//var/n = registered_name//R.fields["name"]
-	//var/sid_p = sid//R.fields["sid"]
-	var/factioncolor = "#afb2a1"
 
 	for(var/obj/item/device/stalker_pda/KPK in KPKs)
 		show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg)
 
-	switch(faction_owner)
-		if("Бандиты")
-			factioncolor = "#8c8c8c"
-		if("Одиночки")
-			factioncolor = "#ff7733"
-		if("Наёмники")
-			factioncolor = "#3399ff"
-		if("Долг")
-			factioncolor = "#ff4d4d"
+	var/factioncolor 	= get_faction_color(faction_owner)
+	var/eng_faction_s 	= get_eng_faction(faction_owner)
 
 	lentahtml = "<table  style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
 	<tr style=\"border: 0px solid black;\">\
@@ -721,29 +719,12 @@ var/global/lentahtml = ""
 
 	var/mob/living/carbon/C = null
 
-	/*
-	if(sid_owner)
-		for(var/datum/data/record/sk in data_core.stalkers)
-			if(sk.fields["sid"] == sid_owner)
-				var/obj/item/weapon/photo/P1 = sk.fields["photo_front"]
-				C << browse_rsc(P1.img, "photo_[sid_owner].png")
-	*/
-
-
 	if(KPK.loc && isliving(KPK.loc))
 		C = KPK.loc
 	if(C && C.stat != UNCONSCIOUS)
 
-		var/factioncolor = "#ff7733"
-		switch(faction_owner)
-			if("Бандиты")
-				factioncolor = "#8c8c8c"
-			if("Одиночки")
-				factioncolor = "#ff7733"
-			if("Наёмники")
-				factioncolor = "#3399ff"
-			if("Долг")
-				factioncolor = "#ff4d4d"
+		var/factioncolor	= get_faction_color(faction_owner)
+		var/eng_faction_s 	= get_eng_faction(faction_owner)
 
 		C << russian_html2text("<p>\icon[KPK]<b><font color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
 		if(KPK_owner)
@@ -762,74 +743,57 @@ var/global/lentahtml = ""
 		var/sid_p = R.fields["sid"]
 		H << browse_rsc(P1.img, "photo_[sid_p]")
 		var/n = R.fields["name"]
-		var/r = text2num(R.fields["rating"])
-		var/rep = R.fields["reputation"]
+		var/r = R.fields["rating"]
+
 		var/f = R.fields["faction_s"]
+		var/eng_f = get_eng_faction(f)
+
+		var/rep_color = get_rep_color(R.fields["reputation"])
+		var/rep = get_rep_name(R.fields["reputation"])
+		var/eng_rep = get_eng_rep_name(R.fields["reputation"])
+
+		var/rank_name = get_rank_name(r)
+		var/eng_rank_name = get_eng_rank_name(r)
+
 		count++
 
-		var/rep_color
-		switch(R.fields["reputation"])
-			if(AMAZING to INFINITY)
-				rep = "Свой пацан"
-				rep_color = "#00abdb" //#00abdb
-			if(VERYGOOD to AMAZING)
-				rep = "Очень хороша&#x44F;"
-				rep_color = "#b6ff38" //#6ddb00
-			if(GOOD to VERYGOOD)
-				rep = "Хороша&#x44F;"
-				rep_color = "#daff21" //#b6db00
-			if(NEUTRAL to GOOD)
-				rep = "Нейтральна&#x44F;"
-				rep_color = "#ffe100" //#ffb200
-			if(BAD to NEUTRAL)
-				rep = "Плоха&#x44F;"
-				rep_color = "#ff6b3a" //#db5700
-			if(VERYBAD to BAD)
-				rep = "Очень плоха&#x44F;"
-				rep_color = "#db2b00" //#db2b00
-			if(DISGUSTING)
-				rep = "Гнида"
-				rep_color = "#7c0000"
-
-		var/rank_name
-		switch(r)
-			if(ZONE_LEGEND to INFINITY)
-				rank_name = "Легенда Зоны"
-			if(MASTER to ZONE_LEGEND)
-				rank_name = "Мастер"
-			if(VETERAN to MASTER)
-				rank_name = "Ветеран"
-			if(EXPERT to VETERAN)
-				rank_name = "Опытный"
-			if(NEWBIE to EXPERT)
-				rank_name = "Новичок"
-
 		if(R.fields["lastlogin"] + 12000 >= world.time)
-			ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
-					<tr style=\"border: 1px solid black;\">\
-	                \
-	                <td width=64 height=64 align=\"top\">\
-					<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
-	                </td>\
-	                \
-	                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
-	         		\
-	                <b>\[[count]\]</b> [n] ([f])<br>\
-					<b>Рейтинг:</b> [rank_name] ([r])<br>\
-	                <b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
-	                \
-	                </td>\
-	                \
-	                </tr>\
-	                </table>"
-	/*СТАРЫЙ РЕЙТИНГ
-		ratinghtml += "<tr style=#2e2e38>\
-		<td><img id=\"ratingimg\" height=24 width=24 border=1 src=photo_[sid_p]>[n]</td>\
-		<td>[r]</td>\
-		<td style=[background]>[rep]</td>\
-		<td>[f]</td></tr>"
-	ratinghtml += "</table></span>"
-	*/
+			if(usr.client.prefs.chat_toggles & CHAT_LANGUAGE)
+				ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
+						<tr style=\"border: 1px solid black;\">\
+		                \
+		                <td width=64 height=64 align=\"top\">\
+						<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
+		                </td>\
+		                \
+		                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
+		         		\
+		                <b>\[[count]\]</b> [n] ([eng_f])<br>\
+						<b>Rating</b> [eng_rank_name] ([r])<br>\
+		                <b>Reputation:</b> <font color=\"[rep_color]\">[eng_rep]</font><br>\
+		                \
+		                </td>\
+		                \
+		                </tr>\
+		                </table>"
+			else
+				ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
+						<tr style=\"border: 1px solid black;\">\
+		                \
+		                <td width=64 height=64 align=\"top\">\
+						<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
+		                </td>\
+		                \
+		                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
+		         		\
+		                <b>\[[count]\]</b> [n] ([f])<br>\
+						<b>Рейтинг:</b> [rank_name] ([r])<br>\
+		                <b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
+		                \
+		                </td>\
+		                \
+		                </tr>\
+		                </table>"
 
 	return ratinghtml
 
@@ -899,35 +863,23 @@ var/global/lentahtml = ""
 	usr << browse_rsc(P3.img, "photo_east")
 	usr << browse_rsc(P4.img, "photo_back")
 
-	faction_s	= sk.fields["faction_s"]
-	rating		= sk.fields["rating"]
-	money		= sk.fields["money"]
-	reputation	= sk.fields["reputation"]
+	faction_s		= sk.fields["faction_s"]
+	eng_faction_s 	= get_eng_faction(faction_s)
 
-	switch(sk.fields["reputation"])
-		if(AMAZING to INFINITY)
-			rep_name_s = "Свой пацан"
-			rep_color_s = "#00abdb" //#00abdb
-		if(VERYGOOD to AMAZING)
-			rep_name_s = "Очень хороша&#x44F;"
-			rep_color_s = "#b6ff38" //#6ddb00
-		if(GOOD to VERYGOOD)
-			rep_name_s = "Хороша&#x44F;"
-			rep_color_s = "#daff21" //#b6db00
-		if(NEUTRAL to GOOD)
-			rep_name_s = "Нейтральна&#x44F;"
-			rep_color_s = "#ffe100" //#ffb200
-		if(BAD to NEUTRAL)
-			rep_name_s = "Плоха&#x44F;"
-			rep_color_s = "#ff6b3a" //#db5700
-		if(DISGUSTING to VERYBAD)
-			rep_name_s = "Очень плоха&#x44F;"
-			rep_color_s = "#db2b00" //#db2b00
-		if(DISGUSTING)
-			rep_name_s = "Гнида"
-			rep_color_s = "#7c0000"
+	rating			= sk.fields["rating"]
+	money			= sk.fields["money"]
+	reputation		= sk.fields["reputation"]
 
-	switch(sk.fields["rating"])
+	rep_name_s 		= get_rep_name(sk.fields["reputation"])
+	eng_rep_name_s 	= get_eng_rep_name(sk.fields["reputation"])
+	rep_color_s 	= get_rep_color(sk.fields["reputation"])
+
+	rank_name_s 	= get_rank_name(sk.fields["rating"])
+	eng_rank_name_s	= get_eng_rank_name(sk.fields["rating"])
+
+/proc/get_rank_name(var/rating)
+	var/rank_name_s = "Новичок"
+	switch(rating)
 		if(ZONE_LEGEND to INFINITY)
 			rank_name_s = "Легенда Зоны"
 		if(MASTER to ZONE_LEGEND)
@@ -938,3 +890,106 @@ var/global/lentahtml = ""
 			rank_name_s = "Опытный"
 		if(NEWBIE to EXPERT)
 			rank_name_s = "Новичок"
+	return rank_name_s
+
+/proc/get_eng_rank_name(var/rating)
+	var/eng_rank_name_s = "Rookie"
+	switch(rating)
+		if(ZONE_LEGEND to INFINITY)
+			eng_rank_name_s = "Legend"
+		if(MASTER to ZONE_LEGEND)
+			eng_rank_name_s = "Master"
+		if(VETERAN to MASTER)
+			eng_rank_name_s = "Veteran"
+		if(EXPERT to VETERAN)
+			eng_rank_name_s = "Expert"
+		if(NEWBIE to EXPERT)
+			eng_rank_name_s = "Rookie"
+	return eng_rank_name_s
+
+/proc/get_eng_faction(var/faction_s)
+	var/eng_faction_s = "Loners"
+	switch(faction_s)
+		if("Бандиты")
+			eng_faction_s = "Bandits"
+		if("Одиночки")
+			eng_faction_s = "Loners"
+		if("Наёмники")
+			eng_faction_s = "Mercenaries"
+		if("Долг")
+			eng_faction_s = "Duty"
+	return eng_faction_s
+
+/proc/get_faction_color(var/faction_s)
+	var/factioncolor = "#ff7733"
+	switch(faction_s)
+		if("Бандиты")
+			factioncolor = "#8c8c8c"
+		if("Одиночки")
+			factioncolor = "#ff7733"
+		if("Наёмники")
+			factioncolor = "#3399ff"
+		if("Долг")
+			factioncolor = "#ff4d4d"
+	return factioncolor
+
+/proc/get_rep_name(var/rep)
+	var/rep_name_s = "Нейтральна&#x44F;"
+
+	switch(rep)
+		if(AMAZING to INFINITY)
+			rep_name_s = "Свой пацан"
+		if(VERYGOOD to AMAZING)
+			rep_name_s = "Очень хороша&#x44F;"
+		if(GOOD to VERYGOOD)
+			rep_name_s = "Хороша&#x44F;"
+		if(NEUTRAL to GOOD)
+			rep_name_s = "Нейтральна&#x44F;"
+		if(BAD to NEUTRAL)
+			rep_name_s = "Плоха&#x44F;"
+		if(DISGUSTING to VERYBAD)
+			rep_name_s = "Очень плоха&#x44F;"
+		if(DISGUSTING)
+			rep_name_s = "Гнида"
+
+	return rep_name_s
+
+/proc/get_eng_rep_name(var/rep)
+	var/eng_rep_name_s = "Neutral"
+
+	switch(rep)
+		if(AMAZING to INFINITY)
+			eng_rep_name_s = "Jesus"
+		if(VERYGOOD to AMAZING)
+			eng_rep_name_s = "Very Good"
+		if(GOOD to VERYGOOD)
+			eng_rep_name_s = "Good"
+		if(NEUTRAL to GOOD)
+			eng_rep_name_s = "Neutral"
+		if(BAD to NEUTRAL)
+			eng_rep_name_s = "Bad"
+		if(DISGUSTING to VERYBAD)
+			eng_rep_name_s = "Very Bad"
+		if(DISGUSTING)
+			eng_rep_name_s = "Asshole"
+
+	return eng_rep_name_s
+
+/proc/get_rep_color(var/rep)
+	var/rep_color_s
+	switch(rep)
+		if(AMAZING to INFINITY)
+			rep_color_s = "#00abdb" //#00abdb
+		if(VERYGOOD to AMAZING)
+			rep_color_s = "#b6ff38" //#6ddb00
+		if(GOOD to VERYGOOD)
+			rep_color_s = "#daff21" //#b6db00
+		if(BAD to GOOD)
+			rep_color_s = "#ffe100" //#ffb200
+		if(VERYBAD to BAD)
+			rep_color_s = "#ff6b3a" //#db5700
+		if(DISGUSTING to VERYBAD)
+			rep_color_s = "#db2b00" //#db2b00
+		if(DISGUSTING)
+			rep_color_s = "#7c0000"
+	return rep_color_s
