@@ -148,8 +148,20 @@ var/global/num_sid = 0
 			return
 
 		if(isblowout)
-			usr << "<span class='danger'>The blowout is ongoing in the Zone!</span>"
+			if(client && (client.prefs.chat_toggles & CHAT_LANGUAGE))
+				usr << "<span class='danger'>The emission is ongoing in the Zone!</span>"
+			else
+				usr << "<span class='danger'>В зоне идёт выброс!</span>"
 			return
+
+		if(!client.holder)
+			for(var/datum/data/record/sk in data_core.stalkers)
+				if(sk.fields["name"] == client.prefs.real_name)
+					if(client && (client.prefs.chat_toggles & CHAT_LANGUAGE))
+						usr << "<span class='warning'>Change your name!</span>"
+					else
+						usr << "<span class='warning'>Смените им&#255;!</span>"
+					return
 
 		if(href_list["late_join"] == "override")
 			LateChoices()
