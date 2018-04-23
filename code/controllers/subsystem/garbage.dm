@@ -5,7 +5,7 @@ var/datum/subsystem/garbage_collector/SSgarbage
 	priority = -1
 	wait = 5
 	dynamic_wait = 1
-	dwait_upper = 50
+	dwait_upper = 30
 	dwait_delta = 10
 	dwait_buffer = 0
 

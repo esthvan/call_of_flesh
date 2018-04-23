@@ -1,5 +1,5 @@
-/obj
-	var/delay_clean_decals = 10000
+
+var/global/delay_clean_decals = 5000
 
 /obj/effect/decal/cleanable
 	var/list/random_icon_states = list()
@@ -16,7 +16,7 @@
 			if(C != src && C.type == src.type)
 				replace_decal(C)
 	spawn(delay_clean_decals) //Кулдаун очистки декалей
-		qdel(src)
+		PlaceInPool(src)
 	..()
 
 

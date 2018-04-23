@@ -46,18 +46,39 @@
 	SpawnArtifact()
 
 /obj/anomaly/proc/SpawnArtifact()
-	if(loot)
-		var/lootspawn = pickweight(loot)
-		if(lootspawn)
-			var/turf/T = get_turf(src)
-			var/obj/item/weapon/artifact/O = new lootspawn(T)
-			O.invisibility = 100
-			RandomMove(O)
-			if(!istype(O, /obj/nothing) && O.z < O.level_s)
-				qdel(O)
-				SpawnArtifact()
-				return
-			spawned_artifacts += O
+	if(!loot)
+		return
+
+	var/list/temploot = list()
+	temploot.Add(loot[1])
+
+	switch(z)
+		if(5)
+			if(loot.len >= 5)
+				temploot.Add(loot[2], loot[3], loot[4], loot[5])
+		if(4)
+			if(loot.len >= 4)
+				temploot.Add(loot[2], loot[3], loot[4])
+
+		if(3)
+			if(loot.len >= 3)
+				temploot.Add(loot[2], loot[3])
+
+		if(2)
+			if(loot.len >= 2)
+				temploot.Add(loot[2])
+
+	var/lootspawn = pickweight(temploot)
+
+	if(!lootspawn || lootspawn == /obj/nothing)
+		return
+
+	var/turf/T = get_turf(src)
+	var/obj/item/weapon/artifact/O = new lootspawn(T)
+
+	O.invisibility = 100
+	RandomMove(O)
+	spawned_artifacts += O
 
 /obj/anomaly/proc/RandomMove(spawned)
 	if(spawned)
@@ -110,7 +131,7 @@
 				if(istype(A,/obj/item/weapon/storage))
 					var/obj/item/weapon/storage/S = Q
 					S.do_quick_empty()
-				qdel(Q)
+				del(Q)
 				spawn(src.cooldown * 10 - 5)
 					qdel(I)
 		return
@@ -279,11 +300,12 @@
 	active_icon_state = "electra1"
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/item/weapon/artifact/flash = 6,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/flash = 6,
 				/obj/item/weapon/artifact/moonlight = 3.5,
 				/obj/item/weapon/artifact/battery = 0.25,
-				/obj/item/weapon/artifact/pustishka = 0.25,
-				/obj/nothing = 90)
+				/obj/item/weapon/artifact/pustishka = 0.25
+				)
 
 /obj/anomaly/electro/New()
 	..()
@@ -302,11 +324,12 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/item/weapon/artifact/meduza = 5,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/meduza = 5,
 				/obj/item/weapon/artifact/stoneflower = 3,
 				/obj/item/weapon/artifact/nightstar = 1.5,
-				/obj/item/weapon/artifact/maminibusi = 0.5,
-				/obj/nothing = 90)
+				/obj/item/weapon/artifact/maminibusi = 0.5
+				)
 
 /obj/anomaly/tramplin
 	name = "anomaly"
@@ -321,11 +344,12 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/item/weapon/artifact/meduza = 5,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/meduza = 5,
 				/obj/item/weapon/artifact/stoneflower = 3,
 				/obj/item/weapon/artifact/nightstar = 1.5,
-				/obj/item/weapon/artifact/maminibusi = 0.5,
-				/obj/nothing = 90)
+				/obj/item/weapon/artifact/maminibusi = 0.5
+				)
 
 /obj/anomaly/jarka
 	name = "anomaly"
@@ -341,10 +365,11 @@
 	active_icon_state = "jarka1"
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/item/weapon/artifact/droplet = 6.5,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/droplet = 6.5,
 				/obj/item/weapon/artifact/fireball = 3,
-				/obj/item/weapon/artifact/crystal = 0.5,
-				/obj/nothing = 90)
+				/obj/item/weapon/artifact/crystal = 0.5
+				)
 
 /obj/anomaly/holodec
 	name = "anomaly"
@@ -361,10 +386,11 @@
 	active_icon_state = "holodec" //need activation icon
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/item/weapon/artifact/stone_blood = 6.5,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/stone_blood = 6.5,
 				/obj/item/weapon/artifact/soul = 3,
 				/obj/item/weapon/artifact/bubble = 0.5,
-				/obj/nothing = 90)
+				)
 
 /obj/anomaly/puh
 	name = "anomaly"
