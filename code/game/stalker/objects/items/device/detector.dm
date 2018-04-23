@@ -59,11 +59,6 @@
 		on = 0
 		cooldown = world.time
 		stop()
-/*
-/obj/item/device/flashlight/dropped(mob/user)
-	if(on)
-		user = null
-*/
 
 /obj/item/device/detector/proc/Scan()
 	kostil = 1
@@ -91,7 +86,6 @@
 	target = null
 
 	for(var/obj/item/weapon/artifact/a in range(7, user))
-		//a.invisibility = 0
 		if(level_s >= a.level_s)
 			arts += a
 			if(get_dist(user, a) < min_dist)
@@ -221,44 +215,6 @@
 				//var/obj/item/device/stalker_pda/KPK = H.wear_id
 				if(sk)
 					sk.fields["rating"] += (2 ** my_target.level_s) * 50
-
-/*
-
-/obj/effect/artifact/fakeart/New(var/obj/item/weapon/artifact/a,var/mob/living/carbon/T)
-	world << "48"
-	target = T
-	var/obj/effect/fakeart/F = new/obj/effect/fakeart(a, T)
-
-	F.name = a.name
-	F.my_target = target
-	F.up = image(a,dir = NORTH)
-
-	F.updateimage()
-	qdel(src)
-
-/obj/effect/fakeart
-	icon = null
-	icon_state = null
-	name = ""
-	desc = ""
-	density = 0
-	anchored = 1
-	opacity = 0
-	var/mob/living/carbon/human/my_target = null
-	var/image/currentimage = null
-	var/image/up
-
-/obj/effect/fakeart/New(var/obj/item/weapon/artifact/a ,var/mob/living/carbon/T)
-	..()
-	world << "49"
-	a.phantom = src
-	my_target = T
-
-/obj/effect/fakeart/proc/updateimage()
-	del src.currentimage
-	src.currentimage = new /image(up,src)
-	my_target << currentimage
-*/
 
 /obj/effect/artifact/simple
 	name = "artifact"
