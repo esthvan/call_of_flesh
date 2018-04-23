@@ -92,7 +92,7 @@ area/proc/StopBlowout(blowoutphase)
 		if(BLOWOUTLOW)
 
 			for(var/obj/item/weapon/artifact/A in src.contents)
-				del(A)
+				qdel(A)
 
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
@@ -103,7 +103,7 @@ area/proc/StopBlowout(blowoutphase)
 		if(BLOWOUTNORMAL)
 
 			for(var/obj/item/weapon/artifact/A in src.contents)
-				del(A)
+				qdel(A)
 
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
