@@ -31,7 +31,31 @@
 	unacidable = 1
 	anchored = 1
 	pass_flags = PASSTABLE | PASSGRILLE
-	//invisibility = 101
+
+
+	var/list/art_level1 = list(
+						/obj/item/weapon/artifact/flash,
+						/obj/item/weapon/artifact/meduza,
+						/obj/item/weapon/artifact/droplet,
+						/obj/item/weapon/artifact/stone_blood)
+
+	var/list/art_level2 = list(
+						/obj/item/weapon/artifact/moonlight,
+						/obj/item/weapon/artifact/stoneflower,
+						/obj/item/weapon/artifact/fireball,
+						/obj/item/weapon/artifact/soul)
+
+
+	var/list/art_level3 = list(
+						/obj/item/weapon/artifact/nightstar,
+						/obj/item/weapon/artifact/bubble)
+
+	var/list/art_level4 = list(
+						/obj/item/weapon/artifact/crystal,
+						/obj/item/weapon/artifact/pustishka,
+						/obj/item/weapon/artifact/battery,
+						/obj/item/weapon/artifact/maminibusi
+						)
 
 /obj/anomaly/New()
 	..()
@@ -49,26 +73,24 @@
 	if(!loot)
 		return
 
-	var/list/temploot = list()
-	temploot.Add(loot[1])
+
+	var/lootspawn = pickweight(loot)
 
 	switch(z)
-		if(5)
-			if(loot.len >= 5)
-				temploot.Add(loot[2], loot[3], loot[4], loot[5])
 		if(4)
-			if(loot.len >= 4)
-				temploot.Add(loot[2], loot[3], loot[4])
+			if(lootspawn in art_level4)
+				SpawnArtifact()
+				return
 
 		if(3)
-			if(loot.len >= 3)
-				temploot.Add(loot[2], loot[3])
+			if(lootspawn in art_level3 || lootspawn in art_level4)
+				SpawnArtifact()
+				return
 
 		if(2)
-			if(loot.len >= 2)
-				temploot.Add(loot[2])
-
-	var/lootspawn = pickweight(temploot)
+			if(lootspawn in art_level2 ||lootspawn in art_level3 || lootspawn in art_level4)
+				SpawnArtifact()
+				return
 
 	if(!lootspawn || lootspawn == /obj/nothing)
 		return
@@ -286,6 +308,7 @@
 
 	Think()
 	return
+
 
 /obj/anomaly/electro
 	name = "anomaly"
