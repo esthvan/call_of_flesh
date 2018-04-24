@@ -83,7 +83,6 @@
 		var/lootspawn = pickweight(loot)
 
 		if(!lootspawn || lootspawn == /obj/nothing)
-			world << "nothing"
 			continue
 
 		spawned_loot.Add(lootspawn)
