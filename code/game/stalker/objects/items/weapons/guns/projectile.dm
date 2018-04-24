@@ -28,7 +28,7 @@
 	can_unsuppress = 1
 	durability = 50
 	spread = 10
-	recoil = 0.25
+	recoil = 0.2
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
@@ -44,9 +44,9 @@
 	force = 10
 	can_suppress = 1
 	can_unsuppress = 1
-	durability = 100
+	durability = 85
 	spread = 6
-	recoil = 0.25
+	recoil = 0.4
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/sig220_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
@@ -64,7 +64,7 @@
 	can_unsuppress = 1
 	spread = 6
 	recoil = 0.5
-	durability = 85
+	durability = 100
 	damagelose = 0.15
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
@@ -82,9 +82,9 @@
 	can_suppress = 1
 	can_unsuppress = 1
 	spread = 7
-	recoil = 0.4
+	recoil = 0.25
 	damagelose = 0.2
-	durability = 85
+	durability = 75
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
@@ -100,8 +100,8 @@
 	can_suppress = 1
 	can_unsuppress = 1
 	spread = 8
-	recoil = 0.3
-	durability = 50
+	recoil = 0.25
+	durability = 40
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/fort_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
@@ -123,8 +123,8 @@
 	suppressed = 1
 	can_suppress = 0
 	can_unsuppress = 0
-	spread = 8
-	recoil = 0.3
+	spread = 10
+	recoil = 0.25
 	durability = 50
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
@@ -142,8 +142,8 @@
 	can_unsuppress = 1
 	spread = 8
 	recoil = 0.4
-	durability = 100
-	damagelose = 0.15
+	durability = 60
+	damagelose = 0.25
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
@@ -229,7 +229,7 @@
 	burst_size = 3
 	fire_delay = 1
 	pin = /obj/item/device/firing_pin
-	durability = 150
+	durability = 120
 	w_class = 4
 	spread = 7
 	recoil = 0.5
@@ -252,7 +252,7 @@
 	burst_size = 3
 	fire_delay = 1
 	pin = /obj/item/device/firing_pin
-	durability = 80
+	durability = 100
 	w_class = 4
 	spread = 9
 	recoil = 0.9
@@ -275,12 +275,12 @@
 	fire_sound = 'sound/stalker/weapons/mp5_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1
-	burst_size = 2
+	burst_size = 3
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
-	spread = 6
-	recoil = 0.65
+	spread = 7
+	recoil = 0.25
 	damagelose = 0.4
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
@@ -301,10 +301,10 @@
 	burst_size = 3
 	fire_delay = 1
 	pin = /obj/item/device/firing_pin
-	durability = 90
+	durability = 80
 	w_class = 4
 	spread = 5
-	recoil = 0.5
+	recoil = 0.4
 	damagelose = 0.2
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/tpc301_draw.ogg'
@@ -327,8 +327,8 @@
 	pin = /obj/item/device/firing_pin
 	durability = 200
 	w_class = 4
-	spread = 6
-	recoil = 0.5
+	spread = 5
+	recoil = 0.4
 	damagelose = 0.2
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/abakan_draw.ogg'
@@ -351,9 +351,9 @@
 	burst_size = 2
 	fire_delay = 1.5
 	pin = /obj/item/device/firing_pin
-	durability = 90
+	durability = 60
 	w_class = 4
-	spread = 3
+	spread = 5
 	recoil = 0.4
 	damagelose = 0
 	can_scope = 0
@@ -363,7 +363,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/fnf2000  // fnf2000
 	name = "FN-F2000"
-	desc = "ФТ-200М — по-своему идеальное оружие. Оснащённа&#255; прицелом средней кратности и интегрированным подствольным гранатометом, ФТ-200М поможет быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; среди НПС лучшим оружием в Зоне. В ЗП у ФТ-200М была заметно уменьшена убойна&#255; сила, однако открылс&#255; широкий спектр дл&#255; модификации. Например, по&#255;вилась возможность установить тепловизор, который будет издалека распознавать живых существ."
+	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне."
 	icon_state = "fnf2000"
 	item_state = "fnf2000"
 	slot_flags = SLOT_BACK
@@ -377,8 +377,8 @@
 	pin = /obj/item/device/firing_pin
 	durability = 300
 	w_class = 4
-	spread = 2
-	recoil = 0.5
+	spread = 4
+	recoil = 0.35
 	damagelose = 0.15
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
@@ -403,7 +403,7 @@
 	pin = /obj/item/device/firing_pin
 	w_class = 4
 	spread = 4
-	recoil = 0.6
+	recoil = 0.3
 	damagelose = 0.1
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/val_draw.ogg'
@@ -412,7 +412,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/vintorez  // ВСС Винторез
 	name = "VSS Vintorez"
-	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной стрельбы и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает бронежилет любой степени защиты. Очень ценимое сталкерами любого уровн&#255; оружие."
+	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает бронежилет любой степени защиты. Очень ценимое сталкерами любого уровн&#255; оружие."
 	icon_state = "vintorez"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39vint
@@ -422,14 +422,14 @@
 	zoomable = 1
 	zoom_amt = 7
 	burst_size = 1
-	durability = 110
+	durability = 150
 	slot_flags = SLOT_BACK
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	pin = /obj/item/device/firing_pin
 	w_class = 4
 	spread = 3
-	recoil = 0.6
+	recoil = 0.3
 	damagelose = 0
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/val_draw.ogg'
@@ -443,7 +443,7 @@
 	fire_sound = 'sound/stalker/weapons/groza_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39groza
 	can_suppress = 0
-	durability = 130
+	durability = 125
 	slot_flags = SLOT_BACK
 	force = 15
 	origin_tech = "combat=5;materials=1"
@@ -451,7 +451,7 @@
 	pin = /obj/item/device/firing_pin
 	w_class = 4
 	spread = 8
-	recoil = 0.6
+	recoil = 0.4
 	damagelose = 0.35
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/groza_draw.ogg'
