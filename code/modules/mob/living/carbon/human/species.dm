@@ -1141,11 +1141,12 @@
 						H.update_inv_glasses()
 
 			if("chest")	//Easier to score a stun but lasts less time
+				/*
 				if(H.stat == CONSCIOUS && I.force && prob(I.force + 10))
 					H.visible_message("<span class='danger'>[H] has been knocked down!</span>", \
 									"<span class='userdanger'>[H] has been knocked down!</span>")
 					H.apply_effect(5, WEAKEN, armor_block)
-
+				*/
 				if(bloody)
 					if(H.wear_suit)
 						H.wear_suit.add_blood(H)
