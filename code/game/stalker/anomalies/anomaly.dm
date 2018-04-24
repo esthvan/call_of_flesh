@@ -74,7 +74,7 @@
 		return
 
 	var/turf/T = get_turf(src)
-	var/obj/item/weapon/artifact/O = new lootspawn(T)
+	var/obj/item/weapon/artifact/O = PoolOrNew(lootspawn, T)
 
 	O.invisibility = 100
 	RandomMove(O)
