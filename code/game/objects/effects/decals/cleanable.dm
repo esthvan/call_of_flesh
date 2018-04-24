@@ -1,5 +1,5 @@
 
-var/global/delay_clean_decals = 5000
+var/global/delay_clean_decals = 500//0
 
 /obj/effect/decal/cleanable
 	var/list/random_icon_states = list()
