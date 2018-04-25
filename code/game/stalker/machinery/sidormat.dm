@@ -25,15 +25,15 @@
 
 		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
 		new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, NEWBIE),
-		new /datum/data/stalker_equipment("AK 74/2 S", 		"АК 74/2 У",		/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
+		new /datum/data/stalker_equipment("AK 74/2 У", 		"АК 74/2 У",		/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
 		new /datum/data/stalker_equipment("AK 74/2", 		"АК 74/2",			/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
-		new /datum/data/stalker_equipment("AS 96/2", 		"АС 96/2",			/obj/item/weapon/gun/projectile/automatic/abakan,					35000, EXPERT),
+		new /datum/data/stalker_equipment("AC 96/2", 		"АС 96/2",			/obj/item/weapon/gun/projectile/automatic/abakan,					35000, EXPERT),
 		new /datum/data/stalker_equipment("LR-300",			"ЛР-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
 		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, VETERAN),
 		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						50000, VETERAN),
-		new /datum/data/stalker_equipment("Tunder OTs-14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					50000, VETERAN),
+		new /datum/data/stalker_equipment("Tunder S14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					50000, VETERAN),
 		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					65000, MASTER),
-		new /datum/data/stalker_equipment("FN F2000", 		"ФН Ф2000",			/obj/item/weapon/gun/projectile/automatic/fnf2000,					70000, MASTER),
+		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/fnf2000,					70000, MASTER),
 
 		/////////////////////////////// **Дробовики** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Sawn off", 		"Обрез",			/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,				6000, NEWBIE),
@@ -79,7 +79,7 @@
 
 		new /datum/data/stalker_equipment("Leather jacket", 		"Кожанка",						/obj/item/clothing/suit/hooded/kozhanka,					5000, NEWBIE),
 		new /datum/data/stalker_equipment("White leather jacket",	"Бела&#x44F; кожанка",			/obj/item/clothing/suit/hooded/kozhanka/white,				5000, NEWBIE),
-		new	/datum/data/stalker_equipment("Bandit jacket",			"Бандитска&#x44F; кожанка",		/obj/item/clothing/suit/hooded/kozhanka/banditka,			6000, NEWBIE, "Бандиты"),
+		new	/datum/data/stalker_equipment("Bandit jacket",			"Бандитска&#x44F; кожанка",		/obj/item/clothing/suit/hooded/kozhanka/banditka,			5000, NEWBIE),
 		new	/datum/data/stalker_equipment("Army suit",				"Армейский комбинезон",			/obj/item/clothing/suit/army,								15000, NEWBIE, "Военные"),
 		new /datum/data/stalker_equipment("\"Sunrize\"",			"Комбинезон \"Зар&#x44F;\"",	/obj/item/clothing/suit/hooded/kombez,						35000, NEWBIE),
 		new /datum/data/stalker_equipment("Merc suit", 				"Комбинезон наёмников",			/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, NEWBIE, "Наёмники"),
@@ -87,7 +87,7 @@
 		new /datum/data/stalker_equipment("Black trench coat",		"Тёмный плащ",					/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, NEWBIE, "Бандиты"),
 		new /datum/data/stalker_equipment("Trenchcoat",				"Плащ",							/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown,12500, NEWBIE),
 		new /datum/data/stalker_equipment("Berill-5M",				"Берилл-5М",					/obj/item/clothing/suit/berill,								50000, EXPERT),
-		new /datum/data/stalker_equipment("Wind of Freedom",	    "Ветер Свободы",				/obj/item/clothing/suit/hooded/kombez/strazh,				25000, EXPERT), "Свобода"),
+		new /datum/data/stalker_equipment("Guardian of Freedom",	"Страж Свободы",				/obj/item/clothing/suit/hooded/kombez/strazh,				25000, EXPERT),//, "Свобода"),
 		new /datum/data/stalker_equipment("PZ-1	",					"ПЗ-1",							/obj/item/clothing/suit/hooded/kombez/monolit,				25000, EXPERT, "Монолит"),
 		new /datum/data/stalker_equipment("PS5-M",					"ПС5-М",						/obj/item/clothing/suit/hooded/kombez/psz9d,				25000, EXPERT, "Долг"),
 		new /datum/data/stalker_equipment("SKAT-9M",				"СКАТ-9М",						/obj/item/clothing/suit/skat,								75000, VETERAN),
