@@ -92,7 +92,7 @@
 		AC.loc = get_turf(src) //Eject casing onto ground.
 		AC.SpinAnimation(10, 1) //next gen special effects
 		spawn(rand(delay_clean_decals, delay_clean_decals*1.5))
-			PlaceInPool(AC)
+			qdel(AC)
 
 	if(empty_chamber)
 		chambered = null

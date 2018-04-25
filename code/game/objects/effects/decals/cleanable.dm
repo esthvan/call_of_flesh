@@ -7,6 +7,10 @@ var/global/delay_clean_decals = 5000
 	var/bloodiness = 0 //0-100, amount of blood in this decal, used for making footprints and affecting the alpha of bloody footprints
 	layer = 2.01
 
+/obj/effect/decal/cleanable/Destroy()
+	..()
+	return QDEL_HINT_PUTINPOOL
+
 /obj/effect/decal/cleanable/New()
 	if (random_icon_states && length(src.random_icon_states) > 0)
 		src.icon_state = pick(src.random_icon_states)
@@ -16,7 +20,7 @@ var/global/delay_clean_decals = 5000
 			if(C != src && C.type == src.type)
 				replace_decal(C)
 	spawn(rand(delay_clean_decals, delay_clean_decals*1.5)) //Кулдаун очистки декалей
-		PlaceInPool(src)
+		qdel(src)
 	..()
 
 

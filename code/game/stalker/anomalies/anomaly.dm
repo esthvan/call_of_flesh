@@ -155,7 +155,7 @@
 					S.do_quick_empty()
 				qdel(Q)
 				spawn(src.cooldown * 10 - 5)
-					PlaceInPool(I)
+					qdel(I)
 		return
 
 	if(istype(A,/mob/living))
