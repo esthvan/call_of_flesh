@@ -14,7 +14,7 @@
 
 /obj/item/weapon/stalker/bolt/New()
 	spawn(150)
-		qdel(src)
+		PlaceInPool(src)
 
 /obj/item/weapon/stalker/bolts/MouseDrop(atom/over_object)
 	var/mob/M = usr
@@ -47,7 +47,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/obj/item/weapon/stalker/bolt/P
-	P = new /obj/item/weapon/stalker/bolt
+	P = PoolOrNew(/obj/item/weapon/stalker/bolt)
 	P.loc = user.loc
 	user.put_in_hands(P)
 	user << "<span class='notice'>Вы достаете болт из кучи.</span>"
