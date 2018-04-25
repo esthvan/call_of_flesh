@@ -88,7 +88,7 @@
 		spawned_loot.Add(lootspawn)
 
 		var/turf/T = get_turf(src)
-		var/obj/O = new lootspawn(T)
+		var/obj/O = PoolOrNew(lootspawn, T)
 
 		RandomMove(O)
 	////////////////////////////////////////////

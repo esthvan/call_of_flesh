@@ -13,7 +13,7 @@
 
 		var/lootspawn = pickweight(loot)
 
-		if(!lootspawn)
+		if(!lootspawn || lootspawn == /obj/nothing)
 			return
 
 		var/turf/T = get_turf(src)

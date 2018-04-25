@@ -102,8 +102,6 @@
 				//fakearts += a.phantom
 		else
 			if(!isnull(a.phantom))
-				//var/datum/D = a.phantom
-    			//qdel(D)
 				arts -= a
 				qdel(a.phantom)
 				a.phantom = null
@@ -234,8 +232,6 @@
 	target = T
 	icon = a.icon
 	icon_state = a.icon_state
-	//current_image = GetImage(a)
-	//if(target.client) target.client.images |= current_image
 	return
 
 /obj/effect/artifact/simple/proc/GetImage(var/obj/item/weapon/artifact/a)

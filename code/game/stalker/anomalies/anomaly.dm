@@ -146,16 +146,16 @@
 			Q.throwing = 0
 			spawn(5)
 				var/turf/T = get_turf(Q)
-				var/obj/effect/decal/cleanable/molten_item/I = new (T)
+				var/obj/effect/decal/cleanable/molten_item/I = PoolOrNew(/obj/effect/decal/cleanable/molten_item ,T)
 				I.pixel_x = rand(-16,16)
 				I.pixel_y = rand(-16,16)
 				I.desc = "Looks like this was \an [Q] some time ago."
 				if(istype(A,/obj/item/weapon/storage))
 					var/obj/item/weapon/storage/S = Q
 					S.do_quick_empty()
-				del(Q)
+				qdel(Q)
 				spawn(src.cooldown * 10 - 5)
-					qdel(I)
+					PlaceInPool(I)
 		return
 
 	if(istype(A,/mob/living))
