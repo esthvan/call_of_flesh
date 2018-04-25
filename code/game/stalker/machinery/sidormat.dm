@@ -342,7 +342,7 @@ var/list/sidormatitems = list()
 					else
 						sk.fields["money"] -= prize.cost
 						balance = sk.fields["money"]
-						new prize.equipment_path(itemloc2)
+						PoolOrNew(prize.equipment_path, itemloc2)
 			else
 				say("No access.")
 		else
@@ -410,7 +410,7 @@ var/list/sidormatitems = list()
 					sk.fields["money"] += total_cost
 					balance = sk.fields["money"]
 					for(var/I in ontable)
-						qdel(I)
+						PlaceInPool(I)
 					say("Habar was sold successfully.")
 				else
 					say("Habar was not sold.")
