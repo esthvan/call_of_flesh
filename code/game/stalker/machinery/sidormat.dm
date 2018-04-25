@@ -87,7 +87,7 @@
 		new /datum/data/stalker_equipment("Black trench coat",		"Тёмный плащ",					/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, NEWBIE, "Бандиты"),
 		new /datum/data/stalker_equipment("Trenchcoat",				"Плащ",							/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown,12500, NEWBIE),
 		new /datum/data/stalker_equipment("Berill-5M",				"Берилл-5М",					/obj/item/clothing/suit/berill,								50000, EXPERT),
-		new /datum/data/stalker_equipment("Wind of Freedom",	    "Ветер Свободы",				/obj/item/clothing/suit/hooded/kombez/strazh,				25000, EXPERT), "Свобода"),
+		new /datum/data/stalker_equipment("Wind of Freedom",	    "Ветер Свободы",				/obj/item/clothing/suit/hooded/kombez/strazh,				25000, EXPERT, "Свобода"),
 		new /datum/data/stalker_equipment("PZ-1	",					"ПЗ-1",							/obj/item/clothing/suit/hooded/kombez/monolit,				25000, EXPERT, "Монолит"),
 		new /datum/data/stalker_equipment("PS5-M",					"ПС5-М",						/obj/item/clothing/suit/hooded/kombez/psz9d,				25000, EXPERT, "Долг"),
 		new /datum/data/stalker_equipment("SKAT-9M",				"СКАТ-9М",						/obj/item/clothing/suit/skat,								75000, VETERAN),
