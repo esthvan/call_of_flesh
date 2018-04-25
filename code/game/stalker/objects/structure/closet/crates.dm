@@ -75,15 +75,23 @@
 		qdel(src)
 		return
 
-	if(loot && loot.len)
-		for(var/i = lootcount, i > 0, i--)
-			if(!loot.len) break
-			var/lootspawn = pickweight(loot)
-			if(!lootdoubles)
-				loot.Remove(lootspawn)
+	if(!loot || !loot.len)
+		return
 
-			if(lootspawn)
-				new lootspawn(src)
+	for(var/i = lootcount, i > 0, i--)
+		if(!loot.len)
+			break
+
+		var/lootspawn = pickweight(loot)
+
+		if(lootspawn == /obj/nothing)
+			continue
+
+		if(!lootdoubles)
+			loot.Remove(lootspawn)
+
+		if(lootspawn)
+			new lootspawn(src)
 
 /obj/structure/closet/crate/stalker/blue/stash/open()
 	..()

@@ -76,6 +76,7 @@
 				I.loc = src
 				I.layer = 20
 				I.add_fingerprint(src)
+				I.plane = 15
 				src.update_inv_r_hand()
 				src.update_inv_l_hand()
 				usr.update_inv_r_hand()
