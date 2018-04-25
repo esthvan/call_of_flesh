@@ -31,7 +31,7 @@
 		new /datum/data/stalker_equipment("LR-300",			"ЛР-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
 		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, VETERAN),
 		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						50000, VETERAN),
-		new /datum/data/stalker_equipment("Tunder OTs-14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					50000, VETERAN),
+		new /datum/data/stalker_equipment("Tunder OTs-14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					40000, VETERAN),
 		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					65000, MASTER),
 		new /datum/data/stalker_equipment("FN F2000", 		"ФН Ф2000",			/obj/item/weapon/gun/projectile/automatic/fnf2000,					70000, MASTER),
 
@@ -63,7 +63,7 @@
 		new /datum/data/stalker_equipment("9x39 PAB-9 Box",			"Коробка 9x39 ПАБ-9",						/obj/item/ammo_box/stalker/b939,						9000, EXPERT),
 		new /datum/data/stalker_equipment("PMm; PB1s Magazine",		"Магазин к ПМм; ПБ1с",						/obj/item/ammo_box/magazine/stalker/m9x18pm,			750, NEWBIE),
 		new /datum/data/stalker_equipment("Fort-12 Magazine", 		"Магазин к Форт-12",						/obj/item/ammo_box/magazine/stalker/m9x18fort,			1000, NEWBIE),
-		new /datum/data/stalker_equipment("MP-5 Magazine", 			"Магазин к МП-5",							/obj/item/ammo_box/magazine/stalker/m9x19mp5,			2000, EXPERT),
+		new /datum/data/stalker_equipment("MP-5 Magazine", 			"Магазин к МП-5",							/obj/item/ammo_box/magazine/stalker/m9x19mp5,			2000, NEWBIE),
 		new /datum/data/stalker_equipment("AK 74/2;AC 96/2 Magazine","Магазин к AK 74/2;AC 96/2",				/obj/item/ammo_box/magazine/stalker/m545,				2250, NEWBIE),
 		new /datum/data/stalker_equipment("L85; LR-300 Magazine", 	"Магазин к Л85; ЛР-300",					/obj/item/ammo_box/magazine/stalker/m556x45,			2500, NEWBIE),
 		new /datum/data/stalker_equipment("AS \"Val\" Magazine", 	"Магазин к АС \"Вал\"",						/obj/item/ammo_box/magazine/stalker/sp9x39val,			3500, VETERAN),
