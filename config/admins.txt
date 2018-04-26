@@ -11,3 +11,4 @@ xrenoid = Host
 narciss_f = Host
 corporaldead = Badmin
 firefroge = Badmin
+blyeberry = TrialAdmin
