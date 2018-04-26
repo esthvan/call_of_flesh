@@ -380,7 +380,7 @@
 	spread = 4
 	recoil = 0.35
 	damagelose = 0.15
-	can_scope = 0
+	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
