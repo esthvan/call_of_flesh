@@ -541,8 +541,8 @@ var/global/lentahtml = ""
 							if(sk.fields["sid"] == H.sid)
 								if(sk.fields["pass"] == t)
 									password = t
-									var/datum/job/J = SSjob.GetJob(H.job)
-									access = J.get_access()
+									//var/datum/job/J = SSjob.GetJob(H.job)
+									//access = J.get_access()
 
 									registered_name = H.real_name
 									faction_s = sk.fields["faction"]
