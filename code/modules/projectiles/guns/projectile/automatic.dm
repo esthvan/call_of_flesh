@@ -58,21 +58,29 @@
 			update_icon()
 			return 1
 */
-
 /obj/item/weapon/gun/projectile/automatic/ui_action_click()
 	burst_select()
 
 /obj/item/weapon/gun/projectile/automatic/proc/burst_select()
 	var/mob/living/carbon/human/user = usr
-	select = !select
-	if(!select)
-		burst_size = 1
-		fire_delay = 0
-		user << "<span class='notice'>You switch to semi-automatic.</span>"
-	else
-		burst_size = initial(burst_size)
-		fire_delay = initial(fire_delay)
-		user << "<span class='notice'>You switch to [burst_size]-rnd burst.</span>"
+
+	switch(select)
+		if(0)
+			select = 1
+			burst_size = 1
+			fire_delay = 0
+			user << "<span class='notice'>You switch to semi-automatic.</span>"
+
+		if(1)
+			select = 2
+			burst_size = initial(burst_size)
+			fire_delay = initial(fire_delay)
+			user << "<span class='notice'>You switch to [burst_size]-rnd burst.</span>"
+
+		if(2)
+			select = 0
+			burst_size = 1
+			user << "<span class='notice'>You switch to underbarrel grenade launcher.</span>"
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, 1)
 	update_icon()

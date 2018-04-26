@@ -815,6 +815,7 @@
 #include "code\game\stalker\mobs\hostiles\mutants\mutants.dm"
 #include "code\game\stalker\mobs\living\carbon\verbs.dm"
 #include "code\game\stalker\modules\blowout.dm"
+#include "code\game\stalker\modules\modifications.dm"
 #include "code\game\stalker\modules\blackstalker\spells.dm"
 #include "code\game\stalker\modules\lighting\normal\lighting_area.dm"
 #include "code\game\stalker\modules\lighting\normal\lighting_atom.dm"
