@@ -166,7 +166,6 @@
 /obj/effect/artifact/fakeart/New(var/obj/item/weapon/artifact/a, var/mob/living/carbon/T)
 	target = T
 	f = new(a)
-	//f.Show(a)
 	a.phantom = f
 
 	T << f.currentimage
@@ -190,8 +189,6 @@
 	desc = a.desc
 	loc = a.loc
 	my_target = a
-	//f.image_icon = a.icon
-	//f.image_state = a.icon_state
 	up = image(a)
 	currentimage = new /image(up,src)
 
