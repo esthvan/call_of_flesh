@@ -18,6 +18,9 @@
 
 /obj/machinery/campfire/New()
 	..()
+	set_light(4, 1, firecolor)
+	spawn(10)
+		set_light(0, 1, firecolor)
 	SSmachine.processing.Remove(src)
 
 /obj/machinery/campfire/Destroy()
@@ -34,7 +37,6 @@ obj/machinery/campfire/barrel
 	icon = 'icons/stalker/bochka.dmi'
 	icon_state = "barrel0"
 	density = 1
-
 
 /obj/machinery/campfire/attack_hand(mob/user)
 	..()
@@ -113,6 +115,7 @@ obj/machinery/campfire/barrel
 obj/machinery/campfire/process()
 	if(!on)
 		SSmachine.processing.Remove(src)
+		return
 	src.RefreshSound()
 	//if(!on || (stat & BROKEN))
 	//	return
@@ -158,6 +161,9 @@ obj/machinery/campfire/process()
 				desc = "ќт костра исходит тЄпло и м&#255;гкий свет."
 				update_icon()
 				set_light(4, 1, firecolor)
+				spawn(10)
+					set_light(0, 1, firecolor)
+					set_light(4, 1, firecolor)
 				SSmachine.processing |= src
 		else
 			if(istype(I, /obj/item/weapon/match))
@@ -168,6 +174,9 @@ obj/machinery/campfire/process()
 					update_icon()
 					desc = "ќт костра исходит тЄпло и м&#255;гкий свет."
 					set_light(4, 1, firecolor)
+					spawn(10)
+						set_light(0, 1, firecolor)
+						set_light(4, 1, firecolor)
 					SSmachine.processing |= src
 				else
 					if(M.lit == 0 && on)
@@ -181,6 +190,9 @@ obj/machinery/campfire/process()
 						update_icon()
 						desc = "ќт костра исходит тЄпло и м&#255;гкий свет."
 						set_light(4, 1, firecolor)
+						spawn(10)
+							set_light(0, 1, firecolor)
+							set_light(4, 1, firecolor)
 						SSmachine.processing |= src
 
 				else

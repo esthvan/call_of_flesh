@@ -1076,7 +1076,7 @@
 		if(H.check_shields(I.force, "the [I.name]", I, MELEE_ATTACK, I.armour_penetration))
 			return 0
 
-	if(I.attack_verb && I.attack_verb.len)
+	if(I && I.attack_verb && I.attack_verb.len)
 		H.visible_message("<span class='danger'>[user] has [pick(I.attack_verb)] [H] in the [hit_area] with [I]!</span>", \
 						"<span class='userdanger'>[user] has [pick(I.attack_verb)] [H] in the [hit_area] with [I]!</span>")
 	else if(I.force)
@@ -1141,11 +1141,12 @@
 						H.update_inv_glasses()
 
 			if("chest")	//Easier to score a stun but lasts less time
+				/*
 				if(H.stat == CONSCIOUS && I.force && prob(I.force + 10))
 					H.visible_message("<span class='danger'>[H] has been knocked down!</span>", \
 									"<span class='userdanger'>[H] has been knocked down!</span>")
 					H.apply_effect(5, WEAKEN, armor_block)
-
+				*/
 				if(bloody)
 					if(H.wear_suit)
 						H.wear_suit.add_blood(H)

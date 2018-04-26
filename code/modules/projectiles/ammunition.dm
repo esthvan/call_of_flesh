@@ -26,6 +26,10 @@
 	dir = pick(alldirs)
 	update_icon()
 
+/obj/item/ammo_casing/Destroy()
+	..()
+	return QDEL_HINT_PUTINPOOL
+
 /obj/item/ammo_casing/update_icon()
 	..()
 	icon_state = "[initial(icon_state)][BB ? "-live" : ""]"
@@ -79,6 +83,7 @@
 	var/multiload = 1
 
 /obj/item/ammo_box/New()
+	stored_ammo = list()
 	for(var/i = 1, i <= max_ammo, i++)
 		stored_ammo += new ammo_type(src)
 	update_icon()

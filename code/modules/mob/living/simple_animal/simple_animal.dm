@@ -400,10 +400,12 @@
 					user.visible_message("<span class='green'>[user] разделал [src].</span>", "<span class='green'>Вы разделали [src].</span>")
 					if(random_loot)
 						var/i = pickweight(loot)
-						new i(loc)
+
+						if(i != /obj/nothing)
+							PoolOrNew(i, loc)
 					else
 						for(var/i in loot)
-							new i(loc)
+							PoolOrNew(i, loc)
 					gib()
 					return
 	..()

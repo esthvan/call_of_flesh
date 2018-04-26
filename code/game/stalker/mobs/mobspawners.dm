@@ -4,24 +4,34 @@
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/SpawnLoot(enable_cooldown = 1)
 	sleep(rand(10, 100))
-	if(loot && loot.len)
-		for(var/k = 0, k < CanSpawn(), k++)
-			if(!loot.len) return
-			var/lootspawn = pickweight(loot)
-			if(lootspawn)
-				var/turf/T = get_turf(src)
-				for(var/mob/living/carbon/human/H in view(7, T))
-					SpawnLoot()
-					return
-				var/mob/living/M = new lootspawn(T)
-				spawned_loot.Add(M)
-				sleep(rand(5, 50))
-				//RandomMove(M)
-		if(!enable_cooldown)
+	if(!loot || !loot.len)
+		return
+
+	for(var/k = 0, k < CanSpawn(), k++)
+		if(!loot.len)
+			return
+
+		var/lootspawn = pickweight(loot)
+
+		if(!lootspawn || lootspawn == /obj/nothing)
+			return
+
+		var/turf/T = get_turf(src)
+
+		for(var/mob/living/carbon/human/H in view(7, T))
 			SpawnLoot()
-		else
-			spawn(rand(cooldown, cooldown + 3000))
-				SpawnLoot()
+			return
+
+		var/mob/living/M = new lootspawn(T)
+
+		spawned_loot.Add(M)
+		sleep(rand(5, 50))
+
+	if(!enable_cooldown)
+		SpawnLoot()
+	else
+		spawn(rand(cooldown, cooldown + 3000))
+			SpawnLoot()
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/CanSpawn()
 	var/count = 0

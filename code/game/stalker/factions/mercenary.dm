@@ -32,7 +32,8 @@
 	//suit_store = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/weapon/gun/projectile/automatic/pistol/sip = 1,
-							/obj/item/device/flashlight/seclite = 1)
+							/obj/item/device/flashlight/seclite = 1,
+							/obj/item/ammo_box/stalker/bacp45 = 1)
 	r_pocket = /obj/item/weapon/stalker/bolts
 
 /datum/outfit/mercenary  // For select_equipment

@@ -31,7 +31,31 @@
 	unacidable = 1
 	anchored = 1
 	pass_flags = PASSTABLE | PASSGRILLE
-	//invisibility = 101
+
+
+	var/list/art_level1 = list(
+						/obj/item/weapon/artifact/flash,
+						/obj/item/weapon/artifact/meduza,
+						/obj/item/weapon/artifact/droplet,
+						/obj/item/weapon/artifact/stone_blood)
+
+	var/list/art_level2 = list(
+						/obj/item/weapon/artifact/moonlight,
+						/obj/item/weapon/artifact/stoneflower,
+						/obj/item/weapon/artifact/fireball,
+						/obj/item/weapon/artifact/soul)
+
+
+	var/list/art_level3 = list(
+						/obj/item/weapon/artifact/nightstar,
+						/obj/item/weapon/artifact/bubble)
+
+	var/list/art_level4 = list(
+						/obj/item/weapon/artifact/crystal,
+						/obj/item/weapon/artifact/pustishka,
+						/obj/item/weapon/artifact/battery,
+						/obj/item/weapon/artifact/maminibusi
+						)
 
 /obj/anomaly/New()
 	..()
@@ -46,18 +70,37 @@
 	SpawnArtifact()
 
 /obj/anomaly/proc/SpawnArtifact()
-	if(loot)
-		var/lootspawn = pickweight(loot)
-		if(lootspawn)
-			var/turf/T = get_turf(src)
-			var/obj/item/weapon/artifact/O = new lootspawn(T)
-			O.invisibility = 100
-			RandomMove(O)
-			if(!istype(O, /obj/nothing) && O.z < O.level_s)
-				qdel(O)
+	if(!loot)
+		return
+
+
+	var/lootspawn = pickweight(loot)
+
+	switch(z)
+		if(4)
+			if(lootspawn in art_level4)
 				SpawnArtifact()
 				return
-			spawned_artifacts += O
+
+		if(3)
+			if(lootspawn in art_level3 || lootspawn in art_level4)
+				SpawnArtifact()
+				return
+
+		if(2)
+			if(lootspawn in art_level2 ||lootspawn in art_level3 || lootspawn in art_level4)
+				SpawnArtifact()
+				return
+
+	if(!lootspawn || lootspawn == /obj/nothing)
+		return
+
+	var/turf/T = get_turf(src)
+	var/obj/item/weapon/artifact/O = PoolOrNew(lootspawn, T)
+
+	O.invisibility = 100
+	RandomMove(O)
+	spawned_artifacts += O
 
 /obj/anomaly/proc/RandomMove(spawned)
 	if(spawned)
@@ -103,7 +146,7 @@
 			Q.throwing = 0
 			spawn(5)
 				var/turf/T = get_turf(Q)
-				var/obj/effect/decal/cleanable/molten_item/I = new (T)
+				var/obj/effect/decal/cleanable/molten_item/I = PoolOrNew(/obj/effect/decal/cleanable/molten_item ,T)
 				I.pixel_x = rand(-16,16)
 				I.pixel_y = rand(-16,16)
 				I.desc = "Looks like this was \an [Q] some time ago."
@@ -133,7 +176,7 @@
 
 /obj/anomaly/proc/Think()
 
-	if(src.trapped.len < 1)
+	if(!src.trapped || src.trapped.len < 1)
 		return
 
 	if(lasttime + (cooldown * 10) > world.time)
@@ -167,6 +210,7 @@
 	for(var/atom/A in src.trapped)
 
 		if(!istype(A, /mob/living))
+			trapped.Remove(A)
 			continue
 
 		var/mob/living/L = A
@@ -237,6 +281,7 @@
 			continue
 
 		if(!istype(A, /mob/living))
+			trapped.Remove(A)
 			continue
 
 		var/mob/living/L = A
@@ -266,6 +311,7 @@
 	Think()
 	return
 
+
 /obj/anomaly/electro
 	name = "anomaly"
 	damage_amount = 40
@@ -279,11 +325,12 @@
 	active_icon_state = "electra1"
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/item/weapon/artifact/flash = 6,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/flash = 6,
 				/obj/item/weapon/artifact/moonlight = 3.5,
 				/obj/item/weapon/artifact/battery = 0.25,
-				/obj/item/weapon/artifact/pustishka = 0.25,
-				/obj/nothing = 90)
+				/obj/item/weapon/artifact/pustishka = 0.25
+				)
 
 /obj/anomaly/electro/New()
 	..()
@@ -302,11 +349,12 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/item/weapon/artifact/meduza = 5,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/meduza = 5,
 				/obj/item/weapon/artifact/stoneflower = 3,
 				/obj/item/weapon/artifact/nightstar = 1.5,
-				/obj/item/weapon/artifact/maminibusi = 0.5,
-				/obj/nothing = 90)
+				/obj/item/weapon/artifact/maminibusi = 0.5
+				)
 
 /obj/anomaly/tramplin
 	name = "anomaly"
@@ -321,11 +369,12 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/item/weapon/artifact/meduza = 5,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/meduza = 5,
 				/obj/item/weapon/artifact/stoneflower = 3,
 				/obj/item/weapon/artifact/nightstar = 1.5,
-				/obj/item/weapon/artifact/maminibusi = 0.5,
-				/obj/nothing = 90)
+				/obj/item/weapon/artifact/maminibusi = 0.5
+				)
 
 /obj/anomaly/jarka
 	name = "anomaly"
@@ -341,10 +390,11 @@
 	active_icon_state = "jarka1"
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/item/weapon/artifact/droplet = 6.5,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/droplet = 6.5,
 				/obj/item/weapon/artifact/fireball = 3,
-				/obj/item/weapon/artifact/crystal = 0.5,
-				/obj/nothing = 90)
+				/obj/item/weapon/artifact/crystal = 0.5
+				)
 
 /obj/anomaly/holodec
 	name = "anomaly"
@@ -361,10 +411,11 @@
 	active_icon_state = "holodec" //need activation icon
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/item/weapon/artifact/stone_blood = 6.5,
+	loot = list(/obj/nothing = 90,
+				/obj/item/weapon/artifact/stone_blood = 6.5,
 				/obj/item/weapon/artifact/soul = 3,
 				/obj/item/weapon/artifact/bubble = 0.5,
-				/obj/nothing = 90)
+				)
 
 /obj/anomaly/puh
 	name = "anomaly"
@@ -469,6 +520,7 @@
 			return
 
 		if(!istype(A, /mob/living/carbon/human))
+			trapped.Remove(A)
 			continue
 
 		var/mob/living/carbon/human/H = A

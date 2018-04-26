@@ -541,8 +541,8 @@ var/global/lentahtml = ""
 							if(sk.fields["sid"] == H.sid)
 								if(sk.fields["pass"] == t)
 									password = t
-									var/datum/job/J = SSjob.GetJob(H.job)
-									access = J.get_access()
+									//var/datum/job/J = SSjob.GetJob(H.job)
+									//access = J.get_access()
 
 									registered_name = H.real_name
 									faction_s = sk.fields["faction"]
@@ -943,9 +943,9 @@ var/global/lentahtml = ""
 			rep_name_s = "Очень хороша&#x44F;"
 		if(GOOD to VERYGOOD)
 			rep_name_s = "Хороша&#x44F;"
-		if(NEUTRAL to GOOD)
+		if(BAD to GOOD)
 			rep_name_s = "Нейтральна&#x44F;"
-		if(BAD to NEUTRAL)
+		if(VERYBAD to BAD)
 			rep_name_s = "Плоха&#x44F;"
 		if(DISGUSTING to VERYBAD)
 			rep_name_s = "Очень плоха&#x44F;"
@@ -976,7 +976,7 @@ var/global/lentahtml = ""
 	return eng_rep_name_s
 
 /proc/get_rep_color(var/rep)
-	var/rep_color_s
+	var/rep_color_s = "#ffe100"
 	switch(rep)
 		if(AMAZING to INFINITY)
 			rep_color_s = "#00abdb" //#00abdb

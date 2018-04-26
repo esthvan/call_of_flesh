@@ -328,14 +328,14 @@
 				if(KPK.hacked == 1 || H.sid == KPK.sid)
 					if(R && R_H)
 
-						var/rep = get_rep_name(R.fields["reputation"])
+						var/rep = russian_html2text(get_rep_name(R.fields["reputation"]))
 						var/eng_rep = get_eng_rep_name(R.fields["reputation"])
 						var/font_color = get_rep_color(R.fields["reputation"])
 
-						var/rank_name_s 	= get_rank_name(R.fields["rating"])
+						var/rank_name_s 	= russian_html2text(get_rank_name(R.fields["rating"]))
 						var/eng_rank_name_s = get_eng_rank_name(R.fields["rating"])
 
-						var/faction_s 		= R.fields["faction_s"]
+						var/faction_s 		= russian_html2text(R.fields["faction_s"])
 						var/eng_faction_s	= get_eng_faction(faction_s)
 
 						if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))

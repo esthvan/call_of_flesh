@@ -69,49 +69,32 @@
 				/obj/item/trash/can = 15)
 
 /obj/effect/spawner/lootdrop/stalker/New()
-	SpawnLoot(0)
 	SpawnLoot()
 
 /obj/effect/spawner/lootdrop/stalker/proc/SpawnLoot(enable_cooldown = 1)
 	if(!loot || !loot.len)
 		return
 
-	if(!enable_cooldown)
-		for(var/k = 0, k < lootcount, k++)
+	for(var/k = 0, k < lootcount, k++)
 
-			if(!loot.len)
-				return
+		if(!loot.len)
+			return
 
-			var/lootspawn = pickweight(loot)
+		var/lootspawn = pickweight(loot)
 
-			if(!lootspawn)
-				continue
+		if(!lootspawn || lootspawn == /obj/nothing)
+			continue
 
-			var/turf/T = get_turf(src)
-			var/obj/O = new lootspawn(T)
-			spawned_loot.Add(O)
-			RandomMove(O)
-	else
-		////////////////////////////////////////////
-		sleep(rand(cooldown, cooldown + cooldown/2))
-		////////////////////////////////////////////
+		spawned_loot.Add(lootspawn)
 
-		for(var/k = 0, k < lootcount, k++)
+		var/turf/T = get_turf(src)
+		var/obj/O = PoolOrNew(lootspawn, T)
 
-			if(!loot.len)
-				return
-
-			var/lootspawn = pickweight(loot)
-
-			if(!lootspawn)
-				continue
-
-			var/turf/T = get_turf(src)
-			var/obj/O = new lootspawn(T)
-			spawned_loot.Add(O)
-			RandomMove(O)
-
-		SpawnLoot()
+		RandomMove(O)
+	////////////////////////////////////////////
+	sleep(rand(cooldown, cooldown + cooldown/2))
+	////////////////////////////////////////////
+	SpawnLoot()
 	return
 
 /obj/effect/spawner/lootdrop/stalker/proc/CanSpawn()
@@ -121,7 +104,7 @@
 
 		var/obj/O = I
 
-		if(O.loc == src.loc)
+		if(!(O.loc in range(7, src)))
 			count++
 		else
 			spawned_loot.Remove(I)
@@ -132,17 +115,11 @@
 /obj/effect/spawner/lootdrop/stalker/proc/RandomMove(spawned)
 	if(spawned)
 		var/turf/T = get_turf(src)
-		if(istype(spawned, /obj))
-			var/obj/O = spawned
-			var/new_x = T.x + rand(-radius, radius)
-			var/new_y = T.y + rand(-radius, radius)
-			O.Move(locate(new_x, new_y, T.z))
-		else
-			if(istype(spawned, /mob))
-				var/mob/M = spawned
-				var/new_x = T.x + rand(-radius, radius)
-				var/new_y = T.y + rand(-radius, radius)
-				M.Move(locate(new_x, new_y, T.z))
+		var/obj/O = spawned
+		var/new_x = T.x + rand(-radius, radius)
+		var/new_y = T.y + rand(-radius, radius)
+		O.Move(new_x, new_y, T.z)
+
 	return spawned
 
 /obj/effect/spawner/lootdrop/stalker/weapon/pistols
@@ -218,10 +195,10 @@
 				/obj/item/weapon/artifact/crystal = 3,
 				/obj/nothing = 80)
 
-//Лутспавнер не принимает нулы, вместо этого используем объект, который удаляется после спауна
 /obj/nothing
 	name = "nothing"
-	desc = "deletes after spawn"
-
+	invisibility = 101
+/*
 obj/nothing/New()
 	qdel(src)
+*/

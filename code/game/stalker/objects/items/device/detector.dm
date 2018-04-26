@@ -46,6 +46,11 @@
 	icon_state_null = "veles_null"
 	level_s = 4
 
+/obj/item/device/detector/New()
+	..()
+	arts = list()
+	fakearts = list()
+
 /obj/item/device/detector/attack_self(mob/user)
 	if(!on)
 		if(world.time > cooldown + 5)
@@ -59,11 +64,6 @@
 		on = 0
 		cooldown = world.time
 		stop()
-/*
-/obj/item/device/flashlight/dropped(mob/user)
-	if(on)
-		user = null
-*/
 
 /obj/item/device/detector/proc/Scan()
 	kostil = 1
@@ -91,7 +91,6 @@
 	target = null
 
 	for(var/obj/item/weapon/artifact/a in range(7, user))
-		//a.invisibility = 0
 		if(level_s >= a.level_s)
 			arts += a
 			if(get_dist(user, a) < min_dist)
@@ -108,8 +107,6 @@
 				//fakearts += a.phantom
 		else
 			if(!isnull(a.phantom))
-				//var/datum/D = a.phantom
-    			//qdel(D)
 				arts -= a
 				qdel(a.phantom)
 				a.phantom = null
@@ -174,7 +171,6 @@
 /obj/effect/artifact/fakeart/New(var/obj/item/weapon/artifact/a, var/mob/living/carbon/T)
 	target = T
 	f = new(a)
-	//f.Show(a)
 	a.phantom = f
 
 	T << f.currentimage
@@ -198,8 +194,6 @@
 	desc = a.desc
 	loc = a.loc
 	my_target = a
-	//f.image_icon = a.icon
-	//f.image_state = a.icon_state
 	up = image(a)
 	currentimage = new /image(up,src)
 
@@ -222,44 +216,6 @@
 				if(sk)
 					sk.fields["rating"] += (2 ** my_target.level_s) * 50
 
-/*
-
-/obj/effect/artifact/fakeart/New(var/obj/item/weapon/artifact/a,var/mob/living/carbon/T)
-	world << "48"
-	target = T
-	var/obj/effect/fakeart/F = new/obj/effect/fakeart(a, T)
-
-	F.name = a.name
-	F.my_target = target
-	F.up = image(a,dir = NORTH)
-
-	F.updateimage()
-	qdel(src)
-
-/obj/effect/fakeart
-	icon = null
-	icon_state = null
-	name = ""
-	desc = ""
-	density = 0
-	anchored = 1
-	opacity = 0
-	var/mob/living/carbon/human/my_target = null
-	var/image/currentimage = null
-	var/image/up
-
-/obj/effect/fakeart/New(var/obj/item/weapon/artifact/a ,var/mob/living/carbon/T)
-	..()
-	world << "49"
-	a.phantom = src
-	my_target = T
-
-/obj/effect/fakeart/proc/updateimage()
-	del src.currentimage
-	src.currentimage = new /image(up,src)
-	my_target << currentimage
-*/
-
 /obj/effect/artifact/simple
 	name = "artifact"
 	icon = null
@@ -278,8 +234,6 @@
 	target = T
 	icon = a.icon
 	icon_state = a.icon_state
-	//current_image = GetImage(a)
-	//if(target.client) target.client.images |= current_image
 	return
 
 /obj/effect/artifact/simple/proc/GetImage(var/obj/item/weapon/artifact/a)

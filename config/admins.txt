@@ -9,4 +9,6 @@
 ###############################################################################################
 xrenoid = Host
 narciss_f = Host
-corporaldead = TrialAdmin
+corporaldead = Badmin
+firefroge = Badmin
+blyeberry = TrialAdmin

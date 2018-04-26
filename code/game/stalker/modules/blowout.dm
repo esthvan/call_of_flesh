@@ -92,22 +92,30 @@ area/proc/StopBlowout(blowoutphase)
 		if(BLOWOUTLOW)
 
 			for(var/obj/item/weapon/artifact/A in src.contents)
-				qdel(A)
+				PlaceInPool(A)
 
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
 				H.apply_damage(150, BURN)
+
+			for(var/mob/living/L in src.contents)
+				if(L.stat == DEAD)
+					L.gib()
 
 			CHECK_TICK
 
 		if(BLOWOUTNORMAL)
 
 			for(var/obj/item/weapon/artifact/A in src.contents)
-				qdel(A)
+				PlaceInPool(A)
 
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
 				H.apply_damage(300, BURN)
+
+			for(var/mob/living/L in src.contents)
+				if(L.stat == DEAD)
+					L.gib()
 
 			CHECK_TICK
 
@@ -116,12 +124,16 @@ area/proc/StopBlowout(blowoutphase)
 			lentahtml = ""
 
 			for(var/obj/item/weapon/artifact/A in src.contents)
-				qdel(A)
+				PlaceInPool(A)
 
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
 				H.apply_damage(300, BURN)
 				return
+
+			for(var/mob/living/L in src.contents)
+				if(L.stat == DEAD)
+					L.gib()
 
 			CHECK_TICK
 
