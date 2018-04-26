@@ -342,7 +342,8 @@ var/list/sidormatitems = list()
 					else
 						sk.fields["money"] -= prize.cost
 						balance = sk.fields["money"]
-						PoolOrNew(prize.equipment_path, itemloc2)
+						//PoolOrNew(prize.equipment_path, itemloc2)
+						new prize.equipment_path(itemloc2)
 			else
 				say("No access.")
 		else

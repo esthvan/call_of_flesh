@@ -1076,7 +1076,7 @@
 		if(H.check_shields(I.force, "the [I.name]", I, MELEE_ATTACK, I.armour_penetration))
 			return 0
 
-	if(I.attack_verb && I.attack_verb.len)
+	if(I && I.attack_verb && I.attack_verb.len)
 		H.visible_message("<span class='danger'>[user] has [pick(I.attack_verb)] [H] in the [hit_area] with [I]!</span>", \
 						"<span class='userdanger'>[user] has [pick(I.attack_verb)] [H] in the [hit_area] with [I]!</span>")
 	else if(I.force)

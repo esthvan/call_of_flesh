@@ -10,7 +10,6 @@ justshako = Mercenary
 noname14881337 = Mercenary
 evilraccoon = Mercenary
 saxarok = Duty
-zombuzi = Duty
 denmag = Duty
 z135367 = Mercenary
 blyeberry = Mercenary

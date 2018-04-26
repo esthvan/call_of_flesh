@@ -46,6 +46,11 @@
 	icon_state_null = "veles_null"
 	level_s = 4
 
+/obj/item/device/detector/New()
+	..()
+	arts = list()
+	fakearts = list()
+
 /obj/item/device/detector/attack_self(mob/user)
 	if(!on)
 		if(world.time > cooldown + 5)
