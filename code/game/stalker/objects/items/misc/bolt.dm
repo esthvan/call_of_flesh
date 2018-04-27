@@ -14,7 +14,11 @@
 
 /obj/item/weapon/stalker/bolt/New()
 	spawn(150)
-		PlaceInPool(src)
+		qdel(src)
+
+/obj/item/weapon/stalker/bolt/Destroy()
+	..()
+	return QDEL_HINT_PUTINPOOL
 
 /obj/item/weapon/stalker/bolts/MouseDrop(atom/over_object)
 	var/mob/M = usr
