@@ -509,8 +509,8 @@ var/global/lentahtml = ""
 
 						data_core.manifest_inject(H, pass)
 
-						var/datum/job/J = SSjob.GetJob(H.job)
-						access = J.get_access()
+						//var/datum/job/J = SSjob.GetJob(H.job)
+						//access = J.get_access()
 
 						registered_name = H.real_name
 						owner = H
