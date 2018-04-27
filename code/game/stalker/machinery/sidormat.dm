@@ -59,7 +59,7 @@
 		new /datum/data/stalker_equipment("5.45x39 Box", 			"Коробка 5.45х39",							/obj/item/ammo_box/stalker/b545,						7500, NEWBIE),
 		new /datum/data/stalker_equipment("5.45x39 AP Box",			"Коробка 5.45х39 Бронебойные",				/obj/item/ammo_box/stalker/b545ap,						9000, VETERAN),
 		new /datum/data/stalker_equipment("5.56x45 Box",			"Коробка 5.56x45",							/obj/item/ammo_box/stalker/b55645,						9000, NEWBIE),
-		new /datum/data/stalker_equipment("5.56x45 AP Box", 		"Коробка 5.56x45 Бронебойные",				/obj/item/ammo_box/stalker/b55645ap,					12500, VETERAN),
+		new /datum/data/stalker_equipment("5.56x45 AP Box", 		"Коробка 5.56x45 Бронебойные",				/obj/item/ammo_box/stalker/b55645ap,					12000, VETERAN),
 		new /datum/data/stalker_equipment("9x39 PAB-9 Box",			"Коробка 9x39 ПАБ-9",						/obj/item/ammo_box/stalker/b939,						8500, EXPERT),
 		new /datum/data/stalker_equipment("PMm; PB1s Magazine",		"Магазин к ПМм; ПБ1с",						/obj/item/ammo_box/magazine/stalker/m9x18pm,			700, NEWBIE),
 		new /datum/data/stalker_equipment("Fort-12 Magazine", 		"Магазин к Форт-12",						/obj/item/ammo_box/magazine/stalker/m9x18fort,			1000, NEWBIE),
@@ -102,7 +102,6 @@
 		////////////////////////////	Маски, Шлемы	/////////////////////////////////////
 		new /datum/data/stalker_equipment("Gasmask",				"Противогаз",				/obj/item/clothing/mask/gas/stalker,						7500, NEWBIE),
 		new /datum/data/stalker_equipment("Merc gasmask",			"Противогаз наемников",		/obj/item/clothing/mask/gas/stalker/mercenary,				7500, NEWBIE),
-		new /datum/data/stalker_equipment("Steel helmet",	    	"Стальная каска",			/obj/item/clothing/head/hardhat/steelhelmet,				9000, EXPERT),
 		new /datum/data/stalker_equipment("Tactical helmet",		"Тактический шлем",			/obj/item/clothing/head/hardhat/tacticalhelmet,				20000, EXPERT),
 		new /datum/data/stalker_equipment("Sphera-M12",				"Сфера-М12",				/obj/item/clothing/head/spherahelmet,						25000, EXPERT),
 		new /datum/data/stalker_equipment("SKAT-9M (helmet)",		"СКАТ-9М (шлем)",			/obj/item/clothing/head/skathelmet,							35000, VETERAN),
