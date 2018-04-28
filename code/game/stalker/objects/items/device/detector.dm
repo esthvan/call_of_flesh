@@ -16,6 +16,7 @@
 	var/mob/living/carbon/human/user = null
 	var/cooldown = 0
 	var/kostil = 0
+	var/timer_detector = 0
 	var/list/fakearts = list()
 
 /obj/item/device/detector/blink
@@ -57,6 +58,7 @@
 			playsound(user, "sound/stalker/detector/detector_draw.ogg", 50, 1, randfreq = 0)
 			on = 1
 			icon_state = icon_state_null
+			timer_detector = 0
 			if(!kostil)
 				Scan()
 	else
@@ -67,6 +69,13 @@
 
 /obj/item/device/detector/proc/Scan()
 	kostil = 1
+	timer_detector++
+
+	if(timer_detector >= 100)
+		kostil = 0
+		on = 0
+		stop()
+		return
 
 	if(!on)
 		kostil = 0
@@ -87,6 +96,7 @@
 		stop()
 		return
 
+	var/old_dist = min_dist
 	min_dist = 8
 	target = null
 
@@ -110,6 +120,9 @@
 				arts -= a
 				qdel(a.phantom)
 				a.phantom = null
+
+	if(old_dist == min_dist)
+		timer_detector++
 
 	sleep(2 * min_dist)
 
@@ -146,6 +159,7 @@
 	stop()
 
 /obj/item/device/detector/proc/stop()
+	timer_detector = 0
 	target = null
 	icon_state = icon_state_inactive
 	src.user = null
@@ -193,16 +207,17 @@
 	if(user.stat || user.restrained() || !Adjacent(user) || user.stunned || user.weakened || user.lying)
 		return
 
-	if(user.get_active_hand() == null) // Let me know if this has any problems -Yota
-		user.UnarmedAttack(my_target)
-		my_target.invisibility = 0
-		qdel(src)
-		spawned_artifacts.Remove(my_target)
+	if(user.get_active_hand() != null) // Let me know if this has any problems -Yota
+		return
+
+	user.UnarmedAttack(my_target)
+	my_target.invisibility = 0
 
 	if(!istype(user, /mob/living/carbon/human))
 		return
 
 	var/mob/living/carbon/human/H = user
+
 	if(!H.wear_id)
 		return
 
@@ -216,3 +231,6 @@
 		return
 
 	sk.fields["rating"] += (2 ** my_target.level_s) * 50
+
+	qdel(src)
+	spawned_artifacts.Remove(my_target)

@@ -20,6 +20,7 @@
 	var/activated_luminosity = 0
 	var/sound = null
 	var/delay = 0
+	var/incooldown = 0
 	//var/attachedSpawner = null
 	var/active_icon_state = null
 	var/inactive_icon_state = null;
@@ -72,7 +73,6 @@
 /obj/anomaly/proc/SpawnArtifact()
 	if(!loot)
 		return
-
 
 	var/lootspawn = pickweight(loot)
 
@@ -161,10 +161,11 @@
 	if(istype(A,/mob/living))
 		var/mob/living/L = A
 		src.trapped.Add(L)
-		if(src.trapped.len >= 1)
+		if(src.trapped.len >= 1 && !incooldown)
+			incooldown = 1
 			Think()
-		else
-			src.trapped.Remove(L)
+		//else
+		//	src.trapped.Remove(L)
 	return
 
 /obj/anomaly/Uncrossed(atom/A)
@@ -177,6 +178,7 @@
 /obj/anomaly/proc/Think()
 
 	if(!src.trapped || src.trapped.len < 1)
+		incooldown = 0
 		return
 
 	if(lasttime + (cooldown * 10) > world.time)
@@ -238,7 +240,8 @@
 		sleep(src.cooldown * 10)
 		///////////////////////
 
-	if(src.trapped.len < 1)
+	if(!src.trapped || src.trapped.len < 1)
+		incooldown = 0
 		return
 
 	Think()
@@ -246,7 +249,8 @@
 
 /obj/anomaly/tramplin/Think()
 
-	if(src.trapped.len < 1)
+	if(!src.trapped || src.trapped.len < 1)
+		incooldown = 0
 		return
 
 	if(lasttime + (cooldown * 10) > world.time)
@@ -305,7 +309,8 @@
 		sleep(src.cooldown * 10)
 		///////////////////////
 
-	if(src.trapped.len < 1)
+	if(!src.trapped || src.trapped.len < 1)
+		incooldown = 0
 		return
 
 	Think()
