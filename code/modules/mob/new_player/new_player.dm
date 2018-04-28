@@ -149,7 +149,7 @@ var/global/num_sid = 0
 
 		if(isblowout)
 			if(client && (client.prefs.chat_toggles & CHAT_LANGUAGE))
-				usr << "<span class='danger'>The emission is ongoing in the Zone!</span>"
+				usr << "<span class='danger'>The blowout is ongoing in the Zone!</span>"
 			else
 				usr << "<span class='danger'>В зоне идёт выброс!</span>"
 			return

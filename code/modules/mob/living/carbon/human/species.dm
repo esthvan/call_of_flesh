@@ -956,7 +956,10 @@
 			for(var/A in safezones)
 				var/area/B = get_area(H.loc)
 				if(B.type == A)
-					M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
+					if(M.client && (M.client.prefs.chat_toggles & CHAT_LANGUAGE))
+						M << "<span class='warning'>You can't fight in the safezone!</span>"
+					else
+						M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
 					return 0
 			if(attacker_style && attacker_style.grab_act(M,H))
 				return 1
@@ -968,7 +971,10 @@
 			for(var/A in safezones)
 				var/area/B = get_area(H.loc)
 				if(B.type == A)
-					M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
+					if(M.client && (M.client.prefs.chat_toggles & CHAT_LANGUAGE))
+						M << "<span class='warning'>You can't fight in the safezone!</span>"
+					else
+						M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
 					return 0
 			if(attacker_style && attacker_style.harm_act(M,H))
 				return 1
@@ -1010,7 +1016,10 @@
 			for(var/A in safezones)
 				var/area/B = get_area(H.loc)
 				if(B.type == A)
-					M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
+					if(M.client && (M.client.prefs.chat_toggles & CHAT_LANGUAGE))
+						M << "<span class='warning'>You can't fight in the safezone!</span>"
+					else
+						M << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
 					return 0
 			if(attacker_style && attacker_style.disarm_act(M,H))
 				return 1

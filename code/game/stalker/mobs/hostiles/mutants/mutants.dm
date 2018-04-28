@@ -18,7 +18,10 @@
 	var/area/B = get_area(NewLoc)
 	for(var/A in safezones)
 		if(B.type == A)
-			src << "<span class='warning'>Вы не можете находитьc&#255; в этой зоне!</span>"
+			if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
+				src << "<span class='warning'>You can't be here!</span>"
+			else
+				src << "<span class='warning'>Вы не можете находитьc&#255; в этой зоне!</span>"
 			return 0
 	. = ..()
 
