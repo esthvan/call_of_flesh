@@ -214,20 +214,28 @@
 	my_target.invisibility = 0
 
 	if(!istype(user, /mob/living/carbon/human))
+		qdel(src)
+		spawned_artifacts.Remove(my_target)
 		return
 
 	var/mob/living/carbon/human/H = user
 
 	if(!H.wear_id)
+		qdel(src)
+		spawned_artifacts.Remove(my_target)
 		return
 
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		qdel(src)
+		spawned_artifacts.Remove(my_target)
 		return
 
 	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 	//var/obj/item/device/stalker_pda/KPK = H.wear_id
 
 	if(!sk)
+		qdel(src)
+		spawned_artifacts.Remove(my_target)
 		return
 
 	sk.fields["rating"] += (2 ** my_target.level_s) * 50
