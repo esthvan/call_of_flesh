@@ -46,7 +46,7 @@ Assistant
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
-	id = /obj/item/weapon/storage/wallet/stalker
+	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
@@ -89,6 +89,6 @@ Assistant
 	suit = /obj/item/clothing/suit/jacket/sidor
 	ears = null
 	belt = /obj/item/weapon/gun/projectile/automatic/pistol/cora
-	id = /obj/item/weapon/storage/wallet/stalker
+	id = /obj/item/device/stalker_pda
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	back = null

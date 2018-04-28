@@ -46,6 +46,11 @@
 	icon_state_null = "veles_null"
 	level_s = 4
 
+/obj/item/device/detector/New()
+	..()
+	arts = list()
+	fakearts = list()
+
 /obj/item/device/detector/attack_self(mob/user)
 	if(!on)
 		if(world.time > cooldown + 5)
@@ -154,23 +159,9 @@
 		arts -= a
 
 /mob/living/carbon/proc/handle_artifact(var/obj/item/weapon/artifact/a)
-	new /obj/effect/artifact/fakeart(a, src)
-
-/obj/effect/artifact
-	invisibility = INVISIBILITY_OBSERVER
-	var/mob/living/carbon/target = null
-
-/obj/effect/artifact/fakeart
-	var/obj/effect/fakeart/f = null
-
-/obj/effect/artifact/fakeart/New(var/obj/item/weapon/artifact/a, var/mob/living/carbon/T)
-	target = T
-	f = new(a)
-	//f.Show(a)
-	a.phantom = f
-
-	T << f.currentimage
-	qdel(src)
+	//new /obj/effect/artifact/fakeart(a, src)
+	a.phantom = PoolOrNew(/obj/effect/fakeart, a)
+	src << a.phantom.currentimage
 
 /obj/effect/fakeart
 	icon = null
@@ -180,8 +171,9 @@
 	density = 0
 	anchored = 1
 	opacity = 0
+	layer = 11
 	var/image/currentimage = null
-	var/image/up
+	var/image/up = null
 	var/obj/item/weapon/artifact/my_target = null
 
 /obj/effect/fakeart/New(var/obj/item/weapon/artifact/a)
@@ -190,10 +182,12 @@
 	desc = a.desc
 	loc = a.loc
 	my_target = a
-	//f.image_icon = a.icon
-	//f.image_state = a.icon_state
 	up = image(a)
 	currentimage = new /image(up,src)
+
+/obj/effect/fakeart/Destroy()
+	..()
+	return QDEL_HINT_PUTINPOOL
 
 /obj/effect/fakeart/attack_hand(mob/user)
 	if(user.stat || user.restrained() || !Adjacent(user) || user.stunned || user.weakened || user.lying)
@@ -205,49 +199,20 @@
 		qdel(src)
 		spawned_artifacts.Remove(my_target)
 
-	if(istype(user, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.wear_id)
-			if(istype(H.wear_id, /obj/item/device/stalker_pda))
-				var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-				//var/obj/item/device/stalker_pda/KPK = H.wear_id
-				if(sk)
-					sk.fields["rating"] += (2 ** my_target.level_s) * 50
+	if(!istype(user, /mob/living/carbon/human))
+		return
 
-/obj/effect/artifact/simple
-	name = "artifact"
-	icon = null
-	icon_state = null
-	opacity = 0
-	var/image_icon = 'icons/stalker/artifacts.dmi'
-	var/image_state = "meduza"
-	var/px = 0
-	var/py = 0
-	var/image/current_image = null
-	var/image_layer = MOB_LAYER
-	var/active = 1
-	var/mob/living/carbon/human/my_target = null
+	var/mob/living/carbon/human/H = user
+	if(!H.wear_id)
+		return
 
-/obj/effect/artifact/simple/New(var/obj/item/weapon/artifact/a, var/mob/living/carbon/T)
-	target = T
-	icon = a.icon
-	icon_state = a.icon_state
-	return
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		return
 
-/obj/effect/artifact/simple/proc/GetImage(var/obj/item/weapon/artifact/a)
-	var/image/I = image(a.icon, a.loc, a.icon_state, a.layer, dir=src.dir)
-	I.pixel_x = px
-	I.pixel_y = py
-	return I
+	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+	//var/obj/item/device/stalker_pda/KPK = H.wear_id
 
-/obj/effect/artifact/simple/proc/Show(var/obj/item/weapon/artifact/a, update=1)
-	if(active)
-		if(target.client) target.client.images.Remove(current_image)
-		if(update)
-			current_image = GetImage(a)
-		if(target.client) target.client.images |= current_image
+	if(!sk)
+		return
 
-/obj/effect/artifact/simple/Destroy()
-	if(target.client) target.client.images.Remove(current_image)
-	active = 0
-	return ..()
+	sk.fields["rating"] += (2 ** my_target.level_s) * 50

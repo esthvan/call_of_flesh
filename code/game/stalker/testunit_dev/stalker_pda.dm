@@ -352,7 +352,7 @@ var/global/lentahtml = ""
 					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
 					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						mainhtml +="\
-						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>"
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Refresh stalker list</a> | </div>"
 					else
 						mainhtml +="\
 						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>"
@@ -509,8 +509,8 @@ var/global/lentahtml = ""
 
 						data_core.manifest_inject(H, pass)
 
-						var/datum/job/J = SSjob.GetJob(H.job)
-						access = J.get_access()
+						//var/datum/job/J = SSjob.GetJob(H.job)
+						//access = J.get_access()
 
 						registered_name = H.real_name
 						owner = H
@@ -541,8 +541,8 @@ var/global/lentahtml = ""
 							if(sk.fields["sid"] == H.sid)
 								if(sk.fields["pass"] == t)
 									password = t
-									var/datum/job/J = SSjob.GetJob(H.job)
-									access = J.get_access()
+									//var/datum/job/J = SSjob.GetJob(H.job)
+									//access = J.get_access()
 
 									registered_name = H.real_name
 									faction_s = sk.fields["faction"]
@@ -623,6 +623,7 @@ var/global/lentahtml = ""
 						add_lenta_message(src, sid, registered_name, faction_s, t)
 
 					else
+						/*
 						var/lefttime = round((450 + last_lenta - world.time)/10)
 						var/ending = ""
 						switch (lefttime % 10)
@@ -630,12 +631,16 @@ var/global/lentahtml = ""
 								ending = "ы"
 							if(1)
 								ending = "у"
-						H << "<span class='warning'>Вы сможете отправить следующее сообщение через [round((450 + last_lenta - world.time)/10)] секунд[ending].</span>"
+						*/
+						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+							H << "<span class='warning'>You can send message in [round((450 + last_lenta - world.time)/10)] sec.</span>"
+						else
+							H << "<span class='warning'>Вы сможете отправить следующее сообщение через [round((450 + last_lenta - world.time)/10)] сек.</span>"
 
 			if("lenta_sound")
 				lenta_sound = !lenta_sound
 				if(lenta_sound)
-					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте включен.</span>"
+					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте активирован.</span>"
 				else
 					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
 

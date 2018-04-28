@@ -16,6 +16,10 @@
 	spawn(150)
 		qdel(src)
 
+/obj/item/weapon/stalker/bolt/Destroy()
+	..()
+	return QDEL_HINT_PUTINPOOL
+
 /obj/item/weapon/stalker/bolts/MouseDrop(atom/over_object)
 	var/mob/M = usr
 	if(M.restrained() || M.stat || !Adjacent(M))
@@ -47,7 +51,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/obj/item/weapon/stalker/bolt/P
-	P = new /obj/item/weapon/stalker/bolt
+	P = PoolOrNew(/obj/item/weapon/stalker/bolt)
 	P.loc = user.loc
 	user.put_in_hands(P)
 	user << "<span class='notice'>Вы достаете болт из кучи.</span>"

@@ -71,6 +71,7 @@
 	var/jam = 0              //is weapon jammed or not
 	var/unique = 0
 	var/list/obj/item/weapon/attachment/addons = list()
+	var/obj/item/weapon/attachment/gl = null
 
 	var/list/l_sounds_shots = list('sound/stalker/weapons/fading/rnd_shooting_1.ogg','sound/stalker/weapons/fading/rnd_shooting_2.ogg',
 								'sound/stalker/weapons/fading/rnd_shooting_4.ogg','sound/stalker/weapons/fading/rnd_shooting_5.ogg',

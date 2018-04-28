@@ -176,7 +176,7 @@
 
 /obj/anomaly/proc/Think()
 
-	if(src.trapped.len < 1)
+	if(!src.trapped || src.trapped.len < 1)
 		return
 
 	if(lasttime + (cooldown * 10) > world.time)
@@ -210,6 +210,7 @@
 	for(var/atom/A in src.trapped)
 
 		if(!istype(A, /mob/living))
+			trapped.Remove(A)
 			continue
 
 		var/mob/living/L = A
@@ -280,6 +281,7 @@
 			continue
 
 		if(!istype(A, /mob/living))
+			trapped.Remove(A)
 			continue
 
 		var/mob/living/L = A
@@ -518,6 +520,7 @@
 			return
 
 		if(!istype(A, /mob/living/carbon/human))
+			trapped.Remove(A)
 			continue
 
 		var/mob/living/carbon/human/H = A
