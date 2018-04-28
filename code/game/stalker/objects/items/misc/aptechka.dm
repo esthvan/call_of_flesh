@@ -17,19 +17,19 @@ obj/item/weapon/reagent_containers/pill/stalker/canconsume(mob/eater, mob/user)
 	return 1 // Masks were stopping people from "eating" patches. Thanks, inheritance.
 
 /obj/item/weapon/reagent_containers/pill/stalker/aptechka_r
-	name = "first aid kit"
+	name = "medkit"
 	icon_state = "aptechkar"
 	//item_state = "bandaid"
 	list_reagents = list("cryoxadone" = 16)
 
 /obj/item/weapon/reagent_containers/pill/stalker/aptechka_b
-	name = "army kit"
+	name = "army medkit"
 	icon_state = "aptechkab"
 	//item_state = "bandaid"
 	list_reagents = list("cryoxadoneb" = 8)
 
 /obj/item/weapon/reagent_containers/pill/stalker/aptechka_y
-	name = "science kit"
+	name = "science medkit"
 	icon_state = "aptechkay"
 	//item_state = "bandaid"
 	list_reagents = list("adminordrazine" = 3)
