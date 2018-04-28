@@ -232,7 +232,10 @@
 	var/area/B = get_area(user.loc)
 	for(var/A in safezones)
 		if(B.type == A)
-			user << "<span class='warning'>Вы не можете стрел&#255;ть в этой зоне!</span>"
+			if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+				user << "<span class='warning'>You can't shoot in the safezone!</span>"
+			else
+				user << "<span class='warning'>Вы не можете стрел&#255;ть в этой зоне!</span>"
 			return 0
 	if(!handle_pins(user))
 		return 0

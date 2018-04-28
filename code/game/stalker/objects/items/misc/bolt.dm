@@ -49,10 +49,21 @@
 /obj/item/weapon/stalker/bolts/attack_hand(mob/user)
 	if(user.lying)
 		return
+
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/obj/item/weapon/stalker/bolt/P
 	P = PoolOrNew(/obj/item/weapon/stalker/bolt)
 	P.loc = user.loc
 	user.put_in_hands(P)
-	user << "<span class='notice'>Вы достаете болт из кучи.</span>"
+	if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+		user << "<span class='notice'>You take a bolt out of the pile.</span>"
+	else
+		user << "<span class='notice'>Вы достаете болт из кучи.</span>"
+
 	add_fingerprint(user)
+
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		C.throw_mode_on()
+
+	return

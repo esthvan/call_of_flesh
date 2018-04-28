@@ -245,7 +245,7 @@
 	max_w_class = 3
 
 /obj/item/weapon/storage/belt/stalker/artifact_belt
-	var/thinkrate = 1000
+	var/thinkrate = 100
 	can_hold = list(
 													//Гравитационные артефакты
 		/obj/item/weapon/artifact/meduza,

@@ -36,14 +36,14 @@
 				if(type != "rad")
 					if(istype(C, /obj/item/clothing/suit))
 						var/obj/item/clothing/suit/S = C
-						S.durability -= 0.1
+						S.durability -= 0.2
 
 					if(istype(C, /obj/item/clothing/head) && !istype(C, /obj/item/clothing/head/winterhood))
 						var/obj/item/clothing/head/H = C
-						H.durability -= 0.1
+						H.durability -= 0.2
 					if(istype(C, /obj/item/clothing/mask))
 						var/obj/item/clothing/mask/M = C
-						M.durability -= 0.1
+						M.durability -= 0.2
 
 					if(C.durability <= 0)
 						visible_message("<span class='danger'>[C] развалился пр&#255;мо на [src]</span>", "<span class='warning'>[C] развалилс&#255; пр&#255;мо на вас!</span>")

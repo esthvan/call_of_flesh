@@ -191,10 +191,11 @@
 			if (isblowout == 1)
 				if (!istype(get_area(src.loc), /area/stalker/blowout))
 					if (H.inshelter == 0)
-						H << "<span class='notice'>Вы в укрытии.</span>"
+						if(H.client && (H.client.prefs.chat_toggles & CHAT_LANGUAGE))
+							H << "<span class='notice'>You are in the shelter now.</span>"
+						else
+							H << "<span class='notice'>Вы в укрытии.</span>"
 					H.inshelter = 1
-				else
-					H.inshelter = 0
 
 			if(istype(H.shoes, /obj/item/clothing/shoes))
 				if(M.m_intent == "run")
@@ -211,6 +212,19 @@
 						M.footstep++
 	..()
 
+/turf/stalker/Exited(atom/A, atom/NL)
+	..()
+	if(istype(A, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = A
+
+		if (isblowout == 1)
+			if (istype(get_area(src.loc), /area/stalker/blowout))
+				if (H.inshelter == 1)
+					if(H.client && (H.client.prefs.chat_toggles & CHAT_LANGUAGE))
+						H << "<span class='notice'>You left the shelter.</span>"
+					else
+						H << "<span class='notice'>Вы покинули укрытие.</span>"
+				H.inshelter = 0
 
 /turf/simulated/ChangeTurf(var/path)
 	. = ..()
