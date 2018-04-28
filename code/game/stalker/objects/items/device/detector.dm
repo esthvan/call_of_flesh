@@ -122,8 +122,12 @@
 
 	if(old_dist == min_dist)
 		timer_detector++
+	else
+		timer_detector = 0
 
+	///////////////////
 	sleep(2 * min_dist)
+	///////////////////
 
 	if(!on)
 		kostil = 0
@@ -139,7 +143,9 @@
 	playsound(user, "sound/stalker/detector/contact_1.ogg", 50, 1, randfreq = 0)
 	icon_state = icon_state_active
 
+	////////
 	sleep(1)
+	////////
 
 	if(!on)
 		kostil = 0
@@ -173,7 +179,7 @@
 
 /mob/living/carbon/proc/handle_artifact(var/obj/item/weapon/artifact/a)
 	//new /obj/effect/artifact/fakeart(a, src)
-	a.phantom = PoolOrNew(/obj/effect/fakeart, a)
+	a.phantom = PoolOrNew(/obj/effect/fakeart, a, src)
 	src << a.phantom.currentimage
 
 /obj/effect/fakeart
@@ -189,7 +195,7 @@
 	var/image/up = null
 	var/obj/item/weapon/artifact/my_target = null
 
-/obj/effect/fakeart/New(var/obj/item/weapon/artifact/a)
+/obj/effect/fakeart/New(var/obj/item/weapon/artifact/a, var/mob/living/carbon/T)
 	..()
 	name = a.name
 	desc = a.desc
@@ -197,6 +203,7 @@
 	my_target = a
 	up = image(a)
 	currentimage = new /image(up,src)
+	T << currentimage
 
 /obj/effect/fakeart/Destroy()
 	..()

@@ -956,13 +956,17 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 			if(sk && sk_H)
 				switch(sk_H.fields["reputation"])
 					if(AMAZING to INFINITY)
-						sk.fields["reputation"] -= 800
+						if(H.faction_s != "Бандиты")
+							sk.fields["reputation"] -= 800
 					if(VERYGOOD to AMAZING)
-						sk.fields["reputation"] -= 400
+						if(H.faction_s != "Бандиты")
+							sk.fields["reputation"] -= 400
 					if(GOOD to VERYGOOD)
-						sk.fields["reputation"] -= 200
+						if(H.faction_s != "Бандиты")
+							sk.fields["reputation"] -= 200
 					if(BAD to GOOD)
-						sk.fields["reputation"] -= 50
+						if(H.faction_s != "Бандиты")
+							sk.fields["reputation"] -= 50
 					if(VERYBAD to BAD)
 						sk.fields["reputation"] += 50
 					if(DISGUSTING to VERYBAD)
