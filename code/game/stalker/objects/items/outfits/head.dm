@@ -1,3 +1,15 @@
+/obj/item/clothing/head/steelhelmet
+	name = "Steel helmet"
+	desc = " аска из темной, местами ржавой стали, такой ваши деды въебывали по щам нацистам. Ќа ура держит прилетевшую по касательной пулю, но от хорошенького ножевого удара под козырек не спасет."
+	icon_state = "steelhelmet"
+	item_state = "steelhelmet"
+	flags = BLOCKHAIR
+	flags_inv = HIDEMASK|HIDEEARS
+	armor = list(melee = 25, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	unacidable = 1
+	durability = 200
+
 /obj/item/clothing/head/hardhat/tacticalhelmet
 	name = "Tactical helmet"
 	desc = "«ападный образец тактического шлема, лишЄнный какой-либо маркировки. ѕредназначен дл&#255; обеспечени&#255; командира подразделени&#255; максимальным количеством тактической информации при установке соответствующей электронной начинки. ќтличаетс&#255; усиленной конструкцией, также оснащЄн многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
@@ -7,7 +19,7 @@
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	action_button_name = "Toggle Light"
-	armor = list(melee = 50, bullet = 50, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 40)
+	armor = list(melee = 50, bullet = 50, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 20)
 	brightness_on = 2 //luminosity when on
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
@@ -33,7 +45,7 @@
 	icon_state = "sphera"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 50)
+	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 30)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
@@ -44,7 +56,7 @@
 	icon_state = "helmet_skat"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 70, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 10, electro = 70)
+	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
