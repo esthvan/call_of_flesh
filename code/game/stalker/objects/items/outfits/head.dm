@@ -5,10 +5,10 @@
 	item_state = "steelhelmet"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS
-	armor = list(melee = 25, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 20, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
-	durability = 200
+	durability = 40
 
 /obj/item/clothing/head/hardhat/tacticalhelmet
 	name = "Tactical helmet"
