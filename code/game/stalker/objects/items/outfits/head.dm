@@ -3,12 +3,10 @@
 	desc = " аска из темной, местами ржавой стали, такой ваши деды въебывали по щам нацистам. Ќа ура держит прилетевшую по касательной пулю, но от хорошенького ножевого удара под козырек не спасет."
 	icon_state = "steelhelmet"
 	item_state = "steelhelmet"
-	flags = BLOCKHAIR
-	flags_inv = HIDEMASK|HIDEEARS
 	armor = list(melee = 25, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
-	durability = 200
+	durability = 50
 
 /obj/item/clothing/head/hardhat/tacticalhelmet
 	name = "Tactical helmet"
