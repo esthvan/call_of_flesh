@@ -215,36 +215,53 @@ var/list/sidormatitems = list()
 	balance = 0
 	if(..())
 		return
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(istype(H.wear_id, /obj/item/device/stalker_pda))
-			var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-			var/obj/item/device/stalker_pda/KPK = H.wear_id
-			if(sk && KPK.activated)
-				if(KPK.sid == H.sid)
-					interact(user)
-				else
-					say("No access.")
-			else
-				say("Activate your profile in KPK.")
-		else
-			say("Put on your KPK.")
+
+	if(!istype(user,/mob/living/carbon/human))
+		say("You are not a human.")
+		return
+
+	var/mob/living/carbon/human/H = user
+
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		say("Put on your KPK")
+		return
+
+	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+	var/obj/item/device/stalker_pda/KPK = H.wear_id
+
+
+	if(!sk || !KPK.activated)
+		say("Activate your KPK profile.")
+		return
+
+	if(KPK.sid != H.sid)
+		say("No access.")
+		return
+
+	interact(user)
+
 
 /obj/machinery/stalker/sidormat/interact(mob/user)
+
 	var/mob/living/carbon/human/H = user
-	if(istype(H.wear_id, /obj/item/device/stalker_pda))
-		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-		var/obj/item/device/stalker_pda/KPK = H.wear_id
-		if(sk && KPK.activated)
-			if(KPK.sid == H.sid)
-				balance = sk.fields["money"]
-				rating = sk.fields["rating"]
-			else
-				say("No access.")
-		else
-			say("Activate your profile in KPK.")
-	else
+
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
 		say("Put on your KPK.")
+		return
+
+	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+	var/obj/item/device/stalker_pda/KPK = H.wear_id
+
+	if(!sk || !KPK.activated)
+		say("Activate your KPK profle.")
+		return
+
+	if(KPK.sid != H.sid)
+		say("No access.")
+		return
+
+	balance = sk.fields["money"]
+	rating = sk.fields["rating"]
 
 	var/dat
 	dat +="<div class='statusDisplay'>"
@@ -325,123 +342,113 @@ var/list/sidormatitems = list()
 		return
 
 	var/mob/living/carbon/human/H = usr
-	if(istype(H.wear_id, /obj/item/device/stalker_pda))
-		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-		var/obj/item/device/stalker_pda/KPK = H.wear_id
-		if(sk && KPK.activated)
-			if(KPK.sid == H.sid)
-				if(href_list["choice"])
-					if(href_list["choice"] == "take")
-						SellItems()
 
-				if(href_list["purchase"])
-					var/datum/data/stalker_equipment/prize = locate(href_list["purchase"])
-					if (!prize)
-						return
-					if(prize.cost > sk.fields["money"])
-						say("You have not enough money.")
-					else
-						sk.fields["money"] -= prize.cost
-						balance = sk.fields["money"]
-						//PoolOrNew(prize.equipment_path, itemloc2)
-						new prize.equipment_path(itemloc2)
-			else
-				say("No access.")
-		else
-			say("Activate your profile in KPK.")
-	else
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
 		say("Put on your KPK.")
+		updateUsrDialog()
+		return
+
+	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+	var/obj/item/device/stalker_pda/KPK = H.wear_id
+
+
+	if(!sk || !KPK.activated)
+		say("Activate your KPK profile.")
+		updateUsrDialog()
+		return
+
+	if(KPK.sid != H.sid)
+		say("No access.")
+		updateUsrDialog()
+		return
+
+	if(href_list["choice"])
+		if(href_list["choice"] == "take")
+			SellItems()
+
+	if(href_list["purchase"])
+		var/datum/data/stalker_equipment/prize = locate(href_list["purchase"])
+
+		if (!prize)
+			updateUsrDialog()
+			return
+
+		if(prize.cost > sk.fields["money"])
+			say("You have not enough money.")
+			updateUsrDialog()
+			return
+
+		sk.fields["money"] -= prize.cost
+		balance = sk.fields["money"]
+		//PoolOrNew(prize.equipment_path, itemloc2)
+		new prize.equipment_path(itemloc2)
+
+
+	//updateUsrDialog()
+	return
+
+
+/obj/machinery/stalker/sidormat/proc/SellItems()
+	var/list/ontable = GetItemsOnTable()
+	var/total_cost = GetOnTableCost(ontable)
+
+	var/mob/living/carbon/human/H = usr
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		say("Put on your KPK.")
+		return
+
+	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+	var/obj/item/device/stalker_pda/KPK = H.wear_id
+
+	if(!sk)
+		say("Activate your profile in KPK.")
+		return
+
+	if(KPK.sid != H.sid)
+		say("No access.")
+		return
+
+	if(total_cost < 100)
+		say("Habar was not sold.")
+
+	for(var/atom/movable/I in ontable)
+		if(I.loc != itemloc)
+			continue
+
+		if(!GetCost(I.type))
+			continue
+
+		sk.fields["money"] += GetCost(I.type)
+		balance = sk.fields["money"]
+
+		say("[I] was sold for [GetCost(I.type)].")
+
+		PlaceInPool(I)
+		CHECK_TICK
+
+	say("HABAR WAS SUCCESSFULLY SOLD FOR [total_cost].")
 
 	updateUsrDialog()
 	return
 
-	/*
-	if(href_list["choice"])
-		if(href_list["choice"] == "take")
-			SellItems()
-		if(balance)
-			if(href_list["choice"] == "eject")
-				GiveMoney(balance)
-				balance = 0
-		else if(href_list["choice"] == "insert")
-			var/obj/item/stack/spacecash/I = usr.get_active_hand()
-			if(istype(I))
-				if(!usr.drop_item())
-					return
-				balance += (I.worth * I.amount)
-				qdel(I)
-			else usr << "<span class='danger'>Нет купюры.</span>"
-	if(href_list["purchase"])
-		if(balance)
-			var/datum/data/stalker_equipment/prize = locate(href_list["purchase"])
-			if (!prize)
-				return
-			if(prize.cost > balance)
-				say("На вашем счету недостаточно денег")
-			else
-				balance -= prize.cost
-				new prize.equipment_path(itemloc2)
-	*/
-
-/*
-/obj/machinery/stalker/sidormat/attackby(obj/item/I, mob/user, params)
-	if(istype(I,/obj/item/stack/spacecash))
-		var/obj/item/stack/spacecash/C = usr.get_active_hand()
-		if(istype(C))
-			if(!usr.drop_item())
-				return
-//			C.loc = src
-			balance += (C.worth * C.amount)
-			qdel(C)
-			interact(user)
-		return
-	..()
-*/
-/obj/machinery/stalker/sidormat/proc/SellItems()
-	var/list/ontable = GetItemsOnTable()
-	var/total_cost = GetOnTableCost()
-//	for(var/I in ontable)
-//		qdel(I)
-	var/mob/living/carbon/human/H = usr
-	if(istype(H.wear_id, /obj/item/device/stalker_pda))
-		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-		var/obj/item/device/stalker_pda/KPK = H.wear_id
-		if(sk)
-			if(KPK.sid == H.sid)
-				if(total_cost > 100)
-					sk.fields["money"] += total_cost
-					balance = sk.fields["money"]
-					for(var/I in ontable)
-						PlaceInPool(I)
-					say("Habar was sold successfully.")
-				else
-					say("Habar was not sold.")
-			else
-				say("No access.")
-		else
-			say("Activate your profile in KPK.")
-	else
-		say("Put on your KPK.")
-
 /obj/machinery/stalker/sidormat/proc/GetItemsOnTable()
 	var/list/ontable = list()
 	for(var/atom/movable/AM in itemloc)
-		if(GetCost(AM.type) || istype(AM, /obj/item/stack/spacecash))
+		if(!GetCost(AM.type) && !istype(AM, /obj/item/stack/spacecash))
+			continue
 
-			if(istype(AM, /obj/item/clothing))
-				var/obj/item/clothing/C = AM
-				if((C.durability / initial(C.durability)) * 100 < 75)
-					//say("Костюм слишком изношен дл&#255; продажи.")
-					continue
+		if(istype(AM, /obj/item/clothing))
+			var/obj/item/clothing/C = AM
+			if((C.durability / initial(C.durability)) * 100 < 75)
+				say("[AM] is too broken for sale.")
+				continue
 
-			ontable.Add(AM)
-//	for(var/atom/movable/AM in itemloc2)
-//		if(GetCost(AM.type) || istype(AM, /obj/item/stack/spacecash))
-//			ontable.Add(AM)
+		ontable.Add(AM)
+
 	return ontable
 
-/obj/machinery/stalker/sidormat/proc/GetOnTableCost()
-	var/list/ontable = GetItemsOnTable()
+/obj/machinery/stalker/sidormat/proc/GetOnTableCost(var/list/ontable)
+	//var/list/ontable = GetItemsOnTable()
 	var/total_cost = 0
 
 	for(var/atom/item_on_table in ontable)
@@ -457,95 +464,18 @@ var/list/sidormatitems = list()
 				total_cost += 1000 * C.amount
 			if(/obj/item/stack/spacecash/c5000)
 				total_cost += 5000 * C.amount
-		var/cost = GetCost(item_on_table.type, 0)
+		var/cost = GetCost(item_on_table.type)
 		if(cost)
 			total_cost += cost
 		else
 			ontable.Remove(item_on_table)
 	return total_cost
 
-/*
-/obj/machinery/stalker/sidormat/proc/GiveMoney(amount)
-	var/balance = amount
-	var/oldbalance = 0
-	while(balance >= 50)
-		oldbalance = balance
-
-		var/to_give = RemoveFloat(balance / 5000)
-		GiveBills(to_give, 5000)
-		var/count = to_give * 5000
-		balance -= count
-
-		to_give = RemoveFloat(balance / 1000)
-		GiveBills(to_give, 1000)
-		count = to_give * 1000
-		balance -= count
-
-		to_give = RemoveFloat(balance / 500)
-		GiveBills(to_give, 500)
-		count = to_give * 500
-		balance -= count
-
-		to_give = RemoveFloat(balance / 100)
-		GiveBills(to_give, 100)
-		count = to_give * 100
-		balance -= count
-
-		to_give = RemoveFloat(balance / 50)
-		GiveBills(to_give, 50)
-		count = to_give * 50
-		balance -= count
-
-
-		if(balance == oldbalance)
-			break
-*/
-/*
-/obj/machinery/stalker/sidormat/proc/GiveBills(amount, billtype)
-	if(!amount)
-		return
-
-	var/obj/item/stack/spacecash/bill = null
-	if(billtype == 5000)
-		bill = new /obj/item/stack/spacecash/c5000(itemloc2)
-	if(billtype == 1000)
-		bill = new /obj/item/stack/spacecash/c1000(itemloc2)
-	if(billtype == 500)
-		bill = new /obj/item/stack/spacecash/c500(itemloc2)
-	if(billtype == 100)
-		bill = new /obj/item/stack/spacecash/c100(itemloc2)
-	if(billtype == 50)
-		bill = new /obj/item/stack/spacecash/c50(itemloc2)
-	bill.amount = amount
-*/
-/*
-/obj/machinery/stalker/sidormat/proc/GetCost(itemtype, half = 0)
-	for(var/sidoritem/I in sidoritems)
-		if(I.itemtype == itemtype)
-			if(half)
-				return I.cost / 2
-			return I.cost
-	return 0
-*/
 /obj/machinery/stalker/sidormat/proc/GetCost(itemtype)
 	for(var/datum/data/stalker_equipment/se in sidormatitems)
 		if(itemtype == se.equipment_path)
 			return se.sale_price
 	return 0
-/*/proc/RemoveFloat(number)
-	var/result = round(number)
-	if(result > number)
-		result--
-	return result*/
-
-/*/obj/machinery/stalker/sidormat/proc/RedeemVoucher(obj/item/weapon/mining_voucher/voucher, mob/redeemer)
-	var/selection = input(redeemer, "Pick your equipment", "Mining Voucher Redemption") as null|anything in list("Kinetic Accelerator", "Resonator", "Mining Drone", "Advanced Scanner")
-	if(!selection || !Adjacent(redeemer) || voucher.gc_destroyed || voucher.loc != redeemer)
-		return
-	switch(selection)
-		if("PM")
-			new /obj/item/weapon/gun/projectile/automatic/pistol/pm(src.loc)
-	qdel(voucher)*/
 
 /obj/machinery/stalker/sidormat/ex_act(severity, target)
 	return

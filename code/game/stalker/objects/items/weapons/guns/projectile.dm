@@ -414,7 +414,6 @@
 	name = "VSS Vintorez"
 	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает бронежилет любой степени защиты. Очень ценимое сталкерами любого уровн&#255; оружие."
 	icon_state = "vintorez"
-	item_state = "vintorez"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39vint
 	suppressed = 1
@@ -441,7 +440,6 @@
 	name = "Groza OTs-14"
 	desc = "Автоматно-гранатомётный комплекс - очень удачный в услови&#255;х Зоны вариант штурмовой винтовки: компактный, надёжный, и в то же врем&#255; универсальный и мощный. 'Грозу' очень люб&#255;т военные сталкеры."
 	icon_state = "groza"
-	item_state = "groza"
 	fire_sound = 'sound/stalker/weapons/groza_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39groza
 	can_suppress = 0
