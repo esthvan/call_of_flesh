@@ -16,8 +16,8 @@
 	var/mob/living/carbon/human/user = null
 	var/cooldown = 0
 	var/kostil = 0
-	var/list/fakearts = list()
 	var/timer_detector = 0
+	var/list/fakearts = list()
 
 /obj/item/device/detector/blink
 	name = "echo"
@@ -25,8 +25,8 @@
 	icon_state_inactive = "echo_off"
 	icon_state_active = "echo_on"
 	icon_state_null = "echo_null"
-	//level_s = 1
-	level_s = 2
+	level_s = 1
+	//level_s = 2
 
 /obj/item/device/detector/bear
 	name = "bear"
@@ -36,7 +36,7 @@
 	icon_state_active = "bear_on"
 	icon_state_null = "bear_null"
 	//level_s = 2
-	level_s = 4 //Пока нет велеса, медведь будет обнаруживать все артефакты
+	level_s = 3 //Пока нет велеса, медведь будет обнаруживать все артефакты
 
 /obj/item/device/detector/veles
 	name = "veles"
@@ -57,8 +57,8 @@
 		if(world.time > cooldown + 5)
 			playsound(user, "sound/stalker/detector/detector_draw.ogg", 50, 1, randfreq = 0)
 			on = 1
-			timer_detector = 0
 			icon_state = icon_state_null
+			timer_detector = 0
 			if(!kostil)
 				Scan()
 	else
@@ -69,6 +69,12 @@
 
 /obj/item/device/detector/proc/Scan()
 	kostil = 1
+
+	if(timer_detector >= 75)
+		kostil = 0
+		on = 0
+		stop()
+		return
 
 	if(!on)
 		kostil = 0
@@ -103,21 +109,20 @@
 	if(min_dist == 0)
 		min_dist = 1
 
-	if(old_dist == min_dist)
-		timer_detector++
-	else
-		timer_detector = 0
-
 	for (var/obj/item/weapon/artifact/a in arts)
 		if(a in range(1, user))
 			if(isnull(a.phantom) && a.invisibility != 0)
 				user.handle_artifact(a)
-				//fakearts += a.phantom
 		else
 			if(!isnull(a.phantom))
 				arts -= a
 				qdel(a.phantom)
 				a.phantom = null
+
+	if(old_dist == min_dist)
+		timer_detector++
+	else
+		timer_detector = 0
 
 	sleep(2 * min_dist)
 
@@ -154,6 +159,7 @@
 	stop()
 
 /obj/item/device/detector/proc/stop()
+	timer_detector = 0
 	target = null
 	icon_state = icon_state_inactive
 	src.user = null
@@ -167,22 +173,8 @@
 		arts -= a
 
 /mob/living/carbon/proc/handle_artifact(var/obj/item/weapon/artifact/a)
-	new /obj/effect/artifact/fakeart(a, src)
-
-/obj/effect/artifact
-	invisibility = INVISIBILITY_OBSERVER
-	var/mob/living/carbon/target = null
-
-/obj/effect/artifact/fakeart
-	var/obj/effect/fakeart/f = null
-
-/obj/effect/artifact/fakeart/New(var/obj/item/weapon/artifact/a, var/mob/living/carbon/T)
-	target = T
-	f = new(a)
-	a.phantom = f
-
-	T << f.currentimage
-	qdel(src)
+	a.phantom = new /obj/effect/fakeart(a, src)
+	src << a.phantom.currentimage
 
 /obj/effect/fakeart
 	icon = null
@@ -205,59 +197,47 @@
 	up = image(a)
 	currentimage = new /image(up,src)
 
+/obj/effect/fakeart/Destroy()
+	..()
+	return QDEL_HINT_PUTINPOOL
+
 /obj/effect/fakeart/attack_hand(mob/user)
 	if(user.stat || user.restrained() || !Adjacent(user) || user.stunned || user.weakened || user.lying)
 		return
 
-	if(user.get_active_hand() == null) // Let me know if this has any problems -Yota
-		user.UnarmedAttack(my_target)
-		my_target.invisibility = 0
+	if(user.get_active_hand() != null) // Let me know if this has any problems -Yota
+		return
+
+	user.UnarmedAttack(my_target)
+	my_target.invisibility = 0
+
+	if(!istype(user, /mob/living/carbon/human))
 		qdel(src)
 		spawned_artifacts.Remove(my_target)
+		return
 
-	if(istype(user, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(H.wear_id)
-			if(istype(H.wear_id, /obj/item/device/stalker_pda))
-				var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-				//var/obj/item/device/stalker_pda/KPK = H.wear_id
-				if(sk)
-					sk.fields["rating"] += (2 ** my_target.level_s) * 50
+	var/mob/living/carbon/human/H = user
 
-/obj/effect/artifact/simple
-	name = "artifact"
-	icon = null
-	icon_state = null
-	opacity = 0
-	var/image_icon = 'icons/stalker/artifacts.dmi'
-	var/image_state = "meduza"
-	var/px = 0
-	var/py = 0
-	var/image/current_image = null
-	var/image_layer = MOB_LAYER
-	var/active = 1
-	var/mob/living/carbon/human/my_target = null
+	if(!H.wear_id)
+		qdel(src)
+		spawned_artifacts.Remove(my_target)
+		return
 
-/obj/effect/artifact/simple/New(var/obj/item/weapon/artifact/a, var/mob/living/carbon/T)
-	target = T
-	icon = a.icon
-	icon_state = a.icon_state
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		qdel(src)
+		spawned_artifacts.Remove(my_target)
+		return
+
+	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+	//var/obj/item/device/stalker_pda/KPK = H.wear_id
+
+	if(!sk)
+		qdel(src)
+		spawned_artifacts.Remove(my_target)
+		return
+
+	sk.fields["rating"] += (2 ** my_target.level_s) * 50
+
+	qdel(src)
+	spawned_artifacts.Remove(my_target)
 	return
-
-/obj/effect/artifact/simple/proc/GetImage(var/obj/item/weapon/artifact/a)
-	var/image/I = image(a.icon, a.loc, a.icon_state, a.layer, dir=src.dir)
-	I.pixel_x = px
-	I.pixel_y = py
-	return I
-
-/obj/effect/artifact/simple/proc/Show(var/obj/item/weapon/artifact/a, update=1)
-	if(active)
-		if(target.client) target.client.images.Remove(current_image)
-		if(update)
-			current_image = GetImage(a)
-		if(target.client) target.client.images |= current_image
-
-/obj/effect/artifact/simple/Destroy()
-	if(target.client) target.client.images.Remove(current_image)
-	active = 0
-	return ..()
