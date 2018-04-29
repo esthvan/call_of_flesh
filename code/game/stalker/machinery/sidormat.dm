@@ -22,6 +22,7 @@
 		new /datum/data/stalker_equipment("Colt M1911",		"Кольт",			/obj/item/weapon/gun/projectile/automatic/pistol/cora,				9000, EXPERT),
 		new /datum/data/stalker_equipment("Beretta 92FS",	"Беретта",			/obj/item/weapon/gun/projectile/automatic/pistol/marta,				9000, EXPERT),
 		new /datum/data/stalker_equipment("USP-match",		"ЮСП-матч",			/obj/item/weapon/gun/projectile/automatic/pistol/usp_match, 		16000, EXPERT),
+		new /datum/data/stalker_equipment("Desert Eagle",	"Desert Eagle",		/obj/item/weapon/gun/projectile/automatic/pistol/desert, 	    	40000, EXPERT),
 
 		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
 		new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, NEWBIE),
@@ -29,9 +30,10 @@
 		new /datum/data/stalker_equipment("AK 74/2", 		"АК 74/2",			/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
 		new /datum/data/stalker_equipment("AS 96/2", 		"АС 96/2",			/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT),
 		new /datum/data/stalker_equipment("LR-300",			"ЛР-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
-		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, VETERAN),
-		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						47500, VETERAN),
-		new /datum/data/stalker_equipment("Tunder OTs-14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					35000, VETERAN),
+		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, EXPERT),
+		new /datum/data/stalker_equipment("Tunder OTs-14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					35000, EXPERT),
+		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						50000, VETERAN),
+		new /datum/data/stalker_equipment("SIG SG 550",		"SIG SG 550",		/obj/item/weapon/gun/projectile/automatic/sigsg550,					50000, VETERAN),
 		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					60000, MASTER),
 		new /datum/data/stalker_equipment("FN F2000", 		"ФН Ф2000",			/obj/item/weapon/gun/projectile/automatic/fnf2000,					70000, MASTER),
 
@@ -53,6 +55,7 @@
 		new /datum/data/stalker_equipment("9x19 AP Box", 			"Коробка 9x19 Бронебойные",					/obj/item/ammo_box/stalker/b9x19P,						6000, EXPERT),
 		new /datum/data/stalker_equipment(".45 ACP Box", 			"Коробка .45 ACP",							/obj/item/ammo_box/stalker/bacp45,						5000, NEWBIE),
 		new /datum/data/stalker_equipment(".45 ACP Hydroshock Box", "Коробка .45 ACP Hydroshock",				/obj/item/ammo_box/stalker/bacp45ap,					7500, EXPERT),
+		new /datum/data/stalker_equipment(".44 Magnum Box",			"Коробка .44 Магнум",						/obj/item/ammo_box/stalker/bmag44,						10000, EXPERT),
 		new /datum/data/stalker_equipment("12x70 Buckshot Box",		"Коробка дроби 12x70",						/obj/item/ammo_box/stalker/b12x70,						3000, NEWBIE),
 		new /datum/data/stalker_equipment("12x70 Slug Box", 		"Коробка дроби 12x70 Бронебойные",			/obj/item/ammo_box/stalker/b12x70P,						4000, EXPERT),
 		new /datum/data/stalker_equipment("12x70 Dart Box", 		"Коробка 12x70 Дротик",						/obj/item/ammo_box/stalker/b12x70D,						5000, EXPERT),
@@ -72,6 +75,7 @@
 		new /datum/data/stalker_equipment("Colt M1911; SIG-Sauer P220 Magazine", "Магазин к Кольту; П-220",		/obj/item/ammo_box/magazine/stalker/sc45,				1400, NEWBIE),
 		new /datum/data/stalker_equipment("Beretta Magazine", 		"Магазин к Беретте",						/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, NEWBIE),
 		new /datum/data/stalker_equipment("USP-match Magazine", 	"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, NEWBIE),
+		new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",	   		    	/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERT),
 		)
 
 	var/list/armor_list = list(

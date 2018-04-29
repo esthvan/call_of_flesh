@@ -22,6 +22,14 @@
 	max_ammo = 7
 	multiple_sprites = 2
 
+/obj/item/ammo_box/magazine/stalker/desert
+	name = "pistol magazine (.44)"
+	icon_state = "deagle"
+	ammo_type = /obj/item/ammo_casing/mag44
+	caliber = ".44"
+	max_ammo = 8
+	multiple_sprites = 2
+
 /obj/item/ammo_box/magazine/stalker/m545
 	name = "magazine (5.45x39mm)"
 	icon_state = "m545"

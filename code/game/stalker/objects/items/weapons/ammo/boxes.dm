@@ -116,3 +116,11 @@
 	icon_state = "45_ACP_hydroshock"
 	max_ammo = 30
 	multiple_sprites = 2
+
+/obj/item/ammo_box/stalker/bmag44
+	name = "ammo box (.44 Magnum)"
+	desc = "Пистолетный патрон калибра .44 Магнум. Возможно, даже слишком мощный."
+	ammo_type = /obj/item/ammo_casing/mag44
+	icon_state = "44_Mag"
+	max_ammo = 50
+	multiple_sprites = 2
