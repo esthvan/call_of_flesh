@@ -148,6 +148,23 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
+/obj/item/weapon/gun/projectile/automatic/pistol/desert  // Desert Eagle
+	name = "Desert Eagle .44"
+	desc = "Большой, т&#255;желый, блест&#255;щий и чертовски внушительный - разработанный в 80-е года прошлого века израильским предпри&#255;тием и попул&#255;ризированный многочисленными боевиками конца того же столети&#255;, Пустынный Орел стал своеобразной иконой мощных полуавтоматических пистолетов. Позволить себе такую красоту могут немногие, попасть из нее в кого-то в бою - еще меньшее число людей."
+	icon_state = "desert"
+	w_class = 3
+	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/sc45
+	force = 10
+	can_suppress = 0
+	can_unsuppress = 0
+	spread = 8
+	recoil = 1.5
+	durability = 50
+	damagelose = 0.3
+	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
 ///////////////////////////// Автоматы, ПП //////////////////////////////////////////
 
@@ -361,6 +378,27 @@
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
 
+/obj/item/weapon/gun/projectile/automatic/sigsg550
+	name = "SIG SG 550"
+	desc = "Представитель относительно нового семейства штурмовых винтовок. Благодар&#255; высокой надёжности, точности в бою и удобству в обращении, &#255;вл&#255;етс&#255; одним из лучших образцов вооружени&#255; этого класса. В Зоне встречаетс&#255; нечасто и стоит немалых денег; обычно её специально заказывают дл&#255; себ&#255; бывалые сталкеры."
+	eng_desc = "A relatively new assault rifle that has quickly found admirers around the world, despite lacking a \"trendy\" design. Weapons of this series are one of the best in their class, renowned for their reliability, accuracy and ease of use. Despite being relatively difficult to obtain in the Zone, this assault rifle is often ordered by experienced stalkers at considerable expense."
+	icon_state = "sigsg550"
+	item_state = "sigsg550"
+	fire_sound = 'sound/stalker/weapons/sigsg550_shoot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
+	can_suppress = 1
+	durability = 125
+	burst_size = 2
+	fire_delay = 1
+	w_class = 4
+	spread = 3
+	recoil = 0.3
+	damagelose = 0.2
+	can_scope = 1
+	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
+
 /obj/item/weapon/gun/projectile/automatic/fnf2000  // fnf2000
 	name = "FN-F2000"
 	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне."
@@ -390,6 +428,7 @@
 	name = "AS Val"
 	desc = "Создан на базе бесшумной снайперской винтовки 'Винторез', от которой отличаетс&#255; складным прикладом и укороченным стволом. Изначально предназначалс&#255; дл&#255; применени&#255; спецподразделени&#255;ми в услови&#255;х атаки, требующей бесшумной и беспламенной стрельбы."
 	icon_state = "val"
+	item_state = "val"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39val
 	suppressed = 1
@@ -414,6 +453,7 @@
 	name = "VSS Vintorez"
 	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает бронежилет любой степени защиты. Очень ценимое сталкерами любого уровн&#255; оружие."
 	icon_state = "vintorez"
+	item_state = "vintorez"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39vint
 	suppressed = 1
@@ -440,6 +480,7 @@
 	name = "Groza OTs-14"
 	desc = "Автоматно-гранатомётный комплекс - очень удачный в услови&#255;х Зоны вариант штурмовой винтовки: компактный, надёжный, и в то же врем&#255; универсальный и мощный. 'Грозу' очень люб&#255;т военные сталкеры."
 	icon_state = "groza"
+	item_state = "groza"
 	fire_sound = 'sound/stalker/weapons/groza_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39groza
 	can_suppress = 0
@@ -457,8 +498,6 @@
 	drawsound = 'sound/stalker/weapons/draw/groza_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
-
-
 
 
 /obj/item/weapon/gun/projectile/automatic/testgun
