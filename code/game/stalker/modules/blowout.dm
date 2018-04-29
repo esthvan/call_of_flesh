@@ -97,11 +97,11 @@ area/proc/StopBlowout(blowoutphase)
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
 				H.apply_damage(150, BURN)
-/*
+
 			for(var/mob/living/L in src.contents)
 				if(L.stat == DEAD)
 					L.gib()
-*/
+
 			CHECK_TICK
 
 		if(BLOWOUTNORMAL)
@@ -112,11 +112,11 @@ area/proc/StopBlowout(blowoutphase)
 			for(var/mob/living/carbon/human/H in src.contents)
 				H.radiation += 100
 				H.apply_damage(300, BURN)
-/*
+
 			for(var/mob/living/L in src.contents)
 				if(L.stat == DEAD)
 					L.gib()
-*/
+
 			CHECK_TICK
 
 		if(BLOWOUTHIGH)
@@ -130,11 +130,11 @@ area/proc/StopBlowout(blowoutphase)
 				H.radiation += 100
 				H.apply_damage(300, BURN)
 				return
-/*
+
 			for(var/mob/living/L in src.contents)
 				if(L.stat == DEAD)
 					L.gib()
-*/
+
 			CHECK_TICK
 
 area/proc/ProcessBlowout()
