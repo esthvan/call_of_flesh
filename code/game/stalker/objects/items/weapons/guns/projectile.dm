@@ -154,12 +154,12 @@
 	icon_state = "desert"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
-	mag_type = /obj/item/ammo_box/magazine/stalker/sc45
+	mag_type = /obj/item/ammo_box/magazine/stalker/desert
 	force = 10
 	can_suppress = 0
 	can_unsuppress = 0
 	spread = 8
-	recoil = 1
+	recoil = 0.7
 	durability = 50
 	damagelose = 0.3
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
@@ -271,8 +271,8 @@
 	pin = /obj/item/device/firing_pin
 	durability = 100
 	w_class = 4
-	spread = 9
-	recoil = 0.9
+	spread = 10
+	recoil = 0.7
 	damagelose = 0.5
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
@@ -451,7 +451,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/vintorez  // ВСС Винторез
 	name = "VSS Vintorez"
-	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает бронежилет любой степени защиты. Очень ценимое сталкерами любого уровн&#255; оружие."
+	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает большинство бронежилетов. Очень ценимое сталкерами любого уровн&#255; оружие."
 	icon_state = "vintorez"
 	item_state = "vintorez"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
