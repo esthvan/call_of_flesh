@@ -88,3 +88,8 @@
 	armour_penetration = 35
 	range = 80
 	spread = 2
+
+/obj/item/projectile/bullet/bulletmag44
+	damage = 40
+	range = 40
+	spread = 3

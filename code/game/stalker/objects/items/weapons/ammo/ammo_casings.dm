@@ -72,3 +72,8 @@
 /obj/item/ammo_casing/c556x45/AP
 	desc = "A 5.55x45mm AP bullet."
 	projectile_type = /obj/item/projectile/bullet/bullet556x45AP
+
+/obj/item/ammo_casing/mag44
+	desc = "A .44 Magnum bullet casing"
+	caliber = ".44"
+	projectile_type = /obj/item/projectile/bullet/bulletmag45
