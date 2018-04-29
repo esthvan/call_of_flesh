@@ -192,9 +192,9 @@
 				if (!istype(get_area(src.loc), /area/stalker/blowout))
 					if (H.inshelter == 0)
 						if(H.client && (H.client.prefs.chat_toggles & CHAT_LANGUAGE))
-							H << "<span class='notice'>You are in the shelter now.</span>"
+							H << "<span class='notice'>You enter the shelter.</span>"
 						else
-							H << "<span class='notice'>Вы в укрытии.</span>"
+							H << "<span class='notice'>Вы заходите в укрытие.</span>"
 					H.inshelter = 1
 
 			if(istype(H.shoes, /obj/item/clothing/shoes))
@@ -221,9 +221,9 @@
 			if (istype(get_area(src.loc), /area/stalker/blowout))
 				if (H.inshelter == 1)
 					if(H.client && (H.client.prefs.chat_toggles & CHAT_LANGUAGE))
-						H << "<span class='notice'>You left the shelter.</span>"
+						H << "<span class='notice'>You leave the shelter.</span>"
 					else
-						H << "<span class='notice'>Вы покинули укрытие.</span>"
+						H << "<span class='notice'>Вы покидаете укрытие.</span>"
 				H.inshelter = 0
 
 /turf/simulated/ChangeTurf(var/path)
