@@ -162,13 +162,10 @@
 	user << "\icon[src] That's [f_name]"
 
 	if(desc)
-		if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
-			user << desc
+		if(eng_desc && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+			user << eng_desc
 		else
-			if(eng_desc)
-				user << eng_desc
-			else
-				user << desc
+			user << desc
 	// *****RM
 	//user << "[name]: Dn:[density] dir:[dir] cont:[contents] icon:[icon] is:[icon_state] loc:[loc]"
 
