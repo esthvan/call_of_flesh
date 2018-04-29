@@ -235,6 +235,23 @@
 	..()
 	art_armor = list()
 
+/obj/item/weapon/artifact/mica
+	name = "mica"
+	desc = "Аномали&#255; «Холодец» способна породить такой артефакт при редчайшем, экстремальном наборе физических условий. В результате получаетс&#255; полупрозрачный твёрдый объект. Артефакт дорогой и редкостный. Ношение артефакта на по&#255;се значительно уменьшает поражение от аномалий «Ржавые волосы» и «Жгучий пух» и отпугивает хищников, однако при длительном ношении приводит к тому что люба&#255; царапина становитс&#255; смертельно опасной из-за ускоренных кровотечений. Цена высока&#255;. Интерес к артефакту про&#255;вл&#255;ют научные организации."
+	eng_desc = "Anomaly \"Fruit Punch\" is able to create such an artifact at the rarest, most extreme collection of physical conditions. The result is a semi-transparent, hard object. A rare and expensive artifact."
+	icon_state = "mica"
+	level_s = 4
+
+/obj/item/weapon/artifact/mica/Think(user)
+	if(!..()) return 0
+	if(istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		if(!H.bleedsuppress) //so you can't stack bleed suppression
+			H.suppress_bloodloss(1)
+
+	return 1
+
+
 	//Пояс
 /obj/item/weapon/storage/belt/stalker
 	name = "artifact belt"

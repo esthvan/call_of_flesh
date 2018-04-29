@@ -866,8 +866,6 @@
 #include "code\game\stalker\objects\structure\flora.dm"
 #include "code\game\stalker\objects\structure\structuries.dm"
 #include "code\game\stalker\objects\structure\closet\crates.dm"
-#include "code\game\stalker\sidor\items.dm"
-#include "code\game\stalker\sidor\sidor.dm"
 #include "code\game\stalker\testunit_dev\keypad.dm"
 #include "code\game\stalker\testunit_dev\stalker_pda.dm"
 #include "code\game\stalker\turfs\stalkerturfs.dm"

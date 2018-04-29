@@ -196,11 +196,11 @@
 	my_target = a
 	up = image(a)
 	currentimage = new /image(up,src)
-
+/*
 /obj/effect/fakeart/Destroy()
 	..()
 	return QDEL_HINT_PUTINPOOL
-
+*/
 /obj/effect/fakeart/attack_hand(mob/user)
 	if(user.stat || user.restrained() || !Adjacent(user) || user.stunned || user.weakened || user.lying)
 		return
