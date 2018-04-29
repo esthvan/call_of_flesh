@@ -61,20 +61,12 @@
 	art_armor = list(bullet = 10)
 	level_s = 1
 
-/obj/item/weapon/artifact/meduza/New()
-	..()
-	art_armor = list(bullet = 10)
-
 /obj/item/weapon/artifact/stoneflower
 	name = "stone flower"
 	desc = "Рождаетс&#255; в аномалии «трамплин». Такой артефакт можно найти в немногих участках Зоны. Вкраплени&#255; металлических соединений дают красивую игру света."
 	icon_state = "stoneflower"
 	art_armor = list(bullet = 20)
 	level_s = 2
-
-/obj/item/weapon/artifact/stoneflower/New()
-	..()
-	art_armor = list(bullet = 20)
 
 /obj/item/weapon/artifact/nightstar
 	name = "night star"
@@ -84,10 +76,6 @@
 	radiation = 3
 	level_s = 3
 
-/obj/item/weapon/artifact/nightstar/New()
-	..()
-	art_armor = list(bullet = 30)
-
 /obj/item/weapon/artifact/maminibusi
 	name = "mamini busi"
 	desc = "Аномальное образование, по форме напоминающее бусы, довольно редкое и дорогое. Даёт защиту от пуль. Не облучает носител&#255;."
@@ -95,10 +83,6 @@
 	art_armor = list(bullet = 30)
 	radiation = 0
 	level_s = 4
-
-/obj/item/weapon/artifact/maminibusi/New()
-	..()
-	art_armor = list(bullet = 30)
 
 	/////////////////////////////////////////Электро артефакты/////////////////////////////////////////
 
@@ -110,20 +94,12 @@
 	radiation = 2
 	level_s = 1
 
-/obj/item/weapon/artifact/flash/New()
-	..()
-	art_armor = list(electro = 10)
-
 /obj/item/weapon/artifact/moonlight
 	name = "moonlight"
 	desc = "Вырожденный случай активности аномалии Электра. Видимо, такую замечательную округлую форму можно получить, если подвергнуть аномалию термовоздействию. Дорогой артефакт."
 	icon_state = "moonlight"
 	art_armor = list(electro = 20)
 	level_s = 2
-
-/obj/item/weapon/artifact/moonlight/New()
-	..()
-	art_armor = list(electro = 20)
 
 /obj/item/weapon/artifact/pustishka
 	name = "pustishka"
@@ -132,21 +108,12 @@
 	art_armor = list(electro = 30)
 	level_s = 3
 
-/obj/item/weapon/artifact/pustishka/New()
-	..()
-	art_armor = list(electro = 30)
-
 /obj/item/weapon/artifact/battery
 	name = "battery"
 	desc = "Происхождение этой вещи окутано завесой научной тайны. Пон&#255;тно, что в его состав вход&#255;т диэлектрические элементы, но при каких физических услови&#255;х он формируетс&#255; - науке не известно."
 	icon_state = "battery"
 	art_armor = list(electro = 30)
 	level_s = 4
-
-/obj/item/weapon/artifact/battery/New()
-	..()
-	art_armor = list(electro = 30)
-
 	/////////////////////////////////////////Огненные артефакты/////////////////////////////////////////
 
 /obj/item/weapon/artifact/droplet
@@ -156,10 +123,6 @@
 	art_armor = list(rad = 10)
 	radiation = -1
 	level_s = 1
-
-/obj/item/weapon/artifact/droplet/New()
-	..()
-	art_armor = list(rad = 10)
 
 /obj/item/weapon/artifact/droplet/Think(user)
 	if(!..()) return 0
@@ -175,10 +138,6 @@
 	art_armor = list(rad = 20)
 	level_s = 2
 
-/obj/item/weapon/artifact/fireball/New()
-	..()
-	art_armor = list(rad = 20)
-
 /obj/item/weapon/artifact/crystal
 	name = "crystal"
 	desc = "Получаетс&#255; при попадании т&#255;желого металла в аномалию «Жарка». Этот артефакт замечательно выводит радиацию. Такой артефакт высоко ценитс&#255; сталкерами, и мало где его можно добыть."
@@ -186,10 +145,6 @@
 	art_armor = list(rad = 30)
 	radiation = -5
 	level_s = 3
-
-/obj/item/weapon/artifact/crystal/New()
-	..()
-	art_armor = list(rad = 30)
 
 	/////////////////////////////////////////Химические артефакты/////////////////////////////////////////
 
@@ -201,20 +156,12 @@
 	radiation = 1
 	level_s = 1
 
-/obj/item/weapon/artifact/stone_blood/New()
-	..()
-	art_armor = list(bio = 10)
-
 /obj/item/weapon/artifact/soul
 	name = "soul"
 	desc = "Органический артефакт с уникальными свойствами. Неизвестным пока образом увеличивает общую скорость восстановлени&#255; организма после травм любой природы, не ускор&#255;&#255; накопление токсинов. Из-за при&#255;тного внешнего вида представл&#255;ет особый интерес дл&#255; коллекционеров. Радиоактивен."
 	icon_state = "soul"
 	radiation = 2
 	level_s = 1
-
-/obj/item/weapon/artifact/soul/New()
-	..()
-	art_armor = list()
 
 /obj/item/weapon/artifact/soul/Think(user)
 	if(!..()) return 0
@@ -230,10 +177,6 @@
 	icon_state = "bubble"
 	radiation = -4
 	level_s = 1
-
-/obj/item/weapon/artifact/bubble/New()
-	..()
-	art_armor = list()
 
 /obj/item/weapon/artifact/mica
 	name = "mica"

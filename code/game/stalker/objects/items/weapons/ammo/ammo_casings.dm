@@ -76,4 +76,4 @@
 /obj/item/ammo_casing/mag44
 	desc = "A .44 Magnum bullet casing"
 	caliber = ".44"
-	projectile_type = /obj/item/projectile/bullet/bulletmag45
+	projectile_type = /obj/item/projectile/bullet/bulletmag44
