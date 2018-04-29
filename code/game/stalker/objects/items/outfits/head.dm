@@ -24,14 +24,14 @@
 	durability = 400
 
 /obj/item/clothing/head/gopcap
-	name = "Сap"
+	name = "Cap"
 	desc = "Модная у чётких пацанов кепка."
 	icon_state = "gopcap"
 	item_state = "gopcap"
 	flags = BLOCKHAIR
 
 /obj/item/clothing/head/soft/jacknoircap
-	name = "Сap"
+	name = "Cap"
 	desc = "Потрепанная кепка машиниста. Чух-чух!"
 	icon_state = "jacknoirsoft"
 	item_color = "jacknoir"
@@ -59,21 +59,10 @@
 	unacidable = 1
 	durability = 400
 
-/obj/item/clothing/head/petrovichhelmet
-	name = "SKOT-M777"
-	desc = "Отделанный шпротами алюминиево-картонный шлем с карманами дл&#255; мелочи и бронеусами. Обычно поставл&#255;етс&#255; в комплекте с водкой. Недостаточно попул&#255;рен в Зоне благодар&#255; конспирации Петровича."
-	icon_state = "helmet_skot"
-	flags = BLOCKHAIR
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	unacidable = 1
-	durability = 400
-
 /obj/item/clothing/head/beret_ua
 	name = "military beret"
 	desc = "Оффицерский берет с миниатюрной версией украинского флага."
-	icon_state = "beret_ua"
+		icon_state = "beret_ua"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 	strip_delay = 80
 

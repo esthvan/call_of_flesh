@@ -159,7 +159,7 @@
 	can_suppress = 0
 	can_unsuppress = 0
 	spread = 8
-	recoil = 1
+	recoil = 1.5
 	durability = 50
 	damagelose = 0.3
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
