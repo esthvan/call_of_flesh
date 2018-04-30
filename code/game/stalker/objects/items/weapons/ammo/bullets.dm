@@ -90,12 +90,12 @@
 	spread = 2
 
 /obj/item/projectile/bullet/bulletmag44
-	damage = 40
+	damage = 41
 	range = 40
 	spread = 3
 
 /obj/item/projectile/bullet/bulletmag44FMJ
-	damage = 34
+	damage = 35
 	armour_penetration = 25
 	range = 40
 	spread = 3
