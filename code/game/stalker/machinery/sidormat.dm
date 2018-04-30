@@ -168,7 +168,7 @@
 		new /datum/data/stalker_equipment("Мамины бусы",	"Мамины бусы",								/obj/item/weapon/artifact/maminibusi,				80000,	NEWBIE,	sale_price = 40000),
 		new /datum/data/stalker_equipment("Вспышка",		"Вспышка",									/obj/item/weapon/artifact/flash,					6000,	NEWBIE,	sale_price = 3000),
 		new /datum/data/stalker_equipment("Лунный свет",	"Лунный свет",								/obj/item/weapon/artifact/moonlight,				12000,	NEWBIE,	sale_price = 6000),
-		new /datum/data/stalker_equipment("Пустышка",		"Пустышка",									/obj/item/weapon/artifact/pustishka,				90000,	NEWBIE,	sale_price = 45000),
+		new /datum/data/stalker_equipment("Пустышка",		"Пустышка",									/obj/item/weapon/artifact/pustishka,				40000,	NEWBIE,	sale_price = 20000),
 		new /datum/data/stalker_equipment("Батарейка",		"Батарейка",								/obj/item/weapon/artifact/battery,					90000,	NEWBIE,	sale_price = 45000),
 		new /datum/data/stalker_equipment("Капл&#x44F;",	"Капл&#x44F;",								/obj/item/weapon/artifact/droplet,					7000,	NEWBIE,	sale_price = 3500),
 		new /datum/data/stalker_equipment("Огненный шар",	"Огненный шар",								/obj/item/weapon/artifact/fireball,					15000,	NEWBIE,	sale_price = 7500),
@@ -176,6 +176,7 @@
 		new /datum/data/stalker_equipment("Кровь Камн&#x44F;","Кровь Камн&#x44F;",						/obj/item/weapon/artifact/stone_blood,				4000,	NEWBIE,	sale_price = 2000),
 		new /datum/data/stalker_equipment("Душа",			"Душа",										/obj/item/weapon/artifact/soul,						8000,	NEWBIE,	sale_price = 4000),
 		new /datum/data/stalker_equipment("Пузырь",			"Пузырь",									/obj/item/weapon/artifact/bubble,					30000,	NEWBIE,	sale_price = 15000),
+		new /datum/data/stalker_equipment("Слюда",			"Слюда",									/obj/item/weapon/artifact/mica,						60000,	NEWBIE,	sale_price = 30000),
 
 		)
 
@@ -461,7 +462,8 @@ var/list/sidormatitems = list()
 
 /obj/machinery/stalker/sidormat/proc/SellItems()
 	var/list/ontable = GetItemsOnTable()
-	var/total_cost = GetOnTableCost(ontable)
+	//var/total_cost = GetOnTableCost(ontable)
+	var/total_cost = 0
 
 	var/mob/living/carbon/human/H = usr
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
@@ -478,10 +480,11 @@ var/list/sidormatitems = list()
 	if(KPK.sid != H.sid)
 		say("No access.")
 		return
-
+	/*
 	if(total_cost < 100)
 		say("Habar was not sold.")
-
+		return
+	*/
 	for(var/atom/movable/I in ontable)
 		if(I.loc != itemloc)
 			continue
@@ -489,15 +492,19 @@ var/list/sidormatitems = list()
 		if(!GetCost(I.type))
 			continue
 
+		total_cost += GetCost(I.type)
 		sk.fields["money"] += GetCost(I.type)
 		balance = sk.fields["money"]
 
 		say("[I] was sold for [GetCost(I.type)].")
 
-		PlaceInPool(I)
+		qdel(I)
 		CHECK_TICK
 
-	say("HABAR WAS SUCCESSFULLY SOLD FOR [total_cost].")
+	if(total_cost)
+		say("HABAR WAS SUCCESSFULLY SOLD FOR [total_cost].")
+	else
+		say("Habar was not sold.")
 
 	updateUsrDialog()
 	return

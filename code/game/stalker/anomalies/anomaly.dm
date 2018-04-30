@@ -38,24 +38,30 @@
 						/obj/item/weapon/artifact/flash,
 						/obj/item/weapon/artifact/meduza,
 						/obj/item/weapon/artifact/droplet,
-						/obj/item/weapon/artifact/stone_blood)
+						/obj/item/weapon/artifact/stone_blood
+
+						)
 
 	var/list/art_level2 = list(
 						/obj/item/weapon/artifact/moonlight,
 						/obj/item/weapon/artifact/stoneflower,
 						/obj/item/weapon/artifact/fireball,
-						/obj/item/weapon/artifact/soul)
+						/obj/item/weapon/artifact/soul
 
+						)
 
 	var/list/art_level3 = list(
 						/obj/item/weapon/artifact/nightstar,
-						/obj/item/weapon/artifact/bubble)
+						/obj/item/weapon/artifact/bubble,
+						/obj/item/weapon/artifact/pustishka
+
+						)
 
 	var/list/art_level4 = list(
 						/obj/item/weapon/artifact/crystal,
-						/obj/item/weapon/artifact/pustishka,
 						/obj/item/weapon/artifact/battery,
-						/obj/item/weapon/artifact/maminibusi
+						/obj/item/weapon/artifact/maminibusi,
+						/obj/item/weapon/artifact/mica
 						)
 
 /obj/anomaly/New()
