@@ -10,18 +10,33 @@
 
 /obj/item/clothing/head/hardhat/tacticalhelmet
 	name = "Tactical helmet"
-	desc = "Западный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; максимальным количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; усиленной конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
+	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; базовым количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
 	icon_state = "hardhat0_tactical"
 	item_state = "hardhat0_tactical"
 	item_color = "tactical"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	action_button_name = "Toggle Light"
-	armor = list(melee = 50, bullet = 50, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 20)
+	armor = list(melee = 50, bullet = 60, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 20)
 	brightness_on = 2 //luminosity when on
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
-	durability = 400
+	durability = 300
+
+/obj/item/clothing/head/hardhat/lighttacticalhelmet
+	name = "Light tactical helmet"
+	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; бойцов спецназа надежной защитой головы. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, но респиратор и ПНВ отсутствуют."
+	icon_state = "hardhat0_lighttactical"
+	item_state = "hardhat0_lighttactical"
+	item_color = "lighttactical"
+	flags = BLOCKHAIR
+	flags_inv = HIDEEARS|HIDEEYES
+	action_button_name = "Toggle Light"
+	armor = list(melee = 35, bullet = 50, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	brightness_on = 2 //luminosity when on
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	unacidable = 1
+	durability = 200
 
 /obj/item/clothing/head/gopcap
 	name = "Сap"
