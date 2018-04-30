@@ -24,14 +24,14 @@
 	durability = 400
 
 /obj/item/clothing/head/gopcap
-	name = "Cap"
+	name = "Сap"
 	desc = "Модная у чётких пацанов кепка."
 	icon_state = "gopcap"
 	item_state = "gopcap"
 	flags = BLOCKHAIR
 
 /obj/item/clothing/head/soft/jacknoircap
-	name = "Cap"
+	name = "Сap"
 	desc = "Потрепанная кепка машиниста. Чух-чух!"
 	icon_state = "jacknoirsoft"
 	item_color = "jacknoir"
@@ -52,6 +52,17 @@
 	name = "SKAT-M9"
 	desc = "Отделанный тканью алюминиево-титановый шлем с карманами дл&#255; стальных бронеэлементов и бронемаской. Обычно поставл&#255;етс&#255; в комплекте с бронежилетами класса ПС3 дл&#255; спецназа. Достаточно попул&#255;рен в Зоне благодар&#255; респиратору и встроенному прибору ночного видени&#255;, а также хорошей защите головы."
 	icon_state = "helmet_skat"
+	flags = BLOCKHAIR
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
+	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	unacidable = 1
+	durability = 400
+
+/obj/item/clothing/head/petrovichhelmet
+	name = "SKOT-M777"
+	desc = "Отделанный шпротами алюминиево-картонный шлем с карманами дл&#255; мелочи и бронеусами. Обычно поставл&#255;етс&#255; в комплекте с водкой. Недостаточно попул&#255;рен в Зоне благодар&#255; конспирации Петровича."
+	icon_state = "helmet_skot"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
