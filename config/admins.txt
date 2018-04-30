@@ -13,4 +13,6 @@ corporaldead = Badmin
 firefroge = Badmin
 blyeberry = Badmin
 drunktess = Badmin
-Fillcorss = Coder
+fillcross = Coder
+mileswolfe = TrialAdmin
+ogardtheviking = Moderator
