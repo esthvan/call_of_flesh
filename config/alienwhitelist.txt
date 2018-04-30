@@ -78,3 +78,5 @@ dmitry51615 = Duty
 zombuzi = Duty
 megaomega005 = Duty
 redeadcommie = Duty
+dengoha = Duty
+ted201 = Duty
