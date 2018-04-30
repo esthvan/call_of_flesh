@@ -124,3 +124,11 @@
 	icon_state = "44_Mag"
 	max_ammo = 50
 	multiple_sprites = 2
+
+/obj/item/ammo_box/stalker/bmag44fmj
+	name = "ammo box (.44 Magnum JHP)"
+	desc = "Пистолетный патрон калибра .44 Магнум, оболоченный. Пробивает навылет любую легкую броню."
+	ammo_type = /obj/item/ammo_casing/mag44/FMJ
+	icon_state = "44_Mag_FMJ"
+	max_ammo = 50
+	multiple_sprites = 2

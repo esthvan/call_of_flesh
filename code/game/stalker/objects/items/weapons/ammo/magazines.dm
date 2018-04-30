@@ -114,3 +114,9 @@
 	caliber = "5.56x45"
 	max_ammo = 30
 	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/internal/cylinder/anaconda
+	name = "Colt Anaconda internal magazine"
+	ammo_type = /obj/item/ammo_casing/mag44
+	caliber = ".44"
+	max_ammo = 6

@@ -159,12 +159,31 @@
 	can_suppress = 0
 	can_unsuppress = 0
 	spread = 8
-	recoil = 0.7
+	recoil = 0.65
 	durability = 50
 	damagelose = 0.3
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
+
+/obj/item/weapon/gun/projectile/revolver/anaconda
+	name = "Colt Anaconda .44"
+	desc = "Я знаю, о чём ты сейчас думаешь. Выстрелил он шесть раз, или только п&#255;ть? Честно говор&#255;, в этой суматохе &#255; и сам сбилс&#255; со счёта. Но начнём с того, что это Магнум 44-го калибра, самый убойный револьвер на свете, и он может подчистую снести тебе башку. Теперь ты задаёшь себе один вопрос: Повезёт ли мне?. Ну, повезёт ли, подонок?"
+	icon_state = "anaconda"
+	w_class = 3
+	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/anaconda
+	force = 10
+	can_suppress = 0
+	can_unsuppress = 0
+	spread = 5
+	recoil = 0.85
+	durability = 500
+	damagelose = 0.3
+	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/obrez_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/obrez_open.ogg'
+
 
 ///////////////////////////// Автоматы, ПП //////////////////////////////////////////
 
