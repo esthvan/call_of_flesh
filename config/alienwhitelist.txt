@@ -76,3 +76,5 @@ nicknam = Duty
 theatlasplay = Duty 
 dmitry51615 = Duty 
 zombuzi = Duty
+megaomega005 = Duty
+redeadcommie = Duty
