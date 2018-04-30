@@ -32,6 +32,8 @@
 				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat = 1,
 				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown = 1,
 				/obj/item/clothing/mask/gas/stalker = 2,
+				/obj/item/clothing/head/hardhat/lighttacticalhelmet = 1,
+				/obj/item/clothing/head/steelhelmet = 2,
 				/obj/nothing = 20
 				)
 	rating_add = 100
@@ -43,10 +45,11 @@
 				/obj/item/weapon/gun/projectile/automatic/pistol/sip  = 2,
 				/obj/item/weapon/gun/projectile/automatic/pistol/cora = 2,
 				/obj/item/weapon/gun/projectile/automatic/pistol/marta = 2,
+				/obj/item/weapon/gun/projectile/automatic/pistol/desert = 1,
 				/obj/item/ammo_box/stalker/b545ap = 8,
 				/obj/item/ammo_box/stalker/b55645ap = 8,
 				/obj/item/clothing/suit/hooded/kombez = 0.5,
-				/obj/item/clothing/suit/hooded/kombez/strazh = 0.5,
+				/obj/item/clothing/suit/hooded/kombez/veter = 0.5,
 				/obj/item/clothing/head/hardhat/tacticalhelmet = 2,
 				/obj/nothing = 12
 				)
@@ -64,6 +67,7 @@
 				/obj/item/weapon/gun/projectile/automatic/val = 1,
 				/obj/item/weapon/gun/projectile/automatic/vintorez = 1,
 				/obj/item/weapon/gun/projectile/automatic/groza = 1,
+				/obj/item/weapon/gun/projectile/automatic/sigsg550 = 1,
 				/obj/nothing = 2
 				)
 	rating_add = 1000
