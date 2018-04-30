@@ -22,6 +22,7 @@
 		new /datum/data/stalker_equipment("Colt M1911",		"Кольт",			/obj/item/weapon/gun/projectile/automatic/pistol/cora,				9000, EXPERT),
 		new /datum/data/stalker_equipment("Beretta 92FS",	"Беретта",			/obj/item/weapon/gun/projectile/automatic/pistol/marta,				9000, EXPERT),
 		new /datum/data/stalker_equipment("USP-match",		"ЮСП-матч",			/obj/item/weapon/gun/projectile/automatic/pistol/usp_match, 		16000, EXPERT),
+		new /datum/data/stalker_equipment("Colt Anaconda",	"Colt Anaconda",	/obj/item/weapon/gun/projectile/revolver/anaconda, 	            	25000, EXPERT),
 		new /datum/data/stalker_equipment("Desert Eagle",	"Desert Eagle",		/obj/item/weapon/gun/projectile/automatic/pistol/desert, 	    	30000, EXPERT),
 
 		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
@@ -56,6 +57,7 @@
 		new /datum/data/stalker_equipment(".45 ACP Box", 			"Коробка .45 ACP",							/obj/item/ammo_box/stalker/bacp45,						5000, NEWBIE),
 		new /datum/data/stalker_equipment(".45 ACP Hydroshock Box", "Коробка .45 ACP Hydroshock",				/obj/item/ammo_box/stalker/bacp45ap,					7500, EXPERT),
 		new /datum/data/stalker_equipment(".44 Magnum Box",			"Коробка .44 Магнум",						/obj/item/ammo_box/stalker/bmag44,						10000, EXPERT),
+		new /datum/data/stalker_equipment(".44 Magnum FMJ Box",		"Коробка .44 Магнум Цельномет. оболочка",	/obj/item/ammo_box/stalker/bmag44fmj,					13500, EXPERT),
 		new /datum/data/stalker_equipment("12x70 Buckshot Box",		"Коробка дроби 12x70",						/obj/item/ammo_box/stalker/b12x70,						3000, NEWBIE),
 		new /datum/data/stalker_equipment("12x70 Slug Box", 		"Коробка дроби 12x70 Бронебойные",			/obj/item/ammo_box/stalker/b12x70P,						4000, EXPERT),
 		new /datum/data/stalker_equipment("12x70 Dart Box", 		"Коробка 12x70 Дротик",						/obj/item/ammo_box/stalker/b12x70D,						5000, EXPERT),
@@ -106,7 +108,8 @@
 		////////////////////////////	Маски, Шлемы	/////////////////////////////////////
 		new /datum/data/stalker_equipment("Gasmask",				"Противогаз",				/obj/item/clothing/mask/gas/stalker,						7500, NEWBIE),
 		new /datum/data/stalker_equipment("Merc gasmask",			"Противогаз наемников",		/obj/item/clothing/mask/gas/stalker/mercenary,				7500, NEWBIE),
-		new /datum/data/stalker_equipment("Steel helmet",			"Стальная каска",			/obj/item/clothing/head/steelhelmet,						9000, NEWBIE),
+		new /datum/data/stalker_equipment("Steel helmet",			"Стальная каска",			/obj/item/clothing/head/steelhelmet,						7500, NEWBIE),
+		new /datum/data/stalker_equipment("Light tactical helmet",	"Легкий тактический шлем",	/obj/item/clothing/head/hardhat/lighttacticalhelmet,		12500, EXPERT),
 		new /datum/data/stalker_equipment("Tactical helmet",		"Тактический шлем",			/obj/item/clothing/head/hardhat/tacticalhelmet,				20000, EXPERT),
 		new /datum/data/stalker_equipment("Sphera-M12",				"Сфера-М12",				/obj/item/clothing/head/spherahelmet,						25000, EXPERT),
 		new /datum/data/stalker_equipment("SKAT-9M (helmet)",		"СКАТ-9М (шлем)",			/obj/item/clothing/head/skathelmet,							35000, VETERAN),
@@ -168,7 +171,7 @@
 		new /datum/data/stalker_equipment("Мамины бусы",	"Мамины бусы",								/obj/item/weapon/artifact/maminibusi,				80000,	NEWBIE,	sale_price = 40000),
 		new /datum/data/stalker_equipment("Вспышка",		"Вспышка",									/obj/item/weapon/artifact/flash,					6000,	NEWBIE,	sale_price = 3000),
 		new /datum/data/stalker_equipment("Лунный свет",	"Лунный свет",								/obj/item/weapon/artifact/moonlight,				12000,	NEWBIE,	sale_price = 6000),
-		new /datum/data/stalker_equipment("Пустышка",		"Пустышка",									/obj/item/weapon/artifact/pustishka,				40000,	NEWBIE,	sale_price = 20000),
+		new /datum/data/stalker_equipment("Пустышка",		"Пустышка",									/obj/item/weapon/artifact/pustishka,				90000,	NEWBIE,	sale_price = 45000),
 		new /datum/data/stalker_equipment("Батарейка",		"Батарейка",								/obj/item/weapon/artifact/battery,					90000,	NEWBIE,	sale_price = 45000),
 		new /datum/data/stalker_equipment("Капл&#x44F;",	"Капл&#x44F;",								/obj/item/weapon/artifact/droplet,					7000,	NEWBIE,	sale_price = 3500),
 		new /datum/data/stalker_equipment("Огненный шар",	"Огненный шар",								/obj/item/weapon/artifact/fireball,					15000,	NEWBIE,	sale_price = 7500),
@@ -176,7 +179,6 @@
 		new /datum/data/stalker_equipment("Кровь Камн&#x44F;","Кровь Камн&#x44F;",						/obj/item/weapon/artifact/stone_blood,				4000,	NEWBIE,	sale_price = 2000),
 		new /datum/data/stalker_equipment("Душа",			"Душа",										/obj/item/weapon/artifact/soul,						8000,	NEWBIE,	sale_price = 4000),
 		new /datum/data/stalker_equipment("Пузырь",			"Пузырь",									/obj/item/weapon/artifact/bubble,					30000,	NEWBIE,	sale_price = 15000),
-		new /datum/data/stalker_equipment("Слюда",			"Слюда",									/obj/item/weapon/artifact/mica,						60000,	NEWBIE,	sale_price = 30000),
 
 		)
 
@@ -462,8 +464,7 @@ var/list/sidormatitems = list()
 
 /obj/machinery/stalker/sidormat/proc/SellItems()
 	var/list/ontable = GetItemsOnTable()
-	//var/total_cost = GetOnTableCost(ontable)
-	var/total_cost = 0
+	var/total_cost = GetOnTableCost(ontable)
 
 	var/mob/living/carbon/human/H = usr
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
@@ -480,11 +481,10 @@ var/list/sidormatitems = list()
 	if(KPK.sid != H.sid)
 		say("No access.")
 		return
-	/*
+
 	if(total_cost < 100)
 		say("Habar was not sold.")
-		return
-	*/
+
 	for(var/atom/movable/I in ontable)
 		if(I.loc != itemloc)
 			continue
@@ -492,19 +492,15 @@ var/list/sidormatitems = list()
 		if(!GetCost(I.type))
 			continue
 
-		total_cost += GetCost(I.type)
 		sk.fields["money"] += GetCost(I.type)
 		balance = sk.fields["money"]
 
 		say("[I] was sold for [GetCost(I.type)].")
 
-		qdel(I)
+		PlaceInPool(I)
 		CHECK_TICK
 
-	if(total_cost)
-		say("HABAR WAS SUCCESSFULLY SOLD FOR [total_cost].")
-	else
-		say("Habar was not sold.")
+	say("HABAR WAS SUCCESSFULLY SOLD FOR [total_cost].")
 
 	updateUsrDialog()
 	return
