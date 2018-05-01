@@ -51,8 +51,7 @@
 		return
 
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/obj/item/weapon/stalker/bolt/P
-	P = PoolOrNew(/obj/item/weapon/stalker/bolt)
+	var/obj/item/weapon/stalker/bolt/P = new /obj/item/weapon/stalker/bolt()
 	P.loc = user.loc
 	user.put_in_hands(P)
 	if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
