@@ -24,7 +24,7 @@ Assistant
 	..()
 	head = null
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
-	suit = /obj/item/clothing/suit/hooded/kombez/psz9d
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
@@ -42,7 +42,7 @@ Assistant
 	name = "Duty Soldier"
 
 	head = null
-	suit = /obj/item/clothing/suit/hooded/kombez/psz9d
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
@@ -57,7 +57,7 @@ Assistant
 /datum/outfit/duty/pre_equip(mob/living/carbon/human/H)
 	..()
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
-	suit = /obj/item/clothing/suit/hooded/kombez/psz9d
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	//back2 = /obj/item/weapon/gun/projectile/automatic/aksu74
 	ears = null
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
