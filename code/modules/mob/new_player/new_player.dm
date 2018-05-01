@@ -345,12 +345,24 @@ var/global/num_sid = 0
 	switch(rank)
 		if("Bandit" || "Pahan")
 			character.faction_s = "Бандиты"
+
 		if("Army" || "EliteAgro")
 			character.faction_s = "Военные"
+
 		if("Duty")
 			character.faction_s = "Долг"
+
+		if("Duty Lieutenant")
+			character.faction_s = "Долг"
+			character.rank 		= "Lieutenant"
+
 		if("Mercenary")
 			character.faction_s = "Наёмники"
+
+		if("Mercenary Sql")
+			character.faction_s = "Наёмники"
+			character.rank 		= "Lieutenant"
+
 
 	joined_player_list += character.ckey
 

@@ -29,8 +29,6 @@ Assistant
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	//back = /obj/item/weapon/storage/backpack/stalker
-	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/nothing)
 	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
@@ -48,6 +46,7 @@ Assistant
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
+	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
 							/obj/item/ammo_box/magazine/stalker/m545 = 2,)
@@ -92,3 +91,25 @@ Assistant
 	id = /obj/item/device/stalker_pda
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	back = null
+
+/datum/job/duty/lieutenant
+	title = "Duty Lieutenant"
+	faction = "Station"
+	total_positions = -1
+	spawn_positions = -1
+	supervisors = "Major"
+	selection_color = "#601919"
+	whitelist_only = 1
+	limit_per_player = 2
+	outfit = /datum/outfit/job/duty/lieutenant
+
+/datum/outfit/job/duty/lieutenant
+	name = "Duty Lieutenant"
+	faction_s = "Долг"
+
+/datum/outfit/job/duty/lieutenant/pre_equip(mob/living/carbon/human/H)
+	..()
+	head = /obj/item/clothing/head/hardhat/lighttacticalhelmet
+	suit_store = /obj/item/weapon/gun/projectile/shotgun/spsa
+	backpack_contents = list(/obj/item/ammo_box/stalker/b12x70 = 1,
+							/obj/item/device/flashlight/seclite = 1)

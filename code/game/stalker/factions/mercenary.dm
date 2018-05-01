@@ -27,7 +27,7 @@
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	back = /obj/item/weapon/gun/projectile/automatic/mp5
+	suit_store = /obj/item/weapon/gun/projectile/automatic/mp5
 	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
 	//suit_store = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
 	shoes = /obj/item/clothing/shoes/jackboots/warm

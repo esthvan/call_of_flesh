@@ -3,6 +3,7 @@
 	//var/rating = 0
 	var/faction_s = "Одиночки"
 	var/sid = null
+	var/rank = "Private"
 
 /mob/living/carbon/New()
 	create_reagents(1000)
