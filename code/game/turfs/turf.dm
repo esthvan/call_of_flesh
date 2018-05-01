@@ -128,11 +128,11 @@
 	if(!path)			return
 	if(path == type)	return src
 
-	SSair.remove_from_active(src)
+	//SSair.remove_from_active(src)
 
 	var/turf/W = new path(src)
 	if(istype(W, /turf/simulated))
-		W:Assimilate_Air()
+		//W:Assimilate_Air()
 		W.RemoveLattice()
 	W.levelupdate()
 	W.CalculateAdjacentTurfs()
