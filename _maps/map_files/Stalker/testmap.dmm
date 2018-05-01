@@ -212,8 +212,8 @@
 "ed" = (/obj/structure/table/stalker/wood,/obj/machinery/light{tag = "icon-tube1 (WEST)"; icon_state = "tube1"; dir = 8},/obj/item/clothing/suit/hooded/kombez/exoskelet,/obj/item/clothing/suit/hooded/kombez/exoskelet,/obj/item/clothing/suit/hooded/kombez/exoskelet,/turf/stalker/floor/wood/oldvert,/area/stalker)
 "ee" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/hooded/kozhanka/strazh,/obj/item/clothing/suit/hooded/kozhanka/strazh,/obj/item/clothing/suit/hooded/kozhanka/strazh,/turf/stalker/floor/wood/oldvert,/area/stalker)
 "ef" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/hooded/kozhanka/strazh/atelerd,/obj/item/clothing/suit/hooded/kozhanka/strazh/atelerd,/obj/item/clothing/suit/hooded/kozhanka/strazh/atelerd,/turf/stalker/floor/wood/oldvert,/area/stalker)
-"eg" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/hooded/kombez/psz9d,/obj/item/clothing/suit/hooded/kombez/psz9d,/turf/stalker/floor/wood/oldvert,/area/stalker)
-"eh" = (/obj/structure/table/stalker/wood,/obj/machinery/light{tag = "icon-tube1 (EAST)"; icon_state = "tube1"; dir = 4},/obj/item/clothing/suit/hooded/kombez/strazh,/obj/item/clothing/suit/hooded/kombez/strazh,/turf/stalker/floor/wood/oldvert,/area/stalker)
+"eg" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/hooded/kombez/ps5m,/obj/item/clothing/suit/hooded/kombez/ps5m,/turf/stalker/floor/wood/oldvert,/area/stalker)
+"eh" = (/obj/structure/table/stalker/wood,/obj/machinery/light{tag = "icon-tube1 (EAST)"; icon_state = "tube1"; dir = 4},/obj/item/clothing/suit/strazh,/turf/stalker/floor/wood/oldvert,/area/stalker)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaabababababababababacacacacacacacacacacacacacacacacacacacacacacacacacacacacacac
