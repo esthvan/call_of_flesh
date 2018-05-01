@@ -236,8 +236,8 @@
 /obj/item/weapon/storage/belt/stalker/artifact_belt/proc/Think()
 	for(var/obj/item/weapon/artifact/A in contents)
 		A.Think(loc)
-	spawn(thinkrate)
-		Think()
+	//spawn(thinkrate)
+	//	Think()
 
 /obj/item/weapon/storage/belt/stalker/artifact_belt/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	if(..(W, prevent_warning, user) && istype(W, /obj/item/weapon/artifact))
