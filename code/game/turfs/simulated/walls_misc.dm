@@ -76,6 +76,10 @@
 	icon = 'icons/turf/walls/beton_tg.dmi'
 	icon_state = "beton"
 	walltype = "beton"
+	canSmoothWith = list(
+	/turf/simulated/wall/stalker/beton,
+	/turf/simulated/wall/stalker/beton_agro
+	)
 
 /turf/simulated/wall/stalker/bricks
 	name = "wall"
@@ -83,6 +87,9 @@
 	icon = 'icons/turf/walls/bricks_tg.dmi'
 	icon_state = "bricks"
 	walltype = "brick"
+	canSmoothWith = list(
+	/turf/simulated/wall/stalker/bricks
+	)
 
 /turf/simulated/wall/stalker/bricks_yellow
 	name = "wall"
@@ -90,6 +97,9 @@
 	icon = 'icons/turf/walls/bricks_tg_yellow.dmi'
 	icon_state = "bricks"
 	walltype = "yellowbrick"
+	canSmoothWith = list(
+	/turf/simulated/wall/stalker/bricks_yellow
+	)
 
 /turf/simulated/wall/stalker/bricks_white
 	name = "wall"
@@ -97,6 +107,9 @@
 	icon = 'icons/turf/walls/bricks_tg_white.dmi'
 	icon_state = "bricks"
 	walltype = "whitebrick"
+	canSmoothWith = list(
+	/turf/simulated/wall/stalker/bricks_white
+	)
 
 /turf/simulated/wall/stalker/beton_agro
 	name = "wall"
@@ -104,6 +117,9 @@
 	icon = 'icons/turf/walls/beton_w_tg.dmi'
 	icon_state = "beton"
 	walltype = "betonagro"
+	canSmoothWith = list(
+	/turf/simulated/wall/stalker/beton_agro
+	)
 
 /turf/simulated/wall/shuttle
 	name = "wall"
