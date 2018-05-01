@@ -428,7 +428,7 @@
 	strip_delay = 80
 	put_on_delay = 60
 	flags_inv = HIDEJUMPSUIT
-	armor = list(melee = 30, bullet = 30, laser = 50,burn = 35, bomb = 30, bio = 30, rad = 30, electro = 35)
+	armor = list(melee = 30, bullet = 35, laser = 50,burn = 35, bomb = 30, bio = 30, rad = 30, electro = 35)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/ps5m
 	durability = 200
 
