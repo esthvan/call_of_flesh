@@ -116,12 +116,12 @@
 	strip_delay = 80
 	put_on_delay = 60
 	flags_inv = HIDEJUMPSUIT
-	armor = list(melee = 40, bullet = 30, laser = 50,burn = 50, bomb = 30, bio = 50, rad = 50, electro = 50)
+	armor = list(melee = 35, bullet = 25, laser = 50,burn = 50, bomb = 30, bio = 50, rad = 50, electro = 50)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/kombez
 	durability = 200
 
 /obj/item/clothing/head/winterhood/stalker/kombez
-	armor = list(melee = 40, bullet = 	0, laser = 50,burn = 50, bomb = 0, bio = 50, rad = 50, electro = 50)
+	armor = list(melee = 35, bullet = 	0, laser = 50,burn = 50, bomb = 0, bio = 50, rad = 50, electro = 50)
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	icon_state = "winterhood_kombez"
@@ -155,7 +155,7 @@
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/banditbrown
 
 /obj/item/clothing/head/winterhood/stalker/banditbrown
-	armor = list(melee = 15, bullet = 0, laser = 15,burn = 30, bomb = 0, bio = 10, rad = 10, electro = 30)
+	armor = list(melee = 20, bullet = 0, laser = 15,burn = 30, bomb = 0, bio = 10, rad = 10, electro = 30)
 	icon_state = "winterhood_banditcoatbrown"
 
 /obj/item/clothing/suit/hooded/kombez/ecolog
@@ -326,7 +326,7 @@
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	min_cold_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	flags_inv = HIDEJUMPSUIT
-	armor = list(melee = 80, bullet = 75, laser = 50,burn = 30, bomb = 80, bio = 50, rad = 30, electro = 30)
+	armor = list(melee = 80, bullet = 80, laser = 50,burn = 30, bomb = 80, bio = 50, rad = 30, electro = 30)
 	hooded = 1
 	action_button_name = "Toggle Hood"
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/exoskelet
@@ -334,7 +334,7 @@
 	durability = 200
 
 /obj/item/clothing/head/winterhood/stalker/nightvision/exoskelet
-	armor = list(melee = 80, bullet = 75, laser = 50,burn = 30, bomb = 80, bio = 50, rad = 30, electro = 30)
+	armor = list(melee = 80, bullet = 80, laser = 50,burn = 30, bomb = 80, bio = 50, rad = 30, electro = 30)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	icon_state = "exoskelet_helmet"
@@ -343,7 +343,7 @@
 
 /obj/item/clothing/suit/army
 	name = "army armor"
-	desc = "Стандартный армейский бронежилет, выдаваемый всем военнослужащим, охран&#255;ющим периметр Зоны. Предоставл&#255;ет слабую защиту от пуль и холодного оружи&#255;, абсолютно непригоден дл&#255; вылазок вглубь Зоны, так как не имеет никакой защиты от воздействи&#255; аномальных полей."
+	desc = "Стандартный армейский бронежилет, выдаваемый всем военнослужащим, охран&#255;ющим периметр Зоны. Предоставл&#255;ет неплохую защиту от пуль и холодного оружи&#255;, абсолютно непригоден дл&#255; вылазок вглубь Зоны, так как не имеет почти никакой защиты от воздействи&#255; аномальных полей."
 	icon_state = "army_armor1"
 	item_state = "armor"
 	blood_overlay_type = "armor"
@@ -355,7 +355,7 @@
 	unacidable = 1
 	armor = list(melee = 25, bullet = 40, laser = 10,burn = 20, bomb = 10, bio = 0, rad = 15, electro = 20)
 	allowed = list(/obj/item/weapon/gun/projectile,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/lighter,/obj/item/weapon/stalker/knife)
-	durability = 150
+	durability = 125
 
 /*
 /obj/item/clothing/suit/army/army2
@@ -375,7 +375,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEJUMPSUIT
-	armor = list(melee = 40, bullet = 50, laser = 30,burn = 30, bomb = 40, bio = 30, rad = 30, electro = 30)
+	armor = list(melee = 40, bullet = 60, laser = 30,burn = 30, bomb = 40, bio = 30, rad = 30, electro = 30)
 	allowed = list(/obj/item/weapon/gun/projectile,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/lighter,/obj/item/weapon/stalker/knife)
 	durability = 150
 
@@ -390,12 +390,12 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEJUMPSUIT
-	armor = list(melee = 25, bullet = 35, laser = 50,burn = 50, bomb = 40, bio = 50, rad = 30, electro = 50)
+	armor = list(melee = 35, bullet = 35, laser = 50,burn = 30, bomb = 40, bio = 30, rad = 30, electro = 30)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/monolit
 	durability = 150
 
 /obj/item/clothing/head/winterhood/stalker/monolit
-	armor = list(melee = 25, bullet = 0, laser = 50,burn = 50, bomb = 0, bio = 50, rad = 30, electro = 50)
+	armor = list(melee = 35, bullet = 0, laser = 50,burn = 50, bomb = 0, bio = 50, rad = 30, electro = 50)
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	icon_state = "winterhood_monolit"
@@ -413,13 +413,13 @@
 	max_heat_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEJUMPSUIT
 	unacidable = 1
-	armor = list(melee = 60, bullet = 60, laser = 60,burn = 45, bomb = 70, bio = 35, rad = 45, electro = 45)
+	armor = list(melee = 60, bullet = 75, laser = 60,burn = 45, bomb = 70, bio = 35, rad = 45, electro = 45)
 	durability = 200
 
-/obj/item/clothing/suit/hooded/kombez/psz9d
+/obj/item/clothing/suit/hooded/kombez/ps5m
 	name = "PS5-M"
 	desc = "Современная модель комбинезона Долга. Больше подходит новобранцам из сталкеров, которые привыкли к относительно легким костюмам. В отличие от ПСЗ, обеспечивает хорошую защиту от аномального воздействия и при этом способен остановить пистолетную пулю и некоторые автоматные пули."
-	icon_state = "psz9d"
+	icon_state = "ps5m"
 	item_state = "syndicate-black-red"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -429,10 +429,10 @@
 	put_on_delay = 60
 	flags_inv = HIDEJUMPSUIT
 	armor = list(melee = 30, bullet = 30, laser = 50,burn = 35, bomb = 30, bio = 30, rad = 30, electro = 35)
-	hoodtype = /obj/item/clothing/head/winterhood/stalker/psz9d
+	hoodtype = /obj/item/clothing/head/winterhood/stalker/ps5m
 	durability = 200
 
-/obj/item/clothing/head/winterhood/stalker/psz9d
+/obj/item/clothing/head/winterhood/stalker/ps5m
 	armor = list(melee = 30, bullet = 0, laser = 50,burn = 35, bomb = 0, bio = 30, rad = 30, electro = 35)
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
@@ -455,15 +455,15 @@
 	durability = 150
 
 /obj/item/clothing/head/winterhood/stalker/mercenary
-	armor = list(melee = 20, bullet = 25, laser = 10,burn = 15, bomb = 50, bio = 0, rad = 10, electro = 15)
+	armor = list(melee = 20, bullet = 0, laser = 10,burn = 15, bomb = 50, bio = 0, rad = 10, electro = 15)
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	icon_state = "winterhood_mercenary"
 
-/obj/item/clothing/suit/hooded/kombez/strazh
-	name = "guardian of freedom"
-	desc = "Производимый ремесленниками группировки «Свобода» усиленный комбинезон сталкера. Средний армейский бронежилет плюс накладные усиливающие циркониевые элементы дают неплохую защиту от автоматных пуль и осколков на различных дистанци&#255;х. Материал костюма состоит из двух слоёв: специально обработанной кожи и ткани с асбестовой нитью. Даёт некоторую защиту от различных аномальных воздействий и радиации."
-	icon_state = "strazh"
+/obj/item/clothing/suit/hooded/kombez/veter
+	name = "wind of freedom"
+	desc = "Производимый ремесленниками группировки «Свобода» облегченный комбинезон сталкера. Легкий армейский бронежилет плюс накладные усиливающие кевларовые элементы. Способен защитить от слабого стрелкового оружия. Ткань костюма обработана специальным составом, повышающим сопротивление аномальной активности."
+	icon_state = "veter"
 	item_state = "syndicate-green"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -472,15 +472,30 @@
 	strip_delay = 80
 	put_on_delay = 60
 	flags_inv = HIDEJUMPSUIT
-	armor = list(melee = 30, bullet = 20, laser = 50,burn = 45, bomb = 30, bio = 30, rad = 40, electro = 45)
-	hoodtype = /obj/item/clothing/head/winterhood/stalker/strazh
+	armor = list(melee = 25, bullet = 25, laser = 50,burn = 65, bomb = 30, bio = 50, rad = 40, electro = 65)
+	hoodtype = /obj/item/clothing/head/winterhood/stalker/veter
 	durability = 200
 
-/obj/item/clothing/head/winterhood/stalker/strazh
-	armor = list(melee = 30, bullet = 0, laser = 50,burn = 45, bomb = 0, bio = 20, rad = 40, electro = 45)
+/obj/item/clothing/head/winterhood/stalker/veter
+	armor = list(melee = 25, bullet = 0, laser = 50,burn = 45, bomb = 0, bio = 20, rad = 40, electro = 45)
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	icon_state = "winterhood_strazh"
+
+/obj/item/clothing/suit/strazh
+	name = "guardian of freedom"
+	desc = "Модифицированна&#255; дл&#255; работы в услови&#255;х Зоны, экипировка армейского спецназа. Покрашенна&#255; в &#255;ркий камуфляж Свободы и облегченна&#255; дл&#255; улучшени&#255; подвижности, эта верси&#255; Берилла была обработана специальными реагентами, ослабл&#255;ющими вред от аномальных угроз."
+	icon_state = "strazh"
+	item_state = "syndicate-green"
+	blood_overlay_type = "armor"
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	max_heat_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	flags_inv = HIDEJUMPSUIT
+	armor = list(melee = 50, bullet = 50, laser = 30,burn = 50, bomb = 40, bio = 50, rad = 40, electro = 50)
+	allowed = list(/obj/item/weapon/gun/projectile,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/lighter,/obj/item/weapon/stalker/knife)
+	durability = 150
 
 /obj/item/clothing/suit/hooded/kombez/kombez_bandit
 	name = "bandit armor"
@@ -499,7 +514,7 @@
 	durability = 150
 
 /obj/item/clothing/head/winterhood/stalker/kombez_bandit
-	armor = list(melee = 20, bullet = 25, laser = 10,burn = 15, bomb = 50, bio = 0, rad = 10, electro = 15)
+	armor = list(melee = 20, bullet = 0, laser = 10,burn = 15, bomb = 50, bio = 0, rad = 10, electro = 15)
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	icon_state = "winterhood_combez_bandit"
@@ -507,7 +522,7 @@
 
 /obj/item/clothing/suit/hooded/kombez/mercenary/leader
 	name = "mercenary leader armor"
-	//desc = "Обычная броня наемника с наброшенным поверх плащом в весьма потрепанном состоянии. Вы задумываетесь, почему никто другой не додумался ранее носить плащ поверх легкой брони... неужели этому что-то мешает?"
+	desc = "Обычная броня наемника с наброшенным поверх плащом в весьма потрепанном состоянии. Вы задумываетесь, почему никто другой не додумался ранее носить плащ поверх легкой брони... неужели этому что-то мешает?"
 	icon_state = "mercleader"
 	item_state = "syndicate-black"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
