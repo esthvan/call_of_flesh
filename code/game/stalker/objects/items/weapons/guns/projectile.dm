@@ -403,8 +403,9 @@
 	eng_desc = "A relatively new assault rifle that has quickly found admirers around the world, despite lacking a \"trendy\" design. Weapons of this series are one of the best in their class, renowned for their reliability, accuracy and ease of use. Despite being relatively difficult to obtain in the Zone, this assault rifle is often ordered by experienced stalkers at considerable expense."
 	icon_state = "sigsg550"
 	item_state = "sigsg550"
-	fire_sound = 'sound/stalker/weapons/sigsg550_shoot.ogg'
+	slot_flags = SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
+	fire_sound = 'sound/stalker/weapons/sigsg550_shoot.ogg'
 	can_suppress = 0
 	durability = 125
 	burst_size = 2
