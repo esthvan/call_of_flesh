@@ -187,25 +187,25 @@
 	itemtype = /obj/item/clothing/suit/army
 	cost = 8000
 	words = list("Армейский" = 5, "армейский" = 5, "Бронежилет" = 5, "бронежилет" = 5)
-
+/*
 /sidoritem/psz9d
 	name = "PSZ 9D"
 	itemtype = /obj/item/clothing/suit/hooded/kombez/psz9d
 	cost = 60000
 	words = list("ПСЗ" = 5, "9Д" = 5, "ПСЗ9Д" = 5, "псз" = 5, "9д" = 5, "псз9д" = 10)
-
+*/
 /sidoritem/mercenary
 	name = "Mercenary suit"
 	itemtype = /obj/item/clothing/suit/hooded/kombez/mercenary
 	cost = 19000
 	words = list("Костюм" = 5, "костюм" = 5, "Наемника" = 5, "наемника" = 5, "броню" = 5, "Броню" = 5)
-
+/*
 /sidoritem/strazh
 	name = "Strazh Svobodi"
 	itemtype = /obj/item/clothing/suit/hooded/kozhanka/strazh
 	cost = 68000
 	words = list("Страж" = 5, "страж" = 5, "Свободы" = 5, "свободы" = 5, "Стража" = 5, "стража" = 5)
-
+*/
 //Т&#255;жела&#255; брон&#255;
 
 /sidoritem/exoskelet
