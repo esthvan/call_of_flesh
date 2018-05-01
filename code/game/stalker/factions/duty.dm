@@ -42,7 +42,7 @@ Assistant
 	name = "Duty Soldier"
 
 	head = null
-	suit = /obj/item/clothing/suit/hooded/kombez/psz5m
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
