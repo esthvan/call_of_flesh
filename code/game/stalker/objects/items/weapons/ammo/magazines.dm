@@ -19,7 +19,7 @@
 	icon_state = "sipcora45"
 	ammo_type = /obj/item/ammo_casing/acp45
 	caliber = ".45"
-	max_ammo = 7
+	max_ammo = 9
 	multiple_sprites = 2
 
 /obj/item/ammo_box/magazine/stalker/desert
@@ -120,3 +120,11 @@
 	ammo_type = /obj/item/ammo_casing/mag44
 	caliber = ".44"
 	max_ammo = 6
+
+/obj/item/ammo_box/magazine/stalker/ppsh
+	name = "PPSh drum magazine (9x18mm)"
+	icon_state = "drum"
+	ammo_type = /obj/item/ammo_casing/c9x18
+	caliber = "9x18mm"
+	max_ammo = 71
+	multiple_sprites = 2
