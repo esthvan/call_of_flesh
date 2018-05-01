@@ -300,7 +300,7 @@ var/global/sidoritems = list(
         new /sidoritem/ecologm,
         new /sidoritem/seva,
         new /sidoritem/berill,
-        new /sidoritem/psz9d,
+        //new /sidoritem/psz9d,
         new /sidoritem/mercenary,
         new /sidoritem/strazh,
         new /sidoritem/exoskelet,

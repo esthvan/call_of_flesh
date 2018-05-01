@@ -187,13 +187,13 @@
 	itemtype = /obj/item/clothing/suit/army
 	cost = 8000
 	words = list("Армейский" = 5, "армейский" = 5, "Бронежилет" = 5, "бронежилет" = 5)
-
+/*
 /sidoritem/psz9d
 	name = "PSZ 9D"
 	itemtype = /obj/item/clothing/suit/hooded/kombez/psz9d
 	cost = 60000
 	words = list("ПСЗ" = 5, "9Д" = 5, "ПСЗ9Д" = 5, "псз" = 5, "9д" = 5, "псз9д" = 10)
-
+*/
 /sidoritem/mercenary
 	name = "Mercenary suit"
 	itemtype = /obj/item/clothing/suit/hooded/kombez/mercenary
