@@ -304,7 +304,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m545
 */
 
-/obj/item/weapon/gun/projectile/automatic/pistol/mp5  // MP5
+/obj/item/weapon/gun/projectile/automatic/mp5  // MP5
 	name = "MP-5"
 	desc = "Одно из самых лучших в классе пистолетов-пулемётов оружие. В течении последних дес&#255;тилетий XX века был прин&#255;т на вооружение спецподразделений армии и полиции во многих странах мира. С началом его постепенной замены более современными модел&#255;ми стал часто по&#255;вл&#255;тьс&#255; на чёрном рынке, откуда массово попал и в Зону."
 	icon_state = "mp5"
@@ -313,7 +313,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 0.75
+	fire_delay = 1
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
@@ -325,7 +325,7 @@
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
 
-/obj/item/weapon/gun/projectile/automatic/pistol/ppsh  // ППШ
+/obj/item/weapon/gun/projectile/automatic/ppsh  // ППШ
 	name = "PPSh"
 	desc = "Один из самых старых отечественных дизайнов автоматического ручного оружи&#255;, пистолет-пулемет Шпагина, с гордостью прошел сквозь Великую Отечественную... чтобы в огромных количествах осесть на складах и ржаветь там более полувека. Некоторые умельцы, однако, хорошенько поработав над старым оружием, переделывают его под новый калибр и отправл&#255;ют Сидору на продажу. У вас в руках - один из таких экземпл&#255;ров."
 	icon_state = "ppsh"
