@@ -161,7 +161,7 @@
 	spread = 8
 	recoil = 0.65
 	durability = 50
-	damagelose = 0.3
+	damagelose = 0.15
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
@@ -172,14 +172,15 @@
 	icon_state = "anaconda"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
+	fire_delay = 0.75
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/anaconda
 	force = 10
 	can_suppress = 0
 	can_unsuppress = 0
-	spread = 5
-	recoil = 0.85
+	spread = 6
+	recoil = 0.8
 	durability = 500
-	damagelose = 0.3
+	damagelose = 0.1
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/obrez_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/obrez_open.ogg'
