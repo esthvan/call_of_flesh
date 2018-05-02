@@ -123,7 +123,7 @@
 
 /obj/item/ammo_box/magazine/stalker/ppsh
 	name = "PPSh drum magazine (9x18mm)"
-	icon_state = "drum"
+	icon_state = "ppsh"
 	ammo_type = /obj/item/ammo_casing/c9x18
 	caliber = "9x18mm"
 	max_ammo = 71
