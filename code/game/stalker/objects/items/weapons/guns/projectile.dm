@@ -268,7 +268,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 120
 	w_class = 4
-	spread = 7
+	spread = 6
 	recoil = 0.5
 	randomspread = 0
 	damagelose = 0.25
@@ -291,7 +291,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 100
 	w_class = 4
-	spread = 10
+	spread = 9
 	recoil = 0.7
 	damagelose = 0.5
 	can_scope = 1
@@ -317,7 +317,7 @@
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
-	spread = 8
+	spread = 7
 	recoil = 0.2
 	damagelose = 0.4
 	can_scope = 1
@@ -338,7 +338,7 @@
 	slot_flags = SLOT_BELT
 	durability = 50
 	w_class = 4
-	spread = 10
+	spread = 9
 	recoil = 0.25
 	damagelose = 0.5
 	can_scope = 0
@@ -362,7 +362,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 80
 	w_class = 4
-	spread = 5
+	spread = 4
 	recoil = 0.4
 	damagelose = 0.2
 	can_scope = 1
@@ -386,7 +386,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 200
 	w_class = 4
-	spread = 5
+	spread = 4
 	recoil = 0.4
 	damagelose = 0.2
 	can_scope = 1
@@ -412,7 +412,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 60
 	w_class = 4
-	spread = 5
+	spread = 4
 	recoil = 0.4
 	damagelose = 0.1
 	can_scope = 0
@@ -460,7 +460,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 150
 	w_class = 4
-	spread = 4
+	spread = 3
 	recoil = 0.35
 	damagelose = 0.1
 	can_scope = 0
@@ -484,7 +484,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 250
 	w_class = 4
-	spread = 4
+	spread = 3
 	recoil = 0.35
 	damagelose = 0.15
 	can_scope = 0
@@ -510,7 +510,7 @@
 	pin = /obj/item/device/firing_pin
 	durability = 250
 	w_class = 4
-	spread = 2
+	spread = 1
 	recoil = 0.35
 	damagelose = 0.15
 	can_scope = 0
@@ -529,12 +529,12 @@
 	origin_tech = "combat=5;materials=1;syndicate=2"
 	mag_type = /obj/item/ammo_box/magazine/stalker/pkm
 	weapon_weight = WEAPON_MEDIUM
-	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
+	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
 	can_suppress = 0
 	can_scope = 0
-	burst_size = 3
+	burst_size = 5
 	fire_delay = 1
-	spread = 7
+	spread = 6
 	recoil = 1
 	damagelose = 0.25
 	pin = /obj/item/device/firing_pin
@@ -561,7 +561,7 @@
 	burst_size = 3
 	pin = /obj/item/device/firing_pin
 	w_class = 4
-	spread = 4
+	spread = 3
 	recoil = 0.3
 	damagelose = 0.1
 	can_scope = 1
@@ -588,7 +588,7 @@
 	origin_tech = "combat=5;materials=1"
 	pin = /obj/item/device/firing_pin
 	w_class = 4
-	spread = 3
+	spread = 2
 	recoil = 0.3
 	damagelose = 0
 	can_scope = 0
@@ -611,7 +611,7 @@
 	burst_size = 3
 	pin = /obj/item/device/firing_pin
 	w_class = 4
-	spread = 6
+	spread = 5
 	recoil = 0.4
 	damagelose = 0.35
 	can_scope = 1
