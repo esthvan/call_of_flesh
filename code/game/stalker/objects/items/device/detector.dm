@@ -89,7 +89,7 @@
 		stop()
 		return
 
-	if(!user.get_item_by_slot(slot_r_hand) == src && !user.get_item_by_slot(slot_l_hand) == src)
+	if(user.r_hand != src && user.l_hand != src)
 		kostil = 0
 		on = 0
 		stop()
