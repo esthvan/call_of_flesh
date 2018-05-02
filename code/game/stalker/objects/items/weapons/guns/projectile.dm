@@ -168,7 +168,7 @@
 
 /obj/item/weapon/gun/projectile/revolver/anaconda
 	name = "Colt Anaconda .44"
-	desc = "Я знаю, о чём ты сейчас думаешь. Выстрелил он шесть раз, или только п&#255;ть? Честно говор&#255;, в этой суматохе &#255; и сам сбилс&#255; со счёта. Но начнём с того, что это Магнум 44-го калибра, самый убойный револьвер на свете, и он может подчистую снести тебе башку. Теперь ты задаёшь себе один вопрос: Повезёт ли мне?. Ну, повезёт ли, подонок?"
+	desc = "Я знаю, о чём ты сейчас думаешь. Выстрелил он шесть раз, или только п&#255;ть? Честно говор&#255;, в этой суматохе &#255; и сам сбилс&#255; со счёта. Но начнём с того, что это Магнум 44-го калибра, самый убойный револьвер на свете, и он может подчистую снести тебе башку. Теперь ты задаёшь себе один вопрос: Повезёт ли мне? Ну, повезёт ли, подонок?"
 	icon_state = "anaconda"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
@@ -330,16 +330,16 @@
 	desc = "Один из самых старых отечественных дизайнов автоматического ручного оружи&#255;, пистолет-пулемет Шпагина, с гордостью прошел сквозь Великую Отечественную... чтобы в огромных количествах осесть на складах и ржаветь там более полувека. Некоторые умельцы, однако, хорошенько поработав над старым оружием, переделывают его под новый калибр и отправл&#255;ют Сидору на продажу. У вас в руках - один из таких экземпл&#255;ров."
 	icon_state = "ppsh"
 	item_state = "gun"
-	fire_sound = 'sound/stalker/weapons/mp5_shot.ogg'
+	fire_sound = 'sound/stalker/weapons/pm_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/ppsh
 	can_suppress = 0
 	burst_size = 5
-	fire_delay = 2
+	fire_delay = 1.5
 	slot_flags = SLOT_BELT
 	durability = 50
-	w_class = 3
-	spread = 11
-	recoil = 0.3
+	w_class = 4
+	spread = 10
+	recoil = 0.25
 	damagelose = 0.5
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
@@ -414,7 +414,7 @@
 	w_class = 4
 	spread = 5
 	recoil = 0.4
-	damagelose = 0
+	damagelose = 0.1
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/l85_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
@@ -427,8 +427,8 @@
 	icon_state = "sigsg550"
 	item_state = "sigsg550"
 	slot_flags = SLOT_BACK
-	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
 	fire_sound = 'sound/stalker/weapons/sigsg550_shoot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
 	can_suppress = 0
 	durability = 125
 	burst_size = 2
@@ -441,6 +441,32 @@
 	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/gp37  // GP37
+	name = "GP37"
+	desc = "Штурмова&#255; винтовка нового поколения, производима&#255; в Германии в малых парти&#255;х дл&#255; отр&#255;дов специального назначени&#255;. Оборудована встроенным прицелом дл&#255; боя на средних дистанциях, крайне надежна и эффективна в любых условиях. Выбор многих мастеров группировок вроде Свободы и Наемников."
+	icon_state = "gp37"
+	item_state = "gp37"
+	slot_flags = SLOT_BACK
+	force = 15
+	origin_tech = "combat=6;material=1"
+	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
+	fire_sound = 'sound/stalker/weapons/il86_shoot.ogg'
+	can_suppress = 1
+	zoomable = 1
+	zoom_amt = 9
+	burst_size = 2
+	fire_delay = 1
+	pin = /obj/item/device/firing_pin
+	durability = 150
+	w_class = 4
+	spread = 4
+	recoil = 0.35
+	damagelose = 0.1
+	can_scope = 0
+	drawsound = 'sound/stalker/weapons/draw/l85_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/fnf2000  // fnf2000
 	name = "FN-F2000"
@@ -461,10 +487,58 @@
 	spread = 4
 	recoil = 0.35
 	damagelose = 0.15
-	can_scope = 1
+	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/fnf2000s  // fnf2000
+	name = "FN-F2000-OTBS"
+	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне. В данную модель баллистическая система уже встроена и дает все преимущества."
+	icon_state = "fnf2000s"
+	item_state = "fnf2000s"
+	slot_flags = SLOT_BACK
+	force = 15
+	origin_tech = "combat=6"
+	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
+	fire_sound = 'sound/stalker/weapons/fnf2000_shoot.ogg'
+	can_suppress = 0
+	burst_size = 3
+	fire_delay = 1
+	zoomable = 1
+	zoom_amt = 12
+	pin = /obj/item/device/firing_pin
+	durability = 250
+	w_class = 4
+	spread = 2
+	recoil = 0.35
+	damagelose = 0.15
+	can_scope = 0
+	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
+
+
+/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm
+	name = "PKM"
+	desc = "Этот монстр стрел&#255;ет винтовочными патронами с таким грохотом, что уши сворачиваютс&#255; в шарики, и столь великим вредом всему живому и неживому, что шут&#255; можно снести очередью маленькое здание. Признак не просто успешности и достатка - но смерти. Смерти, несомой всем врагам пулеметчика."
+	icon_state = "l6closed200"
+	item_state = "l6closedmag"
+	w_class = 5
+	slot_flags = 0
+	origin_tech = "combat=5;materials=1;syndicate=2"
+	mag_type = /obj/item/ammo_box/magazine/pkm
+	weapon_weight = WEAPON_MEDIUM
+	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
+	var/cover_open = 0
+	can_suppress = 0
+	can_scope = 0
+	burst_size = 3
+	fire_delay = 1
+	spread = 7
+	recoil = 1
+	damagelose = 0.25
+	pin = obj/item/device/firing_pin
 
 ///////////////////////////// Снайперские винтовки //////////////////////////////////////////
 /obj/item/weapon/gun/projectile/automatic/val  // Вал
