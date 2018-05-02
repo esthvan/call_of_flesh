@@ -522,15 +522,14 @@
 /obj/item/weapon/gun/projectile/automatic/l6_saw/pkm
 	name = "PKM"
 	desc = "Ётот монстр стрел&#255;ет винтовочными патронами с таким грохотом, что уши сворачиваютс&#255; в шарики, и столь великим вредом всему живому и неживому, что шут&#255; можно снести очередью маленькое здание. ѕризнак не просто успешности и достатка - но смерти. —мерти, несомой всем врагам пулеметчика."
-	icon_state = "l6closed200"
+	icon_state = "PKMclosed200"
 	item_state = "l6closedmag"
 	w_class = 5
 	slot_flags = 0
 	origin_tech = "combat=5;materials=1;syndicate=2"
-	mag_type = /obj/item/ammo_box/magazine/pkm
+	mag_type = /obj/item/ammo_box/magazine/stalker/pkm
 	weapon_weight = WEAPON_MEDIUM
 	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
-	var/cover_open = 0
 	can_suppress = 0
 	can_scope = 0
 	burst_size = 3
@@ -538,7 +537,11 @@
 	spread = 7
 	recoil = 1
 	damagelose = 0.25
-	pin = obj/item/device/firing_pin
+	pin = /obj/item/device/firing_pin
+	durability = 300
+
+/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm/update_icon()
+	icon_state = "PKM[cover_open ? "open" : "closed"][magazine ? Ceiling(get_ammo(0)/200)*200 : "-empty"]"
 
 ///////////////////////////// —найперские винтовки //////////////////////////////////////////
 /obj/item/weapon/gun/projectile/automatic/val  // ¬ал

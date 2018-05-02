@@ -136,7 +136,7 @@
 /obj/item/ammo_box/stalker/b762x25
 	name = "ammo box (7.62x25mm)"
 	desc = "ѕистолетный патрон калибра 7.62x25мм, разработанный в прошлом веке дл€ советского самозар&#255;дного оружи&#255;. ћорально и технически устарел, но еще используетс&#255; в «оне."
-	ammo_type = /obj/item/ammo_casing/762x25
+	ammo_type = /obj/item/ammo_casing/c762x25
 	icon_state = "762x25"
 	max_ammo = 50
 	multiple_sprites = 2
