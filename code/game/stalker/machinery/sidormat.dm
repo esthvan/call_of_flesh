@@ -29,7 +29,7 @@
 		new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, NEWBIE),
 		new /datum/data/stalker_equipment("AK 74/2 S", 		"АК 74/2 У",		/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
 		new /datum/data/stalker_equipment("AK 74/2", 		"АК 74/2",			/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
-		new /datum/data/stalker_equipment("PPSh 9x18mm", 	"ППШ 9x18мм",		/obj/item/weapon/gun/projectile/automatic/ppsh,						25000, NEWBIE),
+		new /datum/data/stalker_equipment("PPSh", 	        "ППШ",		        /obj/item/weapon/gun/projectile/automatic/ppsh,						15000, NEWBIE),
 		new /datum/data/stalker_equipment("AS 96/2", 		"АС 96/2",			/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT),
 		new /datum/data/stalker_equipment("LR-300",			"ЛР-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
 		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, EXPERT),
@@ -37,14 +37,16 @@
 		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						50000, VETERAN),
 		new /datum/data/stalker_equipment("SIG SG 550",		"SIG SG 550",		/obj/item/weapon/gun/projectile/automatic/sigsg550,					50000, VETERAN),
 		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					60000, MASTER),
-		new /datum/data/stalker_equipment("FN F2000", 		"ФН Ф2000",			/obj/item/weapon/gun/projectile/automatic/fnf2000,					70000, MASTER),
+		new /datum/data/stalker_equipment("FN F2000", 		"FN F2000",			/obj/item/weapon/gun/projectile/automatic/fnf2000,					60000, MASTER),
+		new /datum/data/stalker_equipment("GP 37", 	    	"GP 37",			/obj/item/weapon/gun/projectile/automatic/gp37,				    	75000, MASTER),
+		new /datum/data/stalker_equipment("FN F2000S", 		"FN F2000S",		/obj/item/weapon/gun/projectile/automatic/fnf2000s,					100000, MASTER),
 
 		/////////////////////////////// **Дробовики** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Sawn off", 		"Обрез",			/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,				6000, NEWBIE),
 		new /datum/data/stalker_equipment("BM-16", 			"БМ-16",			/obj/item/weapon/gun/projectile/revolver/bm16,						12000, NEWBIE),
 		new /datum/data/stalker_equipment("TOZ-34", 		"ТОЗ-34", 			/obj/item/weapon/gun/projectile/revolver/bm16/toz34, 				18000, EXPERT),
 		new /datum/data/stalker_equipment("Wincheaster-1300","Винчестер-1300",	/obj/item/weapon/gun/projectile/shotgun/chaser,						25000, EXPERT),
-		new /datum/data/stalker_equipment("SPAS-12", 		"СПАС-12",			/obj/item/weapon/gun/projectile/shotgun/spsa, 						40000, VETERAN),
+		new /datum/data/stalker_equipment("SPAS-12", 		"СПАС-12",			/obj/item/weapon/gun/projectile/shotgun/spsa, 						50000, VETERAN),
 		/////////////////////////////// **Другое** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Knife",			 "Нож",				/obj/item/weapon/stalker/knife,										2000, NEWBIE)
 		)
@@ -53,6 +55,7 @@
 		////////////////////////////////  Патроны  /////////////////////////////////////////
 		new /datum/data/stalker_equipment("9x18 Box", 				"Коробка 9х18",								/obj/item/ammo_box/stalker/b9x18,						3500, NEWBIE),
 		new /datum/data/stalker_equipment("9x18 AP Box", 			"Коробка 9x18 Бронебойные",					/obj/item/ammo_box/stalker/b9x18P,						4500, EXPERT),
+		new /datum/data/stalker_equipment("7.62x25 Box", 			"Коробка 7.62x25",							/obj/item/ammo_box/stalker/b762x25,						3000, NEWBIE),
 		new /datum/data/stalker_equipment("9x19 Box", 				"Коробка 9x19",								/obj/item/ammo_box/stalker/b9x19,						4000, NEWBIE),
 		new /datum/data/stalker_equipment("9x19 AP Box", 			"Коробка 9x19 Бронебойные",					/obj/item/ammo_box/stalker/b9x19P,						6000, EXPERT),
 		new /datum/data/stalker_equipment(".45 ACP Box", 			"Коробка .45 ACP",							/obj/item/ammo_box/stalker/bacp45,						5000, NEWBIE),
@@ -79,7 +82,7 @@
 		new /datum/data/stalker_equipment("Beretta Magazine", 		"Магазин к Беретте",						/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, NEWBIE),
 		new /datum/data/stalker_equipment("USP-match Magazine", 	"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, NEWBIE),
 		new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",	   		    	/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERT),
-		new /datum/data/stalker_equipment("PPSh Magazine", 	        "Магазин к ППШ",					    	/obj/item/ammo_box/magazine/stalker/ppsh,				7000, NEWBIE),
+		new /datum/data/stalker_equipment("PPSh Magazine", 	        "Магазин к ППШ",					    	/obj/item/ammo_box/magazine/stalker/ppsh,				5000, NEWBIE),
 		)
 
 	var/list/armor_list = list(
@@ -103,7 +106,7 @@
 		new	/datum/data/stalker_equipment("PSZ-9Md",				"ПСЗ-9Мд",						/obj/item/clothing/suit/hooded/kombez/psz9md,				75000, VETERAN, "Долг"),
 		new	/datum/data/stalker_equipment("SSP-99 Ecologist",		"ССП-99 Эколог",				/obj/item/clothing/suit/hooded/kombez/ecolog,				75000, MASTER),
 		new	/datum/data/stalker_equipment("SSP-99M Ecologist",		"ССП-99М Эколог",				/obj/item/clothing/suit/hooded/kombez/ecologm,			    100000, MASTER),
-		new	/datum/data/stalker_equipment("SEVA",					"СЕВА",							/obj/item/clothing/suit/hooded/kombez/seva,					150000, MASTER),
+		new	/datum/data/stalker_equipment("SEVA",					"СЕВА",							/obj/item/clothing/suit/hooded/kombez/seva,					125000, MASTER),
 		new	/datum/data/stalker_equipment("Exoskeleton",			"Экзоскелет",					/obj/item/clothing/suit/hooded/kombez/exoskelet,			150000, MASTER),
 		)
 
@@ -174,15 +177,14 @@
 		new /datum/data/stalker_equipment("Мамины бусы",	"Мамины бусы",								/obj/item/weapon/artifact/maminibusi,				80000,	NEWBIE,	sale_price = 40000),
 		new /datum/data/stalker_equipment("Вспышка",		"Вспышка",									/obj/item/weapon/artifact/flash,					6000,	NEWBIE,	sale_price = 3000),
 		new /datum/data/stalker_equipment("Лунный свет",	"Лунный свет",								/obj/item/weapon/artifact/moonlight,				12000,	NEWBIE,	sale_price = 6000),
-		new /datum/data/stalker_equipment("Пустышка",		"Пустышка",									/obj/item/weapon/artifact/pustishka,				45000,	NEWBIE,	sale_price = 22500),
+		new /datum/data/stalker_equipment("Пустышка",		"Пустышка",									/obj/item/weapon/artifact/pustishka,				90000,	NEWBIE,	sale_price = 45000),
 		new /datum/data/stalker_equipment("Батарейка",		"Батарейка",								/obj/item/weapon/artifact/battery,					90000,	NEWBIE,	sale_price = 45000),
 		new /datum/data/stalker_equipment("Капл&#x44F;",	"Капл&#x44F;",								/obj/item/weapon/artifact/droplet,					7000,	NEWBIE,	sale_price = 3500),
 		new /datum/data/stalker_equipment("Огненный шар",	"Огненный шар",								/obj/item/weapon/artifact/fireball,					15000,	NEWBIE,	sale_price = 7500),
 		new /datum/data/stalker_equipment("Кристалл",		"Кристалл",									/obj/item/weapon/artifact/crystal,					100000,	NEWBIE,	sale_price = 50000),
 		new /datum/data/stalker_equipment("Кровь Камн&#x44F;","Кровь Камн&#x44F;",						/obj/item/weapon/artifact/stone_blood,				4000,	NEWBIE,	sale_price = 2000),
 		new /datum/data/stalker_equipment("Душа",			"Душа",										/obj/item/weapon/artifact/soul,						8000,	NEWBIE,	sale_price = 4000),
-		new /datum/data/stalker_equipment("Пузырь",			"Пузырь",									/obj/item/weapon/artifact/bubble,					25000,	NEWBIE,	sale_price = 12250),
-		new /datum/data/stalker_equipment("Слюда",			"Слюда",									/obj/item/weapon/artifact/mica,						50000,	NEWBIE,	sale_price = 25000),
+		new /datum/data/stalker_equipment("Пузырь",			"Пузырь",									/obj/item/weapon/artifact/bubble,					30000,	NEWBIE,	sale_price = 15000),
 
 		)
 
@@ -191,7 +193,6 @@
 		new /datum/data/stalker_equipment("SUSAT",				"СУСАТ",							/obj/item/weapon/attachment/scope/SUSAT,			5000,	EXPERT),
 		new /datum/data/stalker_equipment("PSU-1",				"ПСУ-1",							/obj/item/weapon/attachment/scope/PS/U1,			6000,	EXPERT),
 		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",							/obj/item/weapon/attachment/scope/PS/O1,			7000,	EXPERT),
-		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",							/obj/item/weapon/attachment/scope/fnf2000,			15000,	MASTER),
 		new /datum/data/stalker_equipment("Universl suppressor","Универсальный глушитель",			/obj/item/weapon/attachment/suppressor,				2000,	NEWBIE),
 
 		)
