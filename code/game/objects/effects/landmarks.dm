@@ -304,3 +304,9 @@
 
 /obj/effect/landmark/latejoin/barman2
 	name = "JoinLateBarman2"
+
+/obj/effect/landmark/latejoin/duty_lieutenant
+	name = "JoinLateDuty Lieutenant"
+
+/obj/effect/landmark/latejoin/mercenary_sql
+	name = "JoinLateMercenary Sql"
