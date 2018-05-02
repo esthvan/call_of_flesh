@@ -744,6 +744,9 @@ var/global/lentahtml = ""
 	ratinghtml = ""
 
 	for(var/datum/data/record/R in sortRecordNum(data_core.stalkers, "rating", -1))
+		if(R.fields["lastlogin"] + 12000 < world.time)
+			continue
+
 		var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
 		var/sid_p = R.fields["sid"]
 		H << browse_rsc(P1.img, "photo_[sid_p]")
@@ -762,43 +765,42 @@ var/global/lentahtml = ""
 
 		count++
 
-		if(R.fields["lastlogin"] + 12000 >= world.time)
-			if(usr.client.prefs.chat_toggles & CHAT_LANGUAGE)
-				ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
-						<tr style=\"border: 1px solid black;\">\
-		                \
-		                <td width=64 height=64 align=\"top\">\
-						<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
-		                </td>\
-		                \
-		                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
-		         		\
-		                <b>\[[count]\]</b> [n] ([eng_f])<br>\
-						<b>Rating</b> [eng_rank_name] ([r])<br>\
-		                <b>Reputation:</b> <font color=\"[rep_color]\">[eng_rep]</font><br>\
-		                \
-		                </td>\
-		                \
-		                </tr>\
-		                </table>"
-			else
-				ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
-						<tr style=\"border: 1px solid black;\">\
-		                \
-		                <td width=64 height=64 align=\"top\">\
-						<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
-		                </td>\
-		                \
-		                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
-		         		\
-		                <b>\[[count]\]</b> [n] ([f])<br>\
-						<b>Рейтинг:</b> [rank_name] ([r])<br>\
-		                <b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
-		                \
-		                </td>\
-		                \
-		                </tr>\
-		                </table>"
+		if(usr.client.prefs.chat_toggles & CHAT_LANGUAGE)
+			ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
+					<tr style=\"border: 1px solid black;\">\
+	                \
+	                <td width=64 height=64 align=\"top\">\
+					<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
+	                </td>\
+	                \
+	                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
+	         		\
+	                <b>\[[count]\]</b> [n] ([eng_f])<br>\
+					<b>Rating</b> [eng_rank_name] ([r])<br>\
+	                <b>Reputation:</b> <font color=\"[rep_color]\">[eng_rep]</font><br>\
+	                \
+	                </td>\
+	                \
+	                </tr>\
+	                </table>"
+		else
+			ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
+					<tr style=\"border: 1px solid black;\">\
+	                \
+	                <td width=64 height=64 align=\"top\">\
+					<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
+	                </td>\
+	                \
+	                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
+	         		\
+	                <b>\[[count]\]</b> [n] ([f])<br>\
+					<b>Рейтинг:</b> [rank_name] ([r])<br>\
+	                <b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
+	                \
+	                </td>\
+	                \
+	                </tr>\
+	                </table>"
 
 	return ratinghtml
 
