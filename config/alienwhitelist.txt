@@ -88,3 +88,6 @@ nolick = Duty
 narcissf = Duty Lieutenant
 narcissf = Mercenary Sql
 jacknoir413 = Mercenary Sql
+chemicalcooker = Duty
+plaugewalker = Mercenary
+prospekt1559 = Mercenary
