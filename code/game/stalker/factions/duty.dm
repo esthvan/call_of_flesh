@@ -92,7 +92,7 @@ Assistant
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	back = null
 
-/datum/job/duty/lieutenant
+/datum/job/duty_lieutenant
 	title = "Duty Lieutenant"
 	faction = "Station"
 	total_positions = -1
@@ -101,15 +101,23 @@ Assistant
 	selection_color = "#601919"
 	whitelist_only = 1
 	limit_per_player = 2
-	outfit = /datum/outfit/job/duty/lieutenant
+	outfit = /datum/outfit/job/duty_lieutenant
 
-/datum/outfit/job/duty/lieutenant
+/datum/outfit/job/duty_lieutenant
 	name = "Duty Lieutenant"
 	faction_s = "Долг"
 
-/datum/outfit/job/duty/lieutenant/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/duty_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/hardhat/lighttacticalhelmet
+	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
+	belt = /obj/item/weapon/stalker/knife
+	gloves = /obj/item/clothing/gloves/fingerless
+	id = /obj/item/device/stalker_pda
 	suit_store = /obj/item/weapon/gun/projectile/shotgun/spsa
 	backpack_contents = list(/obj/item/ammo_box/stalker/b12x70 = 1,
 							/obj/item/device/flashlight/seclite = 1)
+	shoes = /obj/item/clothing/shoes/jackboots/warm
+	r_pocket = /obj/item/weapon/stalker/bolts
+	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
