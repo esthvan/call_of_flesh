@@ -23,7 +23,7 @@
 	unacidable = 1
 	durability = 300
 
-/obj/item/clothing/head/hardhat/tacticalhelmet/on_enter_storage()
+/obj/item/clothing/head/hardhat/on_enter_storage()
 	if (on)
 		on = !on
 		icon_state = initial(icon_state)
