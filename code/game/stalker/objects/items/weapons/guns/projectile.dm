@@ -313,6 +313,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1
 	burst_size = 3
+	fire_delay = 1
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
@@ -320,6 +321,27 @@
 	recoil = 0.2
 	damagelose = 0.4
 	can_scope = 1
+	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/ppsh  // ППШ
+	name = "PPSh"
+	desc = "Один из самых старых отечественных дизайнов автоматического ручного оружи&#255;, пистолет-пулемет Шпагина, с гордостью прошел сквозь Великую Отечественную... чтобы в огромных количествах осесть на складах и ржаветь там более полувека. Некоторые умельцы, однако, хорошенько поработав над старым оружием, переделывают его под новый калибр и отправл&#255;ют Сидору на продажу. У вас в руках - один из таких экземпл&#255;ров."
+	icon_state = "ppsh"
+	item_state = "gun"
+	fire_sound = 'sound/stalker/weapons/mp5_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/ppsh
+	can_suppress = 0
+	burst_size = 5
+	fire_delay = 2
+	slot_flags = SLOT_BELT
+	durability = 50
+	w_class = 3
+	spread = 8
+	recoil = 0.25
+	damagelose = 0.5
+	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'

@@ -29,6 +29,7 @@
 		new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, NEWBIE),
 		new /datum/data/stalker_equipment("AK 74/2 S", 		"АК 74/2 У",		/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
 		new /datum/data/stalker_equipment("AK 74/2", 		"АК 74/2",			/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
+		new /datum/data/stalker_equipment("PPSh 9x18mm", 	"ППШ 9x18мм",		/obj/item/weapon/gun/projectile/automatic/ppsh,						25000, NEWBIE),
 		new /datum/data/stalker_equipment("AS 96/2", 		"АС 96/2",			/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT),
 		new /datum/data/stalker_equipment("LR-300",			"ЛР-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
 		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, EXPERT),
@@ -78,6 +79,7 @@
 		new /datum/data/stalker_equipment("Beretta Magazine", 		"Магазин к Беретте",						/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, NEWBIE),
 		new /datum/data/stalker_equipment("USP-match Magazine", 	"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, NEWBIE),
 		new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",	   		    	/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERT),
+		new /datum/data/stalker_equipment("PPSh Magazine", 	        "Магазин к ППШ",					    	/obj/item/ammo_box/magazine/stalker/ppsh,				7000, NEWBIE),
 		)
 
 	var/list/armor_list = list(
