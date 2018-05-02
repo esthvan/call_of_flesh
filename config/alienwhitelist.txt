@@ -86,3 +86,5 @@ gargyha = Duty
 uselessIsaac = Duty
 nolick = Duty
 narcissf = Duty Lieutenant
+narcissf = Mercenary Sql
+jacknoir413 = Mercenary Sql
