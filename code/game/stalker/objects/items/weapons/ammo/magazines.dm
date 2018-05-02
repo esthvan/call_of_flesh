@@ -124,7 +124,17 @@
 /obj/item/ammo_box/magazine/stalker/ppsh
 	name = "PPSh drum magazine (9x18mm)"
 	icon_state = "ppsh"
-	ammo_type = /obj/item/ammo_casing/c9x18
-	caliber = "9x18mm"
-	max_ammo = 71
+	w_class = 3
+	ammo_type = /obj/item/ammo_casing/762x25
+	caliber = "7.62x25mm"
+	max_ammo = 70
+	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/pkm
+    name = "PKM ammo belt box"
+	icon_state = "pkm"
+	w_class = 3
+	ammo_type = /obj/item/ammo_casing/762x54
+	caliber = "7.62x54mm"
+	max_ammo = 200
 	multiple_sprites = 2
