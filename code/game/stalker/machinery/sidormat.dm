@@ -82,8 +82,9 @@
 		new /datum/data/stalker_equipment("Colt M1911; SIG-Sauer P220 Magazine", "Магазин к Кольту; П-220",		/obj/item/ammo_box/magazine/stalker/sc45,				1400, NEWBIE),
 		new /datum/data/stalker_equipment("Beretta Magazine", 		"Магазин к Беретте",						/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, NEWBIE),
 		new /datum/data/stalker_equipment("USP-match Magazine", 	"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, NEWBIE),
-		new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",	   		    	/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERT),
-		new /datum/data/stalker_equipment("PPSh Magazine", 	        "Магазин к ППШ",					    	/obj/item/ammo_box/magazine/stalker/ppsh,				5000, NEWBIE),
+		new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",					/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERT),
+		new /datum/data/stalker_equipment("PPSh Magazine", 	        "Магазин к ППШ",							/obj/item/ammo_box/magazine/stalker/ppsh,				5000, NEWBIE),
+		new /datum/data/stalker_equipment("PKM ammo box", 	        "Коробка патрон к ПКМ",					 	/obj/item/ammo_box/magazine/stalker/pkm,				10000, VETERAN),
 		)
 
 	var/list/armor_list = list(
