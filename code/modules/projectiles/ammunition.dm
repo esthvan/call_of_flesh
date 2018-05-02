@@ -72,7 +72,7 @@
 	item_state = "syringe_kit"
 	materials = list(MAT_METAL=30000)
 	throwforce = 2
-	w_class = 1
+	w_class = 2
 	throw_speed = 3
 	throw_range = 7
 	var/list/stored_ammo = list()
