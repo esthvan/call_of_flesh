@@ -23,6 +23,12 @@
 	unacidable = 1
 	durability = 300
 
+/obj/item/clothing/head/hardhat/tacticalhelmet/on_enter_storage()
+	if (on)
+		on = !on
+		icon_state = initial(icon_state)
+		set_light(0)
+
 /obj/item/clothing/head/hardhat/lighttacticalhelmet
 	name = "Light tactical helmet"
 	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; бойцов спецназа надежной защитой головы. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, но респиратор и ПНВ отсутствуют."
