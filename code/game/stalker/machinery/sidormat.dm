@@ -16,6 +16,7 @@
 
 		///////////////////////////// **Пистолеты** /////////////////////////////////////
 		new /datum/data/stalker_equipment("PMm", 			"ПМм",				/obj/item/weapon/gun/projectile/automatic/pistol/pm,				3000, NEWBIE),
+		new /datum/data/stalker_equipment("TT", 			"ТТ",				/obj/item/weapon/gun/projectile/automatic/pistol/tt,				3000, NEWBIE),
 		new /datum/data/stalker_equipment("Fort-12",		"Форт-12",			/obj/item/weapon/gun/projectile/automatic/pistol/fort12,			6500, NEWBIE),
 		new /datum/data/stalker_equipment("PB1s",			"ПБС1с",			/obj/item/weapon/gun/projectile/automatic/pistol/pb1s,				4500, NEWBIE),
 		new /datum/data/stalker_equipment("SIG-Sauer P220",	"П-220",			/obj/item/weapon/gun/projectile/automatic/pistol/sip,				12500, EXPERT),
@@ -54,11 +55,11 @@
 
 	var/list/ammo_list = list(
 		////////////////////////////////  Патроны  /////////////////////////////////////////
-		new /datum/data/stalker_equipment("9x18 Box", 				"Коробка 9х18",								/obj/item/ammo_box/stalker/b9x18,						3500, NEWBIE),
-		new /datum/data/stalker_equipment("9x18 AP Box", 			"Коробка 9x18 Бронебойные",					/obj/item/ammo_box/stalker/b9x18P,						4500, EXPERT),
-		new /datum/data/stalker_equipment("7.62x25 Box", 			"Коробка 7.62x25",							/obj/item/ammo_box/stalker/b762x25,						3000, NEWBIE),
-		new /datum/data/stalker_equipment("9x19 Box", 				"Коробка 9x19",								/obj/item/ammo_box/stalker/b9x19,						4000, NEWBIE),
-		new /datum/data/stalker_equipment("9x19 AP Box", 			"Коробка 9x19 Бронебойные",					/obj/item/ammo_box/stalker/b9x19P,						6000, EXPERT),
+		new /datum/data/stalker_equipment("9x18mm Box", 			"Коробка 9х18мм",							/obj/item/ammo_box/stalker/b9x18,						3500, NEWBIE),
+		new /datum/data/stalker_equipment("9x18mm AP Box", 			"Коробка 9x18мм Бронебойные",				/obj/item/ammo_box/stalker/b9x18P,						4500, EXPERT),
+		new /datum/data/stalker_equipment("7.62x25mm Box", 			"Коробка 7.62x25мм",						/obj/item/ammo_box/stalker/b762x25,						3000, NEWBIE),
+		new /datum/data/stalker_equipment("9x19mm Box", 			"Коробка 9x19мм",							/obj/item/ammo_box/stalker/b9x19,						4000, NEWBIE),
+		new /datum/data/stalker_equipment("9x19mm AP Box", 			"Коробка 9x19мм Бронебойные",				/obj/item/ammo_box/stalker/b9x19P,						6000, EXPERT),
 		new /datum/data/stalker_equipment(".45 ACP Box", 			"Коробка .45 ACP",							/obj/item/ammo_box/stalker/bacp45,						5000, NEWBIE),
 		new /datum/data/stalker_equipment(".45 ACP Hydroshock Box", "Коробка .45 ACP Hydroshock",				/obj/item/ammo_box/stalker/bacp45ap,					7500, EXPERT),
 		new /datum/data/stalker_equipment(".44 Magnum Box",			"Коробка .44 Магнум",						/obj/item/ammo_box/stalker/bmag44,						10000, EXPERT),
@@ -66,16 +67,17 @@
 		new /datum/data/stalker_equipment("12x70 Buckshot Box",		"Коробка дроби 12x70",						/obj/item/ammo_box/stalker/b12x70,						3000, NEWBIE),
 		new /datum/data/stalker_equipment("12x70 Slug Box", 		"Коробка дроби 12x70 Бронебойные",			/obj/item/ammo_box/stalker/b12x70P,						4000, EXPERT),
 		new /datum/data/stalker_equipment("12x70 Dart Box", 		"Коробка 12x70 Дротик",						/obj/item/ammo_box/stalker/b12x70D,						5000, EXPERT),
-		new /datum/data/stalker_equipment("5.45x39 Box", 			"Коробка 5.45х39",							/obj/item/ammo_box/stalker/b545,						7500, NEWBIE),
-		new /datum/data/stalker_equipment("5.45x39 AP Box",			"Коробка 5.45х39 Бронебойные",				/obj/item/ammo_box/stalker/b545ap,						9000, VETERAN),
-		new /datum/data/stalker_equipment("5.56x45 Box",			"Коробка 5.56x45",							/obj/item/ammo_box/stalker/b55645,						9000, NEWBIE),
-		new /datum/data/stalker_equipment("5.56x45 AP Box", 		"Коробка 5.56x45 Бронебойные",				/obj/item/ammo_box/stalker/b55645ap,					12000, VETERAN),
-		new /datum/data/stalker_equipment("9x39 PAB-9 Box",			"Коробка 9x39 ПАБ-9",						/obj/item/ammo_box/stalker/b939,						8500, EXPERT),
+		new /datum/data/stalker_equipment("5.45x39mm Box", 			"Коробка 5.45х39мм",						/obj/item/ammo_box/stalker/b545,						7500, NEWBIE),
+		new /datum/data/stalker_equipment("5.45x39mm AP Box",		"Коробка 5.45х39мм Бронебойные",    		/obj/item/ammo_box/stalker/b545ap,						9000, VETERAN),
+		new /datum/data/stalker_equipment("5.56x45mm Box",			"Коробка 5.56x45мм",						/obj/item/ammo_box/stalker/b55645,						9000, NEWBIE),
+		new /datum/data/stalker_equipment("5.56x45mm AP Box", 		"Коробка 5.56x45мм Бронебойные",			/obj/item/ammo_box/stalker/b55645ap,					12000, VETERAN),
+		new /datum/data/stalker_equipment("9x39 PAB-9 Box",			"Коробка 9x39мм ПАБ-9",						/obj/item/ammo_box/stalker/b939,						8500, EXPERT),
 		new /datum/data/stalker_equipment("PMm; PB1s Magazine",		"Магазин к ПМм; ПБ1с",						/obj/item/ammo_box/magazine/stalker/m9x18pm,			700, NEWBIE),
-		new /datum/data/stalker_equipment("Fort-12 Magazine", 		"Магазин к Форт-12",						/obj/item/ammo_box/magazine/stalker/m9x18fort,			1000, NEWBIE),
+		new /datum/data/stalker_equipment("TT Magazine",	     	"Магазин к ТТ",				        		/obj/item/ammo_box/magazine/stalker/tt,		         	600, NEWBIE),
+		new /datum/data/stalker_equipment("Fort-12 Magazine", 		"Магазин к Форт-12",		 				/obj/item/ammo_box/magazine/stalker/m9x18fort,			1000, NEWBIE),
 		new /datum/data/stalker_equipment("MP-5 Magazine", 			"Магазин к МП-5",							/obj/item/ammo_box/magazine/stalker/m9x19mp5,			2000, NEWBIE),
-		new /datum/data/stalker_equipment("AK 74/2;AC 96/2 Magazine","Магазин к AK 74/2;AC 96/2",				/obj/item/ammo_box/magazine/stalker/m545,				2250, NEWBIE),
-		new /datum/data/stalker_equipment("L85; LR-300 Magazine", 	"Магазин к Л85; ЛР-300",					/obj/item/ammo_box/magazine/stalker/m556x45,			3500, NEWBIE),
+		new /datum/data/stalker_equipment("5.45x39mm Magazine",     "Магазин 5.45x39мм",	        			/obj/item/ammo_box/magazine/stalker/m545,				2250, NEWBIE),
+		new /datum/data/stalker_equipment("5.56x45mm Magazine", 	"Магазин 5.56x45мм",			     		/obj/item/ammo_box/magazine/stalker/m556x45,			3500, NEWBIE),
 		new /datum/data/stalker_equipment("AS \"Val\" Magazine", 	"Магазин к АС \"Вал\"",						/obj/item/ammo_box/magazine/stalker/sp9x39val,			3000, VETERAN),
 		new /datum/data/stalker_equipment("Tunder S14 Magazine", 	"Магазин к ОЦ-14 Гроза",					/obj/item/ammo_box/magazine/stalker/sp9x39groza,		3500, VETERAN),
 		new /datum/data/stalker_equipment("Vintorez Magazine", 		"Магазин к Винторезу",						/obj/item/ammo_box/magazine/stalker/sp9x39vint,			3000, VETERAN),
@@ -84,7 +86,7 @@
 		new /datum/data/stalker_equipment("USP-match Magazine", 	"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, NEWBIE),
 		new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",					/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERT),
 		new /datum/data/stalker_equipment("PPSh Magazine", 	        "Магазин к ППШ",							/obj/item/ammo_box/magazine/stalker/ppsh,				5000, NEWBIE),
-		new /datum/data/stalker_equipment("PKM ammo belt box", 	    "Коробка патрон к ПКМ",					 	/obj/item/ammo_box/magazine/stalker/pkm,				20000, EXPERT),
+		new /datum/data/stalker_equipment("PKM ammo belt box", 	    "Жестянка с лентой к ПКМ",				 	/obj/item/ammo_box/magazine/stalker/pkm,				20000, EXPERT),
 		)
 
 	var/list/armor_list = list(
