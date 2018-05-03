@@ -562,6 +562,11 @@
 /obj/item/weapon/gun/projectile/automatic/l6_saw/pkm/update_icon()
 	icon_state = "PKM[cover_open ? "open" : "closed"][magazine ? Ceiling(get_ammo(0)/200)*200 : "-empty"]"
 
+/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm/shottie
+   name = "PTV M-777"
+   desc = "Личное оружие Петровича. Ху&#255;рит как залупа."
+   mag_type = /obj/item/ammo_box/magazine/stalker/pkm/shottie
+
 ///////////////////////////// Снайперские винтовки //////////////////////////////////////////
 /obj/item/weapon/gun/projectile/automatic/val  // Вал
 	name = "AS Val"
