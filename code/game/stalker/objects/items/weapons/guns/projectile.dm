@@ -39,12 +39,13 @@
 	desc = "Старый пистолет, произведенный под столь же старый советский патрон. Весьма попул&#255;рен из-за того, что сотни таких экземпляров остались в складах, где их спустя почти полвека достали и выпустили в продажу бедным новичкам. Мало на что годен, но лучше чем ничего."
 	icon_state = "tt"
 	w_class = 2
-	fire_sound = 'sound/stalker/weapons/pm_shot.ogg'
+	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/tt
 	force = 10
 	can_suppress = 0
 	can_unsuppress = 0
-	durability = 40
+	fire_delay = 0.5
+	durability = 50
 	spread = 8
 	recoil = 0.15
 	damagelose = 0.1
@@ -556,7 +557,7 @@
 	recoil = 1
 	damagelose = 0.25
 	pin = /obj/item/device/firing_pin
-	durability = 300
+	durability = 500
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/pkm/update_icon()
 	icon_state = "PKM[cover_open ? "open" : "closed"][magazine ? Ceiling(get_ammo(0)/200)*200 : "-empty"]"
