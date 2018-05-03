@@ -84,7 +84,7 @@
 		new /datum/data/stalker_equipment("USP-match Magazine", 	"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, NEWBIE),
 		new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",					/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERT),
 		new /datum/data/stalker_equipment("PPSh Magazine", 	        "Магазин к ППШ",							/obj/item/ammo_box/magazine/stalker/ppsh,				5000, NEWBIE),
-		new /datum/data/stalker_equipment("PKM ammo box", 	        "Коробка патрон к ПКМ",					 	/obj/item/ammo_box/magazine/stalker/pkm,				10000, VETERAN),
+		new /datum/data/stalker_equipment("PKM ammo belt box", 	    "Коробка патрон к ПКМ",					 	/obj/item/ammo_box/magazine/stalker/pkm,				20000, EXPERT),
 		)
 
 	var/list/armor_list = list(
@@ -104,6 +104,8 @@
 		new /datum/data/stalker_equipment("Guardian of Freedom",	"Страж Свободы",				/obj/item/clothing/suit/strazh,								40000, EXPERT, "Свобода"),
 		new /datum/data/stalker_equipment("PZ-1	",					"ПЗ-1",							/obj/item/clothing/suit/hooded/kombez/monolit,				25000, NEWBIE, "Монолит"),
 		new /datum/data/stalker_equipment("PS5-M",					"ПС5-М",						/obj/item/clothing/suit/hooded/kombez/ps5m,				    25000, NEWBIE, "Долг"),
+		new /datum/data/stalker_equipment("Heavy merc armor",		"Тяжелая броня наёмников",		/obj/item/clothing/suit/assaultmerc,						40000, VETERAN, "Наёмники"),
+		new /datum/data/stalker_equipment("PSZ-9D",		    		"ПСЗ-9Д",						/obj/item/clothing/suit/psz9d,								50000, VETERAN, "Долг"),
 		new /datum/data/stalker_equipment("SKAT-9M",				"СКАТ-9М",						/obj/item/clothing/suit/skat,								75000, VETERAN),
 		new	/datum/data/stalker_equipment("PSZ-9Md",				"ПСЗ-9Мд",						/obj/item/clothing/suit/hooded/kombez/psz9md,				75000, VETERAN, "Долг"),
 		new	/datum/data/stalker_equipment("SSP-99 Ecologist",		"ССП-99 Эколог",				/obj/item/clothing/suit/hooded/kombez/ecolog,				75000, MASTER),
