@@ -54,3 +54,4 @@ chemicalcooker = Duty
 plaugewalker = Mercenary
 prospekt1559 = Mercenary
 cairo283 = Mercenary
+maximikus = Mercenary

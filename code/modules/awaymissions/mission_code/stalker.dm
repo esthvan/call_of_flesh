@@ -68,6 +68,11 @@
 	name = "Safezone"
 	icon_state = "safezone_buildings_no_blowout"
 	requires_power = 1
+
+/area/stalker/adminspace
+	name = "Admin Space"
+	icon_state = "admin_space"
+	requires_power = 1
 	///ÊÎĞÄÎÍ\\\
 
 
