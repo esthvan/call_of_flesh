@@ -283,7 +283,7 @@
 	can_suppress = 1
 	can_unsuppress = 1
 	burst_size = 3
-	fire_delay = 0.8
+	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	durability = 120
 	w_class = 4
@@ -306,7 +306,7 @@
 	fire_sound = 'sound/stalker/weapons/ak74u_shot.ogg'
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 0.8
+	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	durability = 100
 	w_class = 4
@@ -332,7 +332,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 0.7
+	fire_delay = 0.9
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
@@ -353,7 +353,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/ppsh
 	can_suppress = 0
 	burst_size = 5
-	fire_delay = 0.65
+	fire_delay = 0.8
 	slot_flags = SLOT_BELT
 	durability = 50
 	w_class = 4
@@ -377,7 +377,7 @@
 	fire_sound = 'sound/stalker/weapons/tpc301_shoot.ogg'
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 0.7
+	fire_delay = 0.9
 	pin = /obj/item/device/firing_pin
 	durability = 80
 	w_class = 4
@@ -401,7 +401,7 @@
 	fire_sound = 'sound/stalker/weapons/abakan_shoot.ogg'
 	can_suppress = 1
 	burst_size = 2
-	fire_delay = 0.75
+	fire_delay = 0.9
 	pin = /obj/item/device/firing_pin
 	durability = 200
 	w_class = 4
@@ -427,7 +427,7 @@
 	zoomable = 1
 	zoom_amt = 9
 	burst_size = 2
-	fire_delay = 1.2
+	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	durability = 60
 	w_class = 4
@@ -451,7 +451,7 @@
 	can_suppress = 0
 	durability = 125
 	burst_size = 2
-	fire_delay = 0.8
+	fire_delay = 0.9
 	w_class = 4
 	spread = 3
 	recoil = 0.3
@@ -499,7 +499,7 @@
 	fire_sound = 'sound/stalker/weapons/fnf2000_shoot.ogg'
 	can_suppress = 0
 	burst_size = 3
-	fire_delay = 0.75
+	fire_delay = 0.85
 	pin = /obj/item/device/firing_pin
 	durability = 250
 	w_class = 4
@@ -523,7 +523,7 @@
 	fire_sound = 'sound/stalker/weapons/fnf2000_shoot.ogg'
 	can_suppress = 0
 	burst_size = 3
-	fire_delay = 0.75
+	fire_delay = 0.85
 	zoomable = 1
 	zoom_amt = 12
 	pin = /obj/item/device/firing_pin
@@ -552,7 +552,7 @@
 	can_suppress = 0
 	can_scope = 0
 	burst_size = 5
-	fire_delay = 0.8
+	fire_delay = 1
 	spread = 6
 	recoil = 1
 	damagelose = 0.25
@@ -578,7 +578,7 @@
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	burst_size = 3
-	fire_delay = 0.75
+	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	w_class = 4
 	spread = 3
@@ -627,7 +627,7 @@
 	can_suppress = 0
 	durability = 125
 	slot_flags = SLOT_BACK
-	fire_delay = 0.8
+	fire_delay = 1
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	burst_size = 3
