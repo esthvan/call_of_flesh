@@ -23,12 +23,6 @@
 	unacidable = 1
 	durability = 300
 
-/obj/item/clothing/head/hardhat/on_enter_storage()
-	if (on)
-		on = !on
-		icon_state = initial(icon_state)
-		set_light(0)
-
 /obj/item/clothing/head/hardhat/lighttacticalhelmet
 	name = "Light tactical helmet"
 	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; бойцов спецназа надежной защитой головы. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, но респиратор и ПНВ отсутствуют."
@@ -43,6 +37,19 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 200
+
+/obj/item/clothing/head/assaultmerc
+	name = "Mercenary helmet"
+	desc = "Необычной формы шлем в тускло-серой маскировочной краске, суд&#255; по маркировке - швейцарского производства. Затемненное забрало матово отражает свет, и без того тусклый, ослабленный облаками Чернобыл&#255;. Чертова западна&#255; др&#255;нь."
+	icon_state = "assaultmerc"
+	item_state = "assaultmerc"
+	flags = BLOCKHAIR
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
+	armor = list(melee = 50, bullet = 65, laser = 25,energy = 50, bomb = 0, bio = 0, rad = 0)
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	unacidable = 1
+	durability = 250
+
 
 /obj/item/clothing/head/gopcap
 	name = "Сap"
