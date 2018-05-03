@@ -122,7 +122,7 @@
 	max_ammo = 6
 
 /obj/item/ammo_box/magazine/stalker/ppsh
-	name = "PPSh drum magazine (9x18mm)"
+	name = "PPSh drum magazine"
 	icon_state = "ppsh"
 	w_class = 3
 	ammo_type = /obj/item/ammo_casing/c762x25
