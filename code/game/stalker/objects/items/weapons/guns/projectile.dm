@@ -34,6 +34,24 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
+/obj/item/weapon/gun/projectile/automatic/pistol/tt   // ТТ
+	name = "TT"
+	desc = "Старый пистолет, произведенный под столь же старый советский патрон. Весьма попул&#255;рен из-за того, что сотни таких экземпляров остались в складах, где их спустя почти полвека достали и выпустили в продажу бедным новичкам. Мало на что годен, но лучше чем ничего."
+	icon_state = "tt"
+	w_class = 2
+	fire_sound = 'sound/stalker/weapons/pm_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/tt
+	force = 10
+	can_suppress = 0
+	can_unsuppress = 0
+	durability = 40
+	spread = 8
+	recoil = 0.15
+	damagelose = 0.1
+	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
+
 /obj/item/weapon/gun/projectile/automatic/pistol/sip  // Sig-Sauer
 	name = "SIG-Sauer P220"
 	desc = "Модель, разработанна&#255; ещё в 1975 году, но до сих пор попул&#255;рна&#255; во всём мире. Магазин недостаточно ёмкий, зато механизм надёжен как швейцарские часы; вторым плюсом &#255;вл&#255;етс&#255; использование мощного кольтовского патрона .45 калибра."
