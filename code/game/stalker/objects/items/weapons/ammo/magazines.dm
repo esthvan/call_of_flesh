@@ -138,3 +138,11 @@
 	caliber = "7.62x54mm"
 	max_ammo = 200
 	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/stalker/tt
+	name = "pistol magazine (7.62x25mm)"
+	icon_state = "9x18f"
+	ammo_type = /obj/item/ammo_casing/c762x25
+	caliber = "7.62x25mm"
+	max_ammo = 8
+	multiple_sprites = 2
