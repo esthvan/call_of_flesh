@@ -29,9 +29,9 @@
 		///////////////////////////// **¿‚ÚÓÏ‡Ú˚, œœ** /////////////////////////////////////
 		new /datum/data/stalker_equipment("PPSh", 	        "œœÿ",		        /obj/item/weapon/gun/projectile/automatic/ppsh,						13000, NEWBIE),
 		new /datum/data/stalker_equipment("MP-5", 			"Ãœ-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, NEWBIE),
-		new /datum/data/stalker_equipment("AK 74/2 S", 		"¿  74/2 ”",		/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
-		new /datum/data/stalker_equipment("AK 74/2", 		"¿  74/2",			/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
-		new /datum/data/stalker_equipment("AS 96/2", 		"¿— 96/2",			/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT),
+		new /datum/data/stalker_equipment("AK 74S", 		"¿  74”",    		/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
+		new /datum/data/stalker_equipment("AK 74", 	    	"¿  74",		   	/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
+		new /datum/data/stalker_equipment("AS 96", 	    	"¿— 96",		   	/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT),
 		new /datum/data/stalker_equipment("LR-300",			"À–-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
 		new /datum/data/stalker_equipment("L85", 			"À85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, EXPERT),
 		new /datum/data/stalker_equipment("Tunder OTs-14", 	"Œ÷-14 √ÓÁ‡",		/obj/item/weapon/gun/projectile/automatic/groza,					35000, EXPERT),
