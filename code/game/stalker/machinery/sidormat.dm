@@ -79,7 +79,7 @@
 		new /datum/data/stalker_equipment("5.45x39mm Magazine",     "Магазин 5.45x39мм",	        			/obj/item/ammo_box/magazine/stalker/m545,				2250, NEWBIE),
 		new /datum/data/stalker_equipment("5.56x45mm Magazine", 	"Магазин 5.56x45мм",			     		/obj/item/ammo_box/magazine/stalker/m556x45,			3500, NEWBIE),
 		new /datum/data/stalker_equipment("AS \"Val\" Magazine", 	"Магазин к АС \"Вал\"",						/obj/item/ammo_box/magazine/stalker/sp9x39val,			3000, VETERAN),
-		new /datum/data/stalker_equipment("Tunder S14 Magazine", 	"Магазин к ОЦ-14 Гроза",					/obj/item/ammo_box/magazine/stalker/sp9x39groza,		3500, VETERAN),
+		new /datum/data/stalker_equipment("Tunder S14 Magazine", 	"Магазин к ОЦ-14 Гроза",					/obj/item/ammo_box/magazine/stalker/sp9x39groza,		3500, EXPERT),
 		new /datum/data/stalker_equipment("Vintorez Magazine", 		"Магазин к Винторезу",						/obj/item/ammo_box/magazine/stalker/sp9x39vint,			3000, VETERAN),
 		new /datum/data/stalker_equipment("Colt M1911; SIG-Sauer P220 Magazine", "Магазин к Кольту; П-220",		/obj/item/ammo_box/magazine/stalker/sc45,				1400, NEWBIE),
 		new /datum/data/stalker_equipment("Beretta Magazine", 		"Магазин к Беретте",						/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, NEWBIE),
@@ -123,7 +123,8 @@
 		new /datum/data/stalker_equipment("Steel helmet",			"Стальная каска",			/obj/item/clothing/head/steelhelmet,						7500, NEWBIE),
 		new /datum/data/stalker_equipment("Light tactical helmet",	"Легкий тактический шлем",	/obj/item/clothing/head/hardhat/lighttacticalhelmet,		12500, EXPERT),
 		new /datum/data/stalker_equipment("Tactical helmet",		"Тактический шлем",			/obj/item/clothing/head/hardhat/tacticalhelmet,				20000, EXPERT),
-		new /datum/data/stalker_equipment("Sphera-M12",				"Сфера-М12",				/obj/item/clothing/head/spherahelmet,						25000, EXPERT),
+		new /datum/data/stalker_equipment("Assault helmet",	    	"Штурмовой шлем",			/obj/item/clothing/head/assaultmerc        ,				20000, EXPERT, "Наёмники"),
+		new /datum/data/stalker_equipment("Sphera-M12",			 	"Сфера-М12",				/obj/item/clothing/head/spherahelmet,						25000, EXPERT),
 		new /datum/data/stalker_equipment("SKAT-9M (helmet)",		"СКАТ-9М (шлем)",			/obj/item/clothing/head/skathelmet,							35000, VETERAN),
 		)
 
