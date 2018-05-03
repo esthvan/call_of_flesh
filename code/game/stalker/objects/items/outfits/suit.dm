@@ -266,7 +266,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
-	armor = list(melee = 60, bullet = 50, laser = 80,burn = 80, bomb = 50, bio = 70, rad = 80, electro = 80)
+	armor = list(melee = 60, bullet = 60, laser = 80,burn = 80, bomb = 50, bio = 70, rad = 80, electro = 80)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/seva
 	burn_state = FIRE_PROOF
 	CCBS = 1
@@ -302,7 +302,7 @@
 	put_on_delay = 60
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
-	armor = list(melee = 50, bullet = 50, laser = 80,burn = 65, bomb = 50, bio = 50, rad = 70, electro = 65)
+	armor = list(melee = 50, bullet = 50, laser = 80,burn = 75, bomb = 50, bio = 50, rad = 75, electro = 75)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/psz9md
 	burn_state = FIRE_PROOF
 	CCBS = 1
@@ -565,18 +565,3 @@
 	flags_inv = HIDEJUMPSUIT
 	armor = list(melee = 20, bullet = 45, laser = 10,burn = 15, bomb = 10, bio = 0, rad = 10, electro = 15)
 	durability = 150
-
-/obj/item/clothing/suit/mgs
-	name = "stealth suit"
-	desc = "Hey, Snake!"
-	icon_state = "mgs"
-	item_state = "syndicate-green"
-	blood_overlay_type = "armor"
-	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	max_heat_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	flags_inv = HIDEJUMPSUIT
-	armor = list(melee = 50, bullet = 50, laser = 50,burn = 50, bomb = 50, bio = 50, rad = 50, electro = 75)
-	allowed = list(/obj/item/weapon/gun/projectile,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/lighter,/obj/item/weapon/stalker/knife)
-	durability = 500
