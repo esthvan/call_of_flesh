@@ -116,8 +116,8 @@
 	w_class = 2
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x18fort
 	force = 10
-	can_suppress = 1
-	can_unsuppress = 1
+	can_suppress = 0
+	can_unsuppress = 0
 	spread = 8
 	recoil = 0.25
 	durability = 50
@@ -191,7 +191,7 @@
 	icon_state = "anaconda"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
-	fire_delay = 0.75
+	fire_delay = 1.5
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/anaconda
 	force = 10
 	can_suppress = 0
@@ -271,7 +271,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/ak74  // AK-74
 	name = "AK 74"
-	desc = "Автомат складной образца 1974 года под патрон 5,45x39мм. Представл&#255;ет собой простое и надёжное оружие, хот&#255; дешевизна в производстве несколько сказалась на удобстве использовани&#255; и точности бо&#255;. В Зоне это основное оружие военных сталкеров и многих одиночек."
+	desc = "Автомат образца 1974 года под патрон 5,45x39мм. Представл&#255;ет собой простое и надёжное оружие, хот&#255; дешевизна в производстве несколько сказалась на удобстве использовани&#255; и точности бо&#255;. В Зоне это основное оружие военных сталкеров и многих одиночек."
 	icon_state = "ak74"
 	item_state = "ak74"
 	colored = 0//"normal"
@@ -332,7 +332,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 1.3
+	fire_delay = 1.25
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
@@ -427,7 +427,7 @@
 	zoomable = 1
 	zoom_amt = 9
 	burst_size = 2
-	fire_delay = 1.9
+	fire_delay = 1.8
 	pin = /obj/item/device/firing_pin
 	durability = 60
 	w_class = 4
@@ -473,9 +473,9 @@
 	fire_sound = 'sound/stalker/weapons/il86_shoot.ogg'
 	can_suppress = 1
 	zoomable = 1
-	zoom_amt = 9
+	zoom_amt = 10
 	burst_size = 2
-	fire_delay = 1.3
+	fire_delay = 1.25
 	pin = /obj/item/device/firing_pin
 	durability = 150
 	w_class = 4
