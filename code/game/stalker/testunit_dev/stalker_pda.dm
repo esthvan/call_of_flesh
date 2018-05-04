@@ -925,6 +925,10 @@ var/global/lentahtml = ""
 			eng_faction_s = "Mercenaries"
 		if("Долг")
 			eng_faction_s = "Duty"
+		if("Торговцы")
+			eng_faction_s = "Traders"
+		if("Свобода")
+			eng_faction_s = "Freedom"
 	return eng_faction_s
 
 /proc/get_faction_color(var/faction_s)
@@ -938,6 +942,8 @@ var/global/lentahtml = ""
 			factioncolor = "#3399ff"
 		if("Долг")
 			factioncolor = "#ff4d4d"
+		if("Свобода")
+			factioncolor = "#6cba3f"
 	return factioncolor
 
 /proc/get_rep_name(var/rep)
