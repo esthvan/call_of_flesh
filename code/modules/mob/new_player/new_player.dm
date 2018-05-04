@@ -363,6 +363,16 @@ var/global/num_sid = 0
 			character.faction_s = "Наёмники"
 			character.rank 		= "Lieutenant"
 
+		if("Freedom")
+			character.faction_s = "Свобода"
+
+		if("Freedom Lieutenant")
+			character.faction_s = "Свобода"
+			character.rank 		= "Lieutenant"
+
+		if("Traders")
+			character.faction_s = "Торговцы"
+			character.rank 		= "Lieutenant"
 
 	joined_player_list += character.ckey
 
