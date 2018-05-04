@@ -162,7 +162,7 @@
 	name = "SSP-99"
 	desc = "Созданный дл&#255; работы в услови&#255;х Зоны костюм защиты ССП-99. Используетс&#255; экспедици&#255;ми учёных и сотрудничающих с ними сталкеров-экологов. Встроенна&#255; система фильтрации воздуха и кондиционировани&#255;. Не рассчитан на ведение боевых действий."
 	icon_state = "ecolog"
-	item_state = "suit-orange"
+	item_state = "syndicate-orange"
 	blood_overlay_type = "armor"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -282,7 +282,7 @@
 
 /obj/item/clothing/suit/hooded/kombez/seva/orange
 	icon_state = "sevao"
-	item_state = "suit-orange"
+	item_state = "syndicate-orange"
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/seva/orange
 
 /obj/item/clothing/head/winterhood/stalker/nightvision/seva/orange
