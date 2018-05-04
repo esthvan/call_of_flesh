@@ -80,7 +80,7 @@
 				/obj/item/weapon/gun/projectile/automatic/val = 1,
 				/obj/item/weapon/gun/projectile/automatic/vintorez = 1,
 				/obj/item/weapon/gun/projectile/automatic/groza = 1,
-				/obj/item/weapon/gun/projectile/automatic/pkm = 0.25,
+				/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm = 0.25,
 				/obj/nothing = 2
 				)
 	rating_add = 1000
