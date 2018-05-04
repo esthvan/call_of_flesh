@@ -1,4 +1,5 @@
-/var/global/list/safezones = list(/area/stalker/sidor, /area/stalker/blowout/outdoor/safezone, /area/stalker/blowout/buildings/safezone, /area/stalker/buildings/safezone, /area/stalker/blowout/outdoor/safezone/bar, /area/stalker/byadt/bar)
+/var/global/list/safezones = list(/area/stalker/sidor, /area/stalker/blowout/outdoor/safezone, /area/stalker/blowout/buildings/safezone,
+, /area/stalker/blowout/outdoor/safezone/bar, /area/stalker/byadt/bar, /area/stalker/buildings/safezone/banditbar)
 
 /area/stalker
 	icon = 'icons/stalker/areas.dmi'
@@ -67,6 +68,11 @@
 /area/stalker/buildings/safezone
 	name = "Safezone"
 	icon_state = "safezone_buildings_no_blowout"
+	requires_power = 1
+
+/area/stalker/buildings/safezone/banditbar
+	name = "Safezone"
+	icon_state = "bandit_bar"
 	requires_power = 1
 
 /area/stalker/adminspace
