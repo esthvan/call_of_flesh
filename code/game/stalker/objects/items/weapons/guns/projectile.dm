@@ -353,7 +353,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/ppsh
 	can_suppress = 0
 	burst_size = 5
-	fire_delay = 1
+	fire_delay = 1.2
 	slot_flags = SLOT_BELT
 	durability = 50
 	w_class = 4
