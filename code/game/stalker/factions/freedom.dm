@@ -1,7 +1,7 @@
 /datum/job/freedom
 	title = "Freedom"
 	faction = "Station"
-	total_positions = -1
+	total_positions = 6
 	spawn_positions = -1
 	supervisors = "Major"
 	selection_color = "#601919"
@@ -58,7 +58,7 @@
 /datum/job/freedom_lieutenant
 	title = "Freedom Lieutenant"
 	faction = "Station"
-	total_positions = -1
+	total_positions = 2
 	spawn_positions = -1
 	supervisors = "Major"
 	selection_color = "#601919"

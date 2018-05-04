@@ -6,8 +6,8 @@ Assistant
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 6
+	spawn_positions = 2
 	supervisors = "Major"
 	selection_color = "#601919"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -67,7 +67,7 @@ Assistant
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = -1
+	total_positions = 1
 	spawn_positions = -1
 	supervisors = ""
 	selection_color = "#601919"
@@ -79,7 +79,7 @@ Assistant
 
 /datum/outfit/job/barman2
 	name = "Barman"
-	faction_s = "Одиночки"
+	faction_s = "Торговцы"
 
 /datum/outfit/job/barman2/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -95,7 +95,7 @@ Assistant
 /datum/job/duty_lieutenant
 	title = "Duty Lieutenant"
 	faction = "Station"
-	total_positions = -1
+	total_positions = 2
 	spawn_positions = -1
 	supervisors = "Major"
 	selection_color = "#601919"

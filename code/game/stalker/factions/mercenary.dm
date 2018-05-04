@@ -3,7 +3,7 @@
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = -1
+	total_positions = 6
 	spawn_positions = -1
 	supervisors = ""
 	selection_color = "#2e708b"
@@ -68,7 +68,7 @@
 /datum/job/mercenary_sql
 	title = "Mercenary Sql"
 	faction = "Station"
-	total_positions = -1
+	total_positions = 2
 	spawn_positions = -1
 	supervisors = ""
 	selection_color = "#2e708b"
