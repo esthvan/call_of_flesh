@@ -34,6 +34,25 @@
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
+/obj/item/weapon/gun/projectile/automatic/pistol/tt   // ТТ
+	name = "TT"
+	desc = "Старый пистолет, произведенный под столь же старый советский патрон. Весьма попул&#255;рен из-за того, что сотни таких экземпляров остались в складах, где их спустя почти полвека достали и выпустили в продажу бедным новичкам. Мало на что годен, но лучше чем ничего."
+	icon_state = "tt"
+	w_class = 2
+	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/tt
+	force = 10
+	can_suppress = 0
+	can_unsuppress = 0
+	fire_delay = 0.5
+	durability = 50
+	spread = 8
+	recoil = 0.15
+	damagelose = 0.1
+	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
+
 /obj/item/weapon/gun/projectile/automatic/pistol/sip  // Sig-Sauer
 	name = "SIG-Sauer P220"
 	desc = "Модель, разработанна&#255; ещё в 1975 году, но до сих пор попул&#255;рна&#255; во всём мире. Магазин недостаточно ёмкий, зато механизм надёжен как швейцарские часы; вторым плюсом &#255;вл&#255;етс&#255; использование мощного кольтовского патрона .45 калибра."
@@ -264,7 +283,7 @@
 	can_suppress = 1
 	can_unsuppress = 1
 	burst_size = 3
-	fire_delay = 0.8
+	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	durability = 120
 	w_class = 4
@@ -287,7 +306,7 @@
 	fire_sound = 'sound/stalker/weapons/ak74u_shot.ogg'
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 0.8
+	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	durability = 100
 	w_class = 4
@@ -313,7 +332,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 0.8
+	fire_delay = 0.9
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
@@ -358,7 +377,7 @@
 	fire_sound = 'sound/stalker/weapons/tpc301_shoot.ogg'
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 0.7
+	fire_delay = 0.9
 	pin = /obj/item/device/firing_pin
 	durability = 80
 	w_class = 4
@@ -382,7 +401,7 @@
 	fire_sound = 'sound/stalker/weapons/abakan_shoot.ogg'
 	can_suppress = 1
 	burst_size = 2
-	fire_delay = 0.75
+	fire_delay = 0.9
 	pin = /obj/item/device/firing_pin
 	durability = 200
 	w_class = 4
@@ -408,7 +427,7 @@
 	zoomable = 1
 	zoom_amt = 9
 	burst_size = 2
-	fire_delay = 1.2
+	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	durability = 60
 	w_class = 4
@@ -432,7 +451,7 @@
 	can_suppress = 0
 	durability = 125
 	burst_size = 2
-	fire_delay = 0.8
+	fire_delay = 0.9
 	w_class = 4
 	spread = 3
 	recoil = 0.3
@@ -480,7 +499,7 @@
 	fire_sound = 'sound/stalker/weapons/fnf2000_shoot.ogg'
 	can_suppress = 0
 	burst_size = 3
-	fire_delay = 0.75
+	fire_delay = 0.85
 	pin = /obj/item/device/firing_pin
 	durability = 250
 	w_class = 4
@@ -504,7 +523,7 @@
 	fire_sound = 'sound/stalker/weapons/fnf2000_shoot.ogg'
 	can_suppress = 0
 	burst_size = 3
-	fire_delay = 0.75
+	fire_delay = 0.85
 	zoomable = 1
 	zoom_amt = 12
 	pin = /obj/item/device/firing_pin
@@ -533,15 +552,20 @@
 	can_suppress = 0
 	can_scope = 0
 	burst_size = 5
-	fire_delay = 0.8
+	fire_delay = 1
 	spread = 6
 	recoil = 1
 	damagelose = 0.25
 	pin = /obj/item/device/firing_pin
-	durability = 300
+	durability = 500
 
 /obj/item/weapon/gun/projectile/automatic/l6_saw/pkm/update_icon()
 	icon_state = "PKM[cover_open ? "open" : "closed"][magazine ? Ceiling(get_ammo(0)/200)*200 : "-empty"]"
+
+/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm/shottie
+   name = "PTV M-777"
+   desc = "Личное оружие Петровича. Ху&#255;рит как залупа."
+   mag_type = /obj/item/ammo_box/magazine/stalker/pkm/shottie
 
 ///////////////////////////// Снайперские винтовки //////////////////////////////////////////
 /obj/item/weapon/gun/projectile/automatic/val  // Вал
@@ -559,7 +583,7 @@
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	burst_size = 3
-	fire_delay = 0.75
+	fire_delay = 1
 	pin = /obj/item/device/firing_pin
 	w_class = 4
 	spread = 3
@@ -608,7 +632,7 @@
 	can_suppress = 0
 	durability = 125
 	slot_flags = SLOT_BACK
-	fire_delay = 0.8
+	fire_delay = 1
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	burst_size = 3

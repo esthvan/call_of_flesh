@@ -31,16 +31,16 @@
 	spread = 4
 
 /obj/item/projectile/bullet/bullet12x70p
-	name = "pellet"
-	damage = 15
-	armour_penetration = 20
-	range = 24
-	spread = 4
-
-/obj/item/projectile/bullet/bullet12x70d
 	name = "slug"
 	damage = 70
 	range = 56
+	spread = 4
+
+/obj/item/projectile/bullet/bullet12x70d
+	name = "dart"
+	damage = 50
+	armour_penetration = 25
+	range = 36
 	spread = 4
 
 /obj/item/projectile/bullet/bullet9x19
@@ -101,8 +101,8 @@
 	spread = 3
 
 /obj/item/projectile/bullet/bullet762x25
-	damage = 14
-	armour_penetration = 15
+	damage = 15
+	armour_penetration = 10
 	range = 40
 	spread = 3
 

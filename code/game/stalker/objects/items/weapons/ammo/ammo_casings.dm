@@ -24,10 +24,9 @@
 	projectile_type = /obj/item/projectile/bullet/bullet12x70
 
 /obj/item/ammo_casing/shotgun/c12x70P
-	desc = "A 12x70mm AP bullet casing."
+	desc = "A 12x70mm slug bullet casing."
 	icon_state = "blshell"
-	pellets = 6
-	variance = 5
+	pellets = 1
 	projectile_type = /obj/item/projectile/bullet/bullet12x70p
 
 /obj/item/ammo_casing/shotgun/c12x70D

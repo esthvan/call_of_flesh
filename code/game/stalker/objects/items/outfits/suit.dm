@@ -266,7 +266,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
-	armor = list(melee = 60, bullet = 50, laser = 80,burn = 80, bomb = 50, bio = 70, rad = 80, electro = 80)
+	armor = list(melee = 60, bullet = 60, laser = 80,burn = 80, bomb = 50, bio = 70, rad = 80, electro = 80)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/seva
 	burn_state = FIRE_PROOF
 	CCBS = 1
@@ -302,7 +302,7 @@
 	put_on_delay = 60
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
-	armor = list(melee = 50, bullet = 50, laser = 80,burn = 65, bomb = 50, bio = 50, rad = 70, electro = 65)
+	armor = list(melee = 50, bullet = 50, laser = 80,burn = 75, bomb = 50, bio = 50, rad = 75, electro = 75)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/psz9md
 	burn_state = FIRE_PROOF
 	CCBS = 1
