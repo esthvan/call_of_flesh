@@ -2,7 +2,7 @@
 	origin_tech = "combat=4;materials=2"
 	w_class = 3
 	var/alarmed = 0
-	var/select = 1
+	var/select = 0
 	can_suppress = 1
 	burst_size = 3
 	fire_delay = 2

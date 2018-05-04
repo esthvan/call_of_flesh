@@ -126,7 +126,7 @@
 	icon_state = "ppsh"
 	w_class = 3
 	ammo_type = /obj/item/ammo_casing/c762x25
-	caliber = "7.62x25"
+	caliber = "7.62x25mm"
 	max_ammo = 70
 	multiple_sprites = 2
 
@@ -135,19 +135,19 @@
 	icon_state = "pkm"
 	w_class = 3
 	ammo_type = /obj/item/ammo_casing/c762x54
-	caliber = "7.62x54"
+	caliber = "7.62x54mm"
 	max_ammo = 200
 	multiple_sprites = 2
 
 /obj/item/ammo_box/magazine/stalker/pkm/shottie
 	name = "PTV ammo belt box"
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70
-	caliber = "12x70"
+	caliber = "shotgun"
 
 /obj/item/ammo_box/magazine/stalker/tt
 	name = "pistol magazine (7.62x25mm)"
 	icon_state = "9x18pm"
 	ammo_type = /obj/item/ammo_casing/c762x25
-	caliber = "7.62x25"
+	caliber = "7.62x25mm"
 	max_ammo = 8
 	multiple_sprites = 2
