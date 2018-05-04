@@ -313,7 +313,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 0.7
+	fire_delay = 0.8
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
@@ -334,7 +334,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/ppsh
 	can_suppress = 0
 	burst_size = 5
-	fire_delay = 0.65
+	fire_delay = 0.8
 	slot_flags = SLOT_BELT
 	durability = 50
 	w_class = 4
