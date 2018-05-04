@@ -83,10 +83,10 @@
 
 /obj/item/ammo_casing/c762x25
     desc = "A 7.62x25 bullet casing."
-    caliber = "7.62x25"
+    caliber = "7.62x25mm"
     projectile_type = /obj/item/projectile/bullet/bullet762x25
 
 /obj/item/ammo_casing/c762x54
     desc = "A 7.62x54 bullet casing."
-    caliber = "7.62x54"
+    caliber = "7.62x54mm"
     projectile_type = /obj/item/projectile/bullet/bullet762x54
