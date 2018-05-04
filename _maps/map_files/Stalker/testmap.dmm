@@ -148,7 +148,7 @@
 "cR" = (/obj/structure/stalker/musor_yashik/red,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/outdoor)
 "cS" = (/obj/structure/stalker/musor_yashik/red/full,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/outdoor)
 "cT" = (/obj/structure/stalker/radiation/stop,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/outdoor)
-"cU" = (/obj/effect/landmark/latejoin/sidorovich,/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
+"cU" = (/obj/effect/landmark/latejoin/trader,/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
 "cV" = (/obj/structure/stalker/blocks/vanish/block2,/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
 "cW" = (/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
 "cX" = (/turf/stalker/floor/asphalt,/area/stalker/blowout/outdoor)
@@ -216,6 +216,7 @@
 "eh" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/hooded/kozhanka/strazh/atelerd,/obj/item/clothing/suit/hooded/kozhanka/strazh/atelerd,/obj/item/clothing/suit/hooded/kozhanka/strazh/atelerd,/turf/stalker/floor/wood/oldvert,/area/stalker)
 "ei" = (/obj/structure/table/stalker/wood,/obj/item/clothing/suit/hooded/kombez/ps5m,/obj/item/clothing/suit/hooded/kombez/ps5m,/turf/stalker/floor/wood/oldvert,/area/stalker)
 "ej" = (/obj/structure/table/stalker/wood,/obj/machinery/light{tag = "icon-tube1 (EAST)"; icon_state = "tube1"; dir = 4},/obj/item/clothing/suit/strazh,/turf/stalker/floor/wood/oldvert,/area/stalker)
+"ek" = (/obj/effect/landmark/latejoin/trader,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/outdoor)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaabababababababababacacacacacacacacacacacacacacacacacacacacacacacacacacacacacac
@@ -259,7 +260,7 @@ aaadadadadadadadadadadacbpbpaoaobpdabpacdabpbpacbpbpbpbqdbdbbBacaxaxaxaxaxbJanan
 aaadadadadadadadadadadacbpbpbpbpbpbpdcacacbqacacdddbbpbpdedebBacaxaxaxaxacacacanananacacacaxaxaxaxac
 aaadadadadadadadadadadacaocXbqbpbpbpbpaccWbpdfacdedebpbpbpaobpacdgaxaxaxdhacdiananandjacdkaxaxaxdlac
 aaadadadadadadadadadadacaocXbpbpbpbqbpbpbpbpbpcVbpbpbpbpbpdmbpacaxaxaxaxacacacanananacacacaxaxaxaxac
-aaadadadadadadadadadadacaobpdndnbpbpbpcVbpdobpdpbpbpbpbpbpaoaoacbKaxaxaxaxbJanananananbJaxaxaxaxbMac
+aaadadadadadadadadadadacaobpdndnbpbpbpcVbpdobpdpbpbpbpbpbpaoaoacbKaxaxaxaxbJekanananekbJaxaxaxaxbMac
 aaadadadadadadadadadadacaobpdededqbpbpcVbpbpbpbpbpbpbqbpbpbpaoacaxaxaxaxaxbJcvananancvbJaxaxaxaxaxac
 aaadadadadadadadadadadacdmbpbpbpbpbpdracdsbqdsacbpbpbpbpbpbqbpacacacacacacacaccwancyacacacacacacacac
 aaadadadadadadadadadadacbpbpbpbqbpbpdtacacbpacacdubpbpbpbpbpbpacaadvdwdxdydzaadAdAdAaadBdCdDdydEaaaa
