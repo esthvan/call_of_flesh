@@ -44,6 +44,7 @@
 
 */
 /mob/var/sound/music
+/mob/var/sound/music2
 
 /datum/turntable_soundtrack
 	var/f_name
@@ -69,7 +70,7 @@
 //		if(TT != src)
 //			qdel(src)
 	turntable_soundtracks = list()
-	for(var/i in typesof(/datum/turntable_soundtrack) - /datum/turntable_soundtrack)
+	for(var/i in typesof(/datum/turntable_soundtrack/bar) - /datum/turntable_soundtrack/bar)
 		var/datum/turntable_soundtrack/D = new i()
 		if(D.path)
 			turntable_soundtracks.Add(D)
@@ -232,6 +233,90 @@
 	S.status = 0 //SOUND_STREAM
 	M.music = S
 	M << S
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////ÂÍÈÌÀÍÈÅ!!! ÁÛÄËÎÊÎÄ!!!///////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/obj/machinery/party/turntable/bandit
+	name = "Jukebox"
+	desc = "A jukebox is a partially automated music-playing device, usually a coin-operated machine, that will play a patron's selection from self-contained media."
+	icon = 'icons/effects/lasers2.dmi'
+	icon_state = "Jukebox7"
+	playing = 0
+	track = null
+	volume = 100
+	turntable_soundtracks = list()
+	anchored = 1
+	density = 1
+
+/obj/machinery/party/turntable/bandit/New()
+	..()
+//	for(var/obj/machinery/party/turntable/TT) // NO WAY
+//		if(TT != src)
+//			qdel(src)
+
+	turntable_soundtracks = list()
+	for(var/i in typesof(/datum/turntable_soundtrack/bandit) - /datum/turntable_soundtrack/bandit)
+		var/datum/turntable_soundtrack/D = new i()
+		if(D.path)
+			turntable_soundtracks.Add(D)
+
+/obj/machinery/party/turntable/bandit/turn_off()
+
+	if(!playing)
+		return
+
+	for(var/mob/M)
+		M.music2 = null
+		M << sound(null, channel = 447, wait = 0)
+
+	playing = 0
+	var/area/A = get_area(src)
+	for(var/area/RA in A.related)
+		for(var/obj/machinery/party/lasermachine/L in RA)
+			L.turnoff()
+
+/obj/machinery/party/turntable/bandit/update_sound(update = 0)
+
+	var/area/A = get_area(src)
+
+	for(var/mob/M)
+		var/inRange = (get_area(M) in A.related)
+		if(A == "Bar") 							 // kostuli kostulnie
+			var/area/crew_quarters/theatre/T
+			var/area/crew_quarters/kitchen/K
+			inRange+=(get_area(M) in K.related)
+			inRange+=(get_area(M) in T.related)
+
+		if(!M.music2)
+			create_sound(M)
+			continue
+
+		if(inRange && (M.music2.volume != volume || update))
+			M.music2.status = SOUND_UPDATE//|SOUND_STREAM
+			M.music2.volume = volume
+			M << M.music2
+
+		else if(!inRange && M.music2.volume != 0)
+			M.music2.status = SOUND_UPDATE//|SOUND_STREAM
+			M.music2.volume = 0
+			M << M.music2
+
+/obj/machinery/party/turntable/bandit/create_sound(mob/M)
+	var/sound/S = sound(track.path)
+	S.repeat = 1
+	S.channel = 447
+	S.falloff = 2
+	S.wait = 0
+	S.volume = 0
+	S.status = 0 //SOUND_STREAM
+	M.music2 = S
+	M << S
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////ÂÍÈÌÀÍÈÅ!!! ÁÛÄËÎÊÎÄ!!!///////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/party/mixer
 	name = "mixer"
