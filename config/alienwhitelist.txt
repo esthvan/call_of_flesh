@@ -61,3 +61,4 @@ fillcross = Trader
 MilesWolfe = Trader
 DrunkTess = Trader
 GataTheEngi = Trader
+Course = Trader

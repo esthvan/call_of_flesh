@@ -310,3 +310,9 @@
 
 /obj/effect/landmark/latejoin/mercenary_sql
 	name = "JoinLateMercenary Sql"
+
+/obj/effect/landmark/latejoin/freedom
+	name = "JoinLateFreedom"
+
+/obj/effect/landmark/latejoin/freedom_lieutenant
+	name = "JoinLateFreedom Lieutenant"

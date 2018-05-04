@@ -805,6 +805,7 @@
 #include "code\game\stalker\factions\army.dm"
 #include "code\game\stalker\factions\bandit.dm"
 #include "code\game\stalker\factions\duty.dm"
+#include "code\game\stalker\factions\freedom.dm"
 #include "code\game\stalker\factions\jobs.dm"
 #include "code\game\stalker\factions\mercenary.dm"
 #include "code\game\stalker\factions\phantoms.dm"
