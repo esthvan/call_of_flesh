@@ -146,7 +146,7 @@
 
 /obj/item/ammo_box/magazine/stalker/tt
 	name = "pistol magazine (7.62x25mm)"
-	icon_state = "9x18f"
+	icon_state = "9x18pm"
 	ammo_type = /obj/item/ammo_casing/c762x25
 	caliber = "7.62x25mm"
 	max_ammo = 8
