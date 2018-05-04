@@ -126,7 +126,7 @@
 	icon_state = "ppsh"
 	w_class = 3
 	ammo_type = /obj/item/ammo_casing/c762x25
-	caliber = "7.62x25mm"
+	caliber = "7.62x25"
 	max_ammo = 70
 	multiple_sprites = 2
 
@@ -135,7 +135,7 @@
 	icon_state = "pkm"
 	w_class = 3
 	ammo_type = /obj/item/ammo_casing/c762x54
-	caliber = "7.62x54mm"
+	caliber = "7.62x54"
 	max_ammo = 200
 	multiple_sprites = 2
 
@@ -148,6 +148,6 @@
 	name = "pistol magazine (7.62x25mm)"
 	icon_state = "9x18f"
 	ammo_type = /obj/item/ammo_casing/c762x25
-	caliber = "7.62x25mm"
+	caliber = "7.62x25"
 	max_ammo = 8
 	multiple_sprites = 2
