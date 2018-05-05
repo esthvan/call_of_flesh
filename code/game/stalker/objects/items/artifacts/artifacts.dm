@@ -27,7 +27,7 @@
 	var/radiation = 2
 	var/waspicked = 0
 	var/level_s = 1
-	w_class = 3
+	w_class = 2
 	var/obj/effect/fakeart/phantom = null
 
 /obj/item/weapon/artifact/proc/Think(user)
