@@ -24,10 +24,10 @@
 	desc = "You wear this on your back and put items into it."
 	icon_state = "backpack-tourist"
 	item_state = "backpack-tourist"
-	w_class = 4
+	w_class = 5
 	slot_flags = SLOT_BACK
-	max_w_class = 3
-	max_combined_w_class = 21
+	max_w_class = 4
+	max_combined_w_class = 30
 	storage_slots = 21
 	burn_state = FLAMMABLE
 	burntime = 20
@@ -36,10 +36,10 @@
 	name = "satchel"
 	icon_state = "satchel-tourist"
 	item_state = "satchel-tourist"
-	w_class = 4
+	w_class = 5
 	slot_flags = SLOT_BACK
-	max_w_class = 3
-	max_combined_w_class = 21
+	max_w_class = 4
+	max_combined_w_class = 30
 	storage_slots = 21
 	burn_state = FLAMMABLE
 	burntime = 20
