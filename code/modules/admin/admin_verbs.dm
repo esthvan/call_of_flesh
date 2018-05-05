@@ -24,6 +24,7 @@ var/list/admin_verbs_default = list(
 var/list/admin_verbs_admin = list(
 	/client/proc/GetRank,
 	/client/proc/GetMoney,
+	/client/proc/SetFaction,
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
 	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
 //	/datum/admins/proc/show_traitor_panel,	/*interface which shows a mob's mind*/ -Removed due to rare practical use. Moved to debug verbs ~Errorage
@@ -77,6 +78,8 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/set_round_end_sound,
 	)
 var/list/admin_verbs_fun = list(
+	/client/proc/SetRank,
+	/client/proc/SetMoney,
 	/client/proc/MakeController,
 	/client/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_gib_self,
@@ -120,9 +123,6 @@ var/list/admin_verbs_server = list(
 
 	)
 var/list/admin_verbs_debug = list(
-	/client/proc/SetRank,
-	/client/proc/SetMoney,
-	/client/proc/SetFaction,
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
 	/client/proc/ResetSidorRooms,
