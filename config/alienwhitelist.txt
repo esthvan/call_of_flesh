@@ -88,3 +88,4 @@ ZaakD = Duty
 Zombuzi = Duty
 DenGoHa = Duty
 Ted201 = Duty
+echocassius = Traders
