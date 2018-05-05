@@ -233,24 +233,31 @@ var/global/turntable_channel = 4488
 
 		if(!playing || !(C.mob) || !inRange)
 			C.jukeboxplaying = 0
+			C.mob.music.status = SOUND_UPDATE
 			C.mob.music.volume = 0
 			C.mob << C.mob.music
 			melomans.Remove(C)
 			continue
+
 		C.mob.music.status = SOUND_UPDATE//|SOUND_STREAM
 		C.mob.music.volume = volume
 		C.mob << C.mob.music
 
 /obj/machinery/party/turntable/proc/create_sound(mob/M)
-	var/sound/S = sound(track.path)
-	S.repeat = 1
-	S.channel = music_channel
-	S.falloff = 2
-	S.wait = 0
-	S.volume = 0
-	S.status = 0 //SOUND_STREAM
-	M.music = S
-	M << S
+	if(!M.music || M.music.file != track.path)
+		var/sound/S = sound(track.path)
+		S.repeat = 1
+		S.channel = music_channel
+		S.falloff = 2
+		S.wait = 0
+		S.volume = 0
+		S.status = 0 //SOUND_STREAM
+		M.music = S
+		M << S
+	else
+		M.music.status = SOUND_UPDATE
+		M.music.volume = volume
+		M << M.music
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////ÂÍÈÌÀÍÈÅ!!! ÁÛÄËÎÊÎÄ!!!///////////////////////////////////////////////////////////////////////////////////////////
