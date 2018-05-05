@@ -17,3 +17,4 @@ ogardtheviking = Badmin
 mileswolfe = Badmin
 fillcross = Coder
 vavalor = Moderator
+prospekt1559 = Moderator
