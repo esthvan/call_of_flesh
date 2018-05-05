@@ -248,11 +248,12 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 			S.remove_from_storage(src, user.loc)
 		else
 			var/obj/item/weapon/gun/projectile/G = src
-			user.visible_message("<span class='danger'>[user] начинает доставать [G] из [S]!</span>", "<span class='notice'>Вы начинаете доставать [G] из [S]...</span>")
+			playsound(src.loc, "rustle", 50, 1, -5)
+			user.visible_message("<span class='danger'>[user] starts to take out [G] from the [S]!</span>", "<span class='notice'>You start to take out [G] from the [S]...</span>")
 			if(do_after_inventory(user, 25, 1, G))
 				playsound(src, G.drawsound, 30, 1)
 				S.remove_from_storage(src, user.loc)
-				user.visible_message("<span class='danger'>[user] достал [G] из [S]!</span>", "<span class='notice'>Вы достали [G] из [S].</span>")
+				user.visible_message("<span class='danger'>[user] took out [G] from the [S]!</span>", "<span class='notice'>You took out the [G] from the [S].</span>")
 
 	src.throwing = 0
 	if (loc == user)
