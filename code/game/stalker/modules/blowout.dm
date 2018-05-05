@@ -79,10 +79,14 @@ datum/subsystem/blowout/proc/StopBlowout()
 	for(var/obj/item/weapon/artifact/A)
 		if(istype(get_area(A), /area/stalker/blowout))
 			PlaceInPool(A)
+			CHECK_TICK
 
 	for(var/mob/living/L)
 		if(L.stat == DEAD)
 			L.gib()
+
+			CHECK_TICK
+			continue
 
 		if(istype(L, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = L
@@ -91,8 +95,11 @@ datum/subsystem/blowout/proc/StopBlowout()
 				H.radiation += 500
 				H.apply_damage(175, BURN)
 
+		CHECK_TICK
+
 	for(var/obj/anomaly/An in anomalies)
 		An.SpawnArtifact()
+		CHECK_TICK
 
 	isblowout = 0
 	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "Все! Выброс закончилс&#x44F;! Выходите из укрытий.")

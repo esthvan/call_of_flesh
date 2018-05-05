@@ -1,0 +1,62 @@
+"a" = (/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
+"b" = (/turf/simulated/wall/stalker/ship,/area/stalker/blowout/outdoor/safezone/bar)
+"c" = (/turf/simulated/wall/stalker/ship,/area/stalker/blowout/outdoor)
+"d" = (/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"e" = (/obj/structure/stalker/shitok{pixel_x = -29},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"f" = (/obj/structure/stalker/bochka{pixel_x = -8; pixel_y = 10},/obj/structure/stalker/bochka,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"g" = (/obj/structure/stalker/bochka{pixel_y = 8},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"h" = (/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor)
+"i" = (/obj/structure/table/stalker/wood,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"j" = (/obj/structure/table/stalker/wood/bar,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"k" = (/obj/structure/stalker/truba,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"l" = (/obj/structure/stalker/yashik/yaskik_a,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"m" = (/obj/structure/stalker/yashik/yaskik_a/big,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"n" = (/obj/structure/stalker/battery{tag = "icon-gazovaya_truba (EAST)"; icon_state = "gazovaya_truba"; dir = 4},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"o" = (/obj/structure/stalker/doski/doski3,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"p" = (/obj/structure/bed/stalker/matras{pixel_y = 8},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"q" = (/obj/structure/stalker/shina2{pixel_x = 5; pixel_y = 14},/obj/structure/stalker/shina{pixel_x = -2},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"r" = (/obj/machinery/door/unpowered/stalker,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"s" = (/obj/structure/stalker/list{pixel_y = 12},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"t" = (/obj/machinery/door/poddoor/sidor{id = "SkadovskOut"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"u" = (/obj/machinery/button{id = "SkadovskOut"; pixel_x = -4; pixel_y = 26},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"v" = (/obj/effect/step_trigger/teleporter{teleport_x = 23; teleport_y = 12; teleport_z = 1},/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_right"; dir = 4},/area/stalker/blowout/outdoor/safezone/bar)
+"w" = (/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_right"; dir = 4},/area/stalker/blowout/outdoor/safezone/bar)
+"x" = (/obj/structure/stalker/doski/doski4,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"y" = (/obj/effect/step_trigger/teleporter{teleport_x = 23; teleport_y = 11; teleport_z = 1},/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_left"; dir = 4},/area/stalker/blowout/outdoor/safezone/bar)
+"z" = (/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_left"; dir = 4},/area/stalker/blowout/outdoor/safezone/bar)
+"A" = (/obj/structure/stalker/truba/vert{pixel_x = -7},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"B" = (/obj/machinery/door/airlock/stalker,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"C" = (/obj/structure/grille/stalker,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"D" = (/obj/structure/grille/stalker{icon_state = "fence2"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"E" = (/obj/structure/bed/chair/stalker/divan{pixel_y = 2},/obj/structure/stalker/cover{pixel_y = 32},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"F" = (/obj/structure/bed/chair/stalker/divan/divan2{pixel_y = 2},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"G" = (/obj/structure/stalker/komod{pixel_x = -2; pixel_y = 3},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"H" = (/obj/item/weapon/storage/backpack/polka{pixel_y = 20},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"I" = (/obj/structure/grille/stalker{icon_state = "fence3"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"J" = (/obj/structure/stalker/doski/doski2,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"K" = (/obj/structure/stalker/clocks{pixel_x = -30; pixel_y = 5},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"L" = (/obj/structure/table/stalker/wood/bar100rentgen{dir = 4; icon_state = "table"; pixel_x = 2},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"M" = (/obj/machinery/door/poddoor/sidor{id = "SkadovskBar"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"N" = (/obj/structure/stalker/brokenbed,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"O" = (/obj/machinery/button{id = "SkadovskBar"; pixel_x = 26; pixel_y = 8},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"P" = (/obj/structure/table/stalker/wood,/obj/machinery/party/turntable{icon_state = "radio_east"; name = "radio"; pixel_x = -7; pixel_y = 5},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"Q" = (/obj/structure/stalker/propane/dual{pixel_x = 7},/obj/structure/stalker/propane{pixel_x = 1},/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/fish{pixel_x = 4},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+abbbbbbbbbbbbbbbbbbbbbbbbcccccaaaaaaaaaaaaaaaaaa
+abdddbeddddddbfgiidjjklmbhhhhhaaaahhaaaaaaaaaaaa
+abdddbnddddddbjddddoddpqrhhhhhhaahhhhcccaaaaaaaa
+abdddbnddddddbjddddddddsbhhhhhaahhhhhhhhccaaaaaa
+abdddbbtbbdddbddddiiddiibhhhhhhahhhhhhhhhhccaaaa
+abdddbddubvwddddxdddddddbbhhhhhaahhhhhhhhhhhcaaa
+abdddbdddbyzddddddddddddABhhhhhahhhhhhhhhhhhhcaa
+abdddbdddbbbbbCDdddjjdddbbhhhhaahhhhhhhhhhhhhhca
+abdddbddddEFGbHIddddddJdmbhhhhhaahhhhhhhhhhhhcaa
+abdddbdddddddbKLddddddddlbhhhhhahhhhhhhhhhhhcaaa
+abdddddddddddMdLdodiddddNbhhhhaaahhhhhhhhhccaaaa
+abdddbddiiidObPIdddiddddQbhhhhaahhhhhhhhccaaaaaa
+abbbbbbbbbbbbbbbbbbbbbbbbbcccchahhhhhcccaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahhccaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
