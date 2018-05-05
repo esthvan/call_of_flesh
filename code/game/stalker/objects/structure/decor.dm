@@ -236,6 +236,12 @@
 	desc = "Портрет первого секретар&#255; ЦК КПСС."
 	icon_state = "lenin"
 
+/obj/structure/stalker/intercom
+	name = "intercom"
+	desc = "Домофон."
+	icon = 'icons/stalker/backwater.dmi'
+	icon_state = "intercom"
+
 /obj/structure/stalker/televizor/broken
 	icon_state = "TV_b"
 	name =  "Televisor"
