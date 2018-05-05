@@ -221,9 +221,9 @@
 			if (istype(get_area(src.loc), /area/stalker/blowout))
 				if (H.inshelter == 1)
 					if(H.client && (H.client.prefs.chat_toggles & CHAT_LANGUAGE))
-						H << "<span class='notice'>You leave the shelter.</span>"
+						H << "<span class='warning'>You leave the shelter.</span>"
 					else
-						H << "<span class='notice'>Вы покидаете укрытие.</span>"
+						H << "<span class='warning'>Вы покидаете укрытие.</span>"
 				H.inshelter = 0
 
 /turf/simulated/ChangeTurf(var/path)
