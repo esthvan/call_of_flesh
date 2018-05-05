@@ -1,5 +1,5 @@
-#define TURNTABLE_CHANNEL 9
-
+//#define TURNTABLE_CHANNEL 4488
+var/global/turntable_channel = 4488
 /*
 /mob/var/datum/hear_music/hear_music
 #define NONE_MUSIC 0
@@ -44,7 +44,7 @@
 
 */
 /mob/var/sound/music
-/mob/var/sound/music2
+/client/var/jukeboxplaying = 0
 
 /datum/turntable_soundtrack
 	var/f_name
@@ -56,19 +56,21 @@
 	desc = "A jukebox is a partially automated music-playing device, usually a coin-operated machine, that will play a patron's selection from self-contained media."
 	icon = 'icons/effects/lasers2.dmi'
 	icon_state = "Jukebox7"
+	var/music_channel = 0
 	var/obj/item/weapon/disk/music/disk
 	var/playing = 0
 	var/datum/turntable_soundtrack/track = null
 	var/volume = 100
 	var/list/turntable_soundtracks = list()
+	var/list/mob/melomans = list()
 	anchored = 1
 	density = 1
 
 /obj/machinery/party/turntable/New()
 	..()
-//	for(var/obj/machinery/party/turntable/TT) // NO WAY
-//		if(TT != src)
-//			qdel(src)
+	turntable_channel++
+	music_channel = turntable_channel
+
 	turntable_soundtracks = list()
 	for(var/i in typesof(/datum/turntable_soundtrack/bar) - /datum/turntable_soundtrack/bar)
 		var/datum/turntable_soundtrack/D = new i()
@@ -163,13 +165,15 @@
 /obj/machinery/party/turntable/proc/turn_on(var/datum/turntable_soundtrack/selected)
 	if(playing)
 		turn_off()
+
 	if(selected)
 		track = selected
+
 	if(!track)
 		return
 
-	for(var/mob/M)
-		create_sound(M)
+	//for(var/mob/M)
+	//	create_sound(M)
 	update_sound()
 
 	var/area/A = get_area(src)
@@ -183,11 +187,14 @@
 /obj/machinery/party/turntable/proc/turn_off()
 	if(!playing)
 		return
-	for(var/mob/M)
-		M.music = null
-		M << sound(null, channel = TURNTABLE_CHANNEL, wait = 0)
+
+	for(var/client/C in melomans)
+		C.jukeboxplaying = 0
+		C.mob << sound(null, channel = music_channel, wait = 0)
+		melomans.Remove(C)
 
 	playing = 0
+
 	var/area/A = get_area(src)
 	for(var/area/RA in A.related)
 		for(var/obj/machinery/party/lasermachine/L in RA)
@@ -196,37 +203,48 @@
 /obj/machinery/party/turntable/proc/set_volume(var/new_volume)
 	volume = max(0, min(100, new_volume))
 	if(playing)
-		update_sound(1)
+		update_sound()
 
-/obj/machinery/party/turntable/proc/update_sound(update = 0)
+/obj/machinery/party/turntable/proc/update_sound()
 	var/area/A = get_area(src)
+
 	for(var/mob/M)
 		var/inRange = (get_area(M) in A.related)
-		if(A == "Bar") 							 // kostuli kostulnie
-			var/area/crew_quarters/theatre/T
-			var/area/crew_quarters/kitchen/K
-			inRange+=(get_area(M) in K.related)
-			inRange+=(get_area(M) in T.related)
-		if(!M.music)
-			create_sound(M)
+
+		if(!inRange)
 			continue
-		if(inRange && (M.music.volume != volume || update))
-			//world << "In range. Volume: [M.music.volume]. Update: [update]"
-			M.music.status = SOUND_UPDATE//|SOUND_STREAM
+
+		if(!M || !M.client)
+			continue
+
+		if(!M.client.jukeboxplaying)
+			M.client.jukeboxplaying = 1
+			melomans.Add(M.client)
+			create_sound(M) //<< sound('sound/stalker/objects/campfire.ogg', 1, 0 , 5, 80)
 			M.music.volume = volume
 			M << M.music
-		else if(!inRange && M.music.volume != 0)
-			//world << "!In range. Volume: [M.music.volume]."
-			M.music.status = SOUND_UPDATE//|SOUND_STREAM
-			M.music.volume = 0
-			M << M.music
+
+	for (var/client/C in melomans)
+		var/inRange = (get_area(C.mob) in A.related)
+
+		if(!C)
+			melomans.Remove(C)
+			continue
+
+		if(!playing || !(C.mob) || !inRange)
+			C.jukeboxplaying = 0
+			C.mob.music.volume = 0
+			C.mob << C.mob.music
+			melomans.Remove(C)
+			continue
+		C.mob.music.status = SOUND_UPDATE//|SOUND_STREAM
+		C.mob.music.volume = volume
+		C.mob << C.mob.music
 
 /obj/machinery/party/turntable/proc/create_sound(mob/M)
-	//var/area/A = get_area(src)
-	//var/inRange = (get_area(M) in A.related)
 	var/sound/S = sound(track.path)
 	S.repeat = 1
-	S.channel = TURNTABLE_CHANNEL
+	S.channel = music_channel
 	S.falloff = 2
 	S.wait = 0
 	S.volume = 0
@@ -252,67 +270,11 @@
 
 /obj/machinery/party/turntable/bandit/New()
 	..()
-//	for(var/obj/machinery/party/turntable/TT) // NO WAY
-//		if(TT != src)
-//			qdel(src)
-
 	turntable_soundtracks = list()
 	for(var/i in typesof(/datum/turntable_soundtrack/bandit) - /datum/turntable_soundtrack/bandit)
 		var/datum/turntable_soundtrack/D = new i()
 		if(D.path)
 			turntable_soundtracks.Add(D)
-
-/obj/machinery/party/turntable/bandit/turn_off()
-
-	if(!playing)
-		return
-
-	for(var/mob/M)
-		M.music2 = null
-		M << sound(null, channel = 447, wait = 0)
-
-	playing = 0
-	var/area/A = get_area(src)
-	for(var/area/RA in A.related)
-		for(var/obj/machinery/party/lasermachine/L in RA)
-			L.turnoff()
-
-/obj/machinery/party/turntable/bandit/update_sound(update = 0)
-
-	var/area/A = get_area(src)
-
-	for(var/mob/M)
-		var/inRange = (get_area(M) in A.related)
-		if(A == "Bar") 							 // kostuli kostulnie
-			var/area/crew_quarters/theatre/T
-			var/area/crew_quarters/kitchen/K
-			inRange+=(get_area(M) in K.related)
-			inRange+=(get_area(M) in T.related)
-
-		if(!M.music2)
-			create_sound(M)
-			continue
-
-		if(inRange && (M.music2.volume != volume || update))
-			M.music2.status = SOUND_UPDATE//|SOUND_STREAM
-			M.music2.volume = volume
-			M << M.music2
-
-		else if(!inRange && M.music2.volume != 0)
-			M.music2.status = SOUND_UPDATE//|SOUND_STREAM
-			M.music2.volume = 0
-			M << M.music2
-
-/obj/machinery/party/turntable/bandit/create_sound(mob/M)
-	var/sound/S = sound(track.path)
-	S.repeat = 1
-	S.channel = 447
-	S.falloff = 2
-	S.wait = 0
-	S.volume = 0
-	S.status = 0 //SOUND_STREAM
-	M.music2 = S
-	M << S
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////ÂÍÈÌÀÍÈÅ!!! ÁÛÄËÎÊÎÄ!!!///////////////////////////////////////////////////////////////////////////////////////////
