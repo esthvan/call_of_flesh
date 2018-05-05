@@ -213,6 +213,9 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += "Our Discord Server"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"
 	s += ")"
+	s += " ("
+	s += "byond 512 ONLY"
+	s += ")"
 
 	var/list/features = list()
 
