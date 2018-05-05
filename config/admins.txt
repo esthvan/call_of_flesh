@@ -16,3 +16,4 @@ drunktess = Badmin
 ogardtheviking = Badmin
 mileswolfe = Badmin
 fillcross = Coder
+vavalor = Moderator
