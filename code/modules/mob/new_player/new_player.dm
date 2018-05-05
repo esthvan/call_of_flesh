@@ -370,7 +370,7 @@ var/global/num_sid = 0
 			character.faction_s = "Свобода"
 			character.rank 		= "Lieutenant"
 
-		if("Trader")
+		if("Traders")
 			character.faction_s = "Торговцы"
 			character.rank 		= "Lieutenant"
 
