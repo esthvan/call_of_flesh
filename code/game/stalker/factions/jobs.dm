@@ -16,43 +16,39 @@
 	minimal_player_age = 0
 	outfit = null
 
-/datum/job/stalker/sidor
-	title = "Sidorovich"
+/datum/job/stalker/trader
+	title = "Trader"
 	faction = "Station"
-
 	selection_color = "#FFA500"
-
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_mineral_storeroom)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_mineral_storeroom)
-
-	total_positions = 1
+	total_positions = 3
 	spawn_positions = 1
 	req_admin_notify = 1
 	whitelist_only = 1
+	outfit = /datum/outfit/job/trader
 
-	outfit = /datum/outfit/job/sidor
+/datum/outfit/job/trader
+	name = "Trader"
+	faction_s = "Торговцы"
 
-/datum/outfit/job/sidor
-	name = "Sidorovich"
-
-/datum/outfit/job/sidor/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/trader/pre_equip(mob/living/carbon/human/H)
 	..()
 	uniform = /obj/item/clothing/under/color/sidor/fat
 	suit = /obj/item/clothing/suit/jacket/sidor
 	ears = null
 	belt = /obj/item/weapon/gun/projectile/automatic/pistol/cora
-	id = /obj/item/weapon/storage/wallet/stalker
+	id = /obj/item/device/stalker_pda
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	back = null
 
-/datum/outfit/stalker/sidor  // For select_equipment
+/datum/outfit/stalker/trader  // For select_equipment
 	name = "Sidorovich"
-
 	uniform = /obj/item/clothing/under/color/sidor/fat
 	suit = /obj/item/clothing/suit/jacket/sidor
 	ears = null
 	belt = /obj/item/weapon/gun/projectile/automatic/pistol/cora
-	id = /obj/item/weapon/storage/wallet/stalker
+	id = /obj/item/device/stalker_pda
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	back = null
 

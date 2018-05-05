@@ -18,6 +18,9 @@
 
 /obj/machinery/campfire/New()
 	..()
+	set_light(4, 1, firecolor)
+	spawn(10)
+		set_light(0, 1, firecolor)
 	SSmachine.processing.Remove(src)
 
 /obj/machinery/campfire/Destroy()
@@ -35,32 +38,33 @@ obj/machinery/campfire/barrel
 	icon_state = "barrel0"
 	density = 1
 
-
 /obj/machinery/campfire/attack_hand(mob/user)
 	..()
-	if(on && !KOSTIL)
-		user.visible_message("<span class='notice'>[user] начал тушить костёр...</span>", "<span class='notice'>Вы начали тушить костёр...</span>")
-		KOSTIL = 1
+	if(!on || KOSTIL)
+		return
 
-		if(!do_after(user, 10, 1, src))
-			KOSTIL = 0
-			return
+	user.visible_message("<span class='notice'>[user] начал тушить костёр...</span>", "<span class='notice'>Вы начали тушить костёр...</span>")
+	KOSTIL = 1
 
+	if(!do_after(user, 10, 1, src))
 		KOSTIL = 0
+		return
 
-		user.visible_message("<span class='green'>[user] потушил костёр.</span>", "<span class='green'>Вы потушили костёр.</span>")
-		desc = "Бочка с парой сухих дровишек внутри. Можно зажечь спичками или зажигалкой."
+	KOSTIL = 0
 
-		on = !on
-		update_icon()
-		set_light(0)
+	user.visible_message("<span class='green'>[user] потушил костёр.</span>", "<span class='green'>Вы потушили костёр.</span>")
+	desc = "Бочка с парой сухих дровишек внутри. Можно зажечь спичками или зажигалкой."
 
-		for (var/client/C in campers)
-			C.campfireplaying = 0
-			C << sound(null, 0, 0 , 5, 80)
-			campers -= C
+	on = !on
+	update_icon()
+	set_light(0)
 
-		SSmachine.processing.Remove(src)
+	for (var/client/C in campers)
+		C.campfireplaying = 0
+		C << sound(null, 0, 0 , 5, 80)
+		campers -= C
+
+	SSmachine.processing.Remove(src)
 
 /obj/machinery/campfire/update_icon()
 	icon_state = "campfire[on]"
@@ -113,6 +117,7 @@ obj/machinery/campfire/barrel
 obj/machinery/campfire/process()
 	if(!on)
 		SSmachine.processing.Remove(src)
+		return
 	src.RefreshSound()
 	//if(!on || (stat & BROKEN))
 	//	return
@@ -158,6 +163,9 @@ obj/machinery/campfire/process()
 				desc = "От костра исходит тёпло и м&#255;гкий свет."
 				update_icon()
 				set_light(4, 1, firecolor)
+				spawn(10)
+					set_light(0, 1, firecolor)
+					set_light(4, 1, firecolor)
 				SSmachine.processing |= src
 		else
 			if(istype(I, /obj/item/weapon/match))
@@ -168,6 +176,9 @@ obj/machinery/campfire/process()
 					update_icon()
 					desc = "От костра исходит тёпло и м&#255;гкий свет."
 					set_light(4, 1, firecolor)
+					spawn(10)
+						set_light(0, 1, firecolor)
+						set_light(4, 1, firecolor)
 					SSmachine.processing |= src
 				else
 					if(M.lit == 0 && on)
@@ -181,12 +192,15 @@ obj/machinery/campfire/process()
 						update_icon()
 						desc = "От костра исходит тёпло и м&#255;гкий свет."
 						set_light(4, 1, firecolor)
+						spawn(10)
+							set_light(0, 1, firecolor)
+							set_light(4, 1, firecolor)
 						SSmachine.processing |= src
 
 				else
 					if(on)
 						I.fire_act()
-
+/*
 /obj/machinery/campfire/Crossed(atom/A)
 	if(istype(A,/mob))
 		src.trapped.Add(A)
@@ -222,3 +236,4 @@ obj/machinery/campfire/proc/Think()
 			src.Think()
 
 	return
+*/

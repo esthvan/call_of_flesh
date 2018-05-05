@@ -149,7 +149,7 @@ var/global/num_sid = 0
 
 		if(isblowout)
 			if(client && (client.prefs.chat_toggles & CHAT_LANGUAGE))
-				usr << "<span class='danger'>The emission is ongoing in the Zone!</span>"
+				usr << "<span class='danger'>The blowout is ongoing in the Zone!</span>"
 			else
 				usr << "<span class='danger'>В зоне идёт выброс!</span>"
 			return
@@ -345,12 +345,34 @@ var/global/num_sid = 0
 	switch(rank)
 		if("Bandit" || "Pahan")
 			character.faction_s = "Бандиты"
+
 		if("Army" || "EliteAgro")
 			character.faction_s = "Военные"
+
 		if("Duty")
 			character.faction_s = "Долг"
+
+		if("Duty Lieutenant")
+			character.faction_s = "Долг"
+			character.rank 		= "Lieutenant"
+
 		if("Mercenary")
 			character.faction_s = "Наёмники"
+
+		if("Mercenary Sql")
+			character.faction_s = "Наёмники"
+			character.rank 		= "Lieutenant"
+
+		if("Freedom")
+			character.faction_s = "Свобода"
+
+		if("Freedom Lieutenant")
+			character.faction_s = "Свобода"
+			character.rank 		= "Lieutenant"
+
+		if("Trader")
+			character.faction_s = "Торговцы"
+			character.rank 		= "Lieutenant"
 
 	joined_player_list += character.ckey
 

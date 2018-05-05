@@ -26,24 +26,31 @@
 			var/obj/item/clothing/C = bp
 			if(C.body_parts_covered & def_zone.body_part)
 				var/percentage = (C.durability/initial(C.durability))*100
+
 				switch(percentage)
+
 					if(75 to 100)
 						protection += C.armor[type]
+
 					if(25 to 75)
 						protection += C.armor[type] * 0.8
+
 					if(0 to 25)
 						protection = 0
+
 				if(type != "rad")
+
 					if(istype(C, /obj/item/clothing/suit))
 						var/obj/item/clothing/suit/S = C
-						S.durability -= 0.1
+						S.durability -= 0.2
 
 					if(istype(C, /obj/item/clothing/head) && !istype(C, /obj/item/clothing/head/winterhood))
 						var/obj/item/clothing/head/H = C
-						H.durability -= 0.1
+						H.durability -= 0.2
+
 					if(istype(C, /obj/item/clothing/mask))
 						var/obj/item/clothing/mask/M = C
-						M.durability -= 0.1
+						M.durability -= 0.2
 
 					if(C.durability <= 0)
 						visible_message("<span class='danger'>[C] развалился пр&#255;мо на [src]</span>", "<span class='warning'>[C] развалилс&#255; пр&#255;мо на вас!</span>")

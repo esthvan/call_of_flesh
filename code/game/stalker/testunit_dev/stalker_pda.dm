@@ -352,7 +352,7 @@ var/global/lentahtml = ""
 					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
 					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						mainhtml +="\
-						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>"
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Refresh stalker list</a> | </div>"
 					else
 						mainhtml +="\
 						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>"
@@ -509,8 +509,8 @@ var/global/lentahtml = ""
 
 						data_core.manifest_inject(H, pass)
 
-						var/datum/job/J = SSjob.GetJob(H.job)
-						access = J.get_access()
+						//var/datum/job/J = SSjob.GetJob(H.job)
+						//access = J.get_access()
 
 						registered_name = H.real_name
 						owner = H
@@ -541,8 +541,8 @@ var/global/lentahtml = ""
 							if(sk.fields["sid"] == H.sid)
 								if(sk.fields["pass"] == t)
 									password = t
-									var/datum/job/J = SSjob.GetJob(H.job)
-									access = J.get_access()
+									//var/datum/job/J = SSjob.GetJob(H.job)
+									//access = J.get_access()
 
 									registered_name = H.real_name
 									faction_s = sk.fields["faction"]
@@ -623,6 +623,7 @@ var/global/lentahtml = ""
 						add_lenta_message(src, sid, registered_name, faction_s, t)
 
 					else
+						/*
 						var/lefttime = round((450 + last_lenta - world.time)/10)
 						var/ending = ""
 						switch (lefttime % 10)
@@ -630,12 +631,16 @@ var/global/lentahtml = ""
 								ending = "ы"
 							if(1)
 								ending = "у"
-						H << "<span class='warning'>Вы сможете отправить следующее сообщение через [round((450 + last_lenta - world.time)/10)] секунд[ending].</span>"
+						*/
+						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+							H << "<span class='warning'>You can send message in [round((450 + last_lenta - world.time)/10)] sec.</span>"
+						else
+							H << "<span class='warning'>Вы сможете отправить следующее сообщение через [round((450 + last_lenta - world.time)/10)] сек.</span>"
 
 			if("lenta_sound")
 				lenta_sound = !lenta_sound
 				if(lenta_sound)
-					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте включен.</span>"
+					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте активирован.</span>"
 				else
 					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
 
@@ -739,6 +744,9 @@ var/global/lentahtml = ""
 	ratinghtml = ""
 
 	for(var/datum/data/record/R in sortRecordNum(data_core.stalkers, "rating", -1))
+		if(R.fields["lastlogin"] + 12000 < world.time)
+			continue
+
 		var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
 		var/sid_p = R.fields["sid"]
 		H << browse_rsc(P1.img, "photo_[sid_p]")
@@ -757,43 +765,42 @@ var/global/lentahtml = ""
 
 		count++
 
-		if(R.fields["lastlogin"] + 12000 >= world.time)
-			if(usr.client.prefs.chat_toggles & CHAT_LANGUAGE)
-				ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
-						<tr style=\"border: 1px solid black;\">\
-		                \
-		                <td width=64 height=64 align=\"top\">\
-						<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
-		                </td>\
-		                \
-		                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
-		         		\
-		                <b>\[[count]\]</b> [n] ([eng_f])<br>\
-						<b>Rating</b> [eng_rank_name] ([r])<br>\
-		                <b>Reputation:</b> <font color=\"[rep_color]\">[eng_rep]</font><br>\
-		                \
-		                </td>\
-		                \
-		                </tr>\
-		                </table>"
-			else
-				ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
-						<tr style=\"border: 1px solid black;\">\
-		                \
-		                <td width=64 height=64 align=\"top\">\
-						<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
-		                </td>\
-		                \
-		                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
-		         		\
-		                <b>\[[count]\]</b> [n] ([f])<br>\
-						<b>Рейтинг:</b> [rank_name] ([r])<br>\
-		                <b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
-		                \
-		                </td>\
-		                \
-		                </tr>\
-		                </table>"
+		if(usr.client.prefs.chat_toggles & CHAT_LANGUAGE)
+			ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
+					<tr style=\"border: 1px solid black;\">\
+	                \
+	                <td width=64 height=64 align=\"top\">\
+					<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
+	                </td>\
+	                \
+	                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
+	         		\
+	                <b>\[[count]\]</b> [n] ([eng_f])<br>\
+					<b>Rating</b> [eng_rank_name] ([r])<br>\
+	                <b>Reputation:</b> <font color=\"[rep_color]\">[eng_rep]</font><br>\
+	                \
+	                </td>\
+	                \
+	                </tr>\
+	                </table>"
+		else
+			ratinghtml += "<table style=\"margin-top: 0px; margin-bottom: 5px;\">\
+					<tr style=\"border: 1px solid black;\">\
+	                \
+	                <td width=64 height=64 align=\"top\">\
+					<img id=\"ratingbox\" height=64 width=64 src=photo_[sid_p]>\
+	                </td>\
+	                \
+	                <td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
+	         		\
+	                <b>\[[count]\]</b> [n] ([f])<br>\
+					<b>Рейтинг:</b> [rank_name] ([r])<br>\
+	                <b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
+	                \
+	                </td>\
+	                \
+	                </tr>\
+	                </table>"
 
 	return ratinghtml
 
@@ -918,6 +925,10 @@ var/global/lentahtml = ""
 			eng_faction_s = "Mercenaries"
 		if("Долг")
 			eng_faction_s = "Duty"
+		if("Торговцы")
+			eng_faction_s = "Traders"
+		if("Свобода")
+			eng_faction_s = "Freedom"
 	return eng_faction_s
 
 /proc/get_faction_color(var/faction_s)
@@ -931,6 +942,8 @@ var/global/lentahtml = ""
 			factioncolor = "#3399ff"
 		if("Долг")
 			factioncolor = "#ff4d4d"
+		if("Свобода")
+			factioncolor = "#6cba3f"
 	return factioncolor
 
 /proc/get_rep_name(var/rep)
@@ -943,9 +956,9 @@ var/global/lentahtml = ""
 			rep_name_s = "Очень хороша&#x44F;"
 		if(GOOD to VERYGOOD)
 			rep_name_s = "Хороша&#x44F;"
-		if(NEUTRAL to GOOD)
+		if(BAD to GOOD)
 			rep_name_s = "Нейтральна&#x44F;"
-		if(BAD to NEUTRAL)
+		if(VERYBAD to BAD)
 			rep_name_s = "Плоха&#x44F;"
 		if(DISGUSTING to VERYBAD)
 			rep_name_s = "Очень плоха&#x44F;"
@@ -976,7 +989,7 @@ var/global/lentahtml = ""
 	return eng_rep_name_s
 
 /proc/get_rep_color(var/rep)
-	var/rep_color_s
+	var/rep_color_s = "#ffe100"
 	switch(rep)
 		if(AMAZING to INFINITY)
 			rep_color_s = "#00abdb" //#00abdb

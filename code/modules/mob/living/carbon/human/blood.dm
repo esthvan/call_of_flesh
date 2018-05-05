@@ -290,6 +290,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 	// Find a blood decal or create a new one.
 	B = locate(decal_type) in T
 	if(!B)
+		//B = PoolOrNew(decal_type, T)
 		B = new decal_type(T)
 
 	var/obj/effect/decal/cleanable/blood/drip/drop = B

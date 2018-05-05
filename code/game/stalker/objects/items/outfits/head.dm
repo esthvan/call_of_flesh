@@ -1,17 +1,55 @@
+/obj/item/clothing/head/steelhelmet
+	name = "Steel helmet"
+	desc = "Каска из темной, местами ржавой стали, такой ваши деды въебывали по щам нацистам. На ура держит прилетевшую по касательной пулю, но от хорошенького ножевого удара под козырек не спасет."
+	icon_state = "steelhelmet"
+	item_state = "steelhelmet"
+	armor = list(melee = 25, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	unacidable = 1
+	durability = 40
+
 /obj/item/clothing/head/hardhat/tacticalhelmet
 	name = "Tactical helmet"
-	desc = "Западный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; максимальным количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; усиленной конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
+	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; базовым количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
 	icon_state = "hardhat0_tactical"
 	item_state = "hardhat0_tactical"
 	item_color = "tactical"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	action_button_name = "Toggle Light"
-	armor = list(melee = 50, bullet = 50, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 40)
+	armor = list(melee = 50, bullet = 60, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 20)
 	brightness_on = 2 //luminosity when on
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
-	durability = 400
+	durability = 300
+
+/obj/item/clothing/head/hardhat/lighttacticalhelmet
+	name = "Light tactical helmet"
+	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; бойцов спецназа надежной защитой головы. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, но респиратор и ПНВ отсутствуют."
+	icon_state = "hardhat0_lighttactical"
+	item_state = "hardhat0_lighttactical"
+	item_color = "lighttactical"
+	flags = BLOCKHAIR
+	flags_inv = HIDEEARS|HIDEEYES
+	action_button_name = "Toggle Light"
+	armor = list(melee = 35, bullet = 50, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	brightness_on = 2 //luminosity when on
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	unacidable = 1
+	durability = 200
+
+/obj/item/clothing/head/assaultmerc
+	name = "Mercenary helmet"
+	desc = "Необычной формы шлем в тускло-серой маскировочной краске, суд&#255; по маркировке - швейцарского производства. Затемненное забрало матово отражает свет, и без того тусклый, ослабленный облаками Чернобыл&#255;. Чертова западна&#255; др&#255;нь."
+	icon_state = "assaultmerc"
+	item_state = "assaultmerc"
+	flags = BLOCKHAIR
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
+	armor = list(melee = 50, bullet = 65, laser = 25,energy = 50, bomb = 0, bio = 0, rad = 0)
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	unacidable = 1
+	durability = 250
+
 
 /obj/item/clothing/head/gopcap
 	name = "Сap"
@@ -33,7 +71,7 @@
 	icon_state = "sphera"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 50)
+	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 30)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
@@ -44,7 +82,18 @@
 	icon_state = "helmet_skat"
 	flags = BLOCKHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 70, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 10, electro = 70)
+	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	unacidable = 1
+	durability = 400
+
+/obj/item/clothing/head/petrovichhelmet
+	name = "SKOT-M777"
+	desc = "Отделанный шпротами алюминиево-картонный шлем с карманами дл&#255; мелочи и бронеусами. Обычно поставл&#255;етс&#255; в комплекте с водкой. Недостаточно попул&#255;рен в Зоне благодар&#255; конспирации Петровича."
+	icon_state = "helmet_skot"
+	flags = BLOCKHAIR
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
+	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400

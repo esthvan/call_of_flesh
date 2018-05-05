@@ -68,3 +68,20 @@
 				 /obj/item/weapon/gun/projectile/automatic/val,
 				 /obj/item/weapon/gun/projectile/automatic/groza)
 	zoom_add = 4
+
+/obj/item/weapon/attachment/scope/fnf2000
+	name = "FN-F2000 scope"
+	desc = "Прицел дл&#255; винтовки FN-F2000."
+	icon_state = "fnf2000-scope"
+	types = list(/obj/item/weapon/gun/projectile/automatic/fnf2000)
+
+/obj/item/weapon/attachment/grenadelauncher
+	name = "grenade launcher"
+	desc = "Подствольный гранатомёт."
+	icon_state = ""
+	types = list()
+
+/obj/item/weapon/attachment/grenadelauncher/fnf2000
+	name = "fn-f2000 grenade launcher"
+	desc = "Подствольный гранатомёт для fn-f2000"
+	icon_state = "fnf2000-gl"

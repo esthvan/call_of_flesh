@@ -6,8 +6,8 @@ Assistant
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 6
+	spawn_positions = 2
 	supervisors = "Major"
 	selection_color = "#601919"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -24,13 +24,11 @@ Assistant
 	..()
 	head = null
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
-	suit = /obj/item/clothing/suit/hooded/kombez/psz9d
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	//back = /obj/item/weapon/storage/backpack/stalker
-	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/aksu74, /obj/nothing)
 	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
@@ -42,12 +40,13 @@ Assistant
 	name = "Duty Soldier"
 
 	head = null
-	suit = /obj/item/clothing/suit/hooded/kombez/psz9d
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
-	id = /obj/item/weapon/storage/wallet/stalker
+	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
+	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
 							/obj/item/ammo_box/magazine/stalker/m545 = 2,)
@@ -57,7 +56,7 @@ Assistant
 /datum/outfit/duty/pre_equip(mob/living/carbon/human/H)
 	..()
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
-	suit = /obj/item/clothing/suit/hooded/kombez/psz9d
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	//back2 = /obj/item/weapon/gun/projectile/automatic/aksu74
 	ears = null
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
@@ -68,7 +67,7 @@ Assistant
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = -1
+	total_positions = 1
 	spawn_positions = -1
 	supervisors = ""
 	selection_color = "#601919"
@@ -80,7 +79,7 @@ Assistant
 
 /datum/outfit/job/barman2
 	name = "Barman"
-	faction_s = "Одиночки"
+	faction_s = "Торговцы"
 
 /datum/outfit/job/barman2/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -89,6 +88,36 @@ Assistant
 	suit = /obj/item/clothing/suit/jacket/sidor
 	ears = null
 	belt = /obj/item/weapon/gun/projectile/automatic/pistol/cora
-	id = /obj/item/weapon/storage/wallet/stalker
+	id = /obj/item/device/stalker_pda
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	back = null
+
+/datum/job/duty_lieutenant
+	title = "Duty Lieutenant"
+	faction = "Station"
+	total_positions = 2
+	spawn_positions = -1
+	supervisors = "Major"
+	selection_color = "#601919"
+	whitelist_only = 1
+	limit_per_player = 2
+	outfit = /datum/outfit/job/duty_lieutenant
+
+/datum/outfit/job/duty_lieutenant
+	name = "Duty Lieutenant"
+	faction_s = "Долг"
+
+/datum/outfit/job/duty_lieutenant/pre_equip(mob/living/carbon/human/H)
+	..()
+	head = /obj/item/clothing/head/hardhat/lighttacticalhelmet
+	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
+	belt = /obj/item/weapon/stalker/knife
+	gloves = /obj/item/clothing/gloves/fingerless
+	id = /obj/item/device/stalker_pda
+	suit_store = /obj/item/weapon/gun/projectile/shotgun/spsa
+	backpack_contents = list(/obj/item/ammo_box/stalker/b12x70 = 1,
+							/obj/item/device/flashlight/seclite = 1)
+	shoes = /obj/item/clothing/shoes/jackboots/warm
+	r_pocket = /obj/item/weapon/stalker/bolts
+	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)

@@ -116,3 +116,27 @@
 	icon_state = "45_ACP_hydroshock"
 	max_ammo = 30
 	multiple_sprites = 2
+
+/obj/item/ammo_box/stalker/bmag44
+	name = "ammo box (.44 Magnum)"
+	desc = "Пистолетный патрон калибра .44 Магнум. Возможно, даже слишком мощный."
+	ammo_type = /obj/item/ammo_casing/mag44
+	icon_state = "44_Mag"
+	max_ammo = 50
+	multiple_sprites = 2
+
+/obj/item/ammo_box/stalker/bmag44fmj
+	name = "ammo box (.44 Magnum JHP)"
+	desc = "Пистолетный патрон калибра .44 Магнум, оболоченный. Пробивает навылет любую легкую броню."
+	ammo_type = /obj/item/ammo_casing/mag44/FMJ
+	icon_state = "44_Mag_FMJ"
+	max_ammo = 50
+	multiple_sprites = 2
+
+/obj/item/ammo_box/stalker/b762x25
+	name = "ammo box (7.62x25mm)"
+	desc = "Пистолетный патрон калибра 7.62x25мм, разработанный в прошлом веке дл&#255; советского самозар&#255;дного оружи&#255;. Морально и технически устарел, но еще используетс&#255; в Зоне."
+	ammo_type = /obj/item/ammo_casing/c762x25
+	icon_state = "762x25"
+	max_ammo = 50
+	multiple_sprites = 2

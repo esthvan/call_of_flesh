@@ -405,9 +405,10 @@
 
 /obj/structure/stalker/trubas
 	name = "pipe"
-	desc = "Большие ржавые трубы, служили для водо и воздухоснабжени&#255;"
+	desc = "Большие ржавые трубы, служили дл&#255; газоснабжени&#255;."
 	icon = 'icons/stalker/structure/trubas.dmi'
 	icon_state = "trubas"
+	density = 1
 
 /obj/structure/stalker/sign/bar100rentgen
 	name = "sign"

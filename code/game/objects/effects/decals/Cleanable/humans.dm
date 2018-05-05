@@ -114,6 +114,7 @@
 /obj/effect/decal/cleanable/blood/drip/New()
 	..()
 	spawn(1)
+		drips = list()
 		drips |= icon_state
 
 /obj/effect/decal/cleanable/blood/drip/can_bloodcrawl_in()

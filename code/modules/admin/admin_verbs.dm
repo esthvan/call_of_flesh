@@ -24,6 +24,7 @@ var/list/admin_verbs_default = list(
 var/list/admin_verbs_admin = list(
 	/client/proc/GetRank,
 	/client/proc/GetMoney,
+	/client/proc/SetFaction,
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
 	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
 //	/datum/admins/proc/show_traitor_panel,	/*interface which shows a mob's mind*/ -Removed due to rare practical use. Moved to debug verbs ~Errorage
@@ -77,6 +78,8 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/set_round_end_sound,
 	)
 var/list/admin_verbs_fun = list(
+	/client/proc/SetRank,
+	/client/proc/SetMoney,
 	/client/proc/MakeController,
 	/client/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_gib_self,
@@ -120,9 +123,6 @@ var/list/admin_verbs_server = list(
 
 	)
 var/list/admin_verbs_debug = list(
-	/client/proc/SetRank,
-	/client/proc/SetMoney,
-	/client/proc/SetFaction,
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
 	/client/proc/ResetSidorRooms,
@@ -329,13 +329,14 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	for(var/datum/data/record/sk in data_core.stalkers)
-		if(sk.fields["sid"] == selected.sid)
-			var/sk_name = sk.fields["name"]
-			var/sk_rating = sk.fields["rating"]
-			usr << "<span class='interface'>Рейтинг [sk_name] - [sk_rating].</span>"
-			return
-	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+	if(selected && selected.sid)
+		for(var/datum/data/record/sk in data_core.stalkers)
+			if(sk.fields["sid"] == selected.sid)
+				var/sk_name = sk.fields["name"]
+				var/sk_rating = sk.fields["rating"]
+				usr << "<span class='interface'>Рейтинг [sk_name] - [sk_rating].</span>"
+				return
+		usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
 /client/proc/SetRank()
 	set name = "Set Rank"
@@ -343,17 +344,18 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	for(var/datum/data/record/sk in data_core.stalkers)
-		if(sk.fields["sid"] == selected.sid)
-			var/newrank = input(usr, "Введите новый ранг сталкера от 0 до бесконечности.", "Rating System") as num|null
-			if(newrank)
-				var/oldrank = sk.fields["rating"]
-				var/sk_name = sk.fields["name"]
-				sk.fields["rating"] = newrank
-				usr << "<span class='interface'>Рейтинг успешно обновлен с [oldrank] до [newrank].</span>"
-				log_admin("[key_name(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
-				message_admins("[key_name_admin(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
-			return
+	if(selected && selected.sid)
+		for(var/datum/data/record/sk in data_core.stalkers)
+			if(sk.fields["sid"] == selected.sid)
+				var/newrank = input(usr, "Введите новый ранг сталкера от 0 до бесконечности.", "Rating System") as num|null
+				if(newrank)
+					var/oldrank = sk.fields["rating"]
+					var/sk_name = sk.fields["name"]
+					sk.fields["rating"] = newrank
+					usr << "<span class='interface'>Рейтинг успешно обновлен с [oldrank] до [newrank].</span>"
+					log_admin("[key_name(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
+					message_admins("[key_name_admin(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
+				return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
 /client/proc/SetMoney()
@@ -362,18 +364,19 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	for(var/datum/data/record/sk in data_core.stalkers)
-		if(sk.fields["sid"] == selected.sid)
-			var/sk_name = sk.fields["name"]
-			var/sk_money = sk.fields["money"]
-			src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
-			var/newbalance = input(usr, "Введите новое количество RU на счету сталкера.", "S.T.A.L.K.E.R.") as num|null
-			if(newbalance)
-				sk.fields["money"] = newbalance
-				usr << "<span class='interface'>Баланс на счету успешно обновлен.</span>"
-				log_admin("[key_name(usr)] changed [sk_name] money balance from [sk_money] to [newbalance].")
-				message_admins("[key_name_admin(usr)] changed [sk_name] money balance from [sk_money] to [newbalance].")
-			return
+	if(selected && selected.sid)
+		for(var/datum/data/record/sk in data_core.stalkers)
+			if(sk.fields["sid"] == selected.sid)
+				var/sk_name = sk.fields["name"]
+				var/sk_money = sk.fields["money"]
+				src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
+				var/newbalance = input(usr, "Введите новое количество RU на счету сталкера.", "S.T.A.L.K.E.R.") as num|null
+				if(newbalance)
+					sk.fields["money"] = newbalance
+					usr << "<span class='interface'>Баланс на счету успешно обновлен.</span>"
+					log_admin("[key_name(usr)] changed [sk_name] money balance from [sk_money] to [newbalance].")
+					message_admins("[key_name_admin(usr)] changed [sk_name] money balance from [sk_money] to [newbalance].")
+				return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
 /client/proc/GetMoney()
@@ -382,12 +385,13 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	for(var/datum/data/record/sk in data_core.stalkers)
-		if(sk.fields["sid"] == selected.sid)
-			var/sk_name = sk.fields["name"]
-			var/sk_money = sk.fields["money"]
-			src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
-			return
+	if(selected && selected.sid)
+		for(var/datum/data/record/sk in data_core.stalkers)
+			if(sk.fields["sid"] == selected.sid)
+				var/sk_name = sk.fields["name"]
+				var/sk_money = sk.fields["money"]
+				src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
+				return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
 /client/proc/SetFaction()
@@ -396,7 +400,7 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	if(selected.sid)
+	if(selected && selected.sid)
 		for(var/datum/data/record/sk in data_core.stalkers)
 			if(sk.fields["sid"] == selected.sid)
 				var/newfaction = input(usr, "Введите новую фракцию сталкера.", "Система S.T.A.L.K.E.R.") as text|null

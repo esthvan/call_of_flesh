@@ -27,7 +27,7 @@
 	var/radiation = 2
 	var/waspicked = 0
 	var/level_s = 1
-	w_class = 3
+	w_class = 2
 	var/obj/effect/fakeart/phantom = null
 
 /obj/item/weapon/artifact/proc/Think(user)
@@ -105,6 +105,7 @@
 	name = "pustishka"
 	desc = "Предположительно, разр&#255;женный энергетический элемент. Добавл&#255;ет огнестойкость."
 	icon_state = "pustishka"
+	radiation = 2
 	art_armor = list(electro = 30)
 	level_s = 3
 
@@ -114,7 +115,6 @@
 	icon_state = "battery"
 	art_armor = list(electro = 30)
 	level_s = 4
-
 	/////////////////////////////////////////Огненные артефакты/////////////////////////////////////////
 
 /obj/item/weapon/artifact/droplet
@@ -145,7 +145,7 @@
 	icon_state = "crystal"
 	art_armor = list(rad = 30)
 	radiation = -5
-	level_s = 3
+	level_s = 4
 
 	/////////////////////////////////////////Химические артефакты/////////////////////////////////////////
 
@@ -162,7 +162,7 @@
 	desc = "Органический артефакт с уникальными свойствами. Неизвестным пока образом увеличивает общую скорость восстановлени&#255; организма после травм любой природы, не ускор&#255;&#255; накопление токсинов. Из-за при&#255;тного внешнего вида представл&#255;ет особый интерес дл&#255; коллекционеров. Радиоактивен."
 	icon_state = "soul"
 	radiation = 2
-	level_s = 1
+	level_s = 2
 
 /obj/item/weapon/artifact/soul/Think(user)
 	if(!..()) return 0
@@ -177,7 +177,24 @@
 	desc = "Артефакт представл&#255;ет собой несколько полых образований органической природы, соединённых между собой. Выдел&#255;ет газообразное вещество, способное нейтрализовать радиоактивные частицы в организме человека; какого-либо вредоносного воздействи&#255; данного вещества не вы&#255;влено. Ввиду высокой эффективности пользуетс&#255; огромным спросом."
 	icon_state = "bubble"
 	radiation = -4
-	level_s = 1
+	level_s = 3
+
+/obj/item/weapon/artifact/mica
+	name = "mica"
+	desc = "Аномали&#255; «Холодец» способна породить такой артефакт при редчайшем, экстремальном наборе физических условий. В результате получаетс&#255; полупрозрачный твёрдый объект. Артефакт дорогой и редкостный. Ношение артефакта на по&#255;се значительно уменьшает поражение от аномалий «Ржавые волосы» и «Жгучий пух» и отпугивает хищников, однако при длительном ношении приводит к тому что люба&#255; царапина становитс&#255; смертельно опасной из-за ускоренных кровотечений. Цена высока&#255;. Интерес к артефакту про&#255;вл&#255;ют научные организации."
+	eng_desc = "Anomaly \"Fruit Punch\" is able to create such an artifact at the rarest, most extreme collection of physical conditions. The result is a semi-transparent, hard object. A rare and expensive artifact."
+	icon_state = "mica"
+	level_s = 4
+
+/obj/item/weapon/artifact/mica/Think(user)
+	if(!..()) return 0
+	if(istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		if(!H.bleedsuppress) //so you can't stack bleed suppression
+			H.suppress_bloodloss(1)
+
+	return 1
+
 
 	//Пояс
 /obj/item/weapon/storage/belt/stalker
@@ -189,7 +206,7 @@
 	max_w_class = 3
 
 /obj/item/weapon/storage/belt/stalker/artifact_belt
-	var/thinkrate = 1000
+	var/thinkrate = 100
 	can_hold = list(
 													//Гравитационные артефакты
 		/obj/item/weapon/artifact/meduza,
@@ -212,14 +229,15 @@
 		/obj/item/weapon/artifact/stone_blood,
 		/obj/item/weapon/artifact/soul,
 		/obj/item/weapon/artifact/bubble,
+		/obj/item/weapon/artifact/mica
 
 		)
 
 /obj/item/weapon/storage/belt/stalker/artifact_belt/proc/Think()
 	for(var/obj/item/weapon/artifact/A in contents)
 		A.Think(loc)
-	spawn(thinkrate)
-		Think()
+	//spawn(thinkrate)
+	//	Think()
 
 /obj/item/weapon/storage/belt/stalker/artifact_belt/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	if(..(W, prevent_warning, user) && istype(W, /obj/item/weapon/artifact))

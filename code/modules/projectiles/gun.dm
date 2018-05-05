@@ -71,6 +71,7 @@
 	var/jam = 0              //is weapon jammed or not
 	var/unique = 0
 	var/list/obj/item/weapon/attachment/addons = list()
+	var/obj/item/weapon/attachment/gl = null
 
 	var/list/l_sounds_shots = list('sound/stalker/weapons/fading/rnd_shooting_1.ogg','sound/stalker/weapons/fading/rnd_shooting_2.ogg',
 								'sound/stalker/weapons/fading/rnd_shooting_4.ogg','sound/stalker/weapons/fading/rnd_shooting_5.ogg',
@@ -231,7 +232,10 @@
 	var/area/B = get_area(user.loc)
 	for(var/A in safezones)
 		if(B.type == A)
-			user << "<span class='warning'>Вы не можете стрел&#255;ть в этой зоне!</span>"
+			if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+				user << "<span class='warning'>You can't shoot in the safezone!</span>"
+			else
+				user << "<span class='warning'>Вы не можете стрел&#255;ть в этой зоне!</span>"
 			return 0
 	if(!handle_pins(user))
 		return 0

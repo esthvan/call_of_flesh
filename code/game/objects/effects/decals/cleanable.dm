@@ -1,11 +1,15 @@
-/obj
-	var/delay_clean_decals = 10000
+
+var/global/delay_clean_decals = 5000
 
 /obj/effect/decal/cleanable
 	var/list/random_icon_states = list()
 	var/blood_state = "" //I'm sorry but cleanable/blood code is ass, and so is blood_DNA
 	var/bloodiness = 0 //0-100, amount of blood in this decal, used for making footprints and affecting the alpha of bloody footprints
 	layer = 2.01
+
+/obj/effect/decal/cleanable/Destroy()
+	..()
+	return QDEL_HINT_PUTINPOOL
 
 /obj/effect/decal/cleanable/New()
 	if (random_icon_states && length(src.random_icon_states) > 0)
@@ -15,7 +19,7 @@
 		for(var/obj/effect/decal/cleanable/C in src.loc)
 			if(C != src && C.type == src.type)
 				replace_decal(C)
-	spawn(delay_clean_decals) //Кулдаун очистки декалей
+	spawn(rand(delay_clean_decals, delay_clean_decals*1.5)) //Кулдаун очистки декалей
 		qdel(src)
 	..()
 

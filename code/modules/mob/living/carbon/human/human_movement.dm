@@ -56,6 +56,7 @@
 				var/obj/item/clothing/shoes/S = shoes
 
 				//Bloody footprints
+				/*
 				var/turf/T = get_turf(src)
 				if(S.bloody_shoes && S.bloody_shoes[S.blood_state])
 					var/obj/effect/decal/cleanable/blood/footprints/oldFP = locate(/obj/effect/decal/cleanable/blood/footprints) in T
@@ -71,6 +72,6 @@
 						FP.update_icon()
 						update_inv_shoes()
 				//End bloody footprints
-
+				*/
 				S.step_action()
 

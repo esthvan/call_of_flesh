@@ -574,7 +574,7 @@ var/list/VVckey_edit = list("key", "ckey")
 
 		if("num")
 			if(variable=="luminosity")
-				var/var_new = input("Enter new number:","Num",O.vars[variable]) as null|num
+				var/var_new = sanitize_russian(input("Enter new number:","Num",O.vars[variable]) as null|num)
 				if(var_new == null) return
 				O.set_light(var_new)
 			else if(variable=="stat")

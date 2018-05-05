@@ -290,8 +290,8 @@
 /obj/effect/landmark/latejoin/petrovich
 	name = "JoinLatePetrovich"
 
-/obj/effect/landmark/latejoin/sidorovich
-	name = "JoinLateSidorovich"
+/obj/effect/landmark/latejoin/trader
+	name = "JoinLateTrader"
 
 /obj/effect/landmark/latejoin/oldstalker
 	name = "JoinLateOld Stalker"
@@ -304,3 +304,15 @@
 
 /obj/effect/landmark/latejoin/barman2
 	name = "JoinLateBarman2"
+
+/obj/effect/landmark/latejoin/duty_lieutenant
+	name = "JoinLateDuty Lieutenant"
+
+/obj/effect/landmark/latejoin/mercenary_sql
+	name = "JoinLateMercenary Sql"
+
+/obj/effect/landmark/latejoin/freedom
+	name = "JoinLateFreedom"
+
+/obj/effect/landmark/latejoin/freedom_lieutenant
+	name = "JoinLateFreedom Lieutenant"

@@ -26,6 +26,10 @@
 	dir = pick(alldirs)
 	update_icon()
 
+/obj/item/ammo_casing/Destroy()
+	..()
+	return QDEL_HINT_PUTINPOOL
+
 /obj/item/ammo_casing/update_icon()
 	..()
 	icon_state = "[initial(icon_state)][BB ? "-live" : ""]"
@@ -68,7 +72,7 @@
 	item_state = "syringe_kit"
 	materials = list(MAT_METAL=30000)
 	throwforce = 2
-	w_class = 1
+	w_class = 2
 	throw_speed = 3
 	throw_range = 7
 	var/list/stored_ammo = list()
@@ -79,6 +83,7 @@
 	var/multiload = 1
 
 /obj/item/ammo_box/New()
+	stored_ammo = list()
 	for(var/i = 1, i <= max_ammo, i++)
 		stored_ammo += new ammo_type(src)
 	update_icon()

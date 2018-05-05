@@ -282,6 +282,9 @@ var/record_id_num = 1001
 		sk.fields["rank"]		= H.mind.assigned_role
 		sk.fields["faction_s"]	= H.faction_s
 		sk.fields["rating"]		= 0
+		switch(H.rank)
+			if("Lieutenant")
+				sk.fields["rating"]	= 1000
 		sk.fields["reputation"] = 1000
 		sk.fields["photo_front"]= photo_front
 		sk.fields["photo_west"]	= photo_west

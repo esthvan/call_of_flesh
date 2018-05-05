@@ -19,7 +19,15 @@
 	icon_state = "sipcora45"
 	ammo_type = /obj/item/ammo_casing/acp45
 	caliber = ".45"
-	max_ammo = 7
+	max_ammo = 9
+	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/stalker/desert
+	name = "pistol magazine (.44)"
+	icon_state = "deagle"
+	ammo_type = /obj/item/ammo_casing/mag44
+	caliber = ".44"
+	max_ammo = 8
 	multiple_sprites = 2
 
 /obj/item/ammo_box/magazine/stalker/m545
@@ -105,4 +113,41 @@
 	ammo_type = /obj/item/ammo_casing/c556x45
 	caliber = "5.56x45"
 	max_ammo = 30
+	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/internal/cylinder/anaconda
+	name = "Colt Anaconda internal magazine"
+	ammo_type = /obj/item/ammo_casing/mag44
+	caliber = ".44"
+	max_ammo = 6
+
+/obj/item/ammo_box/magazine/stalker/ppsh
+	name = "PPSh drum magazine"
+	icon_state = "ppsh"
+	w_class = 3
+	ammo_type = /obj/item/ammo_casing/c762x25
+	caliber = "7.62x25mm"
+	max_ammo = 70
+	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/stalker/pkm
+	name = "PKM ammo belt box"
+	icon_state = "pkm"
+	w_class = 3
+	ammo_type = /obj/item/ammo_casing/c762x54
+	caliber = "7.62x54mm"
+	max_ammo = 200
+	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/stalker/pkm/shottie
+	name = "PTV ammo belt box"
+	ammo_type = /obj/item/ammo_casing/shotgun/c12x70
+	caliber = "shotgun"
+
+/obj/item/ammo_box/magazine/stalker/tt
+	name = "pistol magazine (7.62x25mm)"
+	icon_state = "9x18pm"
+	ammo_type = /obj/item/ammo_casing/c762x25
+	caliber = "7.62x25mm"
+	max_ammo = 8
 	multiple_sprites = 2

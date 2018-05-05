@@ -24,10 +24,9 @@
 	projectile_type = /obj/item/projectile/bullet/bullet12x70
 
 /obj/item/ammo_casing/shotgun/c12x70P
-	desc = "A 12x70mm AP bullet casing."
+	desc = "A 12x70mm slug bullet casing."
 	icon_state = "blshell"
-	pellets = 6
-	variance = 5
+	pellets = 1
 	projectile_type = /obj/item/projectile/bullet/bullet12x70p
 
 /obj/item/ammo_casing/shotgun/c12x70D
@@ -72,3 +71,22 @@
 /obj/item/ammo_casing/c556x45/AP
 	desc = "A 5.55x45mm AP bullet."
 	projectile_type = /obj/item/projectile/bullet/bullet556x45AP
+
+/obj/item/ammo_casing/mag44
+	desc = "A .44 Magnum bullet casing."
+	caliber = ".44"
+	projectile_type = /obj/item/projectile/bullet/bulletmag44
+
+/obj/item/ammo_casing/mag44/FMJ
+	desc = "A .44 Magnum FMJ bullet casing."
+	projectile_type = /obj/item/projectile/bullet/bulletmag44FMJ
+
+/obj/item/ammo_casing/c762x25
+    desc = "A 7.62x25 bullet casing."
+    caliber = "7.62x25mm"
+    projectile_type = /obj/item/projectile/bullet/bullet762x25
+
+/obj/item/ammo_casing/c762x54
+    desc = "A 7.62x54 bullet casing."
+    caliber = "7.62x54mm"
+    projectile_type = /obj/item/projectile/bullet/bullet762x54

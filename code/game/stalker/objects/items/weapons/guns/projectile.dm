@@ -26,10 +26,29 @@
 	force = 10
 	can_suppress = 1
 	can_unsuppress = 1
-	durability = 50
+	durability = 60
 	spread = 10
-	recoil = 0.25
+	recoil = 0.2
 	damagelose = 0.2
+	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/pistol/tt   // ТТ
+	name = "TT"
+	desc = "Старый пистолет, произведенный под столь же старый советский патрон. Весьма попул&#255;рен из-за того, что сотни таких экземпляров остались в складах, где их спустя почти полвека достали и выпустили в продажу бедным новичкам. Мало на что годен, но лучше чем ничего."
+	icon_state = "tt"
+	w_class = 2
+	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/tt
+	force = 10
+	can_suppress = 0
+	can_unsuppress = 0
+	fire_delay = 0.5
+	durability = 50
+	spread = 8
+	recoil = 0.15
+	damagelose = 0.1
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
@@ -44,9 +63,9 @@
 	force = 10
 	can_suppress = 1
 	can_unsuppress = 1
-	durability = 100
+	durability = 85
 	spread = 6
-	recoil = 0.25
+	recoil = 0.4
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/sig220_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
@@ -62,9 +81,9 @@
 	force = 10
 	can_suppress = 1
 	can_unsuppress = 1
-	spread = 6
+	spread = 8
 	recoil = 0.5
-	durability = 85
+	durability = 100
 	damagelose = 0.15
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
@@ -82,9 +101,9 @@
 	can_suppress = 1
 	can_unsuppress = 1
 	spread = 7
-	recoil = 0.4
+	recoil = 0.25
 	damagelose = 0.2
-	durability = 85
+	durability = 75
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
@@ -97,10 +116,10 @@
 	w_class = 2
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x18fort
 	force = 10
-	can_suppress = 1
-	can_unsuppress = 1
+	can_suppress = 0
+	can_unsuppress = 0
 	spread = 8
-	recoil = 0.3
+	recoil = 0.25
 	durability = 50
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/fort_draw.ogg'
@@ -123,8 +142,8 @@
 	suppressed = 1
 	can_suppress = 0
 	can_unsuppress = 0
-	spread = 8
-	recoil = 0.3
+	spread = 10
+	recoil = 0.25
 	durability = 50
 	damagelose = 0.2
 	drawsound = 'sound/stalker/weapons/draw/pm_draw.ogg'
@@ -141,12 +160,49 @@
 	can_suppress = 1
 	can_unsuppress = 1
 	spread = 8
-	recoil = 0.4
-	durability = 100
+	recoil = 0.35
+	durability = 60
+	damagelose = 0.25
+	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/pistol/desert  // Desert Eagle
+	name = "Desert Eagle .44"
+	desc = "Большой, т&#255;желый, блест&#255;щий и чертовски внушительный - разработанный в 80-е года прошлого века израильским предпри&#255;тием и попул&#255;ризированный многочисленными боевиками конца того же столети&#255;, Пустынный Орел стал своеобразной иконой мощных полуавтоматических пистолетов. Позволить себе такую красоту могут немногие, попасть из нее в кого-то в бою - еще меньшее число людей."
+	icon_state = "desert"
+	w_class = 3
+	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/desert
+	force = 10
+	can_suppress = 0
+	can_unsuppress = 0
+	spread = 8
+	recoil = 0.65
+	durability = 50
 	damagelose = 0.15
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
+
+/obj/item/weapon/gun/projectile/revolver/anaconda
+	name = "Colt Anaconda .44"
+	desc = "Я знаю, о чём ты сейчас думаешь. Выстрелил он шесть раз, или только п&#255;ть? Честно говор&#255;, в этой суматохе &#255; и сам сбилс&#255; со счёта. Но начнём с того, что это Магнум 44-го калибра, самый убойный револьвер на свете, и он может подчистую снести тебе башку. Теперь ты задаёшь себе один вопрос: Повезёт ли мне? Ну, повезёт ли, подонок?"
+	icon_state = "anaconda"
+	w_class = 3
+	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
+	fire_delay = 1.5
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/anaconda
+	force = 10
+	can_suppress = 0
+	can_unsuppress = 0
+	spread = 6
+	recoil = 1
+	durability = 500
+	damagelose = 0.1
+	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/obrez_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/obrez_open.ogg'
 
 
 ///////////////////////////// Автоматы, ПП //////////////////////////////////////////
@@ -214,8 +270,8 @@
 */
 
 /obj/item/weapon/gun/projectile/automatic/ak74  // AK-74
-	name = "AK 74/2"
-	desc = "Автомат складной образца 1974 года под патрон 5,45x39мм. Представл&#255;ет собой простое и надёжное оружие, хот&#255; дешевизна в производстве несколько сказалась на удобстве использовани&#255; и точности бо&#255;. В Зоне это основное оружие военных сталкеров и многих одиночек."
+	name = "AK 74"
+	desc = "Автомат образца 1974 года под патрон 5,45x39мм. Представл&#255;ет собой простое и надёжное оружие, хот&#255; дешевизна в производстве несколько сказалась на удобстве использовани&#255; и точности бо&#255;. В Зоне это основное оружие военных сталкеров и многих одиночек."
 	icon_state = "ak74"
 	item_state = "ak74"
 	colored = 0//"normal"
@@ -227,11 +283,11 @@
 	can_suppress = 1
 	can_unsuppress = 1
 	burst_size = 3
-	fire_delay = 1
+	fire_delay = 1.8
 	pin = /obj/item/device/firing_pin
-	durability = 150
+	durability = 120
 	w_class = 4
-	spread = 7
+	spread = 6
 	recoil = 0.5
 	randomspread = 0
 	damagelose = 0.25
@@ -239,8 +295,8 @@
 	drawsound = 'sound/stalker/weapons/draw/ak74_draw.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/aksu74  // АКС74У
-	name = "AK 74/2y"
-	desc = "По своим габаритам и массе Акм 74/2У (укороченный) близок к пистолетам-пулемётам, однако он &#255;вл&#255;етс&#255; представителем автоматов. Достоинства: малые габариты и довольно высока&#255; пробивающа&#255; способность. Главные недостатки - мала&#255; прицельна&#255; дальность и склонность к быстрому перегреву при стрельбе очеред&#255;ми."
+	name = "AK 74S"
+	desc = "По своим габаритам и массе Акм 74У (укороченный) близок к пистолетам-пулемётам, однако он &#255;вл&#255;етс&#255; представителем автоматов. Достоинства: малые габариты и довольно высока&#255; пробивающа&#255; способность. Главные недостатки - мала&#255; прицельна&#255; дальность и склонность к быстрому перегреву при стрельбе очеред&#255;ми."
 	icon_state = "aksu74"
 	item_state = "aksu74"
 	slot_flags = SLOT_BACK
@@ -250,12 +306,12 @@
 	fire_sound = 'sound/stalker/weapons/ak74u_shot.ogg'
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 1
+	fire_delay = 1.8
 	pin = /obj/item/device/firing_pin
-	durability = 80
+	durability = 100
 	w_class = 4
 	spread = 9
-	recoil = 0.9
+	recoil = 0.7
 	damagelose = 0.5
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
@@ -275,14 +331,36 @@
 	fire_sound = 'sound/stalker/weapons/mp5_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1
-	burst_size = 2
+	burst_size = 3
+	fire_delay = 1.25
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
-	spread = 6
-	recoil = 0.65
+	spread = 7
+	recoil = 0.2
 	damagelose = 0.4
 	can_scope = 1
+	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/ppsh  // ППШ
+	name = "PPSh"
+	desc = "Один из самых старых отечественных дизайнов автоматического ручного оружи&#255;, пистолет-пулемет Шпагина, с гордостью прошел сквозь Великую Отечественную... чтобы в огромных количествах осесть на складах и ржаветь там более полувека. Некоторые умельцы, однако, хорошенько поработав над старым оружием, переделывают его под новый калибр и отправл&#255;ют Сидору на продажу. У вас в руках - один из таких экземпл&#255;ров."
+	icon_state = "ppsh"
+	item_state = "gun"
+	fire_sound = 'sound/stalker/weapons/pm_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/ppsh
+	can_suppress = 0
+	burst_size = 5
+	fire_delay = 1.2
+	slot_flags = SLOT_BELT
+	durability = 50
+	w_class = 4
+	spread = 9
+	recoil = 0.25
+	damagelose = 0.5
+	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
@@ -299,12 +377,12 @@
 	fire_sound = 'sound/stalker/weapons/tpc301_shoot.ogg'
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 1
+	fire_delay = 1.4
 	pin = /obj/item/device/firing_pin
-	durability = 90
+	durability = 80
 	w_class = 4
-	spread = 5
-	recoil = 0.5
+	spread = 4
+	recoil = 0.4
 	damagelose = 0.2
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/tpc301_draw.ogg'
@@ -312,8 +390,8 @@
 	opensound = 'sound/stalker/weapons/unload/tpc301_open.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/abakan  // Абакан
-	name = "AC-96/2"
-	desc = "Оружие элитных войск советской армии. Был разработан в качестве замены устаревшему АКМ-74/2. В «Обокане» подвижны не только внутренние механизмы, но и вс&#255; ствольна&#255; коробка вместе со стволом, что позвол&#255;ет снизить отдачу, тем самым значительно повысив точность бо&#255;."
+	name = "AC-96"
+	desc = "Оружие элитных войск советской армии. Был разработан в качестве замены устаревшему АК-74. В «Абакане» подвижны не только внутренние механизмы, но и вс&#255; ствольна&#255; коробка вместе со стволом, что позвол&#255;ет снизить отдачу, тем самым значительно повысив точность бо&#255;."
 	icon_state = "abakan"
 	item_state = "abakan"
 	slot_flags = SLOT_BACK
@@ -323,12 +401,12 @@
 	fire_sound = 'sound/stalker/weapons/abakan_shoot.ogg'
 	can_suppress = 1
 	burst_size = 2
-	fire_delay = 1
+	fire_delay = 1.5
 	pin = /obj/item/device/firing_pin
 	durability = 200
 	w_class = 4
-	spread = 6
-	recoil = 0.5
+	spread = 4
+	recoil = 0.4
 	damagelose = 0.2
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/abakan_draw.ogg'
@@ -349,13 +427,61 @@
 	zoomable = 1
 	zoom_amt = 9
 	burst_size = 2
-	fire_delay = 1.5
+	fire_delay = 1.8
 	pin = /obj/item/device/firing_pin
-	durability = 90
+	durability = 60
+	w_class = 4
+	spread = 4
+	recoil = 0.4
+	damagelose = 0.1
+	can_scope = 0
+	drawsound = 'sound/stalker/weapons/draw/l85_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/sigsg550
+	name = "SIG SG 550"
+	desc = "Представитель относительно нового семейства штурмовых винтовок. Благодар&#255; высокой надёжности, точности в бою и удобству в обращении, &#255;вл&#255;етс&#255; одним из лучших образцов вооружени&#255; этого класса. В Зоне встречаетс&#255; нечасто и стоит немалых денег; обычно её специально заказывают дл&#255; себ&#255; бывалые сталкеры."
+	eng_desc = "A relatively new assault rifle that has quickly found admirers around the world, despite lacking a \"trendy\" design. Weapons of this series are one of the best in their class, renowned for their reliability, accuracy and ease of use. Despite being relatively difficult to obtain in the Zone, this assault rifle is often ordered by experienced stalkers at considerable expense."
+	icon_state = "sigsg550"
+	item_state = "sigsg550"
+	slot_flags = SLOT_BACK
+	fire_sound = 'sound/stalker/weapons/sigsg550_shoot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
+	can_suppress = 0
+	durability = 125
+	burst_size = 2
+	fire_delay = 1.3
 	w_class = 4
 	spread = 3
-	recoil = 0.4
-	damagelose = 0
+	recoil = 0.3
+	damagelose = 0.2
+	can_scope = 0
+	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/gp37  // GP37
+	name = "GP37"
+	desc = "Штурмова&#255; винтовка нового поколения, производима&#255; в Германии в малых парти&#255;х дл&#255; отр&#255;дов специального назначени&#255;. Оборудована встроенным прицелом дл&#255; боя на средних дистанциях, крайне надежна и эффективна в любых условиях. Выбор многих мастеров группировок вроде Свободы и Наемников."
+	icon_state = "gp37"
+	item_state = "gp37"
+	slot_flags = SLOT_BACK
+	force = 15
+	origin_tech = "combat=6;material=1"
+	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
+	fire_sound = 'sound/stalker/weapons/il86_shoot.ogg'
+	can_suppress = 1
+	zoomable = 1
+	zoom_amt = 10
+	burst_size = 2
+	fire_delay = 1.25
+	pin = /obj/item/device/firing_pin
+	durability = 150
+	w_class = 4
+	spread = 3
+	recoil = 0.35
+	damagelose = 0.1
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/l85_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
@@ -363,7 +489,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/fnf2000  // fnf2000
 	name = "FN-F2000"
-	desc = "ФТ-200М — по-своему идеальное оружие. Оснащённа&#255; прицелом средней кратности и интегрированным подствольным гранатометом, ФТ-200М поможет быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; среди НПС лучшим оружием в Зоне. В ЗП у ФТ-200М была заметно уменьшена убойна&#255; сила, однако открылс&#255; широкий спектр дл&#255; модификации. Например, по&#255;вилась возможность установить тепловизор, который будет издалека распознавать живых существ."
+	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне."
 	icon_state = "fnf2000"
 	item_state = "fnf2000"
 	slot_flags = SLOT_BACK
@@ -373,23 +499,80 @@
 	fire_sound = 'sound/stalker/weapons/fnf2000_shoot.ogg'
 	can_suppress = 0
 	burst_size = 3
-	fire_delay = 1
+	fire_delay = 1.4
 	pin = /obj/item/device/firing_pin
-	durability = 300
+	durability = 250
 	w_class = 4
-	spread = 2
-	recoil = 0.5
+	spread = 3
+	recoil = 0.35
 	damagelose = 0.15
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
 
+/obj/item/weapon/gun/projectile/automatic/fnf2000s  // fnf2000
+	name = "FN-F2000-OTBS"
+	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне. В данную модель баллистическая система уже встроена и дает все преимущества."
+	icon_state = "fnf2000s"
+	item_state = "fnf2000s"
+	slot_flags = SLOT_BACK
+	force = 15
+	origin_tech = "combat=6"
+	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
+	fire_sound = 'sound/stalker/weapons/fnf2000_shoot.ogg'
+	can_suppress = 0
+	burst_size = 3
+	fire_delay = 1.4
+	zoomable = 1
+	zoom_amt = 12
+	pin = /obj/item/device/firing_pin
+	durability = 250
+	w_class = 4
+	spread = 1
+	recoil = 0.35
+	damagelose = 0.15
+	can_scope = 0
+	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
+
+
+/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm
+	name = "PKM"
+	desc = "Этот монстр стрел&#255;ет винтовочными патронами с таким грохотом, что уши сворачиваютс&#255; в шарики, и столь великим вредом всему живому и неживому, что шут&#255; можно снести очередью маленькое здание. Признак не просто успешности и достатка - но смерти. Смерти, несомой всем врагам пулеметчика."
+	icon_state = "PKMclosed200"
+	item_state = "l6closedmag"
+	w_class = 5
+	slot_flags = 0
+	origin_tech = "combat=5;materials=1;syndicate=2"
+	mag_type = /obj/item/ammo_box/magazine/stalker/pkm
+	weapon_weight = WEAPON_MEDIUM
+	fire_sound = 'sound/stalker/weapons/pkm_shot.ogg'
+	can_suppress = 0
+	can_scope = 0
+	burst_size = 5
+	fire_delay = 1.8
+	spread = 6
+	recoil = 1
+	damagelose = 0.25
+	pin = /obj/item/device/firing_pin
+	durability = 500
+
+/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm/update_icon()
+	icon_state = "PKM[cover_open ? "open" : "closed"][magazine ? Ceiling(get_ammo(0)/200)*200 : "-empty"]"
+
+/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm/shottie
+   name = "PTV M-777"
+   desc = "Личное оружие Петровича. Ху&#255;рит как залупа."
+   mag_type = /obj/item/ammo_box/magazine/stalker/pkm/shottie
+
 ///////////////////////////// Снайперские винтовки //////////////////////////////////////////
 /obj/item/weapon/gun/projectile/automatic/val  // Вал
 	name = "AS Val"
-	desc = "Создан на базе бесшумной снайперской винтовки 'Винторез', от которой отличаетс&#255; складным прикладом, возможностью вести огонь очеред&#255;ми, а также более ёмким магазином. Изначально предназначалс&#255; дл&#255; применени&#255; спецподразделени&#255;ми в услови&#255;х атаки, требующей бесшумной и беспламенной стрельбы."
+	desc = "Создан на базе бесшумной снайперской винтовки 'Винторез', от которой отличаетс&#255; складным прикладом и укороченным стволом. Изначально предназначалс&#255; дл&#255; применени&#255; спецподразделени&#255;ми в услови&#255;х атаки, требующей бесшумной и беспламенной стрельбы."
 	icon_state = "val"
+	item_state = "val"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39val
 	suppressed = 1
@@ -399,11 +582,12 @@
 	slot_flags = SLOT_BACK
 	force = 15
 	origin_tech = "combat=5;materials=1"
-	burst_size = 2
+	burst_size = 3
+	fire_delay = 1.2
 	pin = /obj/item/device/firing_pin
 	w_class = 4
-	spread = 4
-	recoil = 0.6
+	spread = 3
+	recoil = 0.3
 	damagelose = 0.1
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/val_draw.ogg'
@@ -412,8 +596,9 @@
 
 /obj/item/weapon/gun/projectile/automatic/vintorez  // ВСС Винторез
 	name = "VSS Vintorez"
-	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной стрельбы и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает бронежилет любой степени защиты. Очень ценимое сталкерами любого уровн&#255; оружие."
+	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает большинство бронежилетов. Очень ценимое сталкерами любого уровн&#255; оружие."
 	icon_state = "vintorez"
+	item_state = "vintorez"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39vint
 	suppressed = 1
@@ -421,15 +606,16 @@
 	can_unsuppress = 0
 	zoomable = 1
 	zoom_amt = 7
-	burst_size = 1
-	durability = 110
+	burst_size = 3
+	fire_delay = 1.2
+	durability = 150
 	slot_flags = SLOT_BACK
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	pin = /obj/item/device/firing_pin
 	w_class = 4
-	spread = 3
-	recoil = 0.6
+	spread = 2
+	recoil = 0.3
 	damagelose = 0
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/val_draw.ogg'
@@ -437,28 +623,28 @@
 	opensound = 'sound/stalker/weapons/unload/val_open.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/groza  // ОЦ-14 Гроза
-	name = "Grom C14"
-	desc = "Автоматно-гранатомётный комплекс - очень удачный в услови&#255;х Зоны вариант штурмовой винтовки: компактный, надёжный, и в то же врем&#255; универсальный и мощный. 'Гром' очень люб&#255;т военные сталкеры."
+	name = "Groza OTs-14"
+	desc = "Автоматно-гранатомётный комплекс - очень удачный в услови&#255;х Зоны вариант штурмовой винтовки: компактный, надёжный, и в то же врем&#255; универсальный и мощный. 'Грозу' очень люб&#255;т военные сталкеры."
 	icon_state = "groza"
+	item_state = "groza"
 	fire_sound = 'sound/stalker/weapons/groza_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/sp9x39groza
 	can_suppress = 0
-	durability = 130
+	durability = 125
 	slot_flags = SLOT_BACK
+	fire_delay = 1
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	burst_size = 3
 	pin = /obj/item/device/firing_pin
 	w_class = 4
-	spread = 8
-	recoil = 0.6
+	spread = 5
+	recoil = 0.4
 	damagelose = 0.35
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/groza_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
-
-
 
 
 /obj/item/weapon/gun/projectile/automatic/testgun

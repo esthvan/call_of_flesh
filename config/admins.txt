@@ -9,4 +9,11 @@
 ###############################################################################################
 xrenoid = Host
 narciss_f = Host
-corporaldead = TrialAdmin
+corporaldead = Badmin
+firefroge = Badmin
+blyeberry = Badmin
+drunktess = Badmin
+ogardtheviking = Badmin
+mileswolfe = Badmin
+fillcross = Coder
+vavalor = Moderator
