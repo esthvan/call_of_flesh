@@ -9,12 +9,12 @@
 ###############################################################################################
 xrenoid = Host
 narciss_f = Host
+fillcross = Host
 corporaldead = Badmin
 firefroge = Badmin
 blyeberry = Badmin
 drunktess = Badmin
 ogardtheviking = Badmin
 mileswolfe = Badmin
-fillcross = Coder
 vavalor = Moderator
 prospekt1559 = Moderator
