@@ -184,6 +184,7 @@
 	density = 0
 	anchored = 1
 	opacity = 0
+	layer = 3.5
 	var/image/currentimage = null
 	var/image/up
 	var/obj/item/weapon/artifact/my_target = null
