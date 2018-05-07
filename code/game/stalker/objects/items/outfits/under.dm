@@ -30,3 +30,13 @@
 	item_state = "g_suit"
 	can_adjust = 0
 	has_sensor = 0
+
+/obj/item/clothing/under/color/switer/lolg
+	name = "telnashka
+	desc = "Тепла&#255; майка-тельн&#255;ха и черные поношенные штаны - стандартна&#255; одежда всех долговцев и военных. Не униформу же носить, право слово."
+	body_parts_covered = CHEST|ARMS|LEGS
+	cold_protection = CHEST|ARMS|LEGS
+	icon_state = "lolg"
+	item_state = "lolg"
+	can_adjust = 0
+	has_sensor = 0
