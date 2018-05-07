@@ -9,7 +9,6 @@ course = Mercenary
 justshako = Mercenary
 noname14881337 = Mercenary
 evilraccoon = Mercenary
-z135367 = Mercenary
 blyeberry = Mercenary
 jacknoir413 = Mercenary
 themanwhosoldthehorns = Mercenary
