@@ -93,3 +93,4 @@ suiciderey = Freedom
 rickicksecond = Duty
 zombuzi = Duty
 zombuzi = Freedom
+dengoha = Duty
