@@ -77,7 +77,7 @@ datum/subsystem/blowout/proc/StopBlowout()
 	world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
 
 	for(var/obj/item/weapon/artifact/A)
-		if(istype(get_area(A), /area/stalker/blowout))
+		if(A.invisibility > 30)
 			PlaceInPool(A)
 			CHECK_TICK
 
