@@ -955,7 +955,7 @@
 		if("grab")
 			for(var/A in safezones)
 				var/area/B = get_area(H.loc)
-				if(B.type == A)
+				if(B.type in typesof(A))
 					if(M.client && (M.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						M << "<span class='warning'>You can't fight in the safezone!</span>"
 					else
@@ -970,7 +970,7 @@
 		if("harm")
 			for(var/A in safezones)
 				var/area/B = get_area(H.loc)
-				if(B.type == A)
+				if(B.type in typesof(A))
 					if(M.client && (M.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						M << "<span class='warning'>You can't fight in the safezone!</span>"
 					else
@@ -1015,7 +1015,7 @@
 		if("disarm")
 			for(var/A in safezones)
 				var/area/B = get_area(H.loc)
-				if(B.type == A)
+				if(B.type in typesof(A))
 					if(M.client && (M.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						M << "<span class='warning'>You can't fight in the safezone!</span>"
 					else

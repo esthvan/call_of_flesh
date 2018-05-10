@@ -17,7 +17,7 @@
 /mob/living/simple_animal/hostile/mutant/Move(atom/NewLoc, direct)
 	var/area/B = get_area(NewLoc)
 	for(var/A in safezones)
-		if(B.type == A)
+		if(B.type in typesof(A))
 			if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
 				src << "<span class='warning'>You can't be here!</span>"
 			else

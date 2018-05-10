@@ -231,7 +231,7 @@
 /obj/item/weapon/gun/proc/can_trigger_gun(mob/living/carbon/user)
 	var/area/B = get_area(user.loc)
 	for(var/A in safezones)
-		if(B.type == A)
+		if(B.type in typesof(A))
 			if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 				user << "<span class='warning'>You can't shoot in the safezone!</span>"
 			else

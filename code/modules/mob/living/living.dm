@@ -707,7 +707,7 @@ Sorry Giacom. Please don't be mad :(
 /mob/living/stripPanelUnequip(obj/item/what, mob/who, where)
 	for(var/A in safezones)
 		var/area/B = get_area(src.loc)
-		if(B.type == A)
+		if(B.type in typesof(A))
 			if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
 				src << "<span class='warning'>You can't unequip people in the safezone!</span>"
 			else

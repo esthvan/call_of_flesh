@@ -243,7 +243,7 @@
 
 	for(var/A in safezones)
 		var/area/B = get_area(src.loc)
-		if(B.type == A)
+		if(B.type in typesof(A))
 			if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
 				src << "<span class='warning'>You can't throw things in the safezone!</span>"
 			else

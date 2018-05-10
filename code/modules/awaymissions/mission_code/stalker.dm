@@ -1,5 +1,8 @@
-/var/global/list/safezones = list(/area/stalker/sidor, /area/stalker/blowout/outdoor/safezone, /area/stalker/blowout/buildings/safezone,
-, /area/stalker/blowout/outdoor/safezone/bar, /area/stalker/byadt/bar, /area/stalker/buildings/safezone/banditbar)
+/var/global/list/safezones = list(	/area/stalker/sidor,
+									/area/stalker/blowout/outdoor/safezone,
+									/area/stalker/blowout/buildings/safezone,
+									/area/stalker/buildings/safezone,
+									/area/stalker/byadt/bar)
 
 /area/stalker
 	icon = 'icons/stalker/areas.dmi'
