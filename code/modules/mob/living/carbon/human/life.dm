@@ -81,6 +81,10 @@
 		return
 
 	var/obj/item/clothing/suit/S = src.wear_suit
+
+	if(S.durability == -1)
+		return
+
 	if(((S.durability/initial(S.durability))*100 - 50) > 0)
 		S.durability = ((S.durability/initial(S.durability))*100 - 50) / 100 * initial(S.durability)
 

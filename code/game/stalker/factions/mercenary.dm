@@ -15,7 +15,7 @@
 
 /datum/outfit/job/mercenary
 	name = "Mercenary"
-	faction_s = "Наёмники"
+	faction_s = "Mercenaries"
 
 /datum/outfit/job/mercenary/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -54,7 +54,7 @@
 							/obj/item/device/flashlight/seclite = 1)
 	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa
-	faction_s = "Наемники"
+	faction_s = "Mercenaries"
 
 /datum/outfit/mercenary/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -80,7 +80,7 @@
 
 /datum/outfit/job/mercenary_sql
 	name = "Mercenary Sql"
-	faction_s = "Наёмники"
+	faction_s = "Mercenaries"
 
 /datum/outfit/job/mercenary_sql/pre_equip(mob/living/carbon/human/H)
 	..()

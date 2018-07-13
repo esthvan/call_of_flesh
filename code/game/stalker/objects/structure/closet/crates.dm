@@ -117,7 +117,7 @@
 		waspicked = 1
 		if(istype(H.wear_id, /obj/item/device/stalker_pda))
 			var/obj/item/device/stalker_pda/KPK = H.wear_id
-			if(KPK.activated)
+			if(KPK.owner)
 				show_lenta_message(null, KPK, null, "КПК", "Система", "Вы обнаружили тайник!", selfsound = 1)
 
 

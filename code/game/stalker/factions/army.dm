@@ -21,7 +21,7 @@ Assistant
 
 /datum/outfit/job/army_eliteagro
 	name = "EliteAgro"
-	faction_s = "Военные"
+	faction_s = "Army"
 
 /datum/outfit/job/army/eliteagro/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -58,7 +58,7 @@ Assistant
 							/obj/item/weapon/stalker/bolts = 1)
 	r_pocket = /obj/item/device/radio
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
-	faction_s = "Военные"
+	faction_s = "Army"
 
 
 /datum/job/petrovich
@@ -75,7 +75,7 @@ Assistant
 
 /datum/outfit/job/petrovich
 	name = "Petrovich"
-	faction_s = "Военные"
+	faction_s = "Army"
 
 /datum/outfit/job/petrovich/pre_equip(mob/living/carbon/human/H)
 	head = null
@@ -113,7 +113,7 @@ Assistant
 							/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b = 1)
 	l_pocket = /obj/item/weapon/stalker/bolts
 	r_pocket = /obj/item/device/radio
-	faction_s = "Военные"
+	faction_s = "Army"
 
 /datum/outfit/army/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -143,4 +143,4 @@ Assistant
 							/obj/item/weapon/stalker/bolts = 1)
 	r_pocket = /obj/item/device/radio
 	l_pocket = /obj/item/ammo_box/magazine/stalker/m9x18fort
-	faction_s = "Военные"
+	faction_s = "Army"

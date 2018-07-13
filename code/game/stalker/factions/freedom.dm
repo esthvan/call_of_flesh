@@ -13,7 +13,7 @@
 
 /datum/outfit/job/freedom
 	name = "Freedom"
-	faction_s = "Свобода"
+	faction_s = "Freedom"
 
 /datum/outfit/job/freedom/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -45,7 +45,7 @@
 	backpack_contents = list(/obj/item/ammo_box/stalker/b55645 = 1,
 							/obj/item/ammo_box/magazine/stalker/m556x45 = 2,)
 	r_pocket = /obj/item/weapon/stalker/bolts
-	faction_s = "Свобода"
+	faction_s = "Freedom"
 
 /datum/outfit/freedom/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -68,7 +68,7 @@
 
 /datum/outfit/job/freedom_lieutenant
 	name = "Freedom Lieutenant"
-	faction_s = "Свобода"
+	faction_s = "Freedom"
 
 /datum/outfit/job/freedom_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()

@@ -18,7 +18,7 @@ Assistant
 
 /datum/outfit/job/duty
 	name = "Duty"
-	faction_s = "Долг"
+	faction_s = "Duty"
 
 /datum/outfit/job/duty/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -51,7 +51,7 @@ Assistant
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
 							/obj/item/ammo_box/magazine/stalker/m545 = 2,)
 	r_pocket = /obj/item/weapon/stalker/bolts
-	faction_s = "Долг"
+	faction_s = "Duty"
 
 /datum/outfit/duty/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -79,7 +79,7 @@ Assistant
 
 /datum/outfit/job/barman2
 	name = "Barman"
-	faction_s = "Торговцы"
+	faction_s = "Traders"
 
 /datum/outfit/job/barman2/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -105,7 +105,7 @@ Assistant
 
 /datum/outfit/job/duty_lieutenant
 	name = "Duty Lieutenant"
-	faction_s = "Долг"
+	faction_s = "Duty"
 
 /datum/outfit/job/duty_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()

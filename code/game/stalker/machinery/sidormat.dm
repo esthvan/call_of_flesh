@@ -94,22 +94,22 @@
 
 		new /datum/data/stalker_equipment("Leather jacket", 		"Кожанка",						/obj/item/clothing/suit/hooded/kozhanka,					5000, NEWBIE),
 		new /datum/data/stalker_equipment("White leather jacket",	"Бела&#x44F; кожанка",			/obj/item/clothing/suit/hooded/kozhanka/white,				5000, NEWBIE),
-		new	/datum/data/stalker_equipment("Bandit jacket",			"Бандитска&#x44F; кожанка",		/obj/item/clothing/suit/hooded/kozhanka/banditka,			6000, NEWBIE, "Бандиты"),
-		new	/datum/data/stalker_equipment("Army suit",				"Армейский комбинезон",			/obj/item/clothing/suit/army,								15000, NEWBIE, "Военные"),
+		new	/datum/data/stalker_equipment("Bandit jacket",			"Бандитска&#x44F; кожанка",		/obj/item/clothing/suit/hooded/kozhanka/banditka,			6000, NEWBIE, "Bandits"),
+		new	/datum/data/stalker_equipment("Army suit",				"Армейский комбинезон",			/obj/item/clothing/suit/army,								15000, NEWBIE, "Army"),
 		new /datum/data/stalker_equipment("\"Sunrize\"",			"Комбинезон \"Зар&#x44F;\"",	/obj/item/clothing/suit/hooded/kombez,						35000, NEWBIE),
-		new /datum/data/stalker_equipment("Merc suit", 				"Комбинезон наёмников",			/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, NEWBIE, "Наёмники"),
-		new /datum/data/stalker_equipment("Bandit suit",			"Комбинезон бандитов",			/obj/item/clothing/suit/hooded/kombez/kombez_bandit,		25000, NEWBIE, "Бандиты"),
-		new /datum/data/stalker_equipment("Black trench coat",		"Тёмный плащ",					/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, NEWBIE, "Бандиты"),
+		new /datum/data/stalker_equipment("Merc suit", 				"Комбинезон наёмников",			/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, NEWBIE, "Mercenaries"),
+		new /datum/data/stalker_equipment("Bandit suit",			"Комбинезон бандитов",			/obj/item/clothing/suit/hooded/kombez/kombez_bandit,		25000, NEWBIE, "Bandits"),
+		new /datum/data/stalker_equipment("Black trench coat",		"Тёмный плащ",					/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, NEWBIE, "Bandits"),
 		new /datum/data/stalker_equipment("Trenchcoat",				"Плащ",							/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown,12500, NEWBIE),
 		new /datum/data/stalker_equipment("Berill-5M",				"Берилл-5М",					/obj/item/clothing/suit/berill,								50000, EXPERT),
-		new /datum/data/stalker_equipment("Wind of Freedom",	    "Ветер Свободы",				/obj/item/clothing/suit/hooded/kombez/veter,				25000, NEWBIE, "Свобода"),
-		new /datum/data/stalker_equipment("Guardian of Freedom",	"Страж Свободы",				/obj/item/clothing/suit/strazh,								40000, EXPERT, "Свобода"),
-		new /datum/data/stalker_equipment("PZ-1	",					"ПЗ-1",							/obj/item/clothing/suit/hooded/kombez/monolit,				25000, NEWBIE, "Монолит"),
-		new /datum/data/stalker_equipment("PS5-M",					"ПС5-М",						/obj/item/clothing/suit/hooded/kombez/ps5m,				    25000, NEWBIE, "Долг"),
-		new /datum/data/stalker_equipment("Heavy merc armor",		"Тяжелая броня наёмников",		/obj/item/clothing/suit/assaultmerc,						50000, EXPERT, "Наёмники"),
-		new /datum/data/stalker_equipment("PSZ-9D",		    		"ПСЗ-9Д",						/obj/item/clothing/suit/psz9d,								60000, VETERAN, "Долг"),
+		new /datum/data/stalker_equipment("Wind of Freedom",	    "Ветер Свободы",				/obj/item/clothing/suit/hooded/kombez/veter,				25000, NEWBIE, "Freedom"),
+		new /datum/data/stalker_equipment("Guardian of Freedom",	"Страж Свободы",				/obj/item/clothing/suit/strazh,								40000, EXPERT, "Freedom"),
+		new /datum/data/stalker_equipment("PZ-1	",					"ПЗ-1",							/obj/item/clothing/suit/hooded/kombez/monolit,				25000, NEWBIE, "Monolith"),
+		new /datum/data/stalker_equipment("PS5-M",					"ПС5-М",						/obj/item/clothing/suit/hooded/kombez/ps5m,				    25000, NEWBIE, "Duty"),
+		new /datum/data/stalker_equipment("Heavy merc armor",		"Тяжелая броня наёмников",		/obj/item/clothing/suit/assaultmerc,						50000, EXPERT, "Mercenaries"),
+		new /datum/data/stalker_equipment("PSZ-9D",		    		"ПСЗ-9Д",						/obj/item/clothing/suit/psz9d,								60000, VETERAN, "Duty"),
 		new /datum/data/stalker_equipment("SKAT-9M",				"СКАТ-9М",						/obj/item/clothing/suit/skat,								75000, VETERAN),
-		new	/datum/data/stalker_equipment("PSZ-9Md",				"ПСЗ-9Мд",						/obj/item/clothing/suit/hooded/kombez/psz9md,				75000, VETERAN, "Долг"),
+		new	/datum/data/stalker_equipment("PSZ-9Md",				"ПСЗ-9Мд",						/obj/item/clothing/suit/hooded/kombez/psz9md,				75000, VETERAN, "Duty"),
 		new	/datum/data/stalker_equipment("SSP-99 Ecologist",		"ССП-99 Эколог",				/obj/item/clothing/suit/hooded/kombez/ecolog,				75000, MASTER),
 		new	/datum/data/stalker_equipment("SSP-99M Ecologist",		"ССП-99М Эколог",				/obj/item/clothing/suit/hooded/kombez/ecologm,			    100000, MASTER),
 		new	/datum/data/stalker_equipment("SEVA",					"СЕВА",							/obj/item/clothing/suit/hooded/kombez/seva,					125000, MASTER),
@@ -123,7 +123,7 @@
 		new /datum/data/stalker_equipment("Steel helmet",			"Стальная каска",			/obj/item/clothing/head/steelhelmet,						7500, NEWBIE),
 		new /datum/data/stalker_equipment("Light tactical helmet",	"Легкий тактический шлем",	/obj/item/clothing/head/hardhat/lighttacticalhelmet,		12500, EXPERT),
 		new /datum/data/stalker_equipment("Tactical helmet",		"Тактический шлем",			/obj/item/clothing/head/hardhat/tacticalhelmet,				20000, EXPERT),
-		new /datum/data/stalker_equipment("Assault helmet",	    	"Штурмовой шлем",			/obj/item/clothing/head/assaultmerc        ,				20000, EXPERT, "Наёмники"),
+		new /datum/data/stalker_equipment("Assault helmet",	    	"Штурмовой шлем",			/obj/item/clothing/head/assaultmerc        ,				20000, EXPERT, "Mercenaries"),
 		new /datum/data/stalker_equipment("Sphera-M12",			 	"Сфера-М12",				/obj/item/clothing/head/spherahelmet,						25000, EXPERT),
 		new /datum/data/stalker_equipment("SKAT-9M (helmet)",		"СКАТ-9М (шлем)",			/obj/item/clothing/head/skathelmet,							35000, VETERAN),
 		)
@@ -213,10 +213,10 @@ var/list/sidormatitems = list()
 	var/equipment_path = null
 	var/cost = 0
 	var/rating = 0
-	var/faction = "Одиночки"
+	var/faction = "Loners"
 	var/sale_price = 0
 
-/datum/data/stalker_equipment/New(equipment_name_eng, name, path, cost, rating, faction = "Одиночки", sale_price = 0)
+/datum/data/stalker_equipment/New(equipment_name_eng, name, path, cost, rating, faction = "Loners", sale_price = 0)
 	src.equipment_name_eng = equipment_name_eng
 	src.equipment_name = name
 	src.equipment_path = path
@@ -244,28 +244,10 @@ var/list/sidormatitems = list()
 
 	var/mob/living/carbon/human/H = user
 
-	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
-		say("Put on your KPK")
-		return
-
-	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-	var/obj/item/device/stalker_pda/KPK = H.wear_id
+	interact(H)
 
 
-	if(!sk || !KPK.activated)
-		say("Activate your KPK profile.")
-		return
-
-	if(KPK.sid != H.sid)
-		say("No access.")
-		return
-
-	interact(user)
-
-
-/obj/machinery/stalker/sidormat/interact(mob/user)
-
-	var/mob/living/carbon/human/H = user
+/obj/machinery/stalker/sidormat/interact(mob/living/carbon/human/H)
 
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
 		say("Put on your KPK.")
@@ -274,11 +256,11 @@ var/list/sidormatitems = list()
 	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 	var/obj/item/device/stalker_pda/KPK = H.wear_id
 
-	if(!sk || !KPK.activated)
-		say("Activate your KPK profle.")
+	if(!sk || !KPK.owner)
+		say("Activate your KPK profile.")
 		return
 
-	if(KPK.sid != H.sid)
+	if(KPK.owner != H)
 		say("No access.")
 		return
 
@@ -288,7 +270,7 @@ var/list/sidormatitems = list()
 	var/dat
 	if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
 
-	///////////////////////////////////////////////////////////АНГЛИЙСКИЙ СИДОРОМАТ///////////////////////////////////////////////////////////////////////\
+	///////////////////////////////////////////////////////////АНГЛИЙСКИЙ СИДОРОМАТ///////////////////////////////////////////////////////////////////////
 
 		dat +="<div class='statusDisplay'>"
 		dat +="<A href='?src=\ref[src];choice=take'><b>Sell habar.</b></A><br>"
@@ -299,55 +281,55 @@ var/list/sidormatitems = list()
 		dat += "<br><b>Item list:</b><BR><table border='0' width='400'>"
 		dat += "<tr><td><center><b>Guns</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in weapon_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Ammo</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in ammo_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Armor</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in armor_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Helmets And Gasmasks</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in helmet_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Meds</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in med_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Food And Drinks</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in food_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Detectors</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in detector_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Misc</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in misc_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Gun Attachments</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in attachment_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
@@ -365,61 +347,61 @@ var/list/sidormatitems = list()
 		dat += "<br><b>Список предметов:</b><BR><table border='0' width='400'>"
 		dat += "<tr><td><center><b>Оружие</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in weapon_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Боеприпасы</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in ammo_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Бронекостюмы</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in armor_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Шлемы и противогазы</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in helmet_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Медикаменты</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in med_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Еда</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in food_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Детекторы</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in detector_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Другое</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in misc_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Модификации</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in attachment_list)
-			if(H.faction_s == prize.faction || prize.faction == "Одиночки")
+			if(H.faction_s == prize.faction || prize.faction == "Loners")
 				if(rating >= prize.rating)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "</table>"
 
-	var/datum/browser/popup = new(user, "miningvendor", "SIDORMAT 3000", 500, 450)
+	var/datum/browser/popup = new(H, "miningvendor", "SIDORMAT 3000", 500, 450)
 	popup.set_content(dat)
 	popup.open()
 	return
@@ -439,7 +421,7 @@ var/list/sidormatitems = list()
 	var/obj/item/device/stalker_pda/KPK = H.wear_id
 
 
-	if(!sk || !KPK.activated)
+	if(!sk || !KPK.owner)
 		say("Activate your KPK profile.")
 		updateUsrDialog()
 		return

@@ -44,7 +44,7 @@ Assistant
 
 /datum/outfit/job/assistant
 	name = "Stalker"
-	faction_s = "Одиночки"
+	faction_s = "Loners"
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -73,7 +73,7 @@ Assistant
 	back = /obj/item/weapon/storage/backpack/stalker
 	l_pocket = /obj/item/weapon/stalker/bolts
 	r_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa
-	faction_s = "Одиночки"
+	faction_s = "Loners"
 
 /datum/outfit/job/oldstalker
 	name = "Old Stalker"
@@ -106,4 +106,4 @@ Assistant
 	back = /obj/item/weapon/storage/backpack/stalker
 	l_pocket = /obj/item/weapon/stalker/bolts
 	r_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/konserva
-	faction_s = "Одиночки"
+	faction_s = "Loners"

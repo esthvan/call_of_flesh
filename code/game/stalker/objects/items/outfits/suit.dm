@@ -2,7 +2,7 @@
 	var/CCBS = 0 //Костюм с замкнутой системой дыхания
 
 /obj/item/clothing
-	var/durability = 100
+	var/durability = -1
 
 /obj/item/clothing/head
 	var/CBBS_h = 0
@@ -10,9 +10,8 @@
 /obj/item/clothing/head/examine(mob/user)
 	..()
 	if(!istype(src, /obj/item/clothing/head/winterhood))
-		var/percentage = null
 		if(durability)
-			percentage = (durability / (initial(durability)))*100
+			var/percentage = (durability / (initial(durability)))*100
 			if(percentage >= 50)
 				user << "<span class='notice'>Прочность - [percentage]%</span>"
 			else
@@ -20,9 +19,8 @@
 
 /obj/item/clothing/mask/examine(mob/user)
 	..()
-	var/percentage = null
 	if(durability)
-		percentage = (durability / (initial(durability)))*100
+		var/percentage = (durability / (initial(durability)))*100
 		if(percentage >= 50)
 			user << "<span class='notice'>Прочность - [percentage]%</span>"
 		else
@@ -31,9 +29,8 @@
 
 /obj/item/clothing/suit/examine(mob/user)
 	..()
-	var/percentage = null
 	if(durability)
-		percentage = (durability / (initial(durability)))*100
+		var/percentage = (durability / (initial(durability)))*100
 		if(percentage >= 50)
 			user << "<span class='notice'>Прочность - [percentage]%</span>"
 		else

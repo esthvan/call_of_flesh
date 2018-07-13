@@ -344,34 +344,34 @@ var/global/num_sid = 0
 
 	switch(rank)
 		if("Bandit" || "Pahan")
-			character.faction_s = "Бандиты"
+			character.faction_s = "Bandits"
 
 		if("Army" || "EliteAgro")
-			character.faction_s = "Военные"
+			character.faction_s = "Army"
 
 		if("Duty")
-			character.faction_s = "Долг"
+			character.faction_s = "Duty"
 
 		if("Duty Lieutenant")
-			character.faction_s = "Долг"
+			character.faction_s = "Duty"
 			character.rank 		= "Lieutenant"
 
 		if("Mercenary")
-			character.faction_s = "Наёмники"
+			character.faction_s = "Mercenaries"
 
 		if("Mercenary Sql")
-			character.faction_s = "Наёмники"
+			character.faction_s = "Mercenaries"
 			character.rank 		= "Lieutenant"
 
 		if("Freedom")
-			character.faction_s = "Свобода"
+			character.faction_s = "Freedom"
 
 		if("Freedom Lieutenant")
-			character.faction_s = "Свобода"
+			character.faction_s = "Freedom"
 			character.rank 		= "Lieutenant"
 
 		if("Trader")
-			character.faction_s = "Торговцы"
+			character.faction_s = "Traders"
 			character.rank 		= "Lieutenant"
 
 	joined_player_list += character.ckey

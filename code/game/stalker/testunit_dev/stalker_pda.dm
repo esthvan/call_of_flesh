@@ -16,11 +16,11 @@ var/global/lentahtml = ""
 	var/list/access = list()
 
 	//ПРОФИЛЬ
-	var/owner = null
+	var/mob/living/carbon/human/owner = null
 	var/registered_name = null
 	var/sid = null
 	var/rotation = "front"
-	var/faction_s = "Одиночки"
+	var/faction_s = "Loners"
 	var/rating = 0
 	var/reputation = 0
 	var/money = 0
@@ -30,7 +30,6 @@ var/global/lentahtml = ""
 	var/obj/item/weapon/photo/photo_owner_east = new()
 	var/password = null
 	var/hacked = 0
-	var/activated = 0
 	var/rep_color_s = "#ffe100"
 	var/rep_name_s = "Нейтральна&#x44F;"
 	var/eng_rep_name_s = "Neutral"
@@ -92,11 +91,20 @@ var/global/lentahtml = ""
 		..()
 
 /obj/item/device/stalker_pda/attack_self(mob/user)
-	for(var/datum/data/record/sk in data_core.stalkers)
-		var/mob/living/carbon/human/H = user
-		if(H.sid == sk.fields["sid"])
-			set_owner_info(sk)
-			sk.fields["lastlogin"] = world.time
+	//for(var/datum/data/record/sk in data_core.stalkers)
+	//	var/mob/living/carbon/human/H = user
+	//	if(H.sid == sk.fields["sid"])
+	//		set_owner_info(sk)
+	//		sk.fields["lastlogin"] = world.time
+	if(!istype(user, /mob/living/carbon/human))
+		return
+
+	var/mob/living/carbon/human/H = user
+
+	if(owner == H)
+		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+		set_owner_info(sk)
+		sk.fields["lastlogin"] = world.time
 
 	icon_state = "kpk_on"
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
@@ -243,13 +251,13 @@ var/global/lentahtml = ""
 
 			if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 				mainhtml +="\
-				 <b>Name:</b> [registered_name]<br><br>\
+				 <b>Name:</b> [owner.real_name]<br><br>\
 				 <b>Faction:</b> [eng_faction_s]<br><br>\
 				 <b>Rank:</b> [rating]<br><br>\
 				 <b>Reputation:</b> <font color=\"[rep_color_s]\">[eng_rep_name_s]</font>"
 			else
 				mainhtml +="\
-				 <b>Им&#x44F;:</b> [registered_name]<br><br>\
+				 <b>Им&#x44F;:</b> [owner.real_name]<br><br>\
 				 <b>Группировка:</b> [faction_s]<br><br>\
 				 <b>Ранг:</b> [rating]<br><br>\
 				 <b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s]</font>"
@@ -303,7 +311,7 @@ var/global/lentahtml = ""
                     <td>"
 					if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						mainhtml+="\
-                     <b>Name:</b> [registered_name]<br>\
+                     <b>Name:</b> [owner.real_name]<br>\
                      <b>Faction:</b> [eng_faction_s]<br>\
                      <b>Rank:</b> [eng_rank_name_s] ([rating])<br>\
                      <b>Reputation:</b> <font color=\"[rep_color_s]\">[eng_rep_name_s] ([reputation])</font><br>\
@@ -311,7 +319,7 @@ var/global/lentahtml = ""
 
 					else
 						mainhtml+="\
-                     <b>Им&#x44F;:</b> [registered_name]<br>\
+                     <b>Им&#x44F;:</b> [owner.real_name]<br>\
                      <b>Группировка:</b> [faction_s]<br>\
                      <b>Ранг:</b> [rank_name_s] ([rating])<br>\
                      <b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
@@ -515,7 +523,6 @@ var/global/lentahtml = ""
 						registered_name = H.real_name
 						owner = H
 						sid = H.sid
-						activated = 1
 
 						var/image = get_id_photo(H)
 						var/obj/item/weapon/photo/owner_photo_front = new()
@@ -545,11 +552,10 @@ var/global/lentahtml = ""
 									//access = J.get_access()
 
 									registered_name = H.real_name
-									faction_s = sk.fields["faction"]
+									eng_faction_s = sk.fields["faction"]
 									rating = sk.fields["rating"]
 									owner = H
 									sid = H.sid
-									activated = 1
 
 									var/image = get_id_photo(H)
 									var/obj/item/weapon/photo/owner_photo_front = new()
@@ -583,7 +589,6 @@ var/global/lentahtml = ""
 				KPKs -= src
 				hacked = 0
 				password = null
-				activated = 0
 
 			if("password_check")
 				var/t = message_input(H, "password", 10)
@@ -620,7 +625,7 @@ var/global/lentahtml = ""
 					if ( !(last_lenta && world.time < last_lenta + 450) )
 						last_lenta = world.time
 
-						add_lenta_message(src, sid, registered_name, faction_s, t)
+						add_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
 
 					else
 						/*
@@ -703,7 +708,7 @@ var/global/lentahtml = ""
 		show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg)
 
 	var/factioncolor 	= get_faction_color(faction_owner)
-	var/eng_faction_s 	= get_eng_faction(faction_owner)
+	//var/eng_faction_s 	= faction_owner//get_eng_faction(faction_owner)
 
 	lentahtml = "<table  style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
 	<tr style=\"border: 0px solid black;\">\
@@ -729,7 +734,7 @@ var/global/lentahtml = ""
 	if(C && C.stat != UNCONSCIOUS)
 
 		var/factioncolor	= get_faction_color(faction_owner)
-		var/eng_faction_s 	= get_eng_faction(faction_owner)
+		//var/eng_faction_s 	= get_eng_faction(faction_owner)
 
 		C << russian_html2text("<p>\icon[KPK]<b><font color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
 		if(KPK_owner)
@@ -753,8 +758,8 @@ var/global/lentahtml = ""
 		var/n = R.fields["name"]
 		var/r = R.fields["rating"]
 
-		var/f = R.fields["faction_s"]
-		var/eng_f = get_eng_faction(f)
+		var/eng_f = R.fields["faction_s"]
+		var/f = get_rus_faction(eng_f)
 
 		var/rep_color = get_rep_color(R.fields["reputation"])
 		var/rep = get_rep_name(R.fields["reputation"])
@@ -870,8 +875,8 @@ var/global/lentahtml = ""
 	usr << browse_rsc(P3.img, "photo_east")
 	usr << browse_rsc(P4.img, "photo_back")
 
-	faction_s		= sk.fields["faction_s"]
-	eng_faction_s 	= get_eng_faction(faction_s)
+	eng_faction_s		= sk.fields["faction_s"]
+	faction_s 			= get_rus_faction(faction_s)
 
 	rating			= sk.fields["rating"]
 	money			= sk.fields["money"]
@@ -914,35 +919,35 @@ var/global/lentahtml = ""
 			eng_rank_name_s = "Rookie"
 	return eng_rank_name_s
 
-/proc/get_eng_faction(var/faction_s)
-	var/eng_faction_s = "Loners"
-	switch(faction_s)
-		if("Бандиты")
-			eng_faction_s = "Bandits"
-		if("Одиночки")
-			eng_faction_s = "Loners"
-		if("Наёмники")
-			eng_faction_s = "Mercenaries"
-		if("Долг")
-			eng_faction_s = "Duty"
-		if("Торговцы")
-			eng_faction_s = "Traders"
-		if("Свобода")
-			eng_faction_s = "Freedom"
-	return eng_faction_s
+/proc/get_rus_faction(var/eng_faction_s)
+	var/faction_s = "Одиночки"
+	switch(eng_faction_s)
+		if("Bandits")
+			faction_s = "Бандиты"
+		if("Mercenaries")
+			faction_s = "Наёмники"
+		if("Duty")
+			faction_s = "Долг"
+		if("Traders")
+			faction_s = "Торговцы"
+		if("Freedom")
+			faction_s = "Свобода"
+		if("Monolith")
+			faction_s = "Монолит"
+	return faction_s
 
-/proc/get_faction_color(var/faction_s)
+/proc/get_faction_color(var/eng_faction_s)
 	var/factioncolor = "#ff7733"
-	switch(faction_s)
-		if("Бандиты")
+	switch(eng_faction_s)
+		if("Bandits")
 			factioncolor = "#8c8c8c"
-		if("Одиночки")
+		if("Loners")
 			factioncolor = "#ff7733"
-		if("Наёмники")
+		if("Mercenaries")
 			factioncolor = "#3399ff"
-		if("Долг")
+		if("Duty")
 			factioncolor = "#ff4d4d"
-		if("Свобода")
+		if("Freedom")
 			factioncolor = "#6cba3f"
 	return factioncolor
 

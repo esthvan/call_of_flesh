@@ -335,8 +335,8 @@
 						var/rank_name_s 	= russian_html2text(get_rank_name(R.fields["rating"]))
 						var/eng_rank_name_s = get_eng_rank_name(R.fields["rating"])
 
-						var/faction_s 		= russian_html2text(R.fields["faction_s"])
-						var/eng_faction_s	= get_eng_faction(faction_s)
+						var/eng_faction_s 	= R.fields["faction_s"]
+						var/faction_s		= get_rus_faction(eng_faction_s) //russian_html2text
 
 						if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 							msg += "\nFaction: [eng_faction_s]\n"

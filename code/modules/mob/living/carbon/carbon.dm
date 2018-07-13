@@ -1,7 +1,7 @@
 /mob/living/carbon
 	var/shit = 0
 	//var/rating = 0
-	var/faction_s = "Одиночки"
+	var/faction_s = "Loners"
 	var/sid = null
 	var/rank = "Private"
 

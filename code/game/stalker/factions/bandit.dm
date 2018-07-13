@@ -43,7 +43,7 @@ Assistant
 
 /datum/outfit/job/bandit
 	name = "Bandit"
-	faction_s = "Бандиты"
+	faction_s = "Bandits"
 
 /datum/outfit/job/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -62,7 +62,7 @@ Assistant
 
 /datum/outfit/job/bandit_pahan
 	name = "Pahan"
-	faction_s = "Бандиты"
+	faction_s = "Bandits"
 
 /datum/outfit/job/bandit_pahan/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -81,7 +81,7 @@ Assistant
 
 /datum/outfit/job/bandit_barman
 	name = "Bandit Barman"
-	faction_s = "Бандиты"
+	faction_s = "Bandits"
 
 /datum/outfit/job/bandit_barman/pre_equip(mob/living/carbon/human/H)
 	uniform = /obj/item/clothing/under/color/switer/dark
@@ -99,7 +99,7 @@ Assistant
 
 /datum/outfit/bandit  // For select_equipment
 	name = "Bandit"
-	faction_s = "Бандиты"
+	faction_s = "Bandits"
 
 	suit = /obj/item/clothing/suit/hooded/kozhanka/banditka
 	ears = null
