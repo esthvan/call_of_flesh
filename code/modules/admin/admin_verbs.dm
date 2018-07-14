@@ -125,6 +125,7 @@ var/list/admin_verbs_server = list(
 var/list/admin_verbs_debug = list(
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
+	/client/proc/SetBlowoutGibCooldown,
 	/client/proc/ResetSidorRooms,
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
@@ -409,12 +410,21 @@ var/list/admin_verbs_hideable = list(
 					var/sk_faction_s = sk.fields["faction_s"]
 					src << "<span class='interface'>[sk_name] состоит в [sk_faction_s].</span>"
 					sk.fields["faction_s"] = newfaction
-					usr << "<span class='interface'>Фракция успешно обновлена.</span>"
+					usr << "<span class='interface'>Фракци&#255; успешно обновлена.</span>"
 					log_admin("[key_name(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
 					message_admins("[key_name_admin(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
 				return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
+/client/proc/SetBlowoutGibCooldown()
+	set name = "Set Blowout Gib Cooldown (0-10)"
+	set category = "Stalker"
+
+	var/cooldown = input(usr, "Введите число между 1 и 10.", " S.T.A.L.K.E.R.") as num|null
+
+	if(cooldown && cooldown >= 1 && cooldown <= 10)
+		StalkerBlowout.gibcooldown = cooldown
+		src << "<span class='interface'>Кулдаун гиба во врем&#255; выброса успешно изменен.</span>"
 
 /client/proc/SetMinCooldownBlowout()
 	set name = "Set Blowout Cooldown (min)"
