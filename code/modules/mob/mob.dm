@@ -12,6 +12,9 @@
 
 var/next_mob_id = 0
 /mob/New()
+	if(istype(src, /mob/dview))
+		..()
+		return
 	tag = "mob_[next_mob_id++]"
 	mob_list += src
 	if(stat == DEAD)
