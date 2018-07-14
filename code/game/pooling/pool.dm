@@ -96,7 +96,7 @@ var/global/list/GlobalPool = list()
 
 	diver.ResetVars()
 
-var/list/exclude = list("animate_movement", "contents", "loc", "locs", "parent_type", "vars", "verbs", "type")
+var/list/exclude = list("animate_movement", "loc", "locs", "parent_type", "vars", "verbs", "type") //"contents",
 var/list/pooledvariables = list()
 //thanks to clusterfack @ /vg/station for these two procs
 /datum/proc/createVariables()
@@ -106,19 +106,29 @@ var/list/pooledvariables = list()
 	for(var/key in vars)
 		if(key in exclude)
 			continue
-		pooledvariables[type][key] = initial(vars[key])
+		if(islist(vars[key]))
+			pooledvariables[type][key] = new/list()
+			for(var/element in vars[key].len)
+				pooledvariables[type][key][element] = initial(vars[key][element])
+		else
+			pooledvariables[type][key] = initial(vars[key])
 
 /datum/proc/ResetVars()
 	if(!pooledvariables[type])
 		createVariables(args)
 
 	for(var/key in pooledvariables[type])
-		vars[key] = pooledvariables[type][key]
+		if(islist(vars[key]))
+			vars[key] = new/list()
+			for(var/element in pooledvariables[type][key])
+				vars[key][element] = pooledvariables[type][key][element]
+		else
+			vars[key] = pooledvariables[type][key]
 
 /atom/movable/ResetVars()
 	..()
 	loc = null
-	contents = initial(contents) //something is really wrong if this object still has stuff in it by this point
+	//contents = initial(contents) //something is really wrong if this object still has stuff in it by this point
 
 /image/ResetVars()
 	..()

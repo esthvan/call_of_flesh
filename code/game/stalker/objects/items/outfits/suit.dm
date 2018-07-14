@@ -359,6 +359,7 @@
 	icon_state = "army_armor2"
 */
 /obj/item/clothing/suit/army/New()
+	..()
 	icon_state = "army_armor[rand(1, 2)]"
 
 /obj/item/clothing/suit/berill

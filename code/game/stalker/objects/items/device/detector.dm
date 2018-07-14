@@ -173,7 +173,8 @@
 		arts -= a
 
 /mob/living/carbon/proc/handle_artifact(var/obj/item/weapon/artifact/a)
-	a.phantom = new /obj/effect/fakeart(a, src)
+	//a.phantom = new /obj/effect/fakeart(a, src)
+	a.phantom = PoolOrNew(/obj/effect/fakeart, a, src)
 	src << a.phantom.currentimage
 
 /obj/effect/fakeart

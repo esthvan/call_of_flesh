@@ -1,5 +1,3 @@
-var/global/list/
-
 /obj/structure/stalker/modification_table
 	name = "modification table"
 	desc = "Верстак, стол, на котором можно модифицировать оружие и костюмы."

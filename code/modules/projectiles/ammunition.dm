@@ -83,7 +83,8 @@
 	var/multiload = 1
 
 /obj/item/ammo_box/New()
-	stored_ammo = list()
+	..()
+	//stored_ammo = list()
 	for(var/i = 1, i <= max_ammo, i++)
 		stored_ammo += new ammo_type(src)
 	update_icon()
