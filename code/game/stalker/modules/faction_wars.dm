@@ -1,8 +1,11 @@
-/obj/machinery/stalker/sidorpoint
-	name = "SIDORPOINT 500000 - null"
+var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
+
+obj/machinery/stalker/sidorpoint
+	name = "SIDORPOINT - null"
 	desc = "Контрольна&#255; точка."
 	eng_desc = "Control point."
-	icon_state = "radio"
+	icon = 'icons/stalker/device_new.dmi'
+	icon_state = "radio_free"
 	density = 1
 	anchored = 1
 
@@ -16,7 +19,8 @@
 
 /obj/machinery/stalker/sidorpoint/New()
 	..()
-	name = "SIDORPOINT 500000 - [get_area(src).name]"
+	name = "SIDORPOINT ([get_area(src).name])"
+	cps += src
 	update_desc()
 
 /obj/machinery/stalker/sidorpoint/proc/update_desc()
@@ -36,6 +40,34 @@
 
 			desc = "Точка свободна дл&#255; захвата"
 			eng_desc = "This point can be captured."
+
+/obj/machinery/stalker/sidorpoint/proc/update_icon_percent()
+	switch(control_percent)
+		if(100)
+			icon_state = "radio_captured"
+		if(80 to 99)
+			icon_state = "radio_in_progress_80"
+		if(60 to 80)
+			icon_state = "radio_in_progress_60"
+		if(40 to 60)
+			icon_state = "radio_in_progress_40"
+		if(20 to 40)
+			icon_state = "radio_in_progress_20"
+		if(1 to 20)
+			icon_state = "radio_in_progress_0"
+		if(0)
+			icon_state = "radio_free"
+
+/obj/machinery/stalker/sidorpoint/proc/check_invader()
+	if(!capturing_faction)
+		return
+
+	for(var/mob/living/carbon/human/H in range(5, src))
+		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+		if(sk && sk.fields["faction_s"] == capturing_faction)
+			return
+
+	capturing_faction = null
 
 /obj/machinery/stalker/sidorpoint/attack_hand(mob/user)
 	if(..())
@@ -70,30 +102,37 @@
 		say("[get_area(src).name] is already being captured!")
 		return
 
+	if(!do_after(user, 10, 1, src))
+		return
+
 	capturing_faction = sk.fields["faction_s"]
 	say("[capturing_faction] started capturing [get_area(src).name]!")
 
 	return
 
 /obj/machinery/stalker/sidorpoint/process()
+
 	update_desc()
+	update_icon_percent()
 
 	//if(controlled_by && last_respawn_income)
+
+	check_invader()
+
+	if(capturing_faction && !controlled_by)
+		controlled_by = capturing_faction
 
 	if(!capturing_faction)
 		return
 
-	if(!controlled_by)
-		controlled_by = capturing_faction
-
 	if(controlled_by == capturing_faction)
 
-		control_percent += 2
+		control_percent += 50 //2
 
 		if(control_percent >= 100)
 
 			control_percent = 100
-			say("[get_area(src).name] captured  by [controlled_by]")
+			say("[get_area(src).name] is captured  by [controlled_by]!")
 			capturing_faction = null
 
 	else
@@ -103,7 +142,7 @@
 		if(control_percent <= 0)
 
 			control_percent = 0
-			say("[controlled_by] lost control of [get_area(src).name].")
+			say("[controlled_by] lost control of [get_area(src).name]!")
 			controlled_by = capturing_faction
 
 /obj/machinery/stalker/sidorpoint/ex_act(severity, target)
