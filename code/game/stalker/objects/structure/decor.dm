@@ -4,6 +4,14 @@
 	anchored = 1
 	layer = 3.1
 
+/obj/structure/stalker/polka
+	name = "shelf"
+	desc = "ƒерев&#255;нный стеллаж."
+	icon = 'icons/stalker/polka.dmi'
+	icon_state = "polka"
+	density = 1
+	anchored = 1
+
 /obj/structure/stalker/radiation
 	name = "radiation sign"
 	desc = "Ётот знак здесь &#255;вно не дл&#255; красоты."
