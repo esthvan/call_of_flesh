@@ -80,6 +80,7 @@
 	else
 		icon_state = "[initial(icon_state)][sawn_state ? "-sawn" : ""]"
 
+var/global/list/obj/item/ammo_casing/ACs = list()
 
 /obj/item/weapon/gun/projectile/process_chamber(eject_casing = 1, empty_chamber = 1)
 //	if(in_chamber)
@@ -91,8 +92,9 @@
 	if(eject_casing)
 		AC.loc = get_turf(src) //Eject casing onto ground.
 		AC.SpinAnimation(10, 1) //next gen special effects
-		spawn(rand(delay_clean_decals, delay_clean_decals*1.5))
-			qdel(AC)
+		//spawn(rand(delay_clean_decals, delay_clean_decals*1.5))
+			//qdel(AC)
+		ACs += AC
 
 	if(empty_chamber)
 		chambered = null
