@@ -183,7 +183,7 @@
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
 	loc = null
-	invisibility = 101
+	//invisibility = 101
 	if (pulledby)
 		if (pulledby.pulling == src)
 			pulledby.pulling = null

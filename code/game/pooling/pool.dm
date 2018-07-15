@@ -121,6 +121,8 @@ var/list/pooledvariables = list()
 		if(islist(vars[key]))
 			vars[key] = new/list()
 			for(var/element in pooledvariables[type][key])
+				//if(istype(vars[key][element], /atom))
+				//	PlaceInPool(vars[key][element])
 				vars[key][element] = pooledvariables[type][key][element]
 		else
 			vars[key] = pooledvariables[type][key]

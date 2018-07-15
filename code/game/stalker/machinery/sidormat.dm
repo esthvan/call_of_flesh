@@ -280,7 +280,8 @@ var/list/sidormatitems = list()
 		dat += "Balance: [balance] р.<br>"
 		dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table." // Забирать деньги и купленные вещи - на <b>правом</b>.
 		dat += "</div>"
-		dat += "<br><b>Item list:</b><BR><table border='0' width='400'>"
+		dat += "<div class='lenta_scroll'>"
+		dat += "<br><BR><table border='0' width='400'>" //<b>Item list:</b>
 		dat += "<tr><td><center><b>Guns</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in weapon_list)
 			if(H.faction_s == prize.faction || prize.faction == "Everyone")
@@ -345,6 +346,7 @@ var/list/sidormatitems = list()
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "</table>"
+		dat += "</div>"
 
 	else
 
@@ -355,7 +357,8 @@ var/list/sidormatitems = list()
 		dat += "На счету: [balance] р.<br>"
 		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе." //Забирать деньги и купленные вещи - на <b>правом</b>.
 		dat += "</div>"
-		dat += "<br><b>Список предметов:</b><BR><table border='0' width='400'>"
+		dat += "<div class='lenta_scroll'>"
+		dat += "<br><BR><table border='0' width='400'>" //<b>Список предметов:</b>
 		dat += "<tr><td><center><b>Оружие</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in weapon_list)
 			if(H.faction_s == prize.faction || prize.faction == "Everyone")
@@ -420,8 +423,9 @@ var/list/sidormatitems = list()
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "</table>"
+		dat += "</div>"
 
-	var/datum/browser/popup = new(H, "miningvendor", "SIDORMAT 3000", 500, 450)
+	var/datum/browser/popup = new(H, "miningvendor", "SIDORMAT 3000", 450, 700)
 	popup.set_content(dat)
 	popup.open()
 	return
