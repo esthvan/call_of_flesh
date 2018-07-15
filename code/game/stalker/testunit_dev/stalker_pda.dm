@@ -417,74 +417,10 @@ var/global/lentahtml = ""
 									<table id=\"encyclopedia_table\" align=\"left\">\
 										<tr align=\"left\">\
 											<td align=\"left\">\
-												<ul style=\"list-style-type: none\" id=\"encyclopedia_list\">\
-													<li>\
-														<a onclick=\"toggleShowHide('Training')\">\[+\] Training</a>\
-														<ul id=\"Training\">\
-															<li></li>\
-														</ul>\
-													</li>\
-													<li>\
-														<a onclick=\"toggleShowHide('Anomalies')\">\[+\] Artifacts</a>\
-														<ul id=\"Anomalies\">\
-															<li></li>\
-														</ul>\
-													</li>\
-													<li>\
-														<a onclick=\"toggleShowHide('Artifacts')\">\[+\] Artifacts</a>\
-														<ul id=\"Artifacts\">\
-															<li>Jellyfish</li>\
-															<li>Soul</li>\
-															<li>Stone Flower</li>\
-															<li>Wrenched</li>\
-															<li>Gravi</li>\
-															<li>Stone Blood</li>\
-															<li>Crystal</li>\
-															<li>Goldfish</li>\
-															<li>Fireball</li>\
-															<li>Moonlight</li>\
-															<li>Slug</li>\
-															<li>Urchin</li>\
-															<li>Thorn</li>\
-															<li>Droplet</li>\
-															<li>Flash</li>\
-															<li>Crystal Thorn</li>\
-															<li>Sparkler</li>\
-															<li>Slime</li>\
-															<li>Meat Chunk</li>\
-														</ul>\
-													</li>\
-													<li>\
-														<a onclick=\"toggleShowHide('Mutants')\">\[+\] Mutants</a>\
-														<ul id=\"Mutants\">\
-															<li></li>\
-														</ul>\
-													</li>\
-													<li>\
-														<a onclick=\"toggleShowHide('Factions')\">\[+\] Factions</a>\
-														<ul id=\"Factions\">\
-															<li></li>\
-														</ul>\
-													</li>\
-													<li>\
-														<a onclick=\"toggleShowHide('Locations')\">\[+\] Locations</a>\
-														<ul id=\"Locations\">\
-															<li></li>\
-														</ul>\
-													</li>\
-													<li>\
-														<a onclick=\"toggleShowHide('LocalFolklore')\">\[+\] Local Folklore</a>\
-														<ul id=\"LocalFolklore\">\
-															<li></li>\
-														</ul>\
-													</li>\
-													<li>\
-														<a onclick=\"toggleShowHide('HistoryOfTheZone')\">\[+\] History of the Zone</a>\
-														<ul id=\"HistoryOfTheZone\">\
-															<li></li>\
-														</ul>\
-													</li>\
-												</ul>\
+												<div id=\"encyclopedia_list\">\
+													<h5>«ÓÌ‡</h5>\
+													<a href='byond://?src=\ref[src];choice=2;page=Zona'>«ÓÌ‡</a>\
+												</div>\
 											</td>\
 											<td valign=\"top\">\
 												<div id=\"encyclopedia_info\">\
@@ -823,6 +759,10 @@ var/global/lentahtml = ""
 
 			if("2")			//›Õ÷» ÀŒœ≈ƒ»ﬂ
 				mode = 2
+				world << "0"
+				switch(href_list["page"])
+					if(1)
+						world << "1"
 
 			if("3")			//–≈…“»Õ√
 				if(!isnull(data_core.stalkers))

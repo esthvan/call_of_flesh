@@ -127,7 +127,7 @@ obj/machinery/stalker/sidorpoint
 
 	if(controlled_by == capturing_faction)
 
-		control_percent += 50 //2
+		control_percent += 2
 
 		if(control_percent >= 100)
 
