@@ -109,6 +109,10 @@ datum/subsystem/blowout/proc/StopBlowout()
 		An.SpawnArtifact()
 		CHECK_TICK
 
+	for(var/obj/item/ammo_casing/AC in ACs)
+		qdel(AC)
+		CHECK_TICK
+
 	isblowout = 0
 	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "Все! Выброс закончилс&#x44F;! Выходите из укрытий.")
 
@@ -130,26 +134,26 @@ datum/subsystem/blowout/proc/ProcessBlowout()
 				shake_camera(H, 1, 1)
 		spawn(50)
 			ProcessBlowout()
-	if(prob(10))
+	if(prob(20))
 		var/a = pick(StalkerBlowout.ambient)
 		world << sound(a, wait = 1, channel = 19, volume = 70)
 
-	if(prob(20))
+	if(prob(30))
 		var/a = pick(StalkerBlowout.wave)
 		world << sound(a, wait = 1, channel = 20, volume = 70)
 
-	if(prob(10))
+	if(prob(20))
 		var/a = pick(StalkerBlowout.wind)
 		world << sound(a, wait = 1, channel = 21, volume = 70)
 
-	if(prob(20))
+	if(prob(30))
 		var/a = pick(StalkerBlowout.rumble)
 		world << sound(a, wait = 1, channel = 22, volume = 70)
 
-	if(prob(30))
+	if(prob(40))
 		var/a = pick(StalkerBlowout.boom)
 		world << sound(a, wait = 1, channel = 23, volume = 70)
 
-	if(prob(30))
+	if(prob(40))
 		var/a = pick(StalkerBlowout.lightning)
 		world << sound(a, wait = 1, channel = 24, volume = 70)
