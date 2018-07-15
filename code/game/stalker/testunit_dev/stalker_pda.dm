@@ -12,6 +12,7 @@ var/global/lentahtml = ""
 	var/mode = 1
 	var/show_title = 0
 	var/mainhtml = ""
+	var/navbarhtml = ""
 	var/ratinghtml =""
 	var/list/access = list()
 
@@ -55,7 +56,11 @@ var/global/lentahtml = ""
 	assets = list(
 		"kpk_background.png"	= 'icons/stalker/kpk.png',
 		"nodata.png"			= 'icons/stalker/nodata.png',
-		"photo_0"				= 'icons/stalker/sidor.png'
+		"photo_0"				= 'icons/stalker/sidor.png',
+		"cursor"				= 'code/game/stalker/testunit_dev/cursors/StalkerCursor.ani',
+		//"cursorHighlight"		= 'code/game/stalker/testunit_dev/cursors/highlight.ani',
+		"cursorText"			= 'code/game/stalker/testunit_dev/cursors/sText.cur',
+		"cursorWait"			= 'code/game/stalker/testunit_dev/cursors/Wait.ani'
 	)
 
 
@@ -91,11 +96,6 @@ var/global/lentahtml = ""
 		..()
 
 /obj/item/device/stalker_pda/attack_self(mob/user)
-	//for(var/datum/data/record/sk in data_core.stalkers)
-	//	var/mob/living/carbon/human/H = user
-	//	if(H.sid == sk.fields["sid"])
-	//		set_owner_info(sk)
-	//		sk.fields["lastlogin"] = world.time
 	if(!istype(user, /mob/living/carbon/human))
 		return
 
@@ -110,19 +110,36 @@ var/global/lentahtml = ""
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
 	assets.send(user)
 
+	/*
+	<style>\
+		a:link {color: #607D8B;}\
+		a:visited {color: #607D8B;}\
+		a:active {color: #607D8B;}\
+		a:hover {background-color: #9E9E9E;}\
+		a {text-decoration: none;}\
+		body {\
+		background-image: url('kpk_background.png');\
+		padding-top: 18px;\
+		padding-left: 35px;\
+	*/
+
 	user.set_machine(src)
 	mainhtml ="<html> \
 	\
 	<style>\
-	a:link {color: #607D8B;}\
-	a:visited {color: #607D8B;}\
-	a:active {color: #607D8B;}\
-	a:hover {background-color: #9E9E9E;}\
+		a:link {color: #607D8B;}\
+		a:visited {color: #607D8B;}\
+		a:active {color: #607D8B;}\
+		a:hover {\
+		background-color: #9E9E9E;\
+		cursor: url('cursor');\
+	}\
 	a {text-decoration: none;}\
+	html {cursor: url('cursor');}\
 	body {\
-	background-image: url('kpk_background.png');\
-	padding-top: 18px;\
-	padding-left: 35px;\
+		background-image: url('kpk_background.png');\
+		padding-top: 18px;\
+		padding-left: 35px;\
 	}\
 	table {\
 	    background: #131416;\
@@ -137,79 +154,123 @@ var/global/lentahtml = ""
 		padding-bottom: 5px;\
 	}\
 	#table-center1 {\
-   	position: relative;\
-    background: #2e2e38;\
-	padding-top: 5px;\
-    padding-bottom: 5px;\
-    bottom: 100px;\
+		position: relative;\
+		background: #2e2e38;\
+		padding-top: 5px;\
+		padding-bottom: 5px;\
+		bottom: 100px;\
 	}\
 	#table-center2 {\
-   	position: relative;\
-    background: #2e2e38;\
-    bottom: 0px;\
+		position: relative;\
+		background: #2e2e38;\
+		bottom: 0px;\
 	}\
 	#table-lenta {\
-	background: #9E9E9E;\
+		background: #9E9E9E;\
 	}\
 	div.relative {\
-    position: relative;\
-    width: 250px;\
-    height: 200px;\
-    top: 70px;\
-    }\
-    \
-    #lenta {\
-    background: #2e2e38;\
-    color: white;\
-    padding: 5px;\
-    width: 449px;\
-    height: 190px;\
-    overflow: auto;\
-    border: 1px solid #ccc;\
-    word-wrap: break-word;\
+		position: relative;\
+		width: 250px;\
+		height: 200px;\
+		top: 70px;\
+	}\
+	\
+	#lenta {\
+		background: #2e2e38;\
+		color: white;\
+		padding: 5px;\
+		width: 449px;\
+		height: 228px;\
+		overflow: auto;\
+		border: 1px solid #ccc;\
+		word-wrap: break-word;\
 	}\
 	p.lentamsg {\
-	margin: 0px;\
-	word-wrap: break-word;\
-    }\
+		margin: 0px;\
+		word-wrap: break-word;\
+	}\
 	#navbar {\
-	overflow: hidden;\
-	background-color: #099;\
-	position: fixed;\
-	top: 0;\
-	width: 100%;\
-	padding-top: 3px;\
-	padding-bottom: 3px;\
-	padding-left: 20px;\
+		overflow: hidden;\
+		background-color: #099;\
+		position: fixed;\
+		top: 0;\
+		width: 100%;\
+		padding-top: 3px;\
+		padding-bottom: 3px;\
+		padding-left: 20px;\
 	}\
 	#navbar a {\
-	float: left;\
-	display: block;\
-	color: #666;\
-	text-align: center;\
-	padding-right: 20px;\
-	text-decoration: none;\
-	font-size: 17px;\
+		float: left;\
+		display: block;\
+		color: #666;\
+		text-align: center;\
+		padding-right: 20px;\
+		text-decoration: none;\
+		font-size: 17px;\
 	}\
 	#navbar a:hover {\
-	background-color: #ddd;\
-	color: black;\
+		background-color: #ddd;\
+		color: black;\
 	}\
 	#navbar a.active {\
-	background-color: #4CAF50;\
-	color: white;\
+		background-color: #4CAF50;\
+		color: white;\
 	}\
 	#ratingimg {\
-    vertical-align:middle;\
+		vertical-align:middle;\
 	}\
 	.main {\
 	}\
 	.main img {\
-	height: auto;\
+		height: auto;\
 	}\
 	.button {\
-	  width: 300px;\
-	  height: 60px;\
+		width: 300px;\
+		height: 60px;\
+	}\
+	#encyclopedia_table {\
+		background: #131416;\
+		padding: 0px;\
+		margin-bottom: 0px;\
+		color: #afb2a1;\
+		margin-left: 0px;\
+	}\
+	#encyclopedia_list {\
+		background: #2e2e38;\
+		color: #afb2a1;\
+		padding: 5px;\
+		width: 160px;\
+		height: 228px;\
+		overflow: auto;\
+		border: 1px solid #ccc;\
+		word-wrap: break-word;\
+		margin-left: 3px;\
+	}\
+	#encyclopedia_list li{\
+		list-style-type: none;\
+		height: 0em;\
+		margin-left : 0px;\
+	}\
+	#encyclopedia_list li ul{\
+		visibility: hidden;\
+		height: 0em;\
+		margin-left : 0px;\
+	}\
+	#encyclopedia_list li ul li{\
+		height: 0em;\
+		margin-left : 0px;\
+	}\
+	#encyclopedia_info {\
+		background: #2e2e38;\
+		color: #afb2a1;\
+		padding: 0px;\
+		padding-left: 5px;\
+		width: 273px;\
+		height: 228px;\
+		overflow: auto;\
+		border: 1px solid #ccc;\
+		word-wrap: break-word;\
+		margin-right : 0px;\
 	}\
 	</style>"
 	if (!owner || !password)
@@ -280,12 +341,17 @@ var/global/lentahtml = ""
 		//ПРОФИЛЬ
 
 				if(1)
+					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						navbarhtml ="| <a>Profile</a> | <a href='byond://?src=\ref[src];choice=2'>Encyclopedia</a> | <a href='byond://?src=\ref[src];choice=3'>Rating</a> | <a href='byond://?src=\ref[src];choice=4'>Feed</a> | <a href='byond://?src=\ref[src];choice=5'>Map</a> |<br>"
+					else
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>"
+
 					mainhtml +="\
 					<body>\
 					\
 					<table border=0 height=\"314\" width=\"455\">\
-					<tr>\
-					<td valign=\"top\" align=\"left\">"
+						<tr>\
+							<td valign=\"top\" align=\"left\">"
 					if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						mainhtml +="\
 						<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=exit'>\[EXIT\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
@@ -296,68 +362,156 @@ var/global/lentahtml = ""
 						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=rotate'>Повернуть фото профил&#x44F;</a> | <a href='byond://?src=\ref[src];choice=make_avatar'>Сменить фото профил&#x44F;</a> | </div>"
 
 					mainhtml +="\
-					</td>\
-					</tr>\
-					<tr valign=\"top\">\
-	                <td>\
-                    \
-					<table>\
-                    \
-	                <tr>\
-                    <td style=\"text-align: center;\" valign=\"top\" align=\"left\" width=90 height=90>\
+							</td>\
+							</tr>\
+							<tr valign=\"top\">\
+							<td>\
+								<table>\
+									<tr>\
+					<td style=\"text-align: center;\" valign=\"top\" align=\"left\" width=90 height=90>\
 					<img style=\"margin-left: auto; margin-right: auto;\" height=80 width=80 border=4 src=photo_[rotation]>\
 					<br>\
-                    </td>\
-                    <td>"
+					</td>\
+					<td>"
 					if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						mainhtml+="\
-                     <b>Name:</b> [owner.real_name]<br>\
-                     <b>Faction:</b> [eng_faction_s]<br>\
-                     <b>Rank:</b> [eng_rank_name_s] ([rating])<br>\
-                     <b>Reputation:</b> <font color=\"[rep_color_s]\">[eng_rep_name_s] ([reputation])</font><br>\
-                     <b>Money:</b> [money] RU<br>"
+					<b>Name:</b> [owner.real_name]<br>\
+					<b>Faction:</b> [eng_faction_s]<br>\
+					<b>Rank:</b> [eng_rank_name_s] ([rating])<br>\
+					<b>Reputation:</b> <font color=\"[rep_color_s]\">[eng_rep_name_s] ([reputation])</font><br>\
+					<b>Money:</b> [money] RU<br>"
 
 					else
 						mainhtml+="\
-                     <b>Им&#x44F;:</b> [owner.real_name]<br>\
-                     <b>Группировка:</b> [faction_s]<br>\
-                     <b>Ранг:</b> [rank_name_s] ([rating])<br>\
-                     <b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
-                     <b>Деньги на счету:</b> [money] RU<br>"
+					<b>Им&#x44F;:</b> [owner.real_name]<br>\
+					<b>Группировка:</b> [faction_s]<br>\
+					<b>Ранг:</b> [rank_name_s] ([rating])<br>\
+					<b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
+					<b>Деньги на счету:</b> [money] RU<br>"
 
 					mainhtml +="\
-                    </td>\
-                    </tr>\
-                    \
-                    </table>\
-                    \
-                    \
-                    </td>\
-                    </tr>"
+					</td>\
+					</tr>\
+				</table>\
+			</td>\
+		</tr>"
 
-		//ТРАНЗАКЦИИ
+		//ЭНЦИКЛОПЕДИЯ
 
 				if(2)
+					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Profile</a> | <a>Encyclopedia</a> | <a href='byond://?src=\ref[src];choice=3'>Rating</a> | <a href='byond://?src=\ref[src];choice=4'>Feed</a> | <a href='byond://?src=\ref[src];choice=5'>Map</a> |<br>"
+					else
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>"
+
 					mainhtml +="\
 					<body>\
-					\
-					<table border=0 height=\"314\" width=\"455\">\
-					<tr>\
-					<td align=\"left\" width=200>\
-					\
-					</td>\
-					</tr>"
+						<table border=0 height=\"314\" width=\"455\">\
+							<tr>\
+								<td valign=\"top\" align=\"left\">\
+									<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
+								</td>\
+							</tr>\
+							<tr style=\"border: 0px;\" valign=\"top\" align=\"left\">\
+								<td valign=\"top\" align=\"left\">\
+									<table id=\"encyclopedia_table\" align=\"left\">\
+										<tr align=\"left\">\
+											<td align=\"left\">\
+												<ul style=\"list-style-type: none\" id=\"encyclopedia_list\">\
+													<li>\
+														<a onclick=\"toggleShowHide('Training')\">\[+\] Training</a>\
+														<ul id=\"Training\">\
+															<li></li>\
+														</ul>\
+													</li>\
+													<li>\
+														<a onclick=\"toggleShowHide('Anomalies')\">\[+\] Artifacts</a>\
+														<ul id=\"Anomalies\">\
+															<li></li>\
+														</ul>\
+													</li>\
+													<li>\
+														<a onclick=\"toggleShowHide('Artifacts')\">\[+\] Artifacts</a>\
+														<ul id=\"Artifacts\">\
+															<li>Jellyfish</li>\
+															<li>Soul</li>\
+															<li>Stone Flower</li>\
+															<li>Wrenched</li>\
+															<li>Gravi</li>\
+															<li>Stone Blood</li>\
+															<li>Crystal</li>\
+															<li>Goldfish</li>\
+															<li>Fireball</li>\
+															<li>Moonlight</li>\
+															<li>Slug</li>\
+															<li>Urchin</li>\
+															<li>Thorn</li>\
+															<li>Droplet</li>\
+															<li>Flash</li>\
+															<li>Crystal Thorn</li>\
+															<li>Sparkler</li>\
+															<li>Slime</li>\
+															<li>Meat Chunk</li>\
+														</ul>\
+													</li>\
+													<li>\
+														<a onclick=\"toggleShowHide('Mutants')\">\[+\] Mutants</a>\
+														<ul id=\"Mutants\">\
+															<li></li>\
+														</ul>\
+													</li>\
+													<li>\
+														<a onclick=\"toggleShowHide('Factions')\">\[+\] Factions</a>\
+														<ul id=\"Factions\">\
+															<li></li>\
+														</ul>\
+													</li>\
+													<li>\
+														<a onclick=\"toggleShowHide('Locations')\">\[+\] Locations</a>\
+														<ul id=\"Locations\">\
+															<li></li>\
+														</ul>\
+													</li>\
+													<li>\
+														<a onclick=\"toggleShowHide('LocalFolklore')\">\[+\] Local Folklore</a>\
+														<ul id=\"LocalFolklore\">\
+															<li></li>\
+														</ul>\
+													</li>\
+													<li>\
+														<a onclick=\"toggleShowHide('HistoryOfTheZone')\">\[+\] History of the Zone</a>\
+														<ul id=\"HistoryOfTheZone\">\
+															<li></li>\
+														</ul>\
+													</li>\
+												</ul>\
+											</td>\
+											<td valign=\"top\">\
+												<div id=\"encyclopedia_info\">\
+													<h4>TITLE</h4>\
+													<p>INFO</p>\
+												</div>\
+											</td>\
+										</tr>\
+									</table>\
+								</td>\
+							</tr>"
 
 		//РЕЙТИНГ
 
 				if(3)
+					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Profile</a> | <a href='byond://?src=\ref[src];choice=2'>Encyclopedia</a> | <a>Rating</a> | <a href='byond://?src=\ref[src];choice=4'>Feed</a> | <a href='byond://?src=\ref[src];choice=5'>Map</a> |<br>"
+					else
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>"
+
 					mainhtml +="\
 					<body>\
 					\
 					<table border=0 height=\"314\" width=\"455\">\
-					<tr>\
-					<td valign=\"top\" align=\"left\">\
-					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
+						<tr>\
+							<td valign=\"top\" align=\"left\">\
+								<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
 					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						mainhtml +="\
 						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Refresh stalker list</a> | </div>"
@@ -365,20 +519,24 @@ var/global/lentahtml = ""
 						mainhtml +="\
 						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Обновить список сталкеров</a> | </div>"
 					mainhtml +="\
-					</td>\
-					</tr>\
-					<tr valign=\"top\">\
-	                <td>\
-					<div id= \"lenta\">\
-					[ratinghtml]\
-	             	</div>\
-	                \
-	                </td>\
-					</tr>"
+							</td>\
+						</tr>\
+						<tr valign=\"top\">\
+			                <td>\
+								<div id= \"lenta\">\
+								[ratinghtml]\
+								</div>\
+							</td>\
+						</tr>"
 
 		//ЛЕНТА
 
 				if(4)
+					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Profile</a> | <a href='byond://?src=\ref[src];choice=2'>Encyclopedia</a> | <a href='byond://?src=\ref[src];choice=3'>Rating</a> | <a>Feed</a> | <a href='byond://?src=\ref[src];choice=5'>Map</a> |<br>"
+					else
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>"
+
 					mainhtml +="\
 					<body>\
 					\
@@ -405,6 +563,11 @@ var/global/lentahtml = ""
 
 		//КАРТА
 				if(5)
+					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Profile</a> | <a href='byond://?src=\ref[src];choice=2'>Encyclopedia</a> | <a href='byond://?src=\ref[src];choice=3'>Rating</a> | <a href='byond://?src=\ref[src];choice=4'>Feed</a> | <a>Map</a> |<br>"
+					else
+						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>"
+
 					mainhtml +="\
 					<body>\
 					\
@@ -433,41 +596,35 @@ var/global/lentahtml = ""
 					</td>\
 					</tr>"
 
-
-			if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
-				mainhtml +="\
-				<tr>\
-				<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
-					| <a href='byond://?src=\ref[src];choice=1'>Profile</a> | <a href='byond://?src=\ref[src];choice=2'>Enciclopedie</a> | <a href='byond://?src=\ref[src];choice=3'>Rating</a> | <a href='byond://?src=\ref[src];choice=4'>Feed</a> | <a href='byond://?src=\ref[src];choice=5'>Map</a> |<br>\
-				<div align=\"center\"></div>\
+			mainhtml +="\
+			<tr>\
+				<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=30>\
+					[navbarhtml]\
+					<div align=\"center\"></div>\
 				</td>\
-				</tr>"
-			else
-				mainhtml +="\
-				<tr>\
-				<td colspan=\"1\" align=\"center\" id=\"table-bottom1\" height=60>\
-					| <a href='byond://?src=\ref[src];choice=1'>Профиль</a> | <a href='byond://?src=\ref[src];choice=2'>Энциклопеди&#x44F;</a> | <a href='byond://?src=\ref[src];choice=3'>Рейтинг</a> | <a href='byond://?src=\ref[src];choice=4'>Лента</a> | <a href='byond://?src=\ref[src];choice=5'>Карта</a> |<br>\
-				<div align=\"center\"></div>\
-				</td>\
-				</tr>"
-
+			</tr>"
 	mainhtml +="\
-	</table>\
+	<table>\
 	<script>\
+	function toggleShowHide(id){\
+		var d = document.getElementById(id);\
+		d.style.visibility = (d.style.visibility == \"visible\") ? \"hidden\" : \"visible\";\
+		d.style.height = (d.style.height == \"auto\") ? \"0em\" : \"auto\";\
+    }\
 	function zoomin(){\
-	    var myImg = document.getElementById(\"map\");\
-	    var currWidth = myImg.clientWidth;\
-	    if(currWidth >= 1015) return false;\
-	     else{\
-	        myImg.style.width = (currWidth + 200) + \"px\";\
-	    } \
+		var myImg = document.getElementById(\"map\");\
+		var currWidth = myImg.clientWidth;\
+		if(currWidth >= 1015) return false;\
+		else{\
+		    myImg.style.width = (currWidth + 200) + \"px\";\
+		} \
 	}\
 	function zoomout(){\
-	    var myImg = document.getElementById(\"map\");\
-	    var currWidth = myImg.clientWidth;\
-	    if(currWidth <= 415) return false;\
-		 else{\
-	        myImg.style.width = (currWidth - 200) + \"px\";\
+		var myImg = document.getElementById(\"map\");\
+		var currWidth = myImg.clientWidth;\
+		if(currWidth <= 415) return false;\
+		else{\
+			myImg.style.width = (currWidth - 200) + \"px\";\
 	    }\
 	}\
 	</script>\
@@ -638,7 +795,7 @@ var/global/lentahtml = ""
 								ending = "у"
 						*/
 						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-							H << "<span class='warning'>You can send message in [round((450 + last_lenta - world.time)/10)] sec.</span>"
+							H << "<span class='warning'>You can't send messages in next [round((450 + last_lenta - world.time)/10)] sec.</span>"
 						else
 							H << "<span class='warning'>Вы сможете отправить следующее сообщение через [round((450 + last_lenta - world.time)/10)] сек.</span>"
 
