@@ -18,18 +18,18 @@ var/list/datum/time_of_day/time_cycle_steps = list(new /datum/time_of_day/mornin
 
 
 /datum/subsystem/sunlight
-	name          = "Sun Lighting"
-	priority = 1
+	name = "Sun Lighting"
+	priority = 2
 	wait = 1
 	dynamic_wait = 1
 	dwait_delta = 3
 
 	var/initialized = FALSE
 
-	var/list/currentrun_lights
-	var/list/currentrun_corners
-	var/list/currentrun_overlays
-	var/list/sunlighting_planes
+	var/list/currentrun_lights = list()
+	var/list/currentrun_corners = list()
+	var/list/currentrun_overlays = list()
+	var/list/sunlighting_planes = list()
 
 	var/datum/time_of_day/current_step_datum
 	var/datum/time_of_day/next_step_datum
@@ -61,6 +61,53 @@ var/list/datum/time_of_day/time_cycle_steps = list(new /datum/time_of_day/mornin
 	set_time_of_day(STEP_DAY)
 
 	create_all_sunlighting_overlays()
+
+	check_cycle()
+	update_color()
+
+	resuming_stage = STAGE_SOURCES
+
+	while (sunlighting_update_lights.len)
+		var/datum/sunlight_source/L = sunlighting_update_lights[sunlighting_update_lights.len]
+		sunlighting_update_lights.len--
+
+		if (L.check() || L.destroyed || L.force_update)
+			L.remove_lum()
+			if (!L.destroyed)
+				L.apply_lum()
+
+		else if (L.vis_update) //We smartly update only tiles that became (in) visible to use.
+			L.smart_vis_update()
+
+		L.vis_update   = FALSE
+		L.force_update = FALSE
+		L.needs_update = FALSE
+
+	resuming_stage = STAGE_CORNERS
+
+	while (sunlighting_update_corners.len)
+		var/datum/sunlighting_corner/C = sunlighting_update_corners[sunlighting_update_corners.len]
+		sunlighting_update_corners.len--
+
+		C.update_overlays()
+		C.needs_update = FALSE
+
+	resuming_stage = STAGE_OVERLAYS
+
+	while (sunlighting_update_overlays.len)
+		var/atom/movable/sunlighting_overlay/O = sunlighting_update_overlays[sunlighting_update_overlays.len]
+		sunlighting_update_overlays.len--
+
+		if (qdeleted(O))
+			continue
+
+		O.update_overlay()
+		O.needs_update = FALSE
+#if defined(LIGHTING_ANIMATION)
+		O.animate_color()
+#endif
+	resuming_stage = 0
+
 	initialized = TRUE
 
 	..()
