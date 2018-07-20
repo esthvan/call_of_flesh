@@ -157,7 +157,7 @@
 		new /datum/data/stalker_equipment("Geiger counter",						"Дозиметр",											/obj/item/device/geiger_counter,											1500, NEWBIE),
 		new /datum/data/stalker_equipment("Flashlight",							"Фонарик",											/obj/item/device/flashlight/seclite,										1000, NEWBIE),
 		new /datum/data/stalker_equipment("Artifact belt",						"Большой по&#x44F;с дл&#x44F; артефактов",			/obj/item/weapon/storage/belt/stalker/artifact_belt,						55000, EXPERT, assortment_level = 3),
-		new /datum/data/stalker_equipment("Artifact belt",						"Маленький по&#x44F;с дл&#x44F; артефактов",		/obj/item/weapon/storage/belt/stalker/artifact_belt/small_artifact_belt,	20000, NEWBIE),
+		new /datum/data/stalker_equipment("Artifact belt",						"Маленький по&#x44F;с дл&#x44F; артефактов",		/obj/item/weapon/storage/belt/stalker/artifact_belt/small,					20000, NEWBIE),
 		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										500, NEWBIE),
 		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,					1000, NEWBIE),
 		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,							5000, NEWBIE),
@@ -179,21 +179,26 @@
 
 	var/list/artifact_list = list(
 		/////////////////////////////////	Артефакты	///////////////////////////////////////////
-		new /datum/data/stalker_equipment("Медуза",			"Медуза",									/obj/item/weapon/artifact/meduza,					5000,	NEWBIE,	sale_price = 2500),
-		new /datum/data/stalker_equipment("Каменный цветок","Каменный цветок",							/obj/item/weapon/artifact/stoneflower,				10000,	NEWBIE,	sale_price = 5000),
-		new /datum/data/stalker_equipment("Ночная звезда",	"Ночная звезда",							/obj/item/weapon/artifact/nightstar,				30000,	NEWBIE,	sale_price = 15000),
-		new /datum/data/stalker_equipment("Мамины бусы",	"Мамины бусы",								/obj/item/weapon/artifact/maminibusi,				70000,	NEWBIE,	sale_price = 35000),
-		new /datum/data/stalker_equipment("Вспышка",		"Вспышка",									/obj/item/weapon/artifact/flash,					6000,	NEWBIE,	sale_price = 3000),
-		new /datum/data/stalker_equipment("Лунный свет",	"Лунный свет",								/obj/item/weapon/artifact/moonlight,				12000,	NEWBIE,	sale_price = 6000),
-		new /datum/data/stalker_equipment("Пустышка",		"Пустышка",									/obj/item/weapon/artifact/pustishka,				80000,	NEWBIE,	sale_price = 40000),
-		new /datum/data/stalker_equipment("Батарейка",		"Батарейка",								/obj/item/weapon/artifact/battery,					80000,	NEWBIE,	sale_price = 40000),
-		new /datum/data/stalker_equipment("Капл&#x44F;",	"Капл&#x44F;",								/obj/item/weapon/artifact/droplet,					7000,	NEWBIE,	sale_price = 3500),
-		new /datum/data/stalker_equipment("Огненный шар",	"Огненный шар",								/obj/item/weapon/artifact/fireball,					15000,	NEWBIE,	sale_price = 7500),
-		new /datum/data/stalker_equipment("Кристалл",		"Кристалл",									/obj/item/weapon/artifact/crystal,					900000,	NEWBIE,	sale_price = 45000),
-		new /datum/data/stalker_equipment("Кровь Камн&#x44F;","Кровь Камн&#x44F;",						/obj/item/weapon/artifact/stone_blood,				4000,	NEWBIE,	sale_price = 2000),
-		new /datum/data/stalker_equipment("Душа",			"Душа",										/obj/item/weapon/artifact/soul,						8000,	NEWBIE,	sale_price = 4000),
-		new /datum/data/stalker_equipment("Пузырь",			"Пузырь",									/obj/item/weapon/artifact/bubble,					30000,	NEWBIE,	sale_price = 15000),
-
+		new /datum/data/stalker_equipment("Медуза",				"Медуза",									/obj/item/weapon/artifact/meduza,					5000,	NEWBIE,	sale_price = 2500),
+		new /datum/data/stalker_equipment("Каменный цветок",	"Каменный цветок",							/obj/item/weapon/artifact/stoneflower,				10000,	NEWBIE,	sale_price = 5000),
+		new /datum/data/stalker_equipment("Ночная звезда",		"Ночная звезда",							/obj/item/weapon/artifact/nightstar,				30000,	NEWBIE,	sale_price = 15000),
+		new /datum/data/stalker_equipment("Душа",				"Душа",										/obj/item/weapon/artifact/soul,						80000,	NEWBIE,	sale_price = 35000),
+		///////////////////////////////////////////////////////////////////////////////////////////
+		new /datum/data/stalker_equipment("Вспышка",			"Вспышка",									/obj/item/weapon/artifact/flash,					6000,	NEWBIE,	sale_price = 3000),
+		new /datum/data/stalker_equipment("Лунный свет",		"Лунный свет",								/obj/item/weapon/artifact/moonlight,				12000,	NEWBIE,	sale_price = 6000),
+		new /datum/data/stalker_equipment("Пустышка",			"Пустышка",									/obj/item/weapon/artifact/pustishka,				40000,	NEWBIE,	sale_price = 20000),
+		new /datum/data/stalker_equipment("Батарейка",			"Батарейка",								/obj/item/weapon/artifact/battery,					70000,	NEWBIE,	sale_price = 35000),
+		///////////////////////////////////////////////////////////////////////////////////////////
+		new /datum/data/stalker_equipment("Капл&#x44F;",		"Капл&#x44F;",								/obj/item/weapon/artifact/droplet,					7000,	NEWBIE,	sale_price = 3500),
+		new /datum/data/stalker_equipment("Огненный шар",		"Огненный шар",								/obj/item/weapon/artifact/fireball,					15000,	NEWBIE,	sale_price = 7500),
+		new /datum/data/stalker_equipment("Кристалл",			"Кристалл",									/obj/item/weapon/artifact/crystal,					60000,	NEWBIE,	sale_price = 30000),
+		new /datum/data/stalker_equipment("Мамины бусы",		"Мамины бусы",								/obj/item/weapon/artifact/maminibusi,				80000,	NEWBIE,	sale_price = 40000),
+		///////////////////////////////////////////////////////////////////////////////////////////
+		new /datum/data/stalker_equipment("Кровь Камн&#x44F;",	"Кровь Камн&#x44F;",						/obj/item/weapon/artifact/stone_blood,				4000,	NEWBIE,	sale_price = 2000),
+		new /datum/data/stalker_equipment("Пузырь",				"Пузырь",									/obj/item/weapon/artifact/bubble,					8000,	NEWBIE,	sale_price = 4000),
+		new /datum/data/stalker_equipment("Слюда",				"Слюда",									/obj/item/weapon/artifact/mica,						20000,	NEWBIE,	sale_price = 10000),
+		new /datum/data/stalker_equipment("Светл&#x44F;к",		"Светл&#x44F;к",							/obj/item/weapon/artifact/firefly,					50000,	NEWBIE,	sale_price = 25000),
+		///////////////////////////////////////////////////////////////////////////////////////////
 		)
 
 	var/attachment_list = list(

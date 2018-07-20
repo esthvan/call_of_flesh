@@ -26,43 +26,12 @@
 	var/inactive_icon_state = null;
 	var/active_invisibility = 0
 	var/inactive_invisibility = 0
-	var/list/loot
+	var/list/loot = list()
 	var/anomaly_color = null
 	icon = 'icons/stalker/anomalies.dmi'
 	unacidable = 1
 	anchored = 1
 	pass_flags = PASSTABLE | PASSGRILLE
-
-
-	var/list/art_level1 = list(
-						/obj/item/weapon/artifact/flash,
-						/obj/item/weapon/artifact/meduza,
-						/obj/item/weapon/artifact/droplet,
-						/obj/item/weapon/artifact/stone_blood
-
-						)
-
-	var/list/art_level2 = list(
-						/obj/item/weapon/artifact/moonlight,
-						/obj/item/weapon/artifact/stoneflower,
-						/obj/item/weapon/artifact/fireball,
-						/obj/item/weapon/artifact/soul
-
-						)
-
-	var/list/art_level3 = list(
-						/obj/item/weapon/artifact/nightstar,
-						/obj/item/weapon/artifact/bubble,
-						/obj/item/weapon/artifact/pustishka
-
-						)
-
-	var/list/art_level4 = list(
-						/obj/item/weapon/artifact/crystal,
-						/obj/item/weapon/artifact/battery,
-						/obj/item/weapon/artifact/maminibusi,
-						/obj/item/weapon/artifact/mica
-						)
 
 /obj/anomaly/New()
 	..()
@@ -82,24 +51,26 @@
 
 	var/lootspawn = pickweight(loot)
 
+	if(!lootspawn || lootspawn == /obj/nothing)
+		return
+
+	var/obj/item/weapon/artifact/lootspawn_art = lootspawn
+
 	switch(z)
 		if(4)
-			if(lootspawn in art_level4)
+			if(lootspawn_art.level_s > 4)
 				SpawnArtifact()
 				return
 
 		if(3)
-			if(lootspawn in art_level3 || lootspawn in art_level4)
+			if(lootspawn_art.level_s > 2)
 				SpawnArtifact()
 				return
 
 		if(2)
-			if(lootspawn in art_level2 ||lootspawn in art_level3 || lootspawn in art_level4)
+			if(lootspawn_art.level_s > 1)
 				SpawnArtifact()
 				return
-
-	if(!lootspawn || lootspawn == /obj/nothing)
-		return
 
 	var/turf/T = get_turf(src)
 	var/obj/item/weapon/artifact/O = PoolOrNew(lootspawn, T)
@@ -125,7 +96,7 @@
 
 /obj/anomaly/Crossed(atom/A)
 	..()
-	if(lasttime + cooldown > world.time)
+	if(lasttime + (cooldown * 10) > world.time)
 		return
 
 	if(istype(A,/obj/item/projectile) || istype(A,/obj/item/weapon/artifact))
@@ -168,10 +139,7 @@
 		var/mob/living/L = A
 		src.trapped.Add(L)
 		if(src.trapped.len >= 1 && !incooldown)
-			incooldown = 1
 			Think()
-		//else
-		//	src.trapped.Remove(L)
 	return
 
 /obj/anomaly/Uncrossed(atom/A)
@@ -196,24 +164,9 @@
 		Think()
 		return
 
-	invisibility = active_invisibility
-	icon_state = active_icon_state
-	update_icon()
-	set_light(activated_luminosity, l_color = anomaly_color)
-
-	spawn(10)
-		invisibility = inactive_invisibility
-		icon_state = inactive_icon_state
-		update_icon()
-		set_light(idle_luminosity, l_color = anomaly_color)
-
-	playsound(src.loc, src.sound, 50, 1, channel = 0)
+	incooldown = 1
 
 	lasttime = world.time
-
-	////////////////////
-	sleep(src.delay * 10)
-	////////////////////
 
 	for(var/atom/A in src.trapped)
 
@@ -227,21 +180,14 @@
 			src.trapped.Remove(L)
 			continue
 
-		switch(src.damage_type)
-			if(DMG_TYPE_ENERGY)
-				L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "electro"))
-			if(DMG_TYPE_BIO)
-				L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "bio"))
-			if(DMG_TYPE_RADIATION)
-				L.rad_act(src.damage_amount)
-			if(DMG_TYPE_GIB)
-				L.gib()
-				trapped.Remove(L)
-			if(DMG_TYPE_IGNITION)
-				if(istype(L, /mob/living/simple_animal/hostile))
-					L.apply_damage(40, BURN, null, 0)
-				else
-					L.fire_act()
+		ApplyEffects()
+
+		////////////////////
+		sleep(src.delay * 10)
+		////////////////////
+
+		DealDamage(L)
+
 		///////////////////////
 		sleep(src.cooldown * 10)
 		///////////////////////
@@ -253,73 +199,52 @@
 	Think()
 	return
 
-/obj/anomaly/tramplin/Think()
-
-	if(!src.trapped || src.trapped.len < 1)
-		incooldown = 0
-		return
-
-	if(lasttime + (cooldown * 10) > world.time)
-
-		//////////////////////////////////////////////
-		sleep(lasttime + (cooldown * 10) - world.time)
-		//////////////////////////////////////////////
-
-		Think()
-		return
-
+/obj/anomaly/proc/ApplyEffects()
 	invisibility = active_invisibility
 	icon_state = active_icon_state
 	update_icon()
 	set_light(activated_luminosity, l_color = anomaly_color)
-
+	playsound(src.loc, src.sound, 50, 1, channel = 0)
 
 	spawn(10)
 		invisibility = inactive_invisibility
 		icon_state = inactive_icon_state
+		update_icon()
 		set_light(idle_luminosity, l_color = anomaly_color)
+	return
 
-	playsound(src.loc, src.sound, 50, 1, channel = 0)
-
+/obj/anomaly/proc/DealDamage(var/mob/living/L)
 	lasttime = world.time
 
-	sleep(src.delay * 10)
+	switch(src.damage_type)
+		if(DMG_TYPE_ENERGY)
+			L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "electro"))
+		if(DMG_TYPE_BIO)
+			L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "bio"))
+		if(DMG_TYPE_RADIATION)
+			L.rad_act(src.damage_amount)
+		if(DMG_TYPE_GIB)
+			L.gib()
+			trapped.Remove(L)
+		if(DMG_TYPE_IGNITION)
+			if(istype(L, /mob/living/simple_animal/hostile))
+				L.apply_damage(40, BURN, null, 0)
+			else
+				L.fire_act()
+	return
 
-	for(var/atom/A in src.trapped)
+/obj/anomaly/tramplin/DealDamage(var/mob/living/L)
+	L.apply_damage(src.damage_amount, BRUTE, null, 0)
 
-		if(!(A in src.trapped))
-			continue
+	var/new_dir = NORTH
+	var/target = get_turf(src)
 
-		if(!istype(A, /mob/living))
-			trapped.Remove(A)
-			continue
+	for(var/o=0, o<8, o++)
+		new_dir = pick(EAST, NORTH, WEST, SOUTH)
+		target = get_turf(get_step(target, new_dir))
 
-		var/mob/living/L = A
-		if(L.stat == 2)
-			src.trapped.Remove(L)
-			continue
-
-		L.apply_damage(src.damage_amount, BRUTE, null, 0)
-
-		var/new_dir = NORTH
-		var/target = get_turf(src)
-
-		for(var/o=0, o<8, o++)
-			new_dir = pick(EAST, NORTH, WEST, SOUTH)
-			target = get_turf(get_step(target, new_dir))
-
-		L.throw_at(target, 6, 1, spin=1, diagonals_first = 1)
-		L.Weaken(2)
-
-		///////////////////////
-		sleep(src.cooldown * 10)
-		///////////////////////
-
-	if(!src.trapped || src.trapped.len < 1)
-		incooldown = 0
-		return
-
-	Think()
+	L.throw_at(target, 6, 1, spin=1, diagonals_first = 1)
+	L.Weaken(2)
 	return
 
 
@@ -364,14 +289,14 @@
 				/obj/item/weapon/artifact/meduza = 5,
 				/obj/item/weapon/artifact/stoneflower = 3,
 				/obj/item/weapon/artifact/nightstar = 1.5,
-				/obj/item/weapon/artifact/maminibusi = 0.5
+				/obj/item/weapon/artifact/soul = 0.5
 				)
 
 /obj/anomaly/tramplin
 	name = "anomaly"
-	damage_amount = 20
+	damage_amount = 15
 	cooldown = 2
-	delay = 0.3
+	delay = 1.75
 	sound = 'sound/stalker/anomalies/gravi_blowout1.ogg'
 	idle_luminosity = 0
 	activated_luminosity = 0
@@ -384,12 +309,11 @@
 				/obj/item/weapon/artifact/meduza = 5,
 				/obj/item/weapon/artifact/stoneflower = 3,
 				/obj/item/weapon/artifact/nightstar = 1.5,
-				/obj/item/weapon/artifact/maminibusi = 0.5
 				)
 
 /obj/anomaly/jarka
 	name = "anomaly"
-	cooldown = 0.75
+	cooldown = 2
 	sound = 'sound/stalker/anomalies/zharka1.ogg'
 	luminosity = 2
 	idle_luminosity = 3
@@ -402,14 +326,25 @@
 	active_invisibility = 0
 	inactive_invisibility = 0
 	loot = list(/obj/nothing = 90,
-				/obj/item/weapon/artifact/droplet = 6.5,
+				/obj/item/weapon/artifact/droplet = 5,
 				/obj/item/weapon/artifact/fireball = 3,
-				/obj/item/weapon/artifact/crystal = 0.5
+				/obj/item/weapon/artifact/crystal = 1.5,
+				/obj/item/weapon/artifact/maminibusi = 0.5
 				)
+
+/obj/anomaly/jarka/Uncrossed(atom/A)
+	..()
+	if(istype(A, /mob/living))
+		var/mob/living/L = A
+		src.trapped.Remove(L)
+		lasttime = 0
+		incooldown = 0
+	return
+
 
 /obj/anomaly/holodec
 	name = "anomaly"
-	cooldown = 0.75
+	cooldown = 2
 	luminosity = 3
 	idle_luminosity = 3
 	activated_luminosity = 5
@@ -423,14 +358,24 @@
 	active_invisibility = 0
 	inactive_invisibility = 0
 	loot = list(/obj/nothing = 90,
-				/obj/item/weapon/artifact/stone_blood = 6.5,
-				/obj/item/weapon/artifact/soul = 3,
-				/obj/item/weapon/artifact/bubble = 0.5,
+				/obj/item/weapon/artifact/stone_blood = 5,
+				/obj/item/weapon/artifact/bubble = 3,
+				/obj/item/weapon/artifact/mica = 1.5,
+				/obj/item/weapon/artifact/firefly = 0.5
 				)
+
+/obj/anomaly/holodec/Uncrossed(atom/A)
+	..()
+	if(istype(A, /mob/living))
+		var/mob/living/L = A
+		src.trapped.Remove(L)
+		lasttime = 0
+		incooldown = 0
+	return
 
 /obj/anomaly/puh
 	name = "anomaly"
-	cooldown = 0.75
+	cooldown = 2
 	sound = 'sound/stalker/anomalies/buzz_hit.ogg'
 	damage_type = DMG_TYPE_BIO
 	damage_amount = 65
@@ -440,22 +385,22 @@
 	active_invisibility = 0
 	inactive_invisibility = 0
 
+/obj/anomaly/puh/Uncrossed(atom/A)
+	..()
+	if(istype(A, /mob/living))
+		var/mob/living/L = A
+		src.trapped.Remove(L)
+		lasttime = 0
+		incooldown = 0
+	return
+
 /obj/anomaly/puh/New()
 	..()
 	inactive_icon_state = pick("puh","puh2")
 	icon_state = inactive_icon_state
 	if(inactive_icon_state == "puh2")
 		active_icon_state = "puh2"
-/*
-/obj/anomaly/puh/puh2
-	icon = 'icons/stalker/anomalies.dmi'
-	inactive_icon_state = "puh2"
-	active_icon_state = "puh2"
-*/
-/*
-/obj/anomaly/fake
-	name = "anomaly"
-*/
+
 /obj/rad 	//Не наносит урона
 	name = "Anomaly"
 	icon = 'icons/stalker/anomalies.dmi'

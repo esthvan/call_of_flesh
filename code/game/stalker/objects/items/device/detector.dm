@@ -238,7 +238,7 @@
 		spawned_artifacts.Remove(my_target)
 		return
 
-	sk.fields["rating"] += (2 ** my_target.level_s) * 50 + 100
+	sk.fields["rating"] += (2 ** my_target.level_s) * 50
 
 	qdel(src)
 	spawned_artifacts.Remove(my_target)
