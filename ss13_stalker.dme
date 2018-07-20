@@ -159,7 +159,6 @@
 #include "code\controllers\subsystem\events.dm"
 #include "code\controllers\subsystem\garbage.dm"
 #include "code\controllers\subsystem\jobs.dm"
-#include "code\controllers\subsystem\karma.dm"
 #include "code\controllers\subsystem\lighting_new.dm"
 #include "code\controllers\subsystem\machines.dm"
 #include "code\controllers\subsystem\minimap.dm"
