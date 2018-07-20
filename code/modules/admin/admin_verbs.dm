@@ -125,7 +125,7 @@ var/list/admin_verbs_server = list(
 var/list/admin_verbs_debug = list(
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
-	/client/proc/SetBlowoutGibCooldown,
+	/client/proc/SetRealCooldownBlowout,
 	/client/proc/ResetSidorRooms,
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
@@ -416,16 +416,6 @@ var/list/admin_verbs_hideable = list(
 				return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
 
-/client/proc/SetBlowoutGibCooldown()
-	set name = "Set Blowout Gib Cooldown (0-10)"
-	set category = "Stalker"
-
-	var/cooldown = input(usr, "Введите число между 1 и 10.", " S.T.A.L.K.E.R.") as num|null
-
-	if(cooldown && cooldown >= 1 && cooldown <= 10)
-		StalkerBlowout.gibcooldown = cooldown
-		src << "<span class='interface'>Кулдаун гиба во врем&#255; выброса успешно изменен.</span>"
-
 /client/proc/SetMinCooldownBlowout()
 	set name = "Set Blowout Cooldown (min)"
 	set category = "Stalker"
@@ -447,6 +437,16 @@ var/list/admin_verbs_hideable = list(
 	if(cooldownmax)
 		StalkerBlowout.cooldownmax = cooldownmax
 		src << "<span class='interface'>Кулдаун (макс) выброса успешно изменен.</span>"
+
+/client/proc/SetRealCooldownBlowout()
+	set name = "Set Real Blowout Cooldown"
+	set category = "Stalker"
+
+	var/cooldownreal = input(usr, "Введите кулдаун следующего цикла выброса", "S.T.A.L.K.E.R.") as num|null
+
+	if(cooldownreal)
+		StalkerBlowout.cooldownreal = cooldownreal
+		src << "<span class='interface'>Кулдаун следующего цикла выброса успешно изменен. Выброс начнётс&#255; через: [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60)] мин.</span>"
 
 /client/proc/ResetSidorRooms()
 	set category = "Stalker"

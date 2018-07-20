@@ -9,10 +9,15 @@ var/global/isblowout = 0
 	var/inshelter = 0
 
 datum/subsystem/blowout
-	var/blowoutphase = 1
+	name = "Blowouts"
+	priority = 1
+	var/blowoutphase = 0
 	var/cooldownmin = 18000
 	var/cooldownmax = 36000
-	var/gibcooldown = 2
+	var/cooldownreal = 0
+	var/lasttime = 0
+	var/starttime = 0
+	var/blowout_duration = 1200
 	var/list/ambient = list('sound/stalker/blowout/blowout_amb_01.ogg', 'sound/stalker/blowout/blowout_amb_02.ogg',
 						'sound/stalker/blowout/blowout_amb_03.ogg', 'sound/stalker/blowout/blowout_amb_04.ogg',
 						'sound/stalker/blowout/blowout_amb_05.ogg', 'sound/stalker/blowout/blowout_amb_06.ogg',
@@ -38,44 +43,79 @@ datum/subsystem/blowout
 
 datum/subsystem/blowout/New()
 	NEW_SS_GLOBAL(StalkerBlowout)
-	Cycle()
+	cooldownreal = rand(cooldownmin, cooldownmax)
 
-datum/subsystem/blowout/proc/Cycle()
-	spawn(rand(cooldownmin, cooldownmin))
+datum/subsystem/blowout/fire()
+	if(world.time <= lasttime + cooldownreal)
+		return
+
+	if(starttime)
+		if(640 + blowout_duration + starttime < world.time)
+			AfterBlowout()
+			return
+
+		ProcessBlowout()
+
+		if((320 + blowout_duration + starttime) < world.time)
+			if(blowoutphase == 2)
+				StopBlowout()
+			BlowoutDealDamage()
+			BlowoutClean()
+			return
+
+		if((blowout_duration + starttime) < world.time)
+			if(blowoutphase == 1)
+				PreStopBlowout()
+			return
+
+	if(!isblowout)
 		StartBlowout()
-	blowoutphase++
-	if(blowoutphase > 3)
-		blowoutphase = 1
+		return
+
 
 datum/subsystem/blowout/proc/StartBlowout()
 	isblowout = 1
-	/*
-	for(var/area/stalker/A in sortedAreas)
-		if(istype(A, /area/stalker/blowout))
-			A.StartBlowout()
-	*/
-
-	ProcessBlowout()
+	blowoutphase = 1
+	starttime = world.time
 
 	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "ВНИМАНИЕ, СТАЛКЕРЫ! Начинаетс&#x44F; выброс! Скорее найдите укрытие!")
 	world << sound('sound/stalker/blowout/blowout_begin_02.ogg', wait = 0, channel = 17, volume = 50)
 	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 18, volume = 60)
 
-	sleep(1200)
+datum/subsystem/blowout/proc/PreStopBlowout()
+	blowoutphase = 2
 	world << sound('sound/stalker/blowout/blowout_particle_wave.ogg', wait = 0, channel = 17, volume = 70)
 
-	sleep(320)
-	StopBlowout()
+datum/subsystem/blowout/proc/BlowoutClean()
+	for(var/mob/living/L)
+		if(L.stat == DEAD)
+
+			L.gib()
+			if(MC_TICK_CHECK)
+				return
+
+	for(var/obj/item/ammo_casing/AC in ACs)
+		qdel(AC)
+		if(MC_TICK_CHECK)
+			return
+
+
+datum/subsystem/blowout/proc/BlowoutDealDamage()
+	for(var/mob/living/carbon/human/H)
+		if(istype(get_area(H), /area/stalker/blowout))
+
+			H.radiation += 500
+			H.apply_damage(175, BURN)
+			CHECK_TICK
 
 datum/subsystem/blowout/proc/StopBlowout()
-	/*
-	for(var/area/stalker/A in sortedAreas)
-		if(istype(A, /area/stalker/blowout))
-			A.StopBlowout(blowoutphase)
-	*/
 
-	world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
-	world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
+	if(blowoutphase == 2)
+
+		world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
+		world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
+
+	blowoutphase = 3
 
 	for(var/obj/item/weapon/artifact/A)
 
@@ -84,39 +124,18 @@ datum/subsystem/blowout/proc/StopBlowout()
 			PlaceInPool(A)
 			CHECK_TICK
 
-	for(var/mob/living/L)
-
-		if(L.stat == DEAD)
-
-			L.gib()
-			spawn(gibcooldown)
-			continue
-
-		if(istype(L, /mob/living/carbon/human))
-
-			var/mob/living/carbon/human/H = L
-			shake_camera(H, 10, 3)
-			CHECK_TICK
-
-			if(istype(get_area(H), /area/stalker/blowout))
-
-				H.radiation += 500
-				H.apply_damage(175, BURN)
-				CHECK_TICK
-
 	for(var/obj/anomaly/An in anomalies)
 
 		An.SpawnArtifact()
 		CHECK_TICK
 
-	for(var/obj/item/ammo_casing/AC in ACs)
-		qdel(AC)
-		CHECK_TICK
+datum/subsystem/blowout/proc/AfterBlowout()
 
+	cooldownreal = rand(cooldownmin, cooldownmax)
 	isblowout = 0
+	lasttime = world.time
+	starttime = 0
 	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "Все! Выброс закончилс&#x44F;! Выходите из укрытий.")
-
-	sleep(300)
 
 	world << sound(null, wait = 0, channel = 19, volume = 70)
 	world << sound(null, wait = 0, channel = 20, volume = 70)
@@ -125,15 +144,18 @@ datum/subsystem/blowout/proc/StopBlowout()
 	world << sound(null, wait = 0, channel = 23, volume = 70)
 	world << sound(null, wait = 0, channel = 24, volume = 70)
 
-	Cycle()
-
 datum/subsystem/blowout/proc/ProcessBlowout()
 	if(isblowout)
 		for(var/mob/living/carbon/human/H)
 			if(istype(get_area(H), /area/stalker/blowout))
-				shake_camera(H, 1, 1)
-		spawn(50)
-			ProcessBlowout()
+				switch(blowoutphase)
+					if(1)
+						shake_camera(H, 1, 1)
+					if(2)
+						shake_camera(H, 2, 1)
+					if(3)
+						shake_camera(H, 10, 1)
+
 	if(prob(20))
 		var/a = pick(StalkerBlowout.ambient)
 		world << sound(a, wait = 1, channel = 19, volume = 70)
