@@ -1,5 +1,6 @@
 /mob/living/simple_animal/hostile/mutant
 	stat_attack = 2
+	stat_exclusive = 0
 	fearless = 0
 	var/gib_targets = 1 //Гибать
 	icon = 'icons/stalker/stalker.dmi'
@@ -42,6 +43,8 @@
 					H.unEquip(H.head)
 				if(prob(50))
 					H.unEquip(H.shoes)
+				if(prob(100))
+					H.unEquip(H.back)
 				H.unEquip(H.back)
 				H.unEquip(H.wear_id)
 			L.gib()
