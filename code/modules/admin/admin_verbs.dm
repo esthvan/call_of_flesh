@@ -126,7 +126,6 @@ var/list/admin_verbs_debug = list(
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
 	/client/proc/SetRealCooldownBlowout,
-	/client/proc/ResetSidorRooms,
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
@@ -426,7 +425,7 @@ var/list/admin_verbs_hideable = list(
 		StalkerBlowout.cooldownmin = cooldownmin
 		if(cooldownmin > StalkerBlowout.cooldownmax)
 			StalkerBlowout.cooldownmax = cooldownmin + 18000
-		src << "<span class='interface'>Кулдаун (мин) выброса успешно изменен.</span>"
+		src << "<span class='interface'>Кулдаун (минимальный) выброса успешно изменен.</span>"
 
 /client/proc/SetMaxCooldownBlowout()
 	set name = "Set Blowout Cooldown (max)"
@@ -436,26 +435,20 @@ var/list/admin_verbs_hideable = list(
 
 	if(cooldownmax)
 		StalkerBlowout.cooldownmax = cooldownmax
-		src << "<span class='interface'>Кулдаун (макс) выброса успешно изменен.</span>"
+		if(cooldownmax <= StalkerBlowout.cooldownmin)
+			StalkerBlowout.cooldownmax = StalkerBlowout.cooldownmin + 18000
+		src << "<span class='interface'>Кулдаун (максимальный) выброса успешно изменен.</span>"
 
 /client/proc/SetRealCooldownBlowout()
-	set name = "Set Real Blowout Cooldown"
+	set name = "Start Blowout"
 	set category = "Stalker"
 
-	var/cooldownreal = input(usr, "Введите кулдаун следующего цикла выброса", "S.T.A.L.K.E.R.") as num|null
+	var/cooldownreal = input(usr, "Введите врем&#255; до следующего выброса", "S.T.A.L.K.E.R.") as num|null
 
 	if(cooldownreal)
+		StalkerBlowout.lasttime = world.time
 		StalkerBlowout.cooldownreal = cooldownreal
-		src << "<span class='interface'>Кулдаун следующего цикла выброса успешно изменен. Выброс начнётс&#255; через: [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60)] мин.</span>"
-
-/client/proc/ResetSidorRooms()
-	set category = "Stalker"
-	set name = "Reset Rooms"
-
-	var/confirm = alert(src, "Лучше этого не делать. Ты уверен?", "S.T.A.L.K.E.R.", "Да", "Нет")
-	if(confirm != "Yes")
-		for(var/obj/sidor_exit/R in sidorRooms)
-			R.occupant = null
+		src << "<span class='interface'>Выброс начнётс&#255; через: [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60)] мин.</span>"
 
 /*
 /client/proc/set_daytime()
