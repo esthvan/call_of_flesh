@@ -104,7 +104,7 @@
 		new /datum/data/stalker_equipment("Berill-5M",				"Берилл-5М",					/obj/item/clothing/suit/berill,								50000, EXPERT,	"Loners"),
 		new /datum/data/stalker_equipment("Wind of Freedom",	    "Ветер Свободы",				/obj/item/clothing/suit/hooded/kombez/veter,				25000, NEWBIE,	"Freedom"),
 		new /datum/data/stalker_equipment("Guardian of Freedom",	"Страж Свободы",				/obj/item/clothing/suit/strazh,								40000, EXPERT,	"Freedom"),
-		new /datum/data/stalker_equipment("PZ-1	",					"ПЗ-1",							/obj/item/clothing/suit/hooded/kombez/monolit,				25000, NEWBIE,	"Monolith"),
+		new /datum/data/stalker_equipment("PZ-1	",					"ПЗ-1",							/obj/item/clothing/suit/hooded/kombez/monolith,				25000, NEWBIE,	"Monolith"),
 		new /datum/data/stalker_equipment("PS5-M",					"ПС5-М",						/obj/item/clothing/suit/hooded/kombez/ps5m,				    25000, NEWBIE,	"Duty"),
 		new /datum/data/stalker_equipment("Heavy merc armor",		"Тяжелая броня наёмников",		/obj/item/clothing/suit/assaultmerc,						50000, EXPERT,	"Mercenaries"),
 		new /datum/data/stalker_equipment("PSZ-9D",		    		"ПСЗ-9Д",						/obj/item/clothing/suit/psz9d,								60000, VETERAN,	"Duty"),
