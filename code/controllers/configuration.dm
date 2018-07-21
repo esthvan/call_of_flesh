@@ -141,16 +141,16 @@
 
 	//Used for modifying movement speed for mobs.
 	//Unversal modifiers
-	var/run_speed = 0
-	var/walk_speed = 2.5
+	var/run_speed = 2.35
+	var/walk_speed = 4
 
 	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
-	var/human_delay = 3
+	var/human_delay = 0
 	var/robot_delay = 0
 	var/monkey_delay = 0
 	var/alien_delay = 0
 	var/slime_delay = 0
-	var/animal_delay = 5
+	var/animal_delay = 0
 
 	var/gateway_delay = 18000 //How long the gateway takes before it activates. Default is half an hour.
 	var/ghost_interaction = 0

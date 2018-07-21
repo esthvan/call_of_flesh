@@ -72,7 +72,7 @@ LOG_LAW
 ALLOW_ADMIN_OOCCOLOR
 
 ## FPS
-FPS 20
+FPS 60
 
 ## If metadata is supported
 ALLOW_METADATA

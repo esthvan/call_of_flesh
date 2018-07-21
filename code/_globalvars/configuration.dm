@@ -6,7 +6,7 @@ var/join_motd = null
 var/station_name = null
 var/game_version = "Stalker Station 13"
 var/changelog_hash = ""
-var/fps = 30
+var/fps = 50
 
 var/ooc_allowed = 1	// used with admin verbs to disable ooc - not a config option apparently
 var/dooc_allowed = 1
