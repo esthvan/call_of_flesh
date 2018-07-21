@@ -504,11 +504,11 @@ var/next_mob_id = 0
 		usr << "<span class='boldnotice'>You must be dead to use this!</span>"
 		return
 
-	if (timeofdeath + 3000 > world.time)
+	if (timeofdeath + 6000 > world.time)
 		if(usr.client.prefs.chat_toggles & CHAT_LANGUAGE)
-			usr << "<span class='boldnotice'>You can join the game in [round((timeofdeath + 3000 - world.time)/600) + 1] min.</span>"
+			usr << "<span class='boldnotice'>You can join the game in [round((timeofdeath + 6000 - world.time)/600) + 1] min.</span>"
 		else
-			usr << "<span class='boldnotice'>Вы сможете зайти в игру через [round((timeofdeath + 3000 - world.time)/600) + 1] мин.</span>"
+			usr << "<span class='boldnotice'>Вы сможете зайти в игру через [round((timeofdeath + 6000 - world.time)/600) + 1] мин.</span>"
 		return
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")
