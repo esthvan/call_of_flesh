@@ -213,6 +213,7 @@
 	eng_desc = "Anomaly \"Fruit Punch\" is able to create such an artifact at the rarest, most extreme collection of physical conditions. The result is a semi-transparent, hard object. A rare and expensive artifact."
 	icon_state = "mica"
 	art_armor = list(burn = -10, bio = -10)
+	radiation = 2
 	level_s = 3
 
 /obj/item/weapon/artifact/mica/Think(user)
