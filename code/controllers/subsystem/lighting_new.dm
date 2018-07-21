@@ -20,9 +20,9 @@ var/list/lighting_update_overlays  = list() // List of lighting overlays queued 
 
 	var/initialized = FALSE
 
-	var/list/currentrun_lights = list()
-	var/list/currentrun_corners = list()
-	var/list/currentrun_overlays = list()
+	var/list/currentrun_lights		= list()
+	var/list/currentrun_corners		= list()
+	var/list/currentrun_overlays	= list()
 
 	var/resuming_stage = 0
 
