@@ -103,36 +103,16 @@
 		return
 
 	if(istype(A,/obj/item))
-		invisibility = active_invisibility
-		icon_state = active_icon_state
-		set_light(activated_luminosity, l_color = anomaly_color)
 
-
-		spawn(10)
-			invisibility = inactive_invisibility
-			icon_state = inactive_icon_state
-			set_light(idle_luminosity, l_color = anomaly_color)
+		ApplyEffects()
 
 		src.lasttime = world.time
 
 		playsound(src.loc, src.sound, 50, 1, channel = 0)
-		var/obj/item/Q = A
+		var/obj/item/I = A
 
-		if(Q.unacidable == 0)
-			Q.throw_impact(get_turf(A))
-			Q.throwing = 0
-			spawn(5)
-				var/turf/T = get_turf(Q)
-				var/obj/effect/decal/cleanable/molten_item/I = PoolOrNew(/obj/effect/decal/cleanable/molten_item ,T)
-				I.pixel_x = rand(-16,16)
-				I.pixel_y = rand(-16,16)
-				I.desc = "Looks like this was \an [Q] some time ago."
-				if(istype(A,/obj/item/weapon/storage))
-					var/obj/item/weapon/storage/S = Q
-					S.do_quick_empty()
-				qdel(Q)
-				spawn(src.cooldown * 10 - 5)
-					qdel(I)
+		AffectItem(I)
+
 		return
 
 	if(istype(A,/mob/living))
@@ -170,6 +150,12 @@
 
 	for(var/atom/A in src.trapped)
 
+		ApplyEffects()
+
+		////////////////////
+		sleep(src.delay * 10)
+		////////////////////
+
 		if(!istype(A, /mob/living))
 			trapped.Remove(A)
 			continue
@@ -179,12 +165,6 @@
 		if(L.stat == 2)
 			src.trapped.Remove(L)
 			continue
-
-		ApplyEffects()
-
-		////////////////////
-		sleep(src.delay * 10)
-		////////////////////
 
 		DealDamage(L)
 
@@ -213,6 +193,31 @@
 		set_light(idle_luminosity, l_color = anomaly_color)
 	return
 
+/obj/anomaly/proc/AffectItem(var/obj/item/I)
+	if(I.unacidable != 0)
+		return
+
+	I.throw_impact(get_turf(I))
+	I.throwing = 0
+
+	sleep(5)
+
+	var/turf/T = get_turf(I)
+	var/obj/effect/decal/cleanable/molten_item/Q = PoolOrNew(/obj/effect/decal/cleanable/molten_item ,T)
+	Q.pixel_x = rand(-16,16)
+	Q.pixel_y = rand(-16,16)
+	Q.desc = "Looks like this was \an [I] some time ago."
+
+	if(istype(I,/obj/item/weapon/storage))
+		var/obj/item/weapon/storage/S = I
+		S.do_quick_empty()
+
+	qdel(I)
+
+	sleep(src.cooldown * 10 - 5)
+
+	qdel(Q)
+
 /obj/anomaly/proc/DealDamage(var/mob/living/L)
 	lasttime = world.time
 
@@ -234,6 +239,9 @@
 	return
 
 /obj/anomaly/tramplin/DealDamage(var/mob/living/L)
+	if(!(L in src.trapped))
+		return
+
 	L.apply_damage(src.damage_amount, BRUTE, null, 0)
 
 	var/new_dir = NORTH
@@ -296,7 +304,7 @@
 	name = "anomaly"
 	damage_amount = 15
 	cooldown = 2
-	delay = 1.75
+	delay = 0.5
 	sound = 'sound/stalker/anomalies/gravi_blowout1.ogg'
 	idle_luminosity = 0
 	activated_luminosity = 0
@@ -305,10 +313,10 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/nothing = 90,
+	loot = list(/obj/nothing = 90.5,
 				/obj/item/weapon/artifact/meduza = 5,
 				/obj/item/weapon/artifact/stoneflower = 3,
-				/obj/item/weapon/artifact/nightstar = 1.5,
+				/obj/item/weapon/artifact/nightstar = 1.5
 				)
 
 /obj/anomaly/jarka
@@ -341,6 +349,32 @@
 		incooldown = 0
 	return
 
+/obj/anomaly/jarka/AffectItem(var/obj/item/I)
+	incooldown = 0
+
+	if(I.unacidable != 0)
+		return
+
+	I.throw_impact(get_turf(I))
+	I.throwing = 0
+
+	sleep(5)
+
+	var/turf/T = get_turf(I)
+	var/obj/effect/decal/cleanable/molten_item/Q = PoolOrNew(/obj/effect/decal/cleanable/molten_item ,T)
+	Q.pixel_x = rand(-16,16)
+	Q.pixel_y = rand(-16,16)
+	Q.desc = "Looks like this was \an [I] some time ago."
+
+	if(istype(I,/obj/item/weapon/storage))
+		var/obj/item/weapon/storage/S = I
+		S.do_quick_empty()
+
+	qdel(I)
+
+	sleep(src.cooldown * 10 - 5)
+
+	qdel(Q)
 
 /obj/anomaly/holodec
 	name = "anomaly"
@@ -373,6 +407,33 @@
 		incooldown = 0
 	return
 
+/obj/anomaly/holodec/AffectItem(var/obj/item/I)
+	incooldown = 0
+
+	if(I.unacidable != 0)
+		return
+
+	I.throw_impact(get_turf(I))
+	I.throwing = 0
+
+	sleep(5)
+
+	var/turf/T = get_turf(I)
+	var/obj/effect/decal/cleanable/molten_item/Q = PoolOrNew(/obj/effect/decal/cleanable/molten_item ,T)
+	Q.pixel_x = rand(-16,16)
+	Q.pixel_y = rand(-16,16)
+	Q.desc = "Looks like this was \an [I] some time ago."
+
+	if(istype(I,/obj/item/weapon/storage))
+		var/obj/item/weapon/storage/S = I
+		S.do_quick_empty()
+
+	qdel(I)
+
+	sleep(src.cooldown * 10 - 5)
+
+	qdel(Q)
+
 /obj/anomaly/puh
 	name = "anomaly"
 	cooldown = 2
@@ -393,6 +454,33 @@
 		lasttime = 0
 		incooldown = 0
 	return
+
+/obj/anomaly/puh/AffectItem(var/obj/item/I)
+	incooldown = 0
+
+	if(I.unacidable != 0)
+		return
+
+	I.throw_impact(get_turf(I))
+	I.throwing = 0
+
+	sleep(5)
+
+	var/turf/T = get_turf(I)
+	var/obj/effect/decal/cleanable/molten_item/Q = PoolOrNew(/obj/effect/decal/cleanable/molten_item ,T)
+	Q.pixel_x = rand(-16,16)
+	Q.pixel_y = rand(-16,16)
+	Q.desc = "Looks like this was \an [I] some time ago."
+
+	if(istype(I,/obj/item/weapon/storage))
+		var/obj/item/weapon/storage/S = I
+		S.do_quick_empty()
+
+	qdel(I)
+
+	sleep(src.cooldown * 10 - 5)
+
+	qdel(Q)
 
 /obj/anomaly/puh/New()
 	..()
