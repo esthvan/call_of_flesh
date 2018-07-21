@@ -61,6 +61,7 @@ datum/subsystem/blowout/fire()
 				StopBlowout()
 			BlowoutDealDamage()
 			BlowoutClean()
+			BlowoutGib()
 			return
 
 		if((blowout_duration + starttime) < world.time)
@@ -87,6 +88,12 @@ datum/subsystem/blowout/proc/PreStopBlowout()
 	world << sound('sound/stalker/blowout/blowout_particle_wave.ogg', wait = 0, channel = 17, volume = 70)
 
 datum/subsystem/blowout/proc/BlowoutClean()
+	for(var/obj/item/ammo_casing/AC in ACs)
+		qdel(AC)
+		if(MC_TICK_CHECK)
+			return
+
+datum/subsystem/blowout/proc/BlowoutGib()
 	for(var/mob/living/L)
 		if(L.stat == DEAD)
 
@@ -94,19 +101,15 @@ datum/subsystem/blowout/proc/BlowoutClean()
 			if(MC_TICK_CHECK)
 				return
 
-	for(var/obj/item/ammo_casing/AC in ACs)
-		qdel(AC)
-		if(MC_TICK_CHECK)
-			return
-
-
 datum/subsystem/blowout/proc/BlowoutDealDamage()
 	for(var/mob/living/carbon/human/H)
 		if(istype(get_area(H), /area/stalker/blowout))
 
 			H.radiation += 500
-			H.apply_damage(175, BURN)
-			CHECK_TICK
+			H.apply_damage(15, BURN)
+
+			if(MC_TICK_CHECK)
+				return
 
 datum/subsystem/blowout/proc/StopBlowout()
 
@@ -172,10 +175,10 @@ datum/subsystem/blowout/proc/ProcessBlowout()
 		var/a = pick(StalkerBlowout.rumble)
 		world << sound(a, wait = 1, channel = 22, volume = 70)
 
-	if(prob(40))
+	if(prob(50))
 		var/a = pick(StalkerBlowout.boom)
 		world << sound(a, wait = 1, channel = 23, volume = 70)
 
-	if(prob(40))
+	if(prob(50))
 		var/a = pick(StalkerBlowout.lightning)
 		world << sound(a, wait = 1, channel = 24, volume = 70)
