@@ -4,6 +4,7 @@
 	icon_state = "steelhelmet"
 	item_state = "steelhelmet"
 	armor = list(melee = 25, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	flags = BLOCKHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 40
@@ -14,7 +15,7 @@
 	icon_state = "hardhat0_tactical"
 	item_state = "hardhat0_tactical"
 	item_color = "tactical"
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	action_button_name = "Toggle Light"
 	armor = list(melee = 50, bullet = 60, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 20)
@@ -43,7 +44,7 @@
 	desc = "Необычной формы шлем в тускло-серой маскировочной краске, суд&#255; по маркировке - швейцарского производства. Затемненное забрало матово отражает свет, и без того тусклый, ослабленный облаками Чернобыл&#255;. Чертова западна&#255; др&#255;нь."
 	icon_state = "assaultmerc"
 	item_state = "assaultmerc"
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	armor = list(melee = 50, bullet = 65, laser = 25,energy = 50, bomb = 0, bio = 0, rad = 0)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
@@ -69,7 +70,7 @@
 	name = "Sphera M12"
 	desc = "Отделанный тканью алюминиево-титановый шлем с карманами дл&#255; стальных бронеэлементов и бронемаской. Обычно поставл&#255;етс&#255; в комплекте с бронежилетами класса ПС3 дл&#255; спецназа. Достаточно попул&#255;рен в Зоне благодар&#255; респиратору и встроенному прибору ночного видени&#255;, а также хорошей защите головы. Предусмотрена возможность установки электроники."
 	icon_state = "sphera"
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 30)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
@@ -80,7 +81,7 @@
 	name = "SKAT-M9"
 	desc = "Отделанный тканью алюминиево-титановый шлем с карманами дл&#255; стальных бронеэлементов и бронемаской. Обычно поставл&#255;етс&#255; в комплекте с бронежилетами класса ПС3 дл&#255; спецназа. Достаточно попул&#255;рен в Зоне благодар&#255; респиратору и встроенному прибору ночного видени&#255;, а также хорошей защите головы."
 	icon_state = "helmet_skat"
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
@@ -91,7 +92,7 @@
 	name = "SKOT-M777"
 	desc = "Отделанный шпротами алюминиево-картонный шлем с карманами дл&#255; мелочи и бронеусами. Обычно поставл&#255;етс&#255; в комплекте с водкой. Недостаточно попул&#255;рен в Зоне благодар&#255; конспирации Петровича."
 	icon_state = "helmet_skot"
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
@@ -113,7 +114,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
-	flags = BLOCKHAIR
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30)
 	burn_state = FIRE_PROOF
 	unacidable = 1
@@ -127,7 +128,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
-	flags = BLOCKHAIR
+	flags = BLOCKFACIALHAIR
 	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30)
 	burn_state = FIRE_PROOF
 	unacidable = 1

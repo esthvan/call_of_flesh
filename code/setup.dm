@@ -210,15 +210,15 @@
 #define   MASKCOVERSMOUTH 512 // On other items, these are just for mask/head.
 #define   HEADCOVERSMOUTH 512
 
-#define THICKMATERIAL          256  // From /tg/station: prevents syringes, parapens and hyposprays if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body. (NOTE: flag shared with NOSLIP for shoes)
-#define NOSLIP                 256  // Prevents from slipping on wet floors, in space, etc.
-#define OPENCONTAINER          1024 // Is an open container for chemistry purposes.
-#define BLOCK_GAS_SMOKE_EFFECT 2048 // Blocks the effect that chemical clouds would have on a mob -- glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
-#define ONESIZEFITSALL         2048
-#define PHORONGUARD            4096 // Does not get contaminated by phoron.
-#define	NOREACT                4096 // Reagents don't react inside this container.
-#define BLOCKHEADHAIR          6000    // Temporarily removes the user's hair overlay. Leaves facial hair.
-#define BLOCKHAIR              8192	 // Temporarily removes the user's hair, facial and otherwise.
+#define THICKMATERIAL			256  // From /tg/station: prevents syringes, parapens and hyposprays if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body. (NOTE: flag shared with NOSLIP for shoes)
+#define NOSLIP					256  // Prevents from slipping on wet floors, in space, etc.
+#define OPENCONTAINER			1024 // Is an open container for chemistry purposes.
+#define BLOCK_GAS_SMOKE_EFFECT	2048 // Blocks the effect that chemical clouds would have on a mob -- glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
+#define ONESIZEFITSALL			2048
+#define PHORONGUARD				4096 // Does not get contaminated by phoron.
+#define NOREACT					4096 // Reagents don't react inside this container.
+#define BLOCKHAIR				8192 // Temporarily removes the user's head hair.
+#define BLOCKFACIALHAIR			16384// Temporarily removes the user's facial head hair.
 
 // Flags for pass_flags.
 #define PASSTABLE  1

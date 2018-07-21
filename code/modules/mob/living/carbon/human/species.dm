@@ -170,27 +170,28 @@
 	var/datum/sprite_accessory/S
 	var/list/standing	= list()
 
-	if(H.facial_hair_style && FACEHAIR in specflags)
-		S = facial_hair_styles_list[H.facial_hair_style]
-		if(S)
-			var/image/img_facial_s
+	if( !(H.disabilities & HUSK) && !(H.head && (H.head.flags & BLOCKFACIALHAIR)) && !(H.wear_mask && (H.wear_mask.flags & BLOCKFACIALHAIR)) )
+		if(H.facial_hair_style && FACEHAIR in specflags)
+			S = facial_hair_styles_list[H.facial_hair_style]
+			if(S)
+				var/image/img_facial_s
 
-			img_facial_s = image("icon" = S.icon, "icon_state" = "[S.icon_state]_s", "layer" = -HAIR_LAYER)
+				img_facial_s = image("icon" = S.icon, "icon_state" = "[S.icon_state]_s", "layer" = -HAIR_LAYER)
 
-			if(!forced_colour)
-				if(hair_color)
-					if(hair_color == "mutcolor")
-						img_facial_s.color = "#" + H.dna.features["mcolor"]
+				if(!forced_colour)
+					if(hair_color)
+						if(hair_color == "mutcolor")
+							img_facial_s.color = "#" + H.dna.features["mcolor"]
+						else
+							img_facial_s.color = "#" + hair_color
 					else
-						img_facial_s.color = "#" + hair_color
+						img_facial_s.color = "#" + H.facial_hair_color
 				else
-					img_facial_s.color = "#" + H.facial_hair_color
-			else
-				img_facial_s.color = forced_colour
+					img_facial_s.color = forced_colour
 
-			img_facial_s.alpha = hair_alpha
+				img_facial_s.alpha = hair_alpha
 
-			standing	+= img_facial_s
+				standing	+= img_facial_s
 
 	//Applies the debrained overlay if there is no brain
 	if(!H.getorgan(/obj/item/organ/internal/brain))
@@ -202,26 +203,27 @@
 		H.apply_overlay(HAIR_LAYER)
 		return
 
-	else if(H.hair_style && HAIR in specflags)
-		S = hair_styles_list[H.hair_style]
-		if(S)
-			var/image/img_hair_s = image("icon" = S.icon, "icon_state" = "[S.icon_state]_s", "layer" = -HAIR_LAYER)
+	if( !(H.disabilities & HUSK) && !(H.head && (H.head.flags & BLOCKHAIR)) && !(H.wear_mask && (H.wear_mask.flags & BLOCKHAIR)) )
+		if(H.hair_style && HAIR in specflags)
+			S = hair_styles_list[H.hair_style]
+			if(S)
+				var/image/img_hair_s = image("icon" = S.icon, "icon_state" = "[S.icon_state]_s", "layer" = -HAIR_LAYER)
 
-			img_hair_s = image("icon" = S.icon, "icon_state" = "[S.icon_state]_s", "layer" = -HAIR_LAYER)
+				img_hair_s = image("icon" = S.icon, "icon_state" = "[S.icon_state]_s", "layer" = -HAIR_LAYER)
 
-			if(!forced_colour)
-				if(hair_color)
-					if(hair_color == "mutcolor")
-						img_hair_s.color = "#" + H.dna.features["mcolor"]
+				if(!forced_colour)
+					if(hair_color)
+						if(hair_color == "mutcolor")
+							img_hair_s.color = "#" + H.dna.features["mcolor"]
+						else
+							img_hair_s.color = "#" + hair_color
 					else
-						img_hair_s.color = "#" + hair_color
+						img_hair_s.color = "#" + H.hair_color
 				else
-					img_hair_s.color = "#" + H.hair_color
-			else
-				img_hair_s.color = forced_colour
-			img_hair_s.alpha = hair_alpha
+					img_hair_s.color = forced_colour
+				img_hair_s.alpha = hair_alpha
 
-			standing	+= img_hair_s
+				standing	+= img_hair_s
 
 	if(standing.len)
 		H.overlays_standing[HAIR_LAYER]	= standing

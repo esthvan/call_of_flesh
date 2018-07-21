@@ -178,6 +178,7 @@
 	armor = list(melee = 15, bullet = 15, laser = 90, burn = 90, bomb = 40, bio = 90, rad = 95, electro = 90)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	icon_state = "ecolog_helmet"
 	CBBS_h = 1
 
@@ -273,6 +274,7 @@
 	armor = list(melee = 60, bullet = 50, laser = 80,burn = 80, bomb = 50, bio = 70, rad = 80, electro = 80)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	icon_state = "seva_helmet"
 	burn_state = FIRE_PROOF
 	CBBS_h = 1
@@ -334,6 +336,7 @@
 	armor = list(melee = 80, bullet = 80, laser = 50,burn = 30, bomb = 80, bio = 50, rad = 30, electro = 30)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	icon_state = "exoskelet_helmet"
 	CBBS_h = 1
 

@@ -78,13 +78,14 @@ Please contact me on #coderbus IRC. ~Carnie x
 /mob/living/carbon/human/update_hair()
 	//Reset our hair
 	remove_overlay(HAIR_LAYER)
-
+/*
 	if( (disabilities & HUSK) || (head && (head.flags & BLOCKHAIR)) || (wear_mask && (wear_mask.flags & BLOCKHAIR)) )
 		return
-
+*/
+/*
 	if((wear_suit) && (wear_suit.hooded) && (wear_suit.suittoggled == 1))
 		return
-
+*/
 	dna.species.handle_hair(src)
 
 /mob/living/carbon/human/proc/update_mutcolor()
