@@ -154,7 +154,7 @@
 		update_inv_s_store()
 
 /mob/living/carbon/human/wear_mask_update(obj/item/I, unequip = 1)
-	if(I.flags & BLOCKHAIR)
+	if(I.flags & BLOCKHAIR || I.flags & BLOCKFACIALHAIR)
 		update_hair()
 	if(unequip && internal)
 		if(internals)
@@ -164,7 +164,7 @@
 	..()
 
 /mob/living/carbon/human/head_update(obj/item/I, forced)
-	if(I.flags & BLOCKHAIR || forced)
+	if(I.flags & BLOCKHAIR || I.flags & BLOCKFACIALHAIR || forced)
 		update_hair()
 	if(I.flags_inv & HIDEEYES || forced)
 		update_inv_glasses()

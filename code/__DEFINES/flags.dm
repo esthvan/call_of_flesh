@@ -32,7 +32,8 @@
 
 #define	NOREACT		16384 		//Reagents dont' react inside this container.
 
-#define BLOCKHAIR	32768		// temporarily removes the user's hair icon
+#define BLOCKFACIALHAIR			16384// Temporarily removes the user's facial head hair.
+#define BLOCKHAIR				32768// temporarily removes the user's hair icon
 
 //turf-only flags
 #define NOJAUNT		1
