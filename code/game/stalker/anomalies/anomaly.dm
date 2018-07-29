@@ -73,7 +73,7 @@
 				return
 
 	var/turf/T = get_turf(src)
-	var/obj/item/weapon/artifact/O = PoolOrNew(lootspawn, T)
+	var/obj/item/weapon/artifact/O = new lootspawn(T)
 
 	O.invisibility = 100
 	RandomMove(O)
@@ -106,7 +106,7 @@
 
 		ApplyEffects()
 
-		src.lasttime = world.time
+		lasttime = world.time
 
 		playsound(src.loc, src.sound, 50, 1, channel = 0)
 		var/obj/item/I = A
@@ -219,6 +219,9 @@
 	qdel(Q)
 
 /obj/anomaly/proc/DealDamage(var/mob/living/L)
+	if(!(L in src.trapped))
+		return
+
 	lasttime = world.time
 
 	switch(src.damage_type)
@@ -351,6 +354,7 @@
 
 /obj/anomaly/jarka/AffectItem(var/obj/item/I)
 	incooldown = 0
+	lasttime = 0
 
 	if(I.unacidable != 0)
 		return
@@ -409,6 +413,7 @@
 
 /obj/anomaly/holodec/AffectItem(var/obj/item/I)
 	incooldown = 0
+	lasttime = 0
 
 	if(I.unacidable != 0)
 		return
@@ -457,6 +462,7 @@
 
 /obj/anomaly/puh/AffectItem(var/obj/item/I)
 	incooldown = 0
+	lasttime = 0
 
 	if(I.unacidable != 0)
 		return
