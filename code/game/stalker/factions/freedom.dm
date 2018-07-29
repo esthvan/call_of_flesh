@@ -72,7 +72,7 @@
 
 /datum/outfit/job/freedom_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/hardhat/lighttacticalhelmet
+	head = /obj/item/clothing/head/hardhat/tacticalhelmet/light
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
 	suit = /obj/item/clothing/suit/strazh
 	belt = /obj/item/weapon/stalker/knife

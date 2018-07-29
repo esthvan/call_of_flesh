@@ -39,7 +39,7 @@
 				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat = 2,
 				/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown = 2,
 				/obj/item/clothing/mask/gas/stalker = 2,
-				/obj/item/clothing/head/hardhat/lighttacticalhelmet = 1,
+				/obj/item/clothing/head/hardhat/tacticalhelmet/light = 1,
 				/obj/item/clothing/head/steelhelmet = 3,
 				/obj/nothing = 20
 				)

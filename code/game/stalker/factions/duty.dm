@@ -109,7 +109,7 @@ Assistant
 
 /datum/outfit/job/duty_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/hardhat/lighttacticalhelmet
+	head = /obj/item/clothing/head/hardhat/tacticalhelmet/light
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
 	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	belt = /obj/item/weapon/stalker/knife
