@@ -402,10 +402,10 @@
 						var/i = pickweight(loot)
 
 						if(i != /obj/nothing)
-							PoolOrNew(i, loc)
+							new i(loc)
 					else
 						for(var/i in loot)
-							PoolOrNew(i, loc)
+							new i(loc)
 					gib()
 					return
 	..()
