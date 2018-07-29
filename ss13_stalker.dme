@@ -814,6 +814,7 @@
 #include "code\game\stalker\mobs\mobspawners.dm"
 #include "code\game\stalker\mobs\hostiles\mutants\mutants.dm"
 #include "code\game\stalker\mobs\living\carbon\verbs.dm"
+#include "code\game\stalker\modules\ambient_system.dm"
 #include "code\game\stalker\modules\blowout.dm"
 #include "code\game\stalker\modules\faction_wars.dm"
 #include "code\game\stalker\modules\modifications.dm"

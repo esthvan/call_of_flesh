@@ -379,6 +379,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	target.key = key
 	return 1
 
+/mob/dead/observer/Life()
+	set invisibility = 0
+	set background = BACKGROUND_ENABLED
+
+	if(!src.client)
+		return
+
+	handle_sounds()
 
 //this is a mob verb instead of atom for performance reasons
 //see /mob/verb/examinate() in mob.dm for more info

@@ -36,6 +36,9 @@
 
 	handle_fire()
 
+	//Ёмбиенты
+	handle_sounds()
+
 	//stuff in the stomach
 	handle_stomach()
 
@@ -56,8 +59,6 @@
 
 	if(client)
 		handle_regular_hud_updates()
-
-
 
 /mob/living/proc/handle_breathing()
 	return

@@ -14,7 +14,7 @@
 	power_environ = 0
 	power_equip = 0
 	power_light = 0
-	ambientsounds = list('sound/ambience/ambimine.ogg')
+	ambient_music = list('sound/ambience/ambimine.ogg')
 
 /area/mine/unexplored
 	name = "Mine"
@@ -26,7 +26,7 @@
 	power_environ = 0
 	power_equip = 0
 	power_light = 0
-	ambientsounds = list('sound/ambience/ambimine.ogg')
+	ambient_music = list('sound/ambience/ambimine.ogg')
 
 /area/mine/lobby
 	name = "Mining station"

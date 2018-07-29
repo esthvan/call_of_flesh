@@ -131,9 +131,7 @@
 "cA" = (/obj/machinery/light{tag = "icon-tube1 (WEST)"; icon_state = "tube1"; dir = 8},/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/kordon/buildings)
 "cB" = (/obj/machinery/light,/obj/effect/decal/warning_stripes{tag = "icon-border1"; icon_state = "border1"},/obj/structure/stalker/yashik,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/kordon/buildings)
 "cC" = (/obj/machinery/light{tag = "icon-tube1 (EAST)"; icon_state = "tube1"; dir = 4},/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/kordon/buildings)
-"cD" = (/obj/item/weapon/storage/backpack/polka/left,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/kordon/buildings)
-"cE" = (/obj/item/weapon/storage/backpack/polka/middle,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/kordon/buildings)
-"cF" = (/obj/item/weapon/storage/backpack/polka/right,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/kordon/buildings)
+"cF" = (/obj/structure/stalker/polka,/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/kordon/buildings)
 "cG" = (/obj/machinery/light{tag = "icon-tube1 (EAST)"; icon_state = "tube1"; dir = 4},/obj/effect/decal/warning_stripes{tag = "icon-border4"; icon_state = "border4"},/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/kordon/buildings)
 "cH" = (/obj/effect/spawner/lootdrop/stalker/mobspawner/snork_spawner,/turf/stalker/floor/gryaz/gryaz2,/area/stalker/blowout/outdoor)
 "cI" = (/obj/machinery/door/window/westleft,/obj/effect/step_trigger/teleporter{teleport_x = 39; teleport_y = 19; teleport_z = 1},/turf/stalker/floor/gryaz/gryaz2,/area/stalker/blowout/outdoor)
@@ -253,7 +251,7 @@ aaadadadadadadadadadadabbRbSbTabbUbVababaIaIaIbWababbXbYabbZcaacaxaxaxaxacacacan
 aaadadadadadadadadadadbIcbcccdcecfcgchciaIaIcjckclcmcncocpcqcracbKaxaxaxaxbJanananananbJaxaxaxaxbMac
 aaadadadadadadadadadadbIcsaIaIctaIaIaIaIaIaIaIcucucuaIaIcxaIczacaxaxaxaxaxbJcvananancvbJaxaxaxaxaxac
 aaadadadadadadadadadadbIcAaIaIaIaIaIaIaIaIcBaIaIaIaIaIaIaIaIcCacacacacacacacaccwancyacacacacacacacac
-aaadadadadadadadadadadbIcDcEcEcEcEcEcFaIcGcNcOaIcDcEcEcEcEcEcFacaxaxaxaxaxbJamanananambJaxaxaxaxaxac
+aaadadadadadadadadadadbIcFcFcFcFcFcFcFaIcGcNcOaIcFcFcFcFcFcFcFacaxaxaxaxaxbJamanananambJaxaxaxaxaxac
 aaadadadadadadadadadadbIaIaIaIaIaIaIaIaIaIcPaIaIaIaIaIaIaIaIaIacbKaxaxaxaxbJanananananbJaxaxaxaxbMac
 aaadadadadadadadadadadbIcAaIcQaIaIaIaIaIaIaIaIaIaIaIaIaIcRaIcCacaxaxaxaxacacacanananacacacaxaxaxaxac
 aaadadadadadadadadadadbIcsaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaIaccHaxaxaxcIaccJananancKaccLaxaxaxcMac

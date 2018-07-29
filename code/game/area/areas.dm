@@ -18,17 +18,23 @@
 	var/global/global_uid = 0
 	var/uid
 	var/blowout = 0
-	var/list/ambientsounds = list('sound/stalker/ambience/amb02.ogg',//'sound/stalker/ambience/amb01.ogg' //слишком длинно
-									'sound/stalker/ambience/amb03.ogg','sound/stalker/ambience/amb04.ogg',\
-									'sound/stalker/ambience/amb05.ogg','sound/stalker/ambience/amb06.ogg',\
-									'sound/stalker/ambience/amb07.ogg','sound/stalker/ambience/amb08.ogg',\
-									'sound/stalker/ambience/amb09.ogg','sound/stalker/ambience/amb10.ogg',\
-			//	слишком	длинно		'sound/stalker/ambience/amb11.ogg','sound/stalker/ambience/amb12.ogg',
-									'sound/stalker/ambience/amb13.ogg','sound/stalker/ambience/amb15.ogg',\
-									'sound/stalker/ambience/amb16.ogg','sound/stalker/ambience/amb17.ogg',\
-									'sound/stalker/ambience/amb20.ogg','sound/stalker/ambience/amb21.ogg',\
+	var/ambient_music_cooldown				= 4200
+	var/ambient_environment_cooldown		= 666
+	var/list/ambient_background_cooldown = null
+	var/list/ambient_music = list('sound/stalker/ambience/amb02.ogg','sound/stalker/ambience/amb01.ogg',
+									'sound/stalker/ambience/amb03.ogg','sound/stalker/ambience/amb04.ogg',
+									'sound/stalker/ambience/amb05.ogg','sound/stalker/ambience/amb06.ogg',
+									'sound/stalker/ambience/amb07.ogg','sound/stalker/ambience/amb08.ogg',
+									'sound/stalker/ambience/amb09.ogg','sound/stalker/ambience/amb10.ogg',
+									'sound/stalker/ambience/amb11.ogg','sound/stalker/ambience/amb12.ogg',
+									'sound/stalker/ambience/amb13.ogg','sound/stalker/ambience/amb15.ogg',
+									'sound/stalker/ambience/amb16.ogg','sound/stalker/ambience/amb17.ogg',
+									'sound/stalker/ambience/amb20.ogg','sound/stalker/ambience/amb21.ogg',
 									'sound/stalker/ambience/amb22.ogg')
-
+	var/list/ambient_environment = null
+	var/list/ambient_environment_night = null
+	var/list/ambient_background = null
+	var/environment = 0
 //	var/list/l_sounds = list('sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_1.ogg','sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_1.ogg',
 //							'sound/stalker/ambience/ugrnd/ugrnd_ambient_banging_1.ogg','sound/stalker/ambience/ugrnd/ugrnd_ambient_banging_2.ogg',
 //							'sound/stalker/ambience/ugrnd/ugrnd_drip_1.ogg','sound/stalker/ambience/ugrnd/ugrnd_drip_2.ogg',
@@ -340,46 +346,6 @@
 				if(L && L.client)
 					L.client.played = 0
 	. = ..()
-
-/area/Entered(A)
-	if(!istype(A,/mob/living))	return
-
-	var/mob/living/L = A
-	if(!L.ckey)	return
-
-	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-//	if(L.client && !L.client.ambience_playing && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
-	//	L.client.ambience_playing = 1
-		//L << sound('sound/stalker/ambience/amb08.ogg', repeat = 0, wait = 0, volume = 25, channel = 2)
-
-	//if(!(L.client && (L.client.prefs.toggles & SOUND_AMBIENCE)))	return //General ambience check is below the ship ambience so one can play without the other
-
-	//if(prob(75))
-
-
-
-	var/sound = pick(ambientsounds)
-
-	if(L && L.client)
-		if(!L.client.played && !istype(get_area(src.loc), /area/stalker/sidor))
-			L << sound(sound, repeat = 0, wait = 1, volume = 15, channel = 1)
-			L.client.played = 1
-			spawn(3600)			//ewww - this is very very bad
-				if(L && L.client)
-					L.client.played = 0
-
-	if(istype(get_area(L), /area/stalker/sidor))
-		L << sound('sound/stalker/ambience/sidor_music.ogg', repeat = 1, wait = 0, volume = 15, channel = 1)
-
-//	if (prob(10))
-//		var/l_sound = pick(l_sounds)
-
-	//	if (!L.client.l_played)
-//		L << sound(l_sound, repeat = 0, wait = 0,volume = 65, channel = 2)
-	//		L.client.l_played = 1
-	//		spawn (20)
-	//			if (L.&& L.client)
-	//				L.client.l_played = 0
 
 /proc/has_gravity(atom/AT, turf/T)
 	if(!T)
