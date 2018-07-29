@@ -136,10 +136,6 @@ var/const/INJECT = 5 //injection
 			continue
 		var/current_reagent_transfer = current_reagent.volume * part
 
-		if (current_reagent.id == "nutriment" && istype(target, /mob/living/carbon))
-			var/mob/living/carbon/C = target
-			C.shit += current_reagent_transfer
-
 		if(preserve_data)
 			trans_data = copy_data(current_reagent)
 		R.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, src.chem_temp, no_react = 1) //we only handle reaction after every reagent has been transfered.
