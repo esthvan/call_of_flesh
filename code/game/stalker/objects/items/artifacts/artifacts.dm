@@ -88,14 +88,14 @@
 	eng_desc = "A unique organic artifact with properties just as unique. Somehow it increases the body's overall recovery rate from damage of any kind, without accelerating the accumulation of toxins. Thanks to its effects and attractive appearance, this artifact is a valuable collector's item. Emits radiation."
 	icon_state = "soul"
 	art_armor = list()
-	radiation = 5
+	radiation = 2
 	level_s = 4
 
 /obj/item/weapon/artifact/soul/Think(user)
 	if(!..()) return 0
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/mob = user
-		mob.adjustBruteLoss(-1.5)
+		mob.adjustBruteLoss(-1)
 	return 1
 
 	/////////////////////////////////////////Ёлектро артефакты/////////////////////////////////////////
@@ -183,7 +183,7 @@
 	if(!..()) return 0
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/mob = user
-		mob.adjustFireLoss(-1.5)
+		mob.adjustFireLoss(-1)
 	return 1
 
 
@@ -223,6 +223,20 @@
 		if(!H.bleedsuppress) //so you can't stack bleed suppression
 			H.suppress_bloodloss(1)
 
+			if(H.stat != DEAD && H.bodytemperature >= 170)
+
+				var/blood_volume = round(H.vessel.get_reagent_amount("blood"))
+				if(blood_volume < 560 && blood_volume)
+
+					var/datum/reagent/blood/B = locate() in H.vessel.reagent_list
+					if(B)
+						if(B.data["donor"] != src) //If it's not theirs, then we look for theirs
+							for(var/datum/reagent/blood/D in H.vessel.reagent_list)
+								if(D.data["donor"] == src)
+									B = D
+									break
+
+						B.volume += 0.5
 	return 1
 
 /obj/item/weapon/artifact/firefly
@@ -238,8 +252,8 @@
 	if(!..()) return 0
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/mob = user
-		mob.adjustFireLoss(-0.75)
-		mob.adjustBruteLoss(-0.75)
+		mob.adjustFireLoss(-0.5)
+		mob.adjustBruteLoss(-0.5)
 	return 1
 
 	//ѕќя—
