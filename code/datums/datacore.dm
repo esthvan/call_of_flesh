@@ -1,3 +1,4 @@
+var/global/sid_generator = 0
 
 /datum/datacore
 	var/medical[] = list()
@@ -199,7 +200,9 @@ var/record_id_num = 1001
 			assignment = "Unassigned"
 
 		var/id = H.sid//num2hex(record_id_num++,6)
-		var/sid = H.sid
+		sid_generator++
+		H.sid = sid_generator
+		var/sid = sid_generator
 		var/image = get_id_photo(H)
 		var/obj/item/weapon/photo/photo_front = new()
 		var/obj/item/weapon/photo/photo_side = new()

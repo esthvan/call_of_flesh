@@ -10,8 +10,6 @@
 	real_name = "Test Dummy"
 	status_flags = GODMODE|CANPUSH
 
-
-
 /mob/living/carbon/human/New()
 	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down

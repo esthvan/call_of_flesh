@@ -1,5 +1,5 @@
 var/global/list/obj/item/device/stalker_pda/KPKs = list()
-var/global/lentahtml = ""
+var/global/global_lentahtml = ""
 
 /obj/item/device/stalker_pda
 	name = "KPK"
@@ -21,7 +21,7 @@ var/global/lentahtml = ""
 	var/registered_name = null
 	var/sid = null
 	var/rotation = "front"
-	var/faction_s = "Loners"
+	var/rus_faction_s = "Одиночки"
 	var/rating = 0
 	var/reputation = 0
 	var/money = 0
@@ -40,9 +40,14 @@ var/global/lentahtml = ""
 	//var/isregistered = 0
 
 	//ЛЕНТА
+	var/lentahtml = ""
 	var/lenta_sound = 1
 	var/last_lenta = 0
 	var/lenta_id = 0
+
+	var/last_faction_lenta = 0
+	var/lenta_faction_id = 0
+
 	var/msg_name = "message"
 	var/max_length = 10
 	slot_flags = SLOT_ID
@@ -330,7 +335,7 @@ var/global/lentahtml = ""
 			else
 				mainhtml +="\
 				 <b>Им&#x44F;:</b> [owner.real_name]<br><br>\
-				 <b>Группировка:</b> [faction_s]<br><br>\
+				 <b>Группировка:</b> [rus_faction_s]<br><br>\
 				 <b>Ранг:</b> [rating]<br><br>\
 				 <b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s]</font>"
 
@@ -395,7 +400,7 @@ var/global/lentahtml = ""
 					else
 						mainhtml+="\
 					<b>Им&#x44F;:</b> [owner.real_name]<br>\
-					<b>Группировка:</b> [faction_s]<br>\
+					<b>Группировка:</b> [rus_faction_s]<br>\
 					<b>Ранг:</b> [rank_name_s] ([rating])<br>\
 					<b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
 					<b>Деньги на счету:</b> [money] RU<br>"
@@ -508,10 +513,10 @@ var/global/lentahtml = ""
 					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
 					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						mainhtml +="\
-						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=lenta_add'>Send feed message</a> | <a href='byond://?src=\ref[src];choice=lenta_sound'>Turn on/off feed sound</a> |</div>"
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=lenta_add'>Send feed message</a> | <a href='byond://?src=\ref[src];choice=lenta_faction_add'>Send faction message</a> | <a href='byond://?src=\ref[src];choice=lenta_sound'>Turn on/off sound</a> |</div>"
 					else
 						mainhtml +="\
-						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=lenta_add'>Написать в ленту</a> | <a href='byond://?src=\ref[src];choice=lenta_sound'>Вкл/Выкл звуковой сигнал</a> |</div>"
+						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=lenta_add'>Написать в ленту</a> | <a href='byond://?src=\ref[src];choice=lenta_faction_add'>Написать группировке</a> | <a href='byond://?src=\ref[src];choice=lenta_sound'>Вкл/Выкл звук</a> |</div>"
 					mainhtml +="\
 					</td>\
 					</tr>\
@@ -524,6 +529,7 @@ var/global/lentahtml = ""
 					</tr>"
 
 		//КАРТА
+
 				if(5)
 					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						navbarhtml ="| <a href='byond://?src=\ref[src];choice=1'>Profile</a> | <a href='byond://?src=\ref[src];choice=2'>Encyclopedia</a> | <a href='byond://?src=\ref[src];choice=3'>Rating</a> | <a href='byond://?src=\ref[src];choice=4'>Feed</a> | <a>Map</a> |<br>"
@@ -642,6 +648,7 @@ var/global/lentahtml = ""
 						registered_name = H.real_name
 						owner = H
 						sid = H.sid
+						lentahtml = global_lentahtml
 
 						var/image = get_id_photo(H)
 						var/obj/item/weapon/photo/owner_photo_front = new()
@@ -675,6 +682,8 @@ var/global/lentahtml = ""
 									rating = sk.fields["rating"]
 									owner = H
 									sid = H.sid
+									if(!lentahtml)
+										lentahtml = global_lentahtml
 
 									var/image = get_id_photo(H)
 									var/obj/item/weapon/photo/owner_photo_front = new()
@@ -697,7 +706,8 @@ var/global/lentahtml = ""
 
 			if("exit")
 				registered_name = null
-				faction_s = null
+				eng_faction_s = null
+				rus_faction_s = null
 				rating = null
 				owner = null
 				money = 0
@@ -736,10 +746,12 @@ var/global/lentahtml = ""
 						set_owner_info(sk)
 
 			if("lenta_add")
-				//if(money>=0 && lenta_cooldown == 0)
 				var/t = message_input(H, "message", 250)
 				if(!t)
-					H << "<span class='warning'>Введите сообщение.</span>"
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='warning'>Enter the message!</span>"
+					else
+						H << "<span class='warning'>Введите сообщение!</span>"
 				else
 					if ( !(last_lenta && world.time < last_lenta + 450) )
 						last_lenta = world.time
@@ -747,26 +759,41 @@ var/global/lentahtml = ""
 						add_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
 
 					else
-						/*
-						var/lefttime = round((450 + last_lenta - world.time)/10)
-						var/ending = ""
-						switch (lefttime % 10)
-							if(2 to 4)
-								ending = "ы"
-							if(1)
-								ending = "у"
-						*/
 						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
 							H << "<span class='warning'>You can't send messages in next [round((450 + last_lenta - world.time)/10)] sec.</span>"
 						else
 							H << "<span class='warning'>Вы сможете отправить следующее сообщение через: [round((450 + last_lenta - world.time)/10)] сек.</span>"
 
+			if("lenta_faction_add")
+				var/t = message_input(H, "message", 500)
+				if(!t)
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='warning'>Enter the message!</span>"
+					else
+						H << "<span class='warning'>Введите сообщение!</span>"
+				else
+					if ( !(last_faction_lenta && world.time < last_faction_lenta + 450) )
+						last_faction_lenta = world.time
+						add_faction_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
+
+					else
+						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+							H << "<span class='warning'>You can't send messages in next [round((450 + last_faction_lenta - world.time)/10)] sec.</span>"
+						else
+							H << "<span class='warning'>Вы сможете отправить следующее сообщение через: [round((450 + last_faction_lenta - world.time)/10)] сек.</span>"
+
 			if("lenta_sound")
 				lenta_sound = !lenta_sound
 				if(lenta_sound)
-					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте активирован.</span>"
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте активирован.</span>"
+					else
+						H << "<span class='notice'>Feed sound turned on.</span>"
 				else
-					H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='notice'>Feed sound turned off.</span>"
+					else
+						H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
 
 			if("refresh_rating")
 				ratinghtml = ""
@@ -975,29 +1002,62 @@ var/global/lentahtml = ""
 	return t
 
 /proc/add_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
+	var/factioncolor 	= get_faction_color(faction_owner)
+	global_lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
+		<tr style=\"border: 0px solid black;\">\
+		<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
+		<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
+		</td>\
+		\
+		<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
+		\
+		<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+		\
+		</td>\
+		\
+		</tr>\
+		</table>" + global_lentahtml
 
 	for(var/obj/item/device/stalker_pda/KPK in KPKs)
+		KPK.lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
+		<tr style=\"border: 0px solid black;\">\
+		<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
+		<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
+		</td>\
+		\
+		<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
+		\
+		<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+		\
+		</td>\
+		\
+		</tr>\
+		</table>" + KPK.lentahtml
 		show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg)
-
-	var/factioncolor 	= get_faction_color(faction_owner)
 	//var/eng_faction_s 	= faction_owner//get_eng_faction(faction_owner)
 
-	lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
-	<tr style=\"border: 0px solid black;\">\
-	<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
-	<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
-	</td>\
-	\
-	<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
-	\
-	<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
-	\
-	</td>\
-	\
-	</tr>\
-	</table>" + lentahtml
+/proc/add_faction_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
+	for(var/obj/item/device/stalker_pda/KPK in KPKs)
+		if(KPK_owner.eng_faction_s == KPK.eng_faction_s)
+			var/factioncolor 	= get_faction_color(faction_owner)
+			KPK.lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
+			<tr style=\"border: 0px solid black;\">\
+			<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
+			<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
+			</td>\
+			\
+			<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
+			\
+			<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\](faction chat)</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+			\
+			</td>\
+			\
+			</tr>\
+			</table>" + KPK.lentahtml
+			show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg, isfactionchat = 1)
+	//var/eng_faction_s 	= faction_owner//get_eng_faction(faction_owner)
 
-/proc/show_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/obj/item/device/stalker_pda/KPK, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
+/proc/show_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/obj/item/device/stalker_pda/KPK, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0, var/isfactionchat = 0)
 
 	var/mob/living/carbon/C = null
 
@@ -1008,7 +1068,11 @@ var/global/lentahtml = ""
 		var/factioncolor	= get_faction_color(faction_owner)
 		//var/eng_faction_s 	= get_eng_faction(faction_owner)
 
-		C << russian_html2text("<p>\icon[KPK]<b><font color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
+		if(isfactionchat)
+			C << russian_html2text("<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\](faction chat):</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
+		else
+			C << russian_html2text("<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
+
 		if(KPK_owner)
 			if((KPK != KPK_owner || selfsound) && KPK.lenta_sound == 1)
 				C << sound('sound/stalker/pda/sms.ogg', volume = 30)
@@ -1148,7 +1212,7 @@ var/global/lentahtml = ""
 	usr << browse_rsc(P4.img, "photo_back")
 
 	eng_faction_s		= sk.fields["faction_s"]
-	faction_s 			= get_rus_faction(faction_s)
+	rus_faction_s 		= get_rus_faction(eng_faction_s)
 
 	rating			= sk.fields["rating"]
 	money			= sk.fields["money"]

@@ -1,6 +1,4 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
-var/global/num_sid = 0
-
 /mob/new_player
 	var/ready = 0
 	var/spawning = 0//Referenced when you want to delete the new_player later on in the code.
@@ -330,8 +328,6 @@ var/global/num_sid = 0
 				if(clear)
 					D = T
 					continue*/
-	num_sid++
-	character.sid = num_sid
 	character.loc = D
 	//character.client.pixel_step_size = 10			//Гладкая ходьба
 	//character.pixel_step_size = 0					//
@@ -462,7 +458,6 @@ var/global/num_sid = 0
 	new_character.name = real_name
 
 	new_character.key = key		//Manually transfer the key to log them in
-	//new_chraracter.sid = num2hex(record_id_num++,6)
 	new_character.stopLobbySound()
 
 	return new_character
