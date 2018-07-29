@@ -409,7 +409,7 @@ var/list/admin_verbs_hideable = list(
 					var/sk_faction_s = sk.fields["faction_s"]
 					src << "<span class='interface'>[sk_name] состоит в [sk_faction_s].</span>"
 					sk.fields["faction_s"] = newfaction
-					usr << "<span class='interface'>Фракци&#255; успешно обновлена.</span>"
+					usr << "<span class='interface'>Фракция успешно обновлена.</span>"
 					log_admin("[key_name(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
 					message_admins("[key_name_admin(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
 				return
@@ -443,12 +443,12 @@ var/list/admin_verbs_hideable = list(
 	set name = "Start Blowout"
 	set category = "Stalker"
 
-	var/cooldownreal = input(usr, "Введите врем&#255; до следующего выброса", "S.T.A.L.K.E.R.") as num|null
+	var/cooldownreal = input(usr, "Введите время до следующего выброса", "S.T.A.L.K.E.R.") as num|null
 
 	if(cooldownreal)
 		StalkerBlowout.lasttime = world.time
 		StalkerBlowout.cooldownreal = cooldownreal
-		src << "<span class='interface'>Выброс начнётс&#255; через: [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60)] мин.</span>"
+		src << "<span class='interface'>Выброс начнётся через: [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1] мин.</span>"
 
 /*
 /client/proc/set_daytime()
