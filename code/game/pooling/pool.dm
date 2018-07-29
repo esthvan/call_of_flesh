@@ -96,20 +96,23 @@ var/global/list/GlobalPool = list()
 
 	diver.ResetVars()
 
-var/list/exclude = list("animate_movement", "loc", "locs", "parent_type", "vars", "verbs", "type") //"contents",
+var/list/exclude = list("animate_movement", "contents", "loc", "locs", "parent_type", "vars", "verbs", "type")
 var/list/pooledvariables = list()
 //thanks to clusterfack @ /vg/station for these two procs
 /datum/proc/createVariables()
 	pooledvariables[type] = new/list()
+
 	var/list/exclude = global.exclude + args
 
 	for(var/key in vars)
 		if(key in exclude)
 			continue
 		if(islist(vars[key]))
-			pooledvariables[type][key] = new/list()
-			for(var/element in vars[key].len)
-				pooledvariables[type][key][element] = initial(vars[key][element])
+			//pooledvariables[type][key] = new/list()
+			continue
+
+		if(istype(vars[key], /atom))
+			pooledvariables[type][key] = null
 		else
 			pooledvariables[type][key] = initial(vars[key])
 
@@ -118,19 +121,16 @@ var/list/pooledvariables = list()
 		createVariables(args)
 
 	for(var/key in pooledvariables[type])
-		if(islist(vars[key]))
-			vars[key] = new/list()
-			for(var/element in pooledvariables[type][key])
-				//if(istype(vars[key][element], /atom))
-				//	PlaceInPool(vars[key][element])
-				vars[key][element] = pooledvariables[type][key][element]
-		else
-			vars[key] = pooledvariables[type][key]
+		vars[key] = pooledvariables[type][key]
+
+/atom/ResetVars()
+	..()
+	hud_list = initial(hud_list)
 
 /atom/movable/ResetVars()
 	..()
 	loc = null
-	//contents = initial(contents) //something is really wrong if this object still has stuff in it by this point
+	contents = initial(contents) //something is really wrong if this object still has stuff in it by this point
 
 /image/ResetVars()
 	..()
