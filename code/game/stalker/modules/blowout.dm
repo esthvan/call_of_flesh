@@ -59,8 +59,10 @@ datum/subsystem/blowout/fire()
 		if((320 + blowout_duration + starttime) < world.time)
 			if(blowoutphase == 2)
 				StopBlowout()
-			BlowoutDealDamage()
+				BlowoutDealDamage()
 			BlowoutClean()
+			if(MC_TICK_CHECK)
+				return
 			BlowoutGib()
 			return
 
@@ -96,7 +98,6 @@ datum/subsystem/blowout/proc/BlowoutClean()
 datum/subsystem/blowout/proc/BlowoutGib()
 	for(var/mob/living/L)
 		if(L.stat == DEAD)
-
 			L.gib()
 			if(MC_TICK_CHECK)
 				return
@@ -105,11 +106,11 @@ datum/subsystem/blowout/proc/BlowoutDealDamage()
 	for(var/mob/living/carbon/human/H)
 		if(istype(get_area(H), /area/stalker/blowout))
 
-			H.radiation += 500
-			H.apply_damage(15, BURN)
+			H.radiation += 600
+			H.apply_damage(75, BURN)
 
-			if(MC_TICK_CHECK)
-				return
+//			if(MC_TICK_CHECK)
+//				return
 
 datum/subsystem/blowout/proc/StopBlowout()
 
@@ -138,6 +139,17 @@ datum/subsystem/blowout/proc/AfterBlowout()
 	isblowout = 0
 	lasttime = world.time
 	starttime = 0
+	////Deleting old stalker profiles////
+	for(var/datum/data/record/sk in data_core.stalkers)
+		if(sk.fields["lastlogin"] <= world.time + 27000)
+			data_core.stalkers -= sk
+	/////////////////////////////////////
+
+	//Очистка ленты
+	global_lentahtml = ""
+	for(var/obj/item/device/stalker_pda/KPK in KPKs)
+		KPK.lentahtml = ""
+
 	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "Все! Выброс закончилс&#x44F;! Выходите из укрытий.")
 
 	world << sound(null, wait = 0, channel = 19, volume = 70)
