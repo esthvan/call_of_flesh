@@ -374,3 +374,6 @@ var/list/blood_splatter_icons = list()
 /atom/Stat()
 	. = ..()
 	sleep(1)
+
+/atom/proc/setDir(newdir)
+	dir = newdir

@@ -336,6 +336,7 @@ Sorry Giacom. Please don't be mad :(
 	resting = !resting
 	src << "<span class='notice'>You are now [resting ? "resting" : "getting up"].</span>"
 	update_canmove()
+	update_top_overlay()
 
 //Recursive function to find everything a mob is holding.
 /mob/living/get_contents(obj/item/weapon/storage/Storage = null)
@@ -780,7 +781,10 @@ Sorry Giacom. Please don't be mad :(
 	animate(pixel_x = initial(pixel_x), pixel_y = final_pixel_y, time = 2)
 
 
-/mob/living/do_attack_animation(atom/A)
+/mob/living/do_attack_animation(atom/A, visual_effect_icon_state = null)
+	if(visual_effect_icon_state)
+		do_item_attack_animation(A, visual_effect_icon_state)
+
 	var/final_pixel_y = get_standard_pixel_y_offset(lying)
 	..(A, final_pixel_y)
 	floating = 0 // If we were without gravity, the bouncing animation got stopped, so we make sure we restart the bouncing after the next movement.
@@ -818,6 +822,47 @@ Sorry Giacom. Please don't be mad :(
 
 	if(!direction) // Attacked self?!
 		I.pixel_z = 16
+
+	// And animate the attack!
+	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
+
+/atom/movable/proc/do_item_attack_animation(atom/A, visual_effect_icon, obj/item/used_item)
+	var/image/I
+	if(visual_effect_icon)
+		I = image('icons/effects/effects.dmi', A, visual_effect_icon, A.layer + 0.1)
+	else if(used_item)
+		I = image(icon = used_item, loc = A, layer = A.layer + 0.1)
+		I.plane = GAME_PLANE
+
+		// Scale the icon.
+		I.transform *= 0.75
+		// The icon should not rotate.
+		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+
+		// Set the direction of the icon animation.
+		var/direction = get_dir(src, A)
+		if(direction & NORTH)
+			I.pixel_y = -16
+		else if(direction & SOUTH)
+			I.pixel_y = 16
+
+		if(direction & EAST)
+			I.pixel_x = -16
+		else if(direction & WEST)
+			I.pixel_x = 16
+
+		if(!direction) // Attacked self?!
+			I.pixel_z = 16
+
+	if(!I)
+		return
+
+	var/list/viewing = list()
+	for (var/mob/M in viewers(A))
+		if (M.client)
+			viewing |= M.client
+
+	flick_overlay(I, viewing, 5) // 5 ticks/half a second
 
 	// And animate the attack!
 	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)

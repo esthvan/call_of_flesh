@@ -71,6 +71,12 @@
 		return 0
 	var/mob/living/L = target
 	if(blocked != 100) // not completely blocked
+		if(damage && damage_type == BRUTE)
+			var/splatter_dir = dir
+			if(starting)
+				splatter_dir = get_dir(starting, target_loca)
+			PoolOrNew(/obj/effect/overlay/temp/dir_setting/bloodsplatter, target_loca, splatter_dir)
+
 		var/organ_hit_text = ""
 		if(L.has_limbs)
 			organ_hit_text = " in \the [parse_zone(def_zone)]"

@@ -78,6 +78,8 @@
 	var/move_delay = 0
 	var/moving = 0
 
+	var/attack_type = "claw" //Анимация при ударе "claw", "bite", "punch", "smash"
+
 	//STALKER MOBOS
 	//var/ability_cooldown = 100 // 10 - 1 секунда
 	//var/ability = 0

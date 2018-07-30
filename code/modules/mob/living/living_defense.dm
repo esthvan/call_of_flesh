@@ -228,7 +228,7 @@
 	else
 		if(M.attack_sound)
 			playsound(loc, M.attack_sound, 50, 1, 1)
-		M.do_attack_animation(src)
+		M.do_attack_animation(src, M.attack_type)
 		visible_message("<span class='danger'>\The [M] [M.attacktext] [src]!</span>", \
 						"<span class='userdanger'>\The [M] [M.attacktext] [src]!</span>")
 		add_logs(M, src, "attacked")

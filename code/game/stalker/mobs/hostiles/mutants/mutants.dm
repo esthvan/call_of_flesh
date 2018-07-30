@@ -127,6 +127,7 @@
 	layer = MOB_LAYER - 0.1
 	loot = list(/obj/item/weapon/stalker/loot/dog_tail, /obj/nothing, /obj/nothing, /obj/nothing)
 	random_loot = 1
+	attack_type = "bite"
 
 /mob/living/simple_animal/hostile/mutant/snork
 	name = "snork"
@@ -168,6 +169,7 @@
 	ranged_cooldown = 1 //By default, start the Goliath with his cooldown off so that people can run away quickly on first sight
 	ranged_cooldown_cap = 4
 
+	attack_type = "claw"
 	var/leaping = 0
 
 /mob/living/simple_animal/hostile/mutant/snork/OpenFire()
@@ -242,6 +244,7 @@
 	loot = list(/obj/item/weapon/stalker/loot/flesh_eye, /obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing)
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	attack_type = "smash"
 
 /mob/living/simple_animal/hostile/mutant/kaban
 	name = "boar"
@@ -279,6 +282,7 @@
 	loot = list(/obj/item/weapon/stalker/loot/boar_leg, /obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing)
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	attack_type = "smash"
 
 	/*Код крашера с колониал маринов
 	Раскидывает мобов с дороги в стороны

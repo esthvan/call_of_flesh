@@ -17,6 +17,8 @@
 	var/delay = 0								//Delay for energy weapons
 	var/click_cooldown_override = 0				//Override this to make your gun have a faster fire rate, in tenths of a second. 4 is the default gun cooldown.
 
+	var/firing_effect_type = /obj/effect/overlay/temp/dir_setting/firing_effect
+
 /obj/item/ammo_casing/New()
 	..()
 	if(projectile_type)
