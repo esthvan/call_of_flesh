@@ -26,10 +26,10 @@
 		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, dir = final_dir, easing = EASE_IN|EASE_OUT)
 		floating = 0  // If we were without gravity, the bouncing animation got stopped, so we make sure we restart it in next life().
 
-
+/*
 /mob/living/carbon
 	var/list/overlays_standing[TOTAL_LAYERS]
-
+*/
 /mob/living/carbon/proc/apply_overlay(cache_index)
 	var/image/I = overlays_standing[cache_index]
 	if(I)
@@ -58,6 +58,7 @@
 		overlays_standing[R_HAND_LAYER] = standing
 
 	apply_overlay(R_HAND_LAYER)
+	update_top_overlay()
 
 /mob/living/carbon/update_inv_l_hand()
 	remove_overlay(L_HAND_LAYER)
@@ -77,6 +78,7 @@
 		overlays_standing[L_HAND_LAYER] = standing
 
 	apply_overlay(L_HAND_LAYER)
+	update_top_overlay()
 
 /mob/living/carbon/update_fire(var/fire_icon = "Generic_mob_burning")
 	remove_overlay(FIRE_LAYER)
@@ -98,6 +100,7 @@
 	update_inv_handcuffed()
 	update_inv_legcuffed()
 	update_fire()
+	update_top_overlay()
 
 /mob/living/carbon/update_inv_wear_mask()
 	remove_overlay(FACEMASK_LAYER)
@@ -117,15 +120,7 @@
 		var/image/standing = back.build_worn_icon(state = back.icon_state, default_layer = BACK_LAYER, default_icon_file = 'icons/mob/back.dmi')
 		overlays_standing[BACK_LAYER] = standing
 		return back
-/*
-/mob/living/carbon/update_inv_back2()
-	remove_overlay(BACK2_LAYER)
-	if(back2)
 
-		var/image/standing = back2.build_worn_icon(state = back2.icon_state, default_layer = BACK2_LAYER, default_icon_file = 'icons/mob/back2.dmi')
-		overlays_standing[BACK2_LAYER] = standing
-		return back2
-*/
 /mob/living/carbon/update_inv_head()
 	remove_overlay(HEAD_LAYER)
 	if(head)
@@ -161,8 +156,3 @@
 //eg: ammo counters, primed grenade flashing, etc.
 /obj/item/proc/worn_overlays(var/isinhands = FALSE)
 	. = list()
-
-
-
-
-

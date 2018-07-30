@@ -96,7 +96,6 @@ Please contact me on #coderbus IRC. ~Carnie x
 /mob/living/carbon/human/proc/update_mutant_bodyparts()
 	dna.species.handle_mutant_bodyparts(src)
 
-
 /mob/living/carbon/human/proc/update_body()
 	remove_overlay(BODY_LAYER)
 	update_base_icon_state()
@@ -151,7 +150,6 @@ Please contact me on #coderbus IRC. ~Carnie x
 		update_inv_head()
 		update_inv_belt()
 		update_inv_back()
-		//update_inv_back2()
 		update_inv_wear_suit()
 		update_inv_pockets()
 		update_transform()
@@ -161,6 +159,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 		update_mutcolor()
 		//mutations
 		update_mutations_overlay()
+		update_top_overlay()
 
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
@@ -200,7 +199,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 			unEquip(thing)
 
 	apply_overlay(UNIFORM_LAYER)
-
+	update_top_overlay()
 
 /mob/living/carbon/human/update_inv_wear_id()
 	remove_overlay(ID_LAYER)
@@ -284,6 +283,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 		overlays_standing[SHOES_LAYER]	= standing
 
 	apply_overlay(SHOES_LAYER)
+	update_top_overlay()
 
 
 /mob/living/carbon/human/update_inv_s_store()
@@ -299,7 +299,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 		overlays_standing[SUIT_STORE_LAYER]	= image("icon"='icons/mob/suit_storage.dmi', "icon_state"="[t_state]", "layer"=-SUIT_STORE_LAYER)
 
 	apply_overlay(SUIT_STORE_LAYER)
-
+	update_top_overlay()
 
 
 /mob/living/carbon/human/update_inv_head()
@@ -355,7 +355,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 	src.update_mutant_bodyparts()
 
 	apply_overlay(SUIT_LAYER)
-
+	update_top_overlay()
 
 /mob/living/carbon/human/update_inv_pockets()
 	if(l_store)
@@ -386,15 +386,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 		if(client && hud_used && hud_used.hud_shown)
 			client.screen += B
 	apply_overlay(BACK_LAYER)
-/*
-/mob/living/carbon/human/update_inv_back2()
-	var/obj/item/B = ..()
-	if(B)
-		B.screen_loc = ui_back2
-		if(client && hud_used && hud_used.hud_shown)
-			client.screen += B
-	apply_overlay(BACK2_LAYER)
-*/
+
 /mob/living/carbon/human/update_inv_handcuffed()
 	if(..())
 		overlays_standing[HANDCUFF_LAYER] = image("icon"='icons/mob/mob.dmi', "icon_state"="handcuff1", "layer"=-HANDCUFF_LAYER)
@@ -436,6 +428,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 /mob/living/carbon/human/proc/update_inv_hands()
 	update_inv_r_hand()
 	update_inv_l_hand()
+	update_top_overlay()
 
 /*
 Does everything in relation to building the /image used in the mob's overlays list
@@ -494,6 +487,20 @@ generate/load female uniform sprites matching all previously decided variables
 
 	standing.alpha = alpha
 	standing.color = color
+
+	return standing
+
+/obj/item/proc/build_worn_real_icon(var/state = "", var/default_icon_file = null)
+
+	//Find a valid icon file from variables+arguments
+	var/file2use
+	if(alternate_worn_icon)
+		file2use = alternate_worn_icon
+	if(!file2use)
+		file2use = default_icon_file
+
+	var/icon/standing
+	standing = icon("icon"=file2use, "icon_state"=state)
 
 	return standing
 

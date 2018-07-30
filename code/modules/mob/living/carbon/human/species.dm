@@ -873,7 +873,6 @@
 
 /datum/species/proc/movement_delay(mob/living/carbon/human/H)
 	. = 0
-
 	if(!(H.status_flags & IGNORESLOWDOWN))
 
 		var/grav = has_gravity(H)
@@ -895,7 +894,6 @@
 					hasjetpack = 1
 
 			. = -1 - hasjetpack
-
 		if(grav || !hasjetpack)
 			var/health_deficiency = (100 - H.health + H.staminaloss)
 			if(health_deficiency >= 40)
@@ -920,6 +918,9 @@
 				. += 1.5
 			if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT)
 				. += (BODYTEMP_COLD_DAMAGE_LIMIT - H.bodytemperature) / COLD_SLOWDOWN_FACTOR
+
+			if(istype(get_turf(H), /turf/stalker/floor/water))
+				. += 2.5
 
 			. += speedmod
 

@@ -101,11 +101,6 @@ obj/structure/grille/stalker/beton/CanPass(atom/movable/mover, turf/target, heig
 	icon = 'icons/stalker/zemlya.dmi'
 	icon_state = "grass1"
 
-/*
-/turf/stalker/floor/digable/grass/New()
-	icon_state = "grass[rand(1, 3)]"
-*/
-
 /turf/stalker/floor/digable/grass/dump
 	icon = 'icons/stalker/zemlya.dmi'
 	icon_state = "dump_grass1"
@@ -147,19 +142,19 @@ var/global/list/AsphaltEdgeCache
 
 	spawn(1)
 		var/turf/T
-		if((!istype(get_step(src, NORTH), /turf/stalker/floor/asphalt))  && (!istype(get_step(src, NORTH), /turf/simulated)) && (!istype(get_step(src,NORTH), /turf/stalker/floor/gryaz)) && (!istype(get_step(src,NORTH), /turf/stalker/floor/tropa)))
+		if((!istype(get_step(src, NORTH), /turf/stalker/floor/water)) && (!istype(get_step(src, NORTH), /turf/stalker/floor/asphalt))  && (!istype(get_step(src, NORTH), /turf/simulated)) && (!istype(get_step(src,NORTH), /turf/stalker/floor/gryaz)) && (!istype(get_step(src,NORTH), /turf/stalker/floor/tropa)))
 			T = get_step(src, NORTH)
 			if (T)
 				T.overlays += AsphaltEdgeCache[SOUTH_EDGING]
-		if((!istype(get_step(src, SOUTH), /turf/stalker/floor/asphalt)) && (!istype(get_step(src, SOUTH), /turf/simulated)) && (!istype(get_step(src,SOUTH), /turf/stalker/floor/gryaz)) && (!istype(get_step(src,SOUTH), /turf/stalker/floor/tropa)))
+		if((!istype(get_step(src, SOUTH), /turf/stalker/floor/water)) && (!istype(get_step(src, SOUTH), /turf/stalker/floor/asphalt)) && (!istype(get_step(src, SOUTH), /turf/simulated)) && (!istype(get_step(src,SOUTH), /turf/stalker/floor/gryaz)) && (!istype(get_step(src,SOUTH), /turf/stalker/floor/tropa)))
 			T = get_step(src, SOUTH)
 			if (T)
 				T.overlays += AsphaltEdgeCache[NORTH_EDGING]
-		if((!istype(get_step(src, EAST), /turf/stalker/floor/asphalt)) && (!istype(get_step(src, EAST), /turf/simulated)) && (!istype(get_step(src,EAST), /turf/stalker/floor/gryaz)) && (!istype(get_step(src,EAST), /turf/stalker/floor/tropa)))
+		if((!istype(get_step(src, EAST), /turf/stalker/floor/water)) && (!istype(get_step(src, EAST), /turf/stalker/floor/asphalt)) && (!istype(get_step(src, EAST), /turf/simulated)) && (!istype(get_step(src,EAST), /turf/stalker/floor/gryaz)) && (!istype(get_step(src,EAST), /turf/stalker/floor/tropa)))
 			T = get_step(src, EAST)
 			if (T)
 				T.overlays += AsphaltEdgeCache[WEST_EDGING]
-		if((!istype(get_step(src, WEST), /turf/stalker/floor/asphalt)) && (!istype(get_step(src, WEST), /turf/simulated)) && (!istype(get_step(src,WEST), /turf/stalker/floor/gryaz)) && (!istype(get_step(src,WEST), /turf/stalker/floor/tropa)))
+		if((!istype(get_step(src, WEST), /turf/stalker/floor/water)) && (!istype(get_step(src, WEST), /turf/stalker/floor/asphalt)) && (!istype(get_step(src, WEST), /turf/simulated)) && (!istype(get_step(src,WEST), /turf/stalker/floor/gryaz)) && (!istype(get_step(src,WEST), /turf/stalker/floor/tropa)))
 			T = get_step(src, WEST)
 			if (T)
 				T.overlays += AsphaltEdgeCache[EAST_EDGING]
@@ -184,19 +179,19 @@ var/global/list/TropaEdgeCache
 
 	spawn(1)
 		var/turf/T
-		if((!istype(get_step(src, NORTH), /turf/stalker/floor/tropa))  && (!istype(get_step(src, NORTH), /turf/simulated)) && (!istype(get_step(src, NORTH), /turf/stalker/floor/gryaz)))
+		if((!istype(get_step(src, NORTH), /turf/stalker/floor/water)) && (!istype(get_step(src, NORTH), /turf/stalker/floor/tropa))  && (!istype(get_step(src, NORTH), /turf/simulated)) && (!istype(get_step(src, NORTH), /turf/stalker/floor/gryaz)))
 			T = get_step(src, NORTH)
 			if (T)
 				T.overlays += TropaEdgeCache[SOUTH_EDGING]
-		if((!istype(get_step(src, SOUTH), /turf/stalker/floor/tropa)) && (!istype(get_step(src, SOUTH), /turf/simulated)) && (!istype(get_step(src, SOUTH), /turf/stalker/floor/gryaz)))
+		if((!istype(get_step(src, SOUTH), /turf/stalker/floor/water)) && (!istype(get_step(src, SOUTH), /turf/stalker/floor/tropa)) && (!istype(get_step(src, SOUTH), /turf/simulated)) && (!istype(get_step(src, SOUTH), /turf/stalker/floor/gryaz)))
 			T = get_step(src, SOUTH)
 			if (T)
 				T.overlays += TropaEdgeCache[NORTH_EDGING]
-		if((!istype(get_step(src, EAST), /turf/stalker/floor/tropa)) && (!istype(get_step(src, EAST), /turf/simulated)) && (!istype(get_step(src, EAST), /turf/stalker/floor/gryaz)))
+		if((!istype(get_step(src, EAST), /turf/stalker/floor/water)) && (!istype(get_step(src, EAST), /turf/stalker/floor/tropa)) && (!istype(get_step(src, EAST), /turf/simulated)) && (!istype(get_step(src, EAST), /turf/stalker/floor/gryaz)))
 			T = get_step(src, EAST)
 			if (T)
 				T.overlays += TropaEdgeCache[WEST_EDGING]
-		if((!istype(get_step(src, WEST), /turf/stalker/floor/tropa)) && (!istype(get_step(src, WEST), /turf/simulated)) && (!istype(get_step(src, WEST), /turf/stalker/floor/gryaz)))
+		if((!istype(get_step(src, WEST), /turf/stalker/floor/water)) && (!istype(get_step(src, WEST), /turf/stalker/floor/tropa)) && (!istype(get_step(src, WEST), /turf/simulated)) && (!istype(get_step(src, WEST), /turf/stalker/floor/gryaz)))
 			T = get_step(src, WEST)
 			if (T)
 				T.overlays += TropaEdgeCache[EAST_EDGING]
@@ -240,35 +235,23 @@ var/global/list/GryazEdgeCache
 
 	spawn(1)
 		var/turf/T
-		if((!istype(get_step(src, NORTH), /turf/stalker/floor/gryaz))  && (!istype(get_step(src, NORTH), /turf/simulated)))
+		if((!istype(get_step(src, NORTH), /turf/stalker/floor/water)) && (!istype(get_step(src, NORTH), /turf/stalker/floor/gryaz))  && (!istype(get_step(src, NORTH), /turf/simulated)))
 			T = get_step(src, NORTH)
 			if (T)
 				T.overlays += GryazEdgeCache[SOUTH_EDGING]
-		if((!istype(get_step(src, SOUTH), /turf/stalker/floor/gryaz)) && (!istype(get_step(src, SOUTH), /turf/simulated)))
+		if((!istype(get_step(src, SOUTH), /turf/stalker/floor/water)) && (!istype(get_step(src, SOUTH), /turf/stalker/floor/gryaz)) && (!istype(get_step(src, SOUTH), /turf/simulated)))
 			T = get_step(src, SOUTH)
 			if (T)
 				T.overlays += GryazEdgeCache[NORTH_EDGING]
-		if((!istype(get_step(src, EAST), /turf/stalker/floor/gryaz)) && (!istype(get_step(src, EAST), /turf/simulated)))
+		if((!istype(get_step(src, EAST), /turf/stalker/floor/water)) && (!istype(get_step(src, EAST), /turf/stalker/floor/gryaz)) && (!istype(get_step(src, EAST), /turf/simulated)))
 			T = get_step(src, EAST)
 			if (T)
 				T.overlays += GryazEdgeCache[WEST_EDGING]
-		if((!istype(get_step(src, WEST), /turf/stalker/floor/gryaz)) && (!istype(get_step(src, WEST), /turf/simulated)))
+		if((!istype(get_step(src, WEST), /turf/stalker/floor/water)) && (!istype(get_step(src, WEST), /turf/stalker/floor/gryaz)) && (!istype(get_step(src, WEST), /turf/simulated)))
 			T = get_step(src, WEST)
 			if (T)
 				T.overlays += GryazEdgeCache[EAST_EDGING]
 	return
-
-/*
-/turf/stalker/floor/gryaz_border
-	name = "dirt"
-	icon = 'icons/stalker/zemlya.dmi'
-	icon_state = "gryaz1"
-	layer = 2.2
-
-
-/turf/stalker/floor/gryaz/New()
-	icon_state = "gryaz[rand(1, 3)]"
-*/
 
 /turf/stalker/floor/gryaz/gryaz2
 	icon_state = "gryaz2"
@@ -310,7 +293,52 @@ var/global/list/GryazEdgeCache
 /turf/stalker/floor/water
 	name = "water"
 	icon = 'icons/stalker/water.dmi'
-	icon_state = "tupo_woda"
+	icon_state = "water"
+	layer = TURF_LAYER
+
+/turf/stalker/floor/water/Entered(atom/movable/A)
+	..()
+	if(istype(A, /mob/living))
+		var/mob/living/L = A
+		L.update_top_overlay()
+
+/turf/stalker/floor/water/Exited(atom/movable/A)
+	..()
+	if(istype(A, /mob/living))
+		var/mob/living/L = A
+		L.update_top_overlay()
+		flick("water_splash_movement", src)
+
+var/global/list/WaterEdgeCache
+
+/turf/stalker/floor/water/New()
+	if(!WaterEdgeCache || !WaterEdgeCache.len)
+		WaterEdgeCache = list()
+		WaterEdgeCache.len = 4
+		WaterEdgeCache[NORTH_EDGING] = image('icons/stalker/water.dmi', "water_north", layer = 2.01)
+		WaterEdgeCache[SOUTH_EDGING] = image('icons/stalker/water.dmi', "water_south", layer = 2.01)
+		WaterEdgeCache[EAST_EDGING] = image('icons/stalker/water.dmi', "water_east", layer = 2.01)
+		WaterEdgeCache[WEST_EDGING] = image('icons/stalker/water.dmi', "water_west", layer = 2.01)
+
+	spawn(1)
+		var/turf/T
+		if((!istype(get_step(src, NORTH), /turf/stalker/floor/water)) && (!istype(get_step(src, NORTH), /turf/simulated)))
+			T = get_step(src, NORTH)
+			if (T)
+				T.overlays += WaterEdgeCache[SOUTH_EDGING]
+		if((!istype(get_step(src, SOUTH), /turf/stalker/floor/water)) && (!istype(get_step(src, SOUTH), /turf/simulated)))
+			T = get_step(src, SOUTH)
+			if (T)
+				T.overlays += WaterEdgeCache[NORTH_EDGING]
+		if((!istype(get_step(src, EAST), /turf/stalker/floor/water)) && (!istype(get_step(src, EAST), /turf/simulated)))
+			T = get_step(src, EAST)
+			if (T)
+				T.overlays += WaterEdgeCache[WEST_EDGING]
+		if((!istype(get_step(src, WEST), /turf/stalker/floor/water)) && (!istype(get_step(src, WEST), /turf/simulated)))
+			T = get_step(src, WEST)
+			if (T)
+				T.overlays += WaterEdgeCache[EAST_EDGING]
+	return
 
 /turf/stalker/floor/wood
 	icon = 'icons/stalker/floor.dmi'
