@@ -246,7 +246,7 @@
 				'sound/stalker/ambience/ugrnd/ugrnd_whispers_1.ogg','sound/stalker/ambience/ugrnd/ugrnd_whispers_2.ogg',
 				'sound/stalker/ambience/ugrnd/ugrnd_whispers_3.ogg','sound/stalker/ambience/ugrnd/ugrnd_whispers_4.ogg',
 				)
-	ambient_environment_cooldown = 1280
+	ambient_environment_cooldown = 800
 	environment = 8
 
 	///¡¿–, ﬂÕ“¿–‹, ƒ» ¿ﬂ “≈––»“Œ–»ﬂ///
