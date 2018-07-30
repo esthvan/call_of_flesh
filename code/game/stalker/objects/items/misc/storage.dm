@@ -31,6 +31,7 @@
 	storage_slots = 21
 	burn_state = FLAMMABLE
 	burntime = 20
+	display_contents_with_number = 1
 
 /obj/item/weapon/storage/backpack/satchel/stalker
 	name = "satchel"
@@ -43,6 +44,7 @@
 	storage_slots = 21
 	burn_state = FLAMMABLE
 	burntime = 20
+	display_contents_with_number = 1
 
 /obj/item/weapon/storage/backpack/stalker/attackby(obj/item/weapon/W, mob/user, params)
 	playsound(src.loc, "sound/stalker/objects/inv_open.ogg", 50, 1, -5)
