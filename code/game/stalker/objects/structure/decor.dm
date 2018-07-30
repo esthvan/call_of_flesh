@@ -4,13 +4,14 @@
 	anchored = 1
 	layer = 3.1
 
-/obj/structure/stalker/polka
+/obj/structure/stalker/cacheable/polka
 	name = "shelf"
 	desc = "Дерев&#255;нный стеллаж."
 	icon = 'icons/stalker/polka.dmi'
 	icon_state = "polka"
 	density = 1
 	anchored = 1
+	cache_size = 0
 
 /obj/structure/stalker/radiation
 	name = "radiation sign"
@@ -38,21 +39,23 @@
 	desc = "Обыкновенна&#255; лужа. Вода, вроде бы, не сама&#255; чиста&#255;. Кап-кап."
 	icon_state = "luzha_kap"
 
-/obj/structure/stalker/truba
+/obj/structure/stalker/cacheable/truba
 	name = "pipe"
 	desc = "Стара&#255; ржава&#255; труба."
 	icon_state = "truba"
+	cache_size = 1
 
-/obj/structure/stalker/truba/vert
+/obj/structure/stalker/cacheable/truba/vert
 	icon_state = "truba_v"
 
-/obj/structure/stalker/bochka
+/obj/structure/stalker/cacheable/bochka
 	name = "barrel"
 	desc = "Железна&#255; непримечательна&#255; бочка."
 	icon_state = "bochka"
 	density = 1
+	cache_size = 2
 
-/obj/structure/stalker/bochka/red
+/obj/structure/stalker/cacheable/bochka/red
 	icon_state = "red_bochka"
 
 /obj/structure/stalker/water/bochka
@@ -67,26 +70,30 @@
 	icon_state = "diryavaya_bochka_s_vodoy"
 
 
-/obj/structure/stalker/rozetka
+/obj/structure/stalker/cacheable/rozetka
 	name = "socket"
 	desc = "Стара&#255; советска&#255; розетка."
 	icon_state = "rozetka"
+	density = 0
+	cache_size = 0
 
-/obj/structure/stalker/krest
+/obj/structure/stalker/cacheable/krest
 	name = "cross"
 	desc = "Дерев&#255;нный крест."
 	icon_state = "krest"
 	density = 0
+	cache_size = 1
 
-/obj/structure/stalker/krest/bereza
+/obj/structure/stalker/cacheable/krest/bereza
 	icon_state = "krest_bereza"
 
-/obj/structure/stalker/komod
+/obj/structure/stalker/cacheable/komod
 	name = "komod"
 	desc = "Обыкновенный дерев&#255;нный комод."
 	icon_state = "komod"
 	density = 1
 	pass_flags = LETPASSTHROW
+	cache_size = 1
 
 /obj/structure/stalker/shina
 	name = "shina"
@@ -100,22 +107,18 @@
 	icon_state = "shina2"
 	density = 1
 
-/obj/structure/stalker/shina3
-	name = "three shina"
-	desc = "Тяжелые старые пробитые шины."
-	icon_state = "shina3"
-	density = 1
-
-/obj/structure/stalker/shina3
+/obj/structure/stalker/cacheable/shina3
 	name = "three shina"
 	desc = "Тяжелые старые пробитые шины."
 	icon_state = "shina3a"
 	density = 1
+	cache_size = 1
 
-/obj/structure/stalker/switcher
+/obj/structure/stalker/cacheable/switcher
 	name = "switcher"
 	desc = "Неисправный выключатель.\n<span class='notice'>Вы начинаете щелкать его и обретаете на некоторое врем&#255; покой.</span>"
 	icon_state = "vikluchatel"
+	cache_size = 0
 
 /obj/structure/stalker/doski
 	name = "planks"
@@ -133,127 +136,157 @@
 /obj/structure/stalker/doski/doski4
 	icon_state = "doski_oblomki4"
 
-/obj/structure/stalker/battery
+/obj/structure/stalker/cacheable/battery
 	name = "battery"
 	desc = "Ржава&#255; отопительна&#255; батаре&#255;. Когда-то согревала дома, сейчас - просто очередна&#255; железка."
 	icon_state = "gazovaya_truba"
+	density = 0
+	cache_size = 1
 
-/obj/structure/stalker/vanna
+/obj/structure/stalker/cacheable/vanna
 	name = "bath"
 	desc = "Стара&#255; чугунна&#255; ванна. Ничего особенного."
 	icon_state = "vanna"
 	density = 1
+	cache_size =  2
 
 /obj/structure/stalker/list
 	name = "stain-roof sheet"
 	desc = "Т&#255;жёлый жест&#255;нной покорёженный лист. Использовать его уже никак не получитс&#255;."
 	icon_state = "list_zhesti"
+	density = 0
 
-/obj/structure/stalker/yashik
+/obj/structure/stalker/cacheable/yashik
 	name = "wooden box"
 	icon_state = "yashik"
 	density = 1
+	cache_size = 1
 
-/obj/structure/stalker/yashik/yaskik_a
+/obj/structure/stalker/cacheable/yashik/yaskik_a
 	name = "crate"
 	icon_state = "yashik_a"
+	density = 1
+	cache_size = 2
 
-/obj/structure/stalker/yashik/yaskik_a/big
+/obj/structure/stalker/cacheable/yashik/yaskik_a/big
 	icon = 'icons/stalker/decorations_32x64.dmi'
 	icon_state = "crate"
 	opacity = 1
+	density = 1
 	layer = 9
+	cache_size = 3
 
 /obj/structure/stalker/propane
 	name = "propane"
 	desc = "Баллон с пропаном. Огнеопасно."
 	icon = 'icons/stalker/decorations_32x64.dmi'
 	icon_state = "propane"
+	density = 1
 
 /obj/structure/stalker/stolb
 	name = "pillar"
 	icon = 'icons/stalker/decorations_32x64.dmi'
 	icon_state = "stolb"
 	layer = 9
+	density = 0
 
 /obj/structure/stalker/propane/dual
 	icon_state = "propane_dual"
 
-/obj/structure/stalker/pen
+/obj/structure/stalker/cacheable/pen
 	name = "stump"
 	desc = "Обычный пень. Ни больше, ни меньше."
 	icon_state = "pen"
+	density = 0
+	cache_size = 0
 
-/obj/structure/stalker/radio
+/obj/structure/stalker/cacheable/radio
 	name = "radio"
 	desc = "Старое сломанное советское радио"
 	icon_state = "radio"
+	density = 1
+	cache_size = 1
 
-/obj/structure/stalker/apc
+/obj/structure/stalker/cacheable/apc
 	name = "switchboard"
 	desc = "Старый электрощиток."
 	icon_state = "apc"
+	density = 0
+	cache_size = 1
 
-/obj/structure/stalker/apc/open
+/obj/structure/stalker/cacheable/apc/open
 	icon_state = "apc1"
 
-/obj/structure/stalker/apc/open2
+/obj/structure/stalker/cacheable/apc/open2
 	icon_state = "apc2"
 
-/obj/structure/stalker/cover
+/obj/structure/stalker/cacheable/cover
 	icon = 'icons/stalker/cover.dmi'
 	icon_state = "cover"
+	density = 0
+	cache_size = 0
 
-/obj/structure/stalker/porog
+/obj/structure/stalker/cacheable/porog
 	name = "step"
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "porog1"
 	layer = 2.9
+	density = 0
+	cache_size = 0
 
-/obj/structure/stalker/porog/porog2
+/obj/structure/stalker/cacheable/porog/porog2
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "porog2"
 
-/obj/structure/stalker/televizor
+/obj/structure/stalker/cacheable/televizor
 	name =  "televisor"
 	desc = "Старый советский телевизор."
 	icon_state = "TV"
 	density = 1
+	cache_size = 1
 
-/obj/structure/stalker/clocks
+/obj/structure/stalker/cacheable/clocks
 	name =  "clocks"
 	desc = "Остановились."
 	icon = 'icons/stalker/prishtina/decorations_32x32.dmi'
 	icon_state = "clocks"
+	density = 0
+	cache_size = 0
 
-/obj/structure/stalker/painting
+/obj/structure/stalker/cacheable/painting
 	icon = 'icons/stalker/prishtina/decorations_32x32.dmi'
+	density = 0
+	cache_size = 0
 
-/obj/structure/stalker/painting/gorbachev
+/obj/structure/stalker/cacheable/painting/gorbachev
 	name = "painting"
 	desc = "Портрет последнего секретар&#255; ЦК КПСС."
 	icon_state = "gorbachev"
 
-/obj/structure/stalker/painting/stalin
+/obj/structure/stalker/cacheable/painting/stalin
 	name = "painting"
 	desc = "Портрет второго секретар&#255; ЦК КПСС."
 	icon_state = "stalin"
 
-/obj/structure/stalker/painting/lenin
+/obj/structure/stalker/cacheable/painting/lenin
 	name = "painting"
 	desc = "Портрет первого секретар&#255; ЦК КПСС."
 	icon_state = "lenin"
 
-/obj/structure/stalker/intercom
+/obj/structure/stalker/cacheable/intercom
 	name = "intercom"
 	desc = "Домофон."
 	icon = 'icons/stalker/backwater.dmi'
 	icon_state = "intercom"
+	density = 0
+	cache_size = 0
 
-/obj/structure/stalker/televizor/broken
+/obj/structure/stalker/cacheable/televizor/broken
 	icon_state = "TV_b"
 	name =  "Televisor"
 	desc = "Старый разбитый советский телевизор."
+	density = 1
+	cache_size = 2
 
 /obj/structure/stalker/bigyashik
 	name = "Metal Container"
@@ -357,6 +390,7 @@
 	name = "oscillograph"
 	desc = ""
 	icon_state = "oscillograph_off"
+	density = 1
 
 /obj/structure/stalker/panel
 	name = "machine"
@@ -367,27 +401,30 @@
 /obj/structure/stalker/panel/panel2
 	icon_state = "panel_2"
 
-/obj/structure/stalker/musor_yashik
+/obj/structure/stalker/cacheable/musor_yashik
 	name = "garbage crate"
 	desc = "Мусорный &#255;щик"
 	density = 1
+	cache_size = 3
 
-/obj/structure/stalker/musor_yashik/red
+/obj/structure/stalker/cacheable/musor_yashik/red
 	icon_state = "yashik_musor"
 
-/obj/structure/stalker/musor_yashik/red/full
+/obj/structure/stalker/cacheable/musor_yashik/red/full
 	icon_state = "yashik_musor_full"
 
-/obj/structure/stalker/musor_yashik/green
+/obj/structure/stalker/cacheable/musor_yashik/green
 	icon_state = "yashik_musor2"
 
-/obj/structure/stalker/musor_yashik/green/full
+/obj/structure/stalker/cacheable/musor_yashik/green/full
 	icon_state = "yashik_musor2_full"
 
-/obj/structure/stalker/shitok
+/obj/structure/stalker/cacheable/shitok
 	name = "switch box"
 	desc = "Старый электрический щиток"
 	icon_state = "shitok"
+	cache_size = 1
+	density = 0
 
 /obj/structure/stalker/broke_table
 	name = "table"
@@ -445,3 +482,165 @@
 	icon = 'icons/stalker/bunker.dmi'
 	density = 1
 	opacity = 1
+
+/obj/structure/stalker/cacheable/plita
+	name = "stove"
+	desc = "Ржава&#255; и очень стара&#255; газова&#255; плита. Где-то еще можно различить слой засохшего жира вперемешку с гр&#255;зью и пылью."
+	icon = 'icons/stalker/decor.dmi'
+	icon_state = "gazovaya_plita"
+	density = 1
+	anchored= 1
+	cache_size = 2
+
+/obj/structure/stalker/cacheable/pech
+	name = "furnace"
+	desc = "Стара&#255; печь."
+	icon = 'icons/stalker/decor.dmi'
+	icon_state = "pech"
+	density = 0
+	anchored = 1
+
+/obj/structure/stalker/cacheable/shkaf64
+	name = "Shkaf"
+	desc = "Большой дерев&#255;нный шкаф. Красивый, но в некоторых местах стерс&#255; и облез, на стекле пошли трещины. Несмотр&#255; на это, кажется, будто всего пару минут назад внутри сто&#255;л хрустальный бабушкин сервиз."
+	icon = 'icons/stalker/decorations_32x64.dmi'
+	icon_state = "shkaf64"
+	density = 1
+	anchored = 1
+	cache_size = 3
+
+//////////////////////////////Новые тайники////////////////////////////////
+
+/obj/structure/stalker/cacheable
+	name = "cache"
+	desc = "Генерирует тайник с определенным шансом в начале раунда."
+	eng_desc = "Generates a stash with a certain chance at the start of the round."
+	density = 1
+	var/cache_chance = 5	//percent
+	var/cache_quality = 0	//from 0 to 3
+	var/cache_size = 0		//from 0 to 3
+	var/obj/item/weapon/storage/stalker/cache/internal_cache = null
+
+/obj/structure/stalker/cacheable/New()
+	..()
+
+	if(!prob(cache_chance))
+		internal_cache = null
+		return
+
+	switch(cache_size)
+		if(0)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/small(src)
+		if(1)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/medium(src)
+		if(2)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/big(src)
+		if(3)
+			internal_cache = new /obj/item/weapon/storage/stalker/cache/large(src)
+
+	switch(z)
+		if(4 to INFINITY)
+			cache_quality = rand(2, 3)
+		if(3)
+			cache_quality = rand(1, 2)
+		if(2)
+			cache_quality = rand(0, 1)
+		if(1)
+			cache_quality = 0
+
+	internal_cache.CreateContents(src)
+
+/obj/structure/stalker/cacheable/attack_hand(mob/user)
+	..()
+
+	user.visible_message("<span class='notice'>[user] starts inspecting [src]...</span>", "<span class='notice'>You start inspecting [src]...</span>")
+	if(!do_after(user, 30, 1, src))
+		return
+
+	if(!internal_cache)
+		user.visible_message("<span class='notice'>[user] finds nothing in [src].</span>", "<span class='notice'>You find nothing in [src].</span>")
+		return
+
+	user.visible_message("<span class='notice'>[user] discovered a hidden cache in [src].</span>", "<span class='notice'>You discovered a hidden cache in [src].</span>")
+
+	playsound(loc, "rustle", 50, 1, -5)
+	if(user.s_active)
+		user.s_active.close(user)
+	internal_cache.attack_hand(user)
+
+	if(!internal_cache.waspicked && istype(usr, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = usr
+		internal_cache.waspicked = 1
+		if(istype(H.wear_id, /obj/item/device/stalker_pda))
+			var/obj/item/device/stalker_pda/KPK = H.wear_id
+			if(KPK.owner)
+				show_lenta_message(null, KPK, null, "PDA", "OS", "You discovered a stash in the [src]!", selfsound = 1)
+
+
+		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+		if(sk)
+			sk.fields["rating"] +=  25 * (2 ** cache_quality)
+
+/obj/item/weapon/storage/stalker/cache
+	name = "cache"
+	icon = 'icons/stalker/quest.dmi'
+	icon_state = "blue_box_r"
+	invisibility = 101
+	display_contents_with_number = 1
+	var/waspicked = 0
+
+/obj/item/weapon/storage/stalker/cache/attack_hand(mob/user)
+	playsound(loc, "rustle", 50, 1, -5)
+	orient2hud(user)
+	if(user.s_active)
+		user.s_active.close(user)
+	show_to(user)
+	add_fingerprint(user)
+
+/obj/item/weapon/storage/stalker/cache/proc/CreateContents(var/obj/structure/stalker/cacheable/C)
+	var/list/lootspawn = list()
+	switch(C.cache_quality)
+		if(0)
+			lootspawn = trash_quality_items
+		if(1)
+			lootspawn = low_quality_items
+		if(2)
+			lootspawn = medium_quality_items
+		if(3)
+			lootspawn = high_quality_items
+
+	var/combined_w_class = 0
+	for(var/i = 0, i < storage_slots, i++)
+		if(combined_w_class >= max_combined_w_class)
+			world << "100"
+			break
+		var/A = safepick(lootspawn)
+		var/obj/item/I = new A(src)
+
+		if(I.w_class > max_w_class)
+			world << "105"
+			PlaceInPool(I)
+			continue
+
+		//if(I.w_class >= w_class && (istype(I, /obj/item/weapon/storage)))
+		//	continue
+
+		combined_w_class +=  I.w_class
+
+		handle_item_insertion(I, prevent_warning = 1)
+
+/obj/item/weapon/storage/stalker/cache/small
+	max_w_class = 2
+	max_combined_w_class = 3
+
+/obj/item/weapon/storage/stalker/cache/medium
+	max_w_class = 3
+	max_combined_w_class = 6
+
+/obj/item/weapon/storage/stalker/cache/big
+	max_w_class = 4
+	max_combined_w_class = 8
+
+/obj/item/weapon/storage/stalker/cache/large
+	max_w_class = 4
+	max_combined_w_class = 12
