@@ -23,6 +23,7 @@
 #define FRIDAY_13TH				"Friday the 13th"
 
 //Human Overlays Indexes/////////
+#define TOP_LAYER				28			//Always at the top
 #define SPECIES_LAYER			27//28		// mutantrace colors... these are on a seperate layer in order to prvent
 #define MUTATIONS_LAYER			26//27		//mutations. Hulk, Tk headglows, etc
 #define BODY_BEHIND_LAYER		25//26
@@ -51,7 +52,7 @@
 #define R_HAND_LAYER			3		//Having the two hands seperate seems rather silly, merge them together? It'll allow for code to be reused on mobs with arbitarily many hands
 #define BODY_FRONT_LAYER		2
 #define FIRE_LAYER				1		//If you're on fire
-#define TOTAL_LAYERS			27		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+#define TOTAL_LAYERS			28		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"
@@ -327,3 +328,6 @@ var/list/bloody_footprints_cache = list()
 //Bloodcrawling
 #define BLOODCRAWL 1
 #define BLOODCRAWL_EAT 2
+
+#define APPEARANCE_UI_IGNORE_ALPHA			(RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|RESET_ALPHA|PIXEL_SCALE)
+#define APPEARANCE_UI						(RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|PIXEL_SCALE)

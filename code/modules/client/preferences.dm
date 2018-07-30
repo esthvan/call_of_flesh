@@ -5,6 +5,7 @@ var/list/preferences_datums = list()
 
 
 /datum/preferences
+	var/client/parent
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
@@ -88,7 +89,11 @@ var/list/preferences_datums = list()
 
 	var/list/ignoring = list()
 
+	var/ambientocclusion = TRUE
+
 /datum/preferences/New(client/C)
+	parent = C
+
 	blood_type = random_blood_type()
 	custom_names["ai"] = pick(ai_names)
 	custom_names["cyborg"] = pick(ai_names)
@@ -336,6 +341,7 @@ var/list/preferences_datums = list()
 			dat += "<b>Pull requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Yes" : "No"]</a><br>"
 			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Yes" : "No"]</a><br>"
 			dat += "<b>Game language:</b> <a href='?_src_=prefs;preference=change_language'>[(chat_toggles & CHAT_LANGUAGE) ? "English" : "Russian"]</a><br>"
+			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? "Enabled" : "Disabled"]</a><br>"
 			if(config.allow_Metadata)
 				dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'>Edit </a><br>"
 
@@ -1063,6 +1069,12 @@ var/list/preferences_datums = list()
 
 				if("allow_midround_antag")
 					toggles ^= MIDROUND_ANTAG
+
+				//if("ambientocclusion")
+				//	ambientocclusion = !ambientocclusion
+				//	if(parent && parent.screen && parent.screen.len)
+				//		var/obj/screen/plane_master/game_world/PM = locate(/obj/screen/plane_master/game_world) in parent.screen
+					//	PM.backdrop(parent.mob)
 
 				if("change_language")
 					chat_toggles ^= CHAT_LANGUAGE

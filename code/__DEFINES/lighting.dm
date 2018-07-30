@@ -3,9 +3,6 @@
 	dview_mob.see_invisible = invis_flags; \
 	for(type in view(range, dview_mob))
 
-#define LIGHTING_PLANE -2
-#define SUNLIGHTING_PLANE -1
-
 #define END_FOR_DVIEW dview_mob.loc = null
 //Bay lighting engine shit, not in /code/modules/lighting because BYOND is being shit about it
 #define LIGHTING_INTERVAL       2 // frequency, in 1/10ths of a second, of the lighting process

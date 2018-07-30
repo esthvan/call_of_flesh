@@ -328,6 +328,17 @@ var/list/global_huds = list(
 			persistant_inventory_update()
 			mymob.update_action_buttons()
 			reorganize_alerts()
+
+	//if (mymob.hud_used)
+	//	mymob.hud_used.plane_masters_update()
+
+///datum/hud/proc/plane_masters_update()
+	// Plane masters are always shown to OUR mob, never to observers
+	//for(var/thing in plane_masters)
+		//var/obj/screen/plane_master/PM = plane_masters[thing]
+		//PM.backdrop(mymob)
+		//mymob.client.screen += PM
+
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"

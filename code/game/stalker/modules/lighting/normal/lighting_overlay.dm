@@ -13,7 +13,7 @@
 	invisibility     = INVISIBILITY_LIGHTING
 	luminosity       = 1
 
-	blend_mode       = BLEND_ADD
+	//blend_mode       = BLEND_ADD
 
 	var/needs_update = FALSE
 
