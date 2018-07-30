@@ -54,28 +54,30 @@
 	if(!lootspawn || lootspawn == /obj/nothing)
 		return
 
-	var/obj/item/weapon/artifact/lootspawn_art = lootspawn
+	//var/obj/item/weapon/artifact/lootspawn_art = lootspawn
+	var/turf/T = get_turf(src)
+	var/obj/item/weapon/artifact/O = new lootspawn(T)
+	O.invisibility = 100
 
 	switch(z)
 		if(4)
-			if(lootspawn_art.level_s > 4)
+			if(O.level_s > 4)
+				PlaceInPool(O)
 				SpawnArtifact()
 				return
 
 		if(3)
-			if(lootspawn_art.level_s > 2)
+			if(O.level_s > 2)
+				PlaceInPool(O)
 				SpawnArtifact()
 				return
 
 		if(2)
-			if(lootspawn_art.level_s > 1)
+			if(O.level_s > 1)
+				PlaceInPool(O)
 				SpawnArtifact()
 				return
 
-	var/turf/T = get_turf(src)
-	var/obj/item/weapon/artifact/O = new lootspawn(T)
-
-	O.invisibility = 100
 	RandomMove(O)
 	spawned_artifacts += O
 
@@ -181,16 +183,16 @@
 
 /obj/anomaly/proc/ApplyEffects()
 	invisibility = active_invisibility
-	icon_state = active_icon_state
+	flick(active_icon_state, src)
 	update_icon()
 	set_light(activated_luminosity, l_color = anomaly_color)
 	playsound(src.loc, src.sound, 50, 1, channel = 0)
 
 	spawn(10)
 		invisibility = inactive_invisibility
-		icon_state = inactive_icon_state
 		update_icon()
 		set_light(idle_luminosity, l_color = anomaly_color)
+
 	return
 
 /obj/anomaly/proc/AffectItem(var/obj/item/I)
@@ -273,10 +275,10 @@
 	active_invisibility = 0
 	inactive_invisibility = 0
 	loot = list(/obj/nothing = 90,
-				/obj/item/weapon/artifact/flash = 6,
+				/obj/item/weapon/artifact/flash = 5,
 				/obj/item/weapon/artifact/moonlight = 3.5,
-				/obj/item/weapon/artifact/battery = 0.25,
-				/obj/item/weapon/artifact/pustishka = 0.25
+				/obj/item/weapon/artifact/battery = 1.5,
+				/obj/item/weapon/artifact/pustishka = 0.5
 				)
 
 /obj/anomaly/electro/New()
@@ -392,7 +394,7 @@
 	damage_amount = 60
 	icon = 'icons/stalker/anomalies.dmi'
 	inactive_icon_state = "holodec"
-	active_icon_state = "holodec" //need activation icon
+	active_icon_state = "holodec" //needs activation icon
 	active_invisibility = 0
 	inactive_invisibility = 0
 	loot = list(/obj/nothing = 90,
@@ -447,7 +449,7 @@
 	damage_amount = 65
 	icon = 'icons/stalker/anomalies.dmi'
 	inactive_icon_state = "puh"
-	active_icon_state = "puh" //need activation icon
+	active_icon_state = "puh" //needs activation icon
 	active_invisibility = 0
 	inactive_invisibility = 0
 
