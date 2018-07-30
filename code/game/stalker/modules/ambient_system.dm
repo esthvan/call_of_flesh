@@ -28,10 +28,10 @@
 
 			ambient_music = sound(file = pick(A.ambient_music))
 			////////////////////////
-			ambient_music.real_cooldown = rand(A.ambient_music_cooldown * 0.8, A.ambient_music_cooldown * 1.5)
+			ambient_music.real_cooldown = rand(A.ambient_music_cooldown * 0.8, A.ambient_music_cooldown * 1.6)
 			ambient_music.last_time = world.time
 			////////////////////////
-			ambient_music.Set_Sound(707, 35, 0, -1)
+			ambient_music.Set_Sound(707, 25, 0, -1)
 
 			src << ambient_music
 
@@ -47,8 +47,8 @@
 			if(ambient_environment)
 
 				ambient_environment.last_time = world.time
-				ambient_environment.real_cooldown = rand(A.ambient_environment_cooldown * 0.3, A.ambient_environment_cooldown * 1.1)
-				ambient_environment.Set_Sound(708, rand(25, 70), rand(-100, 100), A.environment)
+				ambient_environment.real_cooldown = rand(A.ambient_environment_cooldown * 0.3, A.ambient_environment_cooldown * 1.5)
+				ambient_environment.Set_Sound(708, rand(25, 60), rand(-100, 100), A.environment)
 				src << ambient_environment
 
 	if(ambient_background && !ambient_background.transition && !(ambient_background.file in A.ambient_background))
