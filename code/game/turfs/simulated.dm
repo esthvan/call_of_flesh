@@ -60,7 +60,7 @@
 					playsound(src, "clownstep", 60, 1)
 
 			//shoes
-			if 		(istype(src, /turf/stalker/floor/digable/grass))
+			if(istype(src, /turf/stalker/floor/digable/grass))
 				footstepsound = "grassfootsteps"
 			else 	if(istype(src, /turf/stalker/floor/tropa))
 				footstepsound = "sandfootsteps"
@@ -104,31 +104,8 @@
 				M.slip(0, 4, null, (SLIDE|NO_SLIP_WHEN_WALKING))
 				return
 	..()
-
+/*Чтобы не потерять
 /turf
-	var/list/l_sounds_ugrnd = 	list(	'sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_1.ogg','sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_1.ogg',
-									'sound/stalker/ambience/ugrnd/ugrnd_ambient_banging_1.ogg','sound/stalker/ambience/ugrnd/ugrnd_ambient_banging_2.ogg',
-									'sound/stalker/ambience/ugrnd/ugrnd_drip_1.ogg','sound/stalker/ambience/ugrnd/ugrnd_drip_2.ogg',
-									'sound/stalker/ambience/ugrnd/ugrnd_metal_1.ogg','sound/stalker/ambience/ugrnd/ugrnd_metal_2.ogg',
-									'sound/stalker/ambience/ugrnd/ugrnd_metal_3.ogg','sound/stalker/ambience/ugrnd/ugrnd_metal_4.ogg')
-
-	var/list/l_sounds_outdoor = list('sound/stalker/ambience/rnd_outdoor/rnd_bird_1.ogg','sound/stalker/ambience/rnd_outdoor/rnd_bird_2.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_bird_3.ogg','sound/stalker/ambience/rnd_outdoor/rnd_bird_4.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_bird_5.ogg','sound/stalker/ambience/rnd_outdoor/rnd_bird_6.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_bird_7.ogg','sound/stalker/ambience/rnd_outdoor/rnd_bird_8.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_bird_9.ogg','sound/stalker/ambience/rnd_outdoor/rnd_bird_10.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_bird_11.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_dog1.ogg','sound/stalker/ambience/rnd_outdoor/rnd_dog2.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_dog3.ogg','sound/stalker/ambience/rnd_outdoor/rnd_dog4.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_dog5.ogg','sound/stalker/ambience/rnd_outdoor/rnd_dog6.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_dog7.ogg','sound/stalker/ambience/rnd_outdoor/rnd_dog8.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_dog9.ogg','sound/stalker/ambience/rnd_outdoor/rnd_dog10.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_crow_1.ogg','sound/stalker/ambience/rnd_outdoor/rnd_crow_2.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_crow_3.ogg','sound/stalker/ambience/rnd_outdoor/rnd_crow_4.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_crow_5.ogg','sound/stalker/ambience/rnd_outdoor/rnd_crow_6.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_crow_7.ogg','sound/stalker/ambience/rnd_outdoor/rnd_crow_8.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_crow_9.ogg','sound/stalker/ambience/rnd_outdoor/rnd_crow_10.ogg',
-									'sound/stalker/ambience/rnd_outdoor/rnd_crow_11.ogg','sound/stalker/ambience/rnd_outdoor/rnd_crow_12.ogg')
 
 	var/list/l_sounds_bar = list('sound/stalker/megafon/bar_start_megafon_1.ogg','sound/stalker/megafon/bar_start_megafon_2.ogg',
 								'sound/stalker/megafon/bar_start_megafon_3.ogg','sound/stalker/megafon/bar_start_megafon_4.ogg',
@@ -136,12 +113,19 @@
 								'sound/stalker/megafon/mega_duty_propaganda_3.ogg','sound/stalker/megafon/mega_duty_propaganda_4.ogg',
 								'sound/stalker/megafon/mega_duty_propaganda_5.ogg','sound/stalker/megafon/mega_duty_propaganda_6.ogg',
 								'sound/stalker/megafon/mega_duty_propaganda_7.ogg')
-
+*/
 
 /turf/stalker/Entered(atom/A, atom/OL)
 	..()
 	var/footstepsound
-	if (istype(A,/mob/living/carbon))
+	if(istype(A, /mob/living))
+		if(istype(src, /turf/stalker/floor/water))
+			footstepsound = "waterfootsteps"
+			playsound(src, footstepsound, 60, 1)
+			..()
+			return
+
+	if(istype(A,/mob/living/carbon))
 		var/mob/living/carbon/M = A
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
@@ -170,23 +154,10 @@
 				footstepsound = "carpetfootsteps"
 			else if(istype(src, /turf/stalker/floor/gryaz || /turf/stalker/floor/gryaz/gryaz2))
 				footstepsound = "dirtfootsteps"
+			else if(istype(src, /turf/stalker/floor/water))
+				footstepsound = "waterfootsteps"
 			else
 				footstepsound = "erikafootsteps"
-
-			var/l_sound = pick(l_sounds_ugrnd)
-
-			if (istype(get_area(src.loc), /area/stalker/blowout/outdoor))
-				if (prob(1))
-					l_sound = pick(l_sounds_outdoor)
-					A << sound(l_sound, repeat = 0, wait = 1,volume = 65, channel = 8)
-			if (istype(get_area(src.loc), /area/stalker/agroprom/caves))
-				if (prob(1))
-					l_sound = pick(l_sounds_ugrnd)
-					A << sound(l_sound, repeat = 0, wait = 1,volume = 65, channel = 8)
-			if (istype(get_area(src.loc), /area/stalker/blowout/outdoor/safezone/bar))
-				if (prob(0.3))
-					l_sound = pick(l_sounds_bar)
-					A << sound(l_sound, repeat = 0, wait = 1,volume = 65, channel = 8)
 
 			if (isblowout == 1)
 				if (!istype(get_area(src.loc), /area/stalker/blowout))
