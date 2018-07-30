@@ -27,13 +27,13 @@
 		new /datum/data/stalker_equipment("Desert Eagle",	"Дёзерт Игл",		/obj/item/weapon/gun/projectile/automatic/pistol/desert, 	    	30000, EXPERT,	assortment_level = 1),
 
 		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
-		new /datum/data/stalker_equipment("PPSh", 	        "ППШ",		        /obj/item/weapon/gun/projectile/automatic/ppsh,						13000, NEWBIE),
+		new /datum/data/stalker_equipment("PPSh",			"ППШ",				/obj/item/weapon/gun/projectile/automatic/ppsh,						13000, NEWBIE),
 		new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, NEWBIE),
-		new /datum/data/stalker_equipment("AK-74S", 		"АК-74У",    		/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
-		new /datum/data/stalker_equipment("AK-74", 	    	"АК-74",		   	/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
-		new /datum/data/stalker_equipment("AS-96", 	    	"АС-96",		   	/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT,	assortment_level = 1),
+		new /datum/data/stalker_equipment("AK-74S",			"АК-74У",			/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
+		new /datum/data/stalker_equipment("AK-74",			"АК-74",			/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
+		new /datum/data/stalker_equipment("AS-96",			"АС-96",			/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT,	assortment_level = 1),
 		new /datum/data/stalker_equipment("LR-300",			"ЛР-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
-		new /datum/data/stalker_equipment("L85", 			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, EXPERT,	assortment_level = 1),
+		new /datum/data/stalker_equipment("L85",			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, EXPERT,	assortment_level = 1),
 		new /datum/data/stalker_equipment("Tunder OTs-14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					35000, EXPERT,	assortment_level = 1),
 		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						50000, VETERAN),
 		new /datum/data/stalker_equipment("SIG SG 550",		"СИГ СГ 550",		/obj/item/weapon/gun/projectile/automatic/sigsg550,					50000, VETERAN),
@@ -99,8 +99,8 @@
 		new /datum/data/stalker_equipment("\"Sunrize\"",			"Комбинезон \"Зар&#x44F;\"",	/obj/item/clothing/suit/hooded/kombez,						33000, NEWBIE,	"Loners"),
 		new /datum/data/stalker_equipment("Merc suit", 				"Комбинезон наёмников",			/obj/item/clothing/suit/hooded/kombez/mercenary,			25000, NEWBIE,	"Mercenaries"),
 		new /datum/data/stalker_equipment("Bandit suit",			"Комбинезон бандитов",			/obj/item/clothing/suit/hooded/kombez/kombez_bandit,		25000, NEWBIE,	"Bandits"),
-		new /datum/data/stalker_equipment("Black trench coat",		"Тёмный плащ",					/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, NEWBIE,	"Bandits"),
-		new /datum/data/stalker_equipment("Trenchcoat",				"Плащ",							/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown,12500, NEWBIE),
+		new /datum/data/stalker_equipment("Black trenchcoat",		"Тёмный плащ",					/obj/item/clothing/suit/hooded/kozhanka/banditka/coat,		12500, NEWBIE,	"Bandits"),
+		new /datum/data/stalker_equipment("Brown trenchcoat",		"Плащ",							/obj/item/clothing/suit/hooded/kozhanka/banditka/coat/brown,12500, NEWBIE),
 		new /datum/data/stalker_equipment("Berill-5M",				"Берилл-5М",					/obj/item/clothing/suit/berill,								50000, EXPERT,	"Loners"),
 		new /datum/data/stalker_equipment("Wind of Freedom",	    "Ветер Свободы",				/obj/item/clothing/suit/hooded/kombez/veter,				25000, NEWBIE,	"Freedom"),
 		new /datum/data/stalker_equipment("Guardian of Freedom",	"Страж Свободы",				/obj/item/clothing/suit/strazh,								40000, EXPERT,	"Freedom"),
@@ -130,11 +130,11 @@
 
 	var/list/med_list = list(
 		///////////////////////////////	Медикаменты	/////////////////////////////////////////
-		new /datum/data/stalker_equipment("Medkit",				"Аптечка",							/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r,		1000, NEWBIE),
-		new /datum/data/stalker_equipment("Army medkit",		"Армейска&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b,		2000, EXPERT),
-		new /datum/data/stalker_equipment("Scientific medkit",	"Научна&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka_y,		4000, VETERAN),
-		new /datum/data/stalker_equipment("Bandage",			"Бинт",								/obj/item/stack/medical/gauze/bint,									500, NEWBIE),
-		new /datum/data/stalker_equipment("Anti-rad",			"Анти-рад препараты",				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,3000, NEWBIE)
+		new /datum/data/stalker_equipment("Medkit",				"Аптечка",							/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r,			1000, NEWBIE),
+		new /datum/data/stalker_equipment("Army medkit",		"Армейска&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b,			2000, EXPERT),
+		new /datum/data/stalker_equipment("Scientific medkit",	"Научна&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka_y,			4000, VETERAN),
+		new /datum/data/stalker_equipment("Bandage",			"Бинт",								/obj/item/stack/medical/gauze/bint,										500, NEWBIE),
+		new /datum/data/stalker_equipment("Anti-rad",			"Анти-рад препараты",				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,	3000, NEWBIE)
 		)
 
 	var/list/food_list = list(
@@ -166,8 +166,8 @@
 	var/list/detector_list = list(
 		/////////////////////////////////	Детекторы	///////////////////////////////////////////
 		new /datum/data/stalker_equipment("Blink", 	"Отклик",							/obj/item/device/detector/blink,				4000, 	NEWBIE),
-		new /datum/data/stalker_equipment("Bear",	"Медведь",							/obj/item/device/detector/bear,					10000, 	EXPERT),
-		new /datum/data/stalker_equipment("Veles",	"Велес",							/obj/item/device/detector/veles,				30000, 	VETERAN),
+		new /datum/data/stalker_equipment("Bear",	"Медведь",							/obj/item/device/detector/bear,					12000, 	EXPERT),
+		new /datum/data/stalker_equipment("Veles",	"Велес",							/obj/item/device/detector/veles,				36000, 	VETERAN),
 		)
 	var/list/loot_list = list(
 	/////////////////////////////////	Лут с мутантов	///////////////////////////////////////////
@@ -203,7 +203,7 @@
 
 	var/attachment_list = list(
 		/////////////////////////////////	Аттачменты	///////////////////////////////////////////
-		new /datum/data/stalker_equipment("SUSAT",				"СУСАТ",							/obj/item/weapon/attachment/scope/SUSAT,			5000,	EXPERT),
+		new /datum/data/stalker_equipment("SUSAT",				"СУСАТ",							/obj/item/weapon/attachment/scope/SUSAT,			8000,	EXPERT),
 		new /datum/data/stalker_equipment("PSU-1",				"ПСУ-1",							/obj/item/weapon/attachment/scope/PS/U1,			6000,	EXPERT),
 		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",							/obj/item/weapon/attachment/scope/PS/O1,			10000,	EXPERT, assortment_level = 2),
 		new /datum/data/stalker_equipment("Universl suppressor","Универсальный глушитель",			/obj/item/weapon/attachment/suppressor,				2000,	NEWBIE),
