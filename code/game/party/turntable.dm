@@ -206,13 +206,11 @@ var/global/turntable_channel = 4488
 		update_sound()
 
 /obj/machinery/party/turntable/proc/update_sound()
-	var/area/A = get_area(src)
+	for(var/mob/M in view(7, src))
+		//var/inRange = (get_area(M) in A.related)
 
-	for(var/mob/M)
-		var/inRange = (get_area(M) in A.related)
-
-		if(!inRange)
-			continue
+		//if(!inRange)
+		//	continue
 
 		if(!M || !M.client)
 			continue
@@ -225,13 +223,13 @@ var/global/turntable_channel = 4488
 			M << M.music
 
 	for (var/client/C in melomans)
-		var/inRange = (get_area(C.mob) in A.related)
+		//var/inRange = (get_area(C.mob) in A.related)
 
 		if(!C)
 			melomans.Remove(C)
 			continue
 
-		if(!playing || !(C.mob) || !inRange)
+		if(!playing || !(C.mob) || !(C.mob in view(7,src)))
 			C.jukeboxplaying = 0
 			C.mob.music.status = SOUND_UPDATE
 			C.mob.music.volume = 0
@@ -252,16 +250,15 @@ var/global/turntable_channel = 4488
 		S.wait = 0
 		S.volume = 0
 		S.status = 0 //SOUND_STREAM
+
+		//S.environment = A.environment
+
 		M.music = S
 		M << S
 	else
 		M.music.status = SOUND_UPDATE
 		M.music.volume = volume
 		M << M.music
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////ÂÍÈÌÀÍÈÅ!!! ÁÛÄËÎÊÎÄ!!!///////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/party/turntable/bandit
 	name = "Jukebox"
@@ -283,9 +280,6 @@ var/global/turntable_channel = 4488
 		if(D.path)
 			turntable_soundtracks.Add(D)
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////ÂÍÈÌÀÍÈÅ!!! ÁÛÄËÎÊÎÄ!!!///////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/party/mixer
 	name = "mixer"
