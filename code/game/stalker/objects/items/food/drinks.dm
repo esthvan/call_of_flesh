@@ -4,6 +4,7 @@
 	icon = 'icons/stalker/food.dmi'
 	icon_state = "gsc_vodka"
 	list_reagents = list("vodka" = 85, "potass_iodide" = 15)
+	w_class = 2
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/pidorka //и снова нехороший человек добавил это сюда
 	name = "Vodka Pidora"
@@ -17,6 +18,7 @@
 	icon = 'icons/stalker/food.dmi'
 	icon_state = "nonstop"
 	list_reagents = list("energetic" = 10, "water" = 20)
+	w_class = 2
 
 /obj/item/weapon/reagent_containers/food/drinks/soda_cans/voda
 	name = "Bottle"
@@ -24,3 +26,4 @@
 	icon = 'icons/stalker/food.dmi'
 	icon_state = "voda"
 	list_reagents = list("energetic" = 3, "water" = 37)
+	w_class = 2
