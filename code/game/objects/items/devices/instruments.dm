@@ -8,7 +8,8 @@
 	var/instrumentExt = "ogg"
 
 /obj/item/device/instrument/New()
-	song = new(instrumentId, src)
+	if(!song)
+		song = new(instrumentId, src)
 	song.instrumentExt = instrumentExt
 
 /obj/item/device/instrument/Destroy()
@@ -21,6 +22,8 @@
 	return (BRUTELOSS)
 
 /obj/item/device/instrument/initialize()
+	if(!song)
+		song = new(instrumentId, src)
 	song.tempo = song.sanitize_tempo(song.tempo) // tick_lag isn't set when the map is loaded
 	..()
 
