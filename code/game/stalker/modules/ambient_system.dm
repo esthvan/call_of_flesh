@@ -31,7 +31,7 @@
 			ambient_music.real_cooldown = rand(A.ambient_music_cooldown * 0.8, A.ambient_music_cooldown * 1.6)
 			ambient_music.last_time = world.time
 			////////////////////////
-			ambient_music.Set_Sound(707, 25, 0, -1)
+			ambient_music.Set_Sound(707, 10, 0, -1)
 
 			src << ambient_music
 
