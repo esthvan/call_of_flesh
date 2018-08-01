@@ -454,6 +454,9 @@
 	for(var/obj/anomaly/holodec/H in get_turf(get_step(src, new_dir)))
 		return
 
+	for(var/obj/structure/S in get_turf(get_step(src, new_dir)))
+		return
+
 	var/obj/anomaly/holodec/splash/son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, new_dir))
 	src.do_attack_animation(son, 0)
 	sleep(8)
@@ -481,11 +484,11 @@
 
 /obj/anomaly/holodec/splash/New()
 	//..()
+	spawn_time = world.time
 	SSobj.processing.Add(src)
 	flick("holodec_splash_creation", src)
 	invisibility = inactive_invisibility
 	damage_amount = 0
-	spawn_time = world.time
 	for(var/mob/living/L in get_turf(src).contents)
 		Crossed(L)
 
@@ -612,6 +615,11 @@
 	if(istype(A,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = A
 		src.trapped.Add(H)
+
+		H.rad_act(src.damage_amount)
+		if(istype(H.wear_id,/obj/item/device/stalker_pda))
+			H << sound(src.sound, repeat = 0, wait = 0, volume = 50, channel = 3)
+
 		if(src.trapped.len >= 1)
 			SSobj.processing |= src
 
