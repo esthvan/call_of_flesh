@@ -106,7 +106,7 @@
 		return
 
 	// operate three levels deep here (item in backpack in src; item in box in backpack in src, not any deeper)
-	if(!isturf(A) && A == loc || (A in contents) || (A.loc in contents) || (A.loc && (A.loc.loc in contents)))
+	if(!isturf(A) && A == loc || (A in contents) || (A.loc in contents) || (A.loc && (A.loc.loc in contents)) || (istype(A.loc, /obj/item/weapon/storage/stalker/cache)))
 		// No adjacency needed
 		if(W)
 			var/resolved = A.attackby(W,src)

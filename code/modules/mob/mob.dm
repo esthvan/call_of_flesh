@@ -93,9 +93,13 @@ var/next_mob_id = 0
 			else
 				multiplier = 0.3
 
+	if(!user)
+		return
+
 	if(!hostiles.Find(user.ckey) && what_done != "fed")
 		hostiles.Add(user.ckey)
 		hostiles[user.ckey] = 0
+
 	switch(what_done)
 		if("shot")
 			hostiles[user.ckey] = hostiles[user.ckey] + 6 * multiplier

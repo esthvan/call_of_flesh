@@ -7,6 +7,7 @@
 /obj/structure/stalker/cacheable/polka
 	name = "shelf"
 	desc = "Дерев&#255;нный стеллаж."
+	eng_desc = "Wooden shelf."
 	icon = 'icons/stalker/polka.dmi'
 	icon_state = "polka"
 	density = 1
@@ -16,13 +17,15 @@
 /obj/structure/stalker/radiation
 	name = "radiation sign"
 	desc = "Этот знак здесь &#255;вно не дл&#255; красоты."
+	eng_desc = "This sign symbolise something."
 	icon_state = "radiation_sign"
 	density = 1
 	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/radiation/stop
 	name = "sign"
-	desc = "На табличке написано - 'Стоп! Запретна&#255; зона! Проход запрещен!'."
+	desc = "На табличке написано - \"Стоп! Запретна&#255; зона! Проход запрещен!\"."
+	eng_desc = "On the sign: \"Stop! Forbidden zone! No enterance!\"."
 	icon_state = "stop_sign"
 
 /obj/structure/stalker/water
@@ -31,17 +34,20 @@
 
 /obj/structure/stalker/water/luzha
 	name = "puddle"
-	desc = "Обыкновенна&#255; лужа. Вода, вроде бы, не сама&#255; чиста&#255;."
+	desc = "Обыкновенна&#255; лужа. Вода, вроде бы, не сама&#255; чиста&#255;, но умытьс&#255; или смыть остатки гр&#255;зи с одежды в ней можно."
+	eng_desc = "Water in this puddle is not very clean. But you can still wash your face or clothes with it."
 	icon_state = "luzha"
 
 /obj/structure/stalker/water/luzha/kap
 	name = "puddle"
-	desc = "Обыкновенна&#255; лужа. Вода, вроде бы, не сама&#255; чиста&#255;. Кап-кап."
+	desc = "Обыкновенна&#255; лужа. Вода, вроде бы, не сама&#255; чиста&#255;, но умытьс&#255; или смыть остатки гр&#255;зи с одежды в ней можно."
+	eng_desc = "Water in this puddle is not very clean. But you can still wash your face or clothes with it."
 	icon_state = "luzha_kap"
 
 /obj/structure/stalker/cacheable/truba
 	name = "pipe"
 	desc = "Стара&#255; ржава&#255; труба."
+	eng_desc = "Old rusty pipe."
 	icon_state = "truba"
 	cache_size = 1
 
@@ -51,6 +57,7 @@
 /obj/structure/stalker/cacheable/bochka
 	name = "barrel"
 	desc = "Железна&#255; непримечательна&#255; бочка."
+	eng_desc = "Old steel barrel."
 	icon_state = "bochka"
 	density = 1
 	cache_size = 2
@@ -60,26 +67,30 @@
 
 /obj/structure/stalker/water/bochka
 	name = "Barrel"
-	desc = "Железна&#255; бочка, наполненна&#255;, скорее всего, дождевой водой."
+	desc = "Железна&#255; бочка, наполненна&#255; дождевой водой. Здесь можно умытьс&#255; или смыть остатки гр&#255;зи."
+	eng_desc = "Old steel barrel full of rainwater. You can wash your face oк clothes with it."
 	icon_state = "bochka_s_vodoy"
 	density = 1
 
 /obj/structure/stalker/water/bochka/kap
 	name = "Barrel"
-	desc = "Железна&#255; бочка, наполненна&#255;, скорее всего, дождевой водой. Кап-кап."
+	desc = "Железна&#255; бочка, наполненна&#255; дождевой водой. Здесь можно умытьс&#255; или смыть остатки гр&#255;зи."
+	eng_desc = "Old steel barrel full of rainwater. You can wash your face oк clothes with it."
 	icon_state = "diryavaya_bochka_s_vodoy"
 
 
 /obj/structure/stalker/cacheable/rozetka
 	name = "socket"
 	desc = "Стара&#255; советска&#255; розетка."
+	eng_desc = "Old soviet socket. Doesn't work."
 	icon_state = "rozetka"
 	density = 0
 	cache_size = 0
 
 /obj/structure/stalker/cacheable/krest
 	name = "cross"
-	desc = "Дерев&#255;нный крест."
+	desc = "Дерев&#255;нный крест. Кажетс&#255;, здесь кто-то закопан."
+	eng_desc = "Wooden cross. Looks like someone is burried here."
 	icon_state = "krest"
 	density = 0
 	cache_size = 1
@@ -90,6 +101,7 @@
 /obj/structure/stalker/cacheable/komod
 	name = "komod"
 	desc = "Обыкновенный дерев&#255;нный комод."
+	eng_desc = "Wooden chest of drawers."
 	icon_state = "komod"
 	density = 1
 	pass_flags = LETPASSTHROW
@@ -97,19 +109,22 @@
 
 /obj/structure/stalker/shina
 	name = "shina"
-	desc = "Тяжела&#255; стара&#255; пробита&#255; шина."
+	desc = "Т&#255;жела&#255; стара&#255; пробита&#255; шина."
+	eng_desc = "Heavy old flat tire."
 	icon_state = "shina"
 	density = 1
 
 /obj/structure/stalker/shina2
 	name = "two shina"
-	desc = "Тяжелые старые пробитые шины."
+	desc = "Т&#255;желые старые пробитые шины."
+	eng_desc = "A couple of heavy old flat tires."
 	icon_state = "shina2"
 	density = 1
 
 /obj/structure/stalker/cacheable/shina3
 	name = "three shina"
-	desc = "Тяжелые старые пробитые шины."
+	desc = "Т&#255;желые старые пробитые шины."
+	eng_desc = "A couple of heavy old flat tires."
 	icon_state = "shina3a"
 	density = 1
 	cache_size = 1
@@ -117,12 +132,14 @@
 /obj/structure/stalker/cacheable/switcher
 	name = "switcher"
 	desc = "Неисправный выключатель.\n<span class='notice'>Вы начинаете щелкать его и обретаете на некоторое врем&#255; покой.</span>"
+	eng_desc = "Broken switcher. \n<span class='notice'>You start switching it and feel calm.</span>"
 	icon_state = "vikluchatel"
 	cache_size = 0
 
 /obj/structure/stalker/doski
 	name = "planks"
 	desc = "Сломанные доски. Использовать где-либо их уже не получитс&#255;."
+	eng_desc = "Broken planks."
 	icon_state = "doski_oblomki"
 	layer = 2.8
 	pass_flags = LETPASSTHROW
@@ -139,6 +156,7 @@
 /obj/structure/stalker/cacheable/battery
 	name = "battery"
 	desc = "Ржава&#255; отопительна&#255; батаре&#255;. Когда-то согревала дома, сейчас - просто очередна&#255; железка."
+	eng_desc = "Old rusty radiator. Doesn't produce any heat."
 	icon_state = "gazovaya_truba"
 	density = 0
 	cache_size = 1
@@ -146,6 +164,7 @@
 /obj/structure/stalker/cacheable/vanna
 	name = "bath"
 	desc = "Стара&#255; чугунна&#255; ванна. Ничего особенного."
+	eng_desc = "Old cast-iron bath. Nothing special."
 	icon_state = "vanna"
 	density = 1
 	cache_size =  2
@@ -153,24 +172,31 @@
 /obj/structure/stalker/list
 	name = "stain-roof sheet"
 	desc = "Т&#255;жёлый жест&#255;нной покорёженный лист. Использовать его уже никак не получитс&#255;."
+	eng_desc = "Old stain-roof sheet."
 	icon_state = "list_zhesti"
 	density = 0
 
 /obj/structure/stalker/cacheable/yashik
-	name = "wooden box"
+	name = "wooden crate"
 	icon_state = "yashik"
+	desc = "Старый &#255;щик."
+	eng_desc = "Old wooden crate."
 	density = 1
 	cache_size = 1
 
 /obj/structure/stalker/cacheable/yashik/yaskik_a
 	name = "crate"
 	icon_state = "yashik_a"
+	desc = "Старый &#255;щик."
+	eng_desc = "Old wooden crate."
 	density = 1
 	cache_size = 2
 
 /obj/structure/stalker/cacheable/yashik/yaskik_a/big
 	icon = 'icons/stalker/decorations_32x64.dmi'
 	icon_state = "crate"
+	desc = "Большой старый &#255;щик."
+	eng_desc = "Old big wooden crate."
 	opacity = 1
 	density = 1
 	layer = 9
@@ -179,6 +205,7 @@
 /obj/structure/stalker/propane
 	name = "propane"
 	desc = "Баллон с пропаном. Огнеопасно."
+	eng_desc = "Propane balloon."
 	icon = 'icons/stalker/decorations_32x64.dmi'
 	icon_state = "propane"
 	density = 1
@@ -187,6 +214,8 @@
 	name = "pillar"
 	icon = 'icons/stalker/decorations_32x64.dmi'
 	icon_state = "stolb"
+	desc = "Столб с вис&#255;щими остатками проводов."
+	eng_desc = "Old pillar."
 	layer = 9
 	density = 0
 
@@ -196,13 +225,15 @@
 /obj/structure/stalker/cacheable/pen
 	name = "stump"
 	desc = "Обычный пень. Ни больше, ни меньше."
+	eng_desc = "A small stump."
 	icon_state = "pen"
 	density = 0
 	cache_size = 0
 
 /obj/structure/stalker/cacheable/radio
 	name = "radio"
-	desc = "Старое сломанное советское радио"
+	desc = "Старое сломанное советское радио."
+	eng_desc = "Broken soviet radio."
 	icon_state = "radio"
 	density = 1
 	cache_size = 1
@@ -210,6 +241,7 @@
 /obj/structure/stalker/cacheable/apc
 	name = "switchboard"
 	desc = "Старый электрощиток."
+	eng_desc = "Old switchboard."
 	icon_state = "apc"
 	density = 0
 	cache_size = 1
@@ -223,6 +255,8 @@
 /obj/structure/stalker/cacheable/cover
 	icon = 'icons/stalker/cover.dmi'
 	icon_state = "cover"
+	desc = "Старый ковёр. Обычно висит на стене."
+	eng_desc = "Old carpet. You usually see this on the wall."
 	density = 0
 	cache_size = 0
 
@@ -230,6 +264,8 @@
 	name = "step"
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "porog1"
+	desc = "Старый порог, о который можно легко зацепитьс&#255; ногой."
+	eng_desc = "Old step."
 	layer = 2.9
 	density = 0
 	cache_size = 0
@@ -241,6 +277,7 @@
 /obj/structure/stalker/cacheable/televizor
 	name =  "televisor"
 	desc = "Старый советский телевизор."
+	eng_desc = "Old soviet TV-set."
 	icon_state = "TV"
 	density = 1
 	cache_size = 1
@@ -248,6 +285,7 @@
 /obj/structure/stalker/cacheable/clocks
 	name =  "clocks"
 	desc = "Остановились."
+	eng_desc = "Doesn't work anymore."
 	icon = 'icons/stalker/prishtina/decorations_32x32.dmi'
 	icon_state = "clocks"
 	density = 0
@@ -261,21 +299,25 @@
 /obj/structure/stalker/cacheable/painting/gorbachev
 	name = "painting"
 	desc = "Портрет последнего секретар&#255; ЦК КПСС."
+	eng_desc = "Portrait of the last general secretary of Central Committee of the Communist Party of the Soviet Union."
 	icon_state = "gorbachev"
 
 /obj/structure/stalker/cacheable/painting/stalin
 	name = "painting"
 	desc = "Портрет второго секретар&#255; ЦК КПСС."
+	eng_desc = "Portrait of the second general secretary of Central Committee of the Communist Party of the Soviet Union."
 	icon_state = "stalin"
 
 /obj/structure/stalker/cacheable/painting/lenin
 	name = "painting"
 	desc = "Портрет первого секретар&#255; ЦК КПСС."
+	eng_desc = "Portait of the first general secretary of Central Committee of the Communist Party of the Soviet Union."
 	icon_state = "lenin"
 
 /obj/structure/stalker/cacheable/intercom
 	name = "intercom"
 	desc = "Домофон."
+	eng_desc = "Soviet intercom."
 	icon = 'icons/stalker/backwater.dmi'
 	icon_state = "intercom"
 	density = 0
@@ -402,8 +444,9 @@
 	icon_state = "panel_2"
 
 /obj/structure/stalker/cacheable/musor_yashik
-	name = "garbage crate"
+	name = "dumpster"
 	desc = "Мусорный &#255;щик"
+	eng_desc = "Dumpster. Still stinks."
 	density = 1
 	cache_size = 3
 
@@ -421,14 +464,16 @@
 
 /obj/structure/stalker/cacheable/shitok
 	name = "switch box"
-	desc = "Старый электрический щиток"
+	desc = "Старый электрический щиток."
+	eng_desc = "Old switch box."
 	icon_state = "shitok"
 	cache_size = 1
 	density = 0
 
 /obj/structure/stalker/broke_table
 	name = "table"
-	desc = "Перевернутый стол"
+	desc = "Перевёрнутый стол."
+	eng_desc = "Flipped over table."
 	icon_state = "broke_table1"
 	density = 1
 
@@ -437,7 +482,8 @@
 
 /obj/structure/stalker/lift
 	name = "elevator"
-	desc = "Старый ооветский лифт. Веро&#255;тнее всего он уже никогда не заработает"
+	desc = "Старый ооветский лифт. Веро&#255;тнее всего он уже никогда не заработает."
+	eng_desc = "Old soviet lift. It doesn't work anymore."
 	icon_state = "lift"
 
 /obj/structure/stalker/luk
@@ -456,14 +502,16 @@
 
 /obj/structure/stalker/trubas
 	name = "pipe"
-	desc = "Большие ржавые трубы, служили дл&#255; газоснабжени&#255;."
+	desc = "Больша&#255; ржава&#255; труба, служивша&#255; дл&#255; газоснабжени&#255;."
+	eng_desc = "Big rusty gas-pipe."
 	icon = 'icons/stalker/structure/trubas.dmi'
 	icon_state = "trubas"
 	density = 1
 
 /obj/structure/stalker/sign/bar100rentgen
 	name = "sign"
-	desc = "Небольшая табличка с красивой надписью 'Бар 100 Рентген'"
+	desc = "Бар 100 рентген."
+	eng_desc = "100 rentgen bar."
 	icon_state = "100_rentgen"
 
 /obj/structure/stalker/bar_plitka
@@ -486,6 +534,7 @@
 /obj/structure/stalker/cacheable/plita
 	name = "stove"
 	desc = "Ржава&#255; и очень стара&#255; газова&#255; плита. Где-то еще можно различить слой засохшего жира вперемешку с гр&#255;зью и пылью."
+	eng_desc = "Rusty old gas stove. Covered with grease and dirt."
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "gazovaya_plita"
 	density = 1
@@ -493,8 +542,9 @@
 	cache_size = 2
 
 /obj/structure/stalker/cacheable/pech
-	name = "furnace"
+	name = "oven"
 	desc = "Стара&#255; печь."
+	eng_desc = "Well-made russian oven made out of bricks."
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "pech"
 	density = 0
@@ -502,7 +552,8 @@
 
 /obj/structure/stalker/cacheable/shkaf64
 	name = "Shkaf"
-	desc = "Большой дерев&#255;нный шкаф. Красивый, но в некоторых местах стерс&#255; и облез, на стекле пошли трещины. Несмотр&#255; на это, кажется, будто всего пару минут назад внутри сто&#255;л хрустальный бабушкин сервиз."
+	desc = "Большой дерев&#255;нный шкаф. Красивый, но в некоторых местах стерс&#255; и облез, на стекле пошли трещины. Несмотр&#255; на это, кажетс&#255;, будто всего пару минут назад внутри сто&#255;л хрустальный бабушкин сервиз."
+	eng_desc = "Tall wooden shelf in poor state."
 	icon = 'icons/stalker/decorations_32x64.dmi'
 	icon_state = "shkaf64"
 	density = 1
@@ -516,7 +567,7 @@
 	desc = "Генерирует тайник с определенным шансом в начале раунда."
 	eng_desc = "Generates a stash with a certain chance at the start of the round."
 	density = 1
-	var/cache_chance = 5	//percent
+	var/cache_chance = 8	//percent
 	var/cache_quality = 0	//from 0 to 3
 	var/cache_size = 0		//from 0 to 3
 	var/obj/item/weapon/storage/stalker/cache/internal_cache = null
@@ -612,13 +663,11 @@
 	var/combined_w_class = 0
 	for(var/i = 0, i < storage_slots, i++)
 		if(combined_w_class >= max_combined_w_class)
-			world << "100"
 			break
 		var/A = safepick(lootspawn)
 		var/obj/item/I = new A(src)
 
 		if(I.w_class > max_w_class)
-			world << "105"
 			PlaceInPool(I)
 			continue
 
