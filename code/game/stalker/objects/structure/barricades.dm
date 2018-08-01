@@ -45,7 +45,7 @@
 	maxhealth = 30
 	lootenable = 1
 	doubleloot = 1
-	loot = list(/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r = 30,
+	loot = list(/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 30,
 					/obj/item/weapon/artifact/meduza = 1,
 					/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva = 55,
 					/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti = 40,

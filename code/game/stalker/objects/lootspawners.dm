@@ -6,7 +6,7 @@
 
 	loot = list(
 				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad = 20,
-				/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r = 20,
+				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 20,
 				/obj/item/weapon/gun/projectile/automatic/pistol/pm = 5,
 				/obj/item/weapon/gun/projectile/automatic/pistol/fort12 = 5,
 				/obj/item/weapon/gun/projectile/automatic/pistol/pb1s = 5,
@@ -150,9 +150,9 @@
 /obj/effect/spawner/lootdrop/stalker/medicine
 	name = "stalker medicine"
 	lootcount = 1
-	loot = list(/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r = 30,
-				/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b = 15,
-				/obj/item/weapon/reagent_containers/pill/stalker/aptechka_y = 5,
+	loot = list(/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 30,
+				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army = 15,
+				/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific = 5,
 				/obj/nothing = 60)
 
 /obj/effect/spawner/lootdrop/stalker/food

@@ -1,23 +1,39 @@
 /obj/item/weapon/stalker/bolts
 	name = "bolts"
 	desc = "Куча болтов."
+	eng_desc = "A pile of bolts."
 	icon = 'icons/stalker/bolt.dmi'
 	icon_state = "kucha"
 	w_class = 2
 
+/obj/item/weapon/stalker/bolts/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/weapon/stalker/bolt))
+		if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+			user << "<span class='notice'>You place a bolt in the pile.</span>"
+		else
+			user << "<span class='notice'>Вы кладёте болт в кучу.</span>"
+		PlaceInPool(W)
+
 /obj/item/weapon/stalker/bolt
 	name = "bolt"
 	desc = "Старый советский болт, пораженный коррозией,"
+	eng_desc = "Old sovit bolt affected by corrosion."
 	icon = 'icons/stalker/bolt.dmi'
 	icon_state = "bolt"
 	w_class = 1
+	var/spawn_time = 0
 
 /obj/item/weapon/stalker/bolt/New()
-	spawn(150)
-		qdel(src)
+	spawn_time = world.time
+	SSobj.processing.Add(src)
+
+/obj/item/weapon/stalker/bolt/process()
+	if(loc && spawn_time + 150 <= world.time)
+		PlaceInPool(src)
 
 /obj/item/weapon/stalker/bolt/Destroy()
 	..()
+	SSobj.processing.Remove()
 	return QDEL_HINT_PUTINPOOL
 
 /obj/item/weapon/stalker/bolts/MouseDrop(atom/over_object)
@@ -51,7 +67,7 @@
 		return
 
 	user.changeNext_move(CLICK_CD_MELEE)
-	var/obj/item/weapon/stalker/bolt/P = new /obj/item/weapon/stalker/bolt()
+	var/obj/item/weapon/stalker/bolt/P = PoolOrNew(/obj/item/weapon/stalker/bolt)
 	P.loc = user.loc
 	user.put_in_hands(P)
 	if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))

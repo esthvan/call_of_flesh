@@ -1,12 +1,10 @@
 var/global/list/trash_quality_items = list(
+									/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian,
 									/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,
 									/obj/item/weapon/storage/box/matches,
 									/obj/item/device/geiger_counter,
 									/obj/item/device/flashlight/seclite,
 									/obj/item/device/instrument/guitar,
-									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,
-									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti,
-									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/soup,
 									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/bobi,
 									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/govyadina2,
 									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/fish,
@@ -15,11 +13,6 @@ var/global/list/trash_quality_items = list(
 									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/chocolate,
 									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/galets,
 									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/kasha,
-									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/MREkonserva1,
-									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/MREkonserva2,
-									/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/MREkonserva3,
-									/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,
-									/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,
 									/obj/item/weapon/stalker/loot/dog_tail,
 									/obj/item/weapon/stalker/loot/flesh_eye,
 									/obj/item/weapon/stalker/loot/boar_leg,
@@ -36,18 +29,18 @@ var/global/list/trash_quality_items = list(
 									/obj/item/weapon/artifact/flash,
 									/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,
 									/obj/item/weapon/gun/projectile/automatic/pistol/tt,
-									/obj/item/weapon/gun/projectile/automatic/pistol/fort12
+									/obj/item/weapon/gun/projectile/automatic/pistol/fort12,
+									/obj/item/ammo_box/magazine/stalker/m9x18pm,
+									/obj/item/ammo_box/magazine/stalker/m9x18fort,
+									/obj/item/ammo_box/magazine/stalker/tt,
 									)
 var/global/list/low_quality_items = list(
-										/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r,
+										/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army,
 										/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,
 										/obj/item/weapon/stalker/knife,
 										/obj/item/weapon/gun/projectile/revolver/bm16,
 										/obj/item/weapon/gun/projectile/revolver/bm16/toz34,
 										/obj/item/weapon/gun/projectile/automatic/mp5,
-										/obj/item/ammo_box/magazine/stalker/m9x18pm,
-										/obj/item/ammo_box/magazine/stalker/m9x18fort,
-										/obj/item/ammo_box/magazine/stalker/tt,
 										/obj/item/clothing/suit/hooded/kozhanka/banditka,
 										/obj/item/weapon/stalker/loot/boar_leg,
 										/obj/item/clothing/suit/hooded/kombez/mercenary,
@@ -79,7 +72,7 @@ var/global/list/low_quality_items = list(
 										/obj/item/weapon/gun/projectile/automatic/pistol/marta
 										)
 var/global/list/medium_quality_items = list(
-										/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b,
+										/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific,
 										/obj/item/weapon/gun/projectile/automatic/aksu74,
 										/obj/item/ammo_box/stalker/b545ap,
 										/obj/item/ammo_box/stalker/b55645,
@@ -95,7 +88,6 @@ var/global/list/medium_quality_items = list(
 										/obj/item/clothing/suit/hooded/kombez/ps5m,
 										)
 var/global/list/high_quality_items = list(
-										/obj/item/weapon/reagent_containers/pill/stalker/aptechka_y,
 										/obj/item/clothing/suit/psz9d,
 										/obj/item/clothing/suit/skat
 										)
