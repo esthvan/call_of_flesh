@@ -304,4 +304,7 @@ var/record_id_num = 1001
 /datum/proc/get_id_photo(mob/living/carbon/human/H)
 	var/datum/job/J = SSjob.GetJob(H.mind.assigned_role)
 	var/datum/preferences/P = H.client.prefs
-	return get_flat_human_icon(null,J.outfit,P)
+	if(!J)
+		return get_flat_human_icon(null, /datum/outfit/stalker, P)
+	else
+		return get_flat_human_icon(null,J.outfit,P)
