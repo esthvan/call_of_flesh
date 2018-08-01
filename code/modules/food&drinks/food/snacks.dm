@@ -47,7 +47,7 @@
 	if(!eatverb)
 		eatverb = pick("bite","chew","nibble","gnaw","gobble","chomp")
 	if(!reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
-		user << "<span class='notice'>От [src] уже ничего не осталось, кака&#255; жалость!</span>"
+		user << "<span class='notice'>None of [src] left, oh no!</span>"
 		M.unEquip(src)	//so icons update :[
 		qdel(src)
 		return 0
@@ -65,26 +65,26 @@
 				return 0
 
 			if(wrapped)
-				M << "<span class='warning'>И как же ты собираешьс&#255; есть это, не сн&#255;в упаковки?</span>"
+				M << "<span class='warning'>You should unwrap [src] first!</span>"
 				return 0
 			else if(fullness <= 50)
-				M << "<span class='notice'>Ты жадно отрываешь кусок от [src] и моментально проглатываешь его!</span>"
+				user.visible_message("<span class='notice'>[user] hungrily takes a [eatverb] from \the [src], gobbling it down!</span>", "<span class='notice'>You hungrily take a [eatverb] from \the [src], gobbling it down!</span>")
 			else if(fullness > 50 && fullness < 150)
-				M << "<span class='notice'>Ты с аппетитом ешь [src].</span>"
+				user.visible_message("<span class='notice'>[user] hungrily takes a [eatverb] from \the [src].</span>", "<span class='notice'>You hungrily take a [eatverb] from \the [src].</span>")
 			else if(fullness > 150 && fullness < 500)
-				M << "<span class='notice'>Ты неспеша ешь [src].</span>"
+				user.visible_message("<span class='notice'>[user] takes a [eatverb] from \the [src].</span>", "<span class='notice'>You take a [eatverb] from \the [src].</span>")
 			else if(fullness > 500 && fullness < 600)
-				M << "<span class='notice'>Ты через силу откусываешь кусочек от [src] и принимаешьс&#255; жевать его.</span>"
+				user.visible_message("<span class='notice'>[user] unwillingly takes a [eatverb] of a bit of \the [src].</span>", "<span class='notice'>You unwillingly take a [eatverb] of a bit of \the [src].</span>")
 			else if(fullness > (600 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
-				M << "<span class='warning'>Ты настолько объелс&#255;, что больше ни кусочка от [src] в теб&#255; не влезет!</span>"
+				user.visible_message("<span class='warning'>[user] cannot force any more of \the [src] to go down their throat!</span>", "<span class='warning'>You cannot force any more of \the [src] to go down your throat!</span>")
 				return 0
 		else
 			if(!isbrain(M))		//If you're feeding it to someone else.
 				if(wrapped)
 					return 0
 				if(fullness <= (600 * (1 + M.overeatduration / 1000)))
-					M.visible_message("<span class='danger'>[user] пытаетс&#255; заставить [M] съесть [src].</span>", \
-										"<span class='userdanger'>[user] пытаетс&#255; заставить [M] съесть [src].</span>")
+					M.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>", \
+										"<span class='userdanger'>[user] attempts to feed [M] [src].</span>")
 				else
 					M.visible_message("<span class='warning'>[user] больше не может впихнуть ни кусочка [src] в рот [M]!</span>", \
 										"<span class='warning'>[user] больше не может впихнуть ни кусочка [src] в рот [M]!</span>")
@@ -93,11 +93,11 @@
 				if(!do_mob(user, M))
 					return
 				add_logs(user, M, "fed", reagentlist(src))
-				M.visible_message("<span class='danger'>[user] заставил [M] съесть [src].</span>", \
-									"<span class='userdanger'>[user] заставил [M] съесть [src].</span>")
+				M.visible_message("<span class='danger'>[user] forces [M] to eat [src].</span>", \
+									"<span class='userdanger'>[user] forces [M] to eat [src].</span>")
 
 			else
-				user << "<span class='warning'>Кажетс&#255; у [M] нет рта!</span>"
+				user << "<span class='warning'>[M] doesn't seem to have a mouth!</span>"
 				return
 
 		if(reagents)								//Handle ingestion of the reagent.
@@ -124,11 +124,11 @@
 	if(bitecount == 0)
 		return
 	else if(bitecount == 1)
-		user << "Кто-то уже откусил кусочек от [src]!"
+		user << "[src] was bitten by someone!"
 	else if(bitecount <= 3)
-		user << "Кто-то уже откусил от [src] [bitecount] раза!"
+		user << "[src] was bitten [bitecount] times!"
 	else
-		user << "Кто-то уже искусал [src] очень много раз!"
+		user << "[src] was bitten multiple times!"
 
 
 /obj/item/weapon/reagent_containers/food/snacks/attackby(obj/item/weapon/W, mob/user, params)
