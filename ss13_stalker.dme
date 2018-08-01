@@ -829,7 +829,6 @@
 #include "code\game\stalker\modules\lighting\normal\lighting_turf.dm"
 #include "code\game\stalker\modules\lighting\sun\corner.dm"
 #include "code\game\stalker\modules\lighting\sun\overlay.dm"
-#include "code\game\stalker\modules\lighting\sun\plane.dm"
 #include "code\game\stalker\modules\lighting\sun\setup.dm"
 #include "code\game\stalker\modules\lighting\sun\source.dm"
 #include "code\game\stalker\modules\lighting\sun\time_of_day_datums.dm"

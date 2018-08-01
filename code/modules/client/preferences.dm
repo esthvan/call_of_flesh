@@ -1070,11 +1070,11 @@ var/list/preferences_datums = list()
 				if("allow_midround_antag")
 					toggles ^= MIDROUND_ANTAG
 
-				//if("ambientocclusion")
-				//	ambientocclusion = !ambientocclusion
-				//	if(parent && parent.screen && parent.screen.len)
-				//		var/obj/screen/plane_master/game_world/PM = locate(/obj/screen/plane_master/game_world) in parent.screen
-					//	PM.backdrop(parent.mob)
+				if("ambientocclusion")
+					ambientocclusion = !ambientocclusion
+					if(parent && parent.screen && parent.screen.len)
+						var/obj/screen/plane_master/game_world/PM = locate(/obj/screen/plane_master/game_world) in parent.screen
+						PM.backdrop(parent.mob)
 
 				if("change_language")
 					chat_toggles ^= CHAT_LANGUAGE

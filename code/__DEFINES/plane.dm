@@ -2,6 +2,7 @@
 
 #define GAME_PLANE 0
 #define HUD_PLANE 15
-#define FLOOR_PLANE - 3
+#define FLOOR_PLANE -3
 #define LIGHTING_PLANE -2
 #define SUNLIGHTING_PLANE -1
+#define GENERAL_LIGHTING_PLANE 2

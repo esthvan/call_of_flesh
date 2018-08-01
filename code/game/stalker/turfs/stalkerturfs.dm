@@ -93,6 +93,7 @@ obj/structure/grille/stalker/beton/CanPass(atom/movable/mover, turf/target, heig
 	icon = 'icons/stalker/grass.dmi'
 	icon_state = "grass1"
 	layer = TURF_LAYER
+	plane = GAME_PLANE
 
 /turf/stalker/floor/digable
 
