@@ -35,11 +35,7 @@
 
 /obj/anomaly/New()
 	..()
-	//SSobj.processing.Remove(src)
 	anomalies += src
-	//if(prob(30))
-	//	if(attachedSpawner)
-	//		new attachedSpawner(src)
 	icon_state = inactive_icon_state
 	invisibility = inactive_invisibility
 	set_light(idle_luminosity, l_color = anomaly_color)
@@ -267,7 +263,7 @@
 	cooldown = 2
 	sound = 'sound/stalker/anomalies/electra_blast1.ogg'
 	idle_luminosity = 1
-	activated_luminosity = 2
+	activated_luminosity = 3
 	anomaly_color = "#7ac8e2"
 	damage_type = DMG_TYPE_ENERGY
 	inactive_icon_state = "electra0"
@@ -404,6 +400,14 @@
 				/obj/item/weapon/artifact/firefly = 0.5
 				)
 
+/obj/anomaly/holodec/New()
+	..()
+	SSobj.processing.Add(src)
+
+/obj/anomaly/holodec/Destroy()
+	..()
+	SSobj.processing.Remove(src)
+
 /obj/anomaly/holodec/Uncrossed(atom/A)
 	..()
 	if(istype(A, /mob/living))
@@ -440,6 +444,63 @@
 	sleep(src.cooldown * 10 - 5)
 
 	qdel(Q)
+
+/obj/anomaly/holodec/process()
+	var/new_dir = rand(1, 10)
+
+	if(istype(get_step(src, new_dir), /turf/simulated))
+		return
+
+	for(var/obj/anomaly/holodec/H in get_turf(get_step(src, new_dir)))
+		return
+
+	var/obj/anomaly/holodec/splash/son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, new_dir))
+	src.do_attack_animation(son, 0)
+	sleep(8)
+	son.damage_amount = initial(damage_amount)
+
+/obj/anomaly/holodec/splash
+	cooldown = 2
+	luminosity = 2
+	idle_luminosity = 2
+	activated_luminosity = 4
+	damage_amount = 25
+	inactive_icon_state = null
+	active_icon_state = null
+	//inactive_icon_state = "holodec_splash"
+	//active_icon_state = "holodec_splash" //needs activation icon
+	icon_state = "holodec_splash"
+	active_invisibility = 0
+	inactive_invisibility = 0
+	loot = list()
+	var/spawn_time = 0
+
+/obj/anomaly/holodec/splash/ApplyEffects()
+	playsound(src.loc, src.sound, 50, 1, channel = 0)
+	return
+
+/obj/anomaly/holodec/splash/New()
+	//..()
+	SSobj.processing.Add(src)
+	flick("holodec_splash_creation", src)
+	invisibility = inactive_invisibility
+	damage_amount = 0
+	spawn_time = world.time
+	for(var/mob/living/L in get_turf(src).contents)
+		Crossed(L)
+
+/obj/anomaly/holodec/splash/Destroy()
+	//..()
+	SSobj.processing.Remove(src)
+
+/obj/anomaly/holodec/splash/process()
+	if(spawn_time + 15 <= world.time)
+		flick("holodec_splash_destruction", src)
+		damage_amount = 0
+		sleep(10)
+		invisibility = 101
+		src.trapped = list()
+		PlaceInPool(src)
 
 /obj/anomaly/puh
 	name = "anomaly"

@@ -121,6 +121,8 @@ var/list/pooledvariables = list()
 		createVariables(args)
 
 	for(var/key in pooledvariables[type])
+		if(islist(vars[key]))
+			continue
 		vars[key] = pooledvariables[type][key]
 
 /atom/ResetVars()
