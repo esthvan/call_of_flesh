@@ -123,6 +123,7 @@ var/list/admin_verbs_server = list(
 
 	)
 var/list/admin_verbs_debug = list(
+	/client/proc/SetTimeOfDay,
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
 	/client/proc/SetRealCooldownBlowout,
@@ -403,7 +404,7 @@ var/list/admin_verbs_hideable = list(
 	if(selected && selected.sid)
 		for(var/datum/data/record/sk in data_core.stalkers)
 			if(sk.fields["sid"] == selected.sid)
-				var/newfaction = input(usr, "Введите новую фракцию сталкера.", "Система S.T.A.L.K.E.R.") as text|null
+				var/newfaction = input(usr, "Введите новую фракцию сталкера.", "S.T.A.L.K.E.R.") as text|null
 				if(newfaction)
 					var/sk_name = sk.fields["name"]
 					var/sk_faction_s = sk.fields["faction_s"]
@@ -414,6 +415,16 @@ var/list/admin_verbs_hideable = list(
 					message_admins("[key_name_admin(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
 				return
 	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+
+/client/proc/SetTimeOfDay()
+	set name = "Set Time of Day"
+	set category = "Stalker"
+
+	var/daytime = input(usr, "1 - morning, 2 -  day, 3 - evening, 4 - night)", "S.T.A.L.K.E.R.") as num|null
+
+	if(1 <= daytime <= 4)
+		set_time_of_day(daytime)
+		usr << "<span class='interface'>Врем&#255; суток успешно изменено.</span>"
 
 /client/proc/SetMinCooldownBlowout()
 	set name = "Set Blowout Cooldown (min)"
