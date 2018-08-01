@@ -63,11 +63,11 @@
 			if(A.ambient_background[SSsunlight.current_step])
 				ambient_background = sound(file = A.ambient_background[SSsunlight.current_step])
 				ambient_background.real_cooldown = A.ambient_background_cooldown[SSsunlight.current_step]
-
+/*
 			if(A.ambient_background[5])
 				ambient_background = sound(file = A.ambient_background[5])
 				ambient_background.real_cooldown = A.ambient_background_cooldown[5]
-
+*/
 			if(ambient_background)
 				////////////////////////
 				ambient_background.last_time = world.time

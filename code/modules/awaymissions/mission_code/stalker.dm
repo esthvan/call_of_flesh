@@ -62,8 +62,8 @@
 	icon_state = "sidor"
 	requires_power = 1
 	ambient_music = null
-	ambient_background = list(null, null, null, null, 'sound/stalker/ambience/sidor_music2.ogg')//list('sound/stalker/ambience/sidor_music.ogg','sound/stalker/ambience/sidor_music2.ogg')
-	ambient_background_cooldown = list(null, null, null, null, 700)
+	ambient_background = list('sound/stalker/ambience/sidor_music2.ogg', 'sound/stalker/ambience/sidor_music2.ogg', 'sound/stalker/ambience/sidor_music2.ogg', 'sound/stalker/ambience/sidor_music2.ogg')//list('sound/stalker/ambience/sidor_music.ogg','sound/stalker/ambience/sidor_music2.ogg')
+	ambient_background_cooldown = list(700, 700, 700, 700)
 	environment = 5
 
 /area/stalker/deathzone
@@ -206,8 +206,8 @@
 	icon_state = "caves"
 	requires_power = 1
 	ambient_music = null
-	ambient_background = list(null, null, null, null, 'sound/stalker/ambience/ugrnd/howled_4.ogg')
-	ambient_background_cooldown = list(null, null, null, null, 270)
+	ambient_background = list('sound/stalker/ambience/ugrnd/howled_4.ogg', 'sound/stalker/ambience/ugrnd/howled_4.ogg', 'sound/stalker/ambience/ugrnd/howled_4.ogg', 'sound/stalker/ambience/ugrnd/howled_4.ogg')
+	ambient_background_cooldown = list(270, 270, 270, 270)
 	ambient_environment = list('sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_1.ogg','sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_2.ogg',
 				'sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_3.ogg','sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_4.ogg',
 				'sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_5.ogg','sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_6.ogg',

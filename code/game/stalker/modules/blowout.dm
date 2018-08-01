@@ -140,9 +140,9 @@ datum/subsystem/blowout/proc/AfterBlowout()
 	lasttime = world.time
 	starttime = 0
 	////Deleting old stalker profiles////
-	for(var/datum/data/record/sk in data_core.stalkers)
-		if(sk.fields["lastlogin"] <= world.time + 27000)
-			data_core.stalkers -= sk
+	//for(var/datum/data/record/sk in data_core.stalkers)
+	//	if(sk.fields["lastlogin"] + 27000 < world.time)
+	//		data_core.stalkers -= sk
 	/////////////////////////////////////
 
 	//Очистка ленты
