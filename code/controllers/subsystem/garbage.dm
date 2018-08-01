@@ -53,16 +53,14 @@ var/datum/subsystem/garbage_collector/SSgarbage
 /datum/subsystem/garbage_collector/fire()
 	delslasttick = 0
 	gcedlasttick = 0
-	//var/time_to_stop = world.timeofday + max_run_time
+	var/time_to_stop = world.timeofday + max_run_time
 	var/time_to_kill = world.time - collection_timeout // Anything qdel() but not GC'd BEFORE this time needs to be manually del()
 
 
-	while(queue.len) //&& world.timeofday < time_to_stop)
+	while(queue.len && world.timeofday < time_to_stop)
 		var/refID = queue[1]
 		if (!refID)
 			queue.Cut(1, 2)
-			if (MC_TICK_CHECK)
-				break
 			continue
 
 		var/GCd_at_time = queue[refID]
@@ -81,17 +79,11 @@ var/datum/subsystem/garbage_collector/SSgarbage
 				del(A)
 				++delslasttick
 				++totaldels
-				if (MC_TICK_CHECK)
-					break
 			else
 				++gcedlasttick
 				++totalgcs
-				if (MC_TICK_CHECK)
-					break
 		queue.Cut(1, 2)
 
-		if (MC_TICK_CHECK)
-			break
 
 /datum/subsystem/garbage_collector/proc/Queue(datum/A, harddel = 0)
 	if (!istype(A) || !isnull(A.gc_destroyed))
@@ -118,10 +110,7 @@ var/datum/subsystem/garbage_collector/SSgarbage
 #endif
 	if (!istype(A))
 		del(A)
-		return
-
-
-	if (isnull(A.gc_destroyed))
+	else if (isnull(A.gc_destroyed))
 		// Let our friend know they're about to get fucked up.
 		var/hint = A.Destroy()
 		if (!A)
