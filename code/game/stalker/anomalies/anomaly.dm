@@ -301,6 +301,12 @@
 				/obj/item/weapon/artifact/soul = 0.5
 				)
 
+/obj/anomaly/karusel/process()
+	..()
+	for(var/atom/movable/A in range(2, src))
+		if(!O.anchored)
+			step_towards(O,src)
+
 /obj/anomaly/tramplin
 	name = "anomaly"
 	damage_amount = 15
@@ -491,11 +497,11 @@
 	damage_amount = 0
 	for(var/mob/living/L in get_turf(src).contents)
 		Crossed(L)
-
+/*
 /obj/anomaly/holodec/splash/Destroy()
 	//..()
 	SSobj.processing.Remove(src)
-
+*/
 /obj/anomaly/holodec/splash/process()
 	if(spawn_time + 15 <= world.time)
 		flick("holodec_splash_destruction", src)

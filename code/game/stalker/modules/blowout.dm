@@ -60,10 +60,14 @@ datum/subsystem/blowout/fire()
 			if(blowoutphase == 2)
 				StopBlowout()
 				BlowoutDealDamage()
+			if(MC_TICK_CHECK)
+				return
 			BlowoutClean()
 			if(MC_TICK_CHECK)
 				return
 			BlowoutGib()
+			if(MC_TICK_CHECK)
+				return
 			return
 
 		if((blowout_duration + starttime) < world.time)

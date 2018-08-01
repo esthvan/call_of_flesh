@@ -138,11 +138,11 @@
 
 /datum/reagent/medicine/cryoxadoney
 	name = "CryoxadoneYellow"
-	id = "cryoxadoneb"
+	id = "cryoxadoney"
 	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the patient's body temperature must be under 270K for it to metabolise correctly."
 	color = "#0000C8"
 
-/datum/reagent/medicine/cryoxadoneb/on_mob_life(mob/living/M)
+/datum/reagent/medicine/cryoxadoney/on_mob_life(mob/living/M)
 	M.adjustCloneLoss(-6)
 	M.adjustOxyLoss(-10)
 	M.adjustBruteLoss(-8)

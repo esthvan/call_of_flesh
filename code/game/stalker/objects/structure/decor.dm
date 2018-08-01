@@ -49,6 +49,7 @@
 	desc = "Стара&#255; ржава&#255; труба."
 	eng_desc = "Old rusty pipe."
 	icon_state = "truba"
+	density = 0
 	cache_size = 1
 
 /obj/structure/stalker/cacheable/truba/vert

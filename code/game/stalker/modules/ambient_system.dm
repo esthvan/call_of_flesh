@@ -51,7 +51,7 @@
 				ambient_environment.Set_Sound(708, rand(25, 60), rand(-100, 100), A.environment)
 				src << ambient_environment
 
-	if(ambient_background && (!ambient_background.transition && !(ambient_background.file != A.ambient_background[SSsunlight.current_step])))
+	if(ambient_background && !ambient_background.transition && !(ambient_background.file in A.ambient_background))//[SSsunlight.current_step]))
 
 		ambient_background.Transition(src)
 		ambient_background = null
