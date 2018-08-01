@@ -300,13 +300,13 @@
 				/obj/item/weapon/artifact/nightstar = 1.5,
 				/obj/item/weapon/artifact/soul = 0.5
 				)
-
+/*
 /obj/anomaly/karusel/process()
 	..()
 	for(var/atom/movable/A in range(2, src))
 		if(!O.anchored)
 			step_towards(O,src)
-
+*/
 /obj/anomaly/tramplin
 	name = "anomaly"
 	damage_amount = 15
