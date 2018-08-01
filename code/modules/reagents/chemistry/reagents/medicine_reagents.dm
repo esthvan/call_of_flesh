@@ -101,7 +101,7 @@
 	return
 
 /datum/reagent/medicine/cryoxadone
-	name = "Cryoxadone"
+	name = "CryoxadoneRed"
 	id = "cryoxadone"
 	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the patient's body temperature must be under 270K for it to metabolise correctly."
 	color = "#0000C8"
@@ -129,6 +129,48 @@
 	M.adjustFireLoss(-4.5)
 	M.adjustToxLoss(-3)
 	M.status_flags &= ~DISFIGURED
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.bleedsuppress) //so you can't stack bleed suppression
+			H.suppress_bloodloss(1)
+	..()
+	return
+
+/datum/reagent/medicine/cryoxadoney
+	name = "CryoxadoneYellow"
+	id = "cryoxadoneb"
+	description = "A chemical mixture with almost magical healing powers. Its main limitation is that the patient's body temperature must be under 270K for it to metabolise correctly."
+	color = "#0000C8"
+
+/datum/reagent/medicine/cryoxadoneb/on_mob_life(mob/living/M)
+	M.adjustCloneLoss(-6)
+	M.adjustOxyLoss(-10)
+	M.adjustBruteLoss(-8)
+	M.adjustFireLoss(-8)
+	M.adjustToxLoss(-5)
+	M.status_flags &= ~DISFIGURED
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		H.heal_organ_damage(5,5)
+		H.hallucination = 0
+		H.setBrainLoss(0)
+		H.disabilities = 0
+		H.eye_blurry = 0
+		H.eye_blind = 0
+		H.SetWeakened(0)
+		H.SetStunned(0)
+		H.SetParalysis(0)
+		H.silent = 0
+		H.dizziness = 0
+		H.drowsyness = 0
+		H.stuttering = 0
+		H.slurring = 0
+		H.confused = 0
+		H.sleeping = 0
+		H.jitteriness = 0
+		H.radiation = max(0, H.radiation - 16)
+		if(!H.bleedsuppress) //so you can't stack bleed suppression
+			H.suppress_bloodloss(1)
 	..()
 	return
 

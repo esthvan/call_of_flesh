@@ -50,7 +50,7 @@
 		new /datum/data/stalker_equipment("Wincheaster-1300","Винчестер-1300",	/obj/item/weapon/gun/projectile/shotgun/chaser,						25000, EXPERT),
 		new /datum/data/stalker_equipment("SPAS-12", 		"СПАС-12",			/obj/item/weapon/gun/projectile/shotgun/spsa, 						50000, VETERAN),
 		/////////////////////////////// **Другое** /////////////////////////////////////
-		new /datum/data/stalker_equipment("Knife",			 "Нож",				/obj/item/weapon/stalker/knife,										2000, NEWBIE)
+		new /datum/data/stalker_equipment("Knife",			 "Нож",				/obj/item/weapon/stalker/knife,										3500, NEWBIE)
 		)
 
 	var/list/ammo_list = list(
@@ -130,11 +130,11 @@
 
 	var/list/med_list = list(
 		///////////////////////////////	Медикаменты	/////////////////////////////////////////
-		new /datum/data/stalker_equipment("Medkit",				"Аптечка",							/obj/item/weapon/reagent_containers/pill/stalker/aptechka_r,			1000, NEWBIE),
-		new /datum/data/stalker_equipment("Army medkit",		"Армейска&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka_b,			2000, EXPERT),
-		new /datum/data/stalker_equipment("Scientific medkit",	"Научна&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka_y,			4000, VETERAN),
-		new /datum/data/stalker_equipment("Bandage",			"Бинт",								/obj/item/stack/medical/gauze/bint,										500, NEWBIE),
-		new /datum/data/stalker_equipment("Anti-rad",			"Анти-рад препараты",				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,	3000, NEWBIE)
+		new /datum/data/stalker_equipment("Medkit",				"Аптечка",							/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian,			1000, NEWBIE),
+		new /datum/data/stalker_equipment("Army medkit",		"Армейска&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army,				2000, EXPERT),
+		new /datum/data/stalker_equipment("Scientific medkit",	"Научна&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific,		4000, VETERAN),
+		new /datum/data/stalker_equipment("Bandage",			"Бинт",								/obj/item/stack/medical/gauze/bint,											500, NEWBIE),
+		new /datum/data/stalker_equipment("Anti-rad",			"Анти-рад препараты",				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,		3000, NEWBIE)
 		)
 
 	var/list/food_list = list(
