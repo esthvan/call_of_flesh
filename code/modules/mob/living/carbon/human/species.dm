@@ -920,7 +920,7 @@
 				. += (BODYTEMP_COLD_DAMAGE_LIMIT - H.bodytemperature) / COLD_SLOWDOWN_FACTOR
 
 			if(istype(get_turf(H), /turf/stalker/floor/water))
-				. += 2.5
+				. += 2
 
 			. += speedmod
 
