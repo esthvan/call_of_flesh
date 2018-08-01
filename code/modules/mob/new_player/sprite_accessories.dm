@@ -595,12 +595,12 @@
 	name = "Mens Black"
 	icon_state = "male_black"
 	gender = MALE
-
+/*
 /datum/sprite_accessory/underwear/male_mankini
 	name = "Mankini"
 	icon_state = "male_mankini"
 	gender = MALE
-
+*/
 /datum/sprite_accessory/underwear/male_hearts
 	name = "Mens Hearts Boxer"
 	icon_state = "male_hearts"
@@ -635,12 +635,12 @@
 	name = "Mens Striped Freedom Boxer"
 	icon_state = "male_assblastusa"
 	gender = MALE
-
+/*
 /datum/sprite_accessory/underwear/male_kinky
 	name = "Mens Kinky"
 	icon_state = "male_kinky"
 	gender = MALE
-
+*/
 /datum/sprite_accessory/underwear/male_red
 	name = "Mens Red"
 	icon_state = "male_red"
@@ -751,7 +751,7 @@
 	name = "Grey Tank Top"
 	icon_state = "tank_grey"
 	gender = NEUTER
-
+/*
 /datum/sprite_accessory/undershirt/female_midriff
 	name = "Midriff Tank Top"
 	icon_state = "tank_midriff"
@@ -781,7 +781,7 @@
 	name = "I Love NT Shirt"
 	icon_state = "ilovent"
 	gender = NEUTER
-
+*/
 /datum/sprite_accessory/undershirt/peace
 	name = "Peace Shirt"
 	icon_state = "peace"
@@ -791,12 +791,12 @@
 	name = "Band Shirt"
 	icon_state = "band"
 	gender = NEUTER
-
+/*
 /datum/sprite_accessory/undershirt/pacman
 	name = "Pogoman Shirt"
 	icon_state = "pogoman"
 	gender = NEUTER
-
+*/
 /datum/sprite_accessory/undershirt/matroska
 	name = "Matroska Shirt"
 	icon_state = "matroska"
@@ -826,7 +826,7 @@
 	name = "Black Short-sleeved Shirt"
 	icon_state = "blackshortsleeve"
 	gender = NEUTER
-
+/*
 /datum/sprite_accessory/undershirt/blueshirt
 	name = "Blue T-Shirt"
 	icon_state = "blueshirt"
@@ -921,7 +921,7 @@
 	name = "Nanotransen Shirt"
 	icon_state = "shirt_nano"
 	gender = NEUTER
-
+*/
 /datum/sprite_accessory/undershirt/stripe
 	name = "Striped Shirt"
 	icon_state = "shirt_stripes"
@@ -946,7 +946,7 @@
 	name = "Green Shirt"
 	icon_state = "shirt_green"
 	gender = NEUTER
-
+/*
 /datum/sprite_accessory/undershirt/meat
 	name = "Meat Shirt"
 	icon_state = "shirt_meat"
@@ -956,7 +956,7 @@
 	name = "Tie-dye Shirt"
 	icon_state = "shirt_tiedye"
 	gender = NEUTER
-
+*//*
 /datum/sprite_accessory/undershirt/redjersey
 	name = "Red Jersey"
 	icon_state = "shirt_redjersey"
@@ -981,7 +981,7 @@
 	name = "Alien Shirt"
 	icon_state = "shirt_alien"
 	gender = NEUTER
-
+*/
 
 
 ///////////////////////
@@ -1009,7 +1009,7 @@
 /datum/sprite_accessory/socks/black_short
 	name = "Short Black"
 	icon_state = "black_short"
-
+/*
 /datum/sprite_accessory/socks/white_knee
 	name = "Knee-high White"
 	icon_state = "white_knee"
@@ -1077,7 +1077,7 @@
 /datum/sprite_accessory/socks/pantyhose
 	name = "Pantyhose"
 	icon_state = "pantyhose"
-
+*/
 //////////.//////////////////
 // MutantParts Definitions //
 /////////////////////////////
