@@ -346,7 +346,46 @@
 	mymob.flash.blend_mode = BLEND_ADD
 	mymob.flash.screen_loc = "WEST,SOUTH to EAST,NORTH"
 	mymob.flash.layer = 17
+/*
+	mymob.lighting_backdrop_lit = new /obj/screen()
+	mymob.lighting_backdrop_lit.icon = 'icons/mob/screen_gen.dmi'
+	mymob.lighting_backdrop_lit.icon_state = "flash"
+	mymob.lighting_backdrop_lit.transform = matrix(200, 0, 0, 0, 200, 0)
+	mymob.lighting_backdrop_lit.plane = LIGHTING_PLANE
+	mymob.lighting_backdrop_lit.blend_mode = BLEND_OVERLAY
+	mymob.lighting_backdrop_lit.layer = 13
+	mymob.lighting_backdrop_lit.color = "#000"
+	mymob.lighting_backdrop_lit.alpha = 255
 
+	mymob.lighting_backdrop_unlit = new /obj/screen()
+	mymob.lighting_backdrop_unlit.icon = 'icons/mob/screen_gen.dmi'
+	mymob.lighting_backdrop_unlit.icon_state = "flash"
+	mymob.lighting_backdrop_unlit.transform = matrix(200, 0, 0, 0, 200, 0)
+	mymob.lighting_backdrop_unlit.plane = LIGHTING_PLANE
+	mymob.lighting_backdrop_unlit.blend_mode = BLEND_OVERLAY
+	mymob.lighting_backdrop_unlit.layer = 12
+	mymob.lighting_backdrop_unlit.alpha = 255
+*/
+/*
+	mymob.sun_lighting_backdrop_lit = new /obj/screen()
+	mymob.sun_lighting_backdrop_lit.icon = 'icons/mob/screen_gen.dmi'
+	mymob.sun_lighting_backdrop_lit.icon_state = "flash"
+	mymob.sun_lighting_backdrop_lit.transform = matrix(200, 0, 0, 0, 200, 0)
+	mymob.sun_lighting_backdrop_lit.plane = SUNLIGHTING_PLANE
+	mymob.sun_lighting_backdrop_lit.blend_mode = BLEND_OVERLAY
+	mymob.sun_lighting_backdrop_lit.layer = 13
+	mymob.sun_lighting_backdrop_lit.color = "#000"
+	mymob.sun_lighting_backdrop_lit.alpha = 255
+
+	mymob.sun_lighting_backdrop_lit = new /obj/screen()
+	mymob.sun_lighting_backdrop_lit.icon = 'icons/mob/screen_gen.dmi'
+	mymob.sun_lighting_backdrop_lit.icon_state = "flash"
+	mymob.sun_lighting_backdrop_lit.transform = matrix(200, 0, 0, 0, 200, 0)
+	mymob.sun_lighting_backdrop_lit.plane = SUNLIGHTING_PLANE
+	mymob.sun_lighting_backdrop_lit.blend_mode = BLEND_OVERLAY
+	mymob.sun_lighting_backdrop_lit.layer = 12
+	mymob.sun_lighting_backdrop_lit.alpha = 255
+*/
 	mymob.zone_sel = new /obj/screen/zone_sel()
 	mymob.zone_sel.icon = 'icons/mob/screen_new.dmi'
 	mymob.zone_sel.icon_state = "zone_sel"
