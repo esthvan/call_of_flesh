@@ -151,7 +151,7 @@
 "da" = (/turf/stalker/floor/tropa,/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
 "db" = (/obj/structure/stalker/blocks/vanish/block1,/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
 "dc" = (/obj/structure/stalker/cacheable/yashik/yaskik_a/big,/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
-"dd" = (/turf/stalker/water,/area/stalker/blowout/outdoor)
+"dd" = (/turf/stalker/floor/water,/area/stalker/blowout/outdoor)
 "de" = (/obj/effect/decal/warning_stripes{tag = "icon-border2"; icon_state = "border2"},/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
 "df" = (/obj/structure/stalker/cacheable/yashik/yaskik_a,/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
 "dg" = (/obj/effect/spawner/lootdrop/stalker/mobspawner/dog_spawner{radius = 0},/turf/stalker/floor/gryaz/gryaz2,/area/stalker/blowout/outdoor)
