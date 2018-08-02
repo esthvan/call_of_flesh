@@ -103,9 +103,9 @@
 	if(durability)
 		percentage = (durability / (initial(durability)))*100
 		if(percentage >= 50)
-			user << "<span class='notice'>Прочность - [percentage]%</span>"
+			user << "<span class='notice'>Durability - [percentage]%</span>"
 		else
-			user << "<span class='warning'>Прочность - [percentage]%</span>"
+			user << "<span class='warning'>Durability - [percentage]%</span>"
 	if(unique_reskin && !current_skin)
 		user << "<span class='notice'>Alt-click it to reskin it.</span>"
 	if(unique_rename)

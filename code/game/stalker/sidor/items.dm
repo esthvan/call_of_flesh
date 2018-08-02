@@ -122,9 +122,9 @@
 	cost = 7000
 	words = list("Тактический шлем" = 5, "тактический шлем" = 5, "Тактический Шлем" = 10)
 
-/sidoritem/spherahelmet
+/sidoritem/spheram
 	name = "Sphera M12"
-	itemtype = /obj/item/clothing/head/spherahelmet
+	itemtype = /obj/item/clothing/head/spheram
 	cost = 9000
 	words = list("Сферу" = 5, "сферу" = 5, "Сфера" = 5, "сфера" = 5, "М12" = 5)
 
