@@ -290,7 +290,7 @@ var/global/sidoritems = list(
         new /sidoritem/usp_match,
         new /sidoritem/gasmask,
         new /sidoritem/tacticalhelmet,
-        new /sidoritem/spherahelmet,
+        new /sidoritem/spheram,
         new /sidoritem/kozhanka,
         new /sidoritem/kozhanka/white,
         new /sidoritem/kozhanka/banditka,

@@ -1,6 +1,7 @@
 /obj/item/clothing/head/steelhelmet
 	name = "Steel helmet"
 	desc = "Каска из темной, местами ржавой стали, такой ваши деды въебывали по щам нацистам. На ура держит прилетевшую по касательной пулю, но от хорошенького ножевого удара под козырек не спасет."
+	eng_desc = "Steel helmet made of old rusty steel. You look nazi wearing it. Protects your head but won't hold lots of bullets"
 	icon_state = "steelhelmet"
 	item_state = "steelhelmet"
 	armor = list(melee = 25, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -12,7 +13,7 @@
 /obj/item/clothing/head/hardhat/tacticalhelmet
 	name = "Tactical helmet"
 	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; базовым количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
-	eng_desc = "A Western model of a tactical helmet that lacks camouflage. It is not known how it made its way into the Zone. The helmet is designed to provide a squad leader with strategic superiority over the enemy via its many scanners and satellite communications devices, which have not been installed in this particular helmet. Comes with multi-layered Kevlar protection and armored elements to protect electronic components. Includes a respirator."
+	eng_desc = "A Western model of a tactical helmet that lacks camouflage. It is not known how it made its way into the Zone. The helmet is designed to provide a squad leader with strategic superiority over the enemy via its many scanners and satellite communications devices, which have not been installed in this particular helmet. Comes with multi-layered Kevlar protection and armored elements to protect electronic components. Includes a respirator and a nightvision device."
 	icon_state = "hardhat0_tactical"
 	item_state = "hardhat0_tactical"
 	item_color = "tactical"
@@ -24,6 +25,10 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 300
+
+/obj/item/clothing/head/hardhat/tacticalhelmet/New()
+	..()
+	nvg = new /obj/item/nightvision(src)
 
 /obj/item/clothing/head/hardhat/tacticalhelmet/light
 	name = "Light tactical helmet"
@@ -40,6 +45,9 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 200
+
+/obj/item/clothing/head/hardhat/tacticalhelmet/light/New()
+	return
 
 /obj/item/clothing/head/assaultmerc
 	name = "Mercenary helmet"
@@ -68,7 +76,7 @@
 	item_color = "jacknoir"
 	item_state = "greysoft"
 
-/obj/item/clothing/head/spherahelmet
+/obj/item/clothing/head/spheram
 	name = "Sphera M12"
 	desc = "Отделанный тканью алюминиево-титановый шлем с карманами дл&#255; стальных бронеэлементов и бронемаской. Обычно поставл&#255;етс&#255; в комплекте с бронежилетами класса ПС3 дл&#255; спецназа. Достаточно попул&#255;рен в Зоне благодар&#255; респиратору и встроенному прибору ночного видени&#255;, а также хорошей защите головы. Предусмотрена возможность установки электроники."
 	eng_desc = "An aluminum/titanium helmet with a cloth exterior that comes with pockets for additional steel armor pieces and an armor face mask. Sphere M12 is normally used as part of a combination that includes PSZ series Spetsnaz body armor. Quite popular in the Zone thanks to its respirator and built-in first generation night vision device, as well as providing the maximum head protection possible. Comes with electronics slots."
@@ -79,6 +87,10 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
+
+/obj/item/clothing/head/spheram/New()
+	..()
+	nvg = new /obj/item/nightvision(src)
 
 /obj/item/clothing/head/skathelmet
 	name = "SKAT-M9"
@@ -91,6 +103,11 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
+
+/obj/item/clothing/head/skathelmet/New()
+	..()
+	nvg = new /obj/item/nightvision(src)
+
 
 /obj/item/clothing/head/petrovichhelmet
 	name = "SKOT-M777"

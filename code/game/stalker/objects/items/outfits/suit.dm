@@ -13,18 +13,18 @@
 		if(durability)
 			var/percentage = (durability / (initial(durability)))*100
 			if(percentage >= 50)
-				user << "<span class='notice'>Прочность - [percentage]%</span>"
+				user << "<span class='notice'>Durability - [percentage]%</span>"
 			else
-				user << "<span class='warning'>Прочность - [percentage]%</span>"
+				user << "<span class='warning'>Durability - [percentage]%</span>"
 
 /obj/item/clothing/mask/examine(mob/user)
 	..()
 	if(durability)
 		var/percentage = (durability / (initial(durability)))*100
 		if(percentage >= 50)
-			user << "<span class='notice'>Прочность - [percentage]%</span>"
+			user << "<span class='notice'>Durability - [percentage]%</span>"
 		else
-			user << "<span class='warning'>Прочность - [percentage]%</span>"
+			user << "<span class='warning'>Durability - [percentage]%</span>"
 
 
 /obj/item/clothing/suit/examine(mob/user)
@@ -32,9 +32,9 @@
 	if(durability)
 		var/percentage = (durability / (initial(durability)))*100
 		if(percentage >= 50)
-			user << "<span class='notice'>Прочность - [percentage]%</span>"
+			user << "<span class='notice'>Durability - [percentage]%</span>"
 		else
-			user << "<span class='warning'>Прочность - [percentage]%</span>"
+			user << "<span class='warning'>Durability - [percentage]%</span>"
 
 /obj/item/clothing/suit/hooded/kozhanka
 	name = "leather jacket"
@@ -175,12 +175,12 @@
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
 	armor = list(melee = 15, bullet = 15, laser = 90, burn = 90, bomb = 40, bio = 90, rad = 95, electro = 90)
-	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/ecolog
+	hoodtype = /obj/item/clothing/head/winterhood/stalker/ecolog
 	burn_state = FIRE_PROOF
 	CCBS = 1
 	durability = 200
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/ecolog
+/obj/item/clothing/head/winterhood/stalker/ecolog
 	name = "SSP-99 helmet"
 	armor = list(melee = 15, bullet = 15, laser = 90, burn = 90, bomb = 40, bio = 90, rad = 95, electro = 90)
 	heat_protection = HEAD
@@ -189,9 +189,18 @@
 	icon_state = "ecolog_helmet"
 	CBBS_h = 1
 
-/////////////////////////////////////////////////////////////////////ШЛЕМЫ НОЧНОГО ВИДЕНЬЯ/////////////////////////////////////////////////////////////////////////////////////////
+obj/item/clothing/head/winterhood/stalker/ecolog/New()
+	..()
+	nvg = new /obj/item/nightvision(src)
 
-/obj/item/clothing/head/winterhood/stalker/nightvision
+/////////////////////////////////////////////////////////////////////ШЛЕМЫ НОЧНОГО ВИДЕНЬЯ/////////////////////////////////////////////////////////////////////////////////////////
+//Under reconstruction//
+////////////////////////
+
+/obj/item/clothing
+	var/obj/item/nightvision/nvg = null
+
+/obj/item/nightvision
 	var/vision_flags = 0
 	var/darkness_view = 4//Base human is 2
 	var/invis_view = SEE_INVISIBLE_LIVING
@@ -199,9 +208,25 @@
 	action_button_name = "Toggle Night Vision"
 	var/active = 0
 	var/obj/screen/overlay = null
-	invis_view = SEE_INVISIBLE_LIVING
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/attack_self(mob/user)
+/obj/item/nightvision/New()
+	..()
+	if(istype(loc, /obj/item/clothing))
+		var/obj/item/clothing/C = loc
+		C.nvg = src
+		C.action_button_name = action_button_name
+
+/obj/item/nightvision/attack_self(mob/user)
+
+	if(!loc || !loc.loc || !istype(loc.loc, /mob/living/carbon/human))
+		return
+
+	var/mob/living/carbon/C = loc.loc
+
+	if(C.head != src.loc && C.wear_mask != src.loc)
+		return
+
+
 	if(active)
 		active = 0
 		playsound(usr, 'sound/stalker/nv_off.ogg', 50, 1, -1)
@@ -223,10 +248,24 @@
 		invis_view = SEE_INVISIBLE_MINIMUM
 		sleep(5)
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/ui_action_click()
+/obj/item/nightvision/proc/TurnOff(mob/user)
+	if(active)
+		active = 0
+		playsound(usr, 'sound/stalker/nv_off.ogg', 50, 1, -1)
+		user << "You deactivate the optical matrix on the [src]."
+		if(istype(usr, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = user
+			H.nightvision.alpha = 0
+		invis_view = SEE_INVISIBLE_LIVING
+
+/obj/item/clothing/ui_action_click()
+	if(nvg)
+		nvg.attack_self()
+
+/obj/item/nightvision/ui_action_click()
 	attack_self()
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/New()
+/obj/item/nightvision/New()
 	..()
 	overlay = global_hud.nvg
 
@@ -246,12 +285,12 @@
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
 	armor = list(melee = 40, bullet = 30, laser = 90,burn = 90, bomb = 60, bio = 90, rad = 90, electro = 90)
-	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/ecologm
+	hoodtype = /obj/item/clothing/head/winterhood/stalker/ecologm
 	burn_state = FIRE_PROOF
 	CCBS = 1
 	durability = 250
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/ecologm
+/obj/item/clothing/head/winterhood/stalker/ecologm
 	name = "SSP-99M helmet"
 	armor = list(melee = 40, bullet = 30, laser = 90,burn = 90, bomb = 60, bio = 90, rad = 90, electro = 90)
 	heat_protection = HEAD
@@ -259,6 +298,10 @@
 	icon_state = "ecologg_helmet"
 	burn_state = FIRE_PROOF
 	CBBS_h = 1
+
+/obj/item/clothing/head/winterhood/stalker/ecologm/New()
+	..()
+	nvg = new /obj/item/nightvision(src)
 
 /obj/item/clothing/suit/hooded/kombez/seva
 	name = "SEVA"
@@ -274,12 +317,12 @@
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
 	armor = list(melee = 60, bullet = 60, laser = 80,burn = 80, bomb = 50, bio = 70, rad = 80, electro = 80)
-	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/seva
+	hoodtype = /obj/item/clothing/head/winterhood/stalker/seva
 	burn_state = FIRE_PROOF
 	CCBS = 1
 	durability = 200
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/seva
+/obj/item/clothing/head/winterhood/stalker/seva
 	armor = list(melee = 60, bullet = 50, laser = 80,burn = 80, bomb = 50, bio = 70, rad = 80, electro = 80)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
@@ -288,11 +331,15 @@
 	burn_state = FIRE_PROOF
 	CBBS_h = 1
 
+/obj/item/clothing/head/winterhood/stalker/seva/New()
+	..()
+	nvg = new /obj/item/nightvision(src)
+
 /obj/item/clothing/suit/hooded/kombez/seva/orange
 	icon_state = "sevao"
-	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/seva/orange
+	hoodtype = /obj/item/clothing/head/winterhood/stalker/seva/orange
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/seva/orange
+/obj/item/clothing/head/winterhood/stalker/seva/orange
 	icon_state = "sevao_helmet"
 
 /obj/item/clothing/suit/hooded/kombez/psz9md
@@ -311,18 +358,22 @@
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
 	armor = list(melee = 50, bullet = 50, laser = 80,burn = 75, bomb = 50, bio = 50, rad = 75, electro = 75)
-	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/psz9md
+	hoodtype = /obj/item/clothing/head/winterhood/stalker/psz9md
 	burn_state = FIRE_PROOF
 	CCBS = 1
 	durability = 150
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/psz9md
+/obj/item/clothing/head/winterhood/stalker/psz9md
 	armor = list(melee = 50, bullet = 50, laser = 80,burn = 65, bomb = 50, bio = 50, rad = 70, electro = 65)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
 	icon_state = "psz9md_helmet"
 	burn_state = FIRE_PROOF
 	CBBS_h = 1
+
+/obj/item/clothing/head/winterhood/stalker/psz9md/New()
+	..()
+	nvg = new /obj/item/nightvision(src)
 
 /obj/item/clothing/suit/hooded/kombez/exoskelet
 	name = "exoskelet"
@@ -338,18 +389,17 @@
 	armor = list(melee = 80, bullet = 80, laser = 50,burn = 30, bomb = 80, bio = 50, rad = 30, electro = 30)
 	hooded = 1
 	action_button_name = "Toggle Hood"
-	hoodtype = /obj/item/clothing/head/winterhood/stalker/nightvision/exoskelet
+	hoodtype = /obj/item/clothing/head/winterhood/stalker/exoskelet
 	CCBS = 1
 	durability = 200
 
-/obj/item/clothing/head/winterhood/stalker/nightvision/exoskelet
+/obj/item/clothing/head/winterhood/stalker/exoskelet
 	armor = list(melee = 80, bullet = 80, laser = 50,burn = 30, bomb = 80, bio = 50, rad = 30, electro = 30)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	icon_state = "exoskelet_helmet"
 	CBBS_h = 1
-
 
 /obj/item/clothing/suit/army
 	name = "army armor"

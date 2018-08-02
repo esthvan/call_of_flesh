@@ -452,7 +452,7 @@
 				return 0
 			if( !(I.slot_flags & SLOT_MASK) )
 				return 0
-			if(H.head && (!istype(H.head, /obj/item/clothing/head/winterhood/stalker) || istype(H.head, /obj/item/clothing/head/winterhood/stalker/nightvision)))
+			if(H.head && H.head.flags & BLOCKFACIALHAIR)
 				return 0
 			return 1
 		if(slot_back)
@@ -704,12 +704,17 @@
 					H.see_invisible = G.invis_override
 				else
 					H.see_invisible = min(G.invis_view, H.see_invisible)
-		if(H.head)
-			if(istype(H.head, /obj/item/clothing/head/winterhood/stalker/nightvision))
-				var/obj/item/clothing/head/winterhood/stalker/nightvision/N = H.head
-				H.sight |= N.vision_flags
-				H.see_in_dark = N.darkness_view
-				H.see_invisible = N.invis_view
+		if(H.wear_mask && H.wear_mask.nvg)
+			H.sight |= H.wear_mask.nvg.vision_flags
+			H.see_in_dark = H.wear_mask.nvg.darkness_view
+			H.see_invisible = H.wear_mask.nvg.invis_view
+
+		if(H.head && istype(H.head, /obj/item/clothing/head))
+			var/obj/item/clothing/head/He = H.head
+			if(He.nvg)
+				H.sight |= He.nvg.vision_flags
+				H.see_in_dark = He.nvg.darkness_view
+				H.see_invisible = He.nvg.invis_view
 
 		if(H.druggy)	//Override for druggy
 			H.see_invisible = see_temp

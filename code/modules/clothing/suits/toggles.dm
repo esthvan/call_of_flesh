@@ -32,10 +32,12 @@
 		var/mob/living/carbon/H = hood.loc
 		H.unEquip(hood, 1)
 		H.update_inv_wear_suit()
+	/*
 	if(CCBS)
 		var/obj/item/clothing/head/winterhood/stalker/nightvision/nighthood = hood
 		if(nighthood.active)
 			nighthood.attack_self()
+	*/
 	hood.loc = src
 
 /obj/item/clothing/suit/hooded/dropped()

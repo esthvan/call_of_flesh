@@ -77,7 +77,7 @@ var/global/list/medium_quality_items = list(
 										/obj/item/ammo_box/stalker/b545ap,
 										/obj/item/ammo_box/stalker/b55645,
 										/obj/item/clothing/head/hardhat/tacticalhelmet,
-										/obj/item/clothing/head/spherahelmet,
+										/obj/item/clothing/head/spheram,
 										/obj/item/weapon/gun/projectile/automatic/pistol/sip,
 										/obj/item/weapon/gun/projectile/automatic/pistol/usp_match,
 										/obj/item/weapon/gun/projectile/automatic/ak74,
