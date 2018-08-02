@@ -64,17 +64,18 @@
 	cache_size = 2
 
 /obj/structure/stalker/cacheable/bochka/red
+	name = "red barrel"
 	icon_state = "red_bochka"
 
 /obj/structure/stalker/water/bochka
-	name = "Barrel"
+	name = "barrel"
 	desc = "Железна&#255; бочка, наполненна&#255; дождевой водой. Здесь можно умытьс&#255; или смыть остатки гр&#255;зи."
 	eng_desc = "Old steel barrel full of rainwater. You can wash your face oк clothes with it."
 	icon_state = "bochka_s_vodoy"
 	density = 1
 
 /obj/structure/stalker/water/bochka/kap
-	name = "Barrel"
+	name = "barrel"
 	desc = "Железна&#255; бочка, наполненна&#255; дождевой водой. Здесь можно умытьс&#255; или смыть остатки гр&#255;зи."
 	eng_desc = "Old steel barrel full of rainwater. You can wash your face oк clothes with it."
 	icon_state = "diryavaya_bochka_s_vodoy"

@@ -60,9 +60,9 @@ var/global/global_lentahtml = ""
 	//İÍÖÈÊËÎÏÅÄÈß
 	var/article_title = "Zone"
 	var/article_text = "The Zone of Alienation is the 60 km wide area of exclusion that was set up around the Chernobyl NPP following the 1986 disaster and extended by the second Chernobyl disaster in 2006."
-	var/article_img = null
-	var/article_img_width = 0
-	var/article_img_height = 0
+	var/article_img = "nodata.gif"
+	var/article_img_width = 179
+	var/article_img_height = 128
 
 /datum/asset/simple/kpk
 	assets = list(

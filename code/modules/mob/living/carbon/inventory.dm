@@ -75,15 +75,18 @@
 		return
 
 	if(I == head)
+		if(istype(I, /obj/item/clothing/head))
+			var/obj/item/clothing/head/H = I
+			if(H.nvg && H.nvg.active)
+				H.nvg.TurnOff(src)
 		head = null
 		head_update(I)
 	else if(I == back)
 		back = null
 		update_inv_back()
-	//else if(I == back2)
-	//	back2 = null
-	//	update_inv_back2()
 	else if(I == wear_mask)
+		if(wear_mask.nvg && wear_mask.nvg.active)
+			wear_mask.nvg.TurnOff(src)
 		wear_mask = null
 		wear_mask_update(I, unequip=1)
 	else if(I == handcuffed)

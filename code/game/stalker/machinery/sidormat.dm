@@ -37,17 +37,17 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, NEWBIE),
 		new /datum/data/stalker_equipment("AK-74S",			"АК-74У",			/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, NEWBIE),
 		new /datum/data/stalker_equipment("AK-74",			"АК-74",			/obj/item/weapon/gun/projectile/automatic/ak74,						25000, NEWBIE),
-		new /datum/data/stalker_equipment("AS-96",			"АС-96",			/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT,	assortment_level = 1),
+		new /datum/data/stalker_equipment("AS-96",			"АС-96",			/obj/item/weapon/gun/projectile/automatic/abakan,					40000, EXPERT),
 		new /datum/data/stalker_equipment("LR-300",			"ЛР-300",			/obj/item/weapon/gun/projectile/automatic/tpc301,					40000, EXPERT),
-		new /datum/data/stalker_equipment("L85",			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, EXPERT,	assortment_level = 1),
-		new /datum/data/stalker_equipment("Tunder OTs-14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					35000, EXPERT,	assortment_level = 1),
+		new /datum/data/stalker_equipment("L85",			"Л85",				/obj/item/weapon/gun/projectile/automatic/il86,						40000, EXPERT),
+		new /datum/data/stalker_equipment("Tunder OTs-14", 	"ОЦ-14 Гроза",		/obj/item/weapon/gun/projectile/automatic/groza,					35000, EXPERT),
 		new /datum/data/stalker_equipment("AS \"Val\"", 	"АС \"Вал\"",		/obj/item/weapon/gun/projectile/automatic/val,						50000, VETERAN),
 		new /datum/data/stalker_equipment("SIG SG 550",		"СИГ СГ 550",		/obj/item/weapon/gun/projectile/automatic/sigsg550,					50000, VETERAN),
-		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					60000, MASTER, 	assortment_level = 1),
-		new /datum/data/stalker_equipment("FN F2000", 		"ФН Ф2000",			/obj/item/weapon/gun/projectile/automatic/fnf2000,					60000, MASTER,	assortment_level = 1),
-		new /datum/data/stalker_equipment("GP 37", 	    	"ГП 37",			/obj/item/weapon/gun/projectile/automatic/gp37,				    	75000, MASTER,	assortment_level = 1),
-		new /datum/data/stalker_equipment("FN F2000S", 		"ФН Ф2000С",		/obj/item/weapon/gun/projectile/automatic/fnf2000s,					100000, MASTER,	assortment_level = 1),
-		new /datum/data/stalker_equipment("PKM", 			"ПКМ",				/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm,				200000, MASTER,	assortment_level = 1),
+		new /datum/data/stalker_equipment("Vintorez", 		"Винторез",			/obj/item/weapon/gun/projectile/automatic/vintorez,					60000, MASTER),
+		new /datum/data/stalker_equipment("FN F2000", 		"ФН Ф2000",			/obj/item/weapon/gun/projectile/automatic/fnf2000,					60000, MASTER),
+		new /datum/data/stalker_equipment("GP 37", 	    	"ГП 37",			/obj/item/weapon/gun/projectile/automatic/gp37,				    	75000, MASTER),
+		new /datum/data/stalker_equipment("FN F2000S", 		"ФН Ф2000С",		/obj/item/weapon/gun/projectile/automatic/fnf2000s,					100000, MASTER),
+		new /datum/data/stalker_equipment("PKM", 			"ПКМ",				/obj/item/weapon/gun/projectile/automatic/l6_saw/pkm,				200000, MASTER),
 
 		/////////////////////////////// **Дробовики** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Sawn off", 		"Обрез",			/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,				6000, NEWBIE),
@@ -128,10 +128,10 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("Merc gasmask",			"Противогаз наемников",			/obj/item/clothing/mask/gas/stalker/mercenary,				7500, NEWBIE),
 		new /datum/data/stalker_equipment("Steel helmet",			"Стальная каска",				/obj/item/clothing/head/steelhelmet,						7500, NEWBIE),
 		new /datum/data/stalker_equipment("Light tactical helmet",	"Легкий тактический шлем",		/obj/item/clothing/head/hardhat/tacticalhelmet/light,		12500, EXPERT),
-		new /datum/data/stalker_equipment("Tactical helmet",		"Тактический шлем",				/obj/item/clothing/head/hardhat/tacticalhelmet,				20000, EXPERT),
-		new /datum/data/stalker_equipment("Assault helmet",	    	"Штурмовой шлем",				/obj/item/clothing/head/assaultmerc        ,				25000, EXPERT, "Mercenaries", assortment_level = 2),
-		new /datum/data/stalker_equipment("Sphera-M12",			 	"Сфера-М12",					/obj/item/clothing/head/spherahelmet,						25000, EXPERT),
-		new /datum/data/stalker_equipment("SKAT-9M (helmet)",		"СКАТ-9М (шлем)",				/obj/item/clothing/head/skathelmet,							35000, VETERAN),
+		new /datum/data/stalker_equipment("Tactical helmet",		"Тактический шлем",				/obj/item/clothing/head/hardhat/tacticalhelmet,				25000, EXPERT),
+		new /datum/data/stalker_equipment("Assault helmet",	    	"Штурмовой шлем",				/obj/item/clothing/head/assaultmerc        ,				30000, EXPERT, "Mercenaries"),
+		new /datum/data/stalker_equipment("Sphera-M12",			 	"Сфера-М12",					/obj/item/clothing/head/spheram,							30000, EXPERT),
+		new /datum/data/stalker_equipment("SKAT-9M (helmet)",		"СКАТ-9М (шлем)",				/obj/item/clothing/head/skathelmet,							40000, VETERAN),
 		)
 
 	var/list/med_list = list(
@@ -179,8 +179,8 @@ var/global/list/high_tier_sidormatitems = list()
 	/////////////////////////////////	Лут с мутантов	///////////////////////////////////////////
 		new /datum/data/stalker_equipment("Песий хвост",	"Песий хвост",										/obj/item/weapon/stalker/loot/dog_tail,		3000, NEWBIE, sale_price = 1500),
 		new /datum/data/stalker_equipment("Плотий глаз",	"Плотий глаз",										/obj/item/weapon/stalker/loot/flesh_eye,	3000, NEWBIE, sale_price = 1500),
-		new /datum/data/stalker_equipment("Кабаний ног",	"Кабаний ног",										/obj/item/weapon/stalker/loot/boar_leg,		6000, NEWBIE, sale_price = 3000),
-
+		new /datum/data/stalker_equipment("Кабаний ног",	"Кабаний ног",										/obj/item/weapon/stalker/loot/boar_leg,		7500, NEWBIE, sale_price = 3750),
+		new /datum/data/stalker_equipment("Cноркий рук",	"Снорукий рук",										/obj/item/weapon/stalker/loot/snork_hand,	7500, NEWBIE, sale_price = 3750),
 		)
 
 	var/list/artifact_list = list(
