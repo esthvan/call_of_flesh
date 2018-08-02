@@ -1,3 +1,9 @@
+var/global/list/sidormatitems = list()
+var/global/list/trash_tier_sidormatitems = list()
+var/global/list/low_tier_sidormatitems = list()
+var/global/list/medium_tier_sidormatitems = list()
+var/global/list/high_tier_sidormatitems = list()
+
 /obj/machinery/stalker
 	icon = 'icons/stalker/decor.dmi'
 
@@ -210,8 +216,6 @@
 
 		)
 
-var/list/sidormatitems = list()
-
 /datum/data/stalker_equipment/
 	var/equipment_name_eng = "generic"
 	var/equipment_name = "generic"
@@ -235,10 +239,34 @@ var/list/sidormatitems = list()
 		src.sale_price = cost/2
 	src.assortment_level = assortment_level
 	sidormatitems += src
+	switch(cost)
+		if(0 to TRASH_TIER_COST)
+			trash_tier_sidormatitems += src
+
+		if(0 to LOW_TIER_COST)
+			low_tier_sidormatitems += src
+
+		if(0 to MEDIUM_TIER_COST)
+			medium_tier_sidormatitems += src
+
+		if(LOW_TIER_COST to HIGH_TIER_COST)
+			high_tier_sidormatitems += src
+
 
 /obj/machinery/stalker/sidormat/New()
 	itemloc = locate(x - 1, y, z)
 	itemloc2 = locate(x + 1, y, z)
+	//sidormatitems += weapon_list
+	//sidormatitems += ammo_list
+	//sidormatitems += armor_list
+	//sidormatitems += helmet_list
+	//sidormatitems += med_list
+	//sidormatitems += food_list
+	//sidormatitems += misc_list
+	//sidormatitems += detector_list
+	//sidormatitems += loot_list
+	//sidormatitems += artifact_list
+	//sidormatitems += attachment_list
 
 /obj/machinery/stalker/sidormat/attack_hand(mob/user)
 	balance = 0

@@ -13,3 +13,9 @@
 #define BAD				900
 #define VERYBAD			500
 #define DISGUSTING		0
+
+///////////////ITEM TIERS
+#define TRASH_TIER_COST		14000
+#define LOW_TIER_COST		24000
+#define MEDIUM_TIER_COST	37000
+#define HIGH_TIER_COST		50000
