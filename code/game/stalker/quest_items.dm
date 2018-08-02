@@ -7,15 +7,16 @@
 	icon_state = "docs0"
 	name = "Documents"
 	desc = "Старые документы."
+	eng_desc = "Old documents. Trader may pay a big price for this."
 
 /obj/item/stalker/usb
 	icon_state = "USB"
 	name = "USB"
 	desc = "Син&#255;&#255; флешка на 2 Гб."
+	eng_desc = "Blue USB 2 Gb. Trader may pay a big price for this."
 
 /obj/item/stalker/blue_box
 	icon_state = "blue_box"
 	name = "Box"
 	desc = "Закрытый синий &#255;щик. В нем должно быть что-то ценное."
-
-
+	eng_desc = "Closed blue blox. Trader may pay a big price for this."

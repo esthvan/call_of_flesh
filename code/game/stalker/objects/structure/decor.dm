@@ -254,6 +254,7 @@
 	icon_state = "apc2"
 
 /obj/structure/stalker/cacheable/cover
+	name = "carpet"
 	icon = 'icons/stalker/cover.dmi'
 	icon_state = "cover"
 	desc = "Старый ковёр. Обычно висит на стене."
@@ -276,7 +277,7 @@
 	icon_state = "porog2"
 
 /obj/structure/stalker/cacheable/televizor
-	name =  "televisor"
+	name =  "TV-set"
 	desc = "Старый советский телевизор."
 	eng_desc = "Old soviet TV-set."
 	icon_state = "TV"
@@ -326,7 +327,7 @@
 
 /obj/structure/stalker/cacheable/televizor/broken
 	icon_state = "TV_b"
-	name =  "Televisor"
+	name =  "TV-set"
 	desc = "Старый разбитый советский телевизор."
 	density = 1
 	cache_size = 2
@@ -592,13 +593,13 @@
 
 	switch(z)
 		if(4 to INFINITY)
-			cache_quality = rand(2, 3)
+			cache_quality = 2//rand(2, 3)
 		if(3)
 			cache_quality = rand(1, 2)
 		if(2)
 			cache_quality = rand(0, 1)
 		if(1)
-			cache_quality = 0
+			cache_quality = rand(1, 2)//0
 
 	internal_cache.CreateContents(src)
 
@@ -651,21 +652,42 @@
 
 /obj/item/weapon/storage/stalker/cache/proc/CreateContents(var/obj/structure/stalker/cacheable/C)
 	var/list/lootspawn = list()
+
+	var/max_cost = 0
 	switch(C.cache_quality)
 		if(0)
-			lootspawn = trash_quality_items
+			lootspawn = trash_tier_sidormatitems
+			max_cost = TRASH_TIER_COST
 		if(1)
-			lootspawn = low_quality_items
+			lootspawn = low_tier_sidormatitems
+			max_cost = LOW_TIER_COST
 		if(2)
-			lootspawn = medium_quality_items
+			lootspawn = medium_tier_sidormatitems
+			max_cost = MEDIUM_TIER_COST
 		if(3)
-			lootspawn = high_quality_items
+			lootspawn = high_tier_sidormatitems
+			max_cost = HIGH_TIER_COST
 
 	var/combined_w_class = 0
+	var/combined_cost = 0
 	for(var/i = 0, i < storage_slots, i++)
 		if(combined_w_class >= max_combined_w_class)
 			break
-		var/A = safepick(lootspawn)
+
+		if(combined_cost >= max_cost)
+			break
+
+		var/datum/data/stalker_equipment/SE = safepick(lootspawn)
+
+		if(!SE)
+			continue
+
+		var/A = SE.equipment_path
+		combined_cost += SE.cost
+
+		if(!A)
+			continue
+
 		var/obj/item/I = new A(src)
 
 		if(I.w_class > max_w_class)

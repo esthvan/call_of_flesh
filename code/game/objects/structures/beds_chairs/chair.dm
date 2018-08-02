@@ -171,8 +171,12 @@
 /obj/structure/bed/chair/brevno
 	name = "log"
 	desc = "Обычное бревно, на котором можно сидеть."
+	eng_desc = "A simple log."
 	icon = 'icons/stalker/decor.dmi'
 	icon_state = "log1"
 
 /obj/structure/bed/chair/brevno/log2
 	icon_state = "log2"
+
+/obj/structure/bed/chair/brevno/rotate()
+	return

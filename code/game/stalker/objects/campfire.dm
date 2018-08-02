@@ -2,7 +2,8 @@
 
 /obj/machinery/campfire
 	name = "Campfire"
-	desc = "От костра исходит тепло и м&#255;гкий свет."
+	desc = "Бочка с парой сухих дровишек внутри. Можно зажечь спичками или зажигалкой."
+	eng_desc = "Barrel with a couple of logs inside it. If you light it you can heal by sitting near it."
 	icon = 'icons/stalker/stalker.dmi'
 	icon_state = "campfire0"
 	anchored = 1
@@ -43,7 +44,7 @@ obj/machinery/campfire/barrel
 	if(!on || KOSTIL)
 		return
 
-	user.visible_message("<span class='notice'>[user] начал тушить костёр...</span>", "<span class='notice'>Вы начали тушить костёр...</span>")
+	user.visible_message("<span class='notice'>[user] started extinguishing a fire...</span>", "<span class='notice'>You started extinguishing a fire...</span>")
 	KOSTIL = 1
 
 	if(!do_after(user, 10, 1, src))
@@ -52,8 +53,9 @@ obj/machinery/campfire/barrel
 
 	KOSTIL = 0
 
-	user.visible_message("<span class='green'>[user] потушил костёр.</span>", "<span class='green'>Вы потушили костёр.</span>")
-	desc = "Бочка с парой сухих дровишек внутри. Можно зажечь спичками или зажигалкой."
+	user.visible_message("<span class='green'>[user] extinguished a fire.</span>", "<span class='green'>You extinguished a fire.</span>")
+	desc = initial(desc)
+	eng_desc = initial(eng_desc)
 
 	on = !on
 	update_icon()
@@ -172,9 +174,10 @@ obj/machinery/campfire/process()
 				var/obj/item/weapon/match/M = I
 				if(M.lit == 1 && !on)
 					on = !on
-					usr.visible_message("[usr] разжигает костёр.", "<span class='notice'>Вы разожгли костёр.</span>")
+					usr.visible_message("[usr] lit a fire.", "<span class='notice'>You lit a fire.</span>")
 					update_icon()
 					desc = "От костра исходит тёпло и м&#255;гкий свет."
+					eng_desc = "Campfire emites warm and calmness. You can heal by sitting near it."
 					set_light(4, 1, firecolor)
 					spawn(10)
 						set_light(0, 1, firecolor)
@@ -188,9 +191,10 @@ obj/machinery/campfire/process()
 					var/obj/item/weapon/lighter/L = I
 					if(L.lit == 1 && !on)
 						on = !on
-						usr.visible_message("[usr] разжигает костёр.", "<span class='notice'>Вы разожгли костёр.</span>")
+						usr.visible_message("[usr] lit a fire.", "<span class='notice'>You lit a fire.</span>")
 						update_icon()
 						desc = "От костра исходит тёпло и м&#255;гкий свет."
+						eng_desc = "Campfire emites warm and calmness. You can heal by sitting near it."
 						set_light(4, 1, firecolor)
 						spawn(10)
 							set_light(0, 1, firecolor)

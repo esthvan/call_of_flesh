@@ -404,17 +404,17 @@ var/list/admin_verbs_hideable = list(
 	if(selected && selected.sid)
 		for(var/datum/data/record/sk in data_core.stalkers)
 			if(sk.fields["sid"] == selected.sid)
-				var/newfaction = input(usr, "Введите новую фракцию сталкера.", "S.T.A.L.K.E.R.") as text|null
+				var/newfaction = input(usr, "Insert new faction with a big first letter.", "S.T.A.L.K.E.R.") as text|null
 				if(newfaction)
 					var/sk_name = sk.fields["name"]
 					var/sk_faction_s = sk.fields["faction_s"]
-					src << "<span class='interface'>[sk_name] состоит в [sk_faction_s].</span>"
+					src << "<span class='interface'>[sk_name] is a part of [sk_faction_s].</span>"
 					sk.fields["faction_s"] = newfaction
-					usr << "<span class='interface'>Фракция успешно обновлена.</span>"
+					usr << "<span class='interface'>Faction updated.</span>"
 					log_admin("[key_name(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
 					message_admins("[key_name_admin(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
 				return
-	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+	usr << "<span class='interface'>No such stalker profile.</span>"
 
 /client/proc/SetTimeOfDay()
 	set name = "Set Time of Day"

@@ -1,6 +1,7 @@
 /obj/item/weapon/gun/projectile/revolver/bm16  // Горизонталка
 	name = "BM-16"
 	desc = "Охотничье ружьё - горизонталка. Довольно мощное, в самый раз дл&#255; охоты."
+	eng_desc = "The original Bm16 rifle. Heavy and dangerous two barrel rifle, and its effective in high range too."
 	icon_state = "bm16"
 	item_state = "bm16"
 	w_class = 4
@@ -50,6 +51,7 @@
 /obj/item/weapon/gun/projectile/revolver/bm16/toz34  //  Вертикалка
 	name = "TOZ-34"
 	desc = "Внутрикурковое двуствольное охотничье ружье с вертикально расположенными стволами. Широко распространённое и ничем особо не примечательное охотничье ружьё - 'вертикалка'."
+	eng_desc = "This extremely common over-and-under hunting shotgun can offer better protection against mutants than a pistol, thanks to its accuracy and stopping power. Used mostly by rookies on the outskirts of the Zone."
 	icon_state = "toz34"
 	item_state = "toz34"
 	recoil = 0.6
@@ -62,6 +64,7 @@
 /obj/item/weapon/gun/projectile/shotgun/chaser  //  Winchester 1300
 	name = "Chaser-13"
 	desc = "Гладкоствольное помповое ружьё американского производства, созданное дл&#255; применени&#255; в самых неблагопри&#255;тных услови&#255;х и отличающеес&#255; высокой надёжностью. Все детали снабжены антикоррозийным покрытием."
+	eng_desc = "A Western smoothbore shotgun that is extremely popular around the world thanks to its amazing reliability and faster reloading speed. Particularly valued for its functionality by the Zone's hunters. All of its parts are coated with an anticorrosion compound."
 	icon_state = "chaser"
 	item_state = "chaser"
 	durability = 100
@@ -80,8 +83,9 @@
 	drawsound = 'sound/stalker/weapons/draw/shotgun_draw.ogg'
 
 /obj/item/weapon/gun/projectile/revolver/bm16/sawnoff
-	name = "sawn-off BM-16"
+	name = "sawed-off BM-16"
 	desc = "Значительно компактней и легче новой двустволки, но эффективен только в ближнем бою. Один из самых распространённых видов оружи&#255; у новичков."
+	eng_desc = "A sawed-off hunting shotgun with two side-by-side barrels, making it lighter and more compact than a full shotgun. One of the most popular weapons among bandits due to its combination of ease of concealment and extreme effectiveness in close combat."
 	sawn_state = SAWN_OFF
 	item_state = "gun"
 	slot_flags = SLOT_BELT|SLOT_BACK
@@ -100,6 +104,7 @@
 /obj/item/weapon/gun/projectile/shotgun/spsa
 	name = "SPAS-12"
 	desc = "Гладкоствольный автоматический дробовик специального назначени&#255; с возможностью переключени&#255; режимов ведени&#255; огн&#255;. Разработанный ещё во второй половине ХХ столети&#255;, продолжает примен&#255;тьс&#255; в качестве универсального боевого оружи&#255; полиции и штурмовых подразделений армии. Отличаетс&#255; высокой надёжностью и тактической гибкостью. Несмотр&#255; на большую массу, сложное устройство и высокую цену, довольно попул&#255;рен в Зоне как эффективное средство борьбы против мутантов."
+	eng_desc = "This special purpose smoothbore automatic shotgun was designed in the second half of the 20th century and comes with pump-action and self-cocking firing modes. Used as an all-purpose weapon by the police and assault troops. Notable for its reliability and tactical flexibility. Despite its large weight, complex mechanism and considerable cost it is in demand in the Zone due to its effectiveness against mutants."
 	icon_state = "spsa"	//Нужно добавить
 	item_state = "spsa" //Нужно добавить
 	durability = 150

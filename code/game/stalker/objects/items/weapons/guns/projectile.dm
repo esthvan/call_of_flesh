@@ -4,6 +4,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/pm   // Макаров
 	name = "PMm"
 	desc = "Пистолет Макарова Модернизированный. Наиболее распространённый в зоне пистолет - наследие советской эпохи. Достаточно надёжный и дешёвый, отличаетс&#255; невысокой ёмкостью магазина при недостаточной мощности и неудовлетворительности кучности патрона. Основное оружие сталкера-новичка-неудачника. Отличное средство дл&#255; распугивани&#255; ворон."
+	eng_desc = "This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defense handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including its short range, low firing accuracy and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size."
 	icon_state = "pm"
 	w_class = 2
 	fire_sound = 'sound/stalker/weapons/pm_shot.ogg'
@@ -41,6 +42,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/sip  // Sig-Sauer
 	name = "SIG-Sauer P220"
 	desc = "Модель, разработанна&#255; ещё в 1975 году, но до сих пор попул&#255;рна&#255; во всём мире. Магазин недостаточно ёмкий, зато механизм надёжен как швейцарские часы; вторым плюсом &#255;вл&#255;етс&#255; использование мощного кольтовского патрона .45 калибра."
+	eng_desc = "The only remaining mass produced model of a globally renowned pistol, this weapon has earned a reputation for its excellent ergonomics and accuracy, and while its magazine is relatively small, it benefits from powerful ammo and a mechanism that functions like a Swiss watch. Some believe the SIP-t M200 to be the best mass produced .45ACP caliber handgun there is and it has certainly got a following among experienced stalkers and mercenaries."
 	icon_state = "sip"
 	w_class = 2
 	fire_sound = 'sound/stalker/weapons/sig220_shot.ogg'
@@ -59,6 +61,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/cora  // Colt1911A
 	name = "Colt M1911"
 	desc = "Классический автоматический «кольт», с честью прошедший все вооружённые конфликты XX века и уверенно вошедший в новое столетие. Невысока&#255; ёмкость магазина в определённой степени компенсируетс&#255; использованием мощного патрона."
+	eng_desc = "An improved version of a classic automatic pistol, which passed all the major armed conflicts of the 20th century with flying colors and entered the new millennium with confidence. Produced by dozens if not hundreds of arms manufacturers around the world in both standard and modified configurations. The weapon's only drawback, its mediocre magazine capacity, is largely compensated by the hard-hitting ammo it uses."
 	icon_state = "cora"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/colt1911_shot.ogg'
@@ -77,6 +80,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/marta  // Beretta92FS
 	name = "Beretta 92FS"
 	desc = "Состоит на вооружении вооружённых сил и полиции США, многих военизированных и правохранительных формирований во всём мире. Столь же попул&#255;рна и у представителей преступного мира благодар&#255; мощному патрону и большой ёмкости магазина."
+	eng_desc = "Martha pistols enjoy the reputation of a relatively reliable, albeit somewhat cumbersome weapon, around the world. In service with armed forces and police across the ocean, as well as various military and law enforcement organizations worldwide. The pistol is equally popular with members of the underworld, thanks to its powerful round and magazine capacity. Marthas found in the Zone are usually dated, probably from retired stock."
 	icon_state = "marta"
 	item_state = "marta"
 	w_class = 3
@@ -96,6 +100,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/fort12  // Фора12
 	name = "Fort-12"
 	desc = "Пистолет полицейского назначени&#255; украинского производства, пришедший на смену ПМм. Обладает лучшими по сравнению с последним точностью бо&#255;, эргономикой и более вместительным магазином, однако менее надёжен."
+	eng_desc = "A Ukranian-made pistol predominantly used by law enforcement organizations. Provides higher accuracy, better ergonomics and has a larger magazine than the PMm. These pistols make it into the Zone in large numbers thanks to the sale of defective weapons, which suffer from technical miscalculations in early design models. Despite this, the pistol is in demand among stalkers thanks to its good combat characteristics."
 	icon_state = "fort12"
 	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
 	w_class = 2
@@ -119,6 +124,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/pb1s  //ПБ1С
 	name = "PB1s"
 	desc = "Пистолет с интегрированным глушителем, некогда использовавшийс&#255; советским спецназом. Морально устарел, но в умелых руках по-прежнему довольно эффективен."
+	eng_desc = "This pistol was developed in the second half of the 20th century on the basis of the PMm for use by special forces and scouting units. The front of the pistol's barrel is covered with an integrated silencer, while the bolt mechanism is short, which prevents a back-moving spring from being located inside it, and it is therefore situated in the weapon's handle. Morally obsolete, the weapon is still effective in the right hands."
 	icon_state = "pb1s"
 	w_class = 2
 	fire_sound = 'sound/stalker/weapons/pb_shot.ogg'
@@ -138,6 +144,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/usp_match  // USP Match
 	name = "H&K USP Match"
 	desc = "Матчева&#255; модификаци&#255; известного немецкого пистолета, калибра .45. Имеет специальную насадку, котора&#255; уменьшает подброс ствола при стрельбе за счёт своего веса. Увеличенный магазин на 15 патронов. На руко&#255;тке инициалы - L.C."
+	eng_desc = "Impeccable reliability and durability combined with excellent accuracy are the main noteworthy features of this weapon. Its minor drawbacks include its considerable size, relatively high center of gravity and massive bolt, which make it difficult to conceal but do not outweigh the weapon's positive features. The weapon is especially popular with the Zone's veterans."
 	icon_state = "usp-match"
 	w_class = 2
 	mag_type = /obj/item/ammo_box/magazine/stalker/usp45
@@ -155,6 +162,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/desert  // Desert Eagle
 	name = "Desert Eagle .44"
 	desc = "Большой, т&#255;желый, блест&#255;щий и чертовски внушительный - разработанный в 80-е года прошлого века израильским предпри&#255;тием и попул&#255;ризированный многочисленными боевиками конца того же столети&#255;, Пустынный Орел стал своеобразной иконой мощных полуавтоматических пистолетов. Позволить себе такую красоту могут немногие, попасть из нее в кого-то в бою - еще меньшее число людей."
+	eng_desc = "A gun that is already powerful, reworked to fit rifle bullets. Truly a killing machine for close-range combat."
 	icon_state = "desert"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
@@ -173,6 +181,7 @@
 /obj/item/weapon/gun/projectile/revolver/anaconda
 	name = "Colt Anaconda .44"
 	desc = "Я знаю, о чём ты сейчас думаешь. Выстрелил он шесть раз, или только п&#255;ть? Честно говор&#255;, в этой суматохе &#255; и сам сбилс&#255; со счёта. Но начнём с того, что это Магнум 44-го калибра, самый убойный револьвер на свете, и он может подчистую снести тебе башку. Теперь ты задаёшь себе один вопрос: Повезёт ли мне? Ну, повезёт ли, подонок?"
+	eng_desc = "A gun that is already powerful, reworked to fit rifle bullets. Truly a killing machine for close-range combat."
 	icon_state = "anaconda"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
@@ -257,6 +266,7 @@
 /obj/item/weapon/gun/projectile/automatic/ak74  // AK-74
 	name = "AK 74"
 	desc = "Автомат образца 1974 года под патрон 5,45x39мм. Представл&#255;ет собой простое и надёжное оружие, хот&#255; дешевизна в производстве несколько сказалась на удобстве использовани&#255; и точности бо&#255;. В Зоне это основное оружие военных сталкеров и многих одиночек."
+	eng_desc = "This weapon, designed in 1974, signaled the adoption of small caliber and low impulse rounds by Warsaw Pact countries. A descendant of the most popular assault rifle in the world, the AKM-74/2 has an even bigger muzzle brake, resulting in a reduction of what was already manageable recoil. This facilitates better accuracy and groupings, especially when fired in fast single shots or bursts. As before, the rifle is very simple and reliable."
 	icon_state = "ak74"
 	item_state = "ak74"
 	colored = 0//"normal"
@@ -282,6 +292,7 @@
 /obj/item/weapon/gun/projectile/automatic/aksu74  // АКС74У
 	name = "AK 74S"
 	desc = "По своим габаритам и массе Акм 74У (укороченный) близок к пистолетам-пулемётам, однако он &#255;вл&#255;етс&#255; представителем автоматов. Достоинства: малые габариты и довольно высока&#255; пробивающа&#255; способность. Главные недостатки - мала&#255; прицельна&#255; дальность и склонность к быстрому перегреву при стрельбе очеред&#255;ми."
+	eng_desc = "Despite being similar to submachineguns in size, weight and tactical purpose, this weapon is classified as an assault rifle due to the fact that its internal mechanism is identical to that of the AKM 74/2. The weapon is notable for its mobility in close quarters and high armor-penetration capacity, while its drawbacks are its short effective range, despite the relatively long bullet range, a tendency to overheat and high ricochet propensity."
 	icon_state = "aksu74"
 	item_state = "aksu74"
 	slot_flags = SLOT_BACK
@@ -311,6 +322,7 @@
 /obj/item/weapon/gun/projectile/automatic/mp5  // MP5
 	name = "MP-5"
 	desc = "Одно из самых лучших в классе пистолетов-пулемётов оружие. В течении последних дес&#255;тилетий XX века был прин&#255;т на вооружение спецподразделений армии и полиции во многих странах мира. С началом его постепенной замены более современными модел&#255;ми стал часто по&#255;вл&#255;тьс&#255; на чёрном рынке, откуда массово попал и в Зону."
+	eng_desc = "This submachine gun has gained popularity around the world thanks to its reliability, ease of use and accuracy. Over the last few decades the Viper 5 was in service with special armed forces and police units worldwide. Not surprisingly, having flooded the global black markets, it eventually made its way to the Zone."
 	icon_state = "mp5"
 	item_state = "gun"
 	fire_sound = 'sound/stalker/weapons/mp5_shot.ogg'
@@ -332,6 +344,7 @@
 /obj/item/weapon/gun/projectile/automatic/ppsh  // ППШ
 	name = "PPSh"
 	desc = "Один из самых старых отечественных дизайнов автоматического ручного оружи&#255;, пистолет-пулемет Шпагина, с гордостью прошел сквозь Великую Отечественную... чтобы в огромных количествах осесть на складах и ржаветь там более полувека. Некоторые умельцы, однако, хорошенько поработав над старым оружием, переделывают его под новый калибр и отправл&#255;ют Сидору на продажу. У вас в руках - один из таких экземпл&#255;ров."
+	eng_desc = "The PPSh saw extensive combat use during World War II and the Korean War. It was one of the major infantry weapons of the Soviet Armed Forces during World War II. Around six million PPSh-41s were manufactured. In the form of the Chinese Type 50 (licensed copy), it was still being used by the Viet Cong as late as 1970. According to the 2002 edition of the Encyclopedia of Weapons of World War II the PPSh was still in use with irregular militaries."
 	icon_state = "ppsh"
 	item_state = "gun"
 	fire_sound = 'sound/stalker/weapons/pm_shot.ogg'
@@ -353,6 +366,7 @@
 /obj/item/weapon/gun/projectile/automatic/tpc301  // Эмка
 	name = "LR-300"
 	desc = "Нова&#255; ступень в развитии семейства знаменитой М-16. Благодар&#255; исключительно ровному спуску, высокой эргономике и небольшому весу данное оружие отличаетс&#255; высокой точностью бо&#255;, хот&#255; высока&#255; чувствительность к загр&#255;знению делает его малопригодным дл&#255; использовани&#255; в сложных услови&#255;х."
+	eng_desc = "A new step in the development of this famous weapon family. The changes were made to the upper half of the steel construction comprising the barrel, gas tube and bolt assembly, reducing the weapon's weight, improving ergonomics and its gas system. The weapon is highly accurate, although its propensity to catch dirt makes it a poor choice for the Zone's difficult conditions."
 	icon_state = "tpc301"
 	item_state = "tpc301"
 	slot_flags = SLOT_BACK
@@ -377,6 +391,7 @@
 /obj/item/weapon/gun/projectile/automatic/abakan  // Абакан
 	name = "AC-96"
 	desc = "Оружие элитных войск советской армии. Был разработан в качестве замены устаревшему АК-74. В «Абакане» подвижны не только внутренние механизмы, но и вс&#255; ствольна&#255; коробка вместе со стволом, что позвол&#255;ет снизить отдачу, тем самым значительно повысив точность бо&#255;."
+	eng_desc = "A modern assault rifle developed as a replacement for the ageing AKM 74/2. The main difference is its high speed 2-round burst firing mode, which allows two bullets to be fired at exactly the same spot on a target up to 100 meters away. This significantly increases the likelihood of hitting the target in comparison to the 1 round firing mode, which considerably improves kill potential, stopping power and armor piercing capability."
 	icon_state = "abakan"
 	item_state = "abakan"
 	slot_flags = SLOT_BACK
@@ -401,6 +416,7 @@
 /obj/item/weapon/gun/projectile/automatic/il86  // ИЛ86
 	name = "L85"
 	desc = "После того, как эта винтовка была заменена армией Великобритании на немецкую ГП37, она в большом количестве всплыла на чёрном рынке, а затем и в Зоне. Главным достоинством ИЛ86 &#255;вл&#255;ютс&#255; штатный 4-кратный прицел и высока&#255; точность первого выстрела. При стрельбе очеред&#255;ми точность бо&#255; резко падает, а надёжность основных механизмов винтовки недостаточно высока. Эффективна при стрельбе короткими очеред&#255;ми и одиночными."
+	eng_desc = "This rifle's considerable number of drawbacks caused most of these weapons to be modernized, with the retired stock making its way to the Zone via the black market. The rifle's main advantages are its built-in 4x scope, high single-shot accuracy and reliable upgrade technology. When the weapon is fired in bursts, its accuracy decreases significantly and the rifle's basic internal mechanisms become somewhat unreliable."
 	icon_state = "il86"
 	item_state = "il86"
 	slot_flags = SLOT_BACK
@@ -449,6 +465,7 @@
 /obj/item/weapon/gun/projectile/automatic/gp37  // GP37
 	name = "GP37"
 	desc = "Штурмова&#255; винтовка нового поколения, производима&#255; в Германии в малых парти&#255;х дл&#255; отр&#255;дов специального назначени&#255;. Оборудована встроенным прицелом дл&#255; боя на средних дистанциях, крайне надежна и эффективна в любых условиях. Выбор многих мастеров группировок вроде Свободы и Наемников."
+	eng_desc = "A new addition to the Western-made assault rifle family, which differs significantly from previous models in the series built on an automatic foundation with a semi-open bolt assembly, this weapon is more like American automatic gas-operated assault rifles with a short-stroke gas piston system. These changes ensure that the rifle is a first-rate example of a modern weapon - lightweight, reliable and ergonomic."
 	icon_state = "gp37"
 	item_state = "gp37"
 	slot_flags = SLOT_BACK
@@ -475,6 +492,7 @@
 /obj/item/weapon/gun/projectile/automatic/fnf2000  // fnf2000
 	name = "FN-F2000"
 	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне."
+	eng_desc = "This futuristic-looking weapon with a bullpup layout is actually a mass produced modular system, comprising a rifle grenade complex with a computerized fire control system and a 40-mm grenade launcher. Despite its bulky appearance, the weapon is highly ergonomic, easy to use and benefits from good technical characteristics."
 	icon_state = "fnf2000"
 	item_state = "fnf2000"
 	slot_flags = SLOT_BACK
@@ -499,6 +517,7 @@
 /obj/item/weapon/gun/projectile/automatic/fnf2000s  // fnf2000
 	name = "FN-F2000-OTBS"
 	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне. В данную модель баллистическая система уже встроена и дает все преимущества."
+	eng_desc = "This futuristic-looking weapon with a bullpup layout is actually a mass produced modular system, comprising a rifle grenade complex with a computerized fire control system and a 40-mm grenade launcher. Despite its bulky appearance, the weapon is highly ergonomic, easy to use and benefits from good technical characteristics."
 	icon_state = "fnf2000s"
 	item_state = "fnf2000s"
 	slot_flags = SLOT_BACK
@@ -526,6 +545,7 @@
 /obj/item/weapon/gun/projectile/automatic/l6_saw/pkm
 	name = "PKM"
 	desc = "Этот монстр стрел&#255;ет винтовочными патронами с таким грохотом, что уши сворачиваютс&#255; в шарики, и столь великим вредом всему живому и неживому, что шут&#255; можно снести очередью маленькое здание. Признак не просто успешности и достатка - но смерти. Смерти, несомой всем врагам пулеметчика."
+	eng_desc = "This belt-fed machine gun is a portable modification with a complex two-stage feeding system. Despite its weight and low precision, this LMG has found admirers in the Zone. Used primarily to fight off outnumbering enemy forces during faction conflicts and clear out mutant lairs"
 	icon_state = "PKMclosed200"
 	item_state = "l6closedmag"
 	w_class = 5
@@ -556,6 +576,7 @@
 /obj/item/weapon/gun/projectile/automatic/val  // Вал
 	name = "AS Val"
 	desc = "Создан на базе бесшумной снайперской винтовки 'Винторез', от которой отличаетс&#255; складным прикладом и укороченным стволом. Изначально предназначалс&#255; дл&#255; применени&#255; спецподразделени&#255;ми в услови&#255;х атаки, требующей бесшумной и беспламенной стрельбы."
+	eng_desc = "A modified version of the silent Vintar BC sniper rifle, the assault rifle was designed as a special forces weapon. The rifle's primary purpose is effective fire against enemies employing modern personal protection equipment without disclosing the shooter's location. Thanks to its integrated silencer and 9x39 caliber round with a heavy subsonic bullet, the weapon's noise and muzzle flash have been reduced to a minimum."
 	icon_state = "val"
 	item_state = "val"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
@@ -582,6 +603,7 @@
 /obj/item/weapon/gun/projectile/automatic/vintorez  // ВСС Винторез
 	name = "VSS Vintorez"
 	desc = "Винтовка специальна&#255; снайперска&#255; 'Винторез'. Предназначена дл&#255; бесшумной и беспламенной снайперской стрельбы и снабжена интегрированным глушителем. С рассто&#255;ни&#255; 400 метров пробивает большинство бронежилетов. Очень ценимое сталкерами любого уровн&#255; оружие."
+	eng_desc = "A special military sniper rifle purpose-built for silent, flashless sniping during special operations where early detection of the shooter may be critical. The Vintar BC provides high armor-piercing capability and stopping power, as well as being equipped with an integrated sniper and optical scope. Highly rated by many stalkers despite its small magazine."
 	icon_state = "vintorez"
 	item_state = "vintorez"
 	fire_sound = 'sound/stalker/weapons/vintorez_shot.ogg'
@@ -610,6 +632,7 @@
 /obj/item/weapon/gun/projectile/automatic/groza  // ОЦ-14 Гроза
 	name = "Groza OTs-14"
 	desc = "Автоматно-гранатомётный комплекс - очень удачный в услови&#255;х Зоны вариант штурмовой винтовки: компактный, надёжный, и в то же врем&#255; универсальный и мощный. 'Грозу' очень люб&#255;т военные сталкеры."
+	eng_desc = "This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specifically developed for rapid response units. The main differences are its 9x39 caliber ammunition, bullpup layout and extensive configuration options. This weapon is highly valued by military stalkers due to its ability to kill enemies wearing body armor behind improvised cover at a distance during urban combat, as well as its excellent stopping power."
 	icon_state = "groza"
 	item_state = "groza"
 	fire_sound = 'sound/stalker/weapons/groza_shot.ogg'

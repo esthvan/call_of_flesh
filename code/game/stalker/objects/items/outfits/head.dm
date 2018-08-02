@@ -12,6 +12,7 @@
 /obj/item/clothing/head/hardhat/tacticalhelmet
 	name = "Tactical helmet"
 	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; базовым количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
+	eng_desc = "A Western model of a tactical helmet that lacks camouflage. It is not known how it made its way into the Zone. The helmet is designed to provide a squad leader with strategic superiority over the enemy via its many scanners and satellite communications devices, which have not been installed in this particular helmet. Comes with multi-layered Kevlar protection and armored elements to protect electronic components. Includes a respirator."
 	icon_state = "hardhat0_tactical"
 	item_state = "hardhat0_tactical"
 	item_color = "tactical"
@@ -27,6 +28,7 @@
 /obj/item/clothing/head/hardhat/tacticalhelmet/light
 	name = "Light tactical helmet"
 	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; бойцов спецназа надежной защитой головы. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, но респиратор и ПНВ отсутствуют."
+	eng_desc = "A Western model of a tactical helmet that lacks camouflage. It is not known how it made its way into the Zone. The helmet is designed to provide a squad leader with strategic superiority over the enemy via its many scanners and satellite communications devices, which have not been installed in this particular helmet. Comes with multi-layered Kevlar protection and armored elements to protect electronic components."
 	icon_state = "hardhat0_lighttactical"
 	item_state = "hardhat0_lighttactical"
 	item_color = "lighttactical"
@@ -69,6 +71,7 @@
 /obj/item/clothing/head/spherahelmet
 	name = "Sphera M12"
 	desc = "Отделанный тканью алюминиево-титановый шлем с карманами дл&#255; стальных бронеэлементов и бронемаской. Обычно поставл&#255;етс&#255; в комплекте с бронежилетами класса ПС3 дл&#255; спецназа. Достаточно попул&#255;рен в Зоне благодар&#255; респиратору и встроенному прибору ночного видени&#255;, а также хорошей защите головы. Предусмотрена возможность установки электроники."
+	eng_desc = "An aluminum/titanium helmet with a cloth exterior that comes with pockets for additional steel armor pieces and an armor face mask. Sphere M12 is normally used as part of a combination that includes PSZ series Spetsnaz body armor. Quite popular in the Zone thanks to its respirator and built-in first generation night vision device, as well as providing the maximum head protection possible. Comes with electronics slots."
 	icon_state = "sphera"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
@@ -80,6 +83,7 @@
 /obj/item/clothing/head/skathelmet
 	name = "SKAT-M9"
 	desc = "Отделанный тканью алюминиево-титановый шлем с карманами дл&#255; стальных бронеэлементов и бронемаской. Обычно поставл&#255;етс&#255; в комплекте с бронежилетами класса ПС3 дл&#255; спецназа. Достаточно попул&#255;рен в Зоне благодар&#255; респиратору и встроенному прибору ночного видени&#255;, а также хорошей защите головы."
+	eng_desc = "An aluminum/titanium helmet with a cloth exterior that comes with pockets for additional steel armor pieces and an armor face mask. Sphere M12 is normally used as part of a combination that includes PSZ series Spetsnaz body armor. Quite popular in the Zone thanks to its respirator and built-in first generation night vision device, as well as providing the maximum head protection possible. Comes with electronics slots."
 	icon_state = "helmet_skat"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
@@ -109,6 +113,7 @@
 /obj/item/clothing/mask/gas/stalker
 	name = "gas mask"
 	desc = "Стандартный противогаз, предназначенный дл&#255; фильтрации из воздуха радиоактивной пыли и отравл&#255;ющих веществ. Широко используетс&#255; как новичками, так и ветеранами всех группировок ввиду своей функциональной незаменимости. Не оснащён защитой от пуль, осколков и механических воздействий."
+	eng_desc = "A regular plastic and rubber gas mask, used for filtering air for radioactive particles and poisonous substances. Widely used by rookies and veterans of all factions due to its universal functionality. Does not provide any physical protection."
 	icon_state = "gasmasknew"
 	item_state = "gasmasknew"
 	gas_transfer_coefficient = 0.01
@@ -123,6 +128,7 @@
 /obj/item/clothing/mask/gas/stalker/mercenary
 	name = "gas mask"
 	desc = "Стандартный противогаз, предназначенный дл&#255; фильтрации из воздуха радиоактивной пыли и отравл&#255;ющих веществ. Широко используетс&#255; членами группировки 'Наемники'. Не оснащён защитой от пуль, осколков и механических воздействий."
+	eng_desc = "A regular plastic and rubber gas mask, used for filtering air for radioactive particles and poisonous substances. Widely used by mercenaries. Does not provide any physical protection."
 	icon_state = "mercenary_gasmask"
 	item_state = "mercenary_gasmask"
 	gas_transfer_coefficient = 0.01

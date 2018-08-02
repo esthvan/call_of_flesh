@@ -58,8 +58,8 @@ var/global/global_lentahtml = ""
 	var/lastlogin = 0
 
 	//›Õ÷» ÀŒœ≈ƒ»ﬂ
-	var/article_title = "Title"
-	var/article_text = "Text here"
+	var/article_title = "Zone"
+	var/article_text = "The Zone of Alienation is the 60 km wide area of exclusion that was set up around the Chernobyl NPP following the 1986 disaster and extended by the second Chernobyl disaster in 2006."
 	var/article_img = null
 	var/article_img_width = 0
 	var/article_img_height = 0
@@ -121,6 +121,8 @@ var/global/global_lentahtml = ""
 		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 		set_owner_info(sk)
 		sk.fields["lastlogin"] = world.time
+		if(!sk)
+			owner = null
 
 	icon_state = "kpk_on"
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)

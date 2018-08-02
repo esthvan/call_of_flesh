@@ -85,7 +85,7 @@ datum/subsystem/blowout/proc/StartBlowout()
 	blowoutphase = 1
 	starttime = world.time
 
-	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "ВНИМАНИЕ, СТАЛКЕРЫ! Начинаетс&#x44F; выброс! Скорее найдите укрытие!")
+	add_lenta_message(null, "0", "Sidorovich", "Loners", "ATTENTION, STALKERS! Blowout is starting! Find a shelter quick!")
 	world << sound('sound/stalker/blowout/blowout_begin_02.ogg', wait = 0, channel = 17, volume = 50)
 	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 18, volume = 60)
 
@@ -144,9 +144,9 @@ datum/subsystem/blowout/proc/AfterBlowout()
 	lasttime = world.time
 	starttime = 0
 	////Deleting old stalker profiles////
-	//for(var/datum/data/record/sk in data_core.stalkers)
-	//	if(sk.fields["lastlogin"] + 27000 < world.time)
-	//		data_core.stalkers -= sk
+	for(var/datum/data/record/sk in data_core.stalkers)
+		if(sk.fields["lastlogin"] + 27000 < world.time)
+			data_core.stalkers -= sk
 	/////////////////////////////////////
 
 	//Очистка ленты
@@ -154,7 +154,7 @@ datum/subsystem/blowout/proc/AfterBlowout()
 	for(var/obj/item/device/stalker_pda/KPK in KPKs)
 		KPK.lentahtml = ""
 
-	add_lenta_message(null, "0", "Sidorovich", "Одиночки", "Все! Выброс закончилс&#x44F;! Выходите из укрытий.")
+	add_lenta_message(null, "0", "Sidorovich", "Loners", "Blowout is over! Leave the shelter.")
 
 	world << sound(null, wait = 0, channel = 19, volume = 70)
 	world << sound(null, wait = 0, channel = 20, volume = 70)

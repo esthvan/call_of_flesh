@@ -33,6 +33,7 @@
 /obj/item/weapon/attachment/scope/SUSAT
 	name = "SUSAT"
 	desc = "Оптический прицел фиксированной кратности (4 диоптрии). Чаще всего используетс&#255; дл&#255; ведени&#255; прицельного огн&#255; из лёгкого стрелкового оружи&#255; на средние и большие дистанции. Устанавливаетс&#255; на планку Пикатинни."
+	eng_desc = "A 4x fixed zoom scope produced primarily in Western countries. Attached to weapons by means of the NATO-standard Picatinny rail. Often used for accurate fire from small arms at medium to long range."
 	icon = 'icons/stalker/weapon_mods.dmi'
 	icon_state = "susat"
 	types = list(/obj/item/weapon/gun/projectile/automatic/tpc301,

@@ -4,6 +4,7 @@
 /obj/item/weapon/stalker/knife
 	name = "knife"
 	desc = "Серьезное оружие в умелых руках."
+	eng_desc = "Hunting knife."
 	icon_state = "knife"
 	flags = CONDUCT
 	slot_flags = SLOT_BELT

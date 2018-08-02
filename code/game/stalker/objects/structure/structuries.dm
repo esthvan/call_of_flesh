@@ -5,6 +5,7 @@
 
 /obj/structure/table/stalker/wood
 	desc = "Обычный дерев&#255;нный слегка пошарпанный стол."
+	eng_desc = "Simple table."
 	icon = 'icons/obj/smooth_structures/stol_stalker.dmi'
 	icon_state = "stol"
 	deconstructable = 0
@@ -27,6 +28,7 @@
 /obj/structure/stalker/okno
 	name = "Window"
 	desc = "Старое дерев&#255;нное окно."
+	eng_desc = "Old wooden window."
 	icon = 'icons/stalker/decor2.dmi'
 	pass_flags = LETPASSTHROW
 	density = 0

@@ -164,7 +164,7 @@
 	robust_searching = 1
 	deathmessage = "The snork seizes up and falls limp!"
 	layer = MOB_LAYER - 0.1
-	loot = list(/obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing, /obj/nothing)
+	loot = list(/obj/item/weapon/stalker/loot/snork_hand, /obj/nothing, /obj/nothing)
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ranged = 1

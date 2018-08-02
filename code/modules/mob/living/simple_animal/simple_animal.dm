@@ -397,9 +397,9 @@
 	if(stat == DEAD)
 		if(istype(O, /obj/item/weapon/stalker/knife))
 			if(loot.len)
-				user.visible_message("<span class='notice'>[user] начал разделывать [src]...</span>", "<span class='notice'>Вы начали разделывать [src]...</span>")
+				user.visible_message("<span class='notice'>[user] started butchering [src]...</span>", "<span class='notice'>You started butchering [src]...</span>")
 				if(do_after(user, 30, 1, src))
-					user.visible_message("<span class='green'>[user] разделал [src].</span>", "<span class='green'>Вы разделали [src].</span>")
+					user.visible_message("<span class='green'>[user] butchered [src].</span>", "<span class='green'>You butchered [src].</span>")
 					if(random_loot)
 						var/i = pickweight(loot)
 
