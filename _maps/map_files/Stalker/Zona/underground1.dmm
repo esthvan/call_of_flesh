@@ -311,7 +311,7 @@
 "fY" = (/obj/structure/table/stalker/wood,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/bobi,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/soup,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/soup,/turf/stalker/floor/agroprom/beton,/area/stalker/agroprom/caves)
 "fZ" = (/turf/stalker/floor/plasteel/plita,/area/stalker/buildings)
 "ga" = (/obj/structure/stalker/blocks/vanish/pipe,/obj/machinery/light/small,/turf/stalker/floor/agroprom/gryaz,/area/stalker/agroprom/caves)
-"gb" = (/obj/structure/table/stalker/wood,/obj/item/clothing/head/spherahelmet,/turf/stalker/floor/agroprom/beton,/area/stalker/agroprom/caves)
+"gb" = (/obj/structure/table/stalker/wood,/obj/item/clothing/head/spheram,/turf/stalker/floor/agroprom/beton,/area/stalker/agroprom/caves)
 "gc" = (/obj/structure/table/stalker/wood,/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army,/turf/stalker/floor/agroprom/beton,/area/stalker/agroprom/caves)
 "gd" = (/mob/living/simple_animal/hostile/mutant/snork,/turf/stalker/floor/agroprom/gryaz,/area/stalker/agroprom/caves)
 "ge" = (/obj/effect/decal/warning_stripes{icon_state = "border8"; pixel_x = 0; tag = "icon-border8"},/obj/effect/decal/warning_stripes{icon_state = "border2"; pixel_y = 0; tag = "icon-border2"},/turf/stalker/floor/agroprom/beton,/area/stalker/agroprom/caves)
