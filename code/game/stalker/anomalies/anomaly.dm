@@ -495,8 +495,9 @@
 	damage_amount = 0
 	sleep(8)
 	damage_amount = initial(damage_amount)
-	for(var/mob/living/L in get_turf(src).contents)
-		Crossed(L)
+	if(src && get_turf(src))
+		for(var/mob/living/L in get_turf(src).contents)
+			Crossed(L)
 /*
 /obj/anomaly/holodec/splash/Destroy()
 	//..()
