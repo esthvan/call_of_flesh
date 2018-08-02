@@ -454,7 +454,7 @@
 /obj/anomaly/holodec/process()
 	var/new_dir = rand(1, 10)
 
-	if(istype(get_step(src, new_dir), /turf/simulated))
+	if(!istype(get_step(src, new_dir), /turf/stalker/floor))
 		return
 
 	for(var/obj/anomaly/holodec/H in get_turf(get_step(src, new_dir)))
@@ -465,8 +465,6 @@
 
 	var/obj/anomaly/holodec/splash/son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, new_dir))
 	src.do_attack_animation(son, 0)
-	sleep(8)
-	son.damage_amount = initial(damage_amount)
 
 /obj/anomaly/holodec/splash
 	cooldown = 2
@@ -495,6 +493,8 @@
 	flick("holodec_splash_creation", src)
 	invisibility = inactive_invisibility
 	damage_amount = 0
+	sleep(8)
+	damage_amount = initial(damage_amount)
 	for(var/mob/living/L in get_turf(src).contents)
 		Crossed(L)
 /*
