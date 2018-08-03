@@ -208,7 +208,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	s += "<b>\[INTERNATIONAL\]\[TESTING\][station_name()]</b>";
 	s += " ("
-	s += "<a href=\"https://discord.gg/7Kg8qkK\">" //Change this to wherever you want the hub to link to.
+	s += "<a href=\"https://discord.gg/aBkc6NK\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
 	s += "Our Discord Server"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"
