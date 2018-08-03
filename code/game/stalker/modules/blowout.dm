@@ -143,6 +143,14 @@ datum/subsystem/blowout/proc/AfterBlowout()
 	isblowout = 0
 	lasttime = world.time
 	starttime = 0
+
+	world << sound(null, wait = 0, channel = 19, volume = 70)
+	world << sound(null, wait = 0, channel = 20, volume = 70)
+	world << sound(null, wait = 0, channel = 21, volume = 70)
+	world << sound(null, wait = 0, channel = 22, volume = 70)
+	world << sound(null, wait = 0, channel = 23, volume = 70)
+	world << sound(null, wait = 0, channel = 24, volume = 70)
+
 	////Deleting old stalker profiles////
 	for(var/datum/data/record/sk in data_core.stalkers)
 		if(sk.fields["lastlogin"] + 27000 < world.time)
@@ -155,13 +163,6 @@ datum/subsystem/blowout/proc/AfterBlowout()
 		KPK.lentahtml = ""
 
 	add_lenta_message(null, "0", "Sidorovich", "Loners", "Blowout is over! Leave the shelter.")
-
-	world << sound(null, wait = 0, channel = 19, volume = 70)
-	world << sound(null, wait = 0, channel = 20, volume = 70)
-	world << sound(null, wait = 0, channel = 21, volume = 70)
-	world << sound(null, wait = 0, channel = 22, volume = 70)
-	world << sound(null, wait = 0, channel = 23, volume = 70)
-	world << sound(null, wait = 0, channel = 24, volume = 70)
 
 datum/subsystem/blowout/proc/ProcessBlowout()
 	if(isblowout)
