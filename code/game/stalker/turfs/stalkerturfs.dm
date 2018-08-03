@@ -150,6 +150,8 @@ var/global/list/AsphaltEdgeCache
 		while(i <= 8)
 			i = 2**count
 			count++
+			if(!get_step(src, i))
+				continue
 			if(overlay_priority > get_step(src, i).overlay_priority)
 				T = get_step(src, i)
 				if(T)
@@ -181,6 +183,8 @@ var/global/list/TropaEdgeCache
 		while(i <= 8)
 			i = 2**count
 			count++
+			if(!get_step(src, i))
+				continue
 			if(overlay_priority > get_step(src, i).overlay_priority)
 				T = get_step(src, i)
 				if(T)
@@ -232,6 +236,8 @@ var/global/list/GryazEdgeCache
 		while(i <= 8)
 			i = 2**count
 			count++
+			if(!get_step(src, i))
+				continue
 			if(overlay_priority > get_step(src, i).overlay_priority)
 				T = get_step(src, i)
 				if(T)
@@ -313,6 +319,8 @@ var/global/list/WaterEdgeCache
 		while(i <= 8)
 			i = 2**count
 			count++
+			if(!get_step(src, i))
+				continue
 			if(overlay_priority > get_step(src, i).overlay_priority)
 				T = get_step(src, i)
 				if(T)
