@@ -457,10 +457,10 @@
 	if(!istype(get_step(src, new_dir), /turf/stalker/floor))
 		return
 
-	for(var/obj/anomaly/holodec/H in get_turf(get_step(src, new_dir)))
+	for(var/obj/anomaly/holodec/H in get_step(src, new_dir))
 		return
 
-	for(var/obj/structure/S in get_turf(get_step(src, new_dir)))
+	for(var/obj/structure/S in get_step(src, new_dir))
 		return
 
 	var/obj/anomaly/holodec/splash/son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, new_dir))
@@ -507,7 +507,8 @@
 	if(spawn_time + 15 <= world.time)
 		flick("holodec_splash_destruction", src)
 		damage_amount = 0
-		sleep(10)
+
+	if(spawn_time + 25 <= world.time)
 		invisibility = 101
 		src.trapped = list()
 		PlaceInPool(src)
