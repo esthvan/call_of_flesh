@@ -44,6 +44,7 @@
 	// create a conveyor
 /obj/machinery/conveyor/New(loc, newdir)
 	..(loc)
+	SSmachine.processing.Remove(src)
 	if(newdir)
 		dir = newdir
 	switch(dir)

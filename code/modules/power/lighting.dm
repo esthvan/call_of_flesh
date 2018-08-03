@@ -178,6 +178,8 @@
 // create a new lighting fixture
 /obj/machinery/light/New()
 	..()
+	spawn(10)
+		SSmachine.processing -= src
 	spawn(2)
 		switch(fitting)
 			if("tube")
@@ -191,12 +193,13 @@
 		spawn(1)
 			update(0)
 
-///obj/machinery/light/Destroy()
-//	var/area/A = get_area(src)
-//	if(A)
-//		on = 0
-//		A.update_lights()
-//	return ..()
+/obj/machinery/light/Destroy()
+	//var/area/A = get_area(src)
+	//if(A)
+	//	on = 0
+	//	A.update_lights()
+	SSmachine.processing += src
+	return ..()
 
 /obj/machinery/light/update_icon()
 
