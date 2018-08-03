@@ -1,5 +1,7 @@
 //admin verb groups - They can overlap if you so wish. Only one of each verb will exist in the verbs list regardless
 var/list/admin_verbs_default = list(
+	/client/proc/GetRank,
+	/client/proc/GetMoney,
 	/client/proc/toggleadminhelpsound,	/*toggles whether we hear a sound when adminhelps/PMs are used*/
 	/client/proc/toggleannouncelogin, /*toggles if an admin's login is announced during a round*/
 	/client/proc/deadmin_self,			/*destroys our own admin datum so we can play as a regular player*/
@@ -22,9 +24,6 @@ var/list/admin_verbs_default = list(
 	/client/proc/stop_sounds
 	)
 var/list/admin_verbs_admin = list(
-	/client/proc/GetRank,
-	/client/proc/GetMoney,
-	/client/proc/SetFaction,
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
 	/client/proc/invisimin,				/*allows our mob to go invisible/visible*/
 //	/datum/admins/proc/show_traitor_panel,	/*interface which shows a mob's mind*/ -Removed due to rare practical use. Moved to debug verbs ~Errorage
@@ -78,8 +77,6 @@ var/list/admin_verbs_sounds = list(
 	/client/proc/set_round_end_sound,
 	)
 var/list/admin_verbs_fun = list(
-	/client/proc/SetRank,
-	/client/proc/SetMoney,
 	/client/proc/MakeController,
 	/client/proc/cmd_admin_dress,
 	/client/proc/cmd_admin_gib_self,
@@ -99,6 +96,10 @@ var/list/admin_verbs_fun = list(
 	/client/proc/toggle_nuke
 	)
 var/list/admin_verbs_spawn = list(
+	/client/proc/SetRank,
+	/client/proc/SetMoney,
+	/client/proc/SetFaction,
+	/client/proc/SetRealCooldownBlowout,
 	/datum/admins/proc/spawn_atom,		/*allows us to spawn instances*/
 	/client/proc/respawn_character
 	)
@@ -126,7 +127,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/SetTimeOfDay,
 	/client/proc/SetMinCooldownBlowout,
 	/client/proc/SetMaxCooldownBlowout,
-	/client/proc/SetRealCooldownBlowout,
+	/client/proc/SetRespawnRate,
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
@@ -461,22 +462,15 @@ var/list/admin_verbs_hideable = list(
 		StalkerBlowout.cooldownreal = cooldownreal
 		src << "<span class='interface'>Выброс начнётся через: [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1] мин.</span>"
 
-/*
-/client/proc/set_daytime()
-	set category = "Weather"
-	set name = "Set Daytime"
+/client/proc/SetRespawnRate()
+	set name = "Set Respawn Rate"
+	set category = "Stalker"
 
-	var/list/modes = list("Sunrise" = 1, "Cloudy day" = 2, "Very cloudy day" = 3, "Sunset" = 4, "Night" = 5, "Bright Night" = 6, "Special" = 7, "Special" = 8)
+	var/newrespawnrate = input(usr, "Input new respawn rate", "S.T.A.L.K.E.R.") as num|null
 
-	var/daytime = input(usr, "Select daytime", "Daytime changing.") as null|anything in modes
-
-	if(!daytime)
-		return
-
-	world << "<b>Происходит смена времени суток, могут быть лаги (10-20 секунд).</b>"
-	currentDncStage = modes[daytime]
-	DncUpdateHard()
-*/
+	if(newrespawnrate)
+		world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min. to [round(newrespawnrate/600)] min.!</b></font color>"
+		config.respawn_timer = newrespawnrate
 
 /client/proc/admin_ghost()
 	set category = "Admin"
