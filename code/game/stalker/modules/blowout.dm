@@ -152,9 +152,9 @@ datum/subsystem/blowout/proc/AfterBlowout()
 	world << sound(null, wait = 0, channel = 24, volume = 70)
 
 	////Deleting old stalker profiles////
-	for(var/datum/data/record/sk in data_core.stalkers)
-		if(sk.fields["lastlogin"] + 27000 < world.time)
-			data_core.stalkers -= sk
+	//for(var/datum/data/record/sk in data_core.stalkers)
+	//	if(sk.fields["lastlogin"] + 27000 < world.time)
+	//		data_core.stalkers -= sk
 	/////////////////////////////////////
 
 	//Очистка ленты

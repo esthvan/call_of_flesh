@@ -120,9 +120,9 @@ var/global/global_lentahtml = ""
 	if(owner == H)
 		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 		set_owner_info(sk)
-		sk.fields["lastlogin"] = world.time
 		if(!sk)
 			owner = null
+		sk.fields["lastlogin"] = world.time
 
 	icon_state = "kpk_on"
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
