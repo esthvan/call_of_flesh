@@ -145,12 +145,8 @@ var/global/list/AsphaltEdgeCache
 
 	spawn(1)
 		var/turf/T
-		var/i = 0
-		var/count = 0
-		while(i <= 8)
-			i = 2**count
-			count++
-			if(!get_step(src, i))
+		for(var/i = -1, i <= 3, i++)
+			if(!get_step(src, 2**i))
 				continue
 			if(overlay_priority > get_step(src, i).overlay_priority)
 				T = get_step(src, i)
@@ -178,12 +174,8 @@ var/global/list/TropaEdgeCache
 
 	spawn(1)
 		var/turf/T
-		var/i = 0
-		var/count = 0
-		while(i <= 8)
-			i = 2**count
-			count++
-			if(!get_step(src, i))
+		for(var/i = -1, i <= 3, i++)
+			if(!get_step(src, 2**i))
 				continue
 			if(overlay_priority > get_step(src, i).overlay_priority)
 				T = get_step(src, i)
@@ -231,12 +223,8 @@ var/global/list/GryazEdgeCache
 
 	spawn(1)
 		var/turf/T
-		var/i = 0
-		var/count = 0
-		while(i <= 8)
-			i = 2**count
-			count++
-			if(!get_step(src, i))
+		for(var/i = -1, i <= 3, i++)
+			if(!get_step(src, 2**i))
 				continue
 			if(overlay_priority > get_step(src, i).overlay_priority)
 				T = get_step(src, i)
@@ -314,12 +302,8 @@ var/global/list/WaterEdgeCache
 
 	spawn(1)
 		var/turf/T
-		var/i = 0
-		var/count = 0
-		while(i <= 8)
-			i = 2**count
-			count++
-			if(!get_step(src, i))
+		for(var/i = -1, i <= 3, i++)
+			if(!get_step(src, 2**i))
 				continue
 			if(overlay_priority > get_step(src, i).overlay_priority)
 				T = get_step(src, i)
