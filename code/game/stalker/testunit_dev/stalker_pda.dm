@@ -1232,13 +1232,13 @@ var/global/global_lentahtml = ""
 	switch(rating)
 		if(ZONE_LEGEND to INFINITY)
 			rank_name_s = "Легенда Зоны"
-		if(MASTER to ZONE_LEGEND)
+		if(EXPERT to ZONE_LEGEND)
 			rank_name_s = "Мастер"
-		if(VETERAN to MASTER)
+		if(VETERAN to EXPERT)
 			rank_name_s = "Ветеран"
-		if(EXPERT to VETERAN)
+		if(EXPERIENCED to VETERAN)
 			rank_name_s = "Опытный"
-		if(NEWBIE to EXPERT)
+		if(ROOKIE to EXPERT)
 			rank_name_s = "Новичок"
 	return rank_name_s
 
@@ -1247,13 +1247,13 @@ var/global/global_lentahtml = ""
 	switch(rating)
 		if(ZONE_LEGEND to INFINITY)
 			eng_rank_name_s = "Legend"
-		if(MASTER to ZONE_LEGEND)
-			eng_rank_name_s = "Master"
-		if(VETERAN to MASTER)
-			eng_rank_name_s = "Veteran"
-		if(EXPERT to VETERAN)
+		if(EXPERT to ZONE_LEGEND)
 			eng_rank_name_s = "Expert"
-		if(NEWBIE to EXPERT)
+		if(VETERAN to EXPERT)
+			eng_rank_name_s = "Veteran"
+		if(EXPERIENCED to VETERAN)
+			eng_rank_name_s = "Experienced"
+		if(ROOKIE to EXPERIENCED)
 			eng_rank_name_s = "Rookie"
 	return eng_rank_name_s
 
@@ -1299,11 +1299,11 @@ var/global/global_lentahtml = ""
 			rep_name_s = "Очень хороша&#x44F;"
 		if(GOOD to VERYGOOD)
 			rep_name_s = "Хороша&#x44F;"
-		if(BAD to GOOD)
+		if(NEUTRAL to GOOD)
 			rep_name_s = "Нейтральна&#x44F;"
-		if(VERYBAD to BAD)
+		if(BAD to NEUTRAL)
 			rep_name_s = "Плоха&#x44F;"
-		if(DISGUSTING to VERYBAD)
+		if(VERYBAD to BAD)
 			rep_name_s = "Очень плоха&#x44F;"
 		if(DISGUSTING)
 			rep_name_s = "Гнида"
@@ -1324,7 +1324,7 @@ var/global/global_lentahtml = ""
 			eng_rep_name_s = "Neutral"
 		if(BAD to NEUTRAL)
 			eng_rep_name_s = "Bad"
-		if(DISGUSTING to VERYBAD)
+		if(VERYBAD to BAD)
 			eng_rep_name_s = "Very Bad"
 		if(DISGUSTING)
 			eng_rep_name_s = "Asshole"
@@ -1340,11 +1340,11 @@ var/global/global_lentahtml = ""
 			rep_color_s = "#b6ff38" //#6ddb00
 		if(GOOD to VERYGOOD)
 			rep_color_s = "#daff21" //#b6db00
-		if(BAD to GOOD)
+		if(NEUTRAL to GOOD)
 			rep_color_s = "#ffe100" //#ffb200
-		if(VERYBAD to BAD)
+		if(BAD to NEUTRAL)
 			rep_color_s = "#ff6b3a" //#db5700
-		if(DISGUSTING to VERYBAD)
+		if(VERYBAD to BAD)
 			rep_color_s = "#db2b00" //#db2b00
 		if(DISGUSTING)
 			rep_color_s = "#7c0000"
