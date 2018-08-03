@@ -148,10 +148,10 @@ var/global/list/AsphaltEdgeCache
 		for(var/i = -1, i <= 3, i++)
 			if(!get_step(src, 2**i))
 				continue
-			if(overlay_priority > get_step(src, i).overlay_priority)
-				T = get_step(src, i)
+			if(overlay_priority > get_step(src, 2**i).overlay_priority)
+				T = get_step(src, 2**i)
 				if(T)
-					T.overlays += AsphaltEdgeCache[i]
+					T.overlays += AsphaltEdgeCache[2**i]
 	return
 
 /turf/stalker/floor/tropa
@@ -177,10 +177,10 @@ var/global/list/TropaEdgeCache
 		for(var/i = -1, i <= 3, i++)
 			if(!get_step(src, 2**i))
 				continue
-			if(overlay_priority > get_step(src, i).overlay_priority)
-				T = get_step(src, i)
+			if(overlay_priority > get_step(src, 2**i).overlay_priority)
+				T = get_step(src, 2**i)
 				if(T)
-					T.overlays += TropaEdgeCache[i]
+					T.overlays += TropaEdgeCache[2**i]
 	return
 
 /turf/stalker/floor/road
@@ -226,10 +226,10 @@ var/global/list/GryazEdgeCache
 		for(var/i = -1, i <= 3, i++)
 			if(!get_step(src, 2**i))
 				continue
-			if(overlay_priority > get_step(src, i).overlay_priority)
-				T = get_step(src, i)
+			if(overlay_priority > get_step(src, 2**i).overlay_priority)
+				T = get_step(src, 2**i)
 				if(T)
-					T.overlays += GryazEdgeCache[i]
+					T.overlays += GryazEdgeCache[2**i]
 	return
 
 /turf/stalker/floor/gryaz/gryaz2
@@ -305,10 +305,10 @@ var/global/list/WaterEdgeCache
 		for(var/i = -1, i <= 3, i++)
 			if(!get_step(src, 2**i))
 				continue
-			if(overlay_priority > get_step(src, i).overlay_priority)
-				T = get_step(src, i)
+			if(overlay_priority > get_step(src, 2**i).overlay_priority)
+				T = get_step(src, 2**i)
 				if(T)
-					T.overlays += WaterEdgeCache[i]
+					T.overlays += WaterEdgeCache[2**i]
 	return
 
 /turf/stalker/floor/wood
