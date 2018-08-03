@@ -508,7 +508,7 @@ var/next_mob_id = 0
 		usr << "<span class='boldnotice'>You must be dead to use this!</span>"
 		return
 
-	if (timeofdeath + 6000 > world.time)
+	if (timeofdeath + config.respawn_timer > world.time)
 		if(usr.client.prefs.chat_toggles & CHAT_LANGUAGE)
 			usr << "<span class='boldnotice'>You can join the game in [round((timeofdeath + config.respawn_timer - world.time)/600) + 1] min.</span>"
 		else
