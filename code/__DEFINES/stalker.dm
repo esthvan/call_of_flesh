@@ -1,9 +1,9 @@
 ///////////////–≈…“»Õ√
 #define ZONE_LEGEND		10000
-#define MASTER			6000
+#define EXPERT			6000
 #define VETERAN			2500
-#define EXPERT			1000
-#define NEWBIE			0
+#define EXPERIENCED		1000
+#define ROOKIE			0
 
 ///////////////–≈œ”“¿÷»ﬂ
 #define AMAZING			2000

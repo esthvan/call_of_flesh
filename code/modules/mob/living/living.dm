@@ -1028,13 +1028,13 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 				switch(sk_H.fields["rating"])
 					if(ZONE_LEGEND to INFINITY)
 						sk.fields["rating"] = sk.fields["rating"] + 2000
-					if(MASTER to ZONE_LEGEND)
+					if(EXPERT to ZONE_LEGEND)
 						sk.fields["rating"] = sk.fields["rating"] + 1000
-					if(VETERAN to MASTER)
+					if(VETERAN to EXPERT)
 						sk.fields["rating"] = sk.fields["rating"] + 500
-					if(EXPERT to VETERAN)
+					if(EXPERIENCED to VETERAN)
 						sk.fields["rating"] = sk.fields["rating"] + 250
-					if(NEWBIE to EXPERT)
+					if(ROOKIE to EXPERIENCED)
 						sk.fields["rating"] = sk.fields["rating"] + 50
 		else
 			if(sk)
