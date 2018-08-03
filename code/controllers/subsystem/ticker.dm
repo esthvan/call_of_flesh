@@ -447,7 +447,7 @@ var/datum/subsystem/ticker/ticker
 
 /datum/subsystem/ticker/proc/send_random_tip()
 	if(randomtips)
-		world << "<font color='red'><b>Внимание! Данна&#255; система советов находитс&#255; в стадии разработки.</b></font>\n<font color='purple'><b>Tip of the round: </b>[russian_html2text(strip_html_properly(pick(randomtips)))]</font>"
+		world << "<font color='red'><b>Attention! Tips are still presented in russian only.</b></font>\n<font color='purple'><b>Tip of the round: </b>[russian_html2text(strip_html_properly(pick(randomtips)))]</font>"
 
 /datum/subsystem/ticker/proc/check_queue()
 	if(!queued_players.len || !config.hard_popcap)
