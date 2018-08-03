@@ -22,6 +22,7 @@
 	var/PathNode/PNode = null //associated PathNode in the A* algorithm
 
 	var/windowed = 0
+	var/overlay_priority = 0
 
 	flags = 0
 
