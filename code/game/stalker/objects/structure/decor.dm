@@ -594,11 +594,11 @@
 
 	switch(z)
 		if(4 to INFINITY)
-			cache_quality = 2//rand(2, 3)
+			cache_quality = rand(1, 2)//rand(2, 3)
 		if(3)
-			cache_quality = rand(1, 2)
-		if(2)
 			cache_quality = rand(0, 1)
+		if(2)
+			cache_quality = 0
 		if(1)
 			cache_quality = rand(1, 2)//0
 
