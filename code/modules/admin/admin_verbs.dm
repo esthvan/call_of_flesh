@@ -466,11 +466,11 @@ var/list/admin_verbs_hideable = list(
 	set name = "Set Respawn Rate"
 	set category = "Stalker"
 
-	var/newrespawnrate = input(usr, "Input new respawn rate", "S.T.A.L.K.E.R.") as num|null
+	var/newrespawnrate = input(usr, "Input new respawn rate in minutes", "S.T.A.L.K.E.R.") as num|null
 
 	if(newrespawnrate)
-		world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min. to [round(newrespawnrate/600)] min.!</b></font color>"
-		config.respawn_timer = newrespawnrate
+		world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min to [round(newrespawnrate*600)] min!</b></font color>"
+		config.respawn_timer = round(newrespawnrate * 600)
 
 /client/proc/admin_ghost()
 	set category = "Admin"
