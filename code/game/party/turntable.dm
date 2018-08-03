@@ -207,10 +207,6 @@ var/global/turntable_channel = 4488
 
 /obj/machinery/party/turntable/proc/update_sound()
 	for(var/mob/M in view(7, src))
-		//var/inRange = (get_area(M) in A.related)
-
-		//if(!inRange)
-		//	continue
 
 		if(!M || !M.client)
 			continue
