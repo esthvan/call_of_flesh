@@ -523,7 +523,7 @@ var/list/admin_verbs_hideable = list(
 	message_admins("[key_name_admin(usr)] changed respawn rate from [config.respawn_timer] to [newrespawnrate].")
 
 	if(newrespawnrate)
-		world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min to [round(newrespawnrate*600)] min!</b></font color>"
+		world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min to [newrespawnrate] min!</b></font color>"
 		config.respawn_timer = round(newrespawnrate * 600)
 
 /client/proc/admin_ghost()
