@@ -98,7 +98,7 @@
 // Doors!
 #define DOOR_CRUSH_DAMAGE 10
 
-#define HUNGER_FACTOR              1 // Factor of how fast mob nutrition decreases
+#define HUNGER_FACTOR              0.25 // Factor of how fast mob nutrition decreases
 #define REM 0.2 // Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
 #define CHEM_TOUCH 1
 #define CHEM_INGEST 2

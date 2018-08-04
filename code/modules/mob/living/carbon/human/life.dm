@@ -313,7 +313,7 @@
 	if(nutrition < 100)
 		var/nutr_timeout //In order not to spam the chat with those messages and don't overload players with staminaloss
 		if(prob(50) && !nutr_timeout)
-			src << "<span class='notice'>Вы очень хотите есть.</span>"
+			src << "<span class='notice'>You are really hungry!</span>"
 			nutr_timeout = 1
 			spawn(10)
 				nutr_timeout = 0
@@ -322,14 +322,14 @@
 				adjustStaminaLoss(15)
 				Weaken(10)
 				nutr_timeout = 1
-				visible_message("<span class='danger'>[src] падает в обморок!</span>", \
-								"<span class='userdanger'>Вы плохо себ&#255; чувствуете!</span>")
+				visible_message("<span class='danger'>[src] collapses!</span>", \
+								"<span class='userdanger'>You feel very-very hungry!</span>")
 				spawn(10)
 					nutr_timeout = 0
 			if(prob(30) && !nutr_timeout)
 				nutr_timeout = 1
 				adjustStaminaLoss(40)
-				src << "<span class='danger'>Вы ужасно сильно хотите есть.</span>"
+				src << "<span class='danger'>You are very-very-very hungry!</span>"
 				spawn(10)
 					nutr_timeout = 0
 			if(prob(10))

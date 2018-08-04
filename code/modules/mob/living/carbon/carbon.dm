@@ -34,9 +34,9 @@
 /mob/living/carbon/Move(NewLoc, direct)
 	..()
 	if(src.nutrition && src.stat != 2)
-		src.nutrition -= 0.025
+		src.nutrition -= 0.1
 		if(src.m_intent == "run")
-			src.nutrition -= 0.05
+			src.nutrition -= 0.2
 	if((src.disabilities & FAT) && src.m_intent == "run" && src.bodytemperature <= 360)
 		src.bodytemperature += 2
 
