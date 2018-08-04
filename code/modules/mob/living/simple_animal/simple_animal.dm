@@ -106,6 +106,7 @@
 			handle_automated_movement()
 			handle_automated_action()
 			handle_automated_speech()
+			handle_automated_sounds()
 		return 1
 
 /mob/living/simple_animal/handle_regular_status_updates()
@@ -152,6 +153,8 @@
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Some animals don't move when pulled
 					var/anydir = pick(cardinal)
 					if(Process_Spacemove(anydir))
+						for(var/obj/anomaly/A in get_step(src, anydir).contents)
+							return 1
 						Move(get_step(src, anydir), anydir)
 						turns_since_move = 0
 			return 1
@@ -159,10 +162,6 @@
 /mob/living/simple_animal/proc/handle_automated_speech()
 	if(speak_chance)
 		if(rand(0,200) < speak_chance)
-
-			var/s = pick(idle_sounds)
-			playsound(src, s, 75, 1)
-
 			if(speak && speak.len)
 				if((emote_hear && emote_hear.len) || (emote_see && emote_see.len))
 					var/length = speak.len
@@ -194,6 +193,11 @@
 					else
 						emote("me", 2, pick(emote_hear))
 
+/mob/living/simple_animal/proc/handle_automated_sounds()
+	if(idle_sounds)
+		if(rand(0,200) < speak_chance)
+			var/s = safepick(idle_sounds)
+			playsound(src, s, 65, 1)
 
 /mob/living/simple_animal/handle_environment(datum/gas_mixture/environment)
 	/*

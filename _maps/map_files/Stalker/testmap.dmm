@@ -10,6 +10,7 @@
 "aj" = (/obj/machinery/party/turntable,/turf/stalker/floor/wood/oldvert,/area/stalker/kordon/buildings)
 "ak" = (/obj/structure/table/stalker/wood,/obj/machinery/stalker/sidormat{pixel_y = 8},/turf/stalker/floor/wood/oldvert,/area/stalker/kordon/buildings)
 "al" = (/obj/structure/table/stalker/wood,/obj/item/stack/spacecash/c5000{amount = 50},/turf/stalker/floor/wood/oldvert,/area/stalker/kordon/buildings)
+"am" = (/mob/living/simple_animal/hostile/mutant/bloodsucker,/turf/stalker/floor/gryaz/gryaz2,/area/stalker/blowout/outdoor)
 "an" = (/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/outdoor)
 "ao" = (/turf/stalker/floor/gryaz,/area/stalker/blowout/outdoor)
 "ap" = (/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/turf/stalker/floor/wood/oldvert,/area/stalker/blowout/buildings)
@@ -238,7 +239,7 @@ aaadadadadadadadadadadabababababababababaIaIaIababababababababacacacacacacacacbh
 aaadadadadadadadadadadabaRaRaRaRaRaRaQaOaIaIaIaOaQaRaRaRaRaRaRacaxaxaxaxaxbJanananananbJaxaxaxaxaxac
 aaadadadadadadadadadadabaXaRaRaRaRaRaRaPaIaIaIaPaRaRaRaRaRaRaXacaxaxaxaxaxbJbLanananbLbJaxaxaxaxaxac
 aaadadadadadadadadadadabaRaRaRaRaRaRaRaRaIaIaIaRaRaRaRaRaRaRaRacaxaxaxaxacacacanananacacacaxaxaxaxac
-aaadadadadadadadadadadabababababababbbabaIaIaIabbbababababababacaxaxaxaxbNacbOanananbPacbQaxaxaxaxac
+aaadadadadadadadadadadabababababababbbabaIaIaIabbbababababababacaxaxaxaxbNacbOanananbPacbQaxaxaxamac
 aaadadadadadadadadadadabbRbSbTabbUbVababaIaIaIbWababbXbYabbZcaacaxaxaxaxacacacanananacacacaxaxaxaxac
 aaadadadadadadadadadadbIcbcccdcecfcgchciaIaIcjcocpcqcrcucxczcCacaxaxaxaxaxbJanananananbJaxaxaxaxaxac
 aaadadadadadadadadadadbIcsctctcActctctctaIaIaIcDcDcDcEcEcRcEdvacaxaxaxaxaxbJanananananbJaxaxaxaxaxac

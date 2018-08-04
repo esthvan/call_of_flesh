@@ -5,7 +5,7 @@
 	var/gib_targets = 1 //Гибать
 	icon = 'icons/stalker/stalker.dmi'
 	var/deletable = 1 //Self-deletable dead bodies
-	speak_chance = 1
+	speak_chance = 4
 
 /*
 /mob/living/simple_animal/hostile/mutant/death(gibbed)
@@ -142,7 +142,7 @@
 	icon_state = "snork"
 	icon_living = "snork"
 	icon_dead = "snork_dead"
-	attacktext = "scratches with his claws"
+	attacktext = "claws at"
 	speak_emote = list("growls", "roars")
 	emote_see = list("growls!", "roars!")
 	maxHealth = 70
@@ -284,7 +284,7 @@
 	del_on_death = 0
 	environment_smash = 1
 	robust_searching = 0
-	deathmessage = "The boar makes a death scream!!"
+	deathmessage = "The boar makes a death scream!"
 	layer = MOB_LAYER - 0.1
 	loot = list(/obj/item/weapon/stalker/loot/boar_leg, /obj/nothing, /obj/nothing)
 	random_loot = 1
@@ -298,3 +298,76 @@
 		target = get_turf(get_step(target,cur_dir))
 	L.throw_at(target, 200, 100)
 	*/
+
+/mob/living/simple_animal/hostile/mutant/bloodsucker
+	name = "bloodsucker"
+	desc = "Твой худший ночной кошмар."
+	eng_desc = "Your worst nightmare."
+	turns_per_move = 5
+	speed = 3
+	a_intent = "harm"
+	search_objects = 1
+	icon_state = "bloodsucker"
+	icon_living = "bloodsucker"
+	icon_dead = "bloodsucker_dead"
+	attacktext = "slashes"
+	speak_emote = list("growls", "roars")
+	emote_see = list("growls!", "roars!")
+	maxHealth = 350
+	healable = 1
+	melee_damage_lower = 25
+	attack_sound = 'sound/stalker/mobs/mutants/attack/bloodsucker_attack.ogg'
+	idle_sounds =	list('sound/stalker/mobs/mutants/idle/bloodsucker_idle_1.ogg'
+						)
+	death_sound = 'sound/stalker/mobs/mutants/death/bloodsucker_death.ogg'
+	melee_damage_upper = 30
+	fearborder = 0
+	see_invisible = SEE_INVISIBLE_MINIMUM
+	see_in_dark = 4
+	minbodytemp = 0
+	maxbodytemp = 1500
+	faction = list("stalker_mutants1")
+	del_on_death = 0
+	robust_searching = 1
+	deathmessage = "The bloodsucker makes a death scream!"
+	layer = MOB_LAYER - 0.1
+	loot = list(/obj/item/weapon/stalker/loot/bloodsucker, /obj/item/weapon/stalker/loot/bloodsucker, /obj/nothing)
+	random_loot = 1
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	attack_type = "claw"
+	move_to_delay = 1.4
+	speak_chance = 10
+
+/mob/living/simple_animal/hostile/mutant/bloodsucker/Life()
+	if(..())
+		if(ckey)
+			return
+		handle_invisibility()
+
+/mob/living/simple_animal/hostile/mutant/bloodsucker/proc/handle_invisibility()
+	if(target)
+		playsound(src, 'sound/stalker/mobs/mutants/idle/bloodsucker_breath.ogg', 40, 0)
+		switch(get_dist(src, target))
+			if(0 to 2)
+				icon_state = "bloodsucker"
+			else
+				icon_state = "bloodsucker_invisible"
+		return
+
+	if(icon_state != initial(icon_state))
+		icon_state = initial(icon_state)
+
+/mob/living/simple_animal/hostile/mutant/bloodsucker/handle_automated_sounds()
+	if(idle_sounds)
+		if(rand(0,200) < speak_chance)
+			var/s = safepick(idle_sounds)
+			playsound(src, s, 65, 1, 15, 15)
+
+/mob/living/simple_animal/hostile/mutant/bloodsucker/AttackingTarget()
+	..()
+	icon_state = "bloodsucker"
+	if(istype(target, /mob/living/carbon))
+		var/mob/living/carbon/C = target
+		if(C.health > 35)
+			icon_state = "bloodsucker_invisible"
+			walk_away(src, target, 7, move_to_delay)

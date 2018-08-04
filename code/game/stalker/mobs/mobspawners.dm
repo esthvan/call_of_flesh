@@ -71,3 +71,10 @@
 	radius = 1
 	cooldown = 9000
 	loot = list(/mob/living/simple_animal/hostile/mutant/snork = 100)
+
+/obj/effect/spawner/lootdrop/stalker/mobspawner/bloodsucker_spawner
+	name = "bloodsucker mutant"
+	lootcount = 1
+	radius = 1
+	cooldown = 15000
+	loot = list(/mob/living/simple_animal/hostile/mutant/bloodsucker = 100)
