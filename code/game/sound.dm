@@ -1,4 +1,4 @@
-/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, channel, surround = 1, repeat_sound = 0, randfreq = 1)
+/proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, channel, surround = 1, repeat_sound = 0)
 
 	soundin = get_sfx(soundin) // same sound for everyone
 
@@ -7,14 +7,10 @@
 		return
 
 	var/frequency
-	if(randfreq)
-		frequency = get_rand_frequency() // Same frequency for everybody
-	else
-		frequency = 45000
 
 	var/turf/turf_source = get_turf(source)
 
- 	// Looping through the player list has the added bonus of working for mobs inside containers
+	// Looping through the player list has the added bonus of working for mobs inside containers
 	for (var/P in player_list)
 		var/mob/M = P
 		if(!M || !M.client)
