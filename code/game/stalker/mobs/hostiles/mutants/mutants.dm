@@ -129,6 +129,7 @@
 	loot = list(/obj/item/weapon/stalker/loot/dog_tail, /obj/nothing, /obj/nothing)
 	random_loot = 1
 	attack_type = "bite"
+	move_to_delay = 1.5 //Real speed of a mob
 
 /mob/living/simple_animal/hostile/mutant/snork
 	name = "snork"
@@ -173,6 +174,7 @@
 
 	attack_type = "claw"
 	var/leaping = 0
+	move_to_delay = 2
 
 /mob/living/simple_animal/hostile/mutant/snork/OpenFire()
 	if(get_dist(src, target) <= 4)
@@ -222,7 +224,7 @@
 	icon_state = "plot"
 	icon_living = "plot"
 	icon_dead = "plot_dead"
-	attacktext = "бьет"
+	attacktext = "crashes into"
 	speak_emote = list("grunts")
 	emote_see = list("shrieks aggressively!")
 	maxHealth = 40
@@ -248,6 +250,7 @@
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "smash"
+	move_to_delay = 3
 
 /mob/living/simple_animal/hostile/mutant/kaban
 	name = "boar"
@@ -281,12 +284,13 @@
 	del_on_death = 0
 	environment_smash = 1
 	robust_searching = 0
-	deathmessage = "Кабан издает предсмертный визг!"
+	deathmessage = "The boar makes a death scream!!"
 	layer = MOB_LAYER - 0.1
 	loot = list(/obj/item/weapon/stalker/loot/boar_leg, /obj/nothing, /obj/nothing)
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "smash"
+	move_to_delay = 2
 
 	/*Код крашера с колониал маринов
 	Раскидывает мобов с дороги в стороны
