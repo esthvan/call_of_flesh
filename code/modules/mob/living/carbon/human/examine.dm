@@ -325,14 +325,14 @@
 				var/obj/item/device/stalker_pda/KPK = H.wear_id
 				var/datum/data/record/R = find_record("sid", src.sid, data_core.stalkers)
 				var/datum/data/record/R_H = find_record("sid", H.sid, data_core.stalkers)
-				if(KPK.hacked == 1 || H.sid == KPK.sid)
+				if(KPK.hacked == 1 || H == KPK.owner)
 					if(R && R_H)
 
 						var/rep = russian_html2text(get_rep_name(R.fields["reputation"]))
 						var/eng_rep = get_eng_rep_name(R.fields["reputation"])
 						var/font_color = get_rep_color(R.fields["reputation"])
 
-						var/rank_name_s 	= russian_html2text(get_rank_name(R.fields["rating"]))
+						var/rus_rank_name_s 	= russian_html2text(get_rus_rank_name(R.fields["rating"]))
 						var/eng_rank_name_s = get_eng_rank_name(R.fields["rating"])
 
 						var/eng_faction_s 	= R.fields["faction_s"]
@@ -346,7 +346,7 @@
 						else
 							msg += "\nFaction: [faction_s]\n"
 							msg += "Reputation: <font color=\"[font_color]\">[rep]</font><a href='?src=\ref[src];KPK=1;addition_rep=1'><font color=\"green\">\[+\]</font></a><a href='?src=\ref[src];KPK=1;subtraction_rep=1'><font color=\"red\">\[-\]</font></a>\n"
-							msg += "Rating: [rank_name_s]\n\n"
+							msg += "Rating: [rus_rank_name_s]\n\n"
 							msg += "<a href='?src=\ref[src];KPK=1;money_transfer=1'>Совершить денежный перевод</a>\n"
 				else
 					msg += "\n<span class='warning'>NO ACCESS!</span>\n"

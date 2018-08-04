@@ -34,7 +34,7 @@ var/global/global_lentahtml = ""
 	var/rep_color_s = "#ffe100"
 	var/rep_name_s = "Нейтральна&#x44F;"
 	var/eng_rep_name_s = "Neutral"
-	var/rank_name_s = "Новичок"
+	var/rus_rank_name_s = "Новичок"
 	var/eng_rank_name_s = "Rookie"
 	var/eng_faction_s = "Loners"
 	//var/isregistered = 0
@@ -119,10 +119,11 @@ var/global/global_lentahtml = ""
 
 	if(owner == H)
 		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-		set_owner_info(sk)
 		if(!sk)
 			owner = null
-		sk.fields["lastlogin"] = world.time
+		else
+			set_owner_info(sk)
+			sk.fields["lastlogin"] = world.time
 
 	icon_state = "kpk_on"
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
@@ -403,7 +404,7 @@ var/global/global_lentahtml = ""
 						mainhtml+="\
 					<b>Им&#x44F;:</b> [owner.real_name]<br>\
 					<b>Группировка:</b> [rus_faction_s]<br>\
-					<b>Ранг:</b> [rank_name_s] ([rating])<br>\
+					<b>Ранг:</b> [rus_rank_name_s] ([rating])<br>\
 					<b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
 					<b>Деньги на счету:</b> [money] RU<br>"
 
@@ -1103,7 +1104,7 @@ var/global/global_lentahtml = ""
 		var/rep = get_rep_name(R.fields["reputation"])
 		var/eng_rep = get_eng_rep_name(R.fields["reputation"])
 
-		var/rank_name = get_rank_name(r)
+		var/rank_name = get_rus_rank_name(r)
 		var/eng_rank_name = get_eng_rank_name(r)
 
 		count++
@@ -1224,23 +1225,23 @@ var/global/global_lentahtml = ""
 	eng_rep_name_s 	= get_eng_rep_name(sk.fields["reputation"])
 	rep_color_s 	= get_rep_color(sk.fields["reputation"])
 
-	rank_name_s 	= get_rank_name(sk.fields["rating"])
+	rus_rank_name_s 	= get_rus_rank_name(sk.fields["rating"])
 	eng_rank_name_s	= get_eng_rank_name(sk.fields["rating"])
 
-/proc/get_rank_name(var/rating)
-	var/rank_name_s = "Новичок"
+/proc/get_rus_rank_name(var/rating)
+	var/rus_rank_name_s = "Новичок"
 	switch(rating)
 		if(ZONE_LEGEND to INFINITY)
-			rank_name_s = "Легенда Зоны"
+			rus_rank_name_s = "Легенда Зоны"
 		if(EXPERT to ZONE_LEGEND)
-			rank_name_s = "Мастер"
+			rus_rank_name_s = "Мастер"
 		if(VETERAN to EXPERT)
-			rank_name_s = "Ветеран"
+			rus_rank_name_s = "Ветеран"
 		if(EXPERIENCED to VETERAN)
-			rank_name_s = "Опытный"
+			rus_rank_name_s = "Опытный"
 		if(ROOKIE to EXPERT)
-			rank_name_s = "Новичок"
-	return rank_name_s
+			rus_rank_name_s = "Новичок"
+	return rus_rank_name_s
 
 /proc/get_eng_rank_name(var/rating)
 	var/eng_rank_name_s = "Rookie"
