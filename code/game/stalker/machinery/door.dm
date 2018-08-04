@@ -27,5 +27,5 @@
 	desc = "A heavy duty blast door that opens mechanically."
 	icon = 'icons/obj/doors/door_sidor.dmi'
 	icon_state = "closed"
-	id = 666
+	id = null
 	auto_close = 0 // Time in seconds to automatically close when opened, 0 if it doesn't.
