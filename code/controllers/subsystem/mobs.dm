@@ -9,7 +9,7 @@ var/datum/subsystem/mobs/SSmob
 	dwait_lower = 2		//shortest wait can be under dynamic_wait
 	var/list/currentrun = list()
 	var/currentrun_len_initial = 0
-
+	var/count = 0
 
 /datum/subsystem/mobs/New()
 	NEW_SS_GLOBAL(SSmob)
@@ -20,11 +20,11 @@ var/datum/subsystem/mobs/SSmob
 
 
 /datum/subsystem/mobs/fire(resumed = 0)
-	var/count = 0
 	//if (!resumed)
 	if(!currentrun.len)
 		src.currentrun = mob_list.Copy()
 		currentrun_len_initial = currentrun.len
+		count = 0
 
 	//cache for sanic speed (lists are references anyways)
 	//var/list/currentrun = src.currentrun
@@ -40,8 +40,9 @@ var/datum/subsystem/mobs/SSmob
 			mob_list.Remove(M)
 		//if (MC_TICK_CHECK)
 		//	return
-		world << currentrun.len
-		world << round(currentrun_len_initial * ( 1 - (count * (wait / initial(wait)))))
+
+		//world << currentrun.len
+		//world << round(currentrun_len_initial * ( 1 - (count * (wait / initial(wait)))))
 
 		count++
 		if(currentrun.len < round(currentrun_len_initial * ( 1 - (count * (wait / initial(wait))))))
