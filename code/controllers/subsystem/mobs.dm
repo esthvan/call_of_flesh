@@ -44,5 +44,5 @@ var/datum/subsystem/mobs/SSmob
 		world << round(currentrun_len_initial * ( 1 - (count * (wait / initial(wait)))))
 
 		count++
-		if(currentrun.len > round(currentrun_len_initial * ( 1 - (count * (wait / initial(wait))))))
+		if(currentrun.len < round(currentrun_len_initial * ( 1 - (count * (wait / initial(wait))))))
 			return
