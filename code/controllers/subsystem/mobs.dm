@@ -36,7 +36,7 @@ var/datum/subsystem/mobs/SSmob
 	var/currentrun_len_new = round(currentrun_len_initial * ( 1 - step))
 	var/seconds = dwait_upper * 0.1
 
-	while(currentrun.len > max(0, min(currentrun_len_new, currentrun_len_initial - currentrun_len_initial * step)))
+	while(currentrun.len > currentrun_len_new)
 		var/mob/M = currentrun[1]
 		currentrun.Cut(1, 2)
 		if(M)
@@ -45,6 +45,3 @@ var/datum/subsystem/mobs/SSmob
 			mob_list.Remove(M)
 		if (MC_TICK_CHECK)
 			return
-
-		//world << currentrun.len
-		//world << round(currentrun_len_initial * ( 1 - (count * (wait / initial(wait)))))
