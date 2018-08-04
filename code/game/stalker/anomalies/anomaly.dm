@@ -86,7 +86,7 @@
 			var/new_y = T.y + rand(-1, 1)
 			O.Move(locate(new_x, new_y, T.z))
 
-			if(istype(get_turf(O), /turf/simulated/mineral) || istype(get_turf(O), /turf/simulated/wall))
+			if(istype(get_turf(O), /turf/simulated))
 				sleep(5)
 				RandomMove(spawned)
 				return
@@ -471,7 +471,7 @@
 	luminosity = 2
 	idle_luminosity = 2
 	activated_luminosity = 4
-	damage_amount = 25
+	damage_amount = 33
 	inactive_icon_state = null
 	active_icon_state = null
 	//inactive_icon_state = "holodec_splash"
