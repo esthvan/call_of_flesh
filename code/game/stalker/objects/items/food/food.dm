@@ -285,7 +285,7 @@
 	icon_state = "TushenkaBlue3"
 
 /obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa
-	name = "Kolbasa"
+	name = "kolbasa"
 	desc = "Часто за неимением лучшего эта колбаса - смесь кур&#255;тины и соевого заменител&#255; - завтрак, обед и ужин сталкера."
 	eng_desc = "Made from a mixture of chicken and soya, the \"diet\" sausage is often, for lack of other options, a Stalker's breakfast, lunch and dinner in one."
 	//weight = 0.4
@@ -294,7 +294,7 @@
 	list_reagents = list("nutriment" = 11, "vitamin" = 1, "omnizine" = 0.3)
 
 /obj/item/weapon/reagent_containers/food/snacks/stalker/baton
-	name = "Baton"
+	name = "baton"
 	desc = "Неизвестно, кто умудр&#255;етс&#255; печь батоны на территории Зоны, однако этот хлеб не заражен и вполне съедобен. Во вс&#255;ком случае, никто из сталкеров пока не жаловалс&#255;."
 	eng_desc = "It is still a question who contrives to bake bread in the Zone or how they manage to carry it through the border but this bread is not radioactive and quite edible."
 	//weight = 0.2
