@@ -136,7 +136,9 @@
 	if(istype(target, /mob/living/carbon))
 		var/mob/living/carbon/C = target
 		if(C.health > 25)
-			walk_away(src, target, 8, move_to_delay)
+			var/anydir = pick(cardinal)
+			target_last_loc = target.loc
+			walk_away(src, get_step(src, anydir), 7, move_to_delay)
 
 /mob/living/simple_animal/hostile/mutant/snork
 	name = "snork"
@@ -377,11 +379,13 @@
 		var/mob/living/carbon/C = target
 		if(C.health > 35)
 			icon_state = "bloodsucker_invisible"
-			walk_away(src, target, 7, move_to_delay)
+			var/anydir = pick(cardinal)
+			target_last_loc = target.loc
+			walk_away(src, get_step(src, anydir), 7, move_to_delay)
 
 /mob/living/simple_animal/hostile/mutant/pseudog
 	name = "psy-dog"
-	desc = "Ћомахатый пЄс."
+	desc = "Ћохматый пЄс."
 	eng_desc = "Shaggy dog."
 	turns_per_move = 5
 	speed = 3
