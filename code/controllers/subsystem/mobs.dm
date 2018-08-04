@@ -4,9 +4,9 @@ var/datum/subsystem/mobs/SSmob
 	name = "Mobs"
 	priority = 4
 	wait = 10
-	dynamic_wait = 1
-	dwait_upper = 10	//Real wait
-	dwait_lower = 0.1		//shortest wait can be under dynamic_wait
+	dynamic_wait = 0
+	dwait_upper = 10	//Real wait. Change this instead of wait
+	dwait_lower = 0.1
 	var/list/currentrun = list()
 	var/currentrun_len_initial = 0
 	var/count = 0
@@ -20,11 +20,11 @@ var/datum/subsystem/mobs/SSmob
 
 
 /datum/subsystem/mobs/fire(resumed = 0)
-	var/seconds = initial(wait) * 0.1
 	//if (!resumed)
 	if(!currentrun.len)
 		src.currentrun = mob_list.Copy()
 		currentrun_len_initial = currentrun.len
+		wait = max(dwait_upper / currentrun_len_initial, dwait_lower)
 		count = 0
 
 	//cache for sanic speed (lists are references anyways)
@@ -34,6 +34,7 @@ var/datum/subsystem/mobs/SSmob
 	count++
 	var/step = count * (wait / dwait_upper)
 	var/currentrun_len_new = round(currentrun_len_initial * ( 1 - step))
+	var/seconds = dwait_upper * 0.1
 
 	while(currentrun.len > max(0, min(currentrun_len_new, currentrun_len_initial - currentrun_len_initial * step)))
 		var/mob/M = currentrun[1]
