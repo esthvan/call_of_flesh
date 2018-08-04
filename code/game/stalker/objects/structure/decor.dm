@@ -571,7 +571,7 @@
 	eng_desc = "Generates a stash with a certain chance at the start of the round."
 	density = 1
 	var/cache_chance = 8	//percent
-	var/cache_quality = 0	//from 0 to 3
+	var/cache_quality = -1	//from 0 to 3, -1 for 0
 	var/cache_size = 0		//from 0 to 3
 	var/obj/item/weapon/storage/stalker/cache/internal_cache = null
 
@@ -579,7 +579,7 @@
 	..()
 
 	if(!prob(cache_chance))
-		internal_cache = null
+		//internal_cache = null
 		return
 
 	switch(cache_size)
@@ -592,15 +592,16 @@
 		if(3)
 			internal_cache = new /obj/item/weapon/storage/stalker/cache/large(src)
 
-	switch(z)
-		if(4 to INFINITY)
-			cache_quality = rand(1, 2)//rand(2, 3)
-		if(3)
-			cache_quality = rand(0, 1)
-		if(2)
-			cache_quality = 0
-		if(1)
-			cache_quality = rand(1, 2)//0
+	if(cache_quality != -1)
+		switch(z)
+			if(4 to INFINITY)
+				cache_quality = rand(1, 2)//rand(2, 3)
+			if(3)
+				cache_quality = rand(0, 1)
+			if(2)
+				cache_quality = 0
+			if(1)
+				cache_quality = rand(1, 2)//0
 
 	internal_cache.CreateContents(src)
 
