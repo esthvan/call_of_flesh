@@ -2,14 +2,14 @@
 	name = "ammo box (5.45x39mm)"
 	desc = "It shouldn't be here"
 	icon = 'icons/stalker/ammo.dmi'
-	icon_state = "545x39-0"
+	icon_state = "545x39"
 	multiple_sprites = 2
 
 /obj/item/ammo_box/stalker/b545
 	name = "ammo box (5.45x39mm)"
 	desc = "Обычный стандартный патрон, простой сердечник, оболочечна&#255; пул&#255; (5.45x39мм)."
 	ammo_type = /obj/item/ammo_casing/c545
-	icon_state = "545x39-0"
+	icon_state = "545x39"
 	max_ammo = 90
 	multiple_sprites = 2
 
@@ -17,7 +17,7 @@
 	name = "ammo box (5.45x39mm AP)"
 	desc = "Бронебойный патрон дл&#255; автоматических винтовок стран Варшавского договора (5.45x39мм AP)."
 	ammo_type = /obj/item/ammo_casing/c545/AP
-	icon_state = "545x39ap-0"
+	icon_state = "545x39ap"
 	max_ammo = 90
 	multiple_sprites = 2
 
@@ -25,7 +25,7 @@
 	name = "ammo box (9x18mm)"
 	desc = "Патрон с оболочечной пулей. Обладает хорошим останавливающем действием, однако малоэффективен против бронированных целей (9x18мм)."
 	ammo_type = /obj/item/ammo_casing/c9x18
-	icon_state = "9x18-0"
+	icon_state = "9x18"
 	max_ammo = 50
 	multiple_sprites = 2
 
@@ -33,7 +33,7 @@
 	name = "ammo box (9x18mm +P+)"
 	desc = "Патрон с улучшенными баллистическими свойствами, выраженный бронебойный эффект (9x18мм +P+)."
 	ammo_type = /obj/item/ammo_casing/c9x18/P
-	icon_state = "9x18P-0"
+	icon_state = "9x18P"
 	max_ammo = 50
 	multiple_sprites = 2
 
@@ -41,7 +41,7 @@
 	name = "ammo box (12x70mm)"
 	desc = "Обычный патрон 12 калибра с 6-мм дробью, огромна&#255; убойна&#255; сила (12x70мм Дробь)."
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70
-	icon_state = "12x70-0"
+	icon_state = "12x70"
 	max_ammo = 20
 	multiple_sprites = 2
 
@@ -49,7 +49,7 @@
 	name = "ammo box (12x70mm AP)"
 	desc = "Т&#255;жёла&#255; безоболочечна&#255; пул&#255;, эффективна до 100м. (12x70мм Жекан)."
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70P
-	icon_state = "12x70P-0"
+	icon_state = "12x70P"
 	max_ammo = 20
 	multiple_sprites = 2
 
@@ -57,7 +57,7 @@
 	name = "ammo box (12x70mm dart)"
 	desc = "Оперённа&#255; пул&#255;, увеличена дальность и бронебойность, эффективен до 150м. (12x70мм Дротик)."
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70D
-	icon_state = "12x70D-0"
+	icon_state = "12x70D"
 	max_ammo = 20
 	multiple_sprites = 2
 
@@ -65,7 +65,7 @@
 	name = "ammo box (9x19mm)"
 	desc = "Базовый патрон, оболочечна&#255; пул&#255;, слабое бронебойное действие (9x19мм)."
 	ammo_type = /obj/item/ammo_casing/c9x19
-	icon_state = "9x19-0"
+	icon_state = "9x19"
 	max_ammo = 50
 	multiple_sprites = 2
 
@@ -73,7 +73,7 @@
 	name = "ammo box (9x19mm PBP)"
 	desc = "Мощный патрон с экспансивной пулей и бронебойным сердечником (9x19мм PBP)."
 	ammo_type = /obj/item/ammo_casing/c9x19/P
-	icon_state = "9x19P-0"
+	icon_state = "9x19P"
 	max_ammo = 50
 	multiple_sprites = 2
 
@@ -81,7 +81,7 @@
 	name = "ammo box (5.56x45mm)"
 	desc = "Стандартный натовский патрон, широко известный под бельгийским индексом SS109. Используетс&#255; в штурмовых винтовках ИЛ86, ТРс-301, СГИ-5к, ГП37, ФТ-200М."
 	ammo_type = /obj/item/ammo_casing/c556x45
-	icon_state = "556x45-0"
+	icon_state = "556x45"
 	max_ammo = 90
 	multiple_sprites = 2
 
@@ -89,7 +89,7 @@
 	name = "ammo box (5.56x45mm AP)"
 	desc = "Патрон с бронебойной пулей дл&#255; штурмовых винтовок ИЛ86, ТРс 301, СГИ-5к, ГП37, ФТ-200М."
 	ammo_type = /obj/item/ammo_casing/c556x45/AP
-	icon_state = "556x45ap-0"
+	icon_state = "556x45ap"
 	max_ammo = 90
 	multiple_sprites = 2
 
@@ -97,7 +97,7 @@
 	name = "ammo box (9x39mm)"
 	desc = "Стандартный патрон калибра 9 мм, имеет повышенное останавливающее действие."
 	ammo_type = /obj/item/ammo_casing/sp9x39
-	icon_state = "9x39-0"
+	icon_state = "9x39"
 	max_ammo = 60
 	multiple_sprites = 2
 
@@ -105,7 +105,7 @@
 	name = "ammo box (.45 ACP)"
 	desc = "Пистолетный патрон калибра 11,43 мм."
 	ammo_type = /obj/item/ammo_casing/acp45
-	icon_state = "45_ACP-0"
+	icon_state = "45_ACP"
 	max_ammo = 30
 	multiple_sprites = 2
 
@@ -113,7 +113,7 @@
 	name = "ammo box (.45 ACP Hydroshock)"
 	desc = "Экспансивный патрон калибра 11,43 мм., который используетс&#255; в убойных пистолетах."
 	ammo_type = /obj/item/ammo_casing/acp45/P
-	icon_state = "45_ACP_hydroshock-0"
+	icon_state = "45_ACP_hydroshock"
 	max_ammo = 30
 	multiple_sprites = 2
 
@@ -121,7 +121,7 @@
 	name = "ammo box (.44 Magnum)"
 	desc = "Пистолетный патрон калибра .44 Магнум. Возможно, даже слишком мощный."
 	ammo_type = /obj/item/ammo_casing/mag44
-	icon_state = "44_Mag-0"
+	icon_state = "44_Mag"
 	max_ammo = 50
 	multiple_sprites = 2
 
@@ -129,7 +129,7 @@
 	name = "ammo box (.44 Magnum JHP)"
 	desc = "Пистолетный патрон калибра .44 Магнум, оболоченный. Пробивает навылет любую легкую броню."
 	ammo_type = /obj/item/ammo_casing/mag44/FMJ
-	icon_state = "44_Mag_FMJ-0"
+	icon_state = "44_Mag_FMJ"
 	max_ammo = 50
 	multiple_sprites = 2
 
@@ -137,6 +137,6 @@
 	name = "ammo box (7.62x25mm)"
 	desc = "Пистолетный патрон калибра 7.62x25мм, разработанный в прошлом веке дл&#255; советского самозар&#255;дного оружи&#255;. Морально и технически устарел, но еще используетс&#255; в Зоне."
 	ammo_type = /obj/item/ammo_casing/c762x25
-	icon_state = "762x25-0"
+	icon_state = "762x25"
 	max_ammo = 50
 	multiple_sprites = 2
