@@ -181,7 +181,8 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("Плотий глаз",	"Плотий глаз",										/obj/item/weapon/stalker/loot/flesh_eye,	3000, ROOKIE, sale_price = 1500),
 		new /datum/data/stalker_equipment("Кабаний ног",	"Кабаний ног",										/obj/item/weapon/stalker/loot/boar_leg,		7500, ROOKIE, sale_price = 3750),
 		new /datum/data/stalker_equipment("Cноркий рук",	"Снорукий рук",										/obj/item/weapon/stalker/loot/snork_hand,	7500, ROOKIE, sale_price = 3750),
-		new /datum/data/stalker_equipment("Кровососий щупалец","Кровососий щупалец",							/obj/item/weapon/stalker/loot/bloodsucker,	12000, ROOKIE, sale_price = 6000)
+		new /datum/data/stalker_equipment("Кровососий щупалец","Кровососий щупалец",							/obj/item/weapon/stalker/loot/bloodsucker,	12000, ROOKIE, sale_price = 6000),
+		new /datum/data/stalker_equipment("Псевдопесий хвост","Псевдопесий хвост",								/obj/item/weapon/stalker/loot/pseudo_tail,	6000, ROOKIE, sale_price = 3000)
 		)
 
 	var/list/artifact_list = list(
