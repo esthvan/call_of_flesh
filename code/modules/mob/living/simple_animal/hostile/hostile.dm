@@ -20,6 +20,7 @@
 	var/retreat_distance = null //If our mob runs from players when they're too close, set in tile distance. By default, mobs do not retreat.
 	var/minimum_distance = 1 //Minimum approach distance, so ranged mobs chase targets down, but still keep their distance set in tiles to the target, set higher to make mobs keep distance
 	var/target_distance
+	var/target_last_loc = null
 
 //These vars are related to how mobs locate and target
 	var/robust_searching = 0 //By default, mobs have a simple searching method, set this to 1 for the more scrutinous searching (stat_attack, stat_exclusive, etc), should be disabled on most mobs
@@ -221,6 +222,9 @@
 
 /mob/living/simple_animal/hostile/proc/LoseTarget()
 	target = null
+	if(target_last_loc)
+		Goto(target_last_loc, move_to_delay, 1)
+		target_last_loc = null
 	walk(src, 0)
 	LoseAggro()
 
