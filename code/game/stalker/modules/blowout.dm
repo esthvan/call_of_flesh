@@ -12,8 +12,7 @@ datum/subsystem/blowout
 	name = "Blowouts"
 	priority = 1
 	var/blowoutphase = 0
-	var/cooldownmin = 18000
-	var/cooldownmax = 36000
+	var/average_cooldown = 27000
 	var/cooldownreal = 0
 	var/lasttime = 0
 	var/starttime = 0
@@ -43,14 +42,14 @@ datum/subsystem/blowout
 
 datum/subsystem/blowout/New()
 	NEW_SS_GLOBAL(StalkerBlowout)
-	cooldownreal = rand(cooldownmin, cooldownmax)
+	cooldownreal = rand(average_cooldown * 0.7, average_cooldown * 1.3)
 
 datum/subsystem/blowout/fire()
 	if(world.time <= lasttime + cooldownreal)
 		return
 
 	if(starttime)
-		if(640 + blowout_duration + starttime < world.time)
+		if(600 + blowout_duration + starttime < world.time)
 			AfterBlowout()
 			return
 
@@ -103,8 +102,10 @@ datum/subsystem/blowout/proc/BlowoutGib()
 	for(var/mob/living/L)
 		if(L.stat == DEAD)
 			L.gib()
+
 			if(MC_TICK_CHECK)
 				return
+
 
 datum/subsystem/blowout/proc/BlowoutDealDamage()
 	for(var/mob/living/carbon/human/H)
@@ -112,9 +113,6 @@ datum/subsystem/blowout/proc/BlowoutDealDamage()
 
 			H.radiation += 600
 			H.apply_damage(75, BURN)
-
-//			if(MC_TICK_CHECK)
-//				return
 
 datum/subsystem/blowout/proc/StopBlowout()
 
@@ -139,7 +137,7 @@ datum/subsystem/blowout/proc/StopBlowout()
 
 datum/subsystem/blowout/proc/AfterBlowout()
 
-	cooldownreal = rand(cooldownmin, cooldownmax)
+	cooldownreal = rand(average_cooldown * 0.7, average_cooldown * 1.3)
 	isblowout = 0
 	lasttime = world.time
 	starttime = 0

@@ -2,6 +2,7 @@
 var/list/admin_verbs_default = list(
 	/client/proc/GetRank,
 	/client/proc/GetMoney,
+	/client/proc/GetFaction,
 	/client/proc/toggleadminhelpsound,	/*toggles whether we hear a sound when adminhelps/PMs are used*/
 	/client/proc/toggleannouncelogin, /*toggles if an admin's login is announced during a round*/
 	/client/proc/deadmin_self,			/*destroys our own admin datum so we can play as a regular player*/
@@ -125,8 +126,7 @@ var/list/admin_verbs_server = list(
 	)
 var/list/admin_verbs_debug = list(
 	/client/proc/SetTimeOfDay,
-	/client/proc/SetMinCooldownBlowout,
-	/client/proc/SetMaxCooldownBlowout,
+	/client/proc/SetAverageCooldownBlowout,
 	/client/proc/SetRespawnRate,
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
@@ -331,14 +331,16 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	if(selected && selected.sid)
-		for(var/datum/data/record/sk in data_core.stalkers)
-			if(sk.fields["sid"] == selected.sid)
-				var/sk_name = sk.fields["name"]
-				var/sk_rating = sk.fields["rating"]
-				usr << "<span class='interface'>Рейтинг [sk_name] - [sk_rating].</span>"
-				return
-		usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
+
+	if(!sk)
+		usr << "<span class='warning'>Stalker profile not found.</span>"
+		return
+
+	var/sk_name = sk.fields["name"]
+	var/sk_rating = sk.fields["rating"]
+
+	usr << "<span class='interface'>[sk_name] rating is [sk_rating]. He is [get_eng_rank_name(sk_rating)]</span>"
 
 /client/proc/SetRank()
 	set name = "Set Rank"
@@ -346,19 +348,25 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	if(selected && selected.sid)
-		for(var/datum/data/record/sk in data_core.stalkers)
-			if(sk.fields["sid"] == selected.sid)
-				var/newrank = input(usr, "Введите новый ранг сталкера от 0 до бесконечности.", "Rating System") as num|null
-				if(newrank)
-					var/oldrank = sk.fields["rating"]
-					var/sk_name = sk.fields["name"]
-					sk.fields["rating"] = newrank
-					usr << "<span class='interface'>Рейтинг успешно обновлен с [oldrank] до [newrank].</span>"
-					log_admin("[key_name(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
-					message_admins("[key_name_admin(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
-				return
-	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
+
+	if(!sk)
+		usr << "<span class='warning'>Stalker profile not found.</span>"
+		return
+
+	var/newrank = input(usr, "Введите новый ранг сталкера от 0 до бесконечности.", "Rating System") as num|null
+
+	if(!newrank)
+		return
+
+	var/oldrank = sk.fields["rating"]
+	var/sk_name = sk.fields["name"]
+
+	sk.fields["rating"] = newrank
+
+	usr << "<span class='interface'>Rating successfully updated from [oldrank] to [newrank].</span>"
+	log_admin("[key_name(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
+	message_admins("[key_name_admin(usr)] changed [sk_name] rank from [oldrank] to [newrank].")
 
 /client/proc/SetMoney()
 	set name = "Set Money"
@@ -366,20 +374,31 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	if(selected && selected.sid)
-		for(var/datum/data/record/sk in data_core.stalkers)
-			if(sk.fields["sid"] == selected.sid)
-				var/sk_name = sk.fields["name"]
-				var/sk_money = sk.fields["money"]
-				src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
-				var/newbalance = input(usr, "Введите новое количество RU на счету сталкера.", "S.T.A.L.K.E.R.") as num|null
-				if(newbalance)
-					sk.fields["money"] = newbalance
-					usr << "<span class='interface'>Баланс на счету успешно обновлен.</span>"
-					log_admin("[key_name(usr)] changed [sk_name] money balance from [sk_money] to [newbalance].")
-					message_admins("[key_name_admin(usr)] changed [sk_name] money balance from [sk_money] to [newbalance].")
-				return
-	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+	if(!selected)
+		return
+
+	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
+
+	if(!sk)
+		usr << "<span class='warning'>Stalker profile not found.</span>"
+		return
+
+	var/sk_name = sk.fields["name"]
+	var/sk_money = sk.fields["money"]
+
+	src << "<span class='interface'>[sk_name] holds [sk_money] RU in his account.</span>"
+	var/newbalance = input(usr, "Input new balance.", "S.T.A.L.K.E.R.") as num|null
+
+	if(!newbalance)
+		return
+
+	sk.fields["money"] = newbalance
+	usr << "<span class='interface'>Balance successfully updated from [sk_money] to [newbalance].</span>"
+
+	log_admin("[key_name(usr)] updated [sk_name] money balance from [sk_money] to [newbalance].")
+	message_admins("[key_name_admin(usr)] updated [sk_name] money balance from [sk_money] to [newbalance].")
+
+
 
 /client/proc/GetMoney()
 	set name = "Get Money"
@@ -387,14 +406,41 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	if(selected && selected.sid)
-		for(var/datum/data/record/sk in data_core.stalkers)
-			if(sk.fields["sid"] == selected.sid)
-				var/sk_name = sk.fields["name"]
-				var/sk_money = sk.fields["money"]
-				src << "<span class='interface'>На счету [sk_name] - [sk_money].</span>"
-				return
-	usr << "<span class='interface'>Не удалось найти профиль сталкера.</span>"
+	if(!selected)
+		return
+
+	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
+
+	if(!sk)
+		usr << "<span class='warning'>Stalker profile not found.</span>"
+		return
+
+	var/sk_name = sk.fields["name"]
+	var/sk_money = sk.fields["money"]
+
+	src << "<span class='interface'>[sk_name] holds [sk_money] RU in his account.</span>"
+	log_admin("[key_name(usr)] checked [sk_name] account balance.")
+	message_admins("[key_name_admin(usr)] checked [sk_name] account balance.")
+
+/client/proc/GetFaction()
+	set name = "Get Faction"
+	set category = "Stalker"
+
+	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
+
+	if(!selected)
+		return
+
+	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
+
+	if(!sk)
+		usr << "<span class='warning'>Stalker profile not found.</span>"
+		return
+
+	var/sk_name = sk.fields["name"]
+	var/sk_faction_s = sk.fields["faction_s"]
+
+	src << "<span class='interface'>[sk_name] is a part of [sk_faction_s].</span>"
 
 /client/proc/SetFaction()
 	set name = "Set Faction"
@@ -402,20 +448,30 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
 
-	if(selected && selected.sid)
-		for(var/datum/data/record/sk in data_core.stalkers)
-			if(sk.fields["sid"] == selected.sid)
-				var/newfaction = input(usr, "Insert new faction with a big first letter.", "S.T.A.L.K.E.R.") as text|null
-				if(newfaction)
-					var/sk_name = sk.fields["name"]
-					var/sk_faction_s = sk.fields["faction_s"]
-					src << "<span class='interface'>[sk_name] is a part of [sk_faction_s].</span>"
-					sk.fields["faction_s"] = newfaction
-					usr << "<span class='interface'>Faction updated.</span>"
-					log_admin("[key_name(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
-					message_admins("[key_name_admin(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
-				return
-	usr << "<span class='interface'>No such stalker profile.</span>"
+	if(!selected)
+		return
+
+	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
+
+	if(!sk)
+		usr << "<span class='warning'>Stalker profile not found.</span>"
+		return
+
+	var/newfaction = input(usr, "Insert new faction with a BIG first letter.", "S.T.A.L.K.E.R.") as text|null
+
+	if(!newfaction)
+		return
+
+	var/sk_name = sk.fields["name"]
+	var/sk_faction_s = sk.fields["faction_s"]
+
+	src << "<span class='interface'>[sk_name] was a part of [sk_faction_s].</span>"
+	sk.fields["faction_s"] = newfaction
+
+	usr << "<span class='interface'>[sk_name] joined [sk_faction_s].</span>"
+
+	log_admin("[key_name(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
+	message_admins("[key_name_admin(usr)] changed [sk_name] faction from [sk_faction_s] to [newfaction].")
 
 /client/proc/SetTimeOfDay()
 	set name = "Set Time of Day"
@@ -425,48 +481,46 @@ var/list/admin_verbs_hideable = list(
 
 	if(1 <= daytime <= 4)
 		set_time_of_day(daytime)
-		usr << "<span class='interface'>Врем&#255; суток успешно изменено.</span>"
+		usr << "<span class='interface'>Time of day successfully updated.</span>"
+		log_admin("[key_name(usr)] changed time of day to [daytime].")
+		message_admins("[key_name_admin(usr)] changed time of day to [daytime].")
 
-/client/proc/SetMinCooldownBlowout()
+/client/proc/SetAverageCooldownBlowout()
 	set name = "Set Blowout Cooldown (min)"
 	set category = "Stalker"
 
-	var/cooldownmin = input(usr, "Введите минимальный кулдаун.", " S.T.A.L.K.E.R.") as num|null
+	var/average_cooldown = input(usr, "Input blowout average cooldown.", " S.T.A.L.K.E.R.") as num|null
 
-	if(cooldownmin)
-		StalkerBlowout.cooldownmin = cooldownmin
-		if(cooldownmin > StalkerBlowout.cooldownmax)
-			StalkerBlowout.cooldownmax = cooldownmin + 18000
-		src << "<span class='interface'>Кулдаун (минимальный) выброса успешно изменен.</span>"
+	if(!average_cooldown)
+		return
 
-/client/proc/SetMaxCooldownBlowout()
-	set name = "Set Blowout Cooldown (max)"
-	set category = "Stalker"
+	log_admin("[key_name(usr)] changed blowout average cooldown from [StalkerBlowout.average_cooldown] to [average_cooldown].")
+	message_admins("[key_name(usr)] changed blowout average cooldown from [StalkerBlowout.average_cooldown] to [average_cooldown].")
 
-	var/cooldownmax = input(usr, "Введите максимальный кулдаун.", "S.T.A.L.K.E.R.") as num|null
-
-	if(cooldownmax)
-		StalkerBlowout.cooldownmax = cooldownmax
-		if(cooldownmax <= StalkerBlowout.cooldownmin)
-			StalkerBlowout.cooldownmax = StalkerBlowout.cooldownmin + 18000
-		src << "<span class='interface'>Кулдаун (максимальный) выброса успешно изменен.</span>"
+	StalkerBlowout.average_cooldown = average_cooldown
+	src << "<span class='interface'>Blowout average cooldown successfully changed.</span>"
 
 /client/proc/SetRealCooldownBlowout()
 	set name = "Start Blowout"
 	set category = "Stalker"
 
-	var/cooldownreal = input(usr, "Введите время до следующего выброса", "S.T.A.L.K.E.R.") as num|null
+	var/cooldownreal = input(usr, "Input the blowout timer", "S.T.A.L.K.E.R.") as num|null
 
 	if(cooldownreal)
 		StalkerBlowout.lasttime = world.time
 		StalkerBlowout.cooldownreal = cooldownreal
-		src << "<span class='interface'>Выброс начнётся через: [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1] мин.</span>"
+		src << "<span class='interface'>Blowout will start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1] min.</span>"
+
+	log_admin("[key_name(usr)] forced blowout to start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
+	message_admins("[key_name_admin(usr)] changed time of day to [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
 
 /client/proc/SetRespawnRate()
 	set name = "Set Respawn Rate"
 	set category = "Stalker"
 
 	var/newrespawnrate = input(usr, "Input new respawn rate in minutes", "S.T.A.L.K.E.R.") as num|null
+	log_admin("[key_name(usr)] changed respawn rate from [config.respawn_timer] to [newrespawnrate].")
+	message_admins("[key_name_admin(usr)] changed respawn rate from [config.respawn_timer] to [newrespawnrate].")
 
 	if(newrespawnrate)
 		world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min to [round(newrespawnrate*600)] min!</b></font color>"
