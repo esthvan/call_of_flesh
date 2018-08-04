@@ -202,12 +202,15 @@
 	if(!id)
 		id = newid
 	update()
+	SSmachine.processing.Remove(src)
 
+	/*
 	spawn(5)		// allow map load
 		conveyors = list()
 		for(var/obj/machinery/conveyor/C in machines)
 			if(C.id == id)
 				conveyors += C
+	*/
 
 // update the icon depending on the position
 
