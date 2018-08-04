@@ -5,7 +5,7 @@
 	var/gib_targets = 1 //Гибать
 	icon = 'icons/stalker/stalker.dmi'
 	var/deletable = 1 //Self-deletable dead bodies
-	speak_chance = 4
+	speak_chance = 3
 
 /*
 /mob/living/simple_animal/hostile/mutant/death(gibbed)
@@ -112,7 +112,7 @@
 						'sound/stalker/mobs/mutants/idle/bdog_idle_4.ogg')
 	death_sound = 'sound/stalker/mobs/mutants/death/dog_death.ogg'
 	melee_damage_lower = 10
-	melee_damage_upper = 20
+	melee_damage_upper = 15
 	maxHealth = 25
 	fearborder = 10
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -129,7 +129,14 @@
 	loot = list(/obj/item/weapon/stalker/loot/dog_tail, /obj/nothing, /obj/nothing)
 	random_loot = 1
 	attack_type = "bite"
-	move_to_delay = 1.5 //Real speed of a mob
+	move_to_delay = 1.2 //Real speed of a mob
+
+/mob/living/simple_animal/hostile/mutant/dog/AttackingTarget()
+	..()
+	if(istype(target, /mob/living/carbon))
+		var/mob/living/carbon/C = target
+		if(C.health > 25)
+			walk_away(src, target, 8, move_to_delay)
 
 /mob/living/simple_animal/hostile/mutant/snork
 	name = "snork"
@@ -229,12 +236,12 @@
 	emote_see = list("shrieks aggressively!")
 	maxHealth = 40
 	healable = 5
-	melee_damage_lower = 20
+	melee_damage_lower = 10
 	attack_sound = 'sound/stalker/mobs/mutants/attack/flesh_attack.ogg'
 	idle_sounds = list('sound/stalker/mobs/mutants/idle/flesh_idle_1.ogg',
 						'sound/stalker/mobs/mutants/idle/flesh_idle_2.ogg')
 	death_sound = 'sound/stalker/mobs/mutants/death/flesh_death.ogg'
-	melee_damage_upper = 30
+	melee_damage_upper = 25
 	fearborder = 18
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 4
@@ -243,7 +250,7 @@
 	faction = list("stalker_mutants1")
 	del_on_death = 0
 	environment_smash = 1
-	robust_searching = 0
+	robust_searching = 1
 	deathmessage = "The flesh makes a death scream!"
 	layer = MOB_LAYER - 0.1
 	loot = list(/obj/item/weapon/stalker/loot/flesh_eye, /obj/nothing)
@@ -268,13 +275,13 @@
 	emote_see = list("grunts aggressively!")
 	maxHealth = 150
 	healable = 1
-	melee_damage_lower = 20
+	melee_damage_lower = 25
 	attack_sound = 'sound/stalker/mobs/mutants/attack/boar_attack.ogg'
 	idle_sounds = list('sound/stalker/mobs/mutants/idle/boar_idle_1.ogg',
 						'sound/stalker/mobs/mutants/idle/boar_idle_2.ogg',
 						'sound/stalker/mobs/mutants/idle/boar_idle_3.ogg')
 	death_sound = 'sound/stalker/mobs/mutants/death/boar_death.ogg'
-	melee_damage_upper = 45
+	melee_damage_upper = 40
 	fearborder = 18
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 4
@@ -283,7 +290,7 @@
 	faction = list("stalker_mutants1")
 	del_on_death = 0
 	environment_smash = 1
-	robust_searching = 0
+	robust_searching = 1
 	deathmessage = "The boar makes a death scream!"
 	layer = MOB_LAYER - 0.1
 	loot = list(/obj/item/weapon/stalker/loot/boar_leg, /obj/nothing, /obj/nothing)
@@ -315,12 +322,12 @@
 	emote_see = list("growls!", "roars!")
 	maxHealth = 350
 	healable = 1
-	melee_damage_lower = 25
+	melee_damage_lower = 30
 	attack_sound = 'sound/stalker/mobs/mutants/attack/bloodsucker_attack.ogg'
 	idle_sounds =	list('sound/stalker/mobs/mutants/idle/bloodsucker_idle_1.ogg'
 						)
 	death_sound = 'sound/stalker/mobs/mutants/death/bloodsucker_death.ogg'
-	melee_damage_upper = 30
+	melee_damage_upper = 35
 	fearborder = 0
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 4
@@ -335,8 +342,8 @@
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "claw"
-	move_to_delay = 1.4
-	speak_chance = 10
+	move_to_delay = 1.65
+	speak_chance = 8
 
 /mob/living/simple_animal/hostile/mutant/bloodsucker/Life()
 	if(..())
@@ -361,7 +368,7 @@
 	if(idle_sounds)
 		if(rand(0,200) < speak_chance)
 			var/s = safepick(idle_sounds)
-			playsound(src, s, 65, 1, 15, 15)
+			playsound(src, s, 65, 1, 15, 7)
 
 /mob/living/simple_animal/hostile/mutant/bloodsucker/AttackingTarget()
 	..()
@@ -371,3 +378,46 @@
 		if(C.health > 35)
 			icon_state = "bloodsucker_invisible"
 			walk_away(src, target, 7, move_to_delay)
+
+/mob/living/simple_animal/hostile/mutant/pseudog
+	name = "psy-dog"
+	desc = "Ломахатый пёс."
+	eng_desc = "Shaggy dog."
+	turns_per_move = 5
+	speed = 3
+	a_intent = "harm"
+	search_objects = 1
+	icon_state = "psydog"
+	icon_living = "psydog"
+	icon_dead = "psydog_dead"
+	attacktext = "bites"
+	speak_emote = list("growls", "roars")
+	emote_see = list("growls!", "roars!")
+	maxHealth = 80
+	healable = 1
+	melee_damage_lower = 15
+	attack_sound = 'sound/stalker/mobs/mutants/attack/pdog_attack.ogg'
+	idle_sounds =	list('sound/stalker/mobs/mutants/idle/pdog_idle_1.ogg',
+						'sound/stalker/mobs/mutants/idle/pdog_idle_2.ogg',
+						'sound/stalker/mobs/mutants/idle/pdog_idle_3.ogg',
+						'sound/stalker/mobs/mutants/idle/pdog_idle_4.ogg'
+						)
+	death_sound = 'sound/stalker/mobs/mutants/death/pdog_death.ogg'
+	melee_damage_upper = 20
+	fearborder = 0
+	see_invisible = SEE_INVISIBLE_MINIMUM
+	see_in_dark = 4
+	minbodytemp = 0
+	maxbodytemp = 1500
+	faction = list("stalker_mutants1")
+	del_on_death = 0
+	robust_searching = 1
+	deathmessage = "The pseudog makes a sinister howl!"
+	layer = MOB_LAYER - 0.1
+	loot = list(/obj/item/weapon/stalker/loot/pseudo_tail, /obj/nothing, /obj/nothing)
+	random_loot = 1
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	attack_type = "bite"
+	move_to_delay = 1.4
+	speak_chance = 10
+
