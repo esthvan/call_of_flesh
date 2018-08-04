@@ -25,8 +25,8 @@
 	eng_desc = "Snork feet contain a huge number of highly elastic tendons. This explains the beast's ability to make those unbelievably long jumps."
 	icon_state = "snork"
 
-/obj/item/weapon/stalker/loot/psevdo_tail
-	name = "psevdodog tail"
+/obj/item/weapon/stalker/loot/pseudo_tail
+	name = "pseudo-dog tail"
 	desc = "Устойчивость кожи мутировавших собак к химическому и электрическому воздействию давно обратила на себ&#255; внимание учёных. Из-за отсутстви&#255; жировых отложений хвосты собак наиболее подход&#255;т дл&#255; лабораторных исследований."
 	icon_state = "psevdopes"
 
