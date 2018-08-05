@@ -196,8 +196,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!istype(usr, /mob/dead/observer))
 		usr << "Not when you're not dead!"
 		return
-	if(!(client && client.holder))
-		usr << "No."
+	//if(!(client && client.holder))
+	//	usr << "No."
 		return
 	usr.verbs -= /mob/dead/observer/proc/dead_tele
 	spawn(30)
@@ -224,16 +224,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/list/mobs = getpois(skip_mindless=1)
 	var/input = input("Please, select a mob!", "Haunt", null, null) as null|anything in mobs
 	var/mob/target = mobs[input]
-	if (!(client && client.holder))
-		return
+	//if (!(client && client.holder))
+	//	return
 	ManualFollow(target)
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(atom/movable/target)
 	if (!istype(target))
 		return
-	if (!(client && client.holder))
-		return
+	//if (!(client && client.holder))
+	//	return
 
 	var/icon/I = icon(target.icon,target.icon_state,target.dir)
 
@@ -273,8 +273,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Teleport to a mob"
 
 	if(istype(usr, /mob/dead/observer)) //Make sure they're an observer!
-		if (!(client && client.holder))
-			return
+		//if (!(client && client.holder))
+		//	return
 
 		var/list/dest = list() //List of possible destinations (mobs)
 		var/target = null	   //Chosen target.
