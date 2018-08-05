@@ -6,6 +6,7 @@
 #define OXY			"oxy"
 #define CLONE		"clone"
 #define STAMINA 	"stamina"
+#define PSY			"psy"
 
 #define STUN		"stun"
 #define WEAKEN		"weaken"
@@ -16,6 +17,7 @@
 #define EYE_BLUR	"eye_blur"
 #define DROWSY		"drowsy"
 #define JITTER		"jitter"
+#define AGONY     "agony"     // Added in PAIN!
 
 //I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches
 #define BRUTELOSS 1

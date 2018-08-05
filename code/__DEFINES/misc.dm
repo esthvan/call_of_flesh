@@ -331,3 +331,15 @@ var/list/bloody_footprints_cache = list()
 
 #define APPEARANCE_UI_IGNORE_ALPHA			(RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|RESET_ALPHA|PIXEL_SCALE)
 #define APPEARANCE_UI						(RESET_COLOR|RESET_TRANSFORM|NO_CLIENT_COLOR|PIXEL_SCALE)
+
+#define MATRIX_GREYSCALE list(0.33, 0.33, 0.33,\
+								0.33, 0.33, 0.33,\
+								0.33, 0.33, 0.33)
+
+#define NIGHTVISION_I_MATRIX list(0, 1, 0,\
+								0, 1, 0,\
+								0, 1, 0)
+
+#define NIGHTVISION_II_MATRIX list(0, 0, 0,\
+								1, 1, 1,\
+								0, 0, 0)
