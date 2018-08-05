@@ -230,8 +230,11 @@
 		if(DMG_TYPE_RADIATION)
 			L.rad_act(src.damage_amount)
 		if(DMG_TYPE_GIB)
-			L.gib()
-			trapped.Remove(L)
+			if(L.health <= -50)
+				L.gib()
+				trapped.Remove(L)
+			else
+				L.apply_damage(src.damage_amount, BRUTE, null, L.getarmor(null, "meele"))
 		if(DMG_TYPE_IGNITION)
 			if(istype(L, /mob/living/simple_animal/hostile))
 				L.apply_damage(40, BURN, null, 0)
@@ -283,7 +286,7 @@
 
 /obj/anomaly/karusel
 	name = "anomaly"
-	damage_amount = 40
+	damage_amount = 30
 	cooldown = 2
 	delay = 1
 	sound = 'sound/stalker/anomalies/gravi_blowout1.ogg'
@@ -300,13 +303,22 @@
 				/obj/item/weapon/artifact/nightstar = 1.5,
 				/obj/item/weapon/artifact/soul = 0.5
 				)
-/*
-/obj/anomaly/karusel/process()
+
+/obj/anomaly/karusel/New()
 	..()
+	SSobj.processing.Add(src)
+
+/obj/anomaly/holodec/Destroy()
+	..()
+	SSobj.processing.Remove(src)
+
+/obj/anomaly/karusel/process()
 	for(var/atom/movable/A in range(2, src))
-		if(!O.anchored)
-			step_towards(O,src)
-*/
+		if(!A.anchored)
+			step_towards(A,src)
+			if(!(A in trapped))
+				Crossed(A)
+
 /obj/anomaly/tramplin
 	name = "anomaly"
 	damage_amount = 15
@@ -457,10 +469,10 @@
 	if(!istype(get_step(src, new_dir), /turf/stalker/floor))
 		return
 
-	for(var/obj/anomaly/holodec/H in get_step(src, new_dir))
+	if(locate(/obj/anomaly/holodec) in get_step(src, new_dir))
 		return
 
-	for(var/obj/structure/S in get_step(src, new_dir))
+	if(locate(/obj/structure) in get_step(src, new_dir))
 		return
 
 	var/obj/anomaly/holodec/splash/son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, new_dir))
