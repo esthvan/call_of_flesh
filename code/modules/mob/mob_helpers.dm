@@ -425,6 +425,16 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 	var/list/colour_matrix = null
 
+	if(isblowout && istype(get_area(src), /area/stalker/blowout))
+		if(prob(75))
+			colour_matrix = list(1, 0, 0,\
+								0.5, 0.5, 0,\
+								0.5, 0, 0.5)
+		else
+			colour_matrix = list(1, 0, 0,\
+								0.25, 0.75, 0,\
+								0.25, 0, 0.75)
+
 	if(psyloss)
 		var/newcolor = min((psyloss/100)*0.33, 0.33)
 		var/newcolor2 = 1 - (2 * newcolor)
