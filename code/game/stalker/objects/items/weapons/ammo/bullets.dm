@@ -101,8 +101,8 @@
 	spread = 3
 
 /obj/item/projectile/bullet/bullet762x25
-	damage = 15
-	armour_penetration = 10
+	damage = 17
+	armour_penetration = 9
 	range = 40
 	spread = 3
 
