@@ -98,7 +98,7 @@
 // Doors!
 #define DOOR_CRUSH_DAMAGE 10
 
-#define HUNGER_FACTOR              0.15 // Factor of how fast mob nutrition decreases
+#define HUNGER_FACTOR              0.05 // Factor of how fast mob nutrition decreases
 #define REM 0.2 // Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
 #define CHEM_TOUCH 1
 #define CHEM_INGEST 2
@@ -399,27 +399,8 @@
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
-// Damage things. TODO: Merge these down to reduce on defines.
-// Way to waste perfectly good damage-type names (BRUTE) on this... If you were really worried about case sensitivity, you could have just used lowertext(damagetype) in the proc.
-#define BRUTE     "brute"
-#define BURN      "fire"
-#define TOX       "tox"
-#define OXY       "oxy"
-#define CLONE     "clone"
-#define HALLOSS   "halloss"
-
 #define CUT       "cut"
 #define BRUISE    "bruise"
-
-#define STUN      "stun"
-#define WEAKEN    "weaken"
-#define PARALYZE  "paralize"
-#define IRRADIATE "irradiate"
-#define AGONY     "agony"     // Added in PAIN!
-#define SLUR      "slur"
-#define STUTTER   "stutter"
-#define EYE_BLUR  "eye_blur"
-#define DROWSY    "drowsy"
 
 // I hate adding defines like this but I'd much rather deal with bitflags than lists and string searches.
 #define BRUTELOSS 1
