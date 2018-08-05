@@ -24,7 +24,6 @@
 	var/obj/screen/whitenoise = null
 	var/obj/screen/nightvision = null
 	var/obj/screen/pulseimage = null
-	var/obj/screen/psydamage = null
 	//var/obj/screen/lighting_backdrop_lit = null
 	//var/obj/screen/lighting_backdrop_unlit = null
 	//var/obj/screen/sun_lighting_backdrop_lit = null
