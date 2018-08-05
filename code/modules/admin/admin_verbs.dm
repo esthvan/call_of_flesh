@@ -486,7 +486,7 @@ var/list/admin_verbs_hideable = list(
 		message_admins("[key_name_admin(usr)] changed time of day to [daytime].")
 
 /client/proc/SetAverageCooldownBlowout()
-	set name = "Set Blowout Cooldown (min)"
+	set name = "Set Blowout Cooldown"
 	set category = "Stalker"
 
 	var/average_cooldown = input(usr, "Input blowout average cooldown.", " S.T.A.L.K.E.R.") as num|null
