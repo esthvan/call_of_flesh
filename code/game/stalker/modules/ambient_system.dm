@@ -79,7 +79,8 @@
 	return 1
 
 /mob/living/carbon/human/handle_sounds()
-	if(..())
+	if(!..())
+		return
 
 	if(src.psyloss >= 25 && (!ambient_psy || (world.time >= ambient_psy.last_time + ambient_psy.real_cooldown)))
 		ambient_psy = sound(file = 'sound/stalker/ambience/psy_amb.ogg')
