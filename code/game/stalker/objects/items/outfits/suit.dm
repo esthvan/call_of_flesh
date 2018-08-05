@@ -217,7 +217,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 
 /obj/item/nightvision/attack_self(mob/user)
 
-	if(!loc || !loc.loc || !istype(loc.loc, /mob/living/carbon/human))
+	if(!loc || !loc.loc || !istype(loc.loc, /mob/living/carbon))
 		return
 
 	var/mob/living/carbon/C = loc.loc
@@ -235,7 +235,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 			//H.nightvision.alpha = 0
 		//overlay = null
 		invis_view = SEE_INVISIBLE_LIVING
-		sleep(5)
+		//sleep(5)
 	else
 		active = 1
 		playsound(usr, 'sound/stalker/nv_start.ogg', 50, 1, -1)
