@@ -571,7 +571,7 @@
 	eng_desc = "Generates a stash with a certain chance at the start of the round."
 	density = 1
 	var/cache_chance = 8	//percent
-	var/cache_quality = -1	//from 0 to 3, -1 for 0
+	var/cache_quality = -1	//from 0 to 3, -1 for random
 	var/cache_size = 0		//from 0 to 3
 	var/obj/item/weapon/storage/stalker/cache/internal_cache = null
 
@@ -592,7 +592,7 @@
 		if(3)
 			internal_cache = new /obj/item/weapon/storage/stalker/cache/large(src)
 
-	if(cache_quality != -1)
+	if(cache_quality == -1)
 		switch(z)
 			if(4 to INFINITY)
 				cache_quality = rand(1, 2)//rand(2, 3)
@@ -672,35 +672,30 @@
 
 	var/combined_w_class = 0
 	var/combined_cost = 0
-	for(var/i = 0, i < storage_slots, i++)
-		if(combined_w_class >= max_combined_w_class)
-			break
 
-		if(combined_cost >= max_cost)
-			break
+	world << max_cost
+	world << max_combined_w_class
+
+	while(combined_w_class < max_combined_w_class && combined_cost < max_cost)
 
 		var/datum/data/stalker_equipment/SE = safepick(lootspawn)
 
 		if(!SE)
 			continue
-
 		var/A = SE.equipment_path
 		combined_cost += SE.cost
 
 		if(!A)
 			continue
-
 		var/obj/item/I = new A(src)
 
 		if(I.w_class > max_w_class)
 			PlaceInPool(I)
 			continue
-
 		//if(I.w_class >= w_class && (istype(I, /obj/item/weapon/storage)))
 		//	continue
 
 		combined_w_class +=  I.w_class
-
 		handle_item_insertion(I, prevent_warning = 1)
 
 /obj/item/weapon/storage/stalker/cache/small
