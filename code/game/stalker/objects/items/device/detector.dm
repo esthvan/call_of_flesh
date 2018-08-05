@@ -22,6 +22,7 @@
 /obj/item/device/detector/blink
 	name = "echo"
 	desc = "Устаревша&#255; модель детектора аномальной активности. Реагирует звуковым сигналом на попадание аномальных частичек в специальную камеру при приближении к аномали&#255;м. Кроме того, может регистрировать присутствие артефактов и измер&#255;ть рассто&#255;ние до ближайшего из них — рассто&#255;ние до артефакта определ&#255;етс&#255; периодичностью подаваемого звукового сигнала. Режим поиска артефактов включаетс&#255; подн&#255;тием крышки-антенны на лицевой панели прибора. Ввиду простоты конструкции способен находить только самые распространённые артефакты."
+	eng_desc = "This dated anomalous activity detector produces an alarm signal when anomalous particles enter a special chamber as you approach an anomaly. It can also register the presence of artifacts and measure the distance to the nearest one. The distance is indicated by the frequency of the sound the detector emits. To switch to artifact search mode, open the device's front cover. Due to its simple design, Echo can only be used to locate the most common artifacts."
 	icon_state_inactive = "echo_off"
 	icon_state_active = "echo_on"
 	icon_state_null = "echo_null"
@@ -31,6 +32,7 @@
 /obj/item/device/detector/bear
 	name = "bear"
 	desc = "Детектор аномальной активности прошлого поколени&#255;. Снабжён локатором аномальных образований и светодиодным табло дл&#255; отображени&#255; направлени&#255; на артефакт, причём способен не только обнаруживать артефакты, но и определ&#255;ть рассто&#255;ни&#255; до них. Режим поиска артефактов включаетс&#255; подн&#255;тием крышки-антенны на лицевой стороне прибора. К сожалению, уже несколько устаревший список обнаруживаемых артефактов вшит в прибор намертво – на аппаратном уровне."
+	eng_desc = "The last generation of anomalous activity detector can be used to locate anomalous formations and has a color diode panel, which not only indicates the direction of artifacts, but also measures the distance to them. To switch to artifact search mode, open the device's front cover. Unfortunately the device is programmed with a somewhat outdated list of detectable artifacts."
 	icon_state = "bear_off"
 	icon_state_inactive = "bear_off"
 	icon_state_active = "bear_on"
@@ -41,6 +43,7 @@
 /obj/item/device/detector/veles
 	name = "veles"
 	desc = "Детектор-сканер нового поколени&#255;, используемый учёными. Благодар&#255; трём усовершенствованным регистрационным камерам расположение артефакта относительно детектора отображаетс&#255; на специальном экране. Способен фиксировать излучение и присутствие аномалий. Режим поиска артефактов включаетс&#255; подн&#255;тием индикатора-табло на лицевой стороне прибора; в данном режиме способен обнаруживать все известные науке артефакты."
+	eng_desc = "A next generation scientific detection scanner. Thanks to three modernized detection chambers, the position of artifacts is shown on a special display screen. When closed, the device registers only radiation and anomalies. To switch to artifact search mode, open the front LED display. When in search mode, the detector is capable of locating all artifacts known to science."
 	icon_state = "veles_off"
 	icon_state_inactive = "veles_off"
 	icon_state_active = "veles_on"
