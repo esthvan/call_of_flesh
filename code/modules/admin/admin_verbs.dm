@@ -512,7 +512,7 @@ var/list/admin_verbs_hideable = list(
 		src << "<span class='interface'>Blowout will start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1] min.</span>"
 
 	log_admin("[key_name(usr)] forced blowout to start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
-	message_admins("[key_name_admin(usr)] changed time of day to [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
+	message_admins("[key_name_admin(usr)] forced blowout to start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
 
 /client/proc/SetRespawnRate()
 	set name = "Set Respawn Rate"
