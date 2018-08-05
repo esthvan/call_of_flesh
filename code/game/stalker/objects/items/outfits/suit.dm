@@ -204,10 +204,9 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	var/vision_flags = 0
 	var/darkness_view = 4//Base human is 2
 	var/invis_view = SEE_INVISIBLE_LIVING
-	var/list/icon/current = list()
 	action_button_name = "Toggle Night Vision"
 	var/active = 0
-	var/obj/screen/overlay = null
+	var/list/colour_matrix = NIGHTVISION_I_MATRIX
 
 /obj/item/nightvision/New()
 	..()
@@ -231,19 +230,19 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 		active = 0
 		playsound(usr, 'sound/stalker/nv_off.ogg', 50, 1, -1)
 		usr << "You deactivate the optical matrix on the [src]."
-		if(istype(usr, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = usr
-			H.nightvision.alpha = 0
+		//if(istype(usr, /mob/living/carbon/human))
+			//var/mob/living/carbon/human/H = usr
+			//H.nightvision.alpha = 0
 		//overlay = null
 		invis_view = SEE_INVISIBLE_LIVING
-		//sleep(5)
+		sleep(5)
 	else
 		active = 1
 		playsound(usr, 'sound/stalker/nv_start.ogg', 50, 1, -1)
 		usr << "You activate the optical matrix on the [src]."
-		if(istype(usr, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = usr
-			H.nightvision.alpha = 125
+		//if(istype(usr, /mob/living/carbon/human))
+			//var/mob/living/carbon/human/H = usr
+			//H.nightvision.alpha = 125
 		//overlay = global_hud.nvg
 		invis_view = SEE_INVISIBLE_MINIMUM
 		sleep(5)
@@ -253,9 +252,9 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 		active = 0
 		playsound(usr, 'sound/stalker/nv_off.ogg', 50, 1, -1)
 		user << "You deactivate the optical matrix on the [src]."
-		if(istype(usr, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = user
-			H.nightvision.alpha = 0
+		//if(istype(usr, /mob/living/carbon/human))
+		//	var/mob/living/carbon/human/H = user
+		//	H.nightvision.alpha = 0
 		invis_view = SEE_INVISIBLE_LIVING
 
 /obj/item/clothing/ui_action_click()
@@ -264,10 +263,14 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 
 /obj/item/nightvision/ui_action_click()
 	attack_self()
-
+/*
 /obj/item/nightvision/New()
 	..()
 	overlay = global_hud.nvg
+*/
+
+/obj/item/nightvision/advanced
+	colour_matrix = NIGHTVISION_II_MATRIX
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -295,6 +298,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	armor = list(melee = 40, bullet = 30, laser = 90,burn = 90, bomb = 60, bio = 90, rad = 90, electro = 90)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	icon_state = "ecologg_helmet"
 	burn_state = FIRE_PROOF
 	CBBS_h = 1

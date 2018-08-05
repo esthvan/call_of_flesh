@@ -35,10 +35,8 @@
 	if (notransform)
 		return
 
-	/*
-	if(ckey && !karma)
-		karma =	StalkerKarma.InitKarmaForCkey(ckey)
-	*/
+	if(zombiefied)
+		return
 
 	tinttotal = tintcheck() //here as both hud updates and status updates call it
 
@@ -57,6 +55,12 @@
 
 		//Прочность костюмов
 		handle_suit_durability()
+
+		//Обновляем цвета
+		update_client_colour()
+
+		//Shaking the screen, playing looped sounds etc
+		handle_special_effects()
 
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
@@ -93,6 +97,23 @@
 		visible_message("<span class='danger'>[S] развалился пр&#255;мо на [src]</span>", "<span class='warning'>[S] развалилс&#255; пр&#255;мо на вас!</span>")
 		qdel(S)
 	update_icons()
+
+/mob/living/carbon/human/proc/handle_special_effects()
+	var/k = (psyloss/200)
+
+	switch(psyloss)
+		if(150 to 200)
+			if(prob(10))
+				shake_camera(src, 5 * k, 1)
+
+		if(100 to 150)
+			return
+
+		if(25 to 100)
+			return
+
+		if(0 to 25)
+			return
 
 /mob/living/carbon/human/handle_disabilities()
 	..()

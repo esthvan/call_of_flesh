@@ -188,9 +188,8 @@ datum/proc/on_varedit(modified_var) //called whenever a var is edited
 			CLONE:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=clone'>[M.getCloneLoss()]</a>
 			BRAIN:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=brain'>[M.getBrainLoss()]</a>
 			STAMINA:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=stamina'>[M.getStaminaLoss()]</a>
+			PSY:<font size='1'><a href='?_src_=vars;mobToDamage=\ref[D];adjustDamage=psy'>[M.getPsyLoss()]</a>
 			</font>
-
-
 			"}
 		else
 			body += "<a href='?_src_=vars;datumedit=\ref[D];varnameedit=name'><b>[D]</b></a>"
@@ -910,6 +909,7 @@ body
 				if("brain")	L.adjustBrainLoss(amount)
 				if("clone")	L.adjustCloneLoss(amount)
 				if("stamina") L.adjustStaminaLoss(amount)
+				if("psy")L.adjustPsyLoss(amount)
 				else
 					usr << "You caused an error. DEBUG: Text:[Text] Mob:[L]"
 					return

@@ -299,6 +299,9 @@ Sorry Giacom. Please don't be mad :(
 /mob/living/proc/getStaminaLoss()
 	return staminaloss
 
+/mob/living/proc/getPsyLoss()
+	return psyloss
+
 /mob/living/proc/adjustStaminaLoss(amount)
 	if(status_flags & GODMODE)	return 0
 	staminaloss = min(max(staminaloss + amount, 0),(maxHealth*2))
@@ -306,6 +309,16 @@ Sorry Giacom. Please don't be mad :(
 /mob/living/proc/setStaminaLoss(amount)
 	if(status_flags & GODMODE)	return 0
 	staminaloss = amount
+
+/mob/living/proc/adjustPsyLoss(amount)
+	if(status_flags & GODMODE)	return 0
+	psyloss = min(max(psyloss + amount, 0),(maxHealth*2))
+	handle_regular_status_updates()
+
+/mob/living/proc/setPsyLoss(amount)
+	if(status_flags & GODMODE)	return 0
+	psyloss = amount
+	handle_regular_status_updates()
 
 /mob/living/proc/getMaxHealth()
 	return maxHealth
@@ -426,6 +439,7 @@ Sorry Giacom. Please don't be mad :(
 	setCloneLoss(0)
 	setBrainLoss(0)
 	setStaminaLoss(0)
+	setPsyLoss(0)
 	SetParalysis(0)
 	SetStunned(0)
 	SetWeakened(0)

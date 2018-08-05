@@ -410,3 +410,41 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		return 1
 	else
 		return 0
+
+/mob/proc/get_screen_colour()
+
+/mob/proc/update_client_colour(var/time = 10) //Update the mob's client.color with an animation the specified time in length.
+	if(!client) //No client_colour without client. If the player logs back in they'll be back through here anyway.
+		return
+	client.colour_transition(get_screen_colour(), time = time) //Get the colour matrix we're going to transition to depending on relevance (magic glasses first, eyes second).
+
+/mob/living/carbon/human/get_screen_colour() //Fetch the colour matrix from wherever (e.g. eyes) so it can be compared to client.color.
+	. = ..()
+	if(.)
+		return .
+
+	var/list/colour_matrix = null
+
+	if(psyloss)
+		var/newcolor = min((psyloss/100)*0.33, 0.33)
+		var/newcolor2 = 1 - (2 * newcolor)
+
+		colour_matrix = list(newcolor2, newcolor, newcolor,\
+							newcolor, newcolor2, newcolor,\
+							newcolor, newcolor, newcolor2)
+
+	if(head)
+		if(istype(head, /obj/item/clothing/head))
+			var/obj/item/clothing/head/H = head
+			if(H.nvg && H.nvg.active)
+
+				colour_matrix = H.nvg.colour_matrix
+
+	else if(wear_mask)
+		if(wear_mask.nvg && wear_mask.nvg.active)
+			colour_matrix = wear_mask.nvg.colour_matrix
+
+	return colour_matrix
+
+/client/proc/colour_transition(var/list/colour_to = null, var/time = 10) //Call this with no parameters to reset to default.
+	animate(src, color=colour_to, time=time, easing=SINE_EASING)

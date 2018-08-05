@@ -312,6 +312,7 @@
 			adjustBruteLoss(-0.5)
 			adjustFireLoss(-0.5)
 			adjustToxLoss(-0.5)
+			adjustPsyLoss(-2)
 		sleeping = max(sleeping-1, 0)
 		if(prob(10) && health && !hal_crit )
 			spawn(0)
@@ -485,7 +486,6 @@
 		if(stat != DEAD)
 			whitenoisealpha = 100 - health + (radiation*0.125)
 		whitenoise.alpha = whitenoisealpha
-
 	..()
 
 	return 1

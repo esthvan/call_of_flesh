@@ -28,11 +28,13 @@
 		if(STAMINA)
 			adjustStaminaLoss(total)
 			shake_camera(src, Clamp(total, 0, 30), Clamp(total/100, 0.1, 1))
+		if(PSY)
+			adjustPsyLoss(total)
 	updatehealth()
 	return 1
 
 
-/mob/living/proc/apply_damages(brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, def_zone = null, blocked = 0, stamina = 0)
+/mob/living/proc/apply_damages(brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, psy = 0, def_zone = null, blocked = 0, stamina = 0)
 	if(blocked >= 100)	return 0
 	if(brute)	apply_damage(brute, BRUTE, def_zone, blocked)
 	if(burn)	apply_damage(burn, BURN, def_zone, blocked)
@@ -40,6 +42,7 @@
 	if(oxy)		apply_damage(oxy, OXY, def_zone, blocked)
 	if(clone)	apply_damage(clone, CLONE, def_zone, blocked)
 	if(stamina) apply_damage(stamina, STAMINA, def_zone, blocked)
+	if(psy)		apply_damage(psy, PSY, def_zone, blocked)
 	return 1
 
 

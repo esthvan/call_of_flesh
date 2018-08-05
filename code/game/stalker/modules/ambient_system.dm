@@ -1,7 +1,8 @@
 /mob
-	var/sound/ambient_music = null 			//Музыка
-	var/sound/ambient_environment = null	//Случайные короткие звуки длительностью не более 12 секунд
-	var/sound/ambient_background = null		//Залупленный звук
+	var/sound/ambient_music			= null		//Музыка
+	var/sound/ambient_environment	= null		//Случайные короткие звуки длительностью не более 12 секунд
+	var/sound/ambient_background	= null		//Залупленный звук
+	var/sound/ambient_psy			= null		//Пси-звук
 
 /sound
 	var/last_time = 0
@@ -9,9 +10,8 @@
 	var/transition = 0
 
 /mob/proc/handle_sounds()
-
 	if(!src.client)
-		return
+		return 0
 
 	var/area/A = get_area(src)
 
@@ -75,6 +75,21 @@
 				ambient_background.Set_Sound(709, 35, 0, A.environment)
 
 				src << ambient_background
+
+	return 1
+
+/mob/living/carbon/human/handle_sounds()
+	if(..())
+
+	if(src.psyloss >= 25 && (!ambient_psy || (world.time >= ambient_psy.last_time + ambient_psy.real_cooldown)))
+		ambient_psy = sound(file = 'sound/stalker/ambience/psy_amb.ogg')
+		////////////////////////
+		ambient_psy.last_time = world.time
+		ambient_psy.real_cooldown = 110
+		////////////////////////
+		ambient_psy.Set_Sound(710, 60*(psyloss/200), 0, -1)
+
+		src << ambient_psy
 
 /sound/proc/Transition(var/mob/M)
 	transition = 1

@@ -1210,6 +1210,8 @@
 		if(STAMINA)
 			H.adjustStaminaLoss(damage * blocked)
 			shake_camera(H, damage, Clamp(damage/100, 0.1, 1))
+		if(PSY)
+			H.adjustPsyLoss(damage * blocked)
 	return 1
 
 /datum/species/proc/on_hit(obj/item/projectile/proj_type, mob/living/carbon/human/H)

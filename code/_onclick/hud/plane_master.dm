@@ -10,13 +10,15 @@
 	name = "game world plane master"
 	plane = GAME_PLANE
 	blend_mode = BLEND_MULTIPLY
+	appearance_flags = PLANE_MASTER | RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA
 	invisibility     = INVISIBILITY_LIGHTING
 	color = list(null,null,null,"#0000","#000f")
 
 /obj/screen/plane_master/game_world/backdrop(mob/mymob)
 	filters = list()
-	if(istype(mymob) && mymob.client && mymob.client.prefs && mymob.client.prefs.ambientocclusion)
-		filters += AMBIENT_OCCLUSION
+	if(istype(mymob) && mymob.client)
+		if(mymob.client.prefs && mymob.client.prefs.ambientocclusion)
+			filters += AMBIENT_OCCLUSION
 
 /obj/screen/plane_master/lighting
 	name = "sun lighting plane master"
@@ -25,7 +27,7 @@
 	blend_mode = BLEND_ADD
 	icon = 'icons/effects/alphacolors.dmi'
 	invisibility     = INVISIBILITY_LIGHTING
-	appearance_flags = RESET_TRANSFORM | RESET_ALPHA | PLANE_MASTER// | KEEP_TOGETHER
+	appearance_flags = NO_CLIENT_COLOR | RESET_TRANSFORM | RESET_ALPHA | PLANE_MASTER// | KEEP_TOGETHER
 	mouse_opacity = 0
 	//color = list(null,null,null,"#0000","#000f")
 
@@ -41,3 +43,9 @@
 /obj/screen/plane_master/lighting/Destroy()
 	SSsunlight.sunlighting_planes -= src
 	. = ..()
+
+/obj/screen/plane_master/hud
+	name = "hud plane master"
+	plane = HUD_PLANE
+	blend_mode = BLEND_OVERLAY
+	appearance_flags = NO_CLIENT_COLOR | RESET_TRANSFORM | RESET_ALPHA | PLANE_MASTER

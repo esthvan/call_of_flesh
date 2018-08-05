@@ -114,6 +114,7 @@ obj/machinery/campfire/barrel
 			H.adjustBruteLoss(-0.5)
 			H.adjustFireLoss(-0.5)
 			H.adjustToxLoss(-0.5)
+			H.adjustPsyLoss(-2)
 
 obj/machinery/campfire/process()
 	if(!on)
@@ -130,7 +131,7 @@ obj/machinery/campfire/process()
 				usr.visible_message("[usr] lit a fire.", "<span class='notice'>You lit a fire.</span>")
 				update_icon()
 				desc = "ќт костра исходит тЄпло и м&#255;гкий свет."
-				eng_desc = "Campfire emites warm and calmness. You can heal by sitting near it."
+				eng_desc = "Campfire emites warm and calmness. You can heal by sitting in it's range."
 				set_light(4, 1, firecolor)
 				spawn(10)
 					set_light(0, 1, firecolor)
@@ -148,7 +149,7 @@ obj/machinery/campfire/process()
 				usr.visible_message("[usr] lit a fire.", "<span class='notice'>You lit a fire.</span>")
 				update_icon()
 				desc = "ќт костра исходит тЄпло и м&#255;гкий свет."
-				eng_desc = "Campfire emites warm and calmness. You can heal by sitting near it."
+				eng_desc = "Campfire emites warm and calmness. You can heal by sitting in it's range."
 				set_light(4, 1, firecolor)
 				spawn(10)
 					set_light(0, 1, firecolor)
