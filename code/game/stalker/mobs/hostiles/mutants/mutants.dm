@@ -136,7 +136,7 @@
 	if(istype(target, /mob/living/carbon))
 		var/mob/living/carbon/C = target
 		if(C.health > 25)
-			var/anydir = pick(cardinal)
+			var/anydir = pick(alldirs)
 			target_last_loc = target.loc
 			walk_away(src, get_step(src, anydir), 7, move_to_delay)
 
@@ -379,7 +379,7 @@
 		var/mob/living/carbon/C = target
 		if(C.health > 35)
 			icon_state = "bloodsucker_invisible"
-			var/anydir = pick(cardinal)
+			var/anydir = pick(alldirs)
 			target_last_loc = target.loc
 			walk_away(src, get_step(src, anydir), 7, move_to_delay)
 
