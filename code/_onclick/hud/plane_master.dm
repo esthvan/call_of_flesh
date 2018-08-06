@@ -31,15 +31,6 @@
 	mouse_opacity = 0
 	//color = list(null,null,null,"#0000","#000f")
 
-/obj/screen/plane_master/real_lighting
-	name = "lighting plane master"
-	plane = LIGHTING_PLANE
-	blend_mode = BLEND_DEFAULT
-	icon = 'icons/effects/alphacolors.dmi'
-	invisibility     = INVISIBILITY_LIGHTING
-	appearance_flags = RESET_TRANSFORM | RESET_ALPHA | PLANE_MASTER// | KEEP_TOGETHER
-	mouse_opacity = 0
-
 /obj/screen/plane_master/lighting/backdrop(mob/mymob)
 	//mymob.lighting_backdrop_lit.alpha = 255
 	//mymob.lighting_backdrop_unlit.alpha = 255
