@@ -1037,6 +1037,7 @@ var/global/global_lentahtml = ""
 		</tr>\
 		</table>" + KPK.lentahtml
 		show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg)
+	show_dead_lenta_message(KPK_owner, name_owner, faction_owner, msg, isfactionchat = 0)
 	//var/eng_faction_s 	= faction_owner//get_eng_faction(faction_owner)
 
 /proc/add_faction_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
@@ -1058,6 +1059,7 @@ var/global/global_lentahtml = ""
 			</tr>\
 			</table>" + KPK.lentahtml
 			show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg, isfactionchat = 1)
+	show_dead_lenta_message(KPK_owner, name_owner, faction_owner, msg, isfactionchat = 1)
 	//var/eng_faction_s 	= faction_owner//get_eng_faction(faction_owner)
 
 /proc/show_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/obj/item/device/stalker_pda/KPK, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0, var/isfactionchat = 0)
@@ -1082,6 +1084,32 @@ var/global/global_lentahtml = ""
 		else
 			if(KPK.lenta_sound)
 				C << sound('sound/stalker/pda/sms.ogg', volume = 30)
+
+/proc/show_dead_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/name_owner, var/faction_owner, var/msg, var/isfactionchat = 0)
+	var/factioncolor	= get_faction_color(faction_owner)
+	if(isfactionchat)
+		msg = "<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK_owner]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\](faction chat):</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>"
+	else
+		msg = "<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK_owner]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>"
+
+	for(var/mob/M in player_list)
+
+		var/adminoverride = 0
+
+		if(M.client && M.client.holder && (M.client.prefs.chat_toggles & CHAT_DEAD))
+			adminoverride = 1
+
+		if(istype(M, /mob/new_player) && !adminoverride)
+			continue
+
+		if(M.stat != DEAD && !adminoverride)
+			continue
+
+		if(istype(M, /mob/dead/observer))
+			M << russian_html2text("<a href=?src=\ref[M];follow=\ref[src]>(F)</a> [msg]")
+		else
+			M << "[msg]"
+
 
 /obj/item/device/stalker_pda/proc/refresh_rating(var/mob/living/carbon/human/H)
 	var/count = 0
