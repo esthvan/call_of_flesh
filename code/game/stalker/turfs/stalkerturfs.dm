@@ -275,12 +275,104 @@ var/global/list/GryazEdgeCache
 	icon_state = "water"
 	layer = TURF_LAYER
 	overlay_priority = 5
+	var/busy = 0
+
+/turf/stalker/floor/water/attack_hand(mob/living/user)
+	if(!user || !istype(user))
+		return
+	if(!iscarbon(user))
+		return
+	if(!Adjacent(user))
+		return
+
+	if(busy)
+		user << "<span class='notice'>Someone's already washing here.</span>"
+		return
+	var/selected_area = parse_zone(user.zone_sel.selecting)
+	var/washing_face = 0
+	if(selected_area in list("head", "mouth", "eyes"))
+		washing_face = 1
+	user.visible_message("<span class='notice'>[user] start washing their [washing_face ? "face" : "hands"]...</span>", \
+						"<span class='notice'>You start washing your [washing_face ? "face" : "hands"]...</span>")
+	busy = 1
+
+	if(!do_after(user, 40, target = src))
+		busy = 0
+		return
+
+	busy = 0
+
+	user.visible_message("<span class='notice'>[user] washes their [washing_face ? "face" : "hands"] using [src].</span>", \
+						"<span class='notice'>You wash your [washing_face ? "face" : "hands"] using [src].</span>")
+	if(washing_face)
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			H.lip_style = null //Washes off lipstick
+			H.lip_color = initial(H.lip_color)
+			H.regenerate_icons()
+		user.drowsyness -= rand(2,3) //Washing your face wakes you up if you're falling asleep
+		user.drowsyness = Clamp(user.drowsyness, 0, INFINITY)
+	else
+		user.clean_blood()
+
+
+/turf/stalker/floor/water/attackby(obj/item/O, mob/user, params)
+	if(busy)
+		user << "<span class='warning'>Someone's already washing here!</span>"
+		return
+
+	if(istype(O, /obj/item/weapon/reagent_containers))
+		var/obj/item/weapon/reagent_containers/RG = O
+		if(RG.flags & OPENCONTAINER)
+			RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
+			user << "<span class='notice'>You fill [RG] from [src].</span>"
+			return
+
+	if(istype(O, /obj/item/weapon/melee/baton))
+		var/obj/item/weapon/melee/baton/B = O
+		if(B.bcell)
+			if(B.bcell.charge > 0 && B.status == 1)
+				flick("baton_active", src)
+				var/stunforce = B.stunforce
+				user.Stun(stunforce)
+				user.Weaken(stunforce)
+				user.stuttering = stunforce
+				B.deductcharge(B.hitcost)
+				user.visible_message("<span class='warning'>[user] shocks themself while attempting to wash the active [B.name]!</span>", \
+									"<span class='userdanger'>You unwisely attempt to wash [B] while it's still on.</span>")
+				playsound(src, "sparks", 50, 1)
+				return
+
+	if(istype(O, /obj/item/weapon/mop))
+		O.reagents.add_reagent("water", 5)
+		user << "<span class='notice'>You wet [O] in [src].</span>"
+		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
+
+	var/obj/item/I = O
+	if(!I || !istype(I))
+		return
+	if(I.flags & ABSTRACT) //Abstract items like grabs won't wash. No-drop items will though because it's still technically an item in your hand.
+		return
+
+	user << "<span class='notice'>You start washing [I]...</span>"
+	busy = 1
+	if(!do_after(user, 40, target = src))
+		busy = 0
+		return
+	busy = 0
+	O.clean_blood()
+	user.visible_message("<span class='notice'>[user] washes [I] using [src].</span>", \
+						"<span class='notice'>You wash [I] using [src].</span>")
 
 /turf/stalker/floor/water/Entered(atom/movable/A)
 	..()
 	if(istype(A, /mob/living))
 		var/mob/living/L = A
 		L.update_top_overlay()
+		if(istype(A, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = A
+			if(H.shoes)
+				H.shoes.clean_blood()
 
 /turf/stalker/floor/water/Exited(atom/movable/A)
 	..()
