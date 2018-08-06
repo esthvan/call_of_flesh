@@ -20,6 +20,7 @@
 	var/round_end_countdown = 60		// Post round murder death kill countdown
 
 	var/log_ooc = 0						// log OOC channel
+	var/log_looc = 0
 	var/log_access = 0					// log login/logout
 	var/log_say = 0						// log client say
 	var/log_admin = 0					// log admin actions
@@ -247,6 +248,8 @@
 					config.round_end_countdown = text2num(value)
 				if("log_ooc")
 					config.log_ooc = 1
+				if("log_looc")
+					config.log_looc = 1
 				if("log_access")
 					config.log_access = 1
 				if("log_say")

@@ -22,7 +22,7 @@
 /proc/log_adminsay(text)
 	if (config.log_adminchat)
 		log_admin("ASAY: [text]")
-		
+
 /proc/log_dsay(text)
 	if (config.log_adminchat)
 		log_admin("DSAY: [text]")
@@ -54,6 +54,10 @@
 /proc/log_ooc(text)
 	if (config.log_ooc)
 		diary << "\[[time_stamp()]]OOC: [text]"
+
+/proc/log_looc(text)
+	if (config.log_looc)
+		diary << "\[[time_stamp()]]LOOC: [text]"
 
 /proc/log_whisper(text)
 	if (config.log_whisper)
