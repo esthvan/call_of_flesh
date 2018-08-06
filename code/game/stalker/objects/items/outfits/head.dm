@@ -4,7 +4,7 @@
 	eng_desc = "Steel helmet made of old rusty steel. You look nazi wearing it. Protects your head but won't hold lots of bullets"
 	icon_state = "steelhelmet"
 	item_state = "steelhelmet"
-	armor = list(melee = 25, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 25, bullet = 40, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, psy = 5)
 	flags = BLOCKHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
@@ -20,7 +20,7 @@
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 	action_button_name = "Toggle Light"
-	armor = list(melee = 50, bullet = 60, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 20)
+	armor = list(melee = 50, bullet = 60, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 20, psy = 10)
 	brightness_on = 2 //luminosity when on
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
@@ -40,7 +40,7 @@
 	flags = BLOCKHAIR
 	flags_inv = HIDEEARS|HIDEEYES
 	action_button_name = "Toggle Light"
-	armor = list(melee = 35, bullet = 50, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 35, bullet = 50, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, psy = 5)
 	brightness_on = 2 //luminosity when on
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
@@ -56,7 +56,7 @@
 	item_state = "assaultmerc"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 50, bullet = 65, laser = 25,energy = 50, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 50, bullet = 65, laser = 25,energy = 50, bomb = 0, bio = 0, rad = 0, psy = 5)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 250
@@ -83,7 +83,7 @@
 	icon_state = "sphera"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 30)
+	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 30, psy = 15)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
@@ -99,7 +99,7 @@
 	icon_state = "helmet_skat"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
+	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70, psy = 20)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
@@ -115,7 +115,7 @@
 	icon_state = "helmet_skot"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70)
+	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70, psy = 50)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
@@ -137,7 +137,7 @@
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
-	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30)
+	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30, psy = 5)
 	burn_state = FIRE_PROOF
 	unacidable = 1
 	durability = 400
@@ -152,7 +152,7 @@
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	flags = BLOCKFACIALHAIR
-	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30)
+	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30, psy = 5)
 	burn_state = FIRE_PROOF
 	unacidable = 1
 	durability = 400
