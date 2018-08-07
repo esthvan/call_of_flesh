@@ -1,0 +1,72 @@
+"aa" = (/turf/stalker/floor/digable/grass,/area/stalker/blowout/outdoor)
+"ab" = (/turf/simulated/wall/stalker/ship,/area/stalker/blowout/outdoor/safezone/bar)
+"ac" = (/turf/simulated/wall/stalker/ship,/area/stalker/blowout/outdoor)
+"ad" = (/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ae" = (/obj/structure/stalker/shitok{pixel_x = -29},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"af" = (/obj/structure/stalker/bochka{pixel_x = -8; pixel_y = 10},/obj/structure/stalker/bochka,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ag" = (/obj/structure/stalker/bochka{pixel_y = 8},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ah" = (/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor)
+"ai" = (/obj/structure/table/stalker/wood,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aj" = (/obj/structure/table/stalker/wood/bar,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ak" = (/obj/structure/stalker/truba,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"al" = (/obj/structure/stalker/yashik/yaskik_a,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"am" = (/obj/structure/stalker/yashik/yaskik_a/big,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"an" = (/obj/structure/stalker/battery{tag = "icon-gazovaya_truba (EAST)"; icon_state = "gazovaya_truba"; dir = 4},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ao" = (/obj/structure/stalker/doski/doski3,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ap" = (/obj/structure/bed/stalker/matras{pixel_y = 8},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aq" = (/obj/structure/stalker/shina2{pixel_x = 5; pixel_y = 14},/obj/structure/stalker/shina{pixel_x = -2},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ar" = (/obj/machinery/door/unpowered/stalker,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"as" = (/obj/structure/stalker/list{pixel_y = 12},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"at" = (/obj/machinery/door/poddoor/sidor{id = "SkadovskOut"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"au" = (/obj/structure/table/stalker/wood,/obj/machinery/light/small{icon_state = "bulb1"; dir = 1},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"av" = (/obj/effect/step_trigger/teleporter{teleport_x = 23; teleport_y = 12; teleport_z = 1},/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_right"; dir = 4},/area/stalker/blowout/outdoor/safezone/bar)
+"aw" = (/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_right"; dir = 4},/area/stalker/blowout/outdoor/safezone/bar)
+"ax" = (/obj/structure/stalker/doski/doski4,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ay" = (/obj/effect/step_trigger/teleporter{teleport_x = 23; teleport_y = 11; teleport_z = 1},/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_left"; dir = 4},/area/stalker/blowout/outdoor/safezone/bar)
+"az" = (/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_left"; dir = 4},/area/stalker/blowout/outdoor/safezone/bar)
+"aA" = (/obj/structure/stalker/truba/vert{pixel_x = -7},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aB" = (/obj/structure/stalker/yashik/yaskik_a,/obj/machinery/light/small{icon_state = "bulb1"; dir = 1},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aC" = (/obj/structure/grille/stalker,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aD" = (/obj/structure/grille/stalker{icon_state = "fence2"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aE" = (/obj/structure/stalker/apc/open2{pixel_y = 31},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aF" = (/obj/structure/bed/chair/stalker/divan/divan2{pixel_y = 2},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aG" = (/obj/structure/stalker/komod{pixel_x = -2; pixel_y = 3},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aH" = (/obj/item/weapon/storage/backpack/polka{pixel_y = 20},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aI" = (/obj/structure/grille/stalker{icon_state = "fence3"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aJ" = (/obj/structure/stalker/doski/doski2,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aK" = (/obj/structure/stalker/clocks{pixel_x = -30; pixel_y = 5},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aL" = (/obj/structure/table/stalker/wood/bar100rentgen{dir = 4; icon_state = "table"; pixel_x = 2},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aM" = (/obj/machinery/door/poddoor/sidor{id = "SkadovskBar"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aN" = (/obj/structure/stalker/brokenbed,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aO" = (/obj/machinery/door/poddoor/sidor{icon_state = "closed0"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aP" = (/obj/machinery/light/small{icon_state = "bulb1"; dir = 8},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aQ" = (/obj/structure/bed/chair/stalker/divan{pixel_y = 2},/obj/structure/stalker/cover{desc = "Это настенный ковер. Странно, почему его называют настенный? Это же простой ковер."; pixel_y = 32},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aR" = (/obj/structure/stalker/intercom{desc = "Домофон. Очень старый домофон, он пережил вторую мировую войну и все еще работает. О, а тут кнопка отвалилась."; name = "Domofon"; pixel_x = -25},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor)
+"aS" = (/obj/machinery/light/small,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aT" = (/obj/machinery/button/door{id = "SkadovskOut"; pixel_x = -8; pixel_y = 24},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aU" = (/obj/machinery/light/small{icon_state = "bulb1"; dir = 4},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aV" = (/obj/machinery/light/small{icon_state = "firelight1"; dir = 8},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor)
+"aW" = (/obj/structure/table/stalker/wood,/obj/machinery/light/small,/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aX" = (/obj/structure/stalker/yashik/yaskik_a/big,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton{desc = "Это хдеб, очень редкий, и единственный сьедобный артефакт."; list_reagents = list("nutriment" = 20, "omnizine" = 0.2); name = "хдеб"},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aY" = (/obj/machinery/button/door{id = "SkadovskBar"; pixel_x = 24; pixel_y = 9},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"aZ" = (/obj/structure/table/stalker/wood,/obj/machinery/party/turntable{name = "radio"; desc = "Старое, доброе радио."; icon = 'icons/stalker/decor.dmi'; icon_state = "radio"; dir = 4; pixel_x = -7; pixel_y = 5},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+"ba" = (/obj/structure/stalker/propane/dual{pixel_x = 7},/obj/structure/stalker/propane{pixel_x = 1},/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/fish{pixel_x = 6},/turf/stalker/floor/lattice{icon_state = "lattice2_1"},/area/stalker/blowout/outdoor/safezone/bar)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaababababababababababababababababababababababababacacacacacaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaabadaEadabaeadadadadadadabafagaiauadajajakaBamabahahahahahaaaaaaaaahahaaaaaaaaaaaaaaaaaaaaaaaa
+aaabadadadabanadadadadadadabajadadadadaoadadapaqaOahahahahahahaaaaahahahahacacacaaaaaaaaaaaaaaaa
+aaabaPadadabanadaSadadadadabajadadadadadadadadasabahahahahahaaaaahahahahahahahahacacaaaaaaaaaaaa
+aaabadadadababatababadadadabadadadadaiaiadadaiaiabahahahahahahaaahahahahahahahahahahacacaaaaaaaa
+aaabadadadabadadaTabavawadadadadaxadadadadadadadababaRahahahahaaaaahahahahahahahahahahahacaaaaaa
+aaabadadadabaPadadabayazadadadadadadadadadadadadaAarahahahahahaaahahahahahahahahahahahahahacaaaa
+aaabadadaUabadadadabababababaCaDadadadajajadadadababaVahahahaaaaahahahahahahahahahahahahahahacaa
+aaabadadadabadadadadaQaFaGabaHaIadadadadadadaJadaXabahahahahahaaaaahahahahahahahahahahahahacaaaa
+aaabadadadabadadadadadadadabaKaLadadadadadadadadalabahahahahahaaahahahahahahahahahahahahacaaaaaa
+aaabadadadadadadadadadadadaMadaLadaoadaiadadadadaNabahahahahaaaaaaahahahahahahahahahacacaaaaaaaa
+aaabadadadabadadaiaWaiadaYabaZaIadaSadaiadadaSadbaabahahahahaaaaahahahahahahahahacacaaaaaaaaaaaa
+aaabababababababababababababababababababababababababacacacacahaaahahahahahacacacaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahahacacaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
