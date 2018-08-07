@@ -886,7 +886,7 @@ Bondarczuk
 Gogol
 Gleba
 Galey
-Goraya
+Goray
 Gulka
 Gura
 Gurka
@@ -940,7 +940,7 @@ Pivtorakozhukha
 Strembicky
 Swischuk
 Savaryn
-Shadrova
+Shadrov
 Skripachuk
 Cashcov
 Tereszczenko
