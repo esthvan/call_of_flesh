@@ -575,6 +575,8 @@
 	var/cache_size = 0		//from 0 to 3
 	var/obj/item/weapon/storage/stalker/cache/internal_cache = null
 
+
+
 /obj/structure/stalker/cacheable/New()
 	..()
 
@@ -676,7 +678,12 @@
 	world << max_cost
 	world << max_combined_w_class
 
-	while(combined_w_class < max_combined_w_class && combined_cost < max_cost)
+	for(var/i = 0, i <= storage_slots, i++)
+		if(combined_w_class > max_combined_w_class)
+			return
+
+		if(combined_cost > max_cost)
+			return
 
 		var/datum/data/stalker_equipment/SE = safepick(lootspawn)
 
