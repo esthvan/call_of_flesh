@@ -581,18 +581,18 @@
 										var/n		= R_H.fields["name"]
 										var/f		= R_H.fields["faction_s"]
 
-										src << russian_html2text("<p>\icon[KPK_src]<b><font color=\"#006699\">[n_src]</font>\[[f_src]\]</b><br><font color=\"#006699\">Перевёл вам [sum] р. на счёт.</font></p>")
+										src << russian_html2text("<p>\icon[KPK_src]<b><font color=\"#006699\">[n_src]</font>\[[f_src]\]</b><br><font color=\"#006699\">[n_src] transfered [sum] RU to your account.</font></p>")
 										if(KPK_src.lenta_sound == 1)
 											src << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
-										H << russian_html2text("<p>\icon[KPK]<b><font color=\"#006699\">[n]</font>\[[f]\]</b><br><font color=\"#006699\">С вашего счёта списано [sum] р.</font></p>")
+										H << russian_html2text("<p>\icon[KPK]<b><font color=\"#006699\">[n]</font>\[[f]\]</b><br><font color=\"#006699\">You transfered [sum] RU to [n_src] account.</font></p>")
 										if(KPK.lenta_sound == 1)
 											H << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
 									else
-										usr << "<span class='warning'>На вашем счету недостаточно средств дл&#255; перевода.</span>"
+										usr << "<span class='warning'>You don't have enough RU to commit money transfer.</span>"
 								else
-									usr << "<span class='warning'>Введите НОРМАЛЬНУЮ сумму дл&#255; перевода.</span>"
+									usr << "<span class='warning'>Input real amount of RU for money transfer.</span>"
 
 						var/lefttime
 						var/ending
