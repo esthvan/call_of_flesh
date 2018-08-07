@@ -13,9 +13,14 @@
 	if(istype(src.loc, /turf/stalker/floor/water))
 
 		var/image/standing //= image('icons/stalker/water.dmi', "water_overlay")
-		var/icon/I = icon('icons/stalker/water.dmi', "water_overlay")
+		var/icon/I
+		if(lying != 0)
+			I = turn(icon('icons/stalker/water.dmi', "water_overlay_turned"), - lying)
+		else
+			I = icon('icons/stalker/water.dmi', "water_overlay")
 
-		var/icon/mask = getIconMask(src)
+		var/icon/mask
+		mask = getIconMask(src)
 		mask.MapColors(1,1,1, 1,1,1, 1,1,1, 1,1,1)
 		mask.Blend(I, ICON_MULTIPLY)
 
