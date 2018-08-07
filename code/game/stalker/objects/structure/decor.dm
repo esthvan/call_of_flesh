@@ -625,18 +625,35 @@
 		user.s_active.close(user)
 	internal_cache.attack_hand(user)
 
-	if(!internal_cache.waspicked && istype(usr, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = usr
-		internal_cache.waspicked = 1
-		if(istype(H.wear_id, /obj/item/device/stalker_pda))
-			var/obj/item/device/stalker_pda/KPK = H.wear_id
-			if(KPK.owner)
-				show_lenta_message(null, KPK, null, "PDA", "OS", "You discovered a stash in the [src]!", selfsound = 1)
+	if(internal_cache.waspicked || !istype(usr, /mob/living/carbon/human))
+		return
 
+	var/mob/living/carbon/human/H = usr
+	internal_cache.waspicked = 1
 
-		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-		if(sk)
-			sk.fields["rating"] +=  25 * (2 ** cache_quality)
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		return
+
+	var/obj/item/device/stalker_pda/KPK = H.wear_id
+
+	if(!KPK.owner || KPK.owner != H)
+		return
+
+	show_lenta_message(null, KPK, null, "PDA", "OS", "You discovered a stash in the [src]!", selfsound = 1)
+
+	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+
+	if(!sk)
+		return
+
+	sk.fields["rating"] +=  25 * (2 ** cache_quality)
+
+	if(!internal_cache.cached_cash)
+		return
+
+	sk.fields["money"] += internal_cache.cached_cash
+	show_lenta_message(null, KPK, null, "PDA", "OS", "You found a bitRU key that gave you access to [internal_cache.cached_cash] RU on your account!", selfsound = 1)
+	internal_cache.cached_cash = 0
 
 /obj/item/weapon/storage/stalker/cache
 	name = "cache"
@@ -645,6 +662,7 @@
 	invisibility = 101
 	display_contents_with_number = 1
 	var/waspicked = 0
+	var/cached_cash = 0
 
 /obj/item/weapon/storage/stalker/cache/attack_hand(mob/user)
 	playsound(loc, "rustle", 50, 1, -5)
@@ -675,35 +693,39 @@
 	var/combined_w_class = 0
 	var/combined_cost = 0
 
-	world << max_cost
-	world << max_combined_w_class
-
 	for(var/i = 0, i <= storage_slots, i++)
 		if(combined_w_class > max_combined_w_class)
-			return
+			break
 
 		if(combined_cost > max_cost)
-			return
+			break
 
 		var/datum/data/stalker_equipment/SE = safepick(lootspawn)
 
 		if(!SE)
 			continue
+
 		var/A = SE.equipment_path
-		combined_cost += SE.cost
 
 		if(!A)
 			continue
+
 		var/obj/item/I = new A(src)
 
 		if(I.w_class > max_w_class)
 			PlaceInPool(I)
 			continue
+
+		combined_cost += SE.cost
+
 		//if(I.w_class >= w_class && (istype(I, /obj/item/weapon/storage)))
 		//	continue
 
 		combined_w_class +=  I.w_class
 		handle_item_insertion(I, prevent_warning = 1)
+
+	if(max_cost - combined_cost > 0)
+		cached_cash = round((max_cost - combined_cost)/2)
 
 /obj/item/weapon/storage/stalker/cache/small
 	max_w_class = 2
