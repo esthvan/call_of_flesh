@@ -14,7 +14,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\__MAP_DEFINES.dm"
-#include "_maps\testmap2.dm"
+#include "_maps\Zona.dm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"
 #include "code\setup.dm"
