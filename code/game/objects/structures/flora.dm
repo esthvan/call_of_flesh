@@ -252,24 +252,14 @@
 	icon_state = "[icon_state][rand(1,3)]"
 
 /obj/structure/flora/stalker
-	name = "grass"
-	icon = 'icons/stalker/flora.dmi'
-	icon_state = "trava1"
+	name = "bulrush"
+	icon = 'icons/stalker/fallout/flora.dmi'
 
-/obj/structure/flora/stalker/trava
-	icon_state = "trava1"
+/obj/structure/flora/stalker/bush
+	icon_state = "very_tall_grass_8"
+	layer = 4.01
+	opacity = 1
 
-/obj/structure/flora/stalker/trava2
-	icon_state = "trava2"
-
-/obj/structure/flora/stalker/trava3
-	icon_state = "trava3"
-
-/obj/structure/flora/stalker/trava4
-	icon_state = "trava4"
-
-/obj/structure/flora/stalker/trava5
-	icon_state = "trava5"
-
-/obj/structure/flora/stalker/trava6
-	icon_state = "trava6"
+/obj/structure/flora/stalker/bush/initialize()
+	..()
+	icon_state = "very_tall_grass_[rand(5,8)]"
