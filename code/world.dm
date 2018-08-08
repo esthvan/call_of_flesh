@@ -206,7 +206,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "
 
-	s += "<b>\[INTERNATIONAL\]\[station_name()\]</b>";
+	s += "<b>\[INTERNATIONAL\][station_name()]</b>";
 	s += " ("
 	s += "<a href=\"https://discord.gg/aBkc6NK\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
