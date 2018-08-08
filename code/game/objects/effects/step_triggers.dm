@@ -102,6 +102,10 @@
 /* Instant teleporter */
 
 /obj/effect/step_trigger/teleporter
+	name = "transfer zone"
+	invisibility = 0
+	icon = 'icons/stalker/areas.dmi'
+	icon_state = "transfer_zone"
 	var/teleport_x = 0	// teleportation coordinates (if one is null, then no teleport!)
 	var/teleport_y = 0
 	var/teleport_z = 0
