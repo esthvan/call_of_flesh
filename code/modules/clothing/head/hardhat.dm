@@ -36,6 +36,13 @@
 		user.add_light_range(-brightness_on)
 		set_light(brightness_on)
 
+/obj/item/clothing/head/hardhat/on_enter_storage()
+	..()
+	if(on)
+		on = !on
+		icon_state = initial(icon_state)
+		set_light(0)
+
 /obj/item/clothing/head/hardhat/proc/turn_on(mob/user)
 	user.add_light_range(brightness_on)
 
