@@ -1,11 +1,15 @@
-/mob/living/carbon/human/getarmor(def_zone, type)
+/mob/living/carbon/human/getarmor(def_zone, type, var/random_z = 1)
 	var/armorval = 0
 	var/organnum = 0
 
 	if(def_zone)
 		if(islimb(def_zone))
 			return checkarmor(def_zone, type)
-		var/obj/item/organ/limb/affecting = get_organ(ran_zone(def_zone))
+		var/obj/item/organ/limb/affecting
+		if(random_z)
+			affecting = get_organ(ran_zone(def_zone))
+		else
+			affecting = get_organ(check_zone(def_zone))
 		return checkarmor(affecting, type)
 		//If a specific bodypart is targetted, check how that bodypart is protected and return the value.
 
@@ -33,8 +37,11 @@
 						if(75 to 100)
 							protection += C.armor[type]
 
-						if(25 to 75)
+						if(50 to 75)
 							protection += C.armor[type] * 0.8
+
+						if(25 to 50)
+							protection += C.armor[type] * 0.6
 
 						if(0 to 25)
 							protection = 0
@@ -54,7 +61,7 @@
 							M.durability -= 0.2
 
 						if(C.durability <= 0)
-							visible_message("<span class='danger'>[C] развалился пр&#255;мо на [src]</span>", "<span class='warning'>[C] развалилс&#255; пр&#255;мо на вас!</span>")
+							visible_message("<span class='danger'>[C] falls into pices!</span>", "<span class='warning'>[C] falls into pieces!</span>")
 							qdel(C)
 						update_icons()
 				else
