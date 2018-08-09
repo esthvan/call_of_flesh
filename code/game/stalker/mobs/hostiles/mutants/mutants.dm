@@ -425,3 +425,81 @@
 	move_to_delay = 1.4
 	speak_chance = 10
 
+/mob/living/simple_animal/hostile/mutant/controller
+	name = "psy-dog"
+	desc = "Полу-голый старый мужчина с деформированной головой."
+	eng_desc = "Half-naked old man with deformed head."
+	turns_per_move = 5
+	speed = 3
+	a_intent = "harm"
+	search_objects = 1
+	icon_state = "controller"
+	icon_living = "controller"
+	icon_dead = "controller_dead"
+	attacktext = "slashes"
+	speak_emote = list("growls", "roars")
+	emote_see = list("growls!", "roars!")
+	maxHealth = 200
+	healable = 1
+	melee_damage_lower = 25
+	attack_sound = 'sound/stalker/mobs/mutants/attack/controller_attack.ogg'
+	idle_sounds =	list('sound/stalker/mobs/mutants/idle/controller_idle_1.ogg',
+						'sound/stalker/mobs/mutants/idle/controller_idle_2.ogg'
+						)
+	death_sound = 'sound/stalker/mobs/mutants/death/controller_death.ogg'
+	melee_damage_upper = 30
+	fearborder = 0
+	see_invisible = SEE_INVISIBLE_MINIMUM
+	see_in_dark = 4
+	minbodytemp = 0
+	maxbodytemp = 1500
+	faction = list("stalker_mutants1")
+	del_on_death = 0
+	robust_searching = 1
+	deathmessage = "Controller screams!"
+	layer = MOB_LAYER - 0.1
+	loot = list(/obj/item/weapon/stalker/loot/controller_brain)
+	random_loot = 1
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	attack_type = "claw"
+	move_to_delay = 10
+	speak_chance = 10
+	vision_range = 15
+	aggro_vision_range = 15
+	ranged_cooldown_cap = 7
+	min_range_distance = 2
+	ranged = 1
+
+/mob/living/simple_animal/hostile/mutant/controller/Life()
+	. = ..()
+	if(!.)
+		return 0
+	for(var/mob/living/carbon/human/H in view(15, src))
+		var/damage_ = 0
+		switch(get_dist(src, H))
+			if(0 to 2)
+				damage_ = 60
+			if(3 to 4)
+				damage_ = 45
+			if(5 to 6)
+				damage_ = 25
+			if(7 to 8)
+				damage_ = 10
+			if(8 to INFINITY)
+				damage_ = 40 / get_dist(src, H)
+		H.apply_damage(damage_, PSY, null, blocked = getarmor("head", "psy", random_z = 0))
+
+/mob/living/simple_animal/hostile/mutant/controller/OpenFire(atom/A)
+
+	visible_message("<span class='danger'><b>[src]</b> stares at [A]!</span>")
+
+	if(istype(A, /mob/living/carbon/human) && A in view(14, src))
+		var/mob/living/carbon/human/H = A
+		H << sound('sound/stalker/mobs/mutants/attack/controller_tube_prepare.ogg', wait = 0, channel = 47, volume = 50)
+		spawn(45)
+			if(H in view(14, src))
+				H << sound('sound/stalker/mobs/mutants/attack/controller_whoosh.ogg', wait = 0, channel = 47, volume = 50)
+				H.apply_damage(120, PSY, null, blocked = getarmor("head", "psy", random_z = 0))
+
+	ranged_cooldown = ranged_cooldown_cap
+	return
