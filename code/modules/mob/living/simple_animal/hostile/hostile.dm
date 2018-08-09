@@ -21,6 +21,7 @@
 	var/minimum_distance = 1 //Minimum approach distance, so ranged mobs chase targets down, but still keep their distance set in tiles to the target, set higher to make mobs keep distance
 	var/target_distance
 	var/target_last_loc = null
+	var/min_range_distance = 4
 
 //These vars are related to how mobs locate and target
 	var/robust_searching = 0 //By default, mobs have a simple searching method, set this to 1 for the more scrutinous searching (stat_attack, stat_exclusive, etc), should be disabled on most mobs
@@ -157,8 +158,7 @@
 	if(target in possible_targets)
 		var/target_distance = get_dist(src,target)
 		if(ranged)//We ranged? Shoot at em
-			if(target_distance >= 4 && ranged_cooldown <= 0)//But make sure they're a tile away at least, and our range attack is off cooldown
-				//throw_at_fast(target, 50, 1)
+			if(target_distance >= min_range_distance && ranged_cooldown <= 0)//But make sure they're a tile away at least, and our range attack is off cooldown
 				OpenFire(target)
 				sleep(50)
 		if(!Process_Spacemove()) // Drifting
