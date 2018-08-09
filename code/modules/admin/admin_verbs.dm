@@ -519,8 +519,8 @@ var/list/admin_verbs_hideable = list(
 	set category = "Stalker"
 
 	var/newrespawnrate = input(usr, "Input new respawn rate in minutes", "S.T.A.L.K.E.R.") as num|null
-	log_admin("[key_name(usr)] changed respawn rate from [config.respawn_timer] to [newrespawnrate].")
-	message_admins("[key_name_admin(usr)] changed respawn rate from [config.respawn_timer] to [newrespawnrate].")
+	log_admin("[key_name(usr)] changed respawn rate from [round(config.respawn_timer/600)] to [newrespawnrate].")
+	message_admins("[key_name_admin(usr)] changed respawn rate from [round(config.respawn_timer/600)] to [newrespawnrate].")
 
 	if(newrespawnrate)
 		world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min to [newrespawnrate] min!</b></font color>"

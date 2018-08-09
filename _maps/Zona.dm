@@ -1,6 +1,6 @@
 #if !defined(MAP_FILE)
 
-		//#include "map_files\Stalker\Zona\svalka.dmm"		//Крашает билд спустя 10 сек после старта. Выпилена нахуй, частично перенесена на карту бара. НИ В КОЕМ СЛУЧАЕ НЕ ВКЛЮЧАТЬ!!!!
+		//#include "map_files\Stalker\Zona\svalka.dmm"
 
 
 		#include "map_files\Stalker\Zona\underground1.dmm"
