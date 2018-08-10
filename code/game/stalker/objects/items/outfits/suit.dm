@@ -358,6 +358,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 
 /obj/item/clothing/head/winterhood/stalker/seva/orange
 	icon_state = "sevao_helmet"
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 
 /obj/item/clothing/suit/hooded/kombez/psz9md
 	name = "PSZ-9MD"
@@ -384,6 +385,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	armor = list(melee = 50, bullet = 50, laser = 80,burn = 65, bomb = 50, bio = 50, rad = 70, electro = 65, psy = 20)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
+	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	icon_state = "psz9md_helmet"
 	burn_state = FIRE_PROOF
 	CBBS_h = 1
