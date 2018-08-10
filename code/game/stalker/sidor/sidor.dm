@@ -237,7 +237,7 @@ var/list/sidorRooms = list()
 
 /obj/sidor_enter
 	var/roomtype = "sidor"
-	invisibility = 101
+	invisibility = INVISIBILITY_LIGHTING
 	icon = 'icons/stalker/areas.dmi'
 	icon_state = "transfer_zone"
 
@@ -264,7 +264,7 @@ var/list/sidorRooms = list()
 /obj/sidor_exit
 	var/roomtype = "sidor"
 	var/mob/living/occupant = null
-	invisibility = 101
+	invisibility = INVISIBILITY_LIGHTING
 	icon = 'icons/stalker/areas.dmi'
 	icon_state = "transfer_zone"
 
