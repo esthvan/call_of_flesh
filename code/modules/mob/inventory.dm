@@ -136,10 +136,10 @@
 			var/obj/item/weapon/gun/W = I
 			if (!istype(I, /obj/item/weapon/gun/projectile/automatic/pistol))
 				playsound(src.loc, 'sound/stalker/weapons/draw/generic_draw.ogg', 30, 1)
-				visible_message("<span class='danger'>[src] starts to take [I] out of the back!</span>", "<span class='notice'>You start to take [I] out of the back...</span>")
+				visible_message("<span class='danger'>[src] starts taking [I] out of the back!</span>", "<span class='notice'>You start taking [I] out of the back...</span>")
 				if(do_after_inventory(src, 10, 1, I))
 					playsound(src, W.drawsound, 30, 1)
-					visible_message("<span class='danger'>[src] took [I] out of the back!</span>", "<span class='notice'>You took [I] out of the back.</span>")
+					visible_message("<span class='danger'>[src] takes [I] out of the back!</span>", "<span class='notice'>You take [I] out of the back.</span>")
 					if(client)
 						client.screen -= I
 					I.loc = loc
@@ -149,7 +149,7 @@
 				else
 					return 0
 			else
-				visible_message("<span class='danger'>[src] took out the [I]!</span>", "<span class='notice'>You took out the [I].</span>")
+				visible_message("<span class='danger'>[src] takes out the [I]!</span>", "<span class='notice'>You take out the [I].</span>")
 				playsound(src.loc, W.drawsound, 30, 1)
 
 	if(I == r_hand)
