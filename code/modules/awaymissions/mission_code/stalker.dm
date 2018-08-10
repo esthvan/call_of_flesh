@@ -53,8 +53,8 @@
 					'sound/stalker/ambience/rnd_outdoor_night/wolf_howl_03.ogg','sound/stalker/ambience/rnd_outdoor_night/wolf_howl_04.ogg',
 					)
 	ambient_environment_cooldown = 420
-	ambient_background = list(null, null, 'sound/stalker/ambience/rnd_outdoor/rnd_insect_5.ogg', 'sound/stalker/ambience/rnd_outdoor_night/ambient_night_11.ogg', null)
-	ambient_background_cooldown = list(null, null, 280, 420, null)
+	ambient_background = list(null, null,null, 'sound/stalker/ambience/rnd_outdoor_night/ambient_night_11.ogg', null) // 'sound/stalker/ambience/rnd_outdoor/rnd_insect_5.ogg' - evening
+	ambient_background_cooldown = list(null, null, null, 420, null) //280 - evening
 	environment = 15
 
 /area/stalker/sidor
