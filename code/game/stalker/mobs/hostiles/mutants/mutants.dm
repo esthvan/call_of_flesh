@@ -426,8 +426,8 @@
 	speak_chance = 10
 
 /mob/living/simple_animal/hostile/mutant/controller
-	name = "psy-dog"
-	desc = "Полу-голый старый мужчина с деформированной головой."
+	name = "Controller"
+	desc = "Полуголый старый мужчина с деформированной головой."
 	eng_desc = "Half-naked old man with deformed head."
 	turns_per_move = 5
 	speed = 3
@@ -469,6 +469,8 @@
 	ranged_cooldown_cap = 7
 	min_range_distance = 2
 	ranged = 1
+	var/attack_stage = 0
+	see_through_walls = 1
 
 /mob/living/simple_animal/hostile/mutant/controller/Life()
 	. = ..()
@@ -487,19 +489,45 @@
 				damage_ = 10
 			if(8 to INFINITY)
 				damage_ = 40 / get_dist(src, H)
-		H.apply_damage(damage_, PSY, null, blocked = getarmor("head", "psy", random_z = 0))
+		H.apply_damage(damage_, PSY, null, blocked = getarmor("head", "psy", 0))
 
 /mob/living/simple_animal/hostile/mutant/controller/OpenFire(atom/A)
+	if(!istype(A, /mob/living/carbon/human))
+		return
 
-	visible_message("<span class='danger'><b>[src]</b> stares at [A]!</span>")
+	var/mob/living/carbon/human/H = A
 
-	if(istype(A, /mob/living/carbon/human) && A in view(14, src))
-		var/mob/living/carbon/human/H = A
-		H << sound('sound/stalker/mobs/mutants/attack/controller_tube_prepare.ogg', wait = 0, channel = 47, volume = 50)
-		spawn(45)
+	switch(attack_stage)
+		if(0)
+			visible_message("<span class='danger'><b>[src]</b> stares at [A]!</span>")
+			world << "101"
 			if(H in view(14, src))
-				H << sound('sound/stalker/mobs/mutants/attack/controller_whoosh.ogg', wait = 0, channel = 47, volume = 50)
-				H.apply_damage(120, PSY, null, blocked = getarmor("head", "psy", random_z = 0))
 
-	ranged_cooldown = ranged_cooldown_cap
+				world << "102"
+				H << sound('sound/stalker/mobs/mutants/attack/controller_tube_prepare.ogg', wait = 0, channel = 47, volume = 50)
+				attack_stage++
+
+			else
+				attack_stage = 0
+				ranged_cooldown = ranged_cooldown_cap
+
+		if(1 to 3)
+			world << "201"
+			if(H in view(14, src))
+
+				world << "202"
+				attack_stage++
+
+			else
+				attack_stage = 0
+				ranged_cooldown = ranged_cooldown_cap
+		if(4)
+			world << "301"
+			if(H in view(14, src))
+				world << "302"
+				H << sound('sound/stalker/mobs/mutants/attack/controller_whoosh.ogg', wait = 0, channel = 47, volume = 50)
+				visible_message("<span class='danger'><b>[src]</b> stares right into [A] eyes!</span>")
+				H.apply_damage(120, PSY, null, blocked = getarmor("head", "psy", 0))
+			attack_stage = 0
+			ranged_cooldown = ranged_cooldown_cap
 	return

@@ -33,6 +33,7 @@
 	var/stat_attack = 0 //Mobs with stat_attack to 1 will attempt to attack things that are unconscious, Mobs with stat_attack set to 2 will attempt to attack the dead.
 	var/stat_exclusive = 0 //Mobs with this set to 1 will exclusively attack things defined by stat_attack, stat_attack 2 means they will only attack corpses
 	var/attack_same = 0 //Set us to 1 to allow us to attack our own faction, or 2, to only ever attack our own faction
+	var/see_through_walls = 0
 
 //	var/deletable = 0 //Self-deletable dead bodies
 	var/target_dist
@@ -70,7 +71,14 @@
 /mob/living/simple_animal/hostile/proc/ListTargets()//Step 1, find out what we can see
 	var/list/L = list()
 	if(!search_objects)
-		var/list/Mobs = hearers(vision_range, src) - src //Remove self, so we don't suicide
+		var/list/Mobs = list()
+		if(see_through_walls)
+			for(var/mob/M in range(vision_range, src))
+				Mobs += M
+			Mobs -= src
+		else
+			Mobs = hearers(vision_range, src) - src //Remove self, so we don't suicide
+
 		L += Mobs
 		for(var/obj/mecha/M in mechas_list)
 			if(get_dist(M, src) <= vision_range && can_see(src, M, vision_range))

@@ -1,4 +1,4 @@
-/mob/living/carbon/human/getarmor(def_zone, type, var/random_z = 1)
+/mob/living/carbon/human/getarmor(def_zone, type, var/random_zone = 1)
 	var/armorval = 0
 	var/organnum = 0
 
@@ -6,7 +6,7 @@
 		if(islimb(def_zone))
 			return checkarmor(def_zone, type)
 		var/obj/item/organ/limb/affecting
-		if(random_z)
+		if(random_zone)
 			affecting = get_organ(ran_zone(def_zone))
 		else
 			affecting = get_organ(check_zone(def_zone))
