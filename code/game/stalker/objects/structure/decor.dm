@@ -473,6 +473,14 @@
 	cache_size = 1
 	density = 0
 
+/obj/structure/stalker/cacheable/shitok/shitok2
+	name = "switch box"
+	desc = "Старый электрический щиток."
+	eng_desc = "Old switch box."
+	icon_state = "shitok2"
+	cache_size = 1
+	density = 0
+
 /obj/structure/stalker/broke_table
 	name = "table"
 	desc = "Перевёрнутый стол."
