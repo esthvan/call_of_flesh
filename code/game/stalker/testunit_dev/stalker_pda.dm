@@ -664,8 +664,8 @@ var/global/global_lentahtml = ""
 						owner_photo_east.photocreate(null, icon(image, dir = EAST))
 						owner_photo_back.photocreate(null, icon(image, dir = NORTH))
 
-						H << "<B>Пароль к КПК</B>: <span class='danger'>\"[pass]\"</span>"
-						H.mind.store_memory("<b>Пароль к КПК</b>: \"[pass]\"")
+						H << "<B>KPK password</B>: <span class='danger'>\"[pass]\"</span>"
+						H.mind.store_memory("<b>KPK password</b>: \"[pass]\"")
 						KPKs += src
 						KPK_mobs += H
 
@@ -1106,7 +1106,7 @@ var/global/global_lentahtml = ""
 			continue
 
 		if(istype(M, /mob/dead/observer))
-			M << russian_html2text("<a href=?src=\ref[M];follow=\ref[src]>(F)</a> [msg]")
+			M << russian_html2text("<a href=?src=\ref[M];follow=\ref[KPK_owner]>(F)</a> [msg]")
 		else
 			M << "[msg]"
 
