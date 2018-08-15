@@ -17,19 +17,15 @@
 
 /obj/effect/decal/warning_stripes/bordur/side/north
 	icon_state = "road_b5"
-	pixel_y = 5
 
 /obj/effect/decal/warning_stripes/bordur/side/south
 	icon_state = "road_b6"
-	pixel_y = -5
 
 /obj/effect/decal/warning_stripes/bordur/side/west
 	icon_state = "road_b7"
-	pixel_x = -5
 
 /obj/effect/decal/warning_stripes/bordur/side/east
 	icon_state = "road_b8"
-	pixel_x = 5
 
 /obj/effect/decal/warning_stripes/bordur/corner/one
 	icon_state = "road_b3"
