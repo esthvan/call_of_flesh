@@ -1,6 +1,6 @@
 #if !defined(MAP_FILE)
 
-		//#include "map_files\Stalker\Zona2\underground1.dmm"
+		#include "map_files\Stalker\Zona2\underground1.dmm"
 		#include "map_files\Stalker\Zona2\backwater.dmm"
 
 		#define MAP_FILE "ungerground1.dmm"
