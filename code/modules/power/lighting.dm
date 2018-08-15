@@ -159,6 +159,14 @@
 	desc = "A small lighting fixture."
 	light_type = /obj/item/weapon/light/bulb
 
+///BURNED LIGHTS
+/obj/machinery/light/broken
+	status = LIGHT_BROKEN
+	icon_state = "tube-broken"
+
+/obj/machinery/light/small/broken
+	status = LIGHT_BROKEN
+	icon_state = "bulb-broken"
 
 /obj/machinery/light/Move()
 	if(status != LIGHT_BROKEN)	broken(1)
@@ -193,6 +201,13 @@
 		spawn(1)
 			update(0)
 
+/obj/machinery/light/broken/New()
+	update_icon()
+	..()
+
+/obj/machinery/light/small/broken/New()
+	update_icon()
+	..()
 /obj/machinery/light/Destroy()
 	//var/area/A = get_area(src)
 	//if(A)
