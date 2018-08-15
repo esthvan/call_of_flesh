@@ -1,9 +1,3 @@
-/var/global/list/safezones = list(	/area/stalker/sidor,
-									/area/stalker/blowout/outdoor/safezone,
-									/area/stalker/blowout/buildings/safezone,
-									/area/stalker/buildings/safezone,
-									/area/stalker/byadt/bar)
-
 /area/stalker
 	icon = 'icons/stalker/areas.dmi'
 	name = "Strange Location"
@@ -15,6 +9,7 @@
 
 /area/stalker/blowout/outdoor
 	name = "Outdoor"
+	icon = 'icons/stalker/areas_outdoor_blowout.dmi'
 	icon_state = "outdoor"
 	requires_power = 1
 	luminosity = 1
@@ -53,70 +48,229 @@
 					'sound/stalker/ambience/rnd_outdoor_night/wolf_howl_03.ogg','sound/stalker/ambience/rnd_outdoor_night/wolf_howl_04.ogg',
 					)
 	ambient_environment_cooldown = 420
-	ambient_background = list(null, null,null, 'sound/stalker/ambience/rnd_outdoor_night/ambient_night_11.ogg', null) // 'sound/stalker/ambience/rnd_outdoor/rnd_insect_5.ogg' - evening
-	ambient_background_cooldown = list(null, null, null, 420, null) //280 - evening
+	ambient_background = list(null, null,'sound/stalker/ambience/rnd_outdoor_night/zat_bkg_tuman.ogg', 'sound/stalker/ambience/rnd_outdoor_night/ambient_night_11.ogg', null) // 'sound/stalker/ambience/rnd_outdoor/rnd_insect_5.ogg' - evening
+	ambient_background_cooldown = list(null, null, 220, 420, null) //280 - evening
 	environment = 15
 
 /area/stalker/sidor
 	name = "Sidorovich Basement"
+	icon = 'icons/stalker/areas_buildings.dmi'
 	icon_state = "sidor"
 	requires_power = 1
-	ambient_music = null
+	ambient_music = list()
 	ambient_background = list('sound/stalker/ambience/sidor_music2.ogg', 'sound/stalker/ambience/sidor_music2.ogg', 'sound/stalker/ambience/sidor_music2.ogg', 'sound/stalker/ambience/sidor_music2.ogg')//list('sound/stalker/ambience/sidor_music.ogg','sound/stalker/ambience/sidor_music2.ogg')
 	ambient_background_cooldown = list(700, 700, 700, 700)
 	environment = 5
-
-/area/stalker/deathzone
-	name = "Afterlife"
-	icon_state = "deathzone"
-
-/area/stalker/blowout/outdoor/safezone
-	name = "Safezone"
-	icon_state = "safezone"
-	requires_power= 1
+	safezone = 1
 
 /area/stalker/blowout/buildings
 	name = "Buildings"
+	icon = 'icons/stalker/areas_buildings_blowout.dmi'
 	icon_state = "buildings"
 	requires_power = 1
 	environment = 2
 
-/area/stalker/blowout/buildings/safezone
-	name = "Safezone"
-	icon_state = "safezone_buildings"
-	requires_power = 1
-
 /area/stalker/buildings
 	name = "Buildings"
-	icon_state = "buildings_no_blowout"
+	icon = 'icons/stalker/areas_buildings.dmi'
+	icon_state = "buildings"
 	requires_power = 1
 	environment = 5
 
-/area/stalker/buildings/safezone
-	name = "Safezone"
-	icon_state = "safezone_buildings_no_blowout"
-	requires_power = 1
-
-/area/stalker/buildings/safezone/banditbar
-	name = "Safezone"
-	icon_state = "bandit_bar"
-	requires_power = 1
-
 /area/stalker/adminspace
 	name = "Admin Space"
+	icon = 'icons/stalker/areas_buildings.dmi'
 	icon_state = "admin_space"
 	requires_power = 1
 
-	///«¿“ŒÕ/BACKWATER
-
-/area/stalker/blowout/outdoor/backwater
-	name = "B-Outdoor"
-	icon_state = "outdoor"
+///////////////////////«¿“ŒÕ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /area/stalker/buildings/backwater
-	name = "B-Buildings"
+	name = "Backwater - Buildings \[NB\]"
 	icon_state = "buildings"
 
+/area/stalker/blowout/buildings/backwater
+	name = "Backwater - Buildings"
+	icon_state = "buildings"
+
+/area/stalker/blowout/outdoor/backwater
+	name = "Backwater - Outdoor \[O\]"
+	icon_state = "outdoor"
+
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - œŒƒ—“¿Õ÷»ﬂ///////////////////////
+/area/stalker/buildings/backwater/substation
+	name = "Backwater - Substation Workshops \[NB\]"
+	icon_state = "substation"
+
+/area/stalker/blowout/buildings/backwater/substation
+	name = "Backwater - Substation Workshops"
+	icon_state = "substation"
+
+/area/stalker/blowout/outdoor/backwater/substation
+	name = "Backwater - Substation Workshops \[O\]"
+	icon_state = "substation"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - — ¿ƒŒ¬— /////////////////////////
+/area/stalker/buildings/backwater/skadovsk
+	name = "Backwater - Skadovsk \[NB\]"
+	icon_state = "skadovsk"
+	safezone = 1
+
+/area/stalker/blowout/buildings/backwater/skadovsk
+	name = "Backwater - Skadovsk"
+	icon_state = "skadovsk"
+	safezone = 1
+
+/area/stalker/blowout/outdoor/backwater/skadovsk
+	name = "Backwater - Skadovsk \[O\]"
+	icon_state = "skadovsk"
+	safezone = 1
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - ÿ≈¬◊≈Õ Œ/////////////////////////
+/area/stalker/buildings/backwater/shevchenko
+	name = "Backwater - Shevchenko \[NB\]"
+	icon_state = "shevchenko"
+
+/area/stalker/blowout/buildings/backwater/shevchenko
+	name = "Backwater - Shevchenko"
+	icon_state = "shevchenko"
+
+/area/stalker/blowout/outdoor/backwater/shevchenko
+	name = "Backwater - Shevchenko \[O\]"
+	icon_state = "shevchenko"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - —√Œ–≈¬ÿ»… ’”“Œ–//////////////////
+/area/stalker/buildings/backwater/burntfarm
+	name = "Backwater - Burnt Farmstead \[NB\]"
+	icon_state = "burntfarm"
+
+/area/stalker/blowout/buildings/backwater/burntfarm
+	name = "Backwater - Burnt Farmstead"
+	icon_state = "burntfarm"
+
+/area/stalker/blowout/outdoor/backwater/burntfarm
+	name = "Backwater - Burnt Farmstead \[O\]"
+	icon_state = "burntfarm"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - ∆≈À≈«Õ€… À≈—///////////////////
+/area/stalker/buildings/backwater/ironforest
+	name = "Backwater - Iron Forest \[NB\]"
+	icon_state = "ironforest"
+
+/area/stalker/blowout/buildings/backwater/ironforest
+	name = "Backwater - Iron Forest"
+	icon_state = "ironforest"
+
+/area/stalker/blowout/outdoor/backwater/ironforest
+	name = "Backwater - Iron Forest \[O\]"
+	icon_state = "ironforest"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - ¬Õ«  –”√///////////////////
+/area/stalker/buildings/backwater/krug
+	name = "Backwater - Krug Antenna Complex \[NB\]"
+	icon_state = "krug"
+
+/area/stalker/blowout/buildings/backwater/krug
+	name = "Backwater - Krug Antenna Complex"
+	icon_state = "krug"
+
+/area/stalker/blowout/outdoor/backwater/krug
+	name = "Backwater - Krug Antenna Complex \[O\]"
+	icon_state = "krug"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - À≈—Œœ»À ¿///////////////////
+/area/stalker/buildings/backwater/sawmill
+	name = "Backwater - Sawmill \[NB\]"
+	icon_state = "sawmill"
+
+/area/stalker/blowout/buildings/backwater/sawmill
+	name = "Backwater - Sawmill"
+	icon_state = "sawmill"
+
+/area/stalker/blowout/outdoor/backwater/sawmill
+	name = "Backwater - Sawmill \[O\]"
+	icon_state = "sawmill"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - À≈—Õ»◊≈—“¬Œ///////////////////
+/area/stalker/buildings/backwater/ranger
+	name = "Backwater - Ranger Station \[NB\]"
+	icon_state = "ranger"
+
+/area/stalker/blowout/buildings/backwater/ranger
+	name = "Backwater - Ranger Station"
+	icon_state = "ranger"
+
+/area/stalker/blowout/outdoor/backwater/ranger
+	name = "Backwater - Ranger Station \[O\]"
+	icon_state = "ranger"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - —“¿Õ÷»ﬂ œ≈–≈–¿¡Œ“ » Œ“’ŒƒŒ¬///////////////////
+/area/stalker/buildings/backwater/waste
+	name = "Backwater - Waster Processing Station \[NB\]"
+	icon_state = "waste"
+
+/area/stalker/blowout/buildings/backwater/waste
+	name = "Backwater - Waster Processing Station"
+	icon_state = "waste"
+
+/area/stalker/blowout/outdoor/backwater/waste
+	name = "Backwater - Waster Processing Station \[O\]"
+	icon_state = "waste"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - —“¿Õ÷»ﬂ œ≈–≈–¿¡Œ“ » Œ“’ŒƒŒ¬///////////////////
+/area/stalker/buildings/backwater/waste
+	name = "Backwater - Waster Processing Station \[NB\]"
+	icon_state = "waste"
+
+/area/stalker/blowout/buildings/backwater/waste
+	name = "Backwater - Waster Processing Station"
+	icon_state = "waste"
+
+/area/stalker/blowout/outdoor/backwater/waste
+	name = "Backwater - Waster Processing Station \[O\]"
+	icon_state = "waste"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ -  Œ√Œ“‹///////////////////
+/area/stalker/buildings/backwater/claw
+	name = "Backwater - Claw \[NB\]"
+	icon_state = "claw"
+
+/area/stalker/blowout/buildings/backwater/claw
+	name = "Backwater - Claw"
+	icon_state = "claw"
+
+/area/stalker/blowout/outdoor/backwater/claw
+	name = "Backwater - Claw \[O\]"
+	icon_state = "claw"
+////////////////////////////////////////////////////////////////
+
+///////////////////////«¿“ŒÕ - ﬁ∆ÕŒ≈ œÀ¿“Œ///////////////////
+/area/stalker/buildings/backwater/plateau
+	name = "Backwater - Southern Plateau \[NB\]"
+	icon_state = "plateau"
+
+/area/stalker/blowout/buildings/backwater/plateau
+	name = "Backwater - Southern Plateau"
+	icon_state = "plateau"
+
+/area/stalker/blowout/outdoor/backwater/plateau
+	name = "Backwater - Southern Plateau \[O\]"
+	icon_state = "plateau"
+////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// Œ–ƒŒÕ\\\
 
 
@@ -137,7 +291,7 @@
 
 /area/stalker/kordon/tunnel
 	name = "Tunnel"
-	icon_state = "tunnelS"
+	icon_state = "tunnel_s"
 	environment = 13
 	ambient_environment = list('sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_1.ogg','sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_2.ogg',
 				'sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_3.ogg','sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_4.ogg',
@@ -208,7 +362,7 @@
 
 /area/stalker/svalka/tunnel
 	name = "Tunnel"
-	icon_state = "tunnelS"
+	icon_state = "tunnel_s"
 
 /area/stalker/blowout/svalka/tunnel
 	name = "Tunnel"
@@ -235,7 +389,7 @@
 
 /area/stalker/agroprom/tunnel
 	name = "Tunnel"
-	icon_state = "tunnelS"
+	icon_state = "tunnel_s"
 
 /area/stalker/blowout/agroprom/tunnel
 	name = "Tunnel"
@@ -301,7 +455,7 @@
 
 /area/stalker/byadt/buildings
 	name = "Buildings"
-	icon_state = "buildings_no_blowout"
+	icon_state = "buildings_s"
 
 /area/stalker/blowout/byadt/buildings
 	name = "Buildings Blowout"
@@ -310,12 +464,3 @@
 /area/stalker/byadt/buildings/mercenary
 	name = "Mercenary"
 	icon_state = "mercenary"
-
-
-/area/stalker/blowout/outdoor/safezone/bar
-	name = "Bar Outdoor"
-	icon_state = "bar_outdoor"
-	requires_power = 1
-	luminosity = 1
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-

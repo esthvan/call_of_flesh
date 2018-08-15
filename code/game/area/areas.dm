@@ -30,11 +30,19 @@
 									'sound/stalker/ambience/amb13.ogg','sound/stalker/ambience/amb15.ogg',
 									'sound/stalker/ambience/amb16.ogg','sound/stalker/ambience/amb17.ogg',
 									'sound/stalker/ambience/amb20.ogg','sound/stalker/ambience/amb21.ogg',
-									'sound/stalker/ambience/amb22.ogg')
+									'sound/stalker/ambience/amb22.ogg','sound/stalker/ambience/amb23.ogg',
+									'sound/stalker/ambience/amb24.ogg','sound/stalker/ambience/amb25.ogg',
+									'sound/stalker/ambience/amb26.ogg','sound/stalker/ambience/amb27.ogg',
+									/*'sound/stalker/ambience/amb28.ogg',*/'sound/stalker/ambience/amb29.ogg',
+									'sound/stalker/ambience/amb30.ogg','sound/stalker/ambience/amb31.ogg',
+									'sound/stalker/ambience/amb32.ogg','sound/stalker/ambience/amb33.ogg',
+									'sound/stalker/ambience/amb34.ogg','sound/stalker/ambience/amb35.ogg',
+									'sound/stalker/ambience/amb36.ogg')
 	var/list/ambient_environment = null
 	var/list/ambient_environment_night = null
 	var/list/ambient_background = null
 	var/environment = 0
+	var/safezone = 0
 //	var/list/l_sounds = list('sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_1.ogg','sound/stalker/ambience/ugrnd/rnd_ugrnd_amb_1.ogg',
 //							'sound/stalker/ambience/ugrnd/ugrnd_ambient_banging_1.ogg','sound/stalker/ambience/ugrnd/ugrnd_ambient_banging_2.ogg',
 //							'sound/stalker/ambience/ugrnd/ugrnd_drip_1.ogg','sound/stalker/ambience/ugrnd/ugrnd_drip_2.ogg',
