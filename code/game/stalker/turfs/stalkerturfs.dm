@@ -145,7 +145,7 @@ var/global/list/AsphaltEdgeCache
 
 	spawn(1)
 		var/turf/T
-		for(var/i = -1, i <= 3, i++)
+		for(var/i = 0, i <= 3, i++)
 			if(!get_step(src, 2**i))
 				continue
 			if(overlay_priority > get_step(src, 2**i).overlay_priority)
@@ -174,7 +174,7 @@ var/global/list/TropaEdgeCache
 
 	spawn(1)
 		var/turf/T
-		for(var/i = -1, i <= 3, i++)
+		for(var/i = 0, i <= 3, i++)
 			if(!get_step(src, 2**i))
 				continue
 			if(overlay_priority > get_step(src, 2**i).overlay_priority)
@@ -190,17 +190,35 @@ var/global/list/TropaEdgeCache
 	layer = 2
 	overlay_priority = 3
 
+var/global/list/WhiteRoadCache
+
 /turf/stalker/floor/road/New()
-	if(prob(80))
-		icon_state = "road2"
-	else if (prob(50))
-		icon_state = "road1"
-	else if(prob(50))
-		icon_state = "road3"
-	else if (prob(50))
-		icon_state = "road4"
-	else
-		icon_state = "road5"
+	switch(rand(1, 100))
+		if(1 to 65)
+			icon_state = "road2"
+		if(66 to 85)
+			icon_state = "road1"
+		if(86 to 90)
+			icon_state = "road3"
+		if(91 to 95)
+			icon_state = "road4"
+		if(96 to 100)
+			icon_state = "road5"
+
+	if(!WhiteRoadCache || !WhiteRoadCache.len)
+		WhiteRoadCache = list()
+		WhiteRoadCache.len = 10
+		WhiteRoadCache[NORTH] = image('icons/effects/warning_stripes.dmi', "road_b5", layer = 2.01)
+		WhiteRoadCache[SOUTH] = image('icons/effects/warning_stripes.dmi', "road_b6", layer = 2.01)
+		WhiteRoadCache[EAST] = image('icons/effects/warning_stripes.dmi', "road_b8", layer = 2.01)
+		WhiteRoadCache[WEST] = image('icons/effects/warning_stripes.dmi', "road_b7", layer = 2.01)
+
+	spawn(1)
+		for(var/i = 0, i <= 3, i++)
+			if(!get_step(src, 2**i) || (!istype(get_step(src, 2**i), src.type) && !get_step(src, 2**i).overlay_priority))
+				src.overlays += WhiteRoadCache[2**i]
+
+	return
 
 /turf/stalker/floor/gryaz
 	name = "dirt"
@@ -223,7 +241,7 @@ var/global/list/GryazEdgeCache
 
 	spawn(1)
 		var/turf/T
-		for(var/i = -1, i <= 3, i++)
+		for(var/i = 0, i <= 3, i++)
 			if(!get_step(src, 2**i))
 				continue
 			if(overlay_priority > get_step(src, 2**i).overlay_priority)
@@ -394,7 +412,7 @@ var/global/list/WaterEdgeCache
 
 	spawn(1)
 		var/turf/T
-		for(var/i = -1, i <= 3, i++)
+		for(var/i = 0, i <= 3, i++)
 			if(!get_step(src, 2**i))
 				continue
 			if(overlay_priority > get_step(src, 2**i).overlay_priority)
@@ -441,7 +459,8 @@ var/global/list/WaterEdgeCache
 /turf/stalker/floor/lattice
 	name = "lattice"
 	icon = 'icons/stalker/floor.dmi'
-	icon_state = "lattice1"
-
+	icon_state = "lattice_new"
+/*
 /turf/stalker/floor/lattice/New()
 	icon_state = "lattice[rand(1, 4)]"
+*/

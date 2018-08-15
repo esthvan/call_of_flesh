@@ -74,13 +74,12 @@
 /obj/item/proc/attack(mob/living/M, mob/living/user, def_zone)
 
 	var/area/B = get_area(user.loc)
-	for(var/A in safezones)
-		if(B.type in typesof(A))
-			if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
-				user << "<span class='warning'>You can't fight in the safezone!</span>"
-			else
-				user << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
-			return 0
+	if(B.safezone)
+		if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
+			user << "<span class='warning'>You can't fight in the safezone!</span>"
+		else
+			user << "<span class='warning'>Вы не можете дратьc&#255; в этой зоне!</span>"
+		return 0
 
 	if (!istype(M)) // not sure if this is the right thing...
 		return
