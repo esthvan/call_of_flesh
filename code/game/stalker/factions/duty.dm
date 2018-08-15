@@ -12,9 +12,9 @@ Assistant
 	selection_color = "#601919"
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
-	whitelist_only = 1
-	limit_per_player = 3
-	outfit = /datum/outfit/job/duty
+	whitelist_only = 0
+	limit_per_player = 2
+	outfit = /datum/outfit/job/assistant// /datum/outfit/job/duty
 
 /datum/outfit/job/duty
 	name = "Duty"
