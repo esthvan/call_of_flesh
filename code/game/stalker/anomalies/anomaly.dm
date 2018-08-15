@@ -28,6 +28,7 @@
 	var/inactive_invisibility = 0
 	var/list/loot = list()
 	var/anomaly_color = null
+	var/loot_count = 1
 	icon = 'icons/stalker/anomalies.dmi'
 	unacidable = 1
 	anchored = 1
@@ -42,40 +43,41 @@
 	SpawnArtifact()
 
 /obj/anomaly/proc/SpawnArtifact()
-	if(!loot)
-		return
+	for(var/i = 1, i <= loot_count, i++)
+		if(!loot)
+			return
 
-	var/lootspawn = pickweight(loot)
+		var/lootspawn = pickweight(loot)
 
-	if(!lootspawn || lootspawn == /obj/nothing)
-		return
+		if(!lootspawn || lootspawn == /obj/nothing)
+			return
 
-	//var/obj/item/weapon/artifact/lootspawn_art = lootspawn
-	var/turf/T = get_turf(src)
-	var/obj/item/weapon/artifact/O = new lootspawn(T)
-	O.invisibility = 100
+		//var/obj/item/weapon/artifact/lootspawn_art = lootspawn
+		var/turf/T = get_turf(src)
+		var/obj/item/weapon/artifact/O = new lootspawn(T)
+		O.invisibility = 100
 
-	switch(z)
-		if(4)
-			if(O.level_s > 4)
-				PlaceInPool(O)
-				SpawnArtifact()
-				return
+		switch(z)
+			if(4)
+				if(O.level_s > 4)
+					PlaceInPool(O)
+					SpawnArtifact()
+					return
 
-		if(3)
-			if(O.level_s > 2)
-				PlaceInPool(O)
-				SpawnArtifact()
-				return
+			if(3)
+				if(O.level_s > 2)
+					PlaceInPool(O)
+					SpawnArtifact()
+					return
 
-		if(2)
-			if(O.level_s > 1)
-				PlaceInPool(O)
-				SpawnArtifact()
-				return
+			if(2)
+				if(O.level_s > 3)
+					PlaceInPool(O)
+					SpawnArtifact()
+					return
 
-	RandomMove(O)
-	spawned_artifacts += O
+		RandomMove(O)
+		spawned_artifacts += O
 
 /obj/anomaly/proc/RandomMove(spawned)
 	if(spawned)
@@ -230,7 +232,7 @@
 		if(DMG_TYPE_RADIATION)
 			L.rad_act(src.damage_amount)
 		if(DMG_TYPE_GIB)
-			if(L.health <= -50)
+			if(L.stat == DEAD)
 				L.gib()
 				trapped.Remove(L)
 			else
@@ -248,12 +250,10 @@
 
 	L.apply_damage(src.damage_amount, BRUTE, null, 0)
 
-	var/new_dir = NORTH
 	var/target = get_turf(src)
 
 	for(var/o=0, o<8, o++)
-		new_dir = pick(EAST, NORTH, WEST, SOUTH)
-		target = get_turf(get_step(target, new_dir))
+		target = get_step_rand(target)
 
 	L.throw_at(target, 6, 1, spin=1, diagonals_first = 1)
 	L.Weaken(2)
@@ -316,8 +316,8 @@
 	for(var/atom/movable/A in range(2, src))
 		if(!A.anchored)
 			step_towards(A,src)
-			if(!(A in trapped))
-				Crossed(A)
+			//if(!(A in trapped))
+			//	src.trapped.Add(A)
 
 /obj/anomaly/tramplin
 	name = "anomaly"
@@ -395,6 +395,70 @@
 	sleep(src.cooldown * 10 - 5)
 
 	qdel(Q)
+
+/obj/anomaly/jarka/comet
+	name = "comet"
+	loot = list(/obj/item/weapon/artifact/droplet = 45,
+				/obj/item/weapon/artifact/fireball = 40,
+				/obj/item/weapon/artifact/crystal = 10,
+				/obj/item/weapon/artifact/maminibusi = 5
+				)
+	loot_count = 2
+	var/stage = 0
+	var/radius = 3
+	var/list/x_cords = list()
+	var/list/y_cords = list()
+
+/obj/anomaly/jarka/comet/New()
+	..()
+	SSobj.processing.Add(src)
+
+/obj/anomaly/jarka/comet/initialize()
+	..()
+	var/x1 = x + radius
+	var/y1 = y
+	var/i = 0
+	while(y1 < initial(y) + radius)
+		i++
+		y1++
+		x1 = (radius**2 - (y1 - initial(y))**2)**0.5
+		x_cords[i] = x1
+		y_cords[i] = y1
+
+	while(y1 > initial(y))
+		i++
+		y1--
+		x1 = -((radius**2 - (y1 - initial(y))**2)**0.5)
+		x_cords[i] = x1
+		y_cords[i] = y1
+
+	while(y1 > initial(y) - radius)
+		i++
+		y1--
+		x1 = -((radius**2 - (y1 - initial(y))**2)**0.5)
+		x_cords[i] = x1
+		y_cords[i] = y1
+
+	while(y1 < initial(y))
+		i++
+		y1++
+		x1 = (radius**2 - (y1 - initial(y))**2)**0.5
+		x_cords[i] = x1
+		y_cords[i] = y1
+
+	x_cords.len = i
+	y_cords.len = i
+
+/obj/anomaly/jarka/comet/Destroy()
+	..()
+	SSobj.processing.Remove(src)
+
+/obj/anomaly/jarka/comet/process()
+	stage++
+	world << stage
+	src.throw_at(locate(x_cords[stage], y_cords[stage], src.z), radius, 1, null)
+	if(stage == x_cords.len)
+		stage = 0
 
 /obj/anomaly/holodec
 	name = "anomaly"
