@@ -872,6 +872,7 @@
 #include "code\game\stalker\sidor\sidor.dm"
 #include "code\game\stalker\testunit_dev\keypad.dm"
 #include "code\game\stalker\testunit_dev\stalker_pda.dm"
+#include "code\game\stalker\turfs\ship_hull.dm"
 #include "code\game\stalker\turfs\stalkerturfs.dm"
 #include "code\game\turfs\simulated.dm"
 #include "code\game\turfs\turf.dm"
