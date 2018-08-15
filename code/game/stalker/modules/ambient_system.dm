@@ -19,6 +19,15 @@
 		ambient_music.Transition(src)
 		ambient_music = null
 
+	if(ambient_background && !ambient_background.transition && !(ambient_background.file in A.ambient_background))//[SSsunlight.current_step]))
+
+		ambient_background.Transition(src)
+		ambient_background = null
+
+	if(ambient_psy && ambient_psy.volume > 10)
+
+		return 1
+
 	if(!ambient_music || (!ambient_music.transition && world.time >= ambient_music.last_time + ambient_music.real_cooldown))
 
 		if(!isnull(A.ambient_music) && (!music || (music && music.volume <= 0)))
@@ -50,11 +59,6 @@
 				ambient_environment.real_cooldown = rand(A.ambient_environment_cooldown * 0.3, A.ambient_environment_cooldown * 1.5)
 				ambient_environment.Set_Sound(708, rand(25, 60), rand(-100, 100), A.environment)
 				src << ambient_environment
-
-	if(ambient_background && !ambient_background.transition && !(ambient_background.file in A.ambient_background))//[SSsunlight.current_step]))
-
-		ambient_background.Transition(src)
-		ambient_background = null
 
 	if(!ambient_background || (!ambient_background.transition && world.time >= ambient_background.last_time + ambient_background.real_cooldown))
 
@@ -91,6 +95,7 @@
 		ambient_psy.Set_Sound(710, 60*(psyloss/200), 0, -1)
 
 		src << ambient_psy
+
 
 /sound/proc/Transition(var/mob/M)
 	transition = 1
