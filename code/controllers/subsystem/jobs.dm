@@ -339,9 +339,9 @@ var/datum/subsystem/job/SSjob
 	if(!joined_late)
 		var/obj/S = null
 		for(var/obj/effect/landmark/start/sloc in start_landmarks_list)
-			if(sloc.name != rank)
-				S = sloc //so we can revert to spawning them on top of eachother if something goes wrong
-				continue
+			//if(sloc.name != rank)
+			//	S = sloc //so we can revert to spawning them on top of eachother if something goes wrong
+			//	continue
 			if(locate(/mob/living) in sloc.loc)
 				continue
 			S = sloc
