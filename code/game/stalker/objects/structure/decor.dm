@@ -578,7 +578,7 @@
 	desc = "Генерирует тайник с определенным шансом в начале раунда."
 	eng_desc = "Generates a stash with a certain chance at the start of the round."
 	density = 1
-	var/cache_chance = 8	//percent
+	var/cache_chance = 0	//percent
 	var/cache_quality = -1	//from 0 to 3, -1 for random
 	var/cache_size = 0		//from 0 to 3
 	var/obj/item/weapon/storage/stalker/cache/internal_cache = null
@@ -587,6 +587,9 @@
 
 /obj/structure/stalker/cacheable/New()
 	..()
+
+	if(!cache_chance)
+		cache_chance = rand(5,11)
 
 	if(!prob(cache_chance))
 		//internal_cache = null
