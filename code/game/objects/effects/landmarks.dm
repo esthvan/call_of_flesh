@@ -272,6 +272,9 @@
 /obj/effect/landmark/latejoin
 	name = "JoinLate"
 
+/obj/effect/landmark/latejoin/everyone
+	name = "JoinLateEveryone"
+
 /obj/effect/landmark/latejoin/bandit
 	name = "JoinLateBandit"
 
