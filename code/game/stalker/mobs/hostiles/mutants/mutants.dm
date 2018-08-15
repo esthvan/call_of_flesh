@@ -5,7 +5,7 @@
 	var/gib_targets = 1 //Гибать
 	icon = 'icons/stalker/stalker.dmi'
 	var/deletable = 1 //Self-deletable dead bodies
-	speak_chance = 3
+	speak_chance = 1.5
 
 /*
 /mob/living/simple_animal/hostile/mutant/death(gibbed)
@@ -17,13 +17,12 @@
 
 /mob/living/simple_animal/hostile/mutant/Move(atom/NewLoc, direct)
 	var/area/B = get_area(NewLoc)
-	for(var/A in safezones)
-		if(B.type in typesof(A))
-			if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
-				src << "<span class='warning'>You can't be here!</span>"
-			else
-				src << "<span class='warning'>Вы не можете находитьc&#255; в этой зоне!</span>"
-			return 0
+	if(B.safezone)
+		if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
+			src << "<span class='warning'>You can't be here!</span>"
+		else
+			src << "<span class='warning'>Вы не можете находитьc&#255; в этой зоне!</span>"
+		return 0
 	. = ..()
 
 /mob/living/simple_animal/hostile/mutant/AttackingTarget()
@@ -345,7 +344,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "claw"
 	move_to_delay = 1.65
-	speak_chance = 8
+	speak_chance = 2
 
 /mob/living/simple_animal/hostile/mutant/bloodsucker/Life()
 	if(..())
