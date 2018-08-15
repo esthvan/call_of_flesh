@@ -239,14 +239,13 @@
 /mob/living/carbon/throw_item(atom/target)
 	throw_mode_off()
 
-	for(var/A in safezones)
-		var/area/B = get_area(src.loc)
-		if(B.type in typesof(A))
-			if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
-				src << "<span class='warning'>You can't throw things in the safezone!</span>"
-			else
-				src << "<span class='warning'>Вы не можете кидатьc&#255; в этой зоне!</span>"
-			return
+	var/area/B = get_area(src.loc)
+	if(B.safezone)
+		if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
+			src << "<span class='warning'>You can't throw things in the safezone!</span>"
+		else
+			src << "<span class='warning'>Вы не можете кидатьc&#255; в этой зоне!</span>"
+		return
 
 	if(!target || !isturf(loc))
 		return
