@@ -94,6 +94,10 @@ obj/machinery/stalker/sidorpoint
 		say("No access.")
 		return
 
+	if(sk.fields["faction_s"] == "Loners")
+		say("No access.")
+		return
+
 	if(control_percent == 100 && controlled_by == sk.fields["faction_s"])
 		say("[get_area(src).name] is already captured!")
 		return
@@ -147,3 +151,46 @@ obj/machinery/stalker/sidorpoint
 
 /obj/machinery/stalker/sidorpoint/ex_act(severity, target)
 	return
+
+/obj/machinery/stalker/sidormat/special
+	desc = "An equipment vendor for experienced stalkers."
+	var/obj/machinery/stalker/sidorpoint/SP = null
+	var/SP_area = null
+
+/obj/machinery/stalker/sidormat/special/New()
+	..()
+	sleep(10)
+	if(SP_area)
+		for(var/turf/T in get_area_turfs(SP_area))
+			SP = locate(/obj/machinery/stalker/sidorpoint)  in T
+			if(SP)
+				break
+
+/obj/machinery/stalker/sidormat/special/interact(mob/living/carbon/human/H)
+	if(!SP)
+		SP = locate(/obj/machinery/stalker/sidorpoint) in get_area_turfs(SP_area)
+
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		say("Put on your KPK.")
+		return
+
+	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+	var/obj/item/device/stalker_pda/KPK = H.wear_id
+
+	if(!sk || !KPK.owner)
+		say("Activate your KPK profile.")
+		return
+
+	if(KPK.owner != H)
+		say("No access.")
+		return
+
+	if(!SP.controlled_by || SP.control_percent < 100)
+		say("No access.")
+		return
+
+	if(SP.controlled_by != sk.fields["faction_s"])
+		say("No access.")
+		return
+
+	..()
