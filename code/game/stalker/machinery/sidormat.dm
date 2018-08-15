@@ -8,8 +8,8 @@ var/global/list/high_tier_sidormatitems = list()
 	icon = 'icons/stalker/decor.dmi'
 
 /obj/machinery/stalker/sidormat
-	name = "SIDORMAT 3000"
-	desc = "An equipment vendor for beginning stalkers. Insert money - buy stuff."
+	name = "SYCHEMAT"
+	desc = "An equipment vendor for beginning stalkers."
 	icon_state = "radio"
 	density = 1
 	anchored = 1
