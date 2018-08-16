@@ -15,8 +15,8 @@
 	var/pass_flags = 0
 	var/previous_teleport_dest = null
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
-	glide_size = 8
-
+	//glide_size = 8
+	pixel_step_size = 0
 
 /atom/movable/Move(atom/newloc, direct = 0)
 	if(!loc || !newloc) return 0
