@@ -206,9 +206,14 @@ var/global/turntable_channel = 4488
 		update_sound()
 
 /obj/machinery/party/turntable/proc/update_sound()
-	for(var/mob/M in view(7, src))
+	var/area/A = get_area(src)
+
+	for(var/mob/M in player_list)
 
 		if(!M || !M.client)
+			continue
+
+		if(!(get_area(M) in A.related))
 			continue
 
 		if(!M.client.jukeboxplaying)
@@ -225,7 +230,7 @@ var/global/turntable_channel = 4488
 			melomans.Remove(C)
 			continue
 
-		if(!playing || !(C.mob) || !(C.mob in view(7,src)))
+		if(!playing || !(C.mob) || !(get_area(C.mob) in A.related))
 			C.jukeboxplaying = 0
 			C.mob.music.status = SOUND_UPDATE
 			C.mob.music.volume = 0
