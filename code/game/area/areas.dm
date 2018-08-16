@@ -21,7 +21,7 @@
 	var/ambient_music_cooldown				= 4200
 	var/ambient_environment_cooldown		= 666
 	var/list/ambient_background_cooldown = null
-	var/list/ambient_music = list('sound/stalker/ambience/amb02.ogg','sound/stalker/ambience/amb01.ogg',
+	var/list/ambient_music = list('sound/stalker/ambience/amb01.ogg','sound/stalker/ambience/amb02.ogg',
 									'sound/stalker/ambience/amb03.ogg','sound/stalker/ambience/amb04.ogg',
 									'sound/stalker/ambience/amb05.ogg','sound/stalker/ambience/amb06.ogg',
 									'sound/stalker/ambience/amb07.ogg','sound/stalker/ambience/amb08.ogg',
@@ -37,7 +37,7 @@
 									'sound/stalker/ambience/amb30.ogg','sound/stalker/ambience/amb31.ogg',
 									'sound/stalker/ambience/amb32.ogg','sound/stalker/ambience/amb33.ogg',
 									'sound/stalker/ambience/amb34.ogg','sound/stalker/ambience/amb35.ogg',
-									'sound/stalker/ambience/amb36.ogg')
+									'sound/stalker/ambience/amb36.ogg','sound/stalker/ambience/amb37.ogg')
 	var/list/ambient_environment = null
 	var/list/ambient_environment_night = null
 	var/list/ambient_background = null
