@@ -1,6 +1,6 @@
 var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 
-obj/machinery/stalker/sidorpoint
+/obj/machinery/stalker/sidorpoint
 	name = "SIDORPOINT - null"
 	desc = "Контрольна&#255; точка."
 	eng_desc = "Control point."
@@ -156,6 +156,14 @@ obj/machinery/stalker/sidorpoint
 	desc = "An equipment vendor for experienced stalkers."
 	var/obj/machinery/stalker/sidorpoint/SP = null
 	var/SP_area = null
+
+/obj/machinery/stalker/sidorpoint/proc/SendJobTotalPositions()
+	if(control_percent < 100)
+		return
+
+	for(var/datum/job/J in SSjob.occupations)
+		if(controlled_by == J.faction_s)
+			J.total_positions += 3
 
 /obj/machinery/stalker/sidormat/special/New()
 	..()

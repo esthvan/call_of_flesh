@@ -3,6 +3,7 @@ Assistant
 */
 /datum/job/assistant
 	title = "Stalker"
+	faction_s = "Loners"
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
@@ -17,6 +18,7 @@ Assistant
 
 /datum/job/oldstalker
 	title = "Old Stalker"
+	faction_s = "Loners"
 	faction = "Station"
 	total_positions = -1
 	spawn_positions = -1

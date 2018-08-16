@@ -18,6 +18,7 @@
 
 	//How many players can be this job
 	var/total_positions = 0
+	var/locked = 0
 
 	//How many players can spawn in as this job
 	var/spawn_positions = 0
@@ -42,6 +43,10 @@
 	var/outfit = null
 
 	var/limit_per_player = 0
+
+	var/faction_s = "Loners"
+
+	var/real_rank = "Private"
 
 //Only override this proc
 /datum/job/proc/equip_items(mob/living/carbon/human/H)
@@ -192,3 +197,10 @@
 		if(H && announcement_systems.len)
 			var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
 			announcer.announce("NEWHEAD", H.real_name, H.job, channels)
+/*
+/datum/job/proc/SetTotalPositions()
+	total_positions = initial(total_positions)
+	for(var/obj/machinery/stalker/sidorpoint/SP in SPs)
+		if(SP && SP.controlled_by == faction_s && SP.control_percent == 100)
+			total_positions += 3
+*/

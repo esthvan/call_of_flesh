@@ -135,6 +135,25 @@ datum/subsystem/blowout/proc/StopBlowout()
 		An.SpawnArtifact()
 		CHECK_TICK
 
+	for(var/datum/job/J in SSjob.occupations)
+
+		J.total_positions = initial(J.total_positions)
+		CHECK_TICK
+
+	for(var/obj/machinery/stalker/sidorpoint/SP in cps)
+
+		SP.SendJobTotalPositions()
+		CHECK_TICK
+
+	for(var/obj/structure/stalker/cacheable/C in world)
+
+		if(C.internal_cache)
+			PlaceInPool(C.internal_cache)
+
+		C.cache_chance = rand(2, 7)
+
+		C.New()
+
 datum/subsystem/blowout/proc/AfterBlowout()
 
 	cooldownreal = rand(average_cooldown * 0.7, average_cooldown * 1.3)

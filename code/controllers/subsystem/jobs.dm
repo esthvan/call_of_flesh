@@ -54,7 +54,7 @@ var/datum/subsystem/job/SSjob
 		if(J.title == rank)	return J
 	return null
 
-/datum/subsystem/job/proc/AssignRole(mob/new_player/player, rank, latejoin=0)
+/datum/subsystem/job/proc/AssignRole(mob/player, rank, latejoin=0)
 	Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
 		var/datum/job/job = GetJob(rank)

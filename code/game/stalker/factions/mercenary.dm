@@ -1,10 +1,11 @@
 /datum/job/mercenary
 	title = "Mercenary"
+	faction_s = "Mercenaries"
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = -1
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = ""
 	selection_color = "#2e708b"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -67,8 +68,10 @@
 
 /datum/job/mercenary_sql
 	title = "Mercenary Sql"
+	faction_s = "Mercenaries"
 	faction = "Station"
 	total_positions = 2
+	locked = 1
 	spawn_positions = -1
 	supervisors = ""
 	selection_color = "#2e708b"
@@ -77,6 +80,7 @@
 	whitelist_only = 1
 	limit_per_player = 4
 	outfit = /datum/outfit/job/mercenary
+	real_rank = "Lieutenant"
 
 /datum/outfit/job/mercenary_sql
 	name = "Mercenary Sql"

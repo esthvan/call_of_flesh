@@ -3,6 +3,7 @@ Assistant
 */
 /datum/job/army
 	title = "Army"
+	faction_s = "Army"
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
@@ -63,15 +64,18 @@ Assistant
 
 /datum/job/petrovich
 	title = "Petrovich"
+	faction_s = "Army"
 	outfit = /datum/outfit/job/petrovich
 	faction = "Военный"
 	total_positions = -1
+	locked = 1
 	spawn_positions = -1
 	supervisors = ""
 	selection_color = "#2E8B57"
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	whitelist_only = 1
+	real_rank = "Lieutenant"
 
 /datum/outfit/job/petrovich
 	name = "Petrovich"

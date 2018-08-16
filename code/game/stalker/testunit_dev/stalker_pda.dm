@@ -18,6 +18,7 @@ var/global/global_lentahtml = ""
 
 	//ПРОФИЛЬ
 	var/mob/living/carbon/human/owner = null
+	var/datum/data/record/profile = null
 	var/registered_name = null
 	var/sid = null
 	var/rotation = "front"
@@ -37,6 +38,7 @@ var/global/global_lentahtml = ""
 	var/rus_rank_name_s = "Новичок"
 	var/eng_rank_name_s = "Rookie"
 	var/eng_faction_s = "Loners"
+	var/degree = 0
 	//var/isregistered = 0
 
 	//ЛЕНТА
@@ -82,6 +84,12 @@ var/global/global_lentahtml = ""
 
 /obj/item/device/stalker_pda/New()
 	..()
+	return
+
+/obj/item/device/stalker_pda/Destroy()
+	..()
+	if(src in KPKs)
+		KPKs -= src
 	return
 
 /obj/item/device/stalker_pda/MouseDrop(atom/over_object)
@@ -986,6 +994,63 @@ var/global/global_lentahtml = ""
 				SSminimap.sendMinimaps(H)
 				mode = 5
 
+		if(href_list["invite"])
+
+			var/sid_ = text2num(href_list["invite"])
+			var/datum/job/J = SSjob.GetJob(get_job_title(eng_faction_s))
+
+			if(!J)
+				return
+
+			if((J.current_positions >= J.total_positions) && J.total_positions != -1)
+				return
+
+			var/datum/data/record/sk_invited = find_record("sid", sid_, data_core.stalkers)
+
+			if(sk_invited)
+				for(var/obj/item/device/stalker_pda/KPK_invited in KPKs)
+					if(KPK_invited.sid == sid_)
+						show_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s, "You have been invited to [eng_faction_s] faction. Check feed for more info.")
+						add_local_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s,"You have been invited to [eng_faction_s] faction. <a style=\"color:#c10000;\" href='byond://?src=\ref[KPK_invited];changefaction=[J.title]'>\[Accept invitation\]</a>")
+
+		if(href_list["remove"])
+
+			var/sid_ = text2num(href_list["remove"])
+			var/datum/job/J = SSjob.GetJob(get_job_title(eng_faction_s))
+
+			var/datum/data/record/sk_removed = find_record("sid", sid_, data_core.stalkers)
+
+			if(sk_removed)
+
+				SSjob.AssignRole(owner, "Stalker", 1)
+				sk_removed.fields["faction_s"] = "Loners"
+				J.current_positions--
+
+				for(var/obj/item/device/stalker_pda/KPK_removed in KPKs)
+					if(KPK_removed.sid == sid_)
+						show_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s, "You have been kicked out of [eng_faction_s] faction.")
+						add_local_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s,"You have been kicked out of [eng_faction_s] faction.")
+
+						KPK_removed.set_owner_info(KPK_removed.profile)
+
+		if(href_list["changefaction"])
+
+			var/new_eng_faction_s =  SSjob.GetJob(href_list["changefaction"]).faction_s
+			var/confirm = alert(H, "Change your faction from [eng_faction_s] to [new_eng_faction_s]?", "KPK", "Yes", "No")
+			if(confirm == "Yes")
+				var/datum/job/J =  SSjob.GetJob(href_list["changefaction"])
+
+				if(!J)
+					return
+
+				if((J.current_positions >= J.total_positions) && J.total_positions != -1)
+					return
+
+				SSjob.AssignRole(owner, href_list["changefaction"], 1)
+
+				profile.fields["faction_s"] = J.faction_s
+				set_owner_info(profile)
+
 		usr.set_machine(src)
 		updateSelfDialog()
 		return
@@ -1039,6 +1104,24 @@ var/global/global_lentahtml = ""
 		show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg)
 	show_dead_lenta_message(KPK_owner, name_owner, faction_owner, msg, isfactionchat = 0)
 	//var/eng_faction_s 	= faction_owner//get_eng_faction(faction_owner)
+
+/proc/add_local_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/obj/item/device/stalker_pda/KPK_guest, var/sid_owner, var/name_owner, var/faction_owner, msg)
+	var/factioncolor 	= get_faction_color(faction_owner)
+	KPK_guest.lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
+	<tr style=\"border: 0px solid black;\">\
+	<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
+	<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
+	</td>\
+	\
+	<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
+	\
+	<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+	\
+	</td>\
+	\
+	</tr>\
+	</table>" + KPK_guest.lentahtml
+	show_lenta_message(KPK_owner, KPK_guest, sid_owner, name_owner, faction_owner, msg)
 
 /proc/add_faction_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
 	for(var/obj/item/device/stalker_pda/KPK in KPKs)
@@ -1147,8 +1230,15 @@ var/global/global_lentahtml = ""
 					\
 					<td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
 					\
-					<b>\[[count]\]</b> [n] ([eng_f])<br>\
-					<b>Rating</b> [eng_rank_name] ([r])<br>\
+					<b>\[[count]\]</b> [n] ([eng_f])"
+			//Faction menu
+			if(degree >= 1 && sid_p != sid)
+				if(eng_faction_s == eng_f)
+					ratinghtml += "<a style=\"color:#c10000;\" href='byond://?src=\ref[src];remove=[sid_p]'>\[kick out\]</a>"
+				else
+					ratinghtml += "<a style=\"color:#7ac100;\" href='byond://?src=\ref[src];invite=[sid_p]'>\[invite\]</a>"
+			//////////////
+			ratinghtml +="<br><b>Rating</b> [eng_rank_name] ([r])<br>\
 					<b>Reputation:</b> <font color=\"[rep_color]\">[eng_rep]</font><br>\
 					\
 					</td>\
@@ -1165,8 +1255,15 @@ var/global/global_lentahtml = ""
 					\
 					<td height=64 width=354 align=\"top\" style=\"text-align:left;vertical-align: top;\">\
 					\
-					<b>\[[count]\]</b> [n] ([f])<br>\
-					<b>Рейтинг:</b> [rank_name] ([r])<br>\
+					<b>\[[count]\]</b> [n] ([f])"
+			//Faction menu
+			if(degree >= 1 && sid_p != sid)
+				if(eng_faction_s == eng_f)
+					ratinghtml += "<a style=\"color:#c10000;\" href='byond://?src=\ref[src];remove=[sid_p]'>\[исключить\]</a>"
+				else
+					ratinghtml += "<a style=\"color:#7ac100;\" href='byond://?src=\ref[src];invite=[sid_p]'>\[пригласить\]</a>"
+			//////////////
+			ratinghtml += "<br><b>Рейтинг:</b> [rank_name] ([r])<br>\
 					<b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
 					\
 					</td>\
@@ -1255,6 +1352,10 @@ var/global/global_lentahtml = ""
 
 	rus_rank_name_s 	= get_rus_rank_name(sk.fields["rating"])
 	eng_rank_name_s	= get_eng_rank_name(sk.fields["rating"])
+
+	degree = sk.fields["degree"]
+
+	profile = sk
 
 /proc/get_rus_rank_name(var/rating)
 	var/rus_rank_name_s = "Новичок"
@@ -1378,3 +1479,20 @@ var/global/global_lentahtml = ""
 		if(DISGUSTING)
 			rep_color_s = "#7c0000"
 	return rep_color_s
+
+/proc/get_job_title(var/faction_s)
+	switch(faction_s)
+		if("Bandits")
+			return "Bandit"
+		if("Mercenaries")
+			return "Mercenary"
+		if("Duty")
+			return "Duty"
+		if("Traders")
+			return "Trader"
+		if("Freedom")
+			return "Freedom"
+		if("Monolith")
+			return "Monolith"
+		if("Loners")
+			return "Stalker"

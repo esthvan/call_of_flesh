@@ -15,6 +15,7 @@
 	req_admin_notify = 0
 	minimal_player_age = 0
 	outfit = null
+	real_rank = "Lieutenant"
 
 /datum/job/stalker/trader
 	title = "Trader"

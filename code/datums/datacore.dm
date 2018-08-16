@@ -280,22 +280,33 @@ var/record_id_num = 1001
 
 		//Разработка сталкера
 		var/datum/data/record/sk = new()
-		sk.fields["sid"]		= sid
-		sk.fields["name"]		= H.real_name
-		sk.fields["rank"]		= H.mind.assigned_role
-		sk.fields["faction_s"]	= H.faction_s
-		sk.fields["rating"]		= 0
-		switch(H.rank)
-			if("Lieutenant")
-				sk.fields["rating"]	= 1000
-		sk.fields["reputation"] = 1000
-		sk.fields["photo_front"]= photo_front
-		sk.fields["photo_west"]	= photo_west
-		sk.fields["photo_east"] = photo_east
-		sk.fields["photo_back"] = photo_back
-		sk.fields["pass"]		= pass
-		sk.fields["money"]		= 5000
-		sk.fields["lastlogin"]	= world.time
+
+		sk.fields["reputation"]		= 1000
+		sk.fields["photo_front"]	= photo_front
+		sk.fields["photo_west"]		= photo_west
+		sk.fields["photo_east"]		= photo_east
+		sk.fields["photo_back"]		= photo_back
+		sk.fields["pass"]			= pass
+		sk.fields["money"]			= 5000
+		sk.fields["lastlogin"]		= world.time
+		sk.fields["sid"]			= sid
+		sk.fields["name"]			= H.real_name
+		sk.fields["rank"]			= H.mind.assigned_role
+		sk.fields["rating"] = 0
+		sk.fields["degree"] = 0
+
+		var/datum/job/J = null
+		if(H.mind.assigned_role)
+			J = SSjob.GetJob(H.mind.assigned_role)
+
+		if(J)
+			if(J.real_rank == "Lieutenant")
+				sk.fields["rating"] = 1000
+				sk.fields["degree"] = 1
+			sk.fields["faction_s"]	= J.faction_s
+		else
+			sk.fields["faction_s"]	= "Loners"
+
 		stalkers += sk
 	return
 

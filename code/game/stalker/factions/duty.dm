@@ -3,11 +3,12 @@ Assistant
 */
 /datum/job/duty
 	title = "Duty"
+	faction_s = "Duty"
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "Major"
 	selection_color = "#601919"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -64,6 +65,8 @@ Assistant
 
 /datum/job/barman2
 	title = "Barman2"
+	faction_s = "Loners"
+	locked = 1
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
@@ -94,14 +97,17 @@ Assistant
 
 /datum/job/duty_lieutenant
 	title = "Duty Lieutenant"
+	faction_s = "Duty"
 	faction = "Station"
 	total_positions = 2
-	spawn_positions = -1
+	locked = 1
+	spawn_positions = 2
 	supervisors = "Major"
 	selection_color = "#601919"
 	whitelist_only = 1
 	limit_per_player = 2
 	outfit = /datum/outfit/job/duty_lieutenant
+	real_rank = "Lieutenant"
 
 /datum/outfit/job/duty_lieutenant
 	name = "Duty Lieutenant"

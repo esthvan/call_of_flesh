@@ -329,46 +329,12 @@
 					D = T
 					continue*/
 	character.loc = D
-	//character.client.pixel_step_size = 10			//Гладкая ходьба
-	//character.pixel_step_size = 0					//
 	if(character.mind.assigned_role != "Cyborg")
 	//	data_core.manifest_inject(character)
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 //		AnnounceArrival(character, rank)
 	else
 		character.Robotize()
-
-	switch(rank)
-		if("Bandit" || "Pahan")
-			character.faction_s = "Bandits"
-
-		if("Army" || "EliteAgro")
-			character.faction_s = "Army"
-
-		if("Duty")
-			character.faction_s = "Duty"
-
-		if("Duty Lieutenant")
-			character.faction_s = "Duty"
-			character.rank 		= "Lieutenant"
-
-		if("Mercenary")
-			character.faction_s = "Mercenaries"
-
-		if("Mercenary Sql")
-			character.faction_s = "Mercenaries"
-			character.rank 		= "Lieutenant"
-
-		if("Freedom")
-			character.faction_s = "Freedom"
-
-		if("Freedom Lieutenant")
-			character.faction_s = "Freedom"
-			character.rank 		= "Lieutenant"
-
-		if("Trader")
-			character.faction_s = "Traders"
-			character.rank 		= "Lieutenant"
 
 	joined_player_list += character.ckey
 

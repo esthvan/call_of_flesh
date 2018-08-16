@@ -1,8 +1,9 @@
 /datum/job/freedom
 	title = "Freedom"
+	faction_s = "Freedom"
 	faction = "Station"
-	total_positions = 6
-	spawn_positions = -1
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = "Major"
 	selection_color = "#601919"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -32,7 +33,6 @@
 
 /datum/outfit/freedom  // For select_equipment
 	name = "Freedom Soldier"
-
 	head = null
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	ears = null
@@ -57,14 +57,17 @@
 
 /datum/job/freedom_lieutenant
 	title = "Freedom Lieutenant"
+	faction_s = "Freedom"
 	faction = "Station"
 	total_positions = 2
+	locked = 1
 	spawn_positions = -1
 	supervisors = "Major"
 	selection_color = "#601919"
 	whitelist_only = 1
 	limit_per_player = 2
 	outfit = /datum/outfit/job/freedom_lieutenant
+	real_rank = "Lieutenant"
 
 /datum/outfit/job/freedom_lieutenant
 	name = "Freedom Lieutenant"

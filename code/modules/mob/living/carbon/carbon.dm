@@ -1,7 +1,6 @@
 /mob/living/carbon
 	var/faction_s = "Loners"
 	var/sid = null
-	var/rank = "Private"
 
 /mob/living/carbon/New()
 	create_reagents(1000)

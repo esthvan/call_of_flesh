@@ -3,11 +3,12 @@ Assistant
 */
 /datum/job/bandit
 	title = "Bandit"
+	faction_s = "Bandits"
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "Pahan"
 	selection_color = "#000000"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -18,20 +19,25 @@ Assistant
 
 /datum/job/bandit_pahan
 	title = "Pahan"
+	faction_s = "Bandits"
 	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 2
+	locked = 1
+	spawn_positions = 2
 	supervisors = ""
 	selection_color = "#000000"
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access(
 	whitelist_only = 1
 	outfit = /datum/outfit/job/bandit_pahan
+	real_rank = "Lieutenant"
 
 /datum/job/bandit_barman
 	title = "Bandit Barman"
+	faction_s = "Bandits"
 	faction = "Station"
-	total_positions = -1
+	total_positions = 1
+	locked = 1
 	spawn_positions = -1
 	supervisors = ""
 	selection_color = "#000000"
