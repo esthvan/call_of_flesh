@@ -13,6 +13,9 @@
 	if(!src.client)
 		return 0
 
+	if(!src.loc)
+		return 0
+
 	var/area/A = get_area(src)
 
 	if(ambient_music && (!A.ambient_music || (music && music.volume > 0)))
@@ -25,17 +28,16 @@
 		ambient_background = null
 
 	if(ambient_psy && ambient_psy.volume > 10)
-
 		return 1
 
 	if(!ambient_music || (!ambient_music.transition && world.time >= ambient_music.last_time + ambient_music.real_cooldown))
 
-		if(!isnull(A.ambient_music) && (!music || (music && music.volume <= 0)))
+		if(A.ambient_music && (!music || (music && music.volume <= 0)))
 
 			if(ambient_music)
 				ambient_music.Transition(src)
 
-			ambient_music = sound(file = pick(A.ambient_music))
+			ambient_music = sound(file = safepick(A.ambient_music))
 			////////////////////////
 			ambient_music.real_cooldown = rand(A.ambient_music_cooldown * 0.8, A.ambient_music_cooldown * 1.6)
 			ambient_music.last_time = world.time
@@ -46,12 +48,12 @@
 
 	if(!ambient_environment || world.time >= ambient_environment.last_time + ambient_environment.real_cooldown)
 
-		if(!isnull(A.ambient_environment))
+		if(A.ambient_environment)
 
 			if(A.ambient_environment_night && (SSsunlight.current_step == STEP_EVENING || SSsunlight.current_step == STEP_NIGHT))
-				ambient_environment = sound(file = pick(A.ambient_environment_night))
+				ambient_environment = sound(file = safepick(A.ambient_environment_night))
 			else
-				ambient_environment = sound(file = pick(A.ambient_environment))
+				ambient_environment = sound(file = safepick(A.ambient_environment))
 
 			if(ambient_environment)
 
@@ -62,16 +64,12 @@
 
 	if(!ambient_background || (!ambient_background.transition && world.time >= ambient_background.last_time + ambient_background.real_cooldown))
 
-		if(!isnull(A.ambient_background))
+		if(A.ambient_background)
 
 			if(A.ambient_background[SSsunlight.current_step])
 				ambient_background = sound(file = A.ambient_background[SSsunlight.current_step])
 				ambient_background.real_cooldown = A.ambient_background_cooldown[SSsunlight.current_step]
-/*
-			if(A.ambient_background[5])
-				ambient_background = sound(file = A.ambient_background[5])
-				ambient_background.real_cooldown = A.ambient_background_cooldown[5]
-*/
+
 			if(ambient_background)
 				////////////////////////
 				ambient_background.last_time = world.time
