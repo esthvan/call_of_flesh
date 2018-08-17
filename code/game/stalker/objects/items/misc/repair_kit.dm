@@ -17,54 +17,59 @@
 	..()
 	if(istype(A, /obj/item/device/repair_kit/clothing))
 		var/obj/item/device/repair_kit/RK = A
-		if(src.loc != user)
-			if((src.durability/initial(durability)*100) >= RK.min_durability)
-				playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
-				user.visible_message("<span class='notice'>[user] начинает ремонт [src].</span>", "<span class='notice'>Вы начинаете ремонтировать [src]...</span>")
-				if(do_after(user, 50, target = src))
+		if(src.loc == user)
+			user << "<span class='warning'>Place [src] on the floor or table.</span>"
+			return
 
-					durability = (((durability / initial(durability) * 100) + RK.add_durability) / 100) * initial(durability)
-					RK.uses -=1
-					user.visible_message("<span class='notice'>[user] отремонтировал [src].</span>", "<span class='notice'>Вы отремонтировали [src].")
+		if((src.durability/initial(durability)*100) < RK.min_durability)
+			user << "<span class='warning'>[src] duranility is too low. You can't repair it with kit of this type.</span>"
+			return
 
-					if(RK.uses <= 0)
-						qdel(RK)
+		playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
+		user.visible_message("<span class='notice'>[user] starts repairing [src]...</span>", "<span class='notice'>You start repairing [src]...</span>")
+		if(!do_after(user, 50, target = src))
+			playsound(src.loc, null, 50, 0)
 
-					if(durability > initial(durability))
-						durability = initial(durability)
-				else
-					playsound(src.loc, 'sound/stalker/$silent.ogg', 50, 0)
-			else
-				user << "<span class='warning'>[src] слишком изношен. Ремонт данным набором невозможен.</span>"
-		else
-			user << "<span class='warning'>Положите [src]. Ремонт в руках и на себе невозможен.</span>"
+		durability = (((durability / initial(durability) * 100) + RK.add_durability) / 100) * initial(durability)
+		RK.uses -=1
+		user.visible_message("<span class='notice'>[user] repairs [src].</span>", "<span class='notice'>You repair [src].")
+
+		if(RK.uses <= 0)
+			qdel(RK)
+
+		if(durability > initial(durability))
+			durability = initial(durability)
 
 /obj/item/clothing/head/attackby(obj/item/A, mob/user, params)
 	..()
-	if(!istype(src, /obj/item/clothing/head/winterhood))
-		if(istype(A, /obj/item/device/repair_kit/clothing))
-			var/obj/item/device/repair_kit/RK = A
-			if(src.loc != user)
-				if((src.durability/initial(durability)*100) >= RK.min_durability)
-					playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
-					user.visible_message("<span class='notice'>[user] начинает ремонт [src].</span>", "<span class='notice'>Вы начинаете ремонтировать [src]...</span>")
-					if(do_after(user, 50, target = src))
+	if(istype(src, /obj/item/clothing/head/winterhood))
+		return
 
-						durability = (((durability / initial(durability) * 100) + RK.add_durability) / 100) * initial(durability)
-						RK.uses -=1
-						user.visible_message("<span class='notice'>[user] отремонтировал [src].</span>", "<span class='notice'>Вы отремонтировали [src].")
+	if(istype(A, /obj/item/device/repair_kit/clothing))
+		var/obj/item/device/repair_kit/RK = A
 
-						if(RK.uses <= 0)
-							qdel(RK)
+		if(src.loc == user)
+			user << "<span class='warning'>Place [src] on the floor or table.</span>"
+			return
 
-						if(durability > initial(durability))
-							durability = initial(durability)
-					else
-						playsound(src.loc, 'sound/stalker/$silent.ogg', 50, 0)
-				else
-					user << "<span class='warning'>[src] слишком изношен. Ремонт данным набором невозможен.</span>"
-			else
-				user << "<span class='warning'>Положите [src]. Ремонт в руках и на себе невозможен.</span>"
+		if((src.durability/initial(durability)*100) < RK.min_durability)
+			user << "<span class='warning'>[src] durability is too low. You can't repair it with kit of this type.</span>"
+			return
+
+		playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
+		user.visible_message("<span class='notice'>[user] starts repairing [src]...</span>", "<span class='notice'>You start repairing [src]...</span>")
+		if(!do_after(user, 50, target = src))
+			playsound(src.loc, null, 50, 0)
+
+		durability = (((durability / initial(durability) * 100) + RK.add_durability) / 100) * initial(durability)
+		RK.uses -=1
+		user.visible_message("<span class='notice'>[user] repairs [src].</span>", "<span class='notice'>You repair [src].")
+
+		if(RK.uses <= 0)
+			qdel(RK)
+
+		if(durability > initial(durability))
+			durability = initial(durability)
 
 /obj/item/device/repair_kit/gun
 	name = "repair kit (for guns)"
@@ -79,29 +84,31 @@
 	..()
 	if(istype(A, /obj/item/device/repair_kit/gun))
 		var/obj/item/device/repair_kit/RK = A
-		if(src.loc != user)
-			if((src.durability/initial(durability)*100) >= RK.min_durability)
-				playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
-				visible_message("<span class='notice'>[user] начинает ремонт [src].</span>", "<span class='notice'>Вы начинаете ремонтировать [src]...</span>")
-				if(do_after(user, 50, target = src))
+		if(src.loc == user)
+			user << "<span class='warning'>Place [src] on the floor or table.</span>"
+			return
 
-					durability = (((durability / initial(durability) * 100) + RK.add_durability) / 100) * initial(durability)
-					RK.uses -=1
-					user.visible_message("<span class='notice'>[user] отремонтировал [src].</span>", "<span class='notice'>Вы отремонтировали [src].</span>")
+		if((src.durability/initial(durability)*100) < RK.min_durability)
+			user << "<span class='warning'>[src] durability is too low. You can't repair it with kit of this type.</span>"
+			return
 
-					if(RK.uses <= 0)
-						qdel(RK)
+		playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
+		user.visible_message("<span class='notice'>[user] starts repairing [src]...</span>", "<span class='notice'>You start repairing [src]...</span>")
 
-					if(durability > initial(durability))
-						durability = initial(durability)
-				else
-					playsound(user.loc, 'sound/stalker/$silent.ogg', 50, 0)
-			else
-				user << "<span class='warning'>[src] слишком изношен. Ремонт данным набором невозможен.</span>"
-		else
-			user << "<span class='warning'>Положите [src]. Ремонт в руках и на себе невозможен.</span>"
+		if(!do_after(user, 50, target = src))
+			playsound(user.loc, null, 50, 0)
+
+		durability = (((durability / initial(durability) * 100) + RK.add_durability) / 100) * initial(durability)
+		RK.uses -=1
+		user.visible_message("<span class='notice'>[user] repairs [src].</span>", "<span class='notice'>You repair [src].")
+
+		if(RK.uses <= 0)
+			qdel(RK)
+
+		if(durability > initial(durability))
+			durability = initial(durability)
 
 /obj/item/device/repair_kit/examine(mob/user)
 	..()
-	user << "<span class='notice'>Осталось использований - [uses]</span>"
-	user << "<span class='notice'>Восстанавливает при ремонте - [add_durability]%</span>"
+	user << "<span class='notice'>Uses left - [uses]</span>"
+	user << "<span class='notice'>Restores - [add_durability]%</span>"
