@@ -226,11 +226,11 @@ var/global/turntable_channel = 4488
 	for (var/client/C in melomans)
 		//var/inRange = (get_area(C.mob) in A.related)
 
-		if(!C)
+		if(!C || !(C.mob))
 			melomans.Remove(C)
 			continue
 
-		if(!playing || !(C.mob) || !(get_area(C.mob) in A.related))
+		if(!playing || !(get_area(C.mob) in A.related))
 			C.jukeboxplaying = 0
 			C.mob.music.status = SOUND_UPDATE
 			C.mob.music.volume = 0
