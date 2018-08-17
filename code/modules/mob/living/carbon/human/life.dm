@@ -36,10 +36,10 @@
 		return
 
 	if(zombiefied)
-		if(client)
-			src.timeofdeath = world.time
-			ghostize(0)
-		ZombieLife()
+		//if(client)
+		//	src.timeofdeath = world.time
+		//	ghostize(0)
+		//ZombieLife()
 		return
 
 	tinttotal = tintcheck() //here as both hud updates and status updates call it
