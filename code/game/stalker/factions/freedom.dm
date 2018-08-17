@@ -77,13 +77,14 @@
 	..()
 	head = /obj/item/clothing/head/hardhat/tacticalhelmet/light
 	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
-	suit = /obj/item/clothing/suit/strazh
+	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	suit_store = /obj/item/weapon/gun/projectile/automatic/sigsg550
-	backpack_contents = list(/obj/item/ammo_box/stalker/b55645 = 1,
-							/obj/item/ammo_box/magazine/stalker/m556x45 = 2,)
+	suit_store = /obj/item/weapon/gun/projectile/automatic/mp5
+	backpack_contents = list(/obj/item/ammo_box/stalker/b9x19 = 1,
+							/obj/item/ammo_box/magazine/stalker/m9x19mp5 = 1,
+							/obj/item/device/flashlight/seclite = 1)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)

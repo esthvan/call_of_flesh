@@ -121,8 +121,8 @@ Assistant
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	suit_store = /obj/item/weapon/gun/projectile/shotgun/spsa
-	backpack_contents = list(/obj/item/ammo_box/stalker/b12x70 = 1,
+	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
+	backpack_contents = list(/obj/item/ammo_box/magazine/stalker/m545 = 1,
 							/obj/item/device/flashlight/seclite = 1)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	r_pocket = /obj/item/weapon/stalker/bolts
