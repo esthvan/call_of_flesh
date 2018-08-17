@@ -150,6 +150,8 @@ datum/subsystem/blowout/proc/StopBlowout()
 		if(C.internal_cache)
 			PlaceInPool(C.internal_cache)
 
+		C.internal_cache = null
+
 		C.cache_chance = rand(2, 7)
 
 		C.New()
