@@ -3,3 +3,4 @@ narcissf = Mercenary Sql
 xrenoid = Trader
 narcissf = Freedom
 narcissf = Freedom Lieutenant
+drunktess = Freedom Lieutenant
