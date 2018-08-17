@@ -98,14 +98,6 @@ var/onelive = 1
 
 	return ..(gibbed)
 
-var/obj/hellpoint/hell = null
-
-/obj/hellpoint
-	invisibility = 101
-
-/obj/hellpoint/New()
-	hell = src
-
 /mob/living/carbon/human/proc/makeSkeleton()
 	status_flags |= DISFIGURED
 	set_species(/datum/species/skeleton)
