@@ -23,7 +23,7 @@
 	var/p_x = 16
 	var/p_y = 16 // the pixel location of the tile that the player clicked. Default is the center
 
-	var/speed = 1			//Amount of deciseconds it takes for projectile to travel
+	var/speed = 0.75			//Amount of deciseconds it takes for projectile to travel
 	var/Angle = 0
 	var/spread = 0			//amount (in degrees) of projectile spread
 	var/legacy = 0			//legacy projectile system
@@ -70,6 +70,7 @@
 			PoolOrNew(impact_effect_type, list(target_loca, target, src))
 		return 0
 	var/mob/living/L = target
+
 	if(blocked != 100) // not completely blocked
 		if(damage && damage_type == BRUTE)
 			var/splatter_dir = dir
