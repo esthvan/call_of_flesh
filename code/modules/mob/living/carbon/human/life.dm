@@ -36,6 +36,10 @@
 		return
 
 	if(zombiefied)
+		if(client)
+			src.timeofdeath = world.time
+			ghostize(0)
+		ZombieLife()
 		return
 
 	tinttotal = tintcheck() //here as both hud updates and status updates call it
@@ -66,7 +70,6 @@
 	name = get_visible_name()
 
 	dna.species.spec_life(src) // for mutantraces
-
 
 /mob/living/carbon/human/calculate_affecting_pressure(pressure)
 	return pressure
