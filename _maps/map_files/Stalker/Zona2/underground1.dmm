@@ -376,7 +376,7 @@
 "hl" = (/obj/structure/barricade/stalker/wood{icon_state = "zabitiy_proxod"; dir = 4},/turf/stalker/floor/water,/area/stalker/buildings/backwater/krug)
 "hm" = (/obj/structure/barricade/stalker/wood{icon_state = "zabitiy_proxod"; dir = 4},/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/krug)
 "hn" = (/obj/structure/barricade/stalker/wood,/turf/stalker/floor/agroprom/gryaz,/area/stalker/buildings/backwater/krug)
-"ho" = (/obj/structure/table/stalker/wood,/obj/machinery/stalker/sidormat/special{pixel_x = 0; pixel_y = 16; SP_area = /area/stalker/buildings/backwater/shevchenko},/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/sawmill)
+"ho" = (/obj/structure/table/stalker/wood,/obj/machinery/stalker/sidormat/special{pixel_x = 0; pixel_y = 16; SP_area = /area/stalker/buildings/backwater/sawmill},/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/sawmill)
 "hp" = (/obj/structure/barricade/stalker/box,/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/substation)
 "hq" = (/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/substation)
 "hr" = (/obj/structure/table/stalker/wood,/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/substation)
