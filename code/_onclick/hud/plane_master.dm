@@ -27,7 +27,7 @@
 	blend_mode = BLEND_ADD
 	icon = 'icons/effects/alphacolors.dmi'
 	invisibility     = INVISIBILITY_LIGHTING
-	appearance_flags = NO_CLIENT_COLOR | RESET_TRANSFORM | RESET_ALPHA | PLANE_MASTER// | KEEP_TOGETHER
+	appearance_flags = NO_CLIENT_COLOR | RESET_TRANSFORM | RESET_ALPHA | PLANE_MASTER
 	mouse_opacity = 0
 	//color = list(null,null,null,"#0000","#000f")
 
@@ -37,7 +37,7 @@
 	blend_mode = BLEND_DEFAULT
 	icon = 'icons/effects/alphacolors.dmi'
 	invisibility     = INVISIBILITY_LIGHTING
-	appearance_flags = RESET_TRANSFORM | RESET_ALPHA | PLANE_MASTER// | KEEP_TOGETHER
+	appearance_flags = RESET_TRANSFORM | RESET_ALPHA | PLANE_MASTER
 	mouse_opacity = 0
 
 /obj/screen/plane_master/lighting/backdrop(mob/mymob)
