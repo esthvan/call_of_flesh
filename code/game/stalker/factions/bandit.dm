@@ -14,7 +14,7 @@ Assistant
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	whitelist_only = 0
-	limit_per_player = 2
+	limit_per_player = 4
 	outfit = /datum/outfit/job/bandit
 
 /datum/job/bandit_pahan
