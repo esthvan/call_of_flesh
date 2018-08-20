@@ -38,7 +38,7 @@
 	var/Zombo_Gun_slot = null
 
 /mob/living/carbon/human/proc/ZombieLife()
-	if(!ckey || stat < UNCONSCIOUS)
+	if(!ckey && stat < UNCONSCIOUS)
 		if(AIStatus == AI_OFF)
 			return 0
 		handle_automated_movement()
