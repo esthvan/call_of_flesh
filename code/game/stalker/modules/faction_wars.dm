@@ -94,7 +94,7 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 		say("No access.")
 		return
 
-	if(sk.fields["faction_s"] == "Loners" || sk.fields["faction_s"] == Bandits)
+	if(sk.fields["faction_s"] == "Loners" || sk.fields["faction_s"] == "Bandits")
 		say("No access.")
 		return
 

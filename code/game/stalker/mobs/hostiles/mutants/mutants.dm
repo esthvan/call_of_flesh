@@ -314,7 +314,7 @@
 	turns_per_move = 5
 	speed = 3
 	a_intent = "harm"
-	search_objects = 1
+	search_objects = 0
 	icon_state = "bloodsucker"
 	icon_living = "bloodsucker"
 	icon_dead = "bloodsucker_dead"
