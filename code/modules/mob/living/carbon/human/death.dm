@@ -41,6 +41,9 @@ var/onelive = 1
 			blind.layer = 0
 			blind.alpha = 0
 
+	if(zombiefied)
+		LoseTarget()
+
 	dna.species.spec_death(gibbed,src)
 
 //Загробная жизнь

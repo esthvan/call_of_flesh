@@ -16,7 +16,7 @@
 	var/fearborder = 20
 	var/ranged_message = "fires" //Fluff text for ranged mobs
 	var/ranged_cooldown = 0 //What the starting cooldown is on ranged attacks
-	var/ranged_cooldown_cap = 3 //What ranged attacks, after being used are set to, to go back on cooldown, defaults to 3 life() ticks
+	var/ranged_cooldown_cap = 3 //What ranged attackLoseTargets, after being used are set to, to go back on cooldown, defaults to 3 life() ticks
 	var/retreat_distance = null //If our mob runs from players when they're too close, set in tile distance. By default, mobs do not retreat.
 	var/minimum_distance = 1 //Minimum approach distance, so ranged mobs chase targets down, but still keep their distance set in tiles to the target, set higher to make mobs keep distance
 	var/target_distance
@@ -233,7 +233,8 @@
 	if(target_last_loc)
 		Goto(target_last_loc, move_to_delay, 1)
 		target_last_loc = null
-	walk(src, 0)
+	else
+		walk(src, 0)
 	LoseAggro()
 
 //////////////END HOSTILE MOB TARGETTING AND AGGRESSION////////////

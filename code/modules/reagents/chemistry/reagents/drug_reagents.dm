@@ -46,6 +46,7 @@
 		M << "<span class='notice'>[smoke_message]</span>"
 	M.AdjustStunned(-1)
 	M.adjustStaminaLoss(-0.5*REM)
+	M.adjustPsyLoss(-10)
 	..()
 
 /datum/reagent/drug/crank

@@ -196,6 +196,9 @@
 		else//Brain is gone, doesn't matter if they are AFK or present
 			msg += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>\n"
 
+	if(zombiefied)
+		msg += "<span class='warning'>[t_He] has no pupils of the eyes.</span>\n"
+
 	var/temp = getBruteLoss() //no need to calculate each of these twice
 
 	msg += "<span class='warning'>"

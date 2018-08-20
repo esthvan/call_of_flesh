@@ -40,6 +40,16 @@
 	else
 		heal_overall_damage(-amount, 0)
 
+	if(zombiefied && !ckey && !stat && search_objects < 3 && amount > 0)//Not unconscious, and we don't ignore mobs
+		if(search_objects)//Turn off item searching and ignore whatever item we were looking at, we're more concerned with fight or flight
+			search_objects = 0
+			target = null
+		if(AIStatus == AI_IDLE)
+			AIStatus = AI_ON
+			FindTarget()
+		else if(target != null && prob(40))//No more pulling a mob forever and having a second player attack it, it can switch targets now if it finds a more suitable one
+			FindTarget()
+
 /mob/living/carbon/human/adjustFireLoss(amount)
 	if(amount > 0)
 		take_overall_damage(0, amount)

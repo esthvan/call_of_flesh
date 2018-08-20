@@ -36,11 +36,13 @@
 		return
 
 	if(zombiefied)
-		//if(client)
-		//	src.timeofdeath = world.time
-		//	ghostize(0)
-		//ZombieLife()
-		return
+		if(client)
+			src.timeofdeath = world.time
+			ghostize(0)
+		if(ckey)
+			ckey = null
+		a_intent = "harm"
+		ZombieLife()
 
 	tinttotal = tintcheck() //here as both hud updates and status updates call it
 
@@ -105,14 +107,32 @@
 	var/k = (psyloss/200)
 
 	switch(psyloss)
-		if(150 to 200)
-			if(prob(10))
+		if(200)
+			if(slurring < 100)
+				apply_effect(rand(20, 35), SLUR, 0)
+			if(!zombiefied)
+				zombiefied = 1
+				faction = list("stalker_mutants1")
+			return
+		if(150 to 199)
+			if(slurring < 100)
+				apply_effect(rand(20, 35), SLUR, 0)
+			if(prob(25))
 				shake_camera(src, 5 * k, 1)
+			return
 
 		if(100 to 150)
+			if(slurring < 50)
+				apply_effect(rand(20, 35), SLUR, 0)
+			if(prob(10))
+				shake_camera(src, 3 * k, 1)
 			return
 
 		if(25 to 100)
+			if(slurring < 25)
+				apply_effect(rand(0, 10), SLUR, 0)
+			if(prob(5))
+				shake_camera(src, 1 * k, 1)
 			return
 
 		if(0 to 25)

@@ -127,6 +127,9 @@
 			var/angle = Atan2(y - oy + o_y, x - ox + o_x)
 			//world << "Angle: [angle]"
 			src.Angle = angle
+	else
+		src.Angle = Atan2(yo, xo)
+
 	if(spread && pellets <= 1)
 		Angle += round(rand(-spread, spread))
 	else if(spread && pellets > 1)
