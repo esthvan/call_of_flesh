@@ -177,6 +177,7 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 /obj/machinery/stalker/sidormat/special/interact(mob/living/carbon/human/H)
 	if(!SP)
 		SP = locate(/obj/machinery/stalker/sidorpoint) in get_area_turfs(SP_area)
+		return
 
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
 		say("Put on your KPK.")
