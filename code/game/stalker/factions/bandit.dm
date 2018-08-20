@@ -7,14 +7,14 @@ Assistant
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = -1
+	spawn_positions = -1
 	supervisors = "Pahan"
 	selection_color = "#000000"
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	whitelist_only = 0
-	limit_per_player = 4
+	limit_per_player = 2
 	outfit = /datum/outfit/job/bandit
 
 /datum/job/bandit_pahan
