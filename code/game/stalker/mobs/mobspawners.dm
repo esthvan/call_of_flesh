@@ -78,3 +78,10 @@
 	radius = 1
 	cooldown = 15000
 	loot = list(/mob/living/simple_animal/hostile/mutant/bloodsucker = 100)
+
+/obj/effect/spawner/lootdrop/stalker/mobspawner/controller_spawner
+	name = "controller mutant"
+	lootcount = 1
+	radius = 1
+	cooldown = 20000
+	loot = list(/mob/living/simple_animal/hostile/mutant/controller = 100)
