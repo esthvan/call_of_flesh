@@ -308,7 +308,7 @@
 	..()
 	SSobj.processing.Add(src)
 
-/obj/anomaly/holodec/Destroy()
+/obj/anomaly/karusel/Destroy()
 	..()
 	SSobj.processing.Remove(src)
 
@@ -475,11 +475,11 @@
 	active_icon_state = "holodec" //needs activation icon
 	active_invisibility = 0
 	inactive_invisibility = 0
-	loot = list(/obj/nothing = 90,
-				/obj/item/weapon/artifact/stone_blood = 5,
-				/obj/item/weapon/artifact/bubble = 3,
-				/obj/item/weapon/artifact/mica = 1.5,
-				/obj/item/weapon/artifact/firefly = 0.5
+	loot = list(/obj/nothing = 80,
+				/obj/item/weapon/artifact/stone_blood = 10,
+				/obj/item/weapon/artifact/bubble = 5.5,
+				/obj/item/weapon/artifact/mica = 3,
+				/obj/item/weapon/artifact/firefly = 1.5
 				)
 
 /obj/anomaly/holodec/New()
