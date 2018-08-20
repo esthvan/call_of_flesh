@@ -111,8 +111,8 @@ datum/subsystem/blowout/proc/BlowoutDealDamage()
 	for(var/mob/living/carbon/human/H)
 		if(istype(get_area(H), /area/stalker/blowout))
 
-			H.radiation += 600
-			H.apply_damage(75, BURN)
+			//H.radiation += 600
+			H.apply_damage(200, PSY)
 
 datum/subsystem/blowout/proc/StopBlowout()
 
