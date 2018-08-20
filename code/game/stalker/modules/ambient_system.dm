@@ -18,7 +18,7 @@
 
 	var/area/A = get_area(src)
 
-	if(ambient_music && (!A.ambient_music || (music && music.volume > 0)))
+	if(ambient_music && !ambient_music.transition && (!A.ambient_music || (music && music.volume > 0)))
 		ambient_music.Transition(src)
 		ambient_music = null
 
@@ -30,7 +30,7 @@
 	if(ambient_psy && ambient_psy.volume > 10)
 		return 1
 
-	if(!ambient_music || (!ambient_music.transition && world.time >= ambient_music.last_time + ambient_music.real_cooldown))
+	if(!ambient_music || (!ambient_music.transition && (world.time >= ambient_music.last_time + ambient_music.real_cooldown)))
 
 		if(A.ambient_music && (!music || (music && music.volume <= 0)))
 
@@ -39,7 +39,7 @@
 
 			ambient_music = sound(file = safepick(A.ambient_music))
 			////////////////////////
-			ambient_music.real_cooldown = rand(A.ambient_music_cooldown * 0.8, A.ambient_music_cooldown * 1.6)
+			ambient_music.real_cooldown = rand(A.ambient_music_cooldown * 0.8, A.ambient_music_cooldown * 1.4)
 			ambient_music.last_time = world.time
 			////////////////////////
 			ambient_music.Set_Sound(707, 10, 0, -1)
