@@ -32,13 +32,13 @@
 	lootcount = 2
 	rating_add = 500
 
-
+/*
 /obj/structure/closet/crate/stalker/blue/stash/New()
 	..()
 	if(prob(40))
 		qdel(src)
 		return
-
+*/
 /obj/structure/closet/crate/stalker/blue/stash/initialize()
 	..()
 	switch(rating_add)
