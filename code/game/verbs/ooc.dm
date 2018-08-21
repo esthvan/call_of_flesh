@@ -226,10 +226,7 @@ var/global/normal_ooc_colour = "#002eb8"
 		if(prefs.toggles & MEMBER_PUBLIC)
 			keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : normal_ooc_colour]'><img style='width:9px;height:9px;' class=icon src=\ref['icons/member_content.dmi'] iconstate=blag>[keyname]</font>"
 
-	var/list/listening = get_hearers_in_view(7, usr)
-	for(var/mob/M in player_list)
-		if(get_dist(M, usr) <= 7)
-			listening |= M
+	for(var/mob/M in get_hearers_in_view(7, usr))
 		if(M.client.prefs.chat_toggles & CHAT_OOC)
 			if(!(usr.key in M.client.prefs.ignoring))
 				M.client << "<font color='#5b809b'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[keyname]:</EM> <span class='message'>[msg]</span></span></font>"
