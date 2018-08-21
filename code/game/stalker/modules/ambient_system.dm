@@ -97,6 +97,7 @@
 
 /sound/proc/Transition(var/mob/M)
 	transition = 1
+
 	while(volume > 0)
 		volume = max(volume - 2, 0)
 		status = SOUND_UPDATE
@@ -104,6 +105,7 @@
 		/////////
 		sleep(2.5)
 		/////////
+
 	transition = 0
 
 /sound/proc/Set_Sound(var/channel_, var/volume_, var/pan_ , var/environment_)

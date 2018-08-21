@@ -4,9 +4,9 @@
 	item_state = "card-id"
 	w_class = 1.0
 
-	var/datum/turntable_soundtrack/data
+	var/datum/data/turntable_soundtrack/data
 	var/uploader_ckey
-
+/*
 /obj/machinery/party/musicwriter
 	name = "Memories writer"
 	icon = 'icons/obj/objects.dmi'
@@ -48,7 +48,7 @@
 			if(N)
 				var/sound/S = input("Your music file") as sound|null
 				if(S)
-					var/datum/turntable_soundtrack/T = new()
+					var/datum/data/turntable_soundtrack/T = new()
 					var/obj/item/weapon/disk/music/disk = new()
 					T.path = S
 					T.f_name = copytext(N, 1, 2)
@@ -64,3 +64,4 @@
 			coin -= 1
 			retard = null
 			retard_name = null
+*/

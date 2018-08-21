@@ -46,23 +46,98 @@ var/global/turntable_channel = 4488
 /mob/var/sound/music
 /client/var/jukeboxplaying = 0
 
-/datum/turntable_soundtrack
+/datum/data/turntable_soundtrack
 	var/f_name
-	var/name
 	var/path
+	var/length
+
+/datum/data/turntable_soundtrack/New(f_name, name, path, length)
+	src.f_name = f_name
+	src.name = name
+	src.path = path
+	src.length = length
 
 /obj/machinery/party/turntable
 	name = "Jukebox"
 	desc = "A jukebox is a partially automated music-playing device, usually a coin-operated machine, that will play a patron's selection from self-contained media."
 	icon = 'icons/effects/lasers2.dmi'
 	icon_state = "Jukebox7"
+	var/start_time = 0
+	var/collected_money = 0
 	var/music_channel = 0
 	var/obj/item/weapon/disk/music/disk
-	var/playing = 0
-	var/datum/turntable_soundtrack/track = null
-	var/volume = 100
-	var/list/turntable_soundtracks = list()
+	var/playing = 1
+	var/datum/data/turntable_soundtrack/track = null
+	var/volume = 50
 	var/list/mob/melomans = list()
+	var/list/turntable_soundtracks = list(
+
+		new /datum/data/turntable_soundtrack ("Addaraya",			"Gurza Dreaming",					'sound/turntable/gurza_dreaming.ogg',						2420),
+		new /datum/data/turntable_soundtrack ("Bandits",			"Cheeki Breeki",					'sound/turntable/bandit_radio.ogg',							1110),
+		new /datum/data/turntable_soundtrack ("Firelake",			"Fighting Unknown",					'sound/turntable/agroprom.ogg',								710),
+		new /datum/data/turntable_soundtrack ("Firelake",			"Dirge For The Planet",				'sound/turntable/dirge_for_the_planet.ogg',					2850),
+		new /datum/data/turntable_soundtrack ("Firelake",			"Live To Forget",					'sound/turntable/live_to_forget.ogg',						2960),
+		new /datum/data/turntable_soundtrack ("Freedom",			"Smoke Weed",						'sound/turntable/freedom_radio.ogg',						1140),
+		new /datum/data/turntable_soundtrack ("Krug M.",			"Kolschik",							'sound/turntable/kolshik.ogg',								2850),
+		new /datum/data/turntable_soundtrack ("Butirka",			"Butirskaya Turma",					'sound/turntable/butirka.ogg',								1920),
+		new /datum/data/turntable_soundtrack ("Gazmanov M.",		"Putana",							'sound/turntable/putana.ogg',								2460),
+		new /datum/data/turntable_soundtrack ("Leps G.",			"Rumka Vodki Na Stole",				'sound/turntable/rumka.ogg',								2360),
+		new /datum/data/turntable_soundtrack ("Aksenov V.",			"Murka",							'sound/turntable/murka.ogg',								3220),
+		new /datum/data/turntable_soundtrack ("Rozenbaum A",		"Dagomis",							'sound/turntable/gopstop.ogg',								2450),
+		new /datum/data/turntable_soundtrack ("Dispetchera",		"2000 Baksov",						'sound/turntable/2000_baksov.ogg',							2430),
+		new /datum/data/turntable_soundtrack ("Agata Kristi",		"Kak Na Voine",						'sound/turntable/agata_kristi_na_voine.ogg',				2470),
+		new /datum/data/turntable_soundtrack ("Alai Oli",			"Krilya",							'alai_oli_krilya.ogg',										2150),
+		new /datum/data/turntable_soundtrack ("Bi2",				"Polkovnik",						'sound/turntable/bi2_polkovnik.ogg',						2640),
+		new /datum/data/turntable_soundtrack ("Bi2",				"Serebro",							'sound/turntable/bi2_serebro.ogg',							2770),
+		new /datum/data/turntable_soundtrack ("Bi2",				"Varvara",							'sound/turntable/bi2_varvara.ogg',							2990),
+		new /datum/data/turntable_soundtrack ("4 pozicii bruno",	"Ya Ehala Domoy",					'sound/turntable/chetire_pozigii_bruno_ya_ehala_domoy.ogg',	2740),
+		new /datum/data/turntable_soundtrack ("DDT",				"Osen",								'sound/turntable/ddt_osen.ogg',								2350),
+		new /datum/data/turntable_soundtrack ("Delfin",				"Nadezhda",							'sound/turntable/delfin_nadezhda.ogg',						2690),
+		new /datum/data/turntable_soundtrack ("Delfin",				"Sneg",								'sound/turntable/delfin_sneg.ogg',							1820),
+		new /datum/data/turntable_soundtrack ("Delfin",				"Vesna",							'sound/turntable/delfin_vesna.ogg',							2910),
+		new /datum/data/turntable_soundtrack ("Delfin",				"Ya Lublu Ludey",					'sound/turntable/delfin_ya_lublu_ludey.ogg',				2120),
+		new /datum/data/turntable_soundtrack ("Electroforez",		"Eshafot",							'sound/turntable/elektroforez_eshafot.ogg',					2090),
+		new /datum/data/turntable_soundtrack ("Elizium",			"Stoit Zhit",						'sound/turntable/elizium_stoit_zhit.ogg',					1800),
+		new /datum/data/turntable_soundtrack ("Fleetwood Mac",		"Little Lies",						'sound/turntable/fleetwood_mac_little_lies.ogg',			2210),
+		new /datum/data/turntable_soundtrack ("Kino",				"Gruppa Krovy",						'sound/turntable/kino_gruppa_krovi.ogg',					2030),
+		new /datum/data/turntable_soundtrack ("Kino",				"Zvezda Po Imeni Soltnse",			'sound/turntable/kino_zvezda_po_imeni_solntse.ogg',			2245),
+		new /datum/data/turntable_soundtrack ("Korol I Shut",		"Kukla kolduna",					'sound/turntable/korol_i_shut_kukila_kolduna.ogg',			2040),
+		new /datum/data/turntable_soundtrack ("Korol I Shut",		"Lesnik",							'sound/turntable/korol_i_shut_lesnik.ogg',					1910),
+		new /datum/data/turntable_soundtrack ("Krovostok",			"Kurtec",							'sound/turntable/krovostok_kurtec.ogg',						2400),
+		new /datum/data/turntable_soundtrack ("Leprikonsy",			"Hali-Gali, Paratruper",			'sound/turntable/leprikonsy_paratruper.ogg',				2060),
+		new /datum/data/turntable_soundtrack ("Lumen",				"Sid i Nensi",						'sound/turntable/lumen_sid_i_nensi.ogg',					2340),
+		new /datum/data/turntable_soundtrack ("Monokini",			"Adrenalin",						'sound/turntable/monokini_adrenalin.ogg',					1970),
+		new /datum/data/turntable_soundtrack ("Monokini",			"Dotyanusya Do Solntsa",			'sound/turntable/monokini_dotyanutsya_do_solntsa.ogg',		1600),
+		new /datum/data/turntable_soundtrack ("Mucuraev",			"O Allah",							'sound/turntable/mucuraev_o_allah.ogg',						3970),
+		new /datum/data/turntable_soundtrack ("Mumiy Troll",		"Delfiny",							'sound/turntable/mumiy_troll_delfiny.ogg',					2780),
+		new /datum/data/turntable_soundtrack ("Mumiy Troll",		"Utekay",							'sound/turntable/mumiy_troll_utekay.ogg',					1410),
+		new /datum/data/turntable_soundtrack ("Mumiy Troll",		"Vladivostok 2000",					'sound/turntable/mumiy_troll_vladivostok2000.ogg',			1610),
+		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Apostol Andrey",					'sound/turntable/nautilus_pompilius_apostol_andrey.ogg',	2170),
+		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Krylya",							'sound/turntable/nautilus_pompilius_krylya.ogg',			2080),
+		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Skovanie",							'sound/turntable/nautilus_pompilius_skovanye.ogg',			2530),
+		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Ya hochu byt s toboy",				'sound/turntable/nautilus_pompilius_ya_hochu_byt_s_toboy.ogg',2710),
+		new /datum/data/turntable_soundtrack ("Okean Elxi",			"Obime",							'sound/turntable/okean_elzi_obime.ogg',						2260),
+		new /datum/data/turntable_soundtrack ("Oken Elzi",			"Vidpusti",							'sound/turntable/okean_elzi_vidpusti.ogg',					2300),
+		new /datum/data/turntable_soundtrack ("Phil Collins",		"In The Air Tonight",				'sound/turntable/phil_collins_in_the_air_tonight.ogg',		3300),
+		new /datum/data/turntable_soundtrack ("Propaganda",			"Belim Melom",						'sound/turntable/propaganda_belim_melom.ogg',				1740),
+		new /datum/data/turntable_soundtrack ("Gazmanov O.",		"Putana",							'sound/turntable/putana.ogg',								2460),
+		new /datum/data/turntable_soundtrack ("Ranetki",			"O tebe",							'sound/turntable/ranetki_o_tebe.ogg',						1650),
+		new /datum/data/turntable_soundtrack ("Ranetki",			"Ona odna",							'sound/turntable/ranetki_ona_odna.ogg',						1640),
+		new /datum/data/turntable_soundtrack ("7B",					"Molodie Vetra",					'sound/turntable/semb_molodie_vetra.ogg',					2610),
+		new /datum/data/turntable_soundtrack ("Shnurov",			"Mobilnik",							'sound/turntable/shnurov_mobilnik.ogg',						1680),
+		new /datum/data/turntable_soundtrack ("Shnurov",			"Privet Morrikone",					'sound/turntable/shnurov_morikone.ogg',						2230),
+		new /datum/data/turntable_soundtrack ("Splin",				"Mi sideli i kurili",				'sound/turntable/splin_mi_sideli_i_kurili.ogg',				1980),
+		new /datum/data/turntable_soundtrack ("Splin",				"Moe Serdce",						'sound/turntable/splin_moe_serdce.ogg',						2440),
+		new /datum/data/turntable_soundtrack ("Splin",				"Romans",							'sound/turntable/splin_romans.ogg',							2070),
+		new /datum/data/turntable_soundtrack ("Splin",				"Vihoda net",						'sound/turntable/splin_vihoda_net.ogg',						2230),
+		new /datum/data/turntable_soundtrack ("Steklovata",			"Noviy God",						'sound/turntable/steklovata_noviy_god.ogg',					2380),
+		new /datum/data/turntable_soundtrack ("Narodnaya Russkaya",	"Kaztosky Kick",					'sound/turntable/tf2_kazotsky_kic.ogg',						670),
+		new /datum/data/turntable_soundtrack ("Total",				"Byet Po Glazam Adrenalin",			'sound/turntable/total_byet_po_glazam_adrenalin.ogg',		2530),
+		new /datum/data/turntable_soundtrack ("Trubetskoy",			"Kapital",							'sound/turntable/trubetskoy_kapital.ogg',					2000),
+		new /datum/data/turntable_soundtrack ("XS-project",			"Kolotushki",						'sound/turntable/xsproject_kolotushki.ogg',					1610),
+		new /datum/data/turntable_soundtrack ("Zemfira",			"Hochesh?",							'sound/turntable/zemfira_hochesh.ogg',						1920),
+		new /datum/data/turntable_soundtrack ("Zhuki",				"Batareyka",						'sound/turntable/zhuki_batareyka.ogg',						2240)
+	)
 	anchored = 1
 	density = 1
 
@@ -70,13 +145,13 @@ var/global/turntable_channel = 4488
 	..()
 	turntable_channel++
 	music_channel = turntable_channel
-
+/*
 	turntable_soundtracks = list()
-	for(var/i in typesof(/datum/turntable_soundtrack/bar) - /datum/turntable_soundtrack/bar)
+	for(var/i in subtypesof(/datum/turntable_soundtrack/)
 		var/datum/turntable_soundtrack/D = new i()
 		if(D.path)
-			turntable_soundtracks.Add(D)
-
+			turntable_soundtracks += D
+*/
 
 /obj/machinery/party/turntable/attackby(obj/O, mob/user)
 	if(istype(O, /obj/item/weapon/disk/music) && !disk)
@@ -93,75 +168,144 @@ var/global/turntable_channel = 4488
 	if (..())
 		return
 
-	usr.set_machine(src)
-	src.add_fingerprint(usr)
+	if(!ishuman(user))
+		return
 
-	var/t = "<body background='turntable_back.jpg'><br><br><br><div align='center'><table border='0'><B><font color='maroon' size='6'>J</font><font size='5' color='purple'>uke Box</font> <font size='5' color='green'>Interface</font></B><br><br><br><br>"
-	t += "<A href='?src=\ref[src];on=1'>On</A><br>"
-	if(disk)
-		t += "<A href='?src=\ref[src];eject=1'>Eject disk</A><br>"
-	t += "<tr><td height='50' weight='50'></td><td height='50' weight='50'><A href='?src=\ref[src];off=1'><font color='maroon'>T</font><font color='lightgreen'>urn</font> <font color='red'>Off</font></A></td><td height='50' weight='50'></td></tr>"
-	t += "<tr>"
+	var/mob/living/carbon/human/H = user
 
+	interact(H)
 
-	var/lastcolor = "green"
-	for(var/i = 10; i <= 100; i += 10)
-		t += "<A href='?src=\ref[src];set_volume=[i]'><font color='[lastcolor]'>[i]</font></A> "
-		if(lastcolor == "green")
-			lastcolor = "purple"
-		else
-			lastcolor = "green"
+/obj/machinery/party/turntable/interact(var/mob/living/carbon/human/H)
 
-	var/i = 0
-	for(var/datum/turntable_soundtrack/D in turntable_soundtracks)
-		t += "<td height='50' weight='50'><A href='?src=\ref[src];on=\ref[D]'><font color='maroon'>[D.f_name]</font><font color='[lastcolor]'>[D.name]</font></A></td>"
-		i++
-		if(i == 1)
-			lastcolor = pick("lightgreen", "purple")
-		else
-			lastcolor = pick("green", "purple")
-		if(i == 3)
-			i = 0
-			t += "</tr><tr>"
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		say("Put on your KPK.")
+		return
 
-	if(disk)
-		if(disk.data)
-			t += "<td height='50' weight='50'><A href='?src=\ref[src];on=\ref[disk.data]'><font color='maroon'>[disk.data.f_name]</font><font color='[lastcolor]'>[disk.data.name]</font></A></td>"
-		else
-			t += "<td height='50' weight='50'><font color='maroon'>D</font><font color='[lastcolor]'>isk empty</font></td>"
+	var/obj/item/device/stalker_pda/KPK = H.wear_id
 
-	t += "</table></div></body>"
-	user << browse(t, "window=turntable;size=450x700;can_resize=0")
-	onclose(user, "turntable")
+	if(!KPK.profile || !KPK.owner)
+		say("Activate your KPK profile.")
+		return
+
+	if(KPK.owner != H)
+		say("No access.")
+		return
+
+	//balance = KPK.profile.fields["money"]
+
+	var/dat
+	dat +="<div class='statusDisplay'>"
+	dat += "Now playing: <b>[track.f_name] - [track.name]</b>"
+	//dat += "Balance: [balance] ð.<br>"
+	dat += "<br>"
+	if(KPK.profile.fields["faction_s"] == "Traders")
+		dat += "<br><A href='?src=\ref[src];collect_money=\ref[src]'>Collect Money</A>"
+		dat += "<br><A href='?src=\ref[src];change_volume=\ref[src]'>Change Volume</A>"
+		dat += "<br><A href='?src\ref[src];turn_off=\ref[src]'>Turn Off</A>"
+	dat += "<br><A href='?src=\ref[src];skip=\ref[src]'>Skip</A> - 1000 RU"
+	dat += "<br>Play your song - 2000 RU."
+	dat += "<br>Volume: <b>[volume]%</b>"
+	dat += "</div>"
+	dat += "<div class='lenta_scroll'>"
+	dat += "<br><BR><table border='0' width='400'>"
+	for(var/datum/data/turntable_soundtrack/TS in sortList(turntable_soundtracks))
+		dat += "<tr><td>[TS.f_name]</td><td>[TS.name]</td><td><A href='?src=\ref[src];order=\ref[TS]'>PLAY</A></td></tr>"
+
+	dat += "</table>"
+	dat += "</div>"
+
+	var/datum/browser/popup = new(H, "jukebox", "Jukebox", 455, 750)
+	popup.set_content(dat)
+	popup.open()
 	return
 
 /obj/machinery/party/turntable/power_change()
-	turn_off()
+	return
+	//turn_off()
 
 /obj/machinery/party/turntable/Topic(href, href_list)
 	if(..())
 		return
-	if(href_list["on"])
-		turn_on(locate(href_list["on"]))
 
-	else if(href_list["off"])
-		turn_off()
+	var/mob/living/carbon/human/H = usr
+	var/obj/item/device/stalker_pda/KPK = H.wear_id
 
-	else if(href_list["set_volume"])
+	if(href_list["collect_money"])
+		switch(alert("Do you want to transfer [collected_money]RU to your account?", "Turntable", "Yes", "No"))
+			if("Yes")
+				KPK.profile.fields["money"] += collected_money
+				collected_money = 0
+			if("No")
+				return
+
+	if(href_list["change_volume"])
+		set_volume(input("Choose new volume.", "Turntable", src.volume) as num)
+		return
+
+	if(href_list["order"])
+		var/datum/data/turntable_soundtrack/TS = locate(href_list["order"])
+
+		if(!playing)
+			say("Jukebox is turned off.")
+			return
+
+		if (!TS)
+			updateUsrDialog()
+			return
+
+		if(2000 > KPK.profile.fields["money"])
+			say("You don't have enough money to order a song.")
+			updateUsrDialog()
+			return
+
+		skip_song(TS)
+
+		KPK.profile.fields["money"] -= 2000
+		collected_money += 2000
+		return
+
+	if(href_list["skip"])
+
+		if(!playing)
+			say("Jukebox is turned off.")
+			return
+
+		if(1000 > KPK.profile.fields["money"])
+			say("You don't have enough money to skip a song.")
+			updateUsrDialog()
+			return
+
+		skip_song()
+		KPK.profile.fields["money"] -= 1000
+		collected_money += 1000
+		return
+
+	if(href_list["set_volume"])
 		set_volume(text2num(href_list["set_volume"]))
+		return
 
-	else if(href_list["eject"])
+	if(href_list["turn_off"])
+		turn_off()
+		return
+/*
+	if(href_list["eject"])
 		if(disk)
 			disk.loc = src.loc
 			if(disk.data && track == disk.data)
 				turn_off()
 				track = null
 			disk = null
-
+		return
+*/
 /obj/machinery/party/turntable/process()
 	if(playing)
 		update_sound()
 
+/obj/machinery/party/turntable/proc/skip_song(var/datum/data/turntable_soundtrack/TS = pick(turntable_soundtracks))
+	track = TS
+	start_time = world.time
+	say("Now playing: [track.f_name] - [track.name]")
+/*
 /obj/machinery/party/turntable/proc/turn_on(var/datum/turntable_soundtrack/selected)
 	if(playing)
 		turn_off()
@@ -183,7 +327,7 @@ var/global/turntable_channel = 4488
 
 	playing = 1
 	process()
-
+*/
 /obj/machinery/party/turntable/proc/turn_off()
 	if(!playing)
 		return
@@ -208,26 +352,29 @@ var/global/turntable_channel = 4488
 /obj/machinery/party/turntable/proc/update_sound()
 	var/area/A = get_area(src)
 
-	for(var/mob/M in player_list)
+	if(!track || start_time + track.length < world.time)
+		skip_song()
 
-		if(!M || !M.client)
+	for(var/client/C in clients)
+
+		if(!C || !C.mob)
 			continue
 
-		if(!(get_area(M) in A.related))
+		if(!(get_area(C.mob) in A.related))
 			continue
 
-		if(!M.client.jukeboxplaying)
-			M.client.jukeboxplaying = 1
-			melomans.Add(M.client)
-			create_sound(M) //<< sound('sound/stalker/objects/campfire.ogg', 1, 0 , 5, 80)
-			M.music.volume = volume
-			M << M.music
+		if(!C.mob.client.jukeboxplaying)
+			C.jukeboxplaying = 1
+			melomans.Add(C)
+			create_sound(C.mob)
+			C.mob.music.volume = volume
+			C.mob << C.mob.music
 
 	for (var/client/C in melomans)
 		//var/inRange = (get_area(C.mob) in A.related)
 
 		if(!C || !(C.mob))
-			melomans.Remove(C)
+			melomans -= C
 			continue
 
 		if(!playing || !(get_area(C.mob) in A.related))
@@ -241,7 +388,12 @@ var/global/turntable_channel = 4488
 			melomans.Remove(C)
 			continue
 
-		C.mob.music.status = SOUND_UPDATE//|SOUND_STREAM
+		if(C.mob.music.file != track.path)
+			C.mob.music.file = track.path
+			C.mob.music.status = SOUND_STREAM
+		else
+			C.mob.music.status = SOUND_UPDATE
+
 		C.mob.music.volume = volume
 		C.mob << C.mob.music
 
@@ -263,27 +415,6 @@ var/global/turntable_channel = 4488
 		M.music.status = SOUND_UPDATE
 		M.music.volume = volume
 		M << M.music
-
-/obj/machinery/party/turntable/bandit
-	name = "Jukebox"
-	desc = "A jukebox is a partially automated music-playing device, usually a coin-operated machine, that will play a patron's selection from self-contained media."
-	icon = 'icons/effects/lasers2.dmi'
-	icon_state = "Jukebox7"
-	playing = 0
-	track = null
-	volume = 100
-	turntable_soundtracks = list()
-	anchored = 1
-	density = 1
-
-/obj/machinery/party/turntable/bandit/New()
-	..()
-	turntable_soundtracks = list()
-	for(var/i in typesof(/datum/turntable_soundtrack/bandit) - /datum/turntable_soundtrack/bandit)
-		var/datum/turntable_soundtrack/D = new i()
-		if(D.path)
-			turntable_soundtracks.Add(D)
-
 
 /obj/machinery/party/mixer
 	name = "mixer"
