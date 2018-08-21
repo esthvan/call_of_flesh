@@ -7,8 +7,8 @@ Assistant
 //	flag = ASSISTANT
 //	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "Major"
 	selection_color = "#601919"
 	access = list()			//See /datum/job/assistant/get_access()
