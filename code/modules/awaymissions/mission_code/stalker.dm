@@ -123,7 +123,10 @@
 	safezone = 1
 	environment = 10
 
-/area/stalker/buildings/backwater/skadovsk/respawn
+/area/stalker/buildings/backwater/skadovsk_respawn
+	name = "Backwater - Skadovsk (2nd floor) \[NB\]"
+	icon_state = "skadovsk"
+	safezone = 1
 	environment = 2
 
 /area/stalker/blowout/buildings/backwater/skadovsk
