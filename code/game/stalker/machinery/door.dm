@@ -32,3 +32,4 @@
 
 /obj/machinery/door/poddoor/sidor/skadovsk
 	icon = 'icons/obj/doors/door_sidor2.dmi'
+	icon_state = "closed"
