@@ -202,8 +202,8 @@ var/global/turntable_channel = 4488
 		dat += "<br><A href='?src=\ref[src];collect_money=\ref[src]'>Collect Money</A>"
 		dat += "<br><A href='?src=\ref[src];change_volume=\ref[src]'>Change Volume</A>"
 		dat += "<br><A href='?src\ref[src];turn_off=\ref[src]'>Turn Off</A>"
-	dat += "<br><A href='?src=\ref[src];skip=\ref[src]'>Skip</A> - 1000 RU"
-	dat += "<br>Play your song - 2000 RU."
+	dat += "<br><A href='?src=\ref[src];skip=\ref[src]'>Skip</A> - <b>1000 RU</b>"
+	dat += "<br>Play your song - </b>2000 RU</b>"
 	dat += "<br>Volume: <b>[volume]%</b>"
 	dat += "</div>"
 	dat += "<div class='lenta_scroll'>"
@@ -214,7 +214,11 @@ var/global/turntable_channel = 4488
 	dat += "</table>"
 	dat += "</div>"
 
-	var/datum/browser/popup = new(H, "jukebox", "Jukebox", 455, 750)
+	var/datum/browser/popup
+	if(KPK.profile.fields["faction_s"] != "Traders")
+		popup = new(H, "jukebox", "Jukebox", 450, 700)
+	else
+		popup = new(H, "jukebox", "Jukebox", 460, 750)
 	popup.set_content(dat)
 	popup.open()
 	return
@@ -346,13 +350,13 @@ var/global/turntable_channel = 4488
 
 /obj/machinery/party/turntable/proc/set_volume(var/new_volume)
 	volume = max(0, min(100, new_volume))
-	if(playing)
-		update_sound()
+	//if(playing)
+	//	update_sound()
 
 /obj/machinery/party/turntable/proc/update_sound()
 	var/area/A = get_area(src)
 
-	if(!track || start_time + track.length < world.time)
+	if(!track || start_time + track.length < world.time + 5)
 		skip_song()
 
 	for(var/client/C in clients)
