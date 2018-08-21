@@ -536,7 +536,7 @@ Sorry Giacom. Please don't be mad :(
 			stop_pulling()
 			return
 
-		if(!get_area(newloc).safezone && get_area(src).safezone)
+		if(!get_area(src).safezone && get_area(pulling).safezone)
 			stop_pulling()
 			return
 
