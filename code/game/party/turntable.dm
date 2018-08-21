@@ -72,7 +72,7 @@ var/global/turntable_channel = 4488
 	var/list/mob/melomans = list()
 	var/list/turntable_soundtracks = list(
 
-		new /datum/data/turntable_soundtrack ("5nizza",				"Ya Soldat",						'sound/turntable/5nizza_ya_soldat.ogg',						2420),
+		new /datum/data/turntable_soundtrack ("5nizza",				"Ya Soldat",						'sound/turntable/5nizza_ya_soldat.ogg',						2110),
 		new /datum/data/turntable_soundtrack ("Addaraya",			"Gurza Dreaming",					'sound/turntable/gurza_dreaming.ogg',						2420),
 		new /datum/data/turntable_soundtrack ("Bandits",			"Cheeki Breeki",					'sound/turntable/bandit_radio.ogg',							1110),
 		new /datum/data/turntable_soundtrack ("Firelake",			"Fighting Unknown",					'sound/turntable/agroprom.ogg',								710),
@@ -87,10 +87,10 @@ var/global/turntable_channel = 4488
 		new /datum/data/turntable_soundtrack ("Rozenbaum A",		"Dagomis",							'sound/turntable/gopstop.ogg',								2450),
 		new /datum/data/turntable_soundtrack ("Dispetchera",		"2000 Baksov",						'sound/turntable/2000_baksov.ogg',							2430),
 		new /datum/data/turntable_soundtrack ("Agata Kristi",		"Kak Na Voine",						'sound/turntable/agata_kristi_na_voine.ogg',				2470),
-		new /datum/data/turntable_soundtrack ("Alai Oli",			"Krilya",							'sound/turntable/alai_oli_krilya.ogg',										2150),
-		new /datum/data/turntable_soundtrack ("Ariya",				"Bespechniy Angel",					'sound/turntable/ariya_bespechniy_angel.ogg',										2150),
-		new /datum/data/turntable_soundtrack ("Ariya",				"Potyeraniy Ray",					'sound/turntable/ariya_poteryaniy_ray.ogg',										2150),
-		new /datum/data/turntable_soundtrack ("Ariya",				"Ya Svoboden",						'sound/turntable/ariya_ya_svoboden.ogg',										2150),
+		new /datum/data/turntable_soundtrack ("Alai Oli",			"Krilya",							'sound/turntable/alai_oli_krilya.ogg',						2150),
+		new /datum/data/turntable_soundtrack ("Ariya",				"Bespechniy Angel",					'sound/turntable/ariya_bespechniy_angel.ogg',				2380),
+		new /datum/data/turntable_soundtrack ("Ariya",				"Potyeraniy Ray",					'sound/turntable/ariya_poteryaniy_ray.ogg',					3530),
+		new /datum/data/turntable_soundtrack ("Ariya",				"Ya Svoboden",						'sound/turntable/ariya_ya_svoboden.ogg',					3540),
 		new /datum/data/turntable_soundtrack ("Bi2",				"Polkovnik",						'sound/turntable/bi2_polkovnik.ogg',						2640),
 		new /datum/data/turntable_soundtrack ("Bi2",				"Serebro",							'sound/turntable/bi2_serebro.ogg',							2770),
 		new /datum/data/turntable_soundtrack ("Bi2",				"Varvara",							'sound/turntable/bi2_varvara.ogg',							2990),
