@@ -460,6 +460,7 @@ var/global/list/WaterEdgeCache
 	name = "lattice"
 	icon = 'icons/stalker/floor.dmi'
 	icon_state = "lattice_new"
+	overlay_priority = 100
 /*
 /turf/stalker/floor/lattice/New()
 	icon_state = "lattice[rand(1, 4)]"
