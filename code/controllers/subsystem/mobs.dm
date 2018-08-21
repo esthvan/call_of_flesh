@@ -3,7 +3,7 @@ var/datum/subsystem/mobs/SSmob
 /datum/subsystem/mobs
 	name = "Mobs"
 	priority = 4
-	wait = 10
+	wait = 15
 	var/list/currentrun = list()
 
 
