@@ -577,16 +577,14 @@
 										R.fields["money"] += sum
 										R_H.fields["money"] -= sum
 										var/n_src	= R.fields["name"]
-										var/f_src	= R.fields["faction_s"]
 										var/n		= R_H.fields["name"]
-										var/f		= R_H.fields["faction_s"]
 
-										src << russian_html2text("<p>\icon[KPK_src]<b><font color=\"#006699\">[n_src]</font>\[[f_src]\]</b><br><font color=\"#006699\">[n_src] transfered [sum] RU to your account.</font></p>")
-										if(KPK_src.lenta_sound == 1)
+										src << russian_html2text("<p>\icon[KPK_src]<b><font color=\"#006699\">PDA</font>\[OS\]</b><br><font color=\"#006699\">[n] transfered [sum] RU to your account.</font></p>")
+										if(KPK_src.switches & FEED_SOUND)
 											src << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
-										H << russian_html2text("<p>\icon[KPK]<b><font color=\"#006699\">[n]</font>\[[f]\]</b><br><font color=\"#006699\">You transfered [sum] RU to [n_src] account.</font></p>")
-										if(KPK.lenta_sound == 1)
+										H << russian_html2text("<p>\icon[KPK]<b><font color=\"#006699\">KPK</font>\[OS\]</b><br><font color=\"#006699\">You transfered [sum] RU to [n_src] account.</font></p>")
+										if(KPK.switches & FEED_SOUND)
 											H << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
 									else
@@ -600,16 +598,16 @@
 						if(href_list["subtraction_rep"])
 							if(R)
 								if(src.stat == "dead")
-									H << "<span class='warning'>[src] мёртв.</span>"
+									H << "<span class='warning'>[src] is dead.</span>"
 								else
 									if(!(last_vote && world.time < last_vote + 3000))
 										last_vote = world.time
 										if((R.fields["reputation"] - 20) < 0)
 											R.fields["reputation"] = 0
-											usr << "<span class='notice'>Предел репутации достигнут.</span>"
+											usr << "<span class='notice'>Reputation limit reached.</span>"
 										else
 											R.fields["reputation"] -= 20
-											usr << "<span class='notice'>Репутаци&#255; обновлена.</span>"
+											usr << "<span class='notice'>Reputation updated.</span>"
 									else
 										lefttime = round((3000 + last_vote - world.time)/10)
 										ending = ""
