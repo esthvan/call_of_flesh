@@ -291,7 +291,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/aksu74  // АКС74У
 	name = "AK 74S"
-	desc = "По своим габаритам и массе Акм 74У (укороченный) близок к пистолетам-пулемётам, однако он &#255;вл&#255;етс&#255; представителем автоматов. Достоинства: малые габариты и довольно высока&#255; пробивающа&#255; способность. Главные недостатки - мала&#255; прицельна&#255; дальность и склонность к быстрому перегреву при стрельбе очеред&#255;ми."
+	desc = "По своим габаритам и массе АК-74У (укороченный) близок к пистолетам-пулемётам, однако он &#255;вл&#255;етс&#255; представителем автоматов. Достоинства: малые габариты и довольно высока&#255; пробивающа&#255; способность. Главные недостатки - мала&#255; прицельна&#255; дальность и склонность к быстрому перегреву при стрельбе очеред&#255;ми."
 	eng_desc = "Despite being similar to submachineguns in size, weight and tactical purpose, this weapon is classified as an assault rifle due to the fact that its internal mechanism is identical to that of the AKM 74/2. The weapon is notable for its mobility in close quarters and high armor-penetration capacity, while its drawbacks are its short effective range, despite the relatively long bullet range, a tendency to overheat and high ricochet propensity."
 	icon_state = "aksu74"
 	item_state = "aksu74"
@@ -430,7 +430,7 @@
 	burst_size = 2
 	fire_delay = 1.8
 	pin = /obj/item/device/firing_pin
-	durability = 60
+	durability = 75
 	w_class = 4
 	spread = 4
 	recoil = 0.4
