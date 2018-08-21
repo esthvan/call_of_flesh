@@ -6,6 +6,7 @@
 	icon = 'icons/stalker/stalker.dmi'
 	var/deletable = 1 //Self-deletable dead bodies
 	speak_chance = 1.5
+	var/rating_add = 10
 
 /*
 /mob/living/simple_animal/hostile/mutant/death(gibbed)
@@ -129,6 +130,7 @@
 	random_loot = 1
 	attack_type = "bite"
 	move_to_delay = 1.2 //Real speed of a mob
+	rating_add = 15
 
 /mob/living/simple_animal/hostile/mutant/dog/AttackingTarget()
 	..()
@@ -173,7 +175,7 @@
 	robust_searching = 1
 	deathmessage = "The snork seizes up and falls limp!"
 	layer = MOB_LAYER - 0.1
-	loot = list(/obj/item/weapon/stalker/loot/snork_hand, /obj/nothing, /obj/nothing)
+	loot = list(/obj/item/weapon/stalker/loot/snork_leg, /obj/nothing, /obj/nothing)
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ranged = 1
@@ -183,6 +185,7 @@
 	attack_type = "claw"
 	var/leaping = 0
 	move_to_delay = 2
+	rating_add = 50
 
 /mob/living/simple_animal/hostile/mutant/snork/OpenFire()
 	if(get_dist(src, target) <= 4)
@@ -259,6 +262,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "smash"
 	move_to_delay = 3
+	rating_add = 10
 
 /mob/living/simple_animal/hostile/mutant/kaban
 	name = "boar"
@@ -299,6 +303,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "smash"
 	move_to_delay = 2
+	rating_add = 50
 
 	/*Код крашера с колониал маринов
 	Раскидывает мобов с дороги в стороны
@@ -345,6 +350,7 @@
 	attack_type = "claw"
 	move_to_delay = 1.65
 	speak_chance = 2
+	rating_add = 150
 
 /mob/living/simple_animal/hostile/mutant/bloodsucker/Life()
 	if(..())
@@ -423,6 +429,7 @@
 	attack_type = "bite"
 	move_to_delay = 1.4
 	speak_chance = 10
+	rating_add = 100
 
 /mob/living/simple_animal/hostile/mutant/controller
 	name = "Controller"
@@ -471,6 +478,7 @@
 	var/attack_stage = 0
 	var/last_attack_time = 0
 	see_through_walls = 1
+	rating_add = 250
 
 /mob/living/simple_animal/hostile/mutant/controller/Life()
 	. = ..()
@@ -480,22 +488,22 @@
 		var/damage_ = 0
 		switch(get_dist(src, H))
 			if(0 to 2)
-				damage_ = 25
+				damage_ = 35
 			if(3 to 4)
-				damage_ = 20
+				damage_ = 25
 			if(5 to 6)
-				damage_ = 10
+				damage_ = 15
 			if(7 to 8)
-				damage_ = 5
+				damage_ = 7
 			if(8 to INFINITY)
-				damage_ = 20 / get_dist(src, H)
+				damage_ = 25 / get_dist(src, H)
 		H.apply_damage(damage_, PSY, null, blocked = getarmor("head", "psy", 0))
 
 /mob/living/simple_animal/hostile/mutant/controller/OpenFire(atom/A)
 	if(!istype(A, /mob/living/carbon/human))
 		return
 
-	if(attack_stage && last_attack_time + 41 < world.time)
+	if(attack_stage && last_attack_time + (10 * attack_stage) < world.time)
 		ranged_cooldown = ranged_cooldown_cap
 		attack_stage = 0
 		return
@@ -506,28 +514,27 @@
 		if(0)
 			visible_message("<span class='danger'><b>[src]</b> stares at [H]!</span>")
 			last_attack_time = world.time
-			if(H in view(14, src))
 
+			if(H in view(14, src))
 				H << sound('sound/stalker/mobs/mutants/attack/controller_tube_prepare.ogg', wait = 0, channel = 47, volume = 50)
 				attack_stage++
-
 			else
 				attack_stage = 0
 				ranged_cooldown = ranged_cooldown_cap
 
 		if(1 to 3)
 			if(H in view(14, src))
-
+				last_attack_time = world.time
 				attack_stage++
-
 			else
 				attack_stage = 0
 				ranged_cooldown = ranged_cooldown_cap
 		if(4)
 			if(H in view(14, src))
+				last_attack_time = world.time
 				H << sound('sound/stalker/mobs/mutants/attack/controller_whoosh.ogg', wait = 0, channel = 47, volume = 50)
 				visible_message("<span class='danger'><b>[src]</b> stares right into [A] eyes!</span>")
-				H.apply_damage(110, PSY, null, blocked = getarmor("head", "psy", 0))
+				H.apply_damage(120, PSY, null, blocked = getarmor("head", "psy", 0))
 
 			attack_stage = 0
 			ranged_cooldown = ranged_cooldown_cap

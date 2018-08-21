@@ -77,7 +77,7 @@ Sorry Giacom. Please don't be mad :(
 //Called when we bump onto a mob
 /mob/living/proc/MobBump(mob/M)
 	//Even if we don't push/swap places, we "touched" them, so spread fire
-	spreadFire(M)
+	//spreadFire(M)
 
 	if(now_pushing)
 		return 1
@@ -94,6 +94,7 @@ Sorry Giacom. Please don't be mad :(
 					src << "<span class='warning'>[M] is restraining [MM], you cannot push past.</span>"
 				return 1
 
+
 	//switch our position with M
 	//BubbleWrap: people in handcuffs are always switched around as if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
 	if((M.a_intent == "help" || M.restrained()) && (a_intent == "help" || restrained()) && M.canmove && canmove && !M.buckled && !M.buckled_mob) // mutual brohugs all around!
@@ -109,8 +110,9 @@ Sorry Giacom. Please don't be mad :(
 		M.pass_flags |= PASSMOB
 		pass_flags |= PASSMOB
 
-		M.Move(oldloc)
-		Move(oldMloc)
+		if(get_area(oldloc).safezone == get_area(oldMloc).safezone)
+			M.Move(oldloc)
+			Move(oldMloc)
 
 		if(!src_passmob)
 			pass_flags &= ~PASSMOB
@@ -149,6 +151,9 @@ Sorry Giacom. Please don't be mad :(
 					return
 		if(pulling == AM)
 			stop_pulling()
+		if(!get_area(get_step(AM, t)).safezone && get_area(AM).safezone)
+			now_pushing = 0
+			return
 		step(AM, t)
 		now_pushing = 0
 
@@ -528,6 +533,10 @@ Sorry Giacom. Please don't be mad :(
 
 		/////
 		if(pulling && pulling.anchored)
+			stop_pulling()
+			return
+
+		if(!get_area(newloc).safezone && get_area(src).safezone)
 			stop_pulling()
 			return
 
@@ -1009,7 +1018,7 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 			var/datum/data/record/sk_H = find_record("sid", H.sid, data_core.stalkers)
 			/////////////////////////////////////////////////////////////////////////
 
-			if(sk && sk_H)
+			if(sk && sk_H && !H.zombiefied)
 				switch(sk_H.fields["reputation"])
 					if(AMAZING to INFINITY)
 						if(H.faction_s != "Bandits")
@@ -1051,14 +1060,6 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 						sk.fields["rating"] = sk.fields["rating"] + 50
 		else
 			if(sk)
-				if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/dog))
-					sk.fields["rating"] = sk.fields["rating"] + 20
-
-				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/snork))
-					sk.fields["rating"] = sk.fields["rating"] + 100
-
-				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/flesh))
-					sk.fields["rating"] = sk.fields["rating"] + 20
-
-				else if(istype(killed_one, /mob/living/simple_animal/hostile/mutant/kaban))
-					sk.fields["rating"] = sk.fields["rating"] + 60
+				if(istype(killed_one, /mob/living/simple_animal/hostile/mutant))
+					var/mob/living/simple_animal/hostile/mutant/M = killed_one
+					sk.fields["rating"] += M.rating_add
