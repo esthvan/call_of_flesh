@@ -333,7 +333,7 @@
 	attacktext = "slashes"
 	speak_emote = list("growls", "roars")
 	emote_see = list("growls!", "roars!")
-	maxHealth = 350
+	maxHealth = 300
 	healable = 1
 	melee_damage_lower = 30
 	attack_sound = 'sound/stalker/mobs/mutants/attack/bloodsucker_attack.ogg'

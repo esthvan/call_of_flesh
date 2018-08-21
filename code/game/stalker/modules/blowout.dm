@@ -62,13 +62,13 @@ datum/subsystem/blowout/fire()
 				BlowoutDealDamage()
 			if(MC_TICK_CHECK)
 				return
-			BlowoutClean()
-			if(MC_TICK_CHECK)
-				return
 			BlowoutGib()
 			if(MC_TICK_CHECK)
 				return
-			if(!dead_mob_list.len && !ACs.len)
+			BlowoutClean()
+			if(MC_TICK_CHECK)
+				return
+			if(!ACs.len && !(locate(/mob/living) in dead_mob_list))
 				cleaned = 1
 			return
 

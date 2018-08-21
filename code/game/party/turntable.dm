@@ -387,13 +387,15 @@ var/global/turntable_channel = 4488
 
 		if(!playing || !(get_area(C.mob) in A.related))
 			C.jukeboxplaying = 0
-			if(!C.mob.music)
-				melomans.Remove(C)
-				continue
-			C.mob.music.status = SOUND_UPDATE
-			C.mob.music.volume = 0
-			C.mob << C.mob.music
+			if(C.mob.music)
+				C.mob.music.status = SOUND_UPDATE
+				C.mob.music.volume = 0
+				C.mob << C.mob.music
 			melomans.Remove(C)
+			continue
+
+		if(!C.mob.music)
+			create_sound(C.mob)
 			continue
 
 		if(C.mob.music.file != track.path)
