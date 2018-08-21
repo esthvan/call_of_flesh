@@ -88,7 +88,22 @@
 			break
 
 /proc/random_skin_tone()
-	return pick(skin_tones)
+	return pick(available_skin_tones)
+
+var/list/available_skin_tones = list(
+	"albino",
+	"caucasian1",
+	"caucasian2",
+	"caucasian3",
+	"latino",
+	"mediterranean",
+	"asian1",
+	"asian2",
+	"arab",
+	"indian",
+	"african1",
+	"african2",
+	)
 
 var/list/skin_tones = list(
 	"albino",
@@ -102,7 +117,8 @@ var/list/skin_tones = list(
 	"arab",
 	"indian",
 	"african1",
-	"african2"
+	"african2",
+	"zombie"
 	)
 
 var/global/list/species_list[0]

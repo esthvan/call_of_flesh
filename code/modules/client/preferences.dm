@@ -921,7 +921,7 @@ var/list/preferences_datums = list()
 						features["body_markings"] = new_body_markings
 
 				if("s_tone")
-					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in skin_tones
+					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in available_skin_tones
 					if(new_s_tone)
 						skin_tone = new_s_tone
 
