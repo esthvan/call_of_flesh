@@ -4,3 +4,4 @@ xrenoid = Trader
 narcissf = Freedom
 narcissf = Freedom Lieutenant
 drunktess = Freedom Lieutenant
+jacknoir413 = Mercenary Sql
