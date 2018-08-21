@@ -159,14 +159,14 @@ var/global/list/high_tier_sidormatitems = list()
 		/////////////////////////////////	Другое	/////////////////////////////////////////////
 		new /datum/data/stalker_equipment("Repair-kit for suits and helmets",	"Рем. комплект дл&#x44F; бронекостюмов и шлемов",	/obj/item/device/repair_kit/clothing,										30000, ROOKIE),
 		new /datum/data/stalker_equipment("Repair-kit for guns",				"Рем. комплект дл&#x44F; огнестрельного оружи&#x44F;",/obj/item/device/repair_kit/gun,											10000, ROOKIE),
-		new /datum/data/stalker_equipment("Guitar",								"Гитара",											/obj/item/device/instrument/guitar,											1500, ROOKIE),
-		new /datum/data/stalker_equipment("Geiger counter",						"Дозиметр",											/obj/item/device/geiger_counter,											1500, ROOKIE),
+		new /datum/data/stalker_equipment("Guitar",								"Гитара",											/obj/item/device/instrument/guitar,											3000, ROOKIE),
+		new /datum/data/stalker_equipment("Geiger counter",						"Дозиметр",											/obj/item/device/geiger_counter,											3000, ROOKIE),
 		new /datum/data/stalker_equipment("Flashlight",							"Фонарик",											/obj/item/device/flashlight/seclite,										1000, ROOKIE),
 		new /datum/data/stalker_equipment("Big Artifact belt",					"Большой по&#x44F;с дл&#x44F; артефактов",			/obj/item/weapon/storage/belt/stalker/artifact_belt,						60000, EXPERIENCED),
 		new /datum/data/stalker_equipment("Artifact belt",						"Маленький по&#x44F;с дл&#x44F; артефактов",		/obj/item/weapon/storage/belt/stalker/artifact_belt/small,					25000, ROOKIE),
-		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										500, ROOKIE),
-		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,					1000, ROOKIE),
-		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,							5000, ROOKIE),
+		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										750, ROOKIE),
+		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,					2500, ROOKIE),
+		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,							10000, ROOKIE),
 		new /datum/data/stalker_equipment("Backpack",							"Рюкзак",											/obj/item/weapon/storage/backpack/stalker,									2500, ROOKIE, sale_price = 0),
 		new /datum/data/stalker_equipment("Satchel",							"Сумка",											/obj/item/weapon/storage/backpack/satchel/stalker,							2500, ROOKIE, sale_price = 0)
 		)
