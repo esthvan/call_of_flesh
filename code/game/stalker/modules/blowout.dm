@@ -17,6 +17,7 @@ datum/subsystem/blowout
 	var/lasttime = 0
 	var/starttime = 0
 	var/blowout_duration = 1200
+	var/cleaned = 0
 	var/list/ambient = list('sound/stalker/blowout/blowout_amb_01.ogg', 'sound/stalker/blowout/blowout_amb_02.ogg',
 						'sound/stalker/blowout/blowout_amb_03.ogg', 'sound/stalker/blowout/blowout_amb_04.ogg',
 						'sound/stalker/blowout/blowout_amb_05.ogg', 'sound/stalker/blowout/blowout_amb_06.ogg',
@@ -49,7 +50,7 @@ datum/subsystem/blowout/fire()
 		return
 
 	if(starttime)
-		if(600 + blowout_duration + starttime < world.time)
+		if(640 + blowout_duration + starttime < world.time && cleaned)
 			AfterBlowout()
 			return
 
@@ -67,6 +68,8 @@ datum/subsystem/blowout/fire()
 			BlowoutGib()
 			if(MC_TICK_CHECK)
 				return
+			if(!dead_mob_list.len && !ACs.len)
+				cleaned = 1
 			return
 
 		if((blowout_duration + starttime) < world.time)
@@ -85,26 +88,25 @@ datum/subsystem/blowout/proc/StartBlowout()
 	starttime = world.time
 
 	add_lenta_message(null, "0", "Sidorovich", "Loners", "ATTENTION, STALKERS! Blowout is starting! Find a shelter quick!")
-	world << sound('sound/stalker/blowout/blowout_begin_02.ogg', wait = 0, channel = 17, volume = 50)
-	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 18, volume = 60)
+	world << sound('sound/stalker/blowout/blowout_begin_02.ogg', wait = 0, channel = 201, volume = 50)
+	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 202, volume = 60)
 
 datum/subsystem/blowout/proc/PreStopBlowout()
 	blowoutphase = 2
-	world << sound('sound/stalker/blowout/blowout_particle_wave.ogg', wait = 0, channel = 17, volume = 70)
+	world << sound('sound/stalker/blowout/blowout_particle_wave.ogg', wait = 0, channel = 201, volume = 70)
 
 datum/subsystem/blowout/proc/BlowoutClean()
 	for(var/obj/item/ammo_casing/AC in ACs)
+		ACs -= AC
 		qdel(AC)
 		if(MC_TICK_CHECK)
 			return
 
 datum/subsystem/blowout/proc/BlowoutGib()
-	for(var/mob/living/L)
-		if(L.stat == DEAD)
-			L.gib()
-
-			if(MC_TICK_CHECK)
-				return
+	for(var/mob/living/L in dead_mob_list)
+		L.gib()
+		if(MC_TICK_CHECK)
+			return
 
 
 datum/subsystem/blowout/proc/BlowoutDealDamage()
@@ -118,8 +120,8 @@ datum/subsystem/blowout/proc/StopBlowout()
 
 	if(blowoutphase == 2)
 
-		world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 17, volume = 70)
-		world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 18, volume = 70)
+		world << sound('sound/stalker/blowout/blowout_impact_02.ogg', wait = 0, channel = 201, volume = 70)
+		world << sound('sound/stalker/blowout/blowout_outro.ogg', wait = 0, channel = 202, volume = 70)
 
 	blowoutphase = 3
 
@@ -162,6 +164,7 @@ datum/subsystem/blowout/proc/AfterBlowout()
 	isblowout = 0
 	lasttime = world.time
 	starttime = 0
+	cleaned = 0
 
 	world << sound(null, wait = 0, channel = 19, volume = 70)
 	world << sound(null, wait = 0, channel = 20, volume = 70)
@@ -170,6 +173,7 @@ datum/subsystem/blowout/proc/AfterBlowout()
 	world << sound(null, wait = 0, channel = 23, volume = 70)
 	world << sound(null, wait = 0, channel = 24, volume = 70)
 
+	/////////////////////////////////////
 	////Deleting old stalker profiles////
 	//for(var/datum/data/record/sk in data_core.stalkers)
 	//	if(sk.fields["lastlogin"] + 27000 < world.time)
