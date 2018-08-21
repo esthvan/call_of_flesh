@@ -355,7 +355,7 @@
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "claw"
-	move_to_delay = 1.65
+	move_to_delay = 1.8
 	speak_chance = 2
 	rating_add = 150
 
