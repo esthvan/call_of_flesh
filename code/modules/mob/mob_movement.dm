@@ -361,6 +361,8 @@
 	if (!Process_Spacemove(get_dir(pulling.loc, A)))
 		return
 	if (ismob(pulling))
+		if(get_area(pulling).safezone && !get_area(A).safezone)
+			return
 		var/mob/M = pulling
 		var/atom/movable/t = M.pulling
 		M.stop_pulling()
