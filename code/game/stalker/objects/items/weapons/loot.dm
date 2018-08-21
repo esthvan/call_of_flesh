@@ -19,11 +19,11 @@
 	eng_desc = "The hoof of a wild boar is used by scientists for manufacturing of some medicines, the most widespread of which are anti radiation drugs."
 	icon_state = "kaban"
 
-/obj/item/weapon/stalker/loot/snork_hand
-	name = "snork hand"
+/obj/item/weapon/stalker/loot/snork_leg
+	name = "snork leg"
 	desc = "The resistance of mutant dogs' skin to electricity and chemical agents has long been the subject of scientific attention. Since the animal's tail is almost completely free of fat tissue, it is especially suited for lab experimentation."
 	eng_desc = "Snork feet contain a huge number of highly elastic tendons. This explains the beast's ability to make those unbelievably long jumps."
-	icon_state = "snork"
+	icon_state = "snork_leg"
 
 /obj/item/weapon/stalker/loot/pseudo_tail
 	name = "pseudo-dog tail"
