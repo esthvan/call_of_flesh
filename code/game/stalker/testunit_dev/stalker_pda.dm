@@ -11,6 +11,7 @@ var/global/global_lentahtml = ""
 
 	var/mode = 1
 	var/show_title = 0
+	var/switches = FEED_SOUND | FEED_IMAGES | RATING_IMAGES
 	var/mainhtml = ""
 	var/navbarhtml = ""
 	var/ratinghtml =""
@@ -39,11 +40,9 @@ var/global/global_lentahtml = ""
 	var/eng_rank_name_s = "Rookie"
 	var/eng_faction_s = "Loners"
 	var/degree = 0
-	//var/isregistered = 0
 
 	//ЛЕНТА
 	var/lentahtml = ""
-	var/lenta_sound = 1
 	var/last_lenta = 0
 	var/lenta_id = 0
 
@@ -66,19 +65,21 @@ var/global/global_lentahtml = ""
 	var/article_img_width = 179
 	var/article_img_height = 128
 
+/datum/asset/simple/kpk/encyclopedia
+	assets = list(
+		//Фото для энциклопедии
+		"zone"					= 'icons/stalker/images/zone.png',
+		"backwater"				= 'icons/stalker/images/backwater.jpg',
+		"nodata.gif"			= 'icons/stalker/images/nodata.gif'
+	)
+
 /datum/asset/simple/kpk
 	assets = list(
 		"kpk_background.png"	= 'icons/stalker/images/kpk.png',
 		"nodata.png"			= 'icons/stalker/images/nodata.png',
 		"photo_0"				= 'icons/stalker/images/sidor.png',
-		//Фото для энциклопедии
-		"zone"					= 'icons/stalker/images/zone.png',
-		"backwater"				= 'icons/stalker/images/backwater.jpg',
-		"nodata.gif"			= 'icons/stalker/images/nodata.gif',
-		//Курсоры
-		"cursor"				= 'code/game/stalker/testunit_dev/cursors/StalkerCursor.ani',
-		"cursorText"			= 'code/game/stalker/testunit_dev/cursors/sText.cur',
-		"cursorWait"			= 'code/game/stalker/testunit_dev/cursors/Wait.ani'
+		//Курсор
+		"cursor"				= 'code/game/stalker/testunit_dev/cursors/StalkerCursor.ani'
 	)
 
 
@@ -126,29 +127,13 @@ var/global/global_lentahtml = ""
 	var/mob/living/carbon/human/H = user
 
 	if(owner == H)
-		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
-		if(!sk)
+		if(!profile)
 			owner = null
 		else
-			set_owner_info(sk)
-			sk.fields["lastlogin"] = world.time
+			set_owner_info(profile)
+			profile.fields["lastlogin"] = world.time
 
 	icon_state = "kpk_on"
-	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/kpk)
-	assets.send(user)
-
-	/*
-	<style>\
-		a:link {color: #607D8B;}\
-		a:visited {color: #607D8B;}\
-		a:active {color: #607D8B;}\
-		a:hover {background-color: #9E9E9E;}\
-		a {text-decoration: none;}\
-		body {\
-		background-image: url('kpk_background.png');\
-		padding-top: 18px;\
-		padding-left: 35px;\
-	*/
 
 	user.set_machine(src)
 	mainhtml ="<html> \
@@ -489,7 +474,7 @@ var/global/global_lentahtml = ""
 					<table border=0 height=\"314\" width=\"455\">\
 						<tr>\
 							<td valign=\"top\" align=\"left\">\
-								<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
+								<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=rating_images'>\[IMAGES\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
 					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						mainhtml +="\
 						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=refresh_rating'>Refresh stalker list</a> | </div>"
@@ -521,7 +506,7 @@ var/global/global_lentahtml = ""
 					<table border=0 height=\"314\" width=\"455\">\
 					<tr>\
 					<td valign=\"top\" align=\"left\">\
-					<div align=\"right\"><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
+					<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=lenta_images'>\[IMAGES\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>"
 					if(user.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						mainhtml +="\
 						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=lenta_add'>Send feed message</a> | <a href='byond://?src=\ref[src];choice=lenta_faction_add'>Send faction message</a> | <a href='byond://?src=\ref[src];choice=lenta_sound'>Turn on/off sound</a> |</div>"
@@ -620,9 +605,9 @@ var/global/global_lentahtml = ""
 
 	//var/mob/living/U = usr
 	var/mob/living/carbon/human/H = usr
-	var/isregistered = 0
 	if(usr.canUseTopic(src))
-		add_fingerprint(H)
+		//add_fingerprint(H)
+		get_asset_datum(/datum/asset/simple/kpk).send(H)
 		H.set_machine(src)
 		switch(href_list["choice"])
 			if("title")
@@ -643,77 +628,76 @@ var/global/global_lentahtml = ""
 			if("password_input")
 				var/t = message_input(H, "password", 10)
 
-				if(t)
-					for(var/datum/data/record/sk in data_core.stalkers)
-						if(sk.fields["sid"] == H.sid)
-							isregistered = 1
-					if(!isregistered)
-						password = t
-						var/pass = password
+				if(!t)
+					H << "<span class='warning'>You entered no password.</span>"
+					return
 
-						data_core.manifest_inject(H, pass)
+				var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 
-						//var/datum/job/J = SSjob.GetJob(H.job)
-						//access = J.get_access()
+				if(!sk) //если человек не зарегистрирован в сети сталкеров
+					password = t
+					var/pass = password
 
-						registered_name = H.real_name
-						owner = H
-						sid = H.sid
+					data_core.manifest_inject(H, pass)
+
+					//var/datum/job/J = SSjob.GetJob(H.job)
+					//access = J.get_access()
+
+					registered_name = H.real_name
+					owner = H
+					sid = H.sid
+					lentahtml = global_lentahtml
+
+					var/image = get_id_photo(H)
+					var/obj/item/weapon/photo/owner_photo_front = new()
+					var/obj/item/weapon/photo/owner_photo_west = new()
+					var/obj/item/weapon/photo/owner_photo_east = new()
+					var/obj/item/weapon/photo/owner_photo_back = new()
+
+					owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
+					owner_photo_west.photocreate(null, icon(image, dir = WEST))
+					owner_photo_east.photocreate(null, icon(image, dir = EAST))
+					owner_photo_back.photocreate(null, icon(image, dir = NORTH))
+
+					H << "<B>KPK password</B>: <span class='danger'>\"[pass]\"</span>"
+					H.mind.store_memory("<b>KPK password</b>: \"[pass]\"")
+					KPKs += src
+					KPK_mobs += H
+
+					profile = find_record("sid", H.sid, data_core.stalkers)
+					set_owner_info(profile)
+				else //Если человек зарегистрирован в сети сталкеров
+					if(sk && sk.fields["pass"] != t)
+						H << "<span class='warning'>Wrong password.</span>"
+						return
+
+					password = t
+					//var/datum/job/J = SSjob.GetJob(H.job)
+					//access = J.get_access()
+
+					registered_name = H.real_name
+					eng_faction_s = sk.fields["faction"]
+					rating = sk.fields["rating"]
+					owner = H
+					sid = H.sid
+					if(!lentahtml)
 						lentahtml = global_lentahtml
 
-						var/image = get_id_photo(H)
-						var/obj/item/weapon/photo/owner_photo_front = new()
-						var/obj/item/weapon/photo/owner_photo_west = new()
-						var/obj/item/weapon/photo/owner_photo_east = new()
-						var/obj/item/weapon/photo/owner_photo_back = new()
+					var/image = get_id_photo(H)
+					var/obj/item/weapon/photo/owner_photo_front = new()
+					var/obj/item/weapon/photo/owner_photo_west = new()
+					var/obj/item/weapon/photo/owner_photo_east = new()
+					var/obj/item/weapon/photo/owner_photo_back = new()
 
-						owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
-						owner_photo_west.photocreate(null, icon(image, dir = WEST))
-						owner_photo_east.photocreate(null, icon(image, dir = EAST))
-						owner_photo_back.photocreate(null, icon(image, dir = NORTH))
+					owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
+					owner_photo_west.photocreate(null, icon(image, dir = WEST))
+					owner_photo_east.photocreate(null, icon(image, dir = EAST))
+					owner_photo_back.photocreate(null, icon(image, dir = NORTH))
 
-						H << "<B>KPK password</B>: <span class='danger'>\"[pass]\"</span>"
-						H.mind.store_memory("<b>KPK password</b>: \"[pass]\"")
-						KPKs += src
-						KPK_mobs += H
+					KPKs += src
 
-						for(var/datum/data/record/sk in data_core.stalkers)
-							if(H.sid == sk.fields["sid"])
-								set_owner_info(sk)
-					else
-						for(var/datum/data/record/sk in data_core.stalkers)
-							if(sk.fields["sid"] == H.sid)
-								if(sk.fields["pass"] == t)
-									password = t
-									//var/datum/job/J = SSjob.GetJob(H.job)
-									//access = J.get_access()
-
-									registered_name = H.real_name
-									eng_faction_s = sk.fields["faction"]
-									rating = sk.fields["rating"]
-									owner = H
-									sid = H.sid
-									if(!lentahtml)
-										lentahtml = global_lentahtml
-
-									var/image = get_id_photo(H)
-									var/obj/item/weapon/photo/owner_photo_front = new()
-									var/obj/item/weapon/photo/owner_photo_west = new()
-									var/obj/item/weapon/photo/owner_photo_east = new()
-									var/obj/item/weapon/photo/owner_photo_back = new()
-
-									owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
-									owner_photo_west.photocreate(null, icon(image, dir = WEST))
-									owner_photo_east.photocreate(null, icon(image, dir = EAST))
-									owner_photo_back.photocreate(null, icon(image, dir = NORTH))
-
-									KPKs += src
-
-									set_owner_info(sk)
-								else
-									H << "<span class='warning'>Неверный пароль.</span>"
-				else
-					H << "<span class='warning'>Ваш пароль не подходит. Введите пароль еще раз.</span>"
+					profile = sk
+					set_owner_info(profile)
 
 			if("exit")
 				registered_name = null
@@ -729,15 +713,16 @@ var/global/global_lentahtml = ""
 				KPKs -= src
 				hacked = 0
 				password = null
+				profile = null
 
 			if("password_check")
 				var/t = message_input(H, "password", 10)
 				if(t == password)
 					//hacked = 1
 					hacked = 0
-					H << "<span class='warning'>Вы не владелец КПК.</span>"
+					H << "<span class='warning'>You are not the PDA owner.</span>"
 				else
-					H << "<span class='warning'>Неверный пароль.</span>"
+					H << "<span class='warning'>Wrong password.</span>"
 
 			if("rotate")
 				switch(rotation)
@@ -752,9 +737,7 @@ var/global/global_lentahtml = ""
 
 			if("make_avatar")
 				make_avatar(H)
-				for(var/datum/data/record/sk in data_core.stalkers)
-					if(H.sid == sk.fields["sid"])
-						set_owner_info(sk)
+				set_owner_photo()
 
 			if("lenta_add")
 				var/t = message_input(H, "message", 250)
@@ -794,34 +777,64 @@ var/global/global_lentahtml = ""
 							H << "<span class='warning'>Вы сможете отправить следующее сообщение через: [round((450 + last_faction_lenta - world.time)/10)] сек.</span>"
 
 			if("lenta_sound")
-				lenta_sound = !lenta_sound
-				if(lenta_sound)
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте активирован.</span>"
-					else
-						H << "<span class='notice'>Feed sound turned on.</span>"
-				else
+				if(switches & FEED_SOUND)
+					switches &= ~FEED_SOUND
 					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						H << "<span class='notice'>Feed sound turned off.</span>"
 					else
 						H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
+				else
+					switches |= FEED_SOUND
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='notice'>Feed sound turned on.</span>"
+					else
+						H << "<span class='notice'>Звук оповещени&#255; о сообщени&#255;х в ленте активирован.</span>"
+
+
+			if("lenta_images")
+				if(switches & FEED_IMAGES)
+					switches &= ~FEED_IMAGES
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='notice'>Stalker avatars in the feed now will not be downloaded.</span>"
+					else
+						H << "<span class='notice'>Аватары сталкеров в ленте теперь не будут скачиватьс&#255;.</span>"
+				else
+					switches |= FEED_IMAGES
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='notice'>Stalker avatars in the feed now will be downloaded.</span>"
+					else
+						H << "<span class='notice'>Аватары сталкеров в ленте теперь будут скачиватьс&#255;.</span>"
+
+			if("rating_images")
+				if(switches & RATING_IMAGES)
+					switches &= ~RATING_IMAGES
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='notice'>Stalker avatars in the rating now will not be downloaded.</span>"
+					else
+						H << "<span class='notice'>Аватары сталкеров в рейтинге теперь не будут скачиватьс&#255;.</span>"
+				else
+					switches |= RATING_IMAGES
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='notice'>Stalker avatars in the rating now will be downloaded.</span>"
+					else
+						H << "<span class='notice'>Аватары сталкеров в рейтинге теперь будут скачиватьс&#255;.</span>"
 
 			if("refresh_rating")
 				ratinghtml = ""
-				if(!isnull(data_core.stalkers))
+				if(data_core.stalkers.len)
 					refresh_rating(H)
 
 			if("zoom")
 				return
 
 			if("1")			//ПРОФИЛЬ
-				for(var/datum/data/record/sk in data_core.stalkers)
-					if(H.sid == sk.fields["sid"])
-						set_owner_info(sk)
+				set_owner_info(profile)
+				set_owner_photo()
 				mode = 1
 
 			if("2")			//ЭНЦИКЛОПЕДИЯ
 				mode = 2
+				get_asset_datum(/datum/asset/simple/kpk/encyclopedia).send(H)
 				if(href_list["page"])
 					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
 						switch(href_list["page"])
@@ -978,13 +991,15 @@ var/global/global_lentahtml = ""
 
 
 			if("3")			//РЕЙТИНГ
-				if(!isnull(data_core.stalkers))
+				if(data_core.stalkers.len)
 					refresh_rating(H)
 				mode = 3
 
 			if("4")			//ЛЕНТА
-				for(var/datum/data/record/R in data_core.stalkers)
-					if(R.fields["lastlogin"] + 18000 <= world.time)
+				if(switches & FEED_IMAGES)
+					for(var/datum/data/record/R in data_core.stalkers)
+						if(R.fields["lastlogin"] + 18000 > world.time)
+							continue
 						var/sid_p = R.fields["sid"]
 						var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
 						H << browse_rsc(P1.img, "photo_[sid_p]")
@@ -1162,10 +1177,10 @@ var/global/global_lentahtml = ""
 			C << russian_html2text("<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
 
 		if(KPK_owner)
-			if((KPK != KPK_owner || selfsound) && KPK.lenta_sound == 1)
+			if((KPK != KPK_owner || selfsound) && KPK.switches & FEED_SOUND)
 				C << sound('sound/stalker/pda/sms.ogg', volume = 30)
 		else
-			if(KPK.lenta_sound)
+			if(KPK.switches & FEED_SOUND)
 				C << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
 /proc/show_dead_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/name_owner, var/faction_owner, var/msg, var/isfactionchat = 0)
@@ -1202,9 +1217,10 @@ var/global/global_lentahtml = ""
 		if(R.fields["lastlogin"] + 12000 < world.time)
 			continue
 
-		var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
 		var/sid_p = R.fields["sid"]
-		H << browse_rsc(P1.img, "photo_[sid_p]")
+		if(switches & RATING_IMAGES)
+			var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
+			H << browse_rsc(P1.img, "photo_[sid_p]")
 		var/n = R.fields["name"]
 		var/r = R.fields["rating"]
 
@@ -1355,7 +1371,16 @@ var/global/global_lentahtml = ""
 
 	degree = sk.fields["degree"]
 
-	profile = sk
+/obj/item/device/stalker_pda/proc/set_owner_photo()
+	var/obj/item/weapon/photo/P1 = profile.fields["photo_front"]
+	var/obj/item/weapon/photo/P2 = profile.fields["photo_west"]
+	var/obj/item/weapon/photo/P3 = profile.fields["photo_east"]
+	var/obj/item/weapon/photo/P4 = profile.fields["photo_back"]
+
+	usr << browse_rsc(P1.img, "photo_front")
+	usr << browse_rsc(P2.img, "photo_west")
+	usr << browse_rsc(P3.img, "photo_east")
+	usr << browse_rsc(P4.img, "photo_back")
 
 /proc/get_rus_rank_name(var/rating)
 	var/rus_rank_name_s = "Новичок"
