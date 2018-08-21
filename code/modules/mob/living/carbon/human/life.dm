@@ -42,6 +42,11 @@
 		if(ckey)
 			ckey = null
 		a_intent = "harm"
+		if(skin_tone != "zombie")
+			skin_tone = "zombie"
+			dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
+			update_mutcolor()
+		faction = list("stalker_mutants1")
 		ZombieLife()
 
 	tinttotal = tintcheck() //here as both hud updates and status updates call it
@@ -112,7 +117,6 @@
 				apply_effect(rand(20, 35), SLUR, 0)
 			if(!zombiefied)
 				zombiefied = 1
-				faction = list("stalker_mutants1")
 			return
 		if(150 to 199)
 			if(slurring < 100)
