@@ -56,7 +56,7 @@
 	item_state = "assaultmerc"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 50, bullet = 65, laser = 25,energy = 50, bomb = 0, bio = 0, rad = 0, psy = 5)
+	armor = list(melee = 50, bullet = 75, laser = 25,energy = 50, bomb = 0, bio = 0, rad = 0, psy = 5)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 250
@@ -64,14 +64,14 @@
 
 /obj/item/clothing/head/gopcap
 	name = "Сap"
-	desc = "Модная у чётких пацанов кепка."
+	desc = "Модна&#255; у чётких пацанов кепка."
 	icon_state = "gopcap"
 	item_state = "gopcap"
 	flags = BLOCKHAIR
 
 /obj/item/clothing/head/soft/jacknoircap
 	name = "Сap"
-	desc = "Потрепанная кепка машиниста. Чух-чух!"
+	desc = "Потрепанна&#255; кепка машиниста. Чух-чух!"
 	icon_state = "jacknoirsoft"
 	item_color = "jacknoir"
 	item_state = "greysoft"
