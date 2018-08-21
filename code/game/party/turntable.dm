@@ -222,7 +222,7 @@ var/global/turntable_channel = 4488
 	if(KPK.profile.fields["faction_s"] != "Traders")
 		popup = new(H, "jukebox", "Jukebox", 450, 700)
 	else
-		popup = new(H, "jukebox", "Jukebox", 460, 750)
+		popup = new(H, "jukebox", "Jukebox", 460, 760)
 	popup.set_content(dat)
 	popup.open()
 	return
