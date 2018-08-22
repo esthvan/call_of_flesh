@@ -62,6 +62,9 @@ var/global/turntable_channel = 4488
 	desc = "A jukebox is a partially automated music-playing device, usually a coin-operated machine, that will play a patron's selection from self-contained media."
 	icon = 'icons/effects/lasers2.dmi'
 	icon_state = "Jukebox7"
+	var/timer_id = 0
+	var/play_song_cost = 1000
+	var/skip_song_cost = 500
 	var/start_time = 0
 	var/collected_money = 0
 	var/music_channel = 0
@@ -205,16 +208,18 @@ var/global/turntable_channel = 4488
 	if(KPK.profile.fields["faction_s"] == "Traders")
 		dat += "<br><A href='?src=\ref[src];collect_money=\ref[src]'>Collect Money</A>"
 		dat += "<br><A href='?src=\ref[src];change_volume=\ref[src]'>Change Volume</A>"
-		dat += "<br><A href='?src\ref[src];turn_off=\ref[src]'>Turn Off</A>"
-	dat += "<br><A href='?src=\ref[src];skip=\ref[src]'>Skip</A> - <b>1000 RU</b>"
-	dat += "<br>Play your song - </b>2000 RU</b>"
+		if(playing)
+			dat += "<br><A href='?src\ref[src];turn_off=\ref[src]'>Turn Off</A>"
+		else
+			dat += "<br><A href='?src\ref[src];turn_on=\ref[src]'>Turn On</A>"
+	dat += "<br><A href='?src=\ref[src];skip=\ref[src]'>Skip</A> - <b>[skip_song_cost] RU</b>"
+	dat += "<br>Play your song - <b>[play_song_cost] RU</b>"
 	dat += "<br>Volume: <b>[volume]%</b>"
 	dat += "</div>"
 	dat += "<div class='lenta_scroll'>"
 	dat += "<br><BR><table border='0' width='400'>"
 	for(var/datum/data/turntable_soundtrack/TS in sortList(turntable_soundtracks))
 		dat += "<tr><td>[TS.f_name]</td><td>[TS.name]</td><td><A href='?src=\ref[src];order=\ref[TS]'>PLAY</A></td></tr>"
-
 	dat += "</table>"
 	dat += "</div>"
 
@@ -261,15 +266,19 @@ var/global/turntable_channel = 4488
 			updateUsrDialog()
 			return
 
-		if(2000 > KPK.profile.fields["money"])
+		if(alert("Play [TS.name] for [play_song_cost] RU?", "Turntable", "Yes", "No") == "No")
+			return
+
+		if(play_song_cost > KPK.profile.fields["money"])
 			say("You don't have enough money to order a song.")
 			updateUsrDialog()
 			return
 
+		deltimer(timer_id)
 		skip_song(TS)
 
-		KPK.profile.fields["money"] -= 2000
-		collected_money += 2000
+		KPK.profile.fields["money"] -= play_song_cost
+		collected_money += play_song_cost
 		return
 
 	if(href_list["skip"])
@@ -278,14 +287,19 @@ var/global/turntable_channel = 4488
 			say("Jukebox is turned off.")
 			return
 
-		if(1000 > KPK.profile.fields["money"])
+		if(alert("Skip [track.name] for [skip_song_cost] RU?", "Turntable", "Yes", "No") == "No")
+			return
+
+		if(skip_song_cost > KPK.profile.fields["money"])
 			say("You don't have enough money to skip a song.")
 			updateUsrDialog()
 			return
 
+		deltimer(timer_id)
 		skip_song()
-		KPK.profile.fields["money"] -= 1000
-		collected_money += 1000
+
+		KPK.profile.fields["money"] -= skip_song_cost
+		collected_money += skip_song_cost
 		return
 
 	if(href_list["set_volume"])
@@ -294,6 +308,10 @@ var/global/turntable_channel = 4488
 
 	if(href_list["turn_off"])
 		turn_off()
+		return
+
+	if(href_list["turn_on"])
+		turn_on()
 		return
 /*
 	if(href_list["eject"])
@@ -310,35 +328,40 @@ var/global/turntable_channel = 4488
 		update_sound()
 
 /obj/machinery/party/turntable/proc/skip_song(var/datum/data/turntable_soundtrack/TS = pick(turntable_soundtracks))
-	track = TS
 	start_time = world.time
+	track = TS
 	say("Now playing: [track.f_name] - [track.name]")
+	timer_id = addtimer(src, "skip_song", track.length)
+	update_sound()
 /*
-/obj/machinery/party/turntable/proc/turn_on(var/datum/turntable_soundtrack/selected)
+/obj/machinery/party/turntable/proc/MusicSwitch()
+
+	sleep(track.length)
+		MusicSwitch()
+*/
+/obj/machinery/party/turntable/proc/turn_on(var/datum/data/turntable_soundtrack/selected)
 	if(playing)
 		turn_off()
 
+	playing = 1
+
 	if(selected)
-		track = selected
+		skip_song(selected)
+	else
+		skip_song()
 
-	if(!track)
-		return
-
-	//for(var/mob/M)
-	//	create_sound(M)
-	update_sound()
-
+	//MusicSwitch()
 	var/area/A = get_area(src)
 	for(var/area/RA in A.related)
 		for(var/obj/machinery/party/lasermachine/L in RA)
 			L.turnon(L.dir)
 
-	playing = 1
-	process()
-*/
 /obj/machinery/party/turntable/proc/turn_off()
 	if(!playing)
 		return
+
+	deltimer(timer_id)
+	timer_id = 0
 
 	for(var/client/C in melomans)
 		C.jukeboxplaying = 0
@@ -360,7 +383,7 @@ var/global/turntable_channel = 4488
 /obj/machinery/party/turntable/proc/update_sound()
 	var/area/A = get_area(src)
 
-	if(!track || start_time + track.length < world.time + 5)
+	if(!track)// || start_time + track.length < world.time + 5)
 		skip_song()
 
 	for(var/client/C in clients)
@@ -398,7 +421,7 @@ var/global/turntable_channel = 4488
 			create_sound(C.mob)
 			continue
 
-		if(C.mob.music.file != track.path)
+		if(!C.mob.music.transition && C.mob.music.file != track.path)
 			C.mob.music.file = track.path
 			C.mob.music.status = SOUND_STREAM
 		else
@@ -416,8 +439,7 @@ var/global/turntable_channel = 4488
 		S.wait = 0
 		S.volume = 0
 		S.status = 0 //SOUND_STREAM
-
-		//S.environment = A.environment
+		S.environment = A.environment
 
 		M.music = S
 		M << S
