@@ -350,14 +350,14 @@
 	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/kiparis
 	can_suppress = 1
-	burst_size = 4
-	fire_delay = 1.25
+	burst_size = 2
+	fire_delay = 1
 	slot_flags = SLOT_BELT
 	durability = 80
 	w_class = 3
 	spread = 8
 	recoil = 0.15
-	damagelose = 0.3
+	damagelose = 0.25
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
