@@ -287,7 +287,6 @@ var/record_id_num = 1001
 		sk.fields["photo_east"]		= photo_east
 		sk.fields["photo_back"]		= photo_back
 		sk.fields["pass"]			= pass
-		sk.fields["money"]			= 5000
 		sk.fields["lastlogin"]		= world.time
 		sk.fields["sid"]			= sid
 		sk.fields["name"]			= H.real_name
@@ -306,6 +305,11 @@ var/record_id_num = 1001
 			sk.fields["faction_s"]	= J.faction_s
 		else
 			sk.fields["faction_s"]	= "Loners"
+
+		if(sk.fields["faction_s"] == "Bandits")
+			sk.fields["money"]			= 2000
+		else
+			sk.fields["money"]			= 5000
 
 		stalkers += sk
 	return
