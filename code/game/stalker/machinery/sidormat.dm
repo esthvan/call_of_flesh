@@ -33,8 +33,8 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("Desert Eagle",	"Дёзерт Игл",		/obj/item/weapon/gun/projectile/automatic/pistol/desert, 	    	30000, EXPERIENCED),
 
 		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
-		new /datum/data/stalker_equipment("Kiparis",		"Кипарис",			/obj/item/weapon/gun/projectile/automatic/kiparis,					10000, ROOKIE),
-		new /datum/data/stalker_equipment("PPSh",			"ППШ",				/obj/item/weapon/gun/projectile/automatic/ppsh,						13000, ROOKIE),
+		new /datum/data/stalker_equipment("Kiparis",		"Кипарис",			/obj/item/weapon/gun/projectile/automatic/kiparis,					12500, ROOKIE),
+		new /datum/data/stalker_equipment("PPSh",			"ППШ",				/obj/item/weapon/gun/projectile/automatic/ppsh,						12500, ROOKIE),
 		new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, ROOKIE),
 		new /datum/data/stalker_equipment("AK-74S",			"АК-74У",			/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, ROOKIE),
 		new /datum/data/stalker_equipment("AK-74",			"АК-74",			/obj/item/weapon/gun/projectile/automatic/ak74,						25000, ROOKIE),
