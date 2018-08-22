@@ -192,7 +192,7 @@
 	if(prob(50))
 		icon_state = "snork2"
 		icon_living = "snork2"
-		icon_living = "snork2_dead"
+		icon_dead = "snork2_dead"
 
 /mob/living/simple_animal/hostile/mutant/snork/OpenFire()
 	if(get_dist(src, target) <= 4)
