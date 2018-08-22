@@ -439,7 +439,7 @@ var/global/turntable_channel = 4488
 		S.wait = 0
 		S.volume = 0
 		S.status = 0 //SOUND_STREAM
-		S.environment = A.environment
+		S.environment = get_area(src).environment
 
 		M.music = S
 		M << S
