@@ -334,7 +334,7 @@
 	durability = 100
 	w_class = 3
 	spread = 7
-	recoil = 0.2
+	recoil = 0.25
 	damagelose = 0.4
 	can_scope = 1
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
@@ -450,7 +450,7 @@
 	zoomable = 1
 	zoom_amt = 9
 	burst_size = 2
-	fire_delay = 1.6
+	fire_delay = 1.8
 	pin = /obj/item/device/firing_pin
 	durability = 75
 	w_class = 4
