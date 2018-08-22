@@ -1,7 +1,3 @@
-#define BLOWOUTLOW		1
-#define BLOWOUTNORMAL	2
-#define BLOWOUTHIGH		3
-
 var/datum/subsystem/blowout/StalkerBlowout
 var/global/isblowout = 0
 
@@ -50,13 +46,13 @@ datum/subsystem/blowout/fire()
 		return
 
 	if(starttime)
-		if(640 + blowout_duration + starttime < world.time && cleaned)
+		if(BLOWOUT_STAGE_III + blowout_duration + starttime < world.time && cleaned)
 			AfterBlowout()
 			return
 
 		ProcessBlowout()
 
-		if((320 + blowout_duration + starttime) < world.time)
+		if((BLOWOUT_STAGE_II + blowout_duration + starttime) < world.time)
 			if(blowoutphase == 2)
 				StopBlowout()
 				BlowoutDealDamage()
@@ -72,7 +68,7 @@ datum/subsystem/blowout/fire()
 				cleaned = 1
 			return
 
-		if((blowout_duration + starttime) < world.time)
+		if((BLOWOUT_STAGE_I + starttime) < world.time)
 			if(blowoutphase == 1)
 				PreStopBlowout()
 			return
