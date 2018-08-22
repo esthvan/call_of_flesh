@@ -33,6 +33,7 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("Desert Eagle",	"Дёзерт Игл",		/obj/item/weapon/gun/projectile/automatic/pistol/desert, 	    	30000, EXPERIENCED),
 
 		///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
+		new /datum/data/stalker_equipment("Kiparis",		"Кипарис",			/obj/item/weapon/gun/projectile/automatic/kiparis,					10000, ROOKIE),
 		new /datum/data/stalker_equipment("PPSh",			"ППШ",				/obj/item/weapon/gun/projectile/automatic/ppsh,						13000, ROOKIE),
 		new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, ROOKIE),
 		new /datum/data/stalker_equipment("AK-74S",			"АК-74У",			/obj/item/weapon/gun/projectile/automatic/aksu74 ,					20000, ROOKIE),
@@ -81,7 +82,9 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("PMm; PB1s Magazine",		"Магазин к ПМм; ПБ1с",						/obj/item/ammo_box/magazine/stalker/m9x18pm,			700, ROOKIE),
 		new /datum/data/stalker_equipment("TT Magazine",	     	"Магазин к ТТ",				        		/obj/item/ammo_box/magazine/stalker/tt,		         	600, ROOKIE),
 		new /datum/data/stalker_equipment("Fort-12 Magazine", 		"Магазин к Форт-12",		 				/obj/item/ammo_box/magazine/stalker/m9x18fort,			1000, ROOKIE),
+		new /datum/data/stalker_equipment("Kiparis Magazine",		"Магазин к Кипарису",						/obj/item/ammo_box/magazine/stalker/kiparis,			1400, ROOKIE),
 		new /datum/data/stalker_equipment("MP-5 Magazine", 			"Магазин к МП-5",							/obj/item/ammo_box/magazine/stalker/m9x19mp5,			2000, ROOKIE),
+		new /datum/data/stalker_equipment("PPSh Drum", 	            "Магазин к ППШ",							/obj/item/ammo_box/magazine/stalker/ppsh,				5000, ROOKIE),
 		new /datum/data/stalker_equipment("5.45x39mm Magazine",     "Магазин 5.45x39мм",	        			/obj/item/ammo_box/magazine/stalker/m545,				2250, ROOKIE),
 		new /datum/data/stalker_equipment("5.56x45mm Magazine", 	"Магазин 5.56x45мм",			     		/obj/item/ammo_box/magazine/stalker/m556x45,			3500, ROOKIE),
 		new /datum/data/stalker_equipment("AS \"Val\" Magazine", 	"Магазин к АС \"Вал\"",						/obj/item/ammo_box/magazine/stalker/sp9x39val,			3000, VETERAN),
@@ -91,7 +94,6 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("Beretta Magazine", 		"Магазин к Беретте",						/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, ROOKIE),
 		new /datum/data/stalker_equipment("USP-match Magazine", 	"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, ROOKIE),
 		new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",					/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERIENCED),
-		new /datum/data/stalker_equipment("PPSh Magazine", 	        "Магазин к ППШ",							/obj/item/ammo_box/magazine/stalker/ppsh,				5000, ROOKIE),
 		new /datum/data/stalker_equipment("PKM ammo belt box", 	    "Жестянка с лентой к ПКМ",				 	/obj/item/ammo_box/magazine/stalker/pkm,				20000, EXPERIENCED),
 		)
 
