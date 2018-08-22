@@ -11,7 +11,7 @@
 	var/fearless = 1
 	var/fearborder = 20
 	var/ranged_cooldown = 0 //What the starting cooldown is on ranged attacks
-	var/ranged_cooldown_cap = 5 //What ranged attackLoseTargets, after being used are set to, to go back on cooldown, defaults to 3 life() ticks
+	var/ranged_cooldown_cap = 1 //What ranged attackLoseTargets, after being used are set to, to go back on cooldown, defaults to 3 life() ticks
 	var/retreat_distance = null //If our mob runs from players when they're too close, set in tile distance. By default, mobs do not retreat.
 	var/minimum_distance = 0 //Minimum approach distance, so ranged mobs chase targets down, but still keep their distance set in tiles to the target, set higher to make mobs keep distance
 	var/target_distance
@@ -38,7 +38,7 @@
 	var/Zombo_Gun_slot = null
 
 /mob/living/carbon/human/proc/ZombieLife()
-	if(ckey || stat > UNCONSCIOUS || AIStatus == AI_OFF)
+	if(ckey || stat > CONSCIOUS || AIStatus == AI_OFF)
 		walk(src, 0)
 		return 0
 
