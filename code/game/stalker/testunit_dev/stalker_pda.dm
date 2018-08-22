@@ -53,6 +53,9 @@ var/global/global_lentahtml = ""
 	var/max_length = 10
 	slot_flags = SLOT_ID
 
+	//ФРАКЦИЯ
+	var/last_invite = 0
+
 	//РЕЙТИНГ
 	var/sortBy = "rating"
 	var/order = 1
@@ -607,7 +610,7 @@ var/global/global_lentahtml = ""
 	var/mob/living/carbon/human/H = usr
 	if(usr.canUseTopic(src))
 		//add_fingerprint(H)
-		get_asset_datum(/datum/asset/simple/kpk).send(H)
+		//get_asset_datum(/datum/asset/simple/kpk).send(H)
 		H.set_machine(src)
 		switch(href_list["choice"])
 			if("title")
@@ -747,16 +750,16 @@ var/global/global_lentahtml = ""
 					else
 						H << "<span class='warning'>Введите сообщение!</span>"
 				else
-					if ( !(last_lenta && world.time < last_lenta + 450) )
+					if ( !(last_lenta && world.time < last_lenta + LENTA_MESSAGE_COOLDOWN) )
 						last_lenta = world.time
 
 						add_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
 
 					else
 						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-							H << "<span class='warning'>You can't send messages in next [round((450 + last_lenta - world.time)/10)] sec.</span>"
+							H << "<span class='warning'>You can't send messages in next [round((LENTA_MESSAGE_COOLDOWN + last_lenta - world.time)/10)] sec.</span>"
 						else
-							H << "<span class='warning'>Вы сможете отправить следующее сообщение через: [round((450 + last_lenta - world.time)/10)] сек.</span>"
+							H << "<span class='warning'>Вы сможете отправить следующее сообщение через: [round((LENTA_MESSAGE_COOLDOWN + last_lenta - world.time)/10)] сек.</span>"
 
 			if("lenta_faction_add")
 				var/t = message_input(H, "message", 500)
@@ -766,15 +769,15 @@ var/global/global_lentahtml = ""
 					else
 						H << "<span class='warning'>Введите сообщение!</span>"
 				else
-					if ( !(last_faction_lenta && world.time < last_faction_lenta + 450) )
+					if ( !(last_faction_lenta && world.time < last_faction_lenta + LENTA_FACTION_MESSAGE_COOLDOWN) )
 						last_faction_lenta = world.time
 						add_faction_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
 
 					else
 						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-							H << "<span class='warning'>You can't send messages in next [round((450 + last_faction_lenta - world.time)/10)] sec.</span>"
+							H << "<span class='warning'>You can't send messages in next [round((LENTA_FACTION_MESSAGE_COOLDOWN + last_faction_lenta - world.time)/10)] sec.</span>"
 						else
-							H << "<span class='warning'>Вы сможете отправить следующее сообщение через: [round((450 + last_faction_lenta - world.time)/10)] сек.</span>"
+							H << "<span class='warning'>Вы сможете отправить следующее сообщение через: [round((LENTA_FACTION_MESSAGE_COOLDOWN + last_faction_lenta - world.time)/10)] сек.</span>"
 
 			if("lenta_sound")
 				if(switches & FEED_SOUND)
@@ -998,7 +1001,7 @@ var/global/global_lentahtml = ""
 			if("4")			//ЛЕНТА
 				if(switches & FEED_IMAGES)
 					for(var/datum/data/record/R in data_core.stalkers)
-						if(R.fields["lastlogin"] + 18000 > world.time)
+						if(R.fields["lastlogin"] + RATING_REMOVE_TIMER > world.time)
 							continue
 						var/sid_p = R.fields["sid"]
 						var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
@@ -1020,9 +1023,13 @@ var/global/global_lentahtml = ""
 			if((J.current_positions >= J.total_positions) && J.total_positions != -1)
 				return
 
+			if(last_invite + LEADER_INVITE_COOLDOWN > world.time)
+				return
+
 			var/datum/data/record/sk_invited = find_record("sid", sid_, data_core.stalkers)
 
 			if(sk_invited)
+				last_invite = world.time
 				for(var/obj/item/device/stalker_pda/KPK_invited in KPKs)
 					if(KPK_invited.sid == sid_)
 						show_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s, "You have been invited to [eng_faction_s] faction. Check feed for more info.")

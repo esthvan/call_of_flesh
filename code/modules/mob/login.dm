@@ -50,6 +50,7 @@
 		var/obj/Loc=loc
 		Loc.on_log()
 
+	get_asset_datum(/datum/asset/simple/kpk).send(src)
 	//readd this mob's HUDs (antag, med, etc)
 	reload_huds()
 
