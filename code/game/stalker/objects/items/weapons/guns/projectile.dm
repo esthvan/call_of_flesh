@@ -333,7 +333,7 @@
 	slot_flags = SLOT_BELT
 	durability = 100
 	w_class = 3
-	spread = 7
+	spread = 6
 	recoil = 0.2
 	damagelose = 0.4
 	can_scope = 1
@@ -355,8 +355,8 @@
 	slot_flags = SLOT_BELT
 	durability = 80
 	w_class = 3
-	spread = 9
-	recoil = 0.2
+	spread = 8
+	recoil = 0.15
 	damagelose = 0.3
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
