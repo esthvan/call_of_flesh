@@ -60,7 +60,7 @@
 	max_ammo = 2
 
 /obj/item/ammo_box/magazine/stalker/usp45
-	name = "handgun magazine (.45)"
+	name = "pistol magazine (.45)"
 	icon_state = "usp45"
 	ammo_type = /obj/item/ammo_casing/acp45
 	caliber = ".45"
@@ -68,7 +68,7 @@
 	multiple_sprites = 2
 
 /obj/item/ammo_box/magazine/stalker/m9x19mp5
-	name = "smg magazine (9x19mm)"
+	name = "SMG magazine (9x19mm)"
 	icon_state = "9x19mp5"
 	ammo_type = /obj/item/ammo_casing/c9x19
 	caliber = "9x19mm"
@@ -150,4 +150,12 @@
 	ammo_type = /obj/item/ammo_casing/c762x25
 	caliber = "7.62x25mm"
 	max_ammo = 8
+	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/stalker/kiparis
+	name = "SMG magazine (9x18mm)"
+	icon_state = "kiparis"
+	ammo_type = /obj/item/ammo_casing/c9x18
+	caliber = "9x18pm"
+	max_ammo = 20
 	multiple_sprites = 2
