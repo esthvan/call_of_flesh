@@ -305,7 +305,7 @@
 	fire_delay = 1.8
 	pin = /obj/item/device/firing_pin
 	durability = 100
-	w_class = 3
+	w_class = 4
 	spread = 9
 	recoil = 0.7
 	damagelose = 0.5
@@ -662,7 +662,7 @@
 	can_suppress = 0
 	durability = 125
 	slot_flags = SLOT_BACK
-	fire_delay = 1.2
+	fire_delay = 1
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	burst_size = 3
