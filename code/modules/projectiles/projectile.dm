@@ -23,7 +23,7 @@
 	var/p_x = 16
 	var/p_y = 16 // the pixel location of the tile that the player clicked. Default is the center
 
-	var/speed = 0.75			//Amount of deciseconds it takes for projectile to travel
+	var/speed = 0.85			//Amount of deciseconds it takes for projectile to travel
 	var/Angle = 0
 	var/spread = 0			//amount (in degrees) of projectile spread
 	var/legacy = 0			//legacy projectile system
@@ -192,21 +192,22 @@
 					pixel_y += 32
 					new_y--
 
-				speed = round(speed)
-				for(var/i=0,i<3,i++)
+				//speed = round(speed)
+				animate(src, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset, time = max(0.5, (speed <= 3 ? speed - 1 : speed)))
+				for(var/i=0,i<1,i++)
 					step_towards(src, locate(new_x, new_y, z))
-					if(speed <= 1)
-						pixel_x = pixel_x_offset
-						pixel_y = pixel_y_offset
-					else
-						animate(src, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset, time = max(1, (speed <= 3 ? speed - 1 : speed)))
+					//if(speed <= 1)
+					//	pixel_x = pixel_x_offset
+					//	pixel_y = pixel_y_offset
+					//else
+
 
 					if(original && (original.layer>3/*2.75*/) || ismob(original))
 						if(loc == get_turf(original))
 							if(!(original in permutated))
 								Bump(original, 1)
 					Range(damagelose)
-			sleep(max(1, speed))
+			sleep(max(0.5, speed))
 	else //old projectile system
 		set waitfor = 0
 		while(loc)
