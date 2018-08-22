@@ -162,7 +162,7 @@
 /obj/item/weapon/gun/projectile/automatic/pistol/desert  // Desert Eagle
 	name = "Desert Eagle .44"
 	desc = "Большой, т&#255;желый, блест&#255;щий и чертовски внушительный - разработанный в 80-е года прошлого века израильским предпри&#255;тием и попул&#255;ризированный многочисленными боевиками конца того же столети&#255;, Пустынный Орел стал своеобразной иконой мощных полуавтоматических пистолетов. Позволить себе такую красоту могут немногие, попасть из нее в кого-то в бою - еще меньшее число людей."
-	eng_desc = "A gun that is already powerful, reworked to fit rifle bullets. Truly a killing machine for close-range combat."
+	eng_desc = "An extremely powerful gun, featured in many Hollywood movies and popularised by criminals. Truly a killing machine for close-range combat."
 	icon_state = "desert"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
@@ -181,7 +181,7 @@
 /obj/item/weapon/gun/projectile/revolver/anaconda
 	name = "Colt Anaconda .44"
 	desc = "Я знаю, о чём ты сейчас думаешь. Выстрелил он шесть раз, или только п&#255;ть? Честно говор&#255;, в этой суматохе &#255; и сам сбилс&#255; со счёта. Но начнём с того, что это Магнум 44-го калибра, самый убойный револьвер на свете, и он может подчистую снести тебе башку. Теперь ты задаёшь себе один вопрос: Повезёт ли мне? Ну, повезёт ли, подонок?"
-	eng_desc = "A gun that is already powerful, reworked to fit rifle bullets. Truly a killing machine for close-range combat."
+	eng_desc = "A very popular amongst western cops and military weapon, reliable, powerful and precise. Did he shoot six times, or only five?."
 	icon_state = "anaconda"
 	w_class = 3
 	fire_sound = 'sound/stalker/weapons/desert_shot.ogg'
@@ -278,7 +278,7 @@
 	can_suppress = 1
 	can_unsuppress = 1
 	burst_size = 3
-	fire_delay = 1.8
+	fire_delay = 1.6
 	pin = /obj/item/device/firing_pin
 	durability = 120
 	w_class = 4
@@ -302,10 +302,10 @@
 	fire_sound = 'sound/stalker/weapons/ak74u_shot.ogg'
 	can_suppress = 1
 	burst_size = 3
-	fire_delay = 1.8
+	fire_delay = 1.5
 	pin = /obj/item/device/firing_pin
 	durability = 100
-	w_class = 4
+	w_class = 3
 	spread = 9
 	recoil = 0.7
 	damagelose = 0.5
@@ -341,6 +341,28 @@
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
 
+/obj/item/weapon/gun/projectile/automatic/kiparis  // Кипарис
+	name = "MP-5"
+	desc = "Небольшой, легкий и удобный пистолет-пулемет под маломощный калибр, разработанный по заказу Министерства Обороны СССР в 1972-ом году. Не нашел широкого распространения в армии из-за сложностей в производстве для тех времен, но был принят на вооружении службами МВД, ФСО, инкассаторами и некоторыми другими отечественными вооруженными группами."
+	eng_desc = "A small, light submachine gun firing a low-powered bullet, was designed by USSR Defense Ministry in the year 1972. Wasn't adopted by army, but found use and popularity amongst different modern russian government military forces and police."
+	icon_state = "kiparis"
+	item_state = "gun"
+	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/kiparis
+	can_suppress = 1
+	burst_size = 4
+	fire_delay = 1.25
+	slot_flags = SLOT_BELT
+	durability = 80
+	w_class = 3
+	spread = 9
+	recoil = 0.2
+	damagelose = 0.3
+	can_scope = 0
+	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
+
 /obj/item/weapon/gun/projectile/automatic/ppsh  // ППШ
 	name = "PPSh"
 	desc = "Один из самых старых отечественных дизайнов автоматического ручного оружи&#255;, пистолет-пулемет Шпагина, с гордостью прошел сквозь Великую Отечественную... чтобы в огромных количествах осесть на складах и ржаветь там более полувека. Некоторые умельцы, однако, хорошенько поработав над старым оружием, переделывают его под новый калибр и отправл&#255;ют Сидору на продажу. У вас в руках - один из таких экземпл&#255;ров."
@@ -356,7 +378,7 @@
 	durability = 50
 	w_class = 4
 	spread = 9
-	recoil = 0.25
+	recoil = 0.2
 	damagelose = 0.5
 	can_scope = 0
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
@@ -428,7 +450,7 @@
 	zoomable = 1
 	zoom_amt = 9
 	burst_size = 2
-	fire_delay = 1.8
+	fire_delay = 1.6
 	pin = /obj/item/device/firing_pin
 	durability = 75
 	w_class = 4
@@ -640,7 +662,7 @@
 	can_suppress = 0
 	durability = 125
 	slot_flags = SLOT_BACK
-	fire_delay = 1
+	fire_delay = 1.3
 	force = 15
 	origin_tech = "combat=5;materials=1"
 	burst_size = 3
