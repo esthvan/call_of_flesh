@@ -119,7 +119,7 @@ var/global/list/high_tier_sidormatitems = list()
 		new	/datum/data/stalker_equipment("SSP-99 Ecologist",		"ССП-99 Эколог",				/obj/item/clothing/suit/hooded/kombez/ecolog,				75000, EXPERT),
 		new	/datum/data/stalker_equipment("SSP-99M Ecologist",		"ССП-99М Эколог",				/obj/item/clothing/suit/hooded/kombez/ecologm,			    100000, EXPERT),
 		new	/datum/data/stalker_equipment("SEVA",					"СЕВА",							/obj/item/clothing/suit/hooded/kombez/seva,					125000, EXPERT),
-		new	/datum/data/stalker_equipment("Exoskeleton",			"Экзоскелет",					/obj/item/clothing/suit/hooded/kombez/exoskelet,			150000, EXPERT),
+		new	/datum/data/stalker_equipment("Exoskeleton",			"Экзоскелет",					/obj/item/clothing/suit/hooded/kombez/exoskelet,			150000, EXPERT, assortment_level = 3),
 		)
 
 	var/list/helmet_list = list(
@@ -179,13 +179,13 @@ var/global/list/high_tier_sidormatitems = list()
 		)
 	var/list/loot_list = list(
 	/////////////////////////////////	Лут с мутантов	///////////////////////////////////////////
-		new /datum/data/stalker_equipment("Песий хвост",	"Песий хвост",										/obj/item/weapon/stalker/loot/dog_tail,			3000, ROOKIE, sale_price = 1500),
-		new /datum/data/stalker_equipment("Плотий глаз",	"Плотий глаз",										/obj/item/weapon/stalker/loot/flesh_eye,		3000, ROOKIE, sale_price = 1500),
-		new /datum/data/stalker_equipment("Кабаний ног",	"Кабаний ног",										/obj/item/weapon/stalker/loot/boar_leg,			7500, ROOKIE, sale_price = 3750),
-		new /datum/data/stalker_equipment("Cноркий рук",	"Снорукий рук",										/obj/item/weapon/stalker/loot/snork_leg,		7500, ROOKIE, sale_price = 3750),
-		new /datum/data/stalker_equipment("Кровососий щупалец","Кровососий щупалец",							/obj/item/weapon/stalker/loot/bloodsucker,		12000, ROOKIE, sale_price = 6000),
-		new /datum/data/stalker_equipment("Псевдопесий хвост","Псевдопесий хвост",								/obj/item/weapon/stalker/loot/pseudo_tail,		6000, ROOKIE, sale_price = 3000),
-		new /datum/data/stalker_equipment("Контроллерий мозг","Контроллерий мозг",								/obj/item/weapon/stalker/loot/controller_brain,	30000, ROOKIE, sale_price = 15000)
+		new /datum/data/stalker_equipment("Песий хвост",	"Песий хвост",										/obj/item/weapon/stalker/loot/dog_tail,			2500, ROOKIE, sale_price = 1250),
+		new /datum/data/stalker_equipment("Плотий глаз",	"Плотий глаз",										/obj/item/weapon/stalker/loot/flesh_eye,		1800, ROOKIE, sale_price = 900),
+		new /datum/data/stalker_equipment("Кабаний ног",	"Кабаний ног",										/obj/item/weapon/stalker/loot/boar_leg,			6000, ROOKIE, sale_price = 3000),
+		new /datum/data/stalker_equipment("Cноркий рук",	"Снорукий рук",										/obj/item/weapon/stalker/loot/snork_leg,		7000, ROOKIE, sale_price = 3500),
+		new /datum/data/stalker_equipment("Кровососий щупалец","Кровососий щупалец",							/obj/item/weapon/stalker/loot/bloodsucker,		16000, ROOKIE, sale_price = 8000),
+		new /datum/data/stalker_equipment("Псевдопесий хвост","Псевдопесий хвост",								/obj/item/weapon/stalker/loot/pseudo_tail,		8000, ROOKIE, sale_price = 4000),
+		new /datum/data/stalker_equipment("Контроллерий мозг","Контроллерий мозг",								/obj/item/weapon/stalker/loot/controller_brain,	40000, ROOKIE, sale_price = 20000)
 		)
 
 	var/list/artifact_list = list(
@@ -216,7 +216,7 @@ var/global/list/high_tier_sidormatitems = list()
 		/////////////////////////////////	Аттачменты	///////////////////////////////////////////
 		new /datum/data/stalker_equipment("SUSAT",				"СУСАТ",							/obj/item/weapon/attachment/scope/SUSAT,			8000,	EXPERIENCED),
 		new /datum/data/stalker_equipment("PSU-1",				"ПСУ-1",							/obj/item/weapon/attachment/scope/PS/U1,			6000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",							/obj/item/weapon/attachment/scope/PS/O1,			10000,	EXPERIENCED, assortment_level = 2),
+		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",							/obj/item/weapon/attachment/scope/PS/O1,			10000,	EXPERIENCED),
 		new /datum/data/stalker_equipment("Universl suppressor","Универсальный глушитель",			/obj/item/weapon/attachment/suppressor,				2000,	ROOKIE),
 
 		)
@@ -557,9 +557,6 @@ var/global/list/high_tier_sidormatitems = list()
 		if(I.loc != itemloc)
 			continue
 
-		if(!GetCost(I.type))
-			continue
-
 		sk.fields["money"] += GetCost(I.type)
 		balance = sk.fields["money"]
 
@@ -568,7 +565,8 @@ var/global/list/high_tier_sidormatitems = list()
 		PlaceInPool(I)
 		CHECK_TICK
 
-	say("HABAR WAS SUCCESSFULLY SOLD FOR [total_cost].")
+	if(total_cost)
+		say("HABAR WAS SUCCESSFULLY SOLD FOR [total_cost].")
 
 	updateUsrDialog()
 	return
@@ -584,6 +582,17 @@ var/global/list/high_tier_sidormatitems = list()
 			if((C.durability / initial(C.durability)) * 100 < 80)
 				say("[AM] is too broken for sale.")
 				continue
+
+		if(istype(AM, /obj/item/weapon/storage/backpack/) && AM.contents.len)
+			say("Empty [AM] before selling!")
+			continue
+
+		if(istype(AM, /obj/item/ammo_box))
+			var/obj/item/ammo_box/AB = AM
+			if(AB.stored_ammo.len < AB.max_ammo)
+				say("Fill [AB] before selling.")
+				continue
+
 
 		ontable.Add(AM)
 
