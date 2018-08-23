@@ -12,7 +12,6 @@ datum/subsystem/blowout
 	var/cooldownreal = 0
 	var/lasttime = 0
 	var/starttime = 0
-	var/blowout_duration = 1200
 	var/cleaned = 0
 	var/list/ambient = list('sound/stalker/blowout/blowout_amb_01.ogg', 'sound/stalker/blowout/blowout_amb_02.ogg',
 						'sound/stalker/blowout/blowout_amb_03.ogg', 'sound/stalker/blowout/blowout_amb_04.ogg',
@@ -45,14 +44,20 @@ datum/subsystem/blowout/fire()
 	if(world.time <= lasttime + cooldownreal)
 		return
 
+	if(!isblowout)
+		StartBlowout()
+		return
+
 	if(starttime)
-		if(BLOWOUT_STAGE_III + blowout_duration + starttime < world.time && cleaned)
+///////III STAGE OF BLOWOUT///////////////////////////////////////////////////////
+		if(BLOWOUT_DURATION_STAGE_III + starttime < world.time && cleaned)
 			AfterBlowout()
 			return
 
 		ProcessBlowout()
 
-		if((BLOWOUT_STAGE_II + blowout_duration + starttime) < world.time)
+///////II STAGE OF BLOWOUT////////////////////////////////////////////////////////
+		if((BLOWOUT_DURATION_STAGE_II + starttime) < world.time)
 			if(blowoutphase == 2)
 				StopBlowout()
 				BlowoutDealDamage()
@@ -67,16 +72,11 @@ datum/subsystem/blowout/fire()
 			if(!ACs.len && !(locate(/mob/living) in dead_mob_list))
 				cleaned = 1
 			return
-
-		if((BLOWOUT_STAGE_I + starttime) < world.time)
+///////I STAGE OF BLOWOUT/////////////////////////////////////////////////////////
+		if((BLOWOUT_DURATION_STAGE_I + starttime) < world.time)
 			if(blowoutphase == 1)
 				PreStopBlowout()
 			return
-
-	if(!isblowout)
-		StartBlowout()
-		return
-
 
 datum/subsystem/blowout/proc/StartBlowout()
 	isblowout = 1
