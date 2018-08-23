@@ -282,6 +282,9 @@
 
 /obj/anomaly/electro/New()
 	..()
+	SSojb.processing.Add(src)
+	spawn(5)
+		SSobj.processing.Remove(src)
 	src.set_light(luminosity)
 
 /obj/anomaly/karusel
