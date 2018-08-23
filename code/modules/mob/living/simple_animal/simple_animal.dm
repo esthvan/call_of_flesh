@@ -471,6 +471,7 @@
 		icon_state = icon_dead
 		stat = DEAD
 		density = 0
+		update_icons()
 	..()
 
 /mob/living/simple_animal/ex_act(severity, target)

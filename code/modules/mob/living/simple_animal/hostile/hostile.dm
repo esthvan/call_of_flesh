@@ -34,6 +34,7 @@
 	var/stat_exclusive = 0 //Mobs with this set to 1 will exclusively attack things defined by stat_attack, stat_attack 2 means they will only attack corpses
 	var/attack_same = 0 //Set us to 1 to allow us to attack our own faction, or 2, to only ever attack our own faction
 	var/see_through_walls = 0
+	var/long_attack = 0
 
 //	var/deletable = 0 //Self-deletable dead bodies
 	var/target_dist
@@ -166,9 +167,10 @@
 	if(target in possible_targets)
 		var/target_distance = get_dist(src,target)
 		if(ranged)//We ranged? Shoot at em
-			if(target_distance >= min_range_distance && ranged_cooldown <= 0)//But make sure they're a tile away at least, and our range attack is off cooldown
+			if((target_distance >= min_range_distance && ranged_cooldown <= 0) || long_attack)//But make sure they're a tile away at least, and our range attack is off cooldown
 				OpenFire(target)
-				sleep(50)
+				if(!long_attack)
+					sleep(50)
 		if(!Process_Spacemove()) // Drifting
 			walk(src,0)
 			return 1
