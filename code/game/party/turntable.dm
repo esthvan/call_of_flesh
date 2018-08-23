@@ -61,8 +61,9 @@ var/global/turntable_channel = 4488
 	name = "Jukebox"
 	desc = "A jukebox is a partially automated music-playing device, usually a coin-operated machine, that will play a patron's selection from self-contained media."
 	icon = 'icons/effects/lasers2.dmi'
-	icon_state = "Jukebox7"
+	icon_state = "radio1"
 	var/timer_id = 0
+	var/transition = 0
 	var/play_song_cost = 1000
 	var/skip_song_cost = 500
 	var/start_time = 0
@@ -75,29 +76,22 @@ var/global/turntable_channel = 4488
 	var/list/mob/melomans = list()
 	var/list/turntable_soundtracks = list(
 
+		new /datum/data/turntable_soundtrack ("4 pozicii bruno",	"Ya Ehala Domoy",					'sound/turntable/chetire_pozigii_bruno_ya_ehala_domoy.ogg',	2740),
 		new /datum/data/turntable_soundtrack ("5nizza",				"Ya Soldat",						'sound/turntable/5nizza_ya_soldat.ogg',						2110),
+		new /datum/data/turntable_soundtrack ("7B",					"Molodie Vetra",					'sound/turntable/semb_molodie_vetra.ogg',					2610),
 		new /datum/data/turntable_soundtrack ("Addaraya",			"Gurza Dreaming",					'sound/turntable/gurza_dreaming.ogg',						2420),
-		new /datum/data/turntable_soundtrack ("Bandits",			"Cheeki Breeki",					'sound/turntable/bandit_radio.ogg',							1110),
-		new /datum/data/turntable_soundtrack ("Firelake",			"Fighting Unknown",					'sound/turntable/agroprom.ogg',								710),
-		new /datum/data/turntable_soundtrack ("Firelake",			"Dirge For The Planet",				'sound/turntable/dirge_for_the_planet.ogg',					2850),
-		new /datum/data/turntable_soundtrack ("Firelake",			"Live To Forget",					'sound/turntable/live_to_forget.ogg',						2960),
-		new /datum/data/turntable_soundtrack ("Freedom",			"Smoke Weed",						'sound/turntable/freedom_radio.ogg',						1140),
-		new /datum/data/turntable_soundtrack ("Krug M.",			"Kolschik",							'sound/turntable/kolshik.ogg',								2850),
-		new /datum/data/turntable_soundtrack ("Butirka",			"Butirskaya Turma",					'sound/turntable/butirka.ogg',								1920),
-		new /datum/data/turntable_soundtrack ("Gazmanov M.",		"Putana",							'sound/turntable/putana.ogg',								2460),
-		new /datum/data/turntable_soundtrack ("Leps G.",			"Rumka Vodki Na Stole",				'sound/turntable/rumka.ogg',								2360),
-		new /datum/data/turntable_soundtrack ("Aksenov V.",			"Murka",							'sound/turntable/murka.ogg',								3220),
-		new /datum/data/turntable_soundtrack ("Rozenbaum A",		"Dagomis",							'sound/turntable/gopstop.ogg',								2450),
-		new /datum/data/turntable_soundtrack ("Dispetchera",		"2000 Baksov",						'sound/turntable/2000_baksov.ogg',							2430),
 		new /datum/data/turntable_soundtrack ("Agata Kristi",		"Kak Na Voine",						'sound/turntable/agata_kristi_na_voine.ogg',				2470),
+		new /datum/data/turntable_soundtrack ("Aksenov V.",			"Murka",							'sound/turntable/murka.ogg',								3220),
 		new /datum/data/turntable_soundtrack ("Alai Oli",			"Krilya",							'sound/turntable/alai_oli_krilya.ogg',						2150),
 		new /datum/data/turntable_soundtrack ("Ariya",				"Bespechniy Angel",					'sound/turntable/ariya_bespechniy_angel.ogg',				2380),
 		new /datum/data/turntable_soundtrack ("Ariya",				"Potyeraniy Ray",					'sound/turntable/ariya_poteryaniy_ray.ogg',					3530),
 		new /datum/data/turntable_soundtrack ("Ariya",				"Ya Svoboden",						'sound/turntable/ariya_ya_svoboden.ogg',					3540),
+		new /datum/data/turntable_soundtrack ("Bandits",			"Cheeki Breeki",					'sound/turntable/bandit_radio.ogg',							1110),
 		new /datum/data/turntable_soundtrack ("Bi2",				"Polkovnik",						'sound/turntable/bi2_polkovnik.ogg',						2640),
 		new /datum/data/turntable_soundtrack ("Bi2",				"Serebro",							'sound/turntable/bi2_serebro.ogg',							2770),
 		new /datum/data/turntable_soundtrack ("Bi2",				"Varvara",							'sound/turntable/bi2_varvara.ogg',							2990),
-		new /datum/data/turntable_soundtrack ("4 pozicii bruno",	"Ya Ehala Domoy",					'sound/turntable/chetire_pozigii_bruno_ya_ehala_domoy.ogg',	2740),
+		new /datum/data/turntable_soundtrack ("Butirka",			"Butirskaya Turma",					'sound/turntable/butirka.ogg',								1920),
+		new /datum/data/turntable_soundtrack ("Dispetchera",		"2000 Baksov",						'sound/turntable/2000_baksov.ogg',							2430),
 		new /datum/data/turntable_soundtrack ("DDT",				"Osen",								'sound/turntable/ddt_osen.ogg',								2350),
 		new /datum/data/turntable_soundtrack ("Delfin",				"Nadezhda",							'sound/turntable/delfin_nadezhda.ogg',						2690),
 		new /datum/data/turntable_soundtrack ("Delfin",				"Sneg",								'sound/turntable/delfin_sneg.ogg',							1820),
@@ -106,11 +100,18 @@ var/global/turntable_channel = 4488
 		new /datum/data/turntable_soundtrack ("Electroforez",		"Eshafot",							'sound/turntable/elektroforez_eshafot.ogg',					2090),
 		new /datum/data/turntable_soundtrack ("Elizium",			"Stoit Zhit",						'sound/turntable/elizium_stoit_zhit.ogg',					1800),
 		new /datum/data/turntable_soundtrack ("Fleetwood Mac",		"Little Lies",						'sound/turntable/fleetwood_mac_little_lies.ogg',			2210),
+		new /datum/data/turntable_soundtrack ("Firelake",			"Fighting Unknown",					'sound/turntable/agroprom.ogg',								710),
+		new /datum/data/turntable_soundtrack ("Firelake",			"Dirge For The Planet",				'sound/turntable/dirge_for_the_planet.ogg',					2850),
+		new /datum/data/turntable_soundtrack ("Firelake",			"Live To Forget",					'sound/turntable/live_to_forget.ogg',						2960),
+		new /datum/data/turntable_soundtrack ("Freedom",			"Smoke Weed",						'sound/turntable/freedom_radio.ogg',						1140),
+		new /datum/data/turntable_soundtrack ("Gazmanov M.",		"Putana",							'sound/turntable/putana.ogg',								2460),
+		new /datum/data/turntable_soundtrack ("Krug M.",			"Kolschik",							'sound/turntable/kolshik.ogg',								2850),
 		new /datum/data/turntable_soundtrack ("Kino",				"Gruppa Krovy",						'sound/turntable/kino_gruppa_krovi.ogg',					2030),
 		new /datum/data/turntable_soundtrack ("Kino",				"Zvezda Po Imeni Soltnse",			'sound/turntable/kino_zvezda_po_imeni_solntse.ogg',			2245),
 		new /datum/data/turntable_soundtrack ("Korol I Shut",		"Kukla kolduna",					'sound/turntable/korol_i_shut_kukila_kolduna.ogg',			2040),
 		new /datum/data/turntable_soundtrack ("Korol I Shut",		"Lesnik",							'sound/turntable/korol_i_shut_lesnik.ogg',					1910),
 		new /datum/data/turntable_soundtrack ("Krovostok",			"Kurtec",							'sound/turntable/krovostok_kurtec.ogg',						2400),
+		new /datum/data/turntable_soundtrack ("Leps G.",			"Rumka Vodki Na Stole",				'sound/turntable/rumka.ogg',								2360),
 		new /datum/data/turntable_soundtrack ("Leprikonsy",			"Hali-Gali, Paratruper",			'sound/turntable/leprikonsy_paratruper.ogg',				2060),
 		new /datum/data/turntable_soundtrack ("Lumen",				"Sid i Nensi",						'sound/turntable/lumen_sid_i_nensi.ogg',					2340),
 		new /datum/data/turntable_soundtrack ("Monokini",			"Adrenalin",						'sound/turntable/monokini_adrenalin.ogg',					1970),
@@ -123,14 +124,14 @@ var/global/turntable_channel = 4488
 		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Krylya",							'sound/turntable/nautilus_pompilius_krylya.ogg',			2080),
 		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Skovanie",							'sound/turntable/nautilus_pompilius_skovanye.ogg',			2530),
 		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Ya hochu byt s toboy",				'sound/turntable/nautilus_pompilius_ya_hochu_byt_s_toboy.ogg',2710),
+		new /datum/data/turntable_soundtrack ("Narodnaya Russkaya",	"Kaztosky Kick",					'sound/turntable/tf2_kazotsky_kic.ogg',						670),
 		new /datum/data/turntable_soundtrack ("Okean Elxi",			"Obime",							'sound/turntable/okean_elzi_obime.ogg',						2260),
 		new /datum/data/turntable_soundtrack ("Oken Elzi",			"Vidpusti",							'sound/turntable/okean_elzi_vidpusti.ogg',					2300),
 		new /datum/data/turntable_soundtrack ("Phil Collins",		"In The Air Tonight",				'sound/turntable/phil_collins_in_the_air_tonight.ogg',		3300),
 		new /datum/data/turntable_soundtrack ("Propaganda",			"Belim Melom",						'sound/turntable/propaganda_belim_melom.ogg',				1740),
-		new /datum/data/turntable_soundtrack ("Gazmanov O.",		"Putana",							'sound/turntable/putana.ogg',								2460),
 		new /datum/data/turntable_soundtrack ("Ranetki",			"O tebe",							'sound/turntable/ranetki_o_tebe.ogg',						1650),
 		new /datum/data/turntable_soundtrack ("Ranetki",			"Ona odna",							'sound/turntable/ranetki_ona_odna.ogg',						1640),
-		new /datum/data/turntable_soundtrack ("7B",					"Molodie Vetra",					'sound/turntable/semb_molodie_vetra.ogg',					2610),
+		new /datum/data/turntable_soundtrack ("Rozenbaum A",		"Dagomis",							'sound/turntable/gopstop.ogg',								2450),
 		new /datum/data/turntable_soundtrack ("Shnurov",			"Mobilnik",							'sound/turntable/shnurov_mobilnik.ogg',						1680),
 		new /datum/data/turntable_soundtrack ("Shnurov",			"Privet Morrikone",					'sound/turntable/shnurov_morikone.ogg',						2230),
 		new /datum/data/turntable_soundtrack ("Splin",				"Mi sideli i kurili",				'sound/turntable/splin_mi_sideli_i_kurili.ogg',				1980),
@@ -138,7 +139,6 @@ var/global/turntable_channel = 4488
 		new /datum/data/turntable_soundtrack ("Splin",				"Romans",							'sound/turntable/splin_romans.ogg',							2070),
 		new /datum/data/turntable_soundtrack ("Splin",				"Vihoda net",						'sound/turntable/splin_vihoda_net.ogg',						2230),
 		new /datum/data/turntable_soundtrack ("Steklovata",			"Noviy God",						'sound/turntable/steklovata_noviy_god.ogg',					2380),
-		new /datum/data/turntable_soundtrack ("Narodnaya Russkaya",	"Kaztosky Kick",					'sound/turntable/tf2_kazotsky_kic.ogg',						670),
 		new /datum/data/turntable_soundtrack ("Total",				"Byet Po Glazam Adrenalin",			'sound/turntable/total_byet_po_glazam_adrenalin.ogg',		2530),
 		new /datum/data/turntable_soundtrack ("Trubetskoy",			"Kapital",							'sound/turntable/trubetskoy_kapital.ogg',					2000),
 		new /datum/data/turntable_soundtrack ("XS-project",			"Kolotushki",						'sound/turntable/xsproject_kolotushki.ogg',					1610),
@@ -266,12 +266,12 @@ var/global/turntable_channel = 4488
 			updateUsrDialog()
 			return
 
-		if(alert("Play [TS.name] for [play_song_cost] RU?", "Turntable", "Yes", "No") == "No")
-			return
-
 		if(play_song_cost > KPK.profile.fields["money"])
 			say("You don't have enough money to order a song.")
 			updateUsrDialog()
+			return
+
+		if(alert("Do you want to play [TS.name] for [play_song_cost] RU?", "Turntable", "Yes", "No") == "No")
 			return
 
 		deltimer(timer_id)
@@ -287,12 +287,12 @@ var/global/turntable_channel = 4488
 			say("Jukebox is turned off.")
 			return
 
-		if(alert("Skip [track.name] for [skip_song_cost] RU?", "Turntable", "Yes", "No") == "No")
-			return
-
 		if(skip_song_cost > KPK.profile.fields["money"])
 			say("You don't have enough money to skip a song.")
 			updateUsrDialog()
+			return
+
+		if(alert("Skip [track.name] for [skip_song_cost] RU?", "Turntable", "Yes", "No") == "No")
 			return
 
 		deltimer(timer_id)
@@ -328,17 +328,31 @@ var/global/turntable_channel = 4488
 		update_sound()
 
 /obj/machinery/party/turntable/proc/skip_song(var/datum/data/turntable_soundtrack/TS = pick(turntable_soundtracks))
-	start_time = world.time
+	var/area/A = get_area(src)
+	transition = 1
+	for(var/client/C in melomans)
+		if(!C || !(C.mob))
+			continue
+
+		if(!playing || !(get_area(C.mob) in A.related))
+			continue
+
+		C.mob.music.status = SOUND_STREAM
+		C.mob.music.file = null
+		C.mob << C.mob.music
+		sleep(0)
+		C.mob.music.status = SOUND_STREAM
+		C.mob.music.file = 'sound/stalker/objects/radio_noise.ogg'
+		C.mob.music.volume = volume
+		C.mob << C.mob.music
+	sleep(40)
+	transition = 0
+	timer_id = addtimer(src, "skip_song", TS.length - 10)
 	track = TS
 	say("Now playing: [track.f_name] - [track.name]")
-	timer_id = addtimer(src, "skip_song", track.length)
+	start_time = world.time
 	update_sound()
-/*
-/obj/machinery/party/turntable/proc/MusicSwitch()
 
-	sleep(track.length)
-		MusicSwitch()
-*/
 /obj/machinery/party/turntable/proc/turn_on(var/datum/data/turntable_soundtrack/selected)
 	if(playing)
 		turn_off()
@@ -381,6 +395,9 @@ var/global/turntable_channel = 4488
 	//	update_sound()
 
 /obj/machinery/party/turntable/proc/update_sound()
+	if(transition)
+		return
+
 	var/area/A = get_area(src)
 
 	if(!track)// || start_time + track.length < world.time + 5)
