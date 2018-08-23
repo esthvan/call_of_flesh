@@ -19,7 +19,7 @@
 
 /obj/structure/closet/crate/stalker/blue/stash/low
 	lootdoubles = 1
-	lootcount = 4
+	lootcount = 1
 	rating_add = 100
 
 /obj/structure/closet/crate/stalker/blue/stash/medium
