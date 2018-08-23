@@ -118,7 +118,7 @@
 
 /sidoritem/tacticalhelmet
 	name = "Tactical Helmet"
-	itemtype = /obj/item/clothing/head/hardhat/tacticalhelmet
+	itemtype = /obj/item/clothing/head/tacticalhelmet
 	cost = 7000
 	words = list("Тактический шлем" = 5, "тактический шлем" = 5, "Тактический Шлем" = 10)
 
