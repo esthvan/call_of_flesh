@@ -32,6 +32,8 @@
 		I.Insert(src)
 
 	make_blood()
+	if(client)
+		get_asset_datum(/datum/asset/simple/kpk).send(src)
 
 	//
 
@@ -271,7 +273,7 @@
 	if(istype(MB))
 		MB.RunOver(src)
 
-	spreadFire(AM)
+	//spreadFire(AM)
 
 //Added a safety check in case you want to shock a human mob directly through electrocute_act.
 /mob/living/carbon/human/electrocute_act(shock_damage, obj/source, siemens_coeff = 1, safety = 0, override = 0, tesla_shock = 0)
