@@ -342,7 +342,7 @@
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/kiparis  // Кипарис
-	name = "MP-5"
+	name = "Kiparis"
 	desc = "Небольшой, легкий и удобный пистолет-пулемет под маломощный калибр, разработанный по заказу Министерства Обороны СССР в 1972-ом году. Не нашел широкого распространения в армии из-за сложностей в производстве для тех времен, но был принят на вооружении службами МВД, ФСО, инкассаторами и некоторыми другими отечественными вооруженными группами."
 	eng_desc = "A small, light submachine gun firing a low-powered bullet, was designed by USSR Defense Ministry in the year 1972. Wasn't adopted by army, but found use and popularity amongst different modern russian government military forces and police."
 	icon_state = "kiparis"
