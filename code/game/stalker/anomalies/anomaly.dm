@@ -282,7 +282,7 @@
 
 /obj/anomaly/electro/New()
 	..()
-	SSojb.processing.Add(src)
+	SSobj.processing.Add(src)
 	spawn(5)
 		SSobj.processing.Remove(src)
 	src.set_light(luminosity)
