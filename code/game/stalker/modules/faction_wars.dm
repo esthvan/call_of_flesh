@@ -8,7 +8,6 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 	icon_state = "radio_free"
 	density = 1
 	anchored = 1
-	var/switches = SHOW_FACTION_EQUIPMENT
 
 	var/controlled_by		= null
 	var/capturing_faction	= null
@@ -155,6 +154,7 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 
 /obj/machinery/stalker/sidormat/special
 	desc = "An equipment vendor for experienced stalkers."
+	switches = SHOW_FACTION_EQUIPMENT
 	var/obj/machinery/stalker/sidorpoint/SP = null
 	var/SP_area = null
 
