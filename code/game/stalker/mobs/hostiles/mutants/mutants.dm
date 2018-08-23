@@ -452,7 +452,7 @@
 	attacktext = "slashes"
 	speak_emote = list("growls", "roars")
 	emote_see = list("growls!", "roars!")
-	maxHealth = 200
+	maxHealth = 225
 	healable = 1
 	melee_damage_lower = 25
 	attack_sound = 'sound/stalker/mobs/mutants/attack/controller_attack.ogg'
@@ -479,13 +479,14 @@
 	speak_chance = 10
 	vision_range = 15
 	aggro_vision_range = 15
-	ranged_cooldown_cap = 7
+	ranged_cooldown_cap = 1
 	min_range_distance = 2
 	ranged = 1
 	var/attack_stage = 0
 	var/last_attack_time = 0
 	see_through_walls = 1
-	rating_add = 250
+	rating_add = 350
+	long_attack = 1
 
 /mob/living/simple_animal/hostile/mutant/controller/Life()
 	. = ..()
@@ -510,8 +511,8 @@
 	if(!istype(A, /mob/living/carbon/human))
 		return
 
-	if(attack_stage && last_attack_time + (10 * attack_stage) < world.time)
-		ranged_cooldown = ranged_cooldown_cap
+	if(attack_stage && last_attack_time + (10 * attack_stage) + 5 < world.time)
+		ranged_cooldown = max(0, ranged_cooldown_cap - attack_stage)
 		attack_stage = 0
 		return
 
@@ -526,23 +527,24 @@
 				H << sound('sound/stalker/mobs/mutants/attack/controller_tube_prepare.ogg', wait = 0, channel = 47, volume = 50)
 				attack_stage++
 			else
+				ranged_cooldown = max(0, ranged_cooldown_cap - attack_stage)
 				attack_stage = 0
-				ranged_cooldown = ranged_cooldown_cap
 
-		if(1 to 3)
+
+		if(1 to 2)
 			if(H in view(14, src))
 				last_attack_time = world.time
 				attack_stage++
 			else
+				ranged_cooldown = max(0, ranged_cooldown_cap - attack_stage)
 				attack_stage = 0
-				ranged_cooldown = ranged_cooldown_cap
-		if(4)
+		if(3)
 			if(H in view(14, src))
 				last_attack_time = world.time
 				H << sound('sound/stalker/mobs/mutants/attack/controller_whoosh.ogg', wait = 0, channel = 47, volume = 50)
 				visible_message("<span class='danger'><b>[src]</b> stares right into [A] eyes!</span>")
-				H.apply_damage(120, PSY, null, blocked = getarmor("head", "psy", 0))
+				H.apply_damage(100, PSY, null, blocked = getarmor("head", "psy", 0))
 
+			ranged_cooldown = max(0, ranged_cooldown_cap - attack_stage)
 			attack_stage = 0
-			ranged_cooldown = ranged_cooldown_cap
 	return
