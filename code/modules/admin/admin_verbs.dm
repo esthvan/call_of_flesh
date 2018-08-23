@@ -128,6 +128,7 @@ var/list/admin_verbs_debug = list(
 	/client/proc/SetTimeOfDay,
 	/client/proc/SetAverageCooldownBlowout,
 	/client/proc/SetRespawnRate,
+	/client/proc/StopBlowout,
 	/client/proc/restart_controller,
 	/client/proc/cmd_admin_list_open_jobs,
 	/client/proc/Debug2,
@@ -513,6 +514,24 @@ var/list/admin_verbs_hideable = list(
 
 	log_admin("[key_name(usr)] forced blowout to start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
 	message_admins("[key_name_admin(usr)] forced blowout to start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
+
+/client/proc/StopBlowout()
+	set name = "Stop Blowout"
+	set category = "Stalker"
+
+	if(!isblowout)
+		src << "<span class='warning'>There is no blowout going on.</span>"
+		return
+
+	if(alert("Are you sure you want to stop the blowout?", "S.T.A.L.K.E.R.", "Yes", "No") == "No")
+		return
+
+	StalkerBlowout.cleaned = 1
+	StalkerBlowout.starttime = world.time - BLOWOUT_DURATION_STAGE_III + 1
+
+	log_admin("[key_name(usr)] stoped the blowout.")
+	message_admins("[key_name_admin(usr)] stoped the blowout.")
+
 
 /client/proc/SetRespawnRate()
 	set name = "Set Respawn Rate"
