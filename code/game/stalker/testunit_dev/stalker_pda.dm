@@ -1028,12 +1028,14 @@ var/global/global_lentahtml = ""
 
 			var/datum/data/record/sk_invited = find_record("sid", sid_, data_core.stalkers)
 
-			if(sk_invited)
-				last_invite = world.time
-				for(var/obj/item/device/stalker_pda/KPK_invited in KPKs)
-					if(KPK_invited.sid == sid_)
-						show_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s, "You have been invited to [eng_faction_s] faction. Check feed for more info.")
-						add_local_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s,"You have been invited to [eng_faction_s] faction. <a style=\"color:#c10000;\" href='byond://?src=\ref[KPK_invited];changefaction=[J.title]'>\[Accept invitation\]</a>")
+			if(!sk_invited)
+				return
+
+			last_invite = world.time
+			for(var/obj/item/device/stalker_pda/KPK_invited in KPKs)
+				if(KPK_invited.sid == sid_)
+					show_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s, "You have been invited to [eng_faction_s] faction. Check feed for more info.")
+					add_local_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s,"You have been invited to [eng_faction_s] faction. <a style=\"color:#c10000;\" href='byond://?src=\ref[KPK_invited];changefaction=[J.title]'>\[Accept invitation\]</a>")
 
 		if(href_list["remove"])
 
@@ -1042,23 +1044,24 @@ var/global/global_lentahtml = ""
 
 			var/datum/data/record/sk_removed = find_record("sid", sid_, data_core.stalkers)
 
-			if(sk_removed)
+			if(!sk_removed)
+				return
 
-				SSjob.AssignRole(owner, "Stalker", 1)
-				sk_removed.fields["faction_s"] = "Loners"
-				J.current_positions--
+			SSjob.AssignRole(owner, "Stalker", 1)
+			sk_removed.fields["faction_s"] = "Loners"
+			J.current_positions--
 
-				for(var/obj/item/device/stalker_pda/KPK_removed in KPKs)
-					if(KPK_removed.sid == sid_)
-						show_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s, "You have been kicked out of [eng_faction_s] faction.")
-						add_local_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s,"You have been kicked out of [eng_faction_s] faction.")
+			for(var/obj/item/device/stalker_pda/KPK_removed in KPKs)
+				if(KPK_removed.sid == sid_)
+					show_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s, "You have been kicked out of [eng_faction_s] faction.")
+					add_local_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s,"You have been kicked out of [eng_faction_s] faction.")
 
-						KPK_removed.set_owner_info(KPK_removed.profile)
+					KPK_removed.set_owner_info(KPK_removed.profile)
 
 		if(href_list["changefaction"])
 
 			var/new_eng_faction_s =  SSjob.GetJob(href_list["changefaction"]).faction_s
-			var/confirm = alert(H, "Change your faction from [eng_faction_s] to [new_eng_faction_s]?", "KPK", "Yes", "No")
+			var/confirm = alert(H, "Do you want to change your faction from [eng_faction_s] to [new_eng_faction_s]?", "KPK", "Yes", "No")
 			if(confirm == "Yes")
 				var/datum/job/J =  SSjob.GetJob(href_list["changefaction"])
 
@@ -1093,23 +1096,10 @@ var/global/global_lentahtml = ""
 
 /proc/add_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
 	var/factioncolor 	= get_faction_color(faction_owner)
-	global_lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
-		<tr style=\"border: 0px solid black;\">\
-		<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
-		<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
-		</td>\
-		\
-		<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
-		\
-		<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
-		\
-		</td>\
-		\
-		</tr>\
-		</table>" + global_lentahtml
+	if(KPK_owner && KPK_owner.profile && KPK_owner.profile.fields["degree"] >= 1)
+		faction_owner += " - leader"
 
-	for(var/obj/item/device/stalker_pda/KPK in KPKs)
-		KPK.lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
+	var/t = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
 		<tr style=\"border: 0px solid black;\">\
 		<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
 		<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
@@ -1122,13 +1112,20 @@ var/global/global_lentahtml = ""
 		</td>\
 		\
 		</tr>\
-		</table>" + KPK.lentahtml
+		</table>"
+
+	global_lentahtml = t + global_lentahtml
+	for(var/obj/item/device/stalker_pda/KPK in KPKs)
+		KPK.lentahtml = t + KPK.lentahtml
 		show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg)
+
 	show_dead_lenta_message(KPK_owner, name_owner, faction_owner, msg, isfactionchat = 0)
 	//var/eng_faction_s 	= faction_owner//get_eng_faction(faction_owner)
 
 /proc/add_local_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/obj/item/device/stalker_pda/KPK_guest, var/sid_owner, var/name_owner, var/faction_owner, msg)
 	var/factioncolor 	= get_faction_color(faction_owner)
+	if(KPK_owner && KPK_owner.profile && KPK_owner.profile.fields["degree"] >= 1)
+		faction_owner += " - leader"
 	KPK_guest.lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
 	<tr style=\"border: 0px solid black;\">\
 	<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
@@ -1146,24 +1143,27 @@ var/global/global_lentahtml = ""
 	show_lenta_message(KPK_owner, KPK_guest, sid_owner, name_owner, faction_owner, msg)
 
 /proc/add_faction_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
+	var/factioncolor 	= get_faction_color(faction_owner)
+	if(KPK_owner && KPK_owner.profile && KPK_owner.profile.fields["degree"] >= 1)
+		faction_owner += " - leader"
 	for(var/obj/item/device/stalker_pda/KPK in KPKs)
-		if(KPK_owner.eng_faction_s == KPK.eng_faction_s)
-			var/factioncolor 	= get_faction_color(faction_owner)
-			KPK.lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
-			<tr style=\"border: 0px solid black;\">\
-			<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
-			<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
-			</td>\
-			\
-			<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
-			\
-			<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\](faction chat)</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
-			\
-			</td>\
-			\
-			</tr>\
-			</table>" + KPK.lentahtml
-			show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg, isfactionchat = 1)
+		if(KPK_owner.eng_faction_s != KPK.eng_faction_s)
+			continue
+		KPK.lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
+		<tr style=\"border: 0px solid black;\">\
+		<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
+		<img id=\"ratingbox\" style=\"background: #2e2e38; border: 1px solid black;\" height=32 width=32 src=photo_[sid_owner]>\
+		</td>\
+		\
+		<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
+		\
+		<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\](faction chat)</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+		\
+		</td>\
+		\
+		</tr>\
+		</table>" + KPK.lentahtml
+		show_lenta_message(KPK_owner, KPK, sid_owner, name_owner, faction_owner, msg, isfactionchat = 1)
 	show_dead_lenta_message(KPK_owner, name_owner, faction_owner, msg, isfactionchat = 1)
 	//var/eng_faction_s 	= faction_owner//get_eng_faction(faction_owner)
 
@@ -1173,22 +1173,27 @@ var/global/global_lentahtml = ""
 
 	if(KPK.loc && isliving(KPK.loc))
 		C = KPK.loc
-	if(C && C.stat != UNCONSCIOUS)
 
-		var/factioncolor	= get_faction_color(faction_owner)
-		//var/eng_faction_s 	= get_eng_faction(faction_owner)
+	if(!C || C.stat == UNCONSCIOUS)
+		return
 
-		if(isfactionchat)
-			C << russian_html2text("<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\](faction chat):</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
-		else
-			C << russian_html2text("<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
+	var/factioncolor	= get_faction_color(faction_owner)
+	//var/eng_faction_s 	= get_eng_faction(faction_owner)
 
-		if(KPK_owner)
-			if((KPK != KPK_owner || selfsound) && KPK.switches & FEED_SOUND)
-				C << sound('sound/stalker/pda/sms.ogg', volume = 30)
-		else
-			if(KPK.switches & FEED_SOUND)
-				C << sound('sound/stalker/pda/sms.ogg', volume = 30)
+	if(KPK_owner && KPK_owner.profile && KPK_owner.profile.fields["degree"] >= 1)
+		faction_owner += " - leader"
+
+	if(isfactionchat)
+		C << russian_html2text("<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\](faction chat):</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
+	else
+		C << russian_html2text("<p style=\"margin-top: 0px; margin-bottom: 0px;\">\icon[KPK]<b style=\"margin-top: 0px; margin-bottom: 0px;\"><font style=\"margin-top: 0px; margin-bottom: 0px;\" color=\"[factioncolor]\">[name_owner]\[[faction_owner]\]:</font></b><br><font color=\"#006699\"> \"[msg]\"</font></p>")
+
+	if(KPK_owner)
+		if((KPK != KPK_owner || selfsound) && KPK.switches & FEED_SOUND)
+			C << sound('sound/stalker/pda/sms.ogg', volume = 30)
+	else
+		if(KPK.switches & FEED_SOUND)
+			C << sound('sound/stalker/pda/sms.ogg', volume = 30)
 
 /proc/show_dead_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/name_owner, var/faction_owner, var/msg, var/isfactionchat = 0)
 	var/factioncolor	= get_faction_color(faction_owner)
@@ -1255,11 +1260,14 @@ var/global/global_lentahtml = ""
 					\
 					<b>\[[count]\]</b> [n] ([eng_f])"
 			//Faction menu
-			if(degree >= 1 && sid_p != sid)
-				if(eng_faction_s == eng_f)
-					ratinghtml += "<a style=\"color:#c10000;\" href='byond://?src=\ref[src];remove=[sid_p]'>\[kick out\]</a>"
+			if(degree >= 1)
+				if(!R.fields["degree"])
+					if(eng_faction_s == eng_f)
+						ratinghtml += "<a style=\"color:#c10000;\" href='byond://?src=\ref[src];remove=[sid_p]'>\[kick out\]</a>"
+					else
+						ratinghtml += "<a style=\"color:#7ac100;\" href='byond://?src=\ref[src];invite=[sid_p]'>\[invite\]</a>"
 				else
-					ratinghtml += "<a style=\"color:#7ac100;\" href='byond://?src=\ref[src];invite=[sid_p]'>\[invite\]</a>"
+					ratinghtml += "<b>\[LEADER\]</b>"
 			//////////////
 			ratinghtml +="<br><b>Rating</b> [eng_rank_name] ([r])<br>\
 					<b>Reputation:</b> <font color=\"[rep_color]\">[eng_rep]</font><br>\
@@ -1280,11 +1288,13 @@ var/global/global_lentahtml = ""
 					\
 					<b>\[[count]\]</b> [n] ([f])"
 			//Faction menu
-			if(degree >= 1 && sid_p != sid)
+			if(!R.fields["degree"])
 				if(eng_faction_s == eng_f)
 					ratinghtml += "<a style=\"color:#c10000;\" href='byond://?src=\ref[src];remove=[sid_p]'>\[исключить\]</a>"
 				else
 					ratinghtml += "<a style=\"color:#7ac100;\" href='byond://?src=\ref[src];invite=[sid_p]'>\[пригласить\]</a>"
+			else
+				ratinghtml += "<b>\[ЛИДЕР\]</b>"
 			//////////////
 			ratinghtml += "<br><b>Рейтинг:</b> [rank_name] ([r])<br>\
 					<b>Репутация:</b> <font color=\"[rep_color]\">[rep]</font><br>\
