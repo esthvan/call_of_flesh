@@ -10,7 +10,7 @@
 	unacidable = 1
 	durability = 40
 
-/obj/item/clothing/head/hardhat/tacticalhelmet
+/obj/item/clothing/head/tacticalhelmet
 	name = "Tactical helmet"
 	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; базовым количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
 	eng_desc = "A Western model of a tactical helmet that lacks camouflage. It is not known how it made its way into the Zone. The helmet is designed to provide a squad leader with strategic superiority over the enemy via its many scanners and satellite communications devices, which have not been installed in this particular helmet. Comes with multi-layered Kevlar protection and armored elements to protect electronic components. Includes a respirator and a nightvision device."
@@ -19,14 +19,12 @@
 	item_color = "tactical"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	action_button_name = "Toggle Light"
 	armor = list(melee = 50, bullet = 60, laser = 0,energy = 30, bomb = 0, bio = 30, rad = 20, psy = 10)
-	brightness_on = 2 //luminosity when on
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 300
 
-/obj/item/clothing/head/hardhat/tacticalhelmet/New()
+/obj/item/clothing/head/tacticalhelmet/New()
 	..()
 	nvg = new /obj/item/nightvision(src)
 

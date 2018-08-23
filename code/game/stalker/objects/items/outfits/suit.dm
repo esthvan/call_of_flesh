@@ -273,6 +273,8 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 /obj/item/clothing/ui_action_click()
 	if(nvg)
 		nvg.attack_self()
+	else
+		..()
 
 /obj/item/nightvision/ui_action_click()
 	attack_self()
