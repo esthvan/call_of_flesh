@@ -132,25 +132,21 @@
 	var/IH = get_item_by_slot(ahand)
 
 	if(!forced_s)
-		if(I && istype(I, /obj/item/weapon/gun) && !istype(I, IH) && !force && I != r_hand && I != l_hand) //&& !istype(I, /obj/item/weapon/gun/projectile/automatic/pistol))
+		if(I && istype(I, /obj/item/weapon/gun) && !istype(I, IH) && !force && I != r_hand && I != l_hand)
 			var/obj/item/weapon/gun/W = I
-			if (!istype(I, /obj/item/weapon/gun/projectile/automatic/pistol))
-				playsound(src.loc, 'sound/stalker/weapons/draw/generic_draw.ogg', 30, 1)
-				visible_message("<span class='danger'>[src] starts taking [I] out of the back!</span>", "<span class='notice'>You start taking [I] out of the back...</span>")
-				if(do_after_inventory(src, 10, 1, I))
-					playsound(src, W.drawsound, 30, 1)
-					visible_message("<span class='danger'>[src] takes [I] out of the back!</span>", "<span class='notice'>You take [I] out of the back.</span>")
-					if(client)
-						client.screen -= I
-					I.loc = loc
-					I.dropped(src)
-					if(I)
-						I.layer = initial(I.layer)
-				else
-					return 0
+			playsound(src.loc, 'sound/stalker/weapons/draw/generic_draw.ogg', 30, 1)
+			visible_message("<span class='danger'>[src] starts to take [I] out!</span>", "<span class='notice'>You start to take [I] out...</span>")
+			if(do_after_inventory(src, W.weapon_weight * 10, 1, I))
+				playsound(src, W.drawsound, 30, 1)
+				visible_message("<span class='danger'>[src] takes [I] out!</span>", "<span class='notice'>You take [I] out.</span>")
+				if(client)
+					client.screen -= I
+				I.loc = loc
+				I.dropped(src)
+				if(I)
+					I.layer = initial(I.layer)
 			else
-				visible_message("<span class='danger'>[src] takes out the [I]!</span>", "<span class='notice'>You take out the [I].</span>")
-				playsound(src.loc, W.drawsound, 30, 1)
+				return 0
 
 	if(I == r_hand)
 		r_hand = null

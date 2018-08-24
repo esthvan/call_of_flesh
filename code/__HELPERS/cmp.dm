@@ -19,6 +19,13 @@
 		return sorttext(a.name, b.name)
 
 var/cmp_field = "name"
+
+/proc/cmp_soundtracks_asc(datum/data/turntable_soundtrack/a, datum/data/turntable_soundtrack/b)
+	return sorttext(b.f_name + b.name, a.f_name + a.name)
+
+/proc/cmp_soundtracks_dsc(datum/data/turntable_soundtrack/a, datum/data/turntable_soundtrack/b)
+	return sorttext(a.f_name + a.name, b.f_name + b.name)
+
 /proc/cmp_records_asc(datum/data/record/a, datum/data/record/b)
 	return sorttext(b.fields[cmp_field], a.fields[cmp_field])
 

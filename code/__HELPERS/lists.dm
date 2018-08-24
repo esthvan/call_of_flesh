@@ -204,6 +204,9 @@
 	cmp_field = field
 	return sortTim(L, order >= 0 ? /proc/cmp_records_numeric_asc : /proc/cmp_records_numeric_dsc)
 
+/proc/sortSoundtrack(list/L, order = 1)
+	return sortTim(L, order >= 0 ? /proc/cmp_soundtracks_asc : /proc/cmp_soundtracks_dsc)
+
 //any value in a list
 /proc/sortList(list/L, cmp=/proc/cmp_text_asc)
 	return sortTim(L.Copy(), cmp)
