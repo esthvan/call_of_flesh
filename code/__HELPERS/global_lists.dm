@@ -5,16 +5,30 @@
 /proc/make_datum_references_lists()
 	//hair
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/hair, hair_styles_list, hair_styles_male_list, hair_styles_female_list)
+	hair_styles_list				= sortList(hair_styles_list)
+	hair_styles_male_list			= sortList(hair_styles_male_list)
+	hair_styles_female_list			= sortList(hair_styles_female_list)
 	//facial hair
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/facial_hair, facial_hair_styles_list, facial_hair_styles_male_list, facial_hair_styles_female_list)
+	facial_hair_styles_list 		= sortList(facial_hair_styles_list)
+	facial_hair_styles_male_list	= sortList(facial_hair_styles_male_list)
+	facial_hair_styles_female_list	= sortList(facial_hair_styles_female_list)
 	//underwear
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear, underwear_list, underwear_m, underwear_f)
+	underwear_list					= sortList(underwear_list)
+	underwear_m						= sortList(underwear_m)
+	underwear_f						= sortList(underwear_f)
 	//undershirt
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/undershirt, undershirt_list, undershirt_m, undershirt_f)
+	undershirt_list					= sortList(undershirt_list)
+	undershirt_m					= sortList(undershirt_m)
+	undershirt_f					= sortList(undershirt_f)
 	//socks
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/socks, socks_list)
+	socks_list						= sortList(socks_list)
 	//lizard bodyparts (blizzard intensifies)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/body_markings, body_markings_list)
+	body_markings_list				= sortList(body_markings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, tails_list_lizard)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails_animated/lizard, animated_tails_list_lizard)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, tails_list_human)
