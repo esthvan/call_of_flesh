@@ -164,3 +164,11 @@
 	caliber = "9x18mm"
 	max_ammo = 20
 	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/stalker/berettam3810
+	name = "SMG magazine (9x19mm)"
+	icon_state = "9x19b10"
+	ammo_type = /obj/item/ammo_casing/c9x19
+	caliber = "9x19mm"
+	max_ammo = 10
+	multiple_sprites = 2

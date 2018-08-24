@@ -21,11 +21,11 @@
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/pistol/tt   // ТТ
-	name = "TT"
+	name = "TT-33"
 	desc = "Старый пистолет, произведенный под столь же старый советский патрон. Весьма попул&#255;рен из-за того, что сотни таких экземпляров остались в складах, где их спустя почти полвека достали и выпустили в продажу бедным новичкам. Мало на что годен, но лучше чем ничего."
 	icon_state = "tt"
 	w_class = 2
-	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
+	fire_sound = 'sound/stalker/weapons/tt33_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/tt
 	force = 10
 	can_suppress = 0
@@ -350,7 +350,7 @@
 	desc = "Небольшой, легкий и удобный пистолет-пулемет под маломощный калибр, разработанный по заказу Министерства Обороны СССР в 1972-ом году. Не нашел широкого распространения в армии из-за сложностей в производстве для тех времен, но был принят на вооружении службами МВД, ФСО, инкассаторами и некоторыми другими отечественными вооруженными группами."
 	eng_desc = "A small, light submachine gun firing a low-powered bullet, was designed by USSR Defense Ministry in the year 1972. Wasn't adopted by army, but found use and popularity amongst different modern russian government military forces and police."
 	icon_state = "kiparis"
-	item_state = "gun"
+	item_state = "arg"
 	fire_sound = 'sound/stalker/weapons/fort_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/kiparis
 	can_suppress = 1
@@ -372,8 +372,8 @@
 	desc = "Один из самых старых отечественных дизайнов автоматического ручного оружи&#255;, пистолет-пулемет Шпагина, с гордостью прошел сквозь Великую Отечественную... чтобы в огромных количествах осесть на складах и ржаветь там более полувека. Некоторые умельцы, однако, хорошенько поработав над старым оружием, переделывают его под новый калибр и отправл&#255;ют Сидору на продажу. У вас в руках - один из таких экземпл&#255;ров."
 	eng_desc = "The PPSh saw extensive combat use during World War II and the Korean War. It was one of the major infantry weapons of the Soviet Armed Forces during World War II. Around six million PPSh-41s were manufactured. In the form of the Chinese Type 50 (licensed copy), it was still being used by the Viet Cong as late as 1970. According to the 2002 edition of the Encyclopedia of Weapons of World War II the PPSh was still in use with irregular militaries."
 	icon_state = "ppsh"
-	item_state = "gun"
-	fire_sound = 'sound/stalker/weapons/pm_shot.ogg'
+	item_state = "arg"
+	fire_sound = 'sound/stalker/weapons/ppsh_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/ppsh
 	can_suppress = 0
 	burst_size = 5
@@ -389,6 +389,29 @@
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/berettam38  // Моделло 38
+	name = "Beretta M38"
+	desc = "Итальянский пистолет-пулемёт, впервые представленный в 1938 году и применявшийся Италией во время Второй мировой войны. По общему количеству произведённых образцов Beretta MAB 38 проиграла магазинной винтовке Carcano M1891, но по эффективности она считается лучшим стрелковым оружием Италии времён Второй мировой войны."
+	eng_desc = "Modello 38, or Model 38 and its variants were a series of official submachine guns of the Royal Italian Army introduced in 1938 and used during World War II."
+	icon_state = "berettam38"
+	item_state = "berettam38"
+	fire_sound = 'sound/stalker/weapons/berettam38_shot.ogg'
+	mag_type = /obj/item/ammo_box/magazine/stalker/berettam3810
+	can_suppress = 0
+	burst_size = 2
+	fire_delay = 1.7
+	slot_flags = SLOT_BELT
+	durability = 75
+	w_class = 4
+	spread = 6
+	recoil = 0.3
+	damagelose = 0.45
+	can_scope = 0
+	weapon_weight = WEAPON_MEDIUM
+	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
+	loadsound = 'sound/stalker/weapons/load/berettam38_load.ogg'
+	opensound = 'sound/stalker/weapons/unload/berettam38_open.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/tpc301  // Эмка
 	name = "LR-300"
