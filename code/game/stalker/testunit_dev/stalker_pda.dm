@@ -1538,8 +1538,7 @@ var/global/global_lentahtml = ""
 			return "Freedom"
 		if("Monolith")
 			return "Monolith"
-		if("Loners")
-			return "Stalker"
 		if("Army")
 			return "Army"
-	return "Stalker"
+		else
+			return "Stalker"
