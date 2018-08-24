@@ -136,8 +136,9 @@ var/global/global_lentahtml = ""
 			profile.fields["lastlogin"] = world.time
 
 	icon_state = "kpk_on"
+	H.set_machine(src)
 
-	user.set_machine(src)
+	//user.set_machine(src)
 	mainhtml ="<html> \
 	\
 	<style>\
@@ -607,414 +608,466 @@ var/global/global_lentahtml = ""
 
 	//var/mob/living/U = usr
 	var/mob/living/carbon/human/H = usr
-	if(usr.canUseTopic(src))
-		//add_fingerprint(H)
-		//get_asset_datum(/datum/asset/simple/kpk).send(H)
-		//H.set_machine(src)
-		switch(href_list["choice"])
-			if("title")
-				if(show_title)
-					H << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=0")
-					show_title = 0
-				else
-					H << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=1")
-					show_title = 1
+	if(!usr.canUseTopic(src))
+		hacked = 0
+		H.unset_machine()
+		H << browse(null, "window=mainhtml")
+		return
+	//add_fingerprint(H)
+	//get_asset_datum(/datum/asset/simple/kpk).send(H)
 
-			if("close")
-				icon_state = "kpk_off"
-				H.unset_machine()
-				hacked = 0
-				H << browse(null, "window=mainhtml")
+	switch(href_list["choice"])
+		if("title")
+			if(show_title)
+				H << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=0")
+				show_title = 0
+			else
+				H << browse(mainhtml, "window=mainhtml;size=568x388;border=0;can_resize=0;can_close=0;can_minimize=0;titlebar=1")
+				show_title = 1
+
+		if("close")
+			icon_state = "kpk_off"
+			H.unset_machine()
+			hacked = 0
+			H << browse(null, "window=mainhtml")
+			return
+
+		if("password_input")
+			var/t = message_input(H, "password", 10)
+
+			if(!t)
+				H << "<span class='warning'>You entered no password.</span>"
 				return
 
-			if("password_input")
-				var/t = message_input(H, "password", 10)
+			var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 
-				if(!t)
-					H << "<span class='warning'>You entered no password.</span>"
+			if(!sk) //если человек не зарегистрирован в сети сталкеров
+				password = t
+				var/pass = password
+
+				data_core.manifest_inject(H, pass)
+
+				//var/datum/job/J = SSjob.GetJob(H.job)
+				//access = J.get_access()
+
+				registered_name = H.real_name
+				owner = H
+				sid = H.sid
+				lentahtml = global_lentahtml
+
+				var/image = get_id_photo(H)
+				var/obj/item/weapon/photo/owner_photo_front = new()
+				var/obj/item/weapon/photo/owner_photo_west = new()
+				var/obj/item/weapon/photo/owner_photo_east = new()
+				var/obj/item/weapon/photo/owner_photo_back = new()
+
+				owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
+				owner_photo_west.photocreate(null, icon(image, dir = WEST))
+				owner_photo_east.photocreate(null, icon(image, dir = EAST))
+				owner_photo_back.photocreate(null, icon(image, dir = NORTH))
+
+				H << "<B>KPK password</B>: <span class='danger'>\"[pass]\"</span>"
+				H.mind.store_memory("<b>KPK password</b>: \"[pass]\"")
+				KPKs += src
+				KPK_mobs += H
+
+				profile = find_record("sid", H.sid, data_core.stalkers)
+				set_owner_info(profile)
+			else //≈сли человек зарегистрирован в сети сталкеров
+				if(sk && sk.fields["pass"] != t)
+					H << "<span class='warning'>Wrong password.</span>"
 					return
 
-				var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+				password = t
+				//var/datum/job/J = SSjob.GetJob(H.job)
+				//access = J.get_access()
 
-				if(!sk) //если человек не зарегистрирован в сети сталкеров
-					password = t
-					var/pass = password
-
-					data_core.manifest_inject(H, pass)
-
-					//var/datum/job/J = SSjob.GetJob(H.job)
-					//access = J.get_access()
-
-					registered_name = H.real_name
-					owner = H
-					sid = H.sid
+				registered_name = H.real_name
+				eng_faction_s = sk.fields["faction"]
+				rating = sk.fields["rating"]
+				owner = H
+				sid = H.sid
+				if(!lentahtml)
 					lentahtml = global_lentahtml
 
-					var/image = get_id_photo(H)
-					var/obj/item/weapon/photo/owner_photo_front = new()
-					var/obj/item/weapon/photo/owner_photo_west = new()
-					var/obj/item/weapon/photo/owner_photo_east = new()
-					var/obj/item/weapon/photo/owner_photo_back = new()
+				var/image = get_id_photo(H)
+				var/obj/item/weapon/photo/owner_photo_front = new()
+				var/obj/item/weapon/photo/owner_photo_west = new()
+				var/obj/item/weapon/photo/owner_photo_east = new()
+				var/obj/item/weapon/photo/owner_photo_back = new()
 
-					owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
-					owner_photo_west.photocreate(null, icon(image, dir = WEST))
-					owner_photo_east.photocreate(null, icon(image, dir = EAST))
-					owner_photo_back.photocreate(null, icon(image, dir = NORTH))
+				owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
+				owner_photo_west.photocreate(null, icon(image, dir = WEST))
+				owner_photo_east.photocreate(null, icon(image, dir = EAST))
+				owner_photo_back.photocreate(null, icon(image, dir = NORTH))
 
-					H << "<B>KPK password</B>: <span class='danger'>\"[pass]\"</span>"
-					H.mind.store_memory("<b>KPK password</b>: \"[pass]\"")
-					KPKs += src
-					KPK_mobs += H
+				KPKs += src
 
-					profile = find_record("sid", H.sid, data_core.stalkers)
-					set_owner_info(profile)
-				else //≈сли человек зарегистрирован в сети сталкеров
-					if(sk && sk.fields["pass"] != t)
-						H << "<span class='warning'>Wrong password.</span>"
-						return
-
-					password = t
-					//var/datum/job/J = SSjob.GetJob(H.job)
-					//access = J.get_access()
-
-					registered_name = H.real_name
-					eng_faction_s = sk.fields["faction"]
-					rating = sk.fields["rating"]
-					owner = H
-					sid = H.sid
-					if(!lentahtml)
-						lentahtml = global_lentahtml
-
-					var/image = get_id_photo(H)
-					var/obj/item/weapon/photo/owner_photo_front = new()
-					var/obj/item/weapon/photo/owner_photo_west = new()
-					var/obj/item/weapon/photo/owner_photo_east = new()
-					var/obj/item/weapon/photo/owner_photo_back = new()
-
-					owner_photo_front.photocreate(null, icon(image, dir = SOUTH))
-					owner_photo_west.photocreate(null, icon(image, dir = WEST))
-					owner_photo_east.photocreate(null, icon(image, dir = EAST))
-					owner_photo_back.photocreate(null, icon(image, dir = NORTH))
-
-					KPKs += src
-
-					profile = sk
-					set_owner_info(profile)
-
-			if("exit")
-				registered_name = null
-				eng_faction_s = null
-				rus_faction_s = null
-				rating = null
-				owner = null
-				money = 0
-				photo_owner_front = null
-				photo_owner_west = null
-				photo_owner_east = null
-				photo_owner_back = null
-				KPKs -= src
-				hacked = 0
-				password = null
-				profile = null
-
-			if("password_check")
-				var/t = message_input(H, "password", 10)
-				if(t == password)
-					//hacked = 1
-					hacked = 0
-					H << "<span class='warning'>You are not the PDA owner.</span>"
-				else
-					H << "<span class='warning'>Wrong password.</span>"
-
-			if("rotate")
-				switch(rotation)
-					if ("front")
-						rotation = "west"
-					if("west")
-						rotation = "back"
-					if("back")
-						rotation = "east"
-					if("east")
-						rotation = "front"
-
-			if("make_avatar")
-				make_avatar(H)
-				set_owner_photo()
-
-			if("lenta_add")
-				var/t = message_input(H, "message", 250)
-				if(!t)
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='warning'>Enter the message!</span>"
-					else
-						H << "<span class='warning'>¬ведите сообщение!</span>"
-				else
-					if ( !(last_lenta && world.time < last_lenta + LENTA_MESSAGE_COOLDOWN) )
-						last_lenta = world.time
-
-						add_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
-
-					else
-						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-							H << "<span class='warning'>You can't send messages in next [round((LENTA_MESSAGE_COOLDOWN + last_lenta - world.time)/10)] sec.</span>"
-						else
-							H << "<span class='warning'>¬ы сможете отправить следующее сообщение через: [round((LENTA_MESSAGE_COOLDOWN + last_lenta - world.time)/10)] сек.</span>"
-
-			if("lenta_faction_add")
-				var/t = message_input(H, "message", 500)
-				if(!t)
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='warning'>Enter the message!</span>"
-					else
-						H << "<span class='warning'>¬ведите сообщение!</span>"
-				else
-					if ( !(last_faction_lenta && world.time < last_faction_lenta + LENTA_FACTION_MESSAGE_COOLDOWN) )
-						last_faction_lenta = world.time
-						add_faction_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
-
-					else
-						if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-							H << "<span class='warning'>You can't send messages in next [round((LENTA_FACTION_MESSAGE_COOLDOWN + last_faction_lenta - world.time)/10)] sec.</span>"
-						else
-							H << "<span class='warning'>¬ы сможете отправить следующее сообщение через: [round((LENTA_FACTION_MESSAGE_COOLDOWN + last_faction_lenta - world.time)/10)] сек.</span>"
-
-			if("lenta_sound")
-				if(switches & FEED_SOUND)
-					switches &= ~FEED_SOUND
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='notice'>Feed sound turned off.</span>"
-					else
-						H << "<span class='notice'>«вук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
-				else
-					switches |= FEED_SOUND
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='notice'>Feed sound turned on.</span>"
-					else
-						H << "<span class='notice'>«вук оповещени&#255; о сообщени&#255;х в ленте активирован.</span>"
-
-
-			if("lenta_images")
-				if(switches & FEED_IMAGES)
-					switches &= ~FEED_IMAGES
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='notice'>Stalker avatars in the feed now will not be downloaded.</span>"
-					else
-						H << "<span class='notice'>јватары сталкеров в ленте теперь не будут скачиватьс&#255;.</span>"
-				else
-					switches |= FEED_IMAGES
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='notice'>Stalker avatars in the feed now will be downloaded.</span>"
-					else
-						H << "<span class='notice'>јватары сталкеров в ленте теперь будут скачиватьс&#255;.</span>"
-
-			if("rating_images")
-				if(switches & RATING_IMAGES)
-					switches &= ~RATING_IMAGES
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='notice'>Stalker avatars in the rating now will not be downloaded.</span>"
-					else
-						H << "<span class='notice'>јватары сталкеров в рейтинге теперь не будут скачиватьс&#255;.</span>"
-				else
-					switches |= RATING_IMAGES
-					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						H << "<span class='notice'>Stalker avatars in the rating now will be downloaded.</span>"
-					else
-						H << "<span class='notice'>јватары сталкеров в рейтинге теперь будут скачиватьс&#255;.</span>"
-
-			if("refresh_rating")
-				ratinghtml = ""
-				if(data_core.stalkers.len)
-					refresh_rating(H)
-
-			if("zoom")
-				return
-
-			if("1")			//ѕ–ќ‘»Ћ№
+				profile = sk
 				set_owner_info(profile)
-				set_owner_photo()
-				mode = 1
 
-			if("2")			//ЁЌ÷» Ћќѕ≈ƒ»я
-				mode = 2
-				get_asset_datum(/datum/asset/simple/kpk/encyclopedia).send(H)
-				if(href_list["page"])
+		if("exit")
+			registered_name = null
+			eng_faction_s = null
+			rus_faction_s = null
+			rating = null
+			owner = null
+			money = 0
+			photo_owner_front = null
+			photo_owner_west = null
+			photo_owner_east = null
+			photo_owner_back = null
+			KPKs -= src
+			hacked = 0
+			password = null
+			profile = null
+
+		if("password_check")
+			var/t = message_input(H, "password", 10)
+			if(t == password)
+				//hacked = 1
+				hacked = 0
+				H << "<span class='warning'>You are not the PDA owner.</span>"
+			else
+				H << "<span class='warning'>Wrong password.</span>"
+
+		if("rotate")
+			switch(rotation)
+				if ("front")
+					rotation = "west"
+				if("west")
+					rotation = "back"
+				if("back")
+					rotation = "east"
+				if("east")
+					rotation = "front"
+
+		if("make_avatar")
+			make_avatar(H)
+			set_owner_photo()
+
+		if("lenta_add")
+			var/t = message_input(H, "message", 250)
+			if(!t)
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					H << "<span class='warning'>Enter the message!</span>"
+				else
+					H << "<span class='warning'>¬ведите сообщение!</span>"
+			else
+				if ( !(last_lenta && world.time < last_lenta + LENTA_MESSAGE_COOLDOWN) )
+					last_lenta = world.time
+
+					add_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
+
+				else
 					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-						switch(href_list["page"])
-							if("Zone")
-								article_title = "Zone"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "The Zone of Alienation is the 60 km wide area of exclusion that was set up around the Chernobyl NPP following the 1986 disaster and extended by the second Chernobyl disaster in 2006."
+						H << "<span class='warning'>You can't send messages in next [round((LENTA_MESSAGE_COOLDOWN + last_lenta - world.time)/10)] sec.</span>"
+					else
+						H << "<span class='warning'>¬ы сможете отправить следующее сообщение через: [round((LENTA_MESSAGE_COOLDOWN + last_lenta - world.time)/10)] сек.</span>"
 
-							if("Backwater")
-								article_title = "Backwater"
-								article_img = "backwater"
-								article_img_width = 200
-								article_img_height = 125
-								article_text = "Backwater, also called Zaton, is mainly set in a swampy area, with a few industrial factories scattered around it and derelict, grounded boats, some dating back before the incident. From the outlying structures and sizable number of grounded boats and tankers around, Backwater appears to have been drained of its water sometime after the Chernobyl incident, most likely to contain the radiation contamination in the water. A free bar for Stalkers is run by Beard, in the wreck of a tanker Ц the Skadovsk."
+		if("lenta_faction_add")
+			var/t = message_input(H, "message", 500)
+			if(!t)
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					H << "<span class='warning'>Enter the message!</span>"
+				else
+					H << "<span class='warning'>¬ведите сообщение!</span>"
+			else
+				if ( !(last_faction_lenta && world.time < last_faction_lenta + LENTA_FACTION_MESSAGE_COOLDOWN) )
+					last_faction_lenta = world.time
+					add_faction_lenta_message(src, sid, owner.real_name, eng_faction_s, t)
 
-							if("Anomalies")
-								article_title = "Anomalies"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "After the second Chernobyl disaster, the Zone was littered with spots where the laws of nature and physics had been corrupted. These small oddities are called anomalies. They are hazardous, often deadly, towards human beings and other creatures as they can deliver electric shocks or burn, corrode and distort physical objects. Most anomalies produce visible air or light distortions, so their extent can be determined by throwing anything that is made of metal, like bolts, to trigger them. The anomalies seem to emit a powerful magnetic field, so it is logical to assume that the anomalies are triggered by anything made of metal that enters the magnetic field. Because vertebrate life on earth has iron-based blood, those creatures with enough body mass are capable of triggering the anomalies."
+				else
+					if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+						H << "<span class='warning'>You can't send messages in next [round((LENTA_FACTION_MESSAGE_COOLDOWN + last_faction_lenta - world.time)/10)] sec.</span>"
+					else
+						H << "<span class='warning'>¬ы сможете отправить следующее сообщение через: [round((LENTA_FACTION_MESSAGE_COOLDOWN + last_faction_lenta - world.time)/10)] сек.</span>"
 
-							if("Electro")
-								article_title = "Electro"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "An anomalous formation, roughly 10 meters in diameter, accumulating large quantities of static electricity. When triggered, the anomaly bursts into a storm of arcing electricity nearly always lethal to all living beings. Easily recognizable by the blue gas it emits, along with the endless arcing of small bolts of electricity in the vicinity, the Electro holds no distinction for what crosses its event horizon, be it a human, a mutants or an inanimate object, and discharges as soon as anything gets too close."
-
-							if("Vortex")
-								article_title = "Vortex"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "An anomaly of presumably gravitational nature. When triggered, the tremendous power of the Vortex drags everything within the radius 10-15 meters towards the center. Victims drawn into the core have little to no chance of survival: their bodies are quickly constricted into a tight lump, only to be blown up in a powerful discharge of energy a moment later. In some cases, they may levitate in air with agony, and soon their entire systems are shredded into mere skeletal and flesh parts."
-
-							if("Whirligig")
-								article_title = "Whirligig"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "A common and dangerous anomaly, which snatches its victims up in the air and spins them at a breakneck speed. The exact nature of the Whirligig remains unknown. The anomaly can be recognized by a light whirlwind of dust above and by body fragments scattered in the vicinity. Victims caught on its outer rim, far enough from the maximum effect zone at the center, can escape the Whirligig with relatively minor injuries."
-
-							if("Burner")
-								article_title = "Burner"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "The Burner can be a bit difficult to see, even in daylight, as it's only revealed by a faint heat haze. If the anomaly is triggered by either a living being or an object such as a metal bolt, it shoots out a tall pillar of flame in the air, burning everything in its vicinity. Though somewhat rare, the Burner anomaly is often found in clusters. Some clusters also emit extreme high ambient temperature, which hurts anything in their vicinity. Burners can emit temperatures as low as 100 degrees Celsius, up to several thousand, hot enough to crack concrete and melt metal, which explains why some Burners appear in areas that have massive cracks and severe damaged soil, while other sites are untouched."
-
-							if("Fruit Punch")
-								article_title = "Fruit Punch"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "The Fruit Punch is a puddle of lambent green liquid that is easily visible in almost any environment due to its bright glow and distinctive hissing and bubbling noises. On contact with creatures or objects such as bolts, a Fruit Punch lights up brightly and emits a sharp hissing sound. It is extremely corrosive, damaging creatures and objects on contact. Any matter left in a Fruit Punch will eventually dissolve, hinting at the anomaly's corrosive nature and spelling doom for any protective suit."
-
-							if("Burnt Fuzz")
-								article_title = "Burnt Fuzz"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "This anomaly is usually found outdoors. It resembles moss or vines, hanging down like curtains from its growing spot. Reacts to rapidly approaching living beings by discharging a cloud of projectiles severely injuring uncovered or lightly protected skin upon contact. Does not react to slowly moving targets. Burnt Fuzz is generally considered the least dangerous anomaly in the Zone since it can be easily spotted and avoided."
-
-							if("Radiation")
-								article_title = "Radiation"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "Pockets of ionizing radiation, or simply radiation for short (areas where the ambient radiation count exceeds 50 mR per hour) can be found all over the Zone. In the outside areas, radiation tends to be dominant in wide, open spaces and on piles of scrap (such as the dirt or scrap piles in Garbage. Also cars, tractors and anything mechanical). Radiation in itself doesn't form artifacts. When you have accumulated enough radiation, you'll start to lose health; although radiation will decrease by itself (albeit very slowly) when you're outside of a radioactive area, it's often a good idea to use either Vodka, antirads, or a first aid kit to speed up the process."
-
-							if("Mutants")
-								article_title = "Mutants"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "Mutants are animals or humans who have been warped by the Zone, changing both their physical appearance and behavior, usually making them more aggressive."
-
-							if("Blind Dog")
-								article_title = "Blind Dog"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "Several generations of the dog species have lived and died since the catastrophe. Each was more affected by the Zone than the previous one. Rapid mutation lead to a vast improvement in previously peripheral abilities, frequently at the expense of primary ones. The most notable biological change was the loss of sight, paired with an uncanny development of smell. As it turned out, blind pups survived in the Zone as well as normal ones, if not better. As a result, the common dog quickly became extinct in the Zone, giving way to a new breed Ц that of blind dogs. The animals instinctively identify and avoid anomalies, radiation, and other invisible dangers that plague the Zone. Like their wild ancestors Ц the wolves Ц blind dogs hunt in packs. An encounter with a large group of these animals can be dangerous even to an experienced and well-armed stalker."
-
-							if("Flesh")
-								article_title = "Flesh"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "Like many other living creatures, domestic pigs in The Zone underwent serious mutations following the second Chernobyl disaster, affecting genes responsible for their metabolism. This eventually caused the animal's phenotype to change significantly."
-
-							if("Snork")
-								article_title = "Snork"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "The Snork is a horrifically mutated human soldier or Stalker, still wearing tattered remains of his uniform, boots and a GP-4 gas mask with cracked eyepieces, and a flailing hose. Exposure to radiation and anomalies in the wake of the second Chernobyl disaster has destroyed the human mind, leaving a feral, vicious beast psyche and a twisted body in its place, creating a dangerous predator."
-
-							if("Boar")
-								article_title = "Boar"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "Mutagenic processes engineered by radiation and anomalies have played a significant part in shaping these mammals: they have lost all fur in a few places and grown long, bristly fur in others. The animal's hooves have changed in shape and become sharper, acquiring a resemblance to claws. Also, their pupils have become colorless, while both pigmentation disorders and deep wrinkles have appeared on their bald heads. They have also grown an extra pair of tusks which are easily recognized."
-
-							if("Artifacts")
-								article_title = "Artifacts"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = "Artifacts are items that have been changed by the conditions in the Zone. Most artifacts have strange and useful characteristics. For example, when kept close to the body, some artifacts create a protective field that increases its user's resilience to damage. Others may increase the user's stamina or protect against fire, etc. Artifacts are also valuable scientific study material and outside corporations would pay a hefty price to obtain one of these artifacts from the zone."
-
-							if("Artifacts")
-								article_title = "Artifacts"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = ""
-
-							if("Artifacts")
-								article_title = "Artifacts"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = ""
-
-							if("Artifacts")
-								article_title = "Artifacts"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = ""
-
-							if("Artifacts")
-								article_title = "Artifacts"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = ""
-
-							if("Artifacts")
-								article_title = "Artifacts"
-								article_img = "nodata.gif"
-								article_img_width = 179
-								article_img_height = 128
-								article_text = ""
+		if("lenta_sound")
+			if(switches & FEED_SOUND)
+				switches &= ~FEED_SOUND
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					H << "<span class='notice'>Feed sound turned off.</span>"
+				else
+					H << "<span class='notice'>«вук оповещени&#255; о сообщени&#255;х в ленте выключен.</span>"
+			else
+				switches |= FEED_SOUND
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					H << "<span class='notice'>Feed sound turned on.</span>"
+				else
+					H << "<span class='notice'>«вук оповещени&#255; о сообщени&#255;х в ленте активирован.</span>"
 
 
+		if("lenta_images")
+			if(switches & FEED_IMAGES)
+				switches &= ~FEED_IMAGES
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					H << "<span class='notice'>Stalker avatars in the feed now will not be downloaded.</span>"
+				else
+					H << "<span class='notice'>јватары сталкеров в ленте теперь не будут скачиватьс&#255;.</span>"
+			else
+				switches |= FEED_IMAGES
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					H << "<span class='notice'>Stalker avatars in the feed now will be downloaded.</span>"
+				else
+					H << "<span class='notice'>јватары сталкеров в ленте теперь будут скачиватьс&#255;.</span>"
+
+		if("rating_images")
+			if(switches & RATING_IMAGES)
+				switches &= ~RATING_IMAGES
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					H << "<span class='notice'>Stalker avatars in the rating now will not be downloaded.</span>"
+				else
+					H << "<span class='notice'>јватары сталкеров в рейтинге теперь не будут скачиватьс&#255;.</span>"
+			else
+				switches |= RATING_IMAGES
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					H << "<span class='notice'>Stalker avatars in the rating now will be downloaded.</span>"
+				else
+					H << "<span class='notice'>јватары сталкеров в рейтинге теперь будут скачиватьс&#255;.</span>"
+
+		if("refresh_rating")
+			ratinghtml = ""
+			if(data_core.stalkers.len)
+				refresh_rating(H)
+
+		if("zoom")
+			return
+
+		if("1")			//ѕ–ќ‘»Ћ№
+			set_owner_info(profile)
+			set_owner_photo()
+			mode = 1
+
+		if("2")			//ЁЌ÷» Ћќѕ≈ƒ»я
+			mode = 2
+			get_asset_datum(/datum/asset/simple/kpk/encyclopedia).send(H)
+			if(href_list["page"])
+				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+					switch(href_list["page"])
+						if("Zone")
+							article_title = "Zone"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "The Zone of Alienation is the 60 km wide area of exclusion that was set up around the Chernobyl NPP following the 1986 disaster and extended by the second Chernobyl disaster in 2006."
+
+						if("Backwater")
+							article_title = "Backwater"
+							article_img = "backwater"
+							article_img_width = 200
+							article_img_height = 125
+							article_text = "Backwater, also called Zaton, is mainly set in a swampy area, with a few industrial factories scattered around it and derelict, grounded boats, some dating back before the incident. From the outlying structures and sizable number of grounded boats and tankers around, Backwater appears to have been drained of its water sometime after the Chernobyl incident, most likely to contain the radiation contamination in the water. A free bar for Stalkers is run by Beard, in the wreck of a tanker Ц the Skadovsk."
+
+						if("Anomalies")
+							article_title = "Anomalies"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "After the second Chernobyl disaster, the Zone was littered with spots where the laws of nature and physics had been corrupted. These small oddities are called anomalies. They are hazardous, often deadly, towards human beings and other creatures as they can deliver electric shocks or burn, corrode and distort physical objects. Most anomalies produce visible air or light distortions, so their extent can be determined by throwing anything that is made of metal, like bolts, to trigger them. The anomalies seem to emit a powerful magnetic field, so it is logical to assume that the anomalies are triggered by anything made of metal that enters the magnetic field. Because vertebrate life on earth has iron-based blood, those creatures with enough body mass are capable of triggering the anomalies."
+
+						if("Electro")
+							article_title = "Electro"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "An anomalous formation, roughly 10 meters in diameter, accumulating large quantities of static electricity. When triggered, the anomaly bursts into a storm of arcing electricity nearly always lethal to all living beings. Easily recognizable by the blue gas it emits, along with the endless arcing of small bolts of electricity in the vicinity, the Electro holds no distinction for what crosses its event horizon, be it a human, a mutants or an inanimate object, and discharges as soon as anything gets too close."
+
+						if("Vortex")
+							article_title = "Vortex"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "An anomaly of presumably gravitational nature. When triggered, the tremendous power of the Vortex drags everything within the radius 10-15 meters towards the center. Victims drawn into the core have little to no chance of survival: their bodies are quickly constricted into a tight lump, only to be blown up in a powerful discharge of energy a moment later. In some cases, they may levitate in air with agony, and soon their entire systems are shredded into mere skeletal and flesh parts."
+
+						if("Whirligig")
+							article_title = "Whirligig"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "A common and dangerous anomaly, which snatches its victims up in the air and spins them at a breakneck speed. The exact nature of the Whirligig remains unknown. The anomaly can be recognized by a light whirlwind of dust above and by body fragments scattered in the vicinity. Victims caught on its outer rim, far enough from the maximum effect zone at the center, can escape the Whirligig with relatively minor injuries."
+
+						if("Burner")
+							article_title = "Burner"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "The Burner can be a bit difficult to see, even in daylight, as it's only revealed by a faint heat haze. If the anomaly is triggered by either a living being or an object such as a metal bolt, it shoots out a tall pillar of flame in the air, burning everything in its vicinity. Though somewhat rare, the Burner anomaly is often found in clusters. Some clusters also emit extreme high ambient temperature, which hurts anything in their vicinity. Burners can emit temperatures as low as 100 degrees Celsius, up to several thousand, hot enough to crack concrete and melt metal, which explains why some Burners appear in areas that have massive cracks and severe damaged soil, while other sites are untouched."
+
+						if("Fruit Punch")
+							article_title = "Fruit Punch"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "The Fruit Punch is a puddle of lambent green liquid that is easily visible in almost any environment due to its bright glow and distinctive hissing and bubbling noises. On contact with creatures or objects such as bolts, a Fruit Punch lights up brightly and emits a sharp hissing sound. It is extremely corrosive, damaging creatures and objects on contact. Any matter left in a Fruit Punch will eventually dissolve, hinting at the anomaly's corrosive nature and spelling doom for any protective suit."
+
+						if("Burnt Fuzz")
+							article_title = "Burnt Fuzz"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "This anomaly is usually found outdoors. It resembles moss or vines, hanging down like curtains from its growing spot. Reacts to rapidly approaching living beings by discharging a cloud of projectiles severely injuring uncovered or lightly protected skin upon contact. Does not react to slowly moving targets. Burnt Fuzz is generally considered the least dangerous anomaly in the Zone since it can be easily spotted and avoided."
+
+						if("Radiation")
+							article_title = "Radiation"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "Pockets of ionizing radiation, or simply radiation for short (areas where the ambient radiation count exceeds 50 mR per hour) can be found all over the Zone. In the outside areas, radiation tends to be dominant in wide, open spaces and on piles of scrap (such as the dirt or scrap piles in Garbage. Also cars, tractors and anything mechanical). Radiation in itself doesn't form artifacts. When you have accumulated enough radiation, you'll start to lose health; although radiation will decrease by itself (albeit very slowly) when you're outside of a radioactive area, it's often a good idea to use either Vodka, antirads, or a first aid kit to speed up the process."
+
+						if("Mutants")
+							article_title = "Mutants"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "Mutants are animals or humans who have been warped by the Zone, changing both their physical appearance and behavior, usually making them more aggressive."
+
+						if("Blind Dog")
+							article_title = "Blind Dog"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "Several generations of the dog species have lived and died since the catastrophe. Each was more affected by the Zone than the previous one. Rapid mutation lead to a vast improvement in previously peripheral abilities, frequently at the expense of primary ones. The most notable biological change was the loss of sight, paired with an uncanny development of smell. As it turned out, blind pups survived in the Zone as well as normal ones, if not better. As a result, the common dog quickly became extinct in the Zone, giving way to a new breed Ц that of blind dogs. The animals instinctively identify and avoid anomalies, radiation, and other invisible dangers that plague the Zone. Like their wild ancestors Ц the wolves Ц blind dogs hunt in packs. An encounter with a large group of these animals can be dangerous even to an experienced and well-armed stalker."
+
+						if("Flesh")
+							article_title = "Flesh"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "Like many other living creatures, domestic pigs in The Zone underwent serious mutations following the second Chernobyl disaster, affecting genes responsible for their metabolism. This eventually caused the animal's phenotype to change significantly."
+
+						if("Snork")
+							article_title = "Snork"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "The Snork is a horrifically mutated human soldier or Stalker, still wearing tattered remains of his uniform, boots and a GP-4 gas mask with cracked eyepieces, and a flailing hose. Exposure to radiation and anomalies in the wake of the second Chernobyl disaster has destroyed the human mind, leaving a feral, vicious beast psyche and a twisted body in its place, creating a dangerous predator."
+
+						if("Boar")
+							article_title = "Boar"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "Mutagenic processes engineered by radiation and anomalies have played a significant part in shaping these mammals: they have lost all fur in a few places and grown long, bristly fur in others. The animal's hooves have changed in shape and become sharper, acquiring a resemblance to claws. Also, their pupils have become colorless, while both pigmentation disorders and deep wrinkles have appeared on their bald heads. They have also grown an extra pair of tusks which are easily recognized."
+
+						if("Artifacts")
+							article_title = "Artifacts"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = "Artifacts are items that have been changed by the conditions in the Zone. Most artifacts have strange and useful characteristics. For example, when kept close to the body, some artifacts create a protective field that increases its user's resilience to damage. Others may increase the user's stamina or protect against fire, etc. Artifacts are also valuable scientific study material and outside corporations would pay a hefty price to obtain one of these artifacts from the zone."
+
+						if("Artifacts")
+							article_title = "Artifacts"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = ""
+
+						if("Artifacts")
+							article_title = "Artifacts"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = ""
+
+						if("Artifacts")
+							article_title = "Artifacts"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = ""
+
+						if("Artifacts")
+							article_title = "Artifacts"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = ""
+
+						if("Artifacts")
+							article_title = "Artifacts"
+							article_img = "nodata.gif"
+							article_img_width = 179
+							article_img_height = 128
+							article_text = ""
 
 
 
 
-			if("3")			//–≈…“»Ќ√
-				if(data_core.stalkers.len)
-					refresh_rating(H)
-				mode = 3
 
-			if("4")			//Ћ≈Ќ“ј
-				if(switches & FEED_IMAGES)
-					for(var/datum/data/record/R in data_core.stalkers)
-						if(R.fields["lastlogin"] + RATING_REMOVE_TIMER > world.time)
-							continue
-						var/sid_p = R.fields["sid"]
-						var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
-						H << browse_rsc(P1.img, "photo_[sid_p]")
-				mode = 4
 
-			if("5")			// ј–“ј
-				SSminimap.sendMinimaps(H)
-				mode = 5
+		if("3")			//–≈…“»Ќ√
+			if(data_core.stalkers.len)
+				refresh_rating(H)
+			mode = 3
 
-		if(href_list["invite"])
+		if("4")			//Ћ≈Ќ“ј
+			if(switches & FEED_IMAGES)
+				for(var/datum/data/record/R in data_core.stalkers)
+					if(R.fields["lastlogin"] + RATING_REMOVE_TIMER > world.time)
+						continue
+					var/sid_p = R.fields["sid"]
+					var/obj/item/weapon/photo/P1 = R.fields["photo_front"]
+					H << browse_rsc(P1.img, "photo_[sid_p]")
+			mode = 4
 
-			var/sid_ = text2num(href_list["invite"])
-			var/datum/job/J = SSjob.GetJob(get_job_title(eng_faction_s))
+		if("5")			// ј–“ј
+			SSminimap.sendMinimaps(H)
+			mode = 5
+
+	if(href_list["invite"])
+
+		var/sid_ = text2num(href_list["invite"])
+		var/datum/job/J = SSjob.GetJob(get_job_title(eng_faction_s))
+
+		if(!J)
+			return
+
+		if((J.current_positions >= J.total_positions) && J.total_positions != -1)
+			return
+
+		if(last_invite + LEADER_INVITE_COOLDOWN > world.time)
+			return
+
+		var/datum/data/record/sk_invited = find_record("sid", sid_, data_core.stalkers)
+
+		if(!sk_invited)
+			return
+
+		last_invite = world.time
+		for(var/obj/item/device/stalker_pda/KPK_invited in KPKs)
+			if(KPK_invited.sid == sid_)
+				show_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s, "You have been invited to [eng_faction_s] faction. Check feed for more info.")
+				add_local_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s,"You have been invited to [eng_faction_s] faction. <a style=\"color:#c10000;\" href='byond://?src=\ref[KPK_invited];changefaction=[J.title]'>\[Accept invitation\]</a>")
+
+	if(href_list["remove"])
+
+		var/sid_ = text2num(href_list["remove"])
+		var/datum/job/J = SSjob.GetJob(get_job_title(eng_faction_s))
+
+		var/datum/data/record/sk_removed = find_record("sid", sid_, data_core.stalkers)
+
+		if(!sk_removed)
+			return
+
+		SSjob.AssignRole(owner, "Stalker", 1)
+		sk_removed.fields["faction_s"] = "Loners"
+		J.current_positions--
+
+		for(var/obj/item/device/stalker_pda/KPK_removed in KPKs)
+			if(KPK_removed.sid == sid_)
+				show_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s, "You have been kicked out of [eng_faction_s] faction.")
+				add_local_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s,"You have been kicked out of [eng_faction_s] faction.")
+
+				KPK_removed.set_owner_info(KPK_removed.profile)
+
+	if(href_list["changefaction"])
+
+		var/new_eng_faction_s =  SSjob.GetJob(href_list["changefaction"]).faction_s
+		var/confirm = alert(H, "Do you want to change your faction from [eng_faction_s] to [new_eng_faction_s]?", "KPK", "Yes", "No")
+		if(confirm == "Yes")
+			var/datum/job/J =  SSjob.GetJob(href_list["changefaction"])
 
 			if(!J)
 				return
@@ -1022,66 +1075,14 @@ var/global/global_lentahtml = ""
 			if((J.current_positions >= J.total_positions) && J.total_positions != -1)
 				return
 
-			if(last_invite + LEADER_INVITE_COOLDOWN > world.time)
-				return
+			SSjob.AssignRole(owner, href_list["changefaction"], 1)
 
-			var/datum/data/record/sk_invited = find_record("sid", sid_, data_core.stalkers)
+			profile.fields["faction_s"] = J.faction_s
+			set_owner_info(profile)
 
-			if(!sk_invited)
-				return
-
-			last_invite = world.time
-			for(var/obj/item/device/stalker_pda/KPK_invited in KPKs)
-				if(KPK_invited.sid == sid_)
-					show_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s, "You have been invited to [eng_faction_s] faction. Check feed for more info.")
-					add_local_lenta_message(src, KPK_invited, sid, owner.real_name, eng_faction_s,"You have been invited to [eng_faction_s] faction. <a style=\"color:#c10000;\" href='byond://?src=\ref[KPK_invited];changefaction=[J.title]'>\[Accept invitation\]</a>")
-
-		if(href_list["remove"])
-
-			var/sid_ = text2num(href_list["remove"])
-			var/datum/job/J = SSjob.GetJob(get_job_title(eng_faction_s))
-
-			var/datum/data/record/sk_removed = find_record("sid", sid_, data_core.stalkers)
-
-			if(!sk_removed)
-				return
-
-			SSjob.AssignRole(owner, "Stalker", 1)
-			sk_removed.fields["faction_s"] = "Loners"
-			J.current_positions--
-
-			for(var/obj/item/device/stalker_pda/KPK_removed in KPKs)
-				if(KPK_removed.sid == sid_)
-					show_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s, "You have been kicked out of [eng_faction_s] faction.")
-					add_local_lenta_message(src, KPK_removed, sid, owner.real_name, eng_faction_s,"You have been kicked out of [eng_faction_s] faction.")
-
-					KPK_removed.set_owner_info(KPK_removed.profile)
-
-		if(href_list["changefaction"])
-
-			var/new_eng_faction_s =  SSjob.GetJob(href_list["changefaction"]).faction_s
-			var/confirm = alert(H, "Do you want to change your faction from [eng_faction_s] to [new_eng_faction_s]?", "KPK", "Yes", "No")
-			if(confirm == "Yes")
-				var/datum/job/J =  SSjob.GetJob(href_list["changefaction"])
-
-				if(!J)
-					return
-
-				if((J.current_positions >= J.total_positions) && J.total_positions != -1)
-					return
-
-				SSjob.AssignRole(owner, href_list["changefaction"], 1)
-
-				profile.fields["faction_s"] = J.faction_s
-				set_owner_info(profile)
-
-		usr.set_machine(src)
-		//updateSelfDialog()
-		return
-	else
-		hacked = 0
-		H.unset_machine()
-		H << browse(null, "window=mainhtml")
+	//usr.set_machine(src)
+	updateSelfDialog()
+	return
 
 /obj/item/device/stalker_pda/proc/message_input(mob/living/U = usr, msg_name, max_length)
 	var/t = sanitize_russian(stripped_input(U, "Please enter the [msg_name]", name, null, max_length), 1)
