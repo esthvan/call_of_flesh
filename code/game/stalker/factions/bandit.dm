@@ -53,7 +53,7 @@ Assistant
 
 /datum/outfit/job/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kozhanka/banditka
 	ears = null
 	id = /obj/item/device/stalker_pda
@@ -72,7 +72,7 @@ Assistant
 
 /datum/outfit/job/bandit_pahan/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = /obj/item/clothing/under/color/switer/dark
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kozhanka/banditka/coat
 	ears = null
 	id = /obj/item/device/stalker_pda
@@ -90,7 +90,7 @@ Assistant
 	faction_s = "Bandits"
 
 /datum/outfit/job/bandit_barman/pre_equip(mob/living/carbon/human/H)
-	uniform = /obj/item/clothing/under/color/switer/dark
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kozhanka/banditka
 	ears = null
 	id = /obj/item/device/stalker_pda
@@ -121,5 +121,5 @@ Assistant
 
 /datum/outfit/bandit/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/stack/medical/gauze/bint,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)

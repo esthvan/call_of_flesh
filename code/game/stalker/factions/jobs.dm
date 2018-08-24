@@ -35,7 +35,7 @@
 
 /datum/outfit/job/trader/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = /obj/item/clothing/under/color/sidor/fat
+	uniform = /obj/item/clothing/under/color/sidor
 	suit = /obj/item/clothing/suit/jacket/sidor
 	ears = null
 	belt = /obj/item/weapon/gun/projectile/automatic/pistol/cora
@@ -45,7 +45,7 @@
 
 /datum/outfit/stalker/trader  // For select_equipment
 	name = "Sidorovich"
-	uniform = /obj/item/clothing/under/color/sidor/fat
+	uniform = /obj/item/clothing/under/color/sidor
 	suit = /obj/item/clothing/suit/jacket/sidor
 	ears = null
 	belt = /obj/item/weapon/gun/projectile/automatic/pistol/cora
@@ -82,7 +82,7 @@
 
 /datum/outfit/stalker/atelerd/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer,/obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	r_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/stack/medical/gauze/bint,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/outfit/stalker/palputin // For select_equipment
@@ -99,7 +99,7 @@
 
 /datum/outfit/stalker/atelerd/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer,/obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	r_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/stack/medical/gauze/bint,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/job/stalker/jacknoir

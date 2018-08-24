@@ -9,7 +9,7 @@
 	desc = "Ремонтный набор дл&#255; бронекостюмов и шлемов. Предназначен дл&#255; некритического ремонта (состо&#255;ние от 25% до 100%)."
 	icon = 'icons/stalker/device_new.dmi'
 	icon_state = "repair_kit_clothing_25"
-	uses = 3
+	uses = 1
 	min_durability = 25
 	add_durability = 40
 
@@ -76,7 +76,7 @@
 	desc = "Ремонтный набор дл&#255; огнестрельного оружия. Предназначен дл&#255; некритического ремонта (состо&#255;ние от 25% до 100%)."
 	icon = 'icons/stalker/device_new.dmi'
 	icon_state = "repair_kit_gun_25"
-	uses = 3
+	uses = 1
 	min_durability = 25
 	add_durability = 40
 

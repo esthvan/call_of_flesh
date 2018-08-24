@@ -24,7 +24,7 @@ Assistant
 /datum/outfit/job/duty/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = null
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
@@ -56,7 +56,7 @@ Assistant
 
 /datum/outfit/duty/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	//back2 = /obj/item/weapon/gun/projectile/automatic/aksu74
 	ears = null
@@ -116,7 +116,7 @@ Assistant
 /datum/outfit/job/duty_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/hardhat/tacticalhelmet/light
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless

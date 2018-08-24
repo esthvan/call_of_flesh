@@ -22,7 +22,7 @@
 	..()
 	head = null
 	mask = /obj/item/clothing/mask/gas/stalker/mercenary
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/mercenary
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
@@ -59,7 +59,7 @@
 
 /datum/outfit/mercenary/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/mercenary
 	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
 	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
@@ -90,7 +90,7 @@
 	..()
 	head = null
 	mask = /obj/item/clothing/mask/gas/stalker/mercenary
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/mercenary
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
