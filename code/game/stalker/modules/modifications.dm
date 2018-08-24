@@ -3,6 +3,7 @@
 	desc = "Верстак, стол, на котором можно модифицировать оружие и костюмы."
 	eng_desc = "Craft the diamond pickaxe."
 	icon = 'icons/stalker/decor.dmi'
+	icon_state = "polka"
 	var/obj/item/modificated = null
 	var/balance = 0
 	density = 1
