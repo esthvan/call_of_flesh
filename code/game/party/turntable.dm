@@ -152,6 +152,8 @@ var/global/turntable_channel = 4488
 	..()
 	turntable_channel++
 	music_channel = turntable_channel
+	spawn(5)
+		turntable_soundtracks = sortSoundtrack(turntable_soundtracks)
 /*
 	turntable_soundtracks = list()
 	for(var/i in subtypesof(/datum/turntable_soundtrack/)
@@ -218,7 +220,7 @@ var/global/turntable_channel = 4488
 	dat += "</div>"
 	dat += "<div class='lenta_scroll'>"
 	dat += "<br><BR><table border='0' width='400'>"
-	for(var/datum/data/turntable_soundtrack/TS in sortList(turntable_soundtracks))
+	for(var/datum/data/turntable_soundtrack/TS in turntable_soundtracks)
 		dat += "<tr><td>[TS.f_name]</td><td>[TS.name]</td><td><A href='?src=\ref[src];order=\ref[TS]'>PLAY</A></td></tr>"
 	dat += "</table>"
 	dat += "</div>"
