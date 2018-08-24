@@ -54,9 +54,11 @@ var/global/list/high_tier_sidormatitems = list()
 		/////////////////////////////// **Дробовики** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Sawn off", 		"Обрез",			/obj/item/weapon/gun/projectile/revolver/bm16/sawnoff,				6000, ROOKIE),
 		new /datum/data/stalker_equipment("BM-16", 			"БМ-16",			/obj/item/weapon/gun/projectile/revolver/bm16,						12000, ROOKIE),
-		new /datum/data/stalker_equipment("TOZ-34", 		"ТОЗ-34", 			/obj/item/weapon/gun/projectile/revolver/bm16/toz34, 				18000, EXPERIENCED),
-		new /datum/data/stalker_equipment("Wincheaster-1300","Винчестер-1300",	/obj/item/weapon/gun/projectile/shotgun/chaser,						25000, EXPERIENCED),
+		new /datum/data/stalker_equipment("TOZ-34", 		"ТОЗ-34", 			/obj/item/weapon/gun/projectile/revolver/bm16/toz34, 				18000, ROOKIE),
+		new /datum/data/stalker_equipment("Ithaca M37",		"Итака М37",		/obj/item/weapon/gun/projectile/shotgun/ithaca,						23000, EXPERIENCED),
+		new /datum/data/stalker_equipment("Wincheaster-1300","Винчестер-1300",	/obj/item/weapon/gun/projectile/shotgun/chaser,						28000, EXPERIENCED),
 		new /datum/data/stalker_equipment("SPAS-12", 		"СПАС-12",			/obj/item/weapon/gun/projectile/shotgun/spsa, 						50000, VETERAN),
+
 		/////////////////////////////// **Другое** /////////////////////////////////////
 		new /datum/data/stalker_equipment("Knife",			 "Нож",				/obj/item/weapon/stalker/knife,										3500, ROOKIE)
 		)
@@ -148,20 +150,36 @@ var/global/list/high_tier_sidormatitems = list()
 
 	var/list/food_list = list(
 		/////////////////////////////////	Еда	///////////////////////////////////////////
-		new /datum/data/stalker_equipment("Canned stew",		"Тушенка",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,				600, ROOKIE),
-		new /datum/data/stalker_equipment("Canned fish",		"Шпроты",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti,		800, ROOKIE),
+		new /datum/data/stalker_equipment("Canned stew",		"Тушенка",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,				550, ROOKIE),
+		new /datum/data/stalker_equipment("Canned fish",		"Шпроты",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti,		750, ROOKIE),
 		new /datum/data/stalker_equipment("Vodka \"Kazaki\"",	"Водка \"Казаки\"",					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kazaki,			1500, ROOKIE),
 		new /datum/data/stalker_equipment("Energy drink \"NonStop\"","Энергетик \"NonStop\"",		/obj/item/weapon/reagent_containers/food/drinks/soda_cans/energetic,			500, ROOKIE),
-		new /datum/data/stalker_equipment("Snickers",			"Сникерс",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/snikers,	400, EXPERIENCED),
+		new /datum/data/stalker_equipment("Snickers",			"Сникерс",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/snikers,	300, EXPERIENCED),
 		new /datum/data/stalker_equipment("Salami",				"Колбаса",							/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,				500, ROOKIE),
-		new /datum/data/stalker_equipment("Bread",				"Батон",							/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,					400, ROOKIE),
-		//new /datum/data/stalker_equipment("Плавленый сыр",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/sirok,	400)
+		new /datum/data/stalker_equipment("Bread",				"Батон",							/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,					400, ROOKIE)
+
+		)
+
+	var/list/unused_food_list = list(
+		new /datum/data/stalker_equipment("Canned soup",	"Консервированный Суп",				/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/soup,				900),
+		new /datum/data/stalker_equipment("Canиed beans",	"Консервированные Бобы",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/bobi,				750),
+		new /datum/data/stalker_equipment("Canned stew",	"Тушенка",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/govyadina2,		900),
+		new /datum/data/stalker_equipment("Canned fish",	"Консервированна&#x44F; рыба",		/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/fish,				750),
+		new /datum/data/stalker_equipment("Cream cheese",	"Плавленый сыр",					/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/sirok,		400),
+		new /datum/data/stalker_equipment("Chocolate bar",	"Плитка шоколада",					/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/chocolate,	600),
+		new /datum/data/stalker_equipment("Biscuits",		"Галеты",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/galets,			400),
+		new /datum/data/stalker_equipment("Cerreal",		"Каша",								/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/kasha,				550),
+		new /datum/data/stalker_equipment("Canned meat",	"Тушенка",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/MREkonserva1,		700),
+		new /datum/data/stalker_equipment("Canned meat",	"Тушенка",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/MREkonserva2,		700),
+		new /datum/data/stalker_equipment("Canned meat with vegetables","Тушенка с овощами",	/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/MREkonserva3,		850),
+		new /datum/data/stalker_equipment("Biscuits",		"Галеты",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/galets,			400),
+
 		)
 
 	var/list/misc_list = list(
 		/////////////////////////////////	Другое	/////////////////////////////////////////////
-		new /datum/data/stalker_equipment("Repair-kit for suits and helmets",	"Рем. комплект дл&#x44F; бронекостюмов и шлемов",	/obj/item/device/repair_kit/clothing,										30000, ROOKIE),
-		new /datum/data/stalker_equipment("Repair-kit for guns",				"Рем. комплект дл&#x44F; огнестрельного оружи&#x44F;",/obj/item/device/repair_kit/gun,											10000, ROOKIE),
+		new /datum/data/stalker_equipment("Repair-kit for suits and helmets",	"Рем. комплект дл&#x44F; бронекостюмов и шлемов",	/obj/item/device/repair_kit/clothing,										10000, ROOKIE),
+		new /datum/data/stalker_equipment("Repair-kit for guns",				"Рем. комплект дл&#x44F; огнестрельного оружи&#x44F;",/obj/item/device/repair_kit/gun,											3500, ROOKIE),
 		new /datum/data/stalker_equipment("Guitar",								"Гитара",											/obj/item/device/instrument/guitar,											3000, ROOKIE),
 		new /datum/data/stalker_equipment("Geiger counter",						"Дозиметр",											/obj/item/device/geiger_counter,											3000, ROOKIE),
 		new /datum/data/stalker_equipment("Flashlight",							"Фонарик",											/obj/item/device/flashlight/seclite,										1000, ROOKIE),
@@ -170,8 +188,14 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										800, ROOKIE),
 		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,					2500, ROOKIE),
 		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,							10000, ROOKIE),
-		new /datum/data/stalker_equipment("Backpack",							"Рюкзак",											/obj/item/weapon/storage/backpack/stalker,									2500, ROOKIE, sale_price = 0),
-		new /datum/data/stalker_equipment("Satchel",							"Сумка",											/obj/item/weapon/storage/backpack/satchel/stalker,							2500, ROOKIE, sale_price = 0)
+		new /datum/data/stalker_equipment("Backpack",							"Рюкзак",											/obj/item/weapon/storage/backpack/stalker,									2500, ROOKIE),
+		new /datum/data/stalker_equipment("Satchel",							"Сумка",											/obj/item/weapon/storage/backpack/satchel/stalker,							2500, ROOKIE),
+		new /datum/data/stalker_equipment("Under",								"Бабушкин свитер",									/obj/item/clothing/under/color/switer,										1000, ROOKIE),
+		new /datum/data/stalker_equipment("Dark under",							"Тёмный бабушкин свитер",							/obj/item/clothing/under/color/switer/dark,									1500, ROOKIE),
+		new /datum/data/stalker_equipment("Telnyashka",							"Тельняшка",										/obj/item/clothing/under/color/switer/lolg,									1500, ROOKIE),
+		new /datum/data/stalker_equipment("Tracksuit",							"Спортивный костюм",								/obj/item/clothing/under/color/switer/tracksuit,							1500, ROOKIE),
+		new /datum/data/stalker_equipment("Worn out army boots",				"Поношенные берцы",									/obj/item/clothing/shoes/jackboots/warm,									800, ROOKIE),
+
 		)
 
 	var/list/detector_list = list(
