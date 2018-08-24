@@ -5,3 +5,5 @@ narcissf = Freedom
 narcissf = Freedom Lieutenant
 drunktess = Freedom Lieutenant
 jacknoir413 = Mercenary Sql
+zergursh = Duty Lieutenant
+xrenoid = Duty Lieutenant

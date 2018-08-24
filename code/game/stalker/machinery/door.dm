@@ -33,3 +33,15 @@
 /obj/machinery/door/poddoor/sidor/skadovsk
 	icon = 'icons/obj/doors/door_sidor2.dmi'
 	icon_state = "closed"
+
+/obj/machinery/door/poddoor/sidor/skadovsk/special
+	icon = 'icons/obj/doors/door_sidor2.dmi'
+	icon_state = "closed"
+	auto_close = 50
+
+/obj/machinery/door/poddoor/sidor/skadovsk/special/open(ignorepower = 0)
+	if(world.time >= SKADOVSK_LOCKED_TIMER)
+		return ..()
+	else
+		say("Door will be locked for next [round((SKADOVSK_LOCKED_TIMER - world.time)/600) + 1] min. due to psionic emission.")
+		return 0

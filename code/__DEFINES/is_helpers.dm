@@ -77,3 +77,7 @@
 #define issignaler(O) (istype(O, /obj/item/device/assembly/signaler))
 
 #define istimer(O) (istype(O, /obj/item/device/assembly/timer))
+
+// STALKER
+
+#define isvodka(I) (istype(I, /obj/item/weapon/reagent_containers/food/drinks/vodka))

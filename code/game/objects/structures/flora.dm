@@ -258,6 +258,7 @@
 /obj/structure/flora/stalker/bush
 	icon_state = "very_tall_grass_8"
 	layer = 4.01
+	anchored = 1
 	opacity = 1
 
 /obj/structure/flora/stalker/bush/initialize()

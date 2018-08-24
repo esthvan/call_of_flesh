@@ -140,21 +140,21 @@ var/global/list/high_tier_sidormatitems = list()
 	var/list/med_list = list(
 		///////////////////////////////	Медикаменты	/////////////////////////////////////////
 		new /datum/data/stalker_equipment("Medkit",				"Аптечка",							/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian,			1000, ROOKIE),
-		new /datum/data/stalker_equipment("Army medkit",		"Армейска&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army,				2000, EXPERIENCED),
-		new /datum/data/stalker_equipment("Scientific medkit",	"Научна&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific,		4000, VETERAN),
-		new /datum/data/stalker_equipment("Bandage",			"Бинт",								/obj/item/stack/medical/gauze/bint,											500, ROOKIE),
-		new /datum/data/stalker_equipment("Anti-rad",			"Анти-рад препараты",				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,		3000, ROOKIE)
+		new /datum/data/stalker_equipment("Army medkit",		"Армейска&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army,				2500, EXPERIENCED),
+		new /datum/data/stalker_equipment("Scientific medkit",	"Научна&#x44F; аптечка",			/obj/item/weapon/reagent_containers/pill/stalker/aptechka/scientific,		5000, VETERAN),
+		new /datum/data/stalker_equipment("Bandage",			"Бинт",								/obj/item/stack/medical/gauze/bint,											750, ROOKIE),
+		new /datum/data/stalker_equipment("Anti-rad",			"Анти-рад препараты",				/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,		3500, ROOKIE)
 		)
 
 	var/list/food_list = list(
 		/////////////////////////////////	Еда	///////////////////////////////////////////
-		new /datum/data/stalker_equipment("Canned stew",		"Тушенка",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,				500, ROOKIE),
+		new /datum/data/stalker_equipment("Canned stew",		"Тушенка",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,				600, ROOKIE),
 		new /datum/data/stalker_equipment("Canned fish",		"Шпроты",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti,		800, ROOKIE),
-		new /datum/data/stalker_equipment("Vodka \"Kazaki\"",	"Водка \"Казаки\"",					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kazaki,			1000, ROOKIE),
+		new /datum/data/stalker_equipment("Vodka \"Kazaki\"",	"Водка \"Казаки\"",					/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kazaki,			1500, ROOKIE),
 		new /datum/data/stalker_equipment("Energy drink \"NonStop\"","Энергетик \"NonStop\"",		/obj/item/weapon/reagent_containers/food/drinks/soda_cans/energetic,			500, ROOKIE),
-		new /datum/data/stalker_equipment("Snickers",			"Сникерс",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/snikers,	300, EXPERIENCED),
-		new /datum/data/stalker_equipment("Salami",				"Колбаса",							/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,				400, ROOKIE),
-		new /datum/data/stalker_equipment("Bread",				"Батон",							/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,					300, ROOKIE),
+		new /datum/data/stalker_equipment("Snickers",			"Сникерс",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/snikers,	400, EXPERIENCED),
+		new /datum/data/stalker_equipment("Salami",				"Колбаса",							/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,				500, ROOKIE),
+		new /datum/data/stalker_equipment("Bread",				"Батон",							/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,					400, ROOKIE),
 		//new /datum/data/stalker_equipment("Плавленый сыр",			/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/snack/sirok,	400)
 		)
 
@@ -167,7 +167,7 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("Flashlight",							"Фонарик",											/obj/item/device/flashlight/seclite,										1000, ROOKIE),
 		new /datum/data/stalker_equipment("Big Artifact belt",					"Большой по&#x44F;с дл&#x44F; артефактов",			/obj/item/weapon/storage/belt/stalker/artifact_belt,						60000, EXPERIENCED),
 		new /datum/data/stalker_equipment("Artifact belt",						"Маленький по&#x44F;с дл&#x44F; артефактов",		/obj/item/weapon/storage/belt/stalker/artifact_belt/small,					25000, ROOKIE),
-		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										750, ROOKIE),
+		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										800, ROOKIE),
 		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,					2500, ROOKIE),
 		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,							10000, ROOKIE),
 		new /datum/data/stalker_equipment("Backpack",							"Рюкзак",											/obj/item/weapon/storage/backpack/stalker,									2500, ROOKIE, sale_price = 0),
@@ -221,7 +221,20 @@ var/global/list/high_tier_sidormatitems = list()
 		new /datum/data/stalker_equipment("PSU-1",				"ПСУ-1",							/obj/item/weapon/attachment/scope/PS/U1,			6000,	EXPERIENCED),
 		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",							/obj/item/weapon/attachment/scope/PS/O1,			10000,	EXPERIENCED),
 		new /datum/data/stalker_equipment("Universl suppressor","Универсальный глушитель",			/obj/item/weapon/attachment/suppressor,				2000,	ROOKIE),
-
+		///////////////////////////////////////////////////////////////////////////////////////////
+		)
+	var/trash_list = list(
+		/////////////////////////////////	Мусор	//////////////////////////////////////////////
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva,						400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/MREkonserva1,			200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/MREkonserva2,			200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/MREkonserva3,			200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/bobi,					400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/fish,					500,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/govyadina,				400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/shproti,				600,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/soup,					500,	ROOKIE),
+		///////////////////////////////////////////////////////////////////////////////////////////
 		)
 
 /datum/data/stalker_equipment/
@@ -281,7 +294,7 @@ var/global/list/high_tier_sidormatitems = list()
 	if(..())
 		return
 
-	if(!istype(user,/mob/living/carbon/human))
+	if(!ishuman(user))
 		say("You are not a human.")
 		return
 
@@ -325,63 +338,63 @@ var/global/list/high_tier_sidormatitems = list()
 		dat += "<br><BR><table border='0' width='400'>" //<b>Item list:</b>
 		dat += "<tr><td><center><b>Guns</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in weapon_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Ammo</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in ammo_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Armor</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in armor_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Helmets And Gasmasks</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in helmet_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Meds</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in med_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Food And Drinks</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in food_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Detectors</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in detector_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Misc</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in misc_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Gun Attachments</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in attachment_list)
-			if((KPK.eng_faction_s == prize.faction && (switches & SHOW_FACTION_EQUIPMENT)) || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name_eng]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
@@ -402,63 +415,63 @@ var/global/list/high_tier_sidormatitems = list()
 		dat += "<br><BR><table border='0' width='400'>" //<b>Список предметов:</b>
 		dat += "<tr><td><center><b>Оружие</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in weapon_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Боеприпасы</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in ammo_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Бронекостюмы</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in armor_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Шлемы и противогазы</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in helmet_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Медикаменты</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in med_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Еда</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in food_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Детекторы</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in detector_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Другое</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in misc_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
 
 		dat += "<tr><td></td><td></td><td></td></tr><tr><td><center><b>Модификации</b></center></td><td></td><td></td></tr>"
 		for(var/datum/data/stalker_equipment/prize in attachment_list)
-			if(KPK.eng_faction_s == prize.faction || prize.faction == "Everyone")
+			if((KPK.eng_faction_s == prize.faction && (prize.faction == "Loners" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 				//if(rating >= prize.rating)
 				if(get_assortment_level(H) >= prize.assortment_level)
 					dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
@@ -569,7 +582,7 @@ var/global/list/high_tier_sidormatitems = list()
 		CHECK_TICK
 
 	if(total_cost)
-		say("HABAR WAS SUCCESSFULLY SOLD FOR [total_cost].")
+		say("<b>Habar was successfully sold for [total_cost].</b>")
 
 	updateUsrDialog()
 	return
@@ -587,7 +600,7 @@ var/global/list/high_tier_sidormatitems = list()
 				continue
 
 		if(istype(AM, /obj/item/weapon/storage/backpack/) && AM.contents.len)
-			say("Empty [AM] before selling!")
+			say("Empty [AM] before selling.")
 			continue
 
 		if(istype(AM, /obj/item/ammo_box))
@@ -596,8 +609,11 @@ var/global/list/high_tier_sidormatitems = list()
 				say("Fill [AB] before selling.")
 				continue
 
+		//if(istype(AM, /obj/item/weapon/reagent_containers))
+		//	say("[AM] can't be sold!")
+		//	continue
 
-		ontable.Add(AM)
+		ontable += AM
 
 	return ontable
 

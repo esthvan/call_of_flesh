@@ -221,6 +221,14 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		msg += "*--------*"
 		user << msg
 
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		var/datum/data/record/sk = (find_record("sid", C.sid, data_core.stalkers))
+		if(sk && sk.fields["faction_s"] == "Traders")
+			for(var/datum/data/stalker_equipment/SE in sidormatitems)
+				if(SE.equipment_path == type)
+					user << "<span class ='notice'>This item costs [SE.sale_price]RU</span>"
+					break
 
 /obj/item/attack_hand(mob/user)
 	if (!user) return

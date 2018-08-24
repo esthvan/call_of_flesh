@@ -119,7 +119,6 @@ var/global/global_lentahtml = ""
 /obj/item/device/stalker_pda/attack_hand(mob/living/user)
 	if(src.loc == user)
 		attack_self(user)
-		user.set_machine(src)
 	else
 		..()
 
@@ -611,7 +610,7 @@ var/global/global_lentahtml = ""
 	if(usr.canUseTopic(src))
 		//add_fingerprint(H)
 		//get_asset_datum(/datum/asset/simple/kpk).send(H)
-		H.set_machine(src)
+		//H.set_machine(src)
 		switch(href_list["choice"])
 			if("title")
 				if(show_title)
@@ -1077,7 +1076,7 @@ var/global/global_lentahtml = ""
 				set_owner_info(profile)
 
 		usr.set_machine(src)
-		updateSelfDialog()
+		//updateSelfDialog()
 		return
 	else
 		hacked = 0
@@ -1096,8 +1095,9 @@ var/global/global_lentahtml = ""
 
 /proc/add_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
 	var/factioncolor 	= get_faction_color(faction_owner)
+	var/faction_title = faction_owner
 	if(KPK_owner && KPK_owner.profile && KPK_owner.profile.fields["degree"] >= 1)
-		faction_owner += " - leader"
+		faction_title += " - leader"
 
 	var/t = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
 		<tr style=\"border: 0px solid black;\">\
@@ -1107,7 +1107,7 @@ var/global/global_lentahtml = ""
 		\
 		<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
 		\
-		<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+		<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_title]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
 		\
 		</td>\
 		\
@@ -1124,8 +1124,9 @@ var/global/global_lentahtml = ""
 
 /proc/add_local_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/obj/item/device/stalker_pda/KPK_guest, var/sid_owner, var/name_owner, var/faction_owner, msg)
 	var/factioncolor 	= get_faction_color(faction_owner)
+	var/faction_title = faction_owner
 	if(KPK_owner && KPK_owner.profile && KPK_owner.profile.fields["degree"] >= 1)
-		faction_owner += " - leader"
+		faction_title += " - leader"
 	KPK_guest.lentahtml = "<table style=\"margin-top: 0px; margin-bottom: 5px; border: 0px; background: #2e2e38;\">\
 	<tr style=\"border: 0px solid black;\">\
 	<td style=\"border: 0px solid black; vertical-align: top; background: #2e2e38;\" width=32 height=32>\
@@ -1134,7 +1135,7 @@ var/global/global_lentahtml = ""
 	\
 	<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
 	\
-	<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+	<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_title]\]</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
 	\
 	</td>\
 	\
@@ -1144,8 +1145,9 @@ var/global/global_lentahtml = ""
 
 /proc/add_faction_lenta_message(var/obj/item/device/stalker_pda/KPK_owner, var/sid_owner, var/name_owner, var/faction_owner, msg, selfsound = 0)
 	var/factioncolor 	= get_faction_color(faction_owner)
+	var/faction_title = faction_owner
 	if(KPK_owner && KPK_owner.profile && KPK_owner.profile.fields["degree"] >= 1)
-		faction_owner += " - leader"
+		faction_title += " - leader"
 	for(var/obj/item/device/stalker_pda/KPK in KPKs)
 		if(KPK_owner.eng_faction_s != KPK.eng_faction_s)
 			continue
@@ -1157,7 +1159,7 @@ var/global/global_lentahtml = ""
 		\
 		<td width=386 height=32 align=\"top\" style=\"background: #131416; border: 0px; text-align:left; vertical-align: top;\">\
 		\
-		<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_owner]\](faction chat)</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
+		<p class=\"lentamsg\"><b><font color = \"[factioncolor]\">[name_owner]\[[faction_title]\](faction chat)</font></b>:<br><font color = \"#afb2a1\">[msg]</font></p>\
 		\
 		</td>\
 		\
@@ -1536,5 +1538,7 @@ var/global/global_lentahtml = ""
 			return "Freedom"
 		if("Monolith")
 			return "Monolith"
-		if("Loners")
+		if("Army")
+			return "Army"
+		else
 			return "Stalker"
