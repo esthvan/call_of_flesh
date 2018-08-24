@@ -69,7 +69,7 @@
 	eng_desc = "Магазинное ружьё (дробовик), разработанное Джоном М. Браунингом в 1913 году и запатентованное в 1915 году. Основными достоинствами ружь&#255; всегда считалась небольша&#255; масса и возможность легкого использовани&#255; как с правой, так и с левой руки — ведь стрел&#255;ные гильзы отбрасываютс&#255; вниз."
 	icon_state = "ithacam37"
 	item_state = "toz34"
-	durability = 200
+	durability = 100
 	slot_flags = SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/stalker/ithaca
 	recoil = 1
@@ -78,7 +78,7 @@
 	spread = 12
 	force = 15
 	damagelose = 0.3
-	distro = 17
+	distro = 25
 	weapon_weight = WEAPON_MEDIUM
 	//fire_sound = 'sound/stalker/weapons/winchester1300_shot.ogg'
 	loadsound = 'sound/stalker/weapons/load/chaser_load.ogg'
