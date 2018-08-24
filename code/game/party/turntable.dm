@@ -357,7 +357,7 @@ var/global/turntable_channel = 4488
 
 /obj/machinery/party/turntable/proc/turn_on(var/datum/data/turntable_soundtrack/selected)
 	if(playing)
-		turn_off()
+		return
 
 	playing = 1
 
@@ -381,7 +381,8 @@ var/global/turntable_channel = 4488
 
 	for(var/client/C in melomans)
 		C.jukeboxplaying = 0
-		C.mob << sound(null, channel = music_channel, wait = 0)
+		if(C.mob)
+			C.mob << sound(null, channel = music_channel, wait = 0)
 		melomans.Remove(C)
 
 	playing = 0
