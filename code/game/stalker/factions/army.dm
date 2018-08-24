@@ -44,7 +44,7 @@ Assistant
 /datum/outfit/job/army/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = null
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = /obj/item/clothing/under/color/switer/lolg
 	suit = /obj/item/clothing/suit/army
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
@@ -83,7 +83,7 @@ Assistant
 
 /datum/outfit/job/petrovich/pre_equip(mob/living/carbon/human/H)
 	head = null
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = /obj/item/clothing/under/color/switer/lolg
 	suit = /obj/item/clothing/suit/army
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
@@ -121,7 +121,7 @@ Assistant
 
 /datum/outfit/army/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = /obj/item/clothing/under/color/switer/lolg
 	suit = /obj/item/clothing/suit/army
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 	r_pocket =/obj/item/weapon/stalker/bolts

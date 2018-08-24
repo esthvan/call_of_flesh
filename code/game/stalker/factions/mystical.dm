@@ -66,7 +66,7 @@
 
 /datum/outfit/job/blackstalker/pre_equip(mob/living/carbon/human/H)
 	H.client.verbs += /client/proc/karma_panel_new
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kozhanka/banditka
 	ears = null
 	id = /obj/item/weapon/storage/wallet/stalker

@@ -1,5 +1,8 @@
 #define SKADOVSK_LOCKED_TIMER				2400
 
+///////////////JOB
+#define UNIFORMPICK (pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark, /obj/item/clothing/under/color/switer/lolg, /obj/item/clothing/under/color/switer/tracksuit))
+
 ///////////////–≈…“»Õ√
 #define ZONE_LEGEND							10000
 #define EXPERT								7000
