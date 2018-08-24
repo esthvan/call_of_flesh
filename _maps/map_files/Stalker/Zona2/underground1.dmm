@@ -351,7 +351,7 @@
 "gM" = (/obj/effect/step_trigger/teleporter{teleport_x = 18; teleport_y = 104; teleport_z = 2},/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/krug)
 "gN" = (/obj/effect/step_trigger/teleporter{invisibility = 101; teleport_x = 12; teleport_y = 151; teleport_z = 1},/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/krug)
 "gO" = (/obj/effect/step_trigger/teleporter{invisibility = 101; teleport_x = 13; teleport_y = 151; teleport_z = 1},/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/krug)
-"gP" = (/obj/effect/step_trigger/teleporter{teleport_x = 23; teleport_y = 123; teleport_z = 2},/turf/simulated/floor/plasteel/stairs,/area/stalker/buildings/backwater/krug)
+"gP" = (/obj/effect/step_trigger/teleporter{teleport_x = 19; teleport_y = 124; teleport_z = 2},/turf/simulated/floor/plasteel/stairs,/area/stalker/buildings/backwater/krug)
 "gQ" = (/obj/effect/step_trigger/teleporter{teleport_x = 14; teleport_y = 171; teleport_z = 2},/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/krug)
 "gR" = (/obj/effect/step_trigger/teleporter{teleport_x = 15; teleport_y = 171; teleport_z = 2},/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/krug)
 "gS" = (/obj/effect/spawner/lootdrop/stalker/mobspawner/controller_spawner,/turf/stalker/floor/water,/area/stalker/buildings/backwater/krug)
