@@ -16,6 +16,7 @@
 	spread = 12
 	damagelose = 0.3
 	distro = 25
+	weapon_weight = WEAPON_MEDIUM
 	fire_sound = 'sound/stalker/weapons/bm16_shot.ogg'
 	loadsound = 'sound/stalker/weapons/load/obrez_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/obrez_open.ogg'
@@ -60,6 +61,29 @@
 	spread = 6
 	damagelose = 0.15
 	distro = 10
+	weapon_weight = WEAPON_MEDIUM
+
+/obj/item/weapon/gun/projectile/shotgun/ithaca  //  Ithaca M37
+	name = "Ithaca M37"
+	desc = " Pump-action shotgun made in large numbers for the civilian, military, and police markets. It utilizes a novel combination ejection/loading port on the bottom of the gun which leaves the sides closed to the elements. Since shotshells load and eject from the bottom, operation of the gun is equally convenient for both right and left hand shooters. This makes the gun popular with left-handed shooters. The model 37 is considered one of the most durable and reliable shotguns ever produced."
+	eng_desc = "Магазинное ружьё (дробовик), разработанное Джоном М. Браунингом в 1913 году и запатентованное в 1915 году. Основными достоинствами ружь&#255; всегда считалась небольша&#255; масса и возможность легкого использовани&#255; как с правой, так и с левой руки — ведь стрел&#255;ные гильзы отбрасываютс&#255; вниз."
+	icon_state = "ithacam37"
+	item_state = "toz34"
+	durability = 200
+	slot_flags = SLOT_BACK
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/stalker/ithaca
+	recoil = 1
+	w_class = 4
+	randomspread = 0
+	spread = 12
+	force = 15
+	damagelose = 0.3
+	distro = 17
+	weapon_weight = WEAPON_MEDIUM
+	//fire_sound = 'sound/stalker/weapons/winchester1300_shot.ogg'
+	loadsound = 'sound/stalker/weapons/load/chaser_load.ogg'
+	pumpsound = 'sound/stalker/weapons/pump/chaser_pump.ogg'
+	drawsound = 'sound/stalker/weapons/draw/shotgun_draw.ogg'
 
 /obj/item/weapon/gun/projectile/shotgun/chaser  //  Winchester 1300
 	name = "Chaser-13"
@@ -77,6 +101,7 @@
 	force = 15
 	damagelose = 0.3
 	distro = 16
+	weapon_weight = WEAPON_MEDIUM
 	//fire_sound = 'sound/stalker/weapons/winchester1300_shot.ogg'
 	loadsound = 'sound/stalker/weapons/load/chaser_load.ogg'
 	pumpsound = 'sound/stalker/weapons/pump/chaser_pump.ogg'
@@ -87,6 +112,7 @@
 	desc = "Значительно компактней и легче новой двустволки, но эффективен только в ближнем бою. Один из самых распространённых видов оружи&#255; у новичков."
 	eng_desc = "A sawed-off hunting shotgun with two side-by-side barrels, making it lighter and more compact than a full shotgun. One of the most popular weapons among bandits due to its combination of ease of concealment and extreme effectiveness in close combat."
 	sawn_state = SAWN_OFF
+	weapon_weight = WEAPON_LIGHT
 	item_state = "gun"
 	slot_flags = SLOT_BELT|SLOT_BACK
 	w_class = 3
@@ -117,6 +143,7 @@
 	force = 15
 	damagelose = 0.35
 	distro = 12
+	weapon_weight = WEAPON_MEDIUM
 	fire_sound = 'sound/stalker/weapons/spsa_shot.ogg'
 	loadsound = 'sound/stalker/weapons/load/spsa_load.ogg'
 	pumpsound = 'sound/stalker/weapons/pump/spsa_pump.ogg'
