@@ -119,7 +119,6 @@ var/global/global_lentahtml = ""
 /obj/item/device/stalker_pda/attack_hand(mob/living/user)
 	if(src.loc == user)
 		attack_self(user)
-		user.set_machine(src)
 	else
 		..()
 
@@ -611,7 +610,7 @@ var/global/global_lentahtml = ""
 	if(usr.canUseTopic(src))
 		//add_fingerprint(H)
 		//get_asset_datum(/datum/asset/simple/kpk).send(H)
-		H.set_machine(src)
+		//H.set_machine(src)
 		switch(href_list["choice"])
 			if("title")
 				if(show_title)
@@ -1077,7 +1076,7 @@ var/global/global_lentahtml = ""
 				set_owner_info(profile)
 
 		usr.set_machine(src)
-		updateSelfDialog()
+		//updateSelfDialog()
 		return
 	else
 		hacked = 0
@@ -1539,5 +1538,7 @@ var/global/global_lentahtml = ""
 			return "Freedom"
 		if("Monolith")
 			return "Monolith"
-		if("Loners")
+		if("Army")
+			return "Army"
+		else
 			return "Stalker"

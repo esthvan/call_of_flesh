@@ -403,7 +403,7 @@ obj/item/weapon/gun/proc/newshot()
 				if(prob(2.5))
 					jam = 1
 
-		durability -= 0.05
+		durability -= 0.075
 	else
 		if(jam)
 			return

@@ -498,7 +498,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	max_heat_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEJUMPSUIT
 	unacidable = 1
-	armor = list(melee = 60, bullet = 75, laser = 60,burn = 50, bomb = 70, bio = 35, rad = 35, electro = 50, psy = 0)
+	armor = list(melee = 60, bullet = 70, laser = 60,burn = 50, bomb = 70, bio = 35, rad = 35, electro = 50, psy = 0)
 	durability = 200
 
 /obj/item/clothing/suit/hooded/kombez/ps5m

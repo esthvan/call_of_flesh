@@ -1,3 +1,5 @@
+#define SKADOVSK_LOCKED_TIMER				2400
+
 ///////////////–≈…“»Õ√
 #define ZONE_LEGEND							10000
 #define EXPERT								7000

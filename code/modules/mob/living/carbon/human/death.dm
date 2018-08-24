@@ -44,6 +44,11 @@ var/onelive = 1
 	if(zombiefied)
 		LoseTarget()
 
+	if(job)
+		var/datum/job/J = SSjob.GetJob(job)
+		//if(GetJob.total_positions != -1)
+		J.current_positions--
+
 	dna.species.spec_death(gibbed,src)
 
 //Загробная жизнь

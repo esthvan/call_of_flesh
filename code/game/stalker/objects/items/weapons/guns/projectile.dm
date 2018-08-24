@@ -174,6 +174,7 @@
 	recoil = 0.65
 	durability = 50
 	damagelose = 0.15
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/pm_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/pm_open.ogg'
@@ -194,6 +195,7 @@
 	recoil = 1
 	durability = 500
 	damagelose = 0.1
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/usp_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/obrez_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/obrez_open.ogg'
@@ -287,6 +289,7 @@
 	randomspread = 0
 	damagelose = 0.25
 	can_scope = 1
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/ak74_draw.ogg'
 
 /obj/item/weapon/gun/projectile/automatic/aksu74  // ¿ —74”
@@ -310,6 +313,7 @@
 	recoil = 0.7
 	damagelose = 0.5
 	can_scope = 1
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/ak74u_draw.ogg'
 
 /*
@@ -381,6 +385,7 @@
 	recoil = 0.25
 	damagelose = 0.5
 	can_scope = 0
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/mp5_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/mp5_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/mp5_open.ogg'
@@ -406,6 +411,7 @@
 	recoil = 0.4
 	damagelose = 0.2
 	can_scope = 1
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/tpc301_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/tpc301_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/tpc301_open.ogg'
@@ -431,6 +437,7 @@
 	recoil = 0.4
 	damagelose = 0.2
 	can_scope = 1
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/abakan_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/abakan_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/abakan_open.ogg'
@@ -458,6 +465,7 @@
 	recoil = 0.4
 	damagelose = 0.1
 	can_scope = 0
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/l85_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
@@ -480,6 +488,7 @@
 	recoil = 0.3
 	damagelose = 0.2
 	can_scope = 0
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
@@ -507,6 +516,7 @@
 	recoil = 0.35
 	damagelose = 0.1
 	can_scope = 0
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/l85_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
@@ -532,6 +542,7 @@
 	recoil = 0.35
 	damagelose = 0.15
 	can_scope = 0
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
@@ -559,6 +570,7 @@
 	recoil = 0.35
 	damagelose = 0.15
 	can_scope = 0
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/fnf2000_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/fnf2000_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/fnf2000_open.ogg'
@@ -574,7 +586,7 @@
 	slot_flags = SLOT_BACK
 	origin_tech = "combat=5;materials=1;syndicate=2"
 	mag_type = /obj/item/ammo_box/magazine/stalker/pkm
-	weapon_weight = WEAPON_MEDIUM
+	weapon_weight = WEAPON_HEAVY
 	fire_sound = 'sound/stalker/weapons/pkm_shot.ogg'
 	can_suppress = 0
 	can_scope = 0
@@ -618,6 +630,7 @@
 	recoil = 0.3
 	damagelose = 0.1
 	can_scope = 1
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/val_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/val_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/val_open.ogg'
@@ -647,6 +660,7 @@
 	recoil = 0.3
 	damagelose = 0
 	can_scope = 0
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/val_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/val_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/val_open.ogg'
@@ -672,6 +686,7 @@
 	recoil = 0.4
 	damagelose = 0.35
 	can_scope = 1
+	weapon_weight = WEAPON_MEDIUM
 	drawsound = 'sound/stalker/weapons/draw/groza_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'

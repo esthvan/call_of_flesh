@@ -59,6 +59,11 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70
 	max_ammo = 2
 
+/obj/item/ammo_box/magazine/internal/shot/stalker/ithaca
+	name = "ithaca internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/c12x70
+	max_ammo = 4
+
 /obj/item/ammo_box/magazine/stalker/usp45
 	name = "pistol magazine (.45)"
 	icon_state = "usp45"

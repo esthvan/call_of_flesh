@@ -28,7 +28,7 @@
 	. = ..()
 	if(.)
 		return
-	var/num_loaded = magazine.attackby(A, user, params, 1)
+	var/num_loaded = magazine.attackby(A, user, params, 0)
 	if(num_loaded)
 		playsound(user, loadsound, 50, 1)
 		user << "<span class='notice'>You load [num_loaded] shell\s into \the [src].</span>"
