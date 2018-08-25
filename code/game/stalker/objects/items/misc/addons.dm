@@ -19,7 +19,8 @@
 				/obj/item/weapon/gun/projectile/automatic/ak74,
 				/obj/item/weapon/gun/projectile/automatic/aksu74,
 				/obj/item/weapon/gun/projectile/automatic/abakan,
-				/obj/item/weapon/gun/projectile/automatic/tpc301)
+				/obj/item/weapon/gun/projectile/automatic/tpc301,
+				/obj/item/weapon/gun/projectile/automatic/kiparis)
 	var/oldsound = null
 	var/initial_w_class = null
 
@@ -37,7 +38,8 @@
 	icon = 'icons/stalker/weapon_mods.dmi'
 	icon_state = "susat"
 	types = list(/obj/item/weapon/gun/projectile/automatic/tpc301,
-					 /obj/item/weapon/gun/projectile/automatic/mp5)
+				/obj/item/weapon/gun/projectile/automatic/mp5,
+				/obj/item/weapon/gun/projectile/automatic/sigsg550)
 	zoom_add = 3
 
 /obj/item/weapon/attachment/scope/PS
