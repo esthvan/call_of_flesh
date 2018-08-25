@@ -335,11 +335,3 @@ var/list/bloody_footprints_cache = list()
 #define MATRIX_GREYSCALE list(0.33, 0.33, 0.33,\
 								0.33, 0.33, 0.33,\
 								0.33, 0.33, 0.33)
-
-#define NIGHTVISION_I_MATRIX list(0, 1, 0,\
-								0, 1, 0,\
-								0, 1, 0)
-
-#define NIGHTVISION_II_MATRIX list(0, 0, 0,\
-								1, 1, 1,\
-								0, 0, 0)
