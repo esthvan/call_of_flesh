@@ -452,7 +452,7 @@
 	attacktext = "slashes"
 	speak_emote = list("growls", "roars")
 	emote_see = list("growls!", "roars!")
-	maxHealth = 225
+	maxHealth = 200
 	healable = 1
 	melee_damage_lower = 25
 	attack_sound = 'sound/stalker/mobs/mutants/attack/controller_attack.ogg'
