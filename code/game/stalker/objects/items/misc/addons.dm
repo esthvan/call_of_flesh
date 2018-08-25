@@ -9,17 +9,17 @@
 	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "suppressor"
 	types = list(/obj/item/weapon/gun/projectile/automatic/pistol/pm,
-	 /obj/item/weapon/gun/projectile/automatic/pistol/fort12,
-	  /obj/item/weapon/gun/projectile/automatic/pistol/marta,
-	   /obj/item/weapon/gun/projectile/automatic/pistol/sip,
-	    /obj/item/weapon/gun/projectile/automatic/pistol/cora,
-	     /obj/item/weapon/gun/projectile/automatic/pistol/usp_match,
-	      /obj/item/weapon/gun/projectile/automatic/mp5,
-	       /obj/item/weapon/gun/projectile/automatic/groza,
-	        /obj/item/weapon/gun/projectile/automatic/ak74,
-	         /obj/item/weapon/gun/projectile/automatic/aksu74,
-	          /obj/item/weapon/gun/projectile/automatic/abakan,
-	           /obj/item/weapon/gun/projectile/automatic/tpc301)
+				/obj/item/weapon/gun/projectile/automatic/pistol/fort12,
+				/obj/item/weapon/gun/projectile/automatic/pistol/marta,
+				/obj/item/weapon/gun/projectile/automatic/pistol/sip,
+				/obj/item/weapon/gun/projectile/automatic/pistol/cora,
+				/obj/item/weapon/gun/projectile/automatic/pistol/usp_match,
+				/obj/item/weapon/gun/projectile/automatic/mp5,
+				/obj/item/weapon/gun/projectile/automatic/groza,
+				/obj/item/weapon/gun/projectile/automatic/ak74,
+				/obj/item/weapon/gun/projectile/automatic/aksu74,
+				/obj/item/weapon/gun/projectile/automatic/abakan,
+				/obj/item/weapon/gun/projectile/automatic/tpc301)
 	var/oldsound = null
 	var/initial_w_class = null
 
@@ -69,6 +69,13 @@
 				 /obj/item/weapon/gun/projectile/automatic/val,
 				 /obj/item/weapon/gun/projectile/automatic/groza)
 	zoom_add = 4
+
+/obj/item/weapon/attachment/scope/rifle
+	name = "rifle scope"
+	desc = "WWII rifle scope"
+	icon_state = "rifle"
+	types = list(/obj/item/weapon/gun/projectile/shotgun/boltaction/enfield)
+	zoom_add = 6
 
 /obj/item/weapon/attachment/scope/fnf2000
 	name = "FN-F2000 scope"

@@ -64,6 +64,14 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70
 	max_ammo = 4
 
+/obj/item/ammo_box/magazine/internal/boltaction/enfield
+	name = "lee enfield internal magazine"
+	desc = "Oh god, this shouldn't be here"
+	ammo_type = /obj/item/ammo_casing/c762x51
+	caliber = "7.62x51mm"
+	max_ammo = 5
+	multiload = 1
+
 /obj/item/ammo_box/magazine/stalker/usp45
 	name = "pistol magazine (.45)"
 	icon_state = "usp45"

@@ -204,7 +204,7 @@
 
 ///////////////////////////// Автоматы, ПП //////////////////////////////////////////
 
-/obj/item/weapon/gun/projectile/automatic
+/obj/item/weapon/gun/projectile
 	var/image/mag_overlay 			= null
 	var/image/mag_overlay_inhands 	= null
 	var/image/silencer_overlay 		= null
@@ -212,7 +212,7 @@
 	var/image/colored_overlay 		= null
 	var/colored 					= null
 
-/obj/item/weapon/gun/projectile/automatic/New()
+/obj/item/weapon/gun/projectile/New()
 	..()
 	if(!istype(src, /obj/item/weapon/gun/projectile/automatic/pistol))
 		mag_overlay = image('icons/stalker/projectile_overlays32x32.dmi', "[initial(icon_state)]-mag", layer = FLOAT_LAYER)
@@ -229,7 +229,7 @@
 
 	update_icon()
 
-/obj/item/weapon/gun/projectile/automatic/update_icon()
+/obj/item/weapon/gun/projectile/update_icon()
 	..()
 	overlays.Cut()
 
@@ -714,19 +714,3 @@
 	drawsound = 'sound/stalker/weapons/draw/groza_draw.ogg'
 	loadsound = 'sound/stalker/weapons/load/groza_load.ogg'
 	opensound = 'sound/stalker/weapons/unload/groza_open.ogg'
-
-
-/obj/item/weapon/gun/projectile/automatic/testgun
-	name = "testgun"
-	desc = "testing"
-	icon_state = "ak74"
-	item_state = "gun"
-	fire_sound = 'sound/stalker/weapons/ak74_shot.ogg'
-	mag_type = /obj/item/ammo_box/magazine/stalker/testgun
-	can_suppress = 1
-	burst_size = 3
-	durability = 1000
-	slot_flags = SLOT_BACK|SLOT_BELT
-	force = 10
-	w_class = 3
-	spread = 10

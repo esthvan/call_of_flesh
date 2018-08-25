@@ -136,7 +136,7 @@
 	durability = 150
 	slot_flags = SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/spsa
-	recoil = 0.6
+	recoil = 0.8
 	w_class = 4
 	randomspread = 0
 	spread = 8
@@ -148,3 +148,26 @@
 	loadsound = 'sound/stalker/weapons/load/spsa_load.ogg'
 	pumpsound = 'sound/stalker/weapons/pump/spsa_pump.ogg'
 	drawsound = 'sound/stalker/weapons/draw/shotgun_draw.ogg'
+
+///////////////////////////// Винтовки //////////////////////////////////////////
+
+/obj/item/weapon/gun/projectile/shotgun/boltaction/enfield
+	name = "Lee Enfield"
+	desc = ""
+	eng_desc = ""
+	icon_state = "enfield"
+	item_state = "enfield"
+	durability = 200
+	slot_flags = SLOT_BACK
+	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/enfield
+	recoil = 1.2
+	w_class = 4
+	randomspread = 0
+	spread = 5
+	force = 15
+	damagelose = 0.1
+	weapon_weight = WEAPON_MEDIUM
+	fire_sound = 'sound/stalker/weapons/enfield_shot.ogg'
+	loadsound = 'sound/stalker/weapons/load/bolt_load.ogg'
+	drawsound = 'sound/stalker/weapons/draw/shotgun_draw.ogg'
+	can_scope = 1
