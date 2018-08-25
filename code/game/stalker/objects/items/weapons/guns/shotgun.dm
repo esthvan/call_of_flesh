@@ -160,7 +160,7 @@
 	durability = 200
 	slot_flags = SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/enfield
-	recoil = 1.2
+	recoil = 1
 	w_class = 4
 	randomspread = 0
 	spread = 5
