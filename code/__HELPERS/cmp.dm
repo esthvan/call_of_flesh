@@ -18,6 +18,12 @@
 	if(a && b)
 		return sorttext(a.name, b.name)
 
+/proc/cmp_price_dsc(datum/data/stalker_equipment/a,datum/data/stalker_equipment/b)
+	return b.cost - a.cost
+
+/proc/cmp_price_asc(datum/data/stalker_equipment/a,datum/data/stalker_equipment/b)
+	return a.cost - b.cost
+
 var/cmp_field = "name"
 
 /proc/cmp_soundtracks_asc(datum/data/turntable_soundtrack/a, datum/data/turntable_soundtrack/b)

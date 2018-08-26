@@ -82,11 +82,17 @@
 	projectile_type = /obj/item/projectile/bullet/bulletmag44FMJ
 
 /obj/item/ammo_casing/c762x25
-    desc = "A 7.62x25 bullet casing."
-    caliber = "7.62x25mm"
-    projectile_type = /obj/item/projectile/bullet/bullet762x25
+	desc = "A 7.62x25 bullet casing."
+	caliber = "7.62x25mm"
+	projectile_type = /obj/item/projectile/bullet/bullet762x25
 
 /obj/item/ammo_casing/c762x54
-    desc = "A 7.62x54 bullet casing."
-    caliber = "7.62x54mm"
-    projectile_type = /obj/item/projectile/bullet/bullet762x54
+	desc = "A 7.62x54 bullet casing."
+	caliber = "7.62x54mm"
+	projectile_type = /obj/item/projectile/bullet/bullet762x54
+
+/obj/item/ammo_casing/c762x51
+    desc = "A 7.62x51 bullet casing."
+    caliber = "7.62x51mm"
+    icon_state = "303-casing"
+    projectile_type = /obj/item/projectile/bullet/bullet762x51
