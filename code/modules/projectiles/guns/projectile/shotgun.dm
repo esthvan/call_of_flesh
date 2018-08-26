@@ -115,10 +115,12 @@
 	var/bolt_open = 0
 
 /obj/item/weapon/gun/projectile/shotgun/boltaction/pump(mob/M)
-	playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
+	//playsound(M, 'sound/weapons/shotgunpump.ogg', 60, 1)
 	if(bolt_open)
+		playsound(M, 'sound/stalker/weapons/pump/bolt_push.ogg', 60, 1)
 		pump_reload(M)
 	else
+		playsound(M, 'sound/stalker/weapons/pump/bolt_pull.ogg', 60, 1)
 		pump_unload(M)
 	bolt_open = !bolt_open
 	update_icon()	//I.E. fix the desc

@@ -203,8 +203,8 @@
 	CBBS_h = 1
 
 obj/item/clothing/head/winterhood/stalker/ecolog/New()
-	..()
 	nvg = new /obj/item/nightvision(src)
+	..()
 
 /////////////////////////////////////////////////////////////////////ÿÀ≈Ã€ ÕŒ◊ÕŒ√Œ ¬»ƒ≈Õ‹ﬂ/////////////////////////////////////////////////////////////////////////////////////////
 //Under reconstruction//
@@ -219,10 +219,15 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	var/invis_view = SEE_INVISIBLE_LIVING
 	action_button_name = "Toggle Night Vision"
 	var/active = 0
-	var/list/colour_matrix = NIGHTVISION_I_MATRIX
+	var/list/colour_matrix = NIGHTVISION_MATRIX_I
 
-/obj/item/nightvision/New()
+/obj/item/nightvision/advanced
+	colour_matrix = NIGHTVISION_MATRIX_II
+
+/obj/item/nightvision/New(var/newloc)
 	..()
+	if(newloc)
+		loc = newloc
 	if(istype(loc, /obj/item/clothing))
 		var/obj/item/clothing/C = loc
 		C.nvg = src
@@ -284,8 +289,15 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	overlay = global_hud.nvg
 */
 
-/obj/item/nightvision/advanced
-	colour_matrix = NIGHTVISION_II_MATRIX
+/obj/item/clothing/suit/hooded/kombez/New()
+	..()
+	sleep(5)
+	if(hood && hood.nvg)
+		if(hood.nvg.colour_matrix == NIGHTVISION_MATRIX_I)
+			modifications_ids += "visor"
+
+		else if (hood.nvg.colour_matrix == NIGHTVISION_MATRIX_II)
+			modifications_ids += "visor"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -319,8 +331,8 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	CBBS_h = 1
 
 /obj/item/clothing/head/winterhood/stalker/ecologm/New()
-	..()
 	nvg = new /obj/item/nightvision(src)
+	..()
 
 /obj/item/clothing/suit/hooded/kombez/seva
 	name = "SEVA"
@@ -351,8 +363,8 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	CBBS_h = 1
 
 /obj/item/clothing/head/winterhood/stalker/seva/New()
-	..()
 	nvg = new /obj/item/nightvision(src)
+	..()
 
 /obj/item/clothing/suit/hooded/kombez/seva/orange
 	icon_state = "sevao"
@@ -393,8 +405,8 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	CBBS_h = 1
 
 /obj/item/clothing/head/winterhood/stalker/psz9md/New()
-	..()
 	nvg = new /obj/item/nightvision(src)
+	..()
 
 /obj/item/clothing/suit/hooded/kombez/exoskelet
 	name = "exoskelet"

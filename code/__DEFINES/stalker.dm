@@ -1,4 +1,7 @@
-#define SKADOVSK_LOCKED_TIMER				2400
+#define SKADOVSK_LOCKDOWN_TIMER				2400
+
+///////////////JOB
+#define UNIFORMPICK (pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark, /obj/item/clothing/under/color/switer/lolg, /obj/item/clothing/under/color/switer/tracksuit))
 
 ///////////////–≈…“»Õ√
 #define ZONE_LEGEND							10000
@@ -17,10 +20,10 @@
 #define DISGUSTING							0
 
 ///////////////ITEM TIERS
-#define TRASH_TIER_COST						14000
-#define LOW_TIER_COST						24000
-#define MEDIUM_TIER_COST					37000
-#define HIGH_TIER_COST						50000
+#define TRASH_TIER_COST						10000
+#define LOW_TIER_COST						20000
+#define MEDIUM_TIER_COST					35000
+#define HIGH_TIER_COST						60000
 
 ///////////////STAKLER_PDA
 #define FEED_SOUND							1
@@ -40,3 +43,12 @@
 
 ///////////////SIDORMAT
 #define SHOW_FACTION_EQUIPMENT				1
+
+///////////////COLOR MATRIXES
+#define NIGHTVISION_MATRIX_I list(0, 1, 0,\
+								0, 1, 0,\
+								0, 1, 0)
+
+#define NIGHTVISION_MATRIX_II list(0, 0, 0,\
+								1, 1, 1,\
+								0, 0, 0)

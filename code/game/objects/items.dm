@@ -122,6 +122,8 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 			slot_drone_storage\
 		)
 
+	var/list/modifications_ids = list()
+
 /obj/item/proc/check_allowed_items(atom/target, not_inside, target_self)
 	if(((src in target) && !target_self) || ((!istype(target.loc, /turf)) && (!istype(target, /turf)) && (not_inside)) || is_type_in_list(target, can_be_placed_into))
 		return 0
@@ -255,10 +257,10 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		if (!istype(src, /obj/item/weapon/gun/projectile))
 			S.remove_from_storage(src, user.loc)
 		else
-			var/obj/item/weapon/gun/projectile/G = src
+			var/obj/item/weapon/gun/G = src
 			playsound(src.loc, "rustle", 50, 1, -5)
 			user.visible_message("<span class='danger'>[user] starts to take out [G] from the [S]!</span>", "<span class='notice'>You start to take out [G] from the [S]...</span>")
-			if(do_after_inventory(user, 25, 1, G))
+			if(do_after_inventory(user, G.weapon_weight * 15 + 5, 1, G))
 				playsound(src, G.drawsound, 30, 1)
 				S.remove_from_storage(src, user.loc)
 				user.visible_message("<span class='danger'>[user] took out [G] from the [S]!</span>", "<span class='notice'>You took out the [G] from the [S].</span>")

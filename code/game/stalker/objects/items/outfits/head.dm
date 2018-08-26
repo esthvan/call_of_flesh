@@ -1,3 +1,12 @@
+/obj/item/clothing/head/New()
+	..()
+	sleep(5)
+	if(nvg)
+		if(nvg.colour_matrix == NIGHTVISION_MATRIX_I)
+			modifications_ids = "visor"
+		else if(nvg.colour_matrix == NIGHTVISION_MATRIX_II)
+			modifications_ids = "visor"
+
 /obj/item/clothing/head/steelhelmet
 	name = "Steel helmet"
 	desc = " аска из темной, местами ржавой стали, такой ваши деды въебывали по щам нацистам. Ќа ура держит прилетевшую по касательной пулю, но от хорошенького ножевого удара под козырек не спасет."
@@ -25,8 +34,8 @@
 	durability = 300
 
 /obj/item/clothing/head/tacticalhelmet/New()
-	..()
 	nvg = new /obj/item/nightvision(src)
+	..()
 
 /obj/item/clothing/head/hardhat/tacticalhelmet/light
 	name = "Light tactical helmet"
@@ -87,8 +96,8 @@
 	durability = 400
 
 /obj/item/clothing/head/spheram/New()
-	..()
 	nvg = new /obj/item/nightvision(src)
+	..()
 
 /obj/item/clothing/head/skathelmet
 	name = "SKAT-M9"
@@ -103,9 +112,8 @@
 	durability = 400
 
 /obj/item/clothing/head/skathelmet/New()
-	..()
 	nvg = new /obj/item/nightvision(src)
-
+	..()
 
 /obj/item/clothing/head/petrovichhelmet
 	name = "SKOT-M777"
@@ -124,6 +132,15 @@
 	icon_state = "beret_ua"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 	strip_delay = 80
+
+/obj/item/clothing/mask/gas/New()
+	..()
+	sleep(5)
+	if(nvg)
+		if(nvg.colour_matrix == NIGHTVISION_MATRIX_I)
+			modifications_ids = "visor"
+		else if(nvg.colour_matrix == NIGHTVISION_MATRIX_II)
+			modifications_ids = "visor"
 
 /obj/item/clothing/mask/gas/stalker
 	name = "gas mask"

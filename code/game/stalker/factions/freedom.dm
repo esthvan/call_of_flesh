@@ -19,7 +19,7 @@
 /datum/outfit/job/freedom/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = null
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	ears = null
 	belt = /obj/item/weapon/stalker/knife
@@ -49,7 +49,7 @@
 
 /datum/outfit/freedom/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	ears = null
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
@@ -76,7 +76,7 @@
 /datum/outfit/job/freedom_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/hardhat/tacticalhelmet/light
-	uniform = pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	belt = /obj/item/weapon/stalker/knife
 	gloves = /obj/item/clothing/gloves/fingerless

@@ -50,7 +50,7 @@ Assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = pick(/obj/item/clothing/under/color/switer,/obj/item/clothing/under/color/switer/dark)
+	uniform = UNIFORMPICK
 	suit = pick(/obj/item/clothing/suit/hooded/kozhanka,/obj/item/clothing/suit/hooded/kozhanka/white)
 	ears = null
 	id = /obj/item/device/stalker_pda
@@ -82,7 +82,7 @@ Assistant
 
 /datum/outfit/job/oldstalker/pre_equip(mob/living/carbon/human/H)
 	..()
-	uniform = /obj/item/clothing/under/color/switer/dark
+	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez
 	ears = null
 	id = /obj/item/device/stalker_pda
@@ -96,7 +96,7 @@ Assistant
 
 /datum/outfit/stalkervolk  // For select_equipment
 	name = "Old Stalker"
-	uniform = /obj/item/clothing/under/color/switer/dark
+	uniform = /obj/item/clothing/under/color/switer
 	suit = /obj/item/clothing/suit/hooded/kombez
 	ears = null
 	id = /obj/item/device/stalker_pda

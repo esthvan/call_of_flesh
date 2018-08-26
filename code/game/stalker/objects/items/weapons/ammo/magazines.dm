@@ -64,6 +64,14 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70
 	max_ammo = 4
 
+/obj/item/ammo_box/magazine/internal/boltaction/enfield
+	name = "lee enfield internal magazine"
+	desc = "Oh god, this shouldn't be here"
+	ammo_type = /obj/item/ammo_casing/c762x51
+	caliber = "7.62x51mm"
+	max_ammo = 5
+	multiload = 1
+
 /obj/item/ammo_box/magazine/stalker/usp45
 	name = "pistol magazine (.45)"
 	icon_state = "usp45"
@@ -163,4 +171,12 @@
 	ammo_type = /obj/item/ammo_casing/c9x18
 	caliber = "9x18mm"
 	max_ammo = 20
+	multiple_sprites = 2
+
+/obj/item/ammo_box/magazine/stalker/berettam3810
+	name = "SMG magazine (9x19mm)"
+	icon_state = "9x19b10"
+	ammo_type = /obj/item/ammo_casing/c9x19
+	caliber = "9x19mm"
+	max_ammo = 10
 	multiple_sprites = 2
