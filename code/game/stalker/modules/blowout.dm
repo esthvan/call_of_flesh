@@ -1,10 +1,30 @@
 var/datum/subsystem/blowout/StalkerBlowout
 var/global/isblowout = 0
 
-/mob/living/carbon/human
+/mob/living/carbon
 	var/inshelter = 0
 
-datum/subsystem/blowout
+/area/stalker/blowout/Crossed(var/atom/movable/A)
+	if(istype(A, /mob/living/carbon))
+		var/mob/living/carbon/C = A
+		if(isblowout && C.inshelter)
+			if(C.client && (C.client.prefs.chat_toggles & CHAT_LANGUAGE))
+				C << "<span class='warning'>You leave the shelter.</span>"
+			else
+				C << "<span class='warning'>Вы покидаете укрытие</span>"
+			C.inshelter = 0
+
+/area/stalker/Crossed(var/atom/movable/A)
+	if(istype(A, /mob/living/carbon))
+		var/mob/living/carbon/C = A
+		if(isblowout && !C.inshelter)
+			if(C.client && (C.client.prefs.chat_toggles & CHAT_LANGUAGE))
+				C << "<span class='notice'>You enter the shelter.</span>"
+			else
+				C << "<span class='norice'>Вы заходите в укрытие.</span>"
+			C.inshelter = 1
+
+/datum/subsystem/blowout
 	name = "Blowouts"
 	priority = 1
 	var/blowoutphase = 0
@@ -36,11 +56,11 @@ datum/subsystem/blowout
 	var/list/wind = list('sound/stalker/blowout/blowout_wind_01.ogg', 'sound/stalker/blowout/blowout_wind_02.ogg',
 							'sound/stalker/blowout/blowout_wind_03.ogg')
 
-datum/subsystem/blowout/New()
+/datum/subsystem/blowout/New()
 	NEW_SS_GLOBAL(StalkerBlowout)
 	cooldownreal = rand(average_cooldown * 0.7, average_cooldown * 1.3)
 
-datum/subsystem/blowout/fire()
+/datum/subsystem/blowout/fire()
 	if(world.time <= lasttime + cooldownreal)
 		return
 
@@ -78,7 +98,7 @@ datum/subsystem/blowout/fire()
 				PreStopBlowout()
 			return
 
-datum/subsystem/blowout/proc/StartBlowout()
+/datum/subsystem/blowout/proc/StartBlowout()
 	isblowout = 1
 	blowoutphase = 1
 	starttime = world.time
@@ -87,32 +107,39 @@ datum/subsystem/blowout/proc/StartBlowout()
 	world << sound('sound/stalker/blowout/blowout_begin_02.ogg', wait = 0, channel = 201, volume = 50)
 	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 202, volume = 60)
 
-datum/subsystem/blowout/proc/PreStopBlowout()
+	for(var/mob/living/carbon/C in player_list)
+		if(istype(get_area(C), /area/stalker/blowout))
+			C.inshelter = 0
+			C << "<big><span class='warning'>Seek for shelter quick! You screen will be red until you enter a shelter.</span></big>"
+		else
+			C.inshelter = 1
+			C << "<big><span class='notice'>You are in the shelter now. Wait till blowout is over.</span></big>"
+
+/datum/subsystem/blowout/proc/PreStopBlowout()
 	blowoutphase = 2
 	world << sound('sound/stalker/blowout/blowout_particle_wave.ogg', wait = 0, channel = 201, volume = 70)
 
-datum/subsystem/blowout/proc/BlowoutClean()
+/datum/subsystem/blowout/proc/BlowoutClean()
 	for(var/obj/item/ammo_casing/AC in ACs)
 		ACs -= AC
 		qdel(AC)
 		if(MC_TICK_CHECK)
 			return
 
-datum/subsystem/blowout/proc/BlowoutGib()
+/datum/subsystem/blowout/proc/BlowoutGib()
 	for(var/mob/living/L in dead_mob_list)
 		L.gib()
 		if(MC_TICK_CHECK)
 			return
 
-
-datum/subsystem/blowout/proc/BlowoutDealDamage()
+/datum/subsystem/blowout/proc/BlowoutDealDamage()
 	for(var/mob/living/carbon/human/H)
-		if(istype(get_area(H), /area/stalker/blowout))
-
+		//if(istype(get_area(H), /area/stalker/blowout))
+		if(!H.inshelter)
 			//H.radiation += 600
 			H.apply_damage(200, PSY)
 
-datum/subsystem/blowout/proc/StopBlowout()
+/datum/subsystem/blowout/proc/StopBlowout()
 
 	if(blowoutphase == 2)
 
@@ -154,7 +181,7 @@ datum/subsystem/blowout/proc/StopBlowout()
 
 		C.New()
 
-datum/subsystem/blowout/proc/AfterBlowout()
+/datum/subsystem/blowout/proc/AfterBlowout()
 
 	cooldownreal = rand(average_cooldown * 0.7, average_cooldown * 1.3)
 	isblowout = 0
@@ -183,7 +210,7 @@ datum/subsystem/blowout/proc/AfterBlowout()
 
 	add_lenta_message(null, "0", "Sidorovich", "Loners", "Blowout is over! Leave the shelter.")
 
-datum/subsystem/blowout/proc/ProcessBlowout()
+/datum/subsystem/blowout/proc/ProcessBlowout()
 	if(isblowout)
 		for(var/mob/living/carbon/human/H)
 			if(istype(get_area(H), /area/stalker/blowout))
