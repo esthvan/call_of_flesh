@@ -215,6 +215,9 @@
 /proc/sortNames(list/L, order=1)
 	return sortTim(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
 
+/proc/sortRealNames(list/L, order=1)
+	return sortTim(L, order >= 0 ? /proc/cmp_real_name_asc : /proc/cmp_real_name_dsc)
+
 /proc/sortPrice(list/L, order=1)
 	return sortTim(L, order >= 0 ? /proc/cmp_price_asc : /proc/cmp_price_dsc)
 
