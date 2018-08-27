@@ -369,7 +369,7 @@ var/global/global_lentahtml = ""
 							<td valign=\"top\" align=\"left\">"
 					if(user.client && (user.client.prefs.chat_toggles & CHAT_LANGUAGE))
 						mainhtml +="\
-						<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=exit'>\[EXIT\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
+						<div align=\"right\"><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=load_cache'>\[LOAD CACHE\]</a><a style=\"color:#c10000;\" align=\"center\" href='byond://?src=\ref[src];choice=exit'>\[EXIT\]</a><a href='byond://?src=\ref[src];choice=title'>\[-\]</a> <a href='byond://?src=\ref[src];choice=close'>\[X\]</a></div>\
 						<div align = \"center\" > | <a href='byond://?src=\ref[src];choice=rotate'>Rotate photo</a> | <a href='byond://?src=\ref[src];choice=make_avatar'>Change profile photo</a> | </div>"
 					else
 						mainhtml +="\
@@ -705,6 +705,9 @@ var/global/global_lentahtml = ""
 
 				profile = sk
 				set_owner_info(profile)
+
+		if("load_cache")
+			get_asset_datum(/datum/asset/simple/kpk).send(H)
 
 		if("exit")
 			registered_name = null
@@ -1219,7 +1222,7 @@ var/global/global_lentahtml = ""
 			continue
 
 		if(istype(M, /mob/dead/observer))
-			M << russian_html2text("<a href=?src=\ref[M];follow=\ref[KPK_owner]>(F)</a> [msg]")
+			M << russian_html2text("<a href=?src=\ref[M];follow=\ref[KPK_owner.loc]>(F)</a> [msg]")
 		else
 			M << "[msg]"
 
