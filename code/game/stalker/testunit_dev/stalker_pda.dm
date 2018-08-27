@@ -1222,7 +1222,10 @@ var/global/global_lentahtml = ""
 			continue
 
 		if(istype(M, /mob/dead/observer))
-			M << russian_html2text("<a href=?src=\ref[M];follow=\ref[KPK_owner.loc]>(F)</a> [msg]")
+			if(KPK_owner.loc)
+				M << russian_html2text("<a href=?src=\ref[M];follow=\ref[KPK_owner.loc]>(F)</a> [msg]")
+			else
+				M << russian_html2text("<a href=?src=\ref[M];follow=\ref[KPK_owner]>(F)</a> [msg]")
 		else
 			M << "[msg]"
 

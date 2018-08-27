@@ -14,7 +14,7 @@ var/global/isblowout = 0
 				C << "<span class='warning'>You leave the shelter.</span>"
 			else
 				C << "<span class='warning'>Вы покидаете укрытие.</span>"
-			C.inshelter = 0
+		C.inshelter = 0
 
 /area/stalker/Entered(var/atom/movable/A)
 	if(istype(A, /mob/living/carbon))
@@ -25,7 +25,7 @@ var/global/isblowout = 0
 				C << "<span class='notice'>You enter the shelter.</span>"
 			else
 				C << "<span class='notice'>Вы заходите в укрытие.</span>"
-			C.inshelter = 1
+		C.inshelter = 1
 
 /area/proc/CheckControl(var/mob/living/carbon/C)
 	if(!C.inprivatezone && controlled_by)
@@ -124,11 +124,9 @@ var/global/isblowout = 0
 	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 202, volume = 60)
 
 	for(var/mob/living/carbon/C in player_list)
-		if(istype(get_area(C), /area/stalker/blowout))
-			C.inshelter = 0
+		if(C.inshelter)
 			C << "<big><span class='warning'>Seek for shelter quick! You screen will be red until you enter a shelter.</span></big>"
 		else
-			C.inshelter = 1
 			C << "<big><span class='notice'>You are in the shelter now. Wait till blowout is over.</span></big>"
 
 /datum/subsystem/blowout/proc/PreStopBlowout()
