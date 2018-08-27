@@ -69,7 +69,6 @@
 	var/distro = 0			 //Зазор между дробью для дробовиков
 	var/durability = 100     //durability of a gun
 	var/jam = 0              //is weapon jammed or not
-	var/unique = 0
 	var/list/obj/item/weapon/attachment/addons = list()
 	var/obj/item/weapon/attachment/gl = null
 
