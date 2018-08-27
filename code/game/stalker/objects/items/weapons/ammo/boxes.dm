@@ -42,7 +42,7 @@
 	desc = "Обычный патрон 12 калибра с 6-мм дробью, огромна&#255; убойна&#255; сила (12x70мм Дробь)."
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70
 	icon_state = "12x70"
-	max_ammo = 20
+	max_ammo = 30
 	multiple_sprites = 2
 
 /obj/item/ammo_box/stalker/b12x70P
@@ -50,7 +50,7 @@
 	desc = "Т&#255;жёла&#255; безоболочечна&#255; пул&#255;, эффективна до 100м. (12x70мм Жекан)."
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70P
 	icon_state = "12x70P"
-	max_ammo = 20
+	max_ammo = 30
 	multiple_sprites = 2
 
 /obj/item/ammo_box/stalker/b12x70D
@@ -58,7 +58,7 @@
 	desc = "Оперённа&#255; пул&#255;, увеличена дальность и бронебойность, эффективен до 150м. (12x70мм Дротик)."
 	ammo_type = /obj/item/ammo_casing/shotgun/c12x70D
 	icon_state = "12x70D"
-	max_ammo = 20
+	max_ammo = 30
 	multiple_sprites = 2
 
 /obj/item/ammo_box/stalker/b9x19
@@ -98,7 +98,7 @@
 	desc = "Стандартный патрон калибра 9 мм, имеет повышенное останавливающее действие."
 	ammo_type = /obj/item/ammo_casing/sp9x39
 	icon_state = "9x39"
-	max_ammo = 60
+	max_ammo = 90
 	multiple_sprites = 2
 
 /obj/item/ammo_box/stalker/bacp45
@@ -106,7 +106,7 @@
 	desc = "Пистолетный патрон калибра 11,43 мм."
 	ammo_type = /obj/item/ammo_casing/acp45
 	icon_state = "45_ACP"
-	max_ammo = 30
+	max_ammo = 50
 	multiple_sprites = 2
 
 /obj/item/ammo_box/stalker/bacp45ap
@@ -114,7 +114,7 @@
 	desc = "Экспансивный патрон калибра 11,43 мм., который используетс&#255; в убойных пистолетах."
 	ammo_type = /obj/item/ammo_casing/acp45/P
 	icon_state = "45_ACP_hydroshock"
-	max_ammo = 30
+	max_ammo = 50
 	multiple_sprites = 2
 
 /obj/item/ammo_box/stalker/bmag44
@@ -156,5 +156,5 @@
 	eng_desc = "A stripper clip."
 	ammo_type = /obj/item/ammo_casing/c762x51
 	icon_state = "303"
-	max_ammo = 5
+	max_ammo = 10
 	multiple_sprites = 1
