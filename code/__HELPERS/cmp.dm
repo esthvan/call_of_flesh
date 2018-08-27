@@ -14,6 +14,14 @@
 	if(a && b)
 		return sorttext(b.name, a.name)
 
+/proc/cmp_real_name_dsc(mob/a, mob/b)
+	if(a && b)
+		return sorttext(a.real_name, b.real_name)
+
+/proc/cmp_real_name_asc(mob/a, mob/b)
+	if(a && b)
+		return sorttext(b.real_name, a.real_name)
+
 /proc/cmp_name_dsc(atom/a, atom/b)
 	if(a && b)
 		return sorttext(a.name, b.name)

@@ -330,7 +330,7 @@ var/list/admin_verbs_hideable = list(
 	set name = "Get Rank"
 	set category = "Stalker"
 
-	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
+	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortRealNames(KPK_mobs)
 
 	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
 
@@ -347,7 +347,7 @@ var/list/admin_verbs_hideable = list(
 	set name = "Set Rank"
 	set category = "Stalker"
 
-	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
+	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortRealNames(KPK_mobs)
 
 	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
 
@@ -373,7 +373,7 @@ var/list/admin_verbs_hideable = list(
 	set name = "Set Money"
 	set category = "Stalker"
 
-	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
+	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortRealNames(KPK_mobs)
 
 	if(!selected)
 		return
@@ -405,7 +405,7 @@ var/list/admin_verbs_hideable = list(
 	set name = "Get Money"
 	set category = "Stalker"
 
-	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
+	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortRealNames(KPK_mobs)
 
 	if(!selected)
 		return
@@ -427,7 +427,7 @@ var/list/admin_verbs_hideable = list(
 	set name = "Get Faction"
 	set category = "Stalker"
 
-	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
+	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortRealNames(KPK_mobs)
 
 	if(!selected)
 		return
@@ -447,7 +447,7 @@ var/list/admin_verbs_hideable = list(
 	set name = "Set Faction"
 	set category = "Stalker"
 
-	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortNames(KPK_mobs)
+	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortRealNames(KPK_mobs)
 
 	if(!selected)
 		return
