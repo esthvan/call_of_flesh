@@ -14,13 +14,22 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 	var/control_percent		= 0
 
 	var/unlocked_weapons	= null
-	var/respawn_income		= 0 //каждые 30 минут
-	var/last_respawn_income	= 0
+//	var/respawn_income		= 0 //каждые 30 минут
+//	var/last_respawn_income	= 0
+
+	var/path_ending = null
+	var/area/outdoor_area = null
+	var/area/buildings_area = null
+	var/area/noblowout_area = null
+	var/obj/machinery/stalker/sidormat/special/connected_sidormat = null
 
 /obj/machinery/stalker/sidorpoint/New()
 	..()
 	name = "SIDORPOINT ([get_area(src).name])"
 	cps += src
+	outdoor_area = locate(text2path("/area/stalker/blowout/outdoor/backwater/[path_ending]"))
+	buildings_area = locate(text2path("/area/stalker/blowout/buildings/backwater/[path_ending]"))
+	noblowout_area = locate(text2path("/area/stalker/buildings/backwater/[path_ending]"))
 	update_desc()
 
 /obj/machinery/stalker/sidorpoint/proc/update_desc()
@@ -115,6 +124,24 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 	return
 
 /obj/machinery/stalker/sidorpoint/process()
+	if(!connected_sidormat)
+		connected_sidormat = locate(/obj/machinery/stalker/sidormat/special) in noblowout_area
+		if(!connected_sidormat)
+			connected_sidormat = locate(/obj/machinery/stalker/sidormat/special) in buildings_area
+		else if(!connected_sidormat)
+			connected_sidormat = locate(/obj/machinery/stalker/sidormat/special) in outdoor_area
+	else
+		connected_sidormat.GetSidorPoint(src)
+
+	if(noblowout_area && buildings_area && outdoor_area)
+		if(noblowout_area.controlled_by != controlled_by)
+			noblowout_area.controlled_by = controlled_by
+
+		if(buildings_area.controlled_by != controlled_by)
+			buildings_area.controlled_by = controlled_by
+
+		if(outdoor_area.controlled_by != controlled_by)
+			outdoor_area.controlled_by = controlled_by
 
 	update_desc()
 	update_icon_percent()
@@ -152,12 +179,6 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 /obj/machinery/stalker/sidorpoint/ex_act(severity, target)
 	return
 
-/obj/machinery/stalker/sidormat/special
-	desc = "An equipment vendor for experienced stalkers."
-	switches = SHOW_FACTION_EQUIPMENT
-	var/obj/machinery/stalker/sidorpoint/SP = null
-	var/SP_area = null
-
 /obj/machinery/stalker/sidorpoint/proc/SendJobTotalPositions()
 	if(control_percent < 100)
 		return
@@ -166,18 +187,18 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 		if(controlled_by == J.faction_s)
 			J.total_positions += 3
 
-/obj/machinery/stalker/sidormat/special/New()
-	..()
-	sleep(10)
-	if(SP_area)
-		for(var/turf/T in get_area_turfs(SP_area))
-			SP = locate(/obj/machinery/stalker/sidorpoint)  in T
-			if(SP)
-				break
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/obj/machinery/stalker/sidormat/special
+	desc = "An equipment vendor for experienced stalkers."
+	switches = SHOW_FACTION_EQUIPMENT
+	var/obj/machinery/stalker/sidorpoint/SP = null
+
+/obj/machinery/stalker/sidormat/special/proc/GetSidorPoint(var/obj/machinery/stalker/sidorpoint/SP_)
+	SP = SP_
 
 /obj/machinery/stalker/sidormat/special/interact(mob/living/carbon/human/H)
 	if(!SP)
-		SP = locate(/obj/machinery/stalker/sidorpoint) in get_area_turfs(SP_area)
 		return
 
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
