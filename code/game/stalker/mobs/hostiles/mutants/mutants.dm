@@ -131,6 +131,8 @@
 	attack_type = "bite"
 	move_to_delay = 1.2 //Real speed of a mob
 	rating_add = 15
+	vision_range = 7
+	aggro_vision_range = 7
 
 /mob/living/simple_animal/hostile/mutant/dog/AttackingTarget()
 	..()
@@ -186,6 +188,8 @@
 	var/leaping = 0
 	move_to_delay = 2
 	rating_add = 50
+	vision_range = 7
+	aggro_vision_range = 7
 
 /mob/living/simple_animal/hostile/mutant/snork/New()
 	..()
@@ -270,6 +274,8 @@
 	attack_type = "smash"
 	move_to_delay = 3
 	rating_add = 10
+	vision_range = 7
+	aggro_vision_range = 7
 
 /mob/living/simple_animal/hostile/mutant/kaban
 	name = "boar"
@@ -309,8 +315,10 @@
 	random_loot = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "smash"
-	move_to_delay = 2
+	move_to_delay = 3
 	rating_add = 50
+	vision_range = 7
+	aggro_vision_range = 7
 
 	/*Код крашера с колониал маринов
 	Раскидывает мобов с дороги в стороны
@@ -358,6 +366,8 @@
 	move_to_delay = 1.8
 	speak_chance = 2
 	rating_add = 150
+	vision_range = 7
+	aggro_vision_range = 7
 
 /mob/living/simple_animal/hostile/mutant/bloodsucker/Life()
 	if(..())
