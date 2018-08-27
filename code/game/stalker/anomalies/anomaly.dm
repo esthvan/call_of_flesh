@@ -283,9 +283,9 @@
 /obj/anomaly/electro/New()
 	..()
 	SSobj.processing.Add(src)
-	spawn(5)
-		SSobj.processing.Remove(src)
 	src.set_light(luminosity)
+	spawn(10)
+		SSobj.processing.Remove(src)
 
 /obj/anomaly/karusel
 	name = "anomaly"
@@ -361,6 +361,13 @@
 				/obj/item/weapon/artifact/crystal = 1.5,
 				/obj/item/weapon/artifact/maminibusi = 0.5
 				)
+
+/obj/anomaly/jarka/New()
+	..()
+	SSobj.processing.Add(src)
+	src.set_light(luminosity)
+	spawn(10)
+		SSobj.processing.Remove(src)
 
 /obj/anomaly/jarka/Uncrossed(atom/A)
 	..()

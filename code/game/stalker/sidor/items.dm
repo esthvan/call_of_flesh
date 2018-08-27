@@ -160,19 +160,19 @@
 
 /sidoritem/ecolog
 	name = "SPP-99"
-	itemtype = /obj/item/clothing/suit/hooded/kombez/ecolog
+	itemtype = /obj/item/clothing/suit/hooded/sealed/ecolog
 	cost = 85000
 	words = list("Эколога" = 5, "эколога" = 5, "Зеленый" = 5, "зеленый" = 5, "СПП" = 5, "СПП-99" = 5, "99" = 5, "Эколог" = 5, "эколог" = 10)
 
 /sidoritem/ecologm
 	name = "SPP-99M"
-	itemtype = /obj/item/clothing/suit/hooded/kombez/ecologm
+	itemtype = /obj/item/clothing/suit/hooded/sealed/ecologm
 	cost = 100000
 	words = list("Эколога" = 5, "эколога" = 5, "Оранжевый" = 5, "оранжевый" = 5, "улучшенного" = 5, "Улучшенного" = 5, "СПП" = 5, "СПП-99М" = 15, "99М" = 5, "Улучшенный" = 5, "улучшенный" = 5, "Эколог" = 5, "эколог" = 10)
 
 /sidoritem/seva
 	name = "Seva"
-	itemtype = /obj/item/clothing/suit/hooded/kombez/seva
+	itemtype = /obj/item/clothing/suit/hooded/sealed/seva
 	cost = 80000
 	words = list("Севу" = 5, "севу" = 5, "Сева" = 5, "сева" = 5)
 
@@ -210,13 +210,13 @@
 
 /sidoritem/exoskelet
 	name = "Exoskelet"
-	itemtype = /obj/item/clothing/suit/hooded/kombez/exoskelet
+	itemtype = /obj/item/clothing/suit/hooded/sealed/exoskelet
 	cost = 120000
 	words = list("Экзоскелет" = 5, "экзосклет" = 5, "Экзу" = 5, "экзу" = 5)
 
 /sidoritem/psz9md
 	name = "PSZ-9MD"
-	itemtype = /obj/item/clothing/suit/hooded/kombez/psz9md
+	itemtype = /obj/item/clothing/suit/hooded/sealed/psz9md
 	cost = 80000
 	words = list("ПСЗ" = 5, "9МД" = 5, "ПСЗ9МД" = 5, "псз" = 5, "9мд" = 5, "псз9мд" = 5, "Севу" = 5, "севу" = 5, "Долга" = 5, "долга" = 5)
 

@@ -12,9 +12,12 @@ var/id_ = 0
 	density = 1
 	anchored = 1
 	var/list/modifications_list = list(
-		new /datum/data/modification/clothing/head/nightvision(),	//Шлем
+		new /datum/data/modification/clothing/head/nightvision(),	//Шлем - ночное виденье
 		new /datum/data/modification/clothing/mask/nightvision(),	//Противогаз
-		new /datum/data/modification/clothing/suit/nightvision(),	//Костюм с замкнутой системой дыхания
+		new /datum/data/modification/clothing/suit/nightvision(),	//Костюм с замкнутой системой дыхания - ночное виденье
+		new /datum/data/modification/clothing/head/nightvision/advanced(),
+		new /datum/data/modification/clothing/mask/nightvision/advanced(),
+		new /datum/data/modification/clothing/suit/nightvision/advanced(),
 		)
 
 /datum/data/modification
@@ -24,6 +27,8 @@ var/id_ = 0
 	var/eng_desc = "This is modification"
 	var/list/add_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	var/id = null
+	var/tier = 1
+	var/modificated_type = null
 /*
 /datum/data/modification/New()
 	if(!id)
@@ -31,8 +36,13 @@ var/id_ = 0
 		id = num2text(id_)
 */
 /datum/data/modification/proc/AffectEquipment(var/obj/item/I)
-	I.modifications_ids += src.id
+	I.unique = 1
+	I.update_icon()
+	I.modifications += src.id
 	return
+
+/datum/data/modification/proc/SpecialCheck(var/obj/item/I)
+	return 1
 
 /datum/data/modification/clothing
 	name = "clothing modification"
@@ -42,44 +52,64 @@ var/id_ = 0
 /datum/data/modification/clothing/AffectEquipment(var/obj/item/I)
 	//for(var/A in I.armor)
 	//	I.armor[A] += add_armor[A]
-	//I.modifications_ids += src.id
+	//I.modifications += src.id
 	..(I)
 
-/////////////////////////////////////МОДИФИКАЦИИ ШЛЕМОВ//
+/////////////////////////////////////МОДИФИКАЦИИ ШЛЕМОВ/////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /datum/data/modification/clothing/head
 	name = "helmet modification"
 	desc = "Это модификац&#255; дл&#255; шлема."
 	eng_desc = "This is helmet modification."
-
+	modificated_type = /obj/item/clothing/head
+/*
+/datum/data/modification/clothing/head/SpecialCheck(var/obj/item/clothing/head/Gear)
+	if(Gear.flags_inv & HIDEMASK)
+		return 1
+	return 0
+*/
 /datum/data/modification/clothing/head/nightvision
-	name = "Nightvision I Gen"
+	name = "Nightvision I Generation"
 	cost = 12000
 	desc = "Установка прибора ночного видень&#255; первого поколени&#255;."
 	eng_desc = "Installation of a I gerantion nightvision device."
 	add_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	id = "visor"
-
+	id = "visor_head"
+	tier = 1
+/*
+/datum/data/modification/clothing/head/nightvision/SpecialCheck(var/obj/item/clothing/head/Gear)
+	if(Gear.flags_inv & HIDEEYES)
+		return 1
+	return 0
+*/
 /datum/data/modification/clothing/head/nightvision/AffectEquipment(var/obj/item/clothing/head/Gear)
-	Gear.nvg = new /obj/item/nightvision(Gear)
+	if(!Gear.nvg)
+		Gear.nvg = new /obj/item/nightvision(Gear)
+	Gear.nvg.colour_matrix = NIGHTVISION_MATRIX_I
 	..(Gear)
 
-/datum/data/modification/clothing/head/nightvision_advanced
-	name = "Nightvision II Gen"
+/datum/data/modification/clothing/head/nightvision/advanced
+	name = "Nightvision II Generation"
 	cost = 30000
 	desc = "Установка прибора ночного видень&#255; второго поколени&#255;."
 	eng_desc = "Installation of a II gerantion nightvision device."
 	add_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	id = "visor"
+	id = "visor_head"
+	tier = 2
 
-/datum/data/modification/clothing/head/nightvision_advanced/AffectEquipment(var/obj/item/clothing/head/Gear)
-	Gear.nvg = new /obj/item/nightvision(Gear)
+/datum/data/modification/clothing/head/nightvision/advanced/AffectEquipment(var/obj/item/clothing/head/Gear)
+	if(!Gear.nvg)
+		Gear.nvg = new /obj/item/nightvision(Gear)
+	Gear.nvg.colour_matrix = NIGHTVISION_MATRIX_II
 	..(Gear)
 
-/////////////////////////////////////МОДИФИКАЦИИ МАСОК//
+/////////////////////////////////////МОДИФИКАЦИИ МАСОК//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /datum/data/modification/clothing/mask
 	name = "helmet modification"
 	desc = "Это модификац&#255; дл&#255; маски."
 	eng_desc = "This is mask modification."
+	modificated_type = /obj/item/clothing/mask/gas/stalker
 
 /datum/data/modification/clothing/mask/nightvision
 	name = "Nightvision I Generation"
@@ -87,16 +117,38 @@ var/id_ = 0
 	desc = "Установка прибора ночного видень&#255; первого поколени&#255;."
 	eng_desc = "Installation of a I gerantion nightvision device."
 	add_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	id = "visor"
+	id = "visor_mask"
+	modificated_type = /obj/item/clothing/mask/gas/stalker
 
 /datum/data/modification/clothing/mask/nightvision/AffectEquipment(var/obj/item/clothing/mask/Gear)
-	Gear.nvg = new /obj/item/nightvision(Gear)
+	if(!Gear.nvg)
+		Gear.nvg = new /obj/item/nightvision(Gear)
+	Gear.nvg.colour_matrix = NIGHTVISION_MATRIX_I
 	..(Gear)
-/////////////////////////////////////МОДИФИКАЦИИ КОСТЮМОВ//
+
+/datum/data/modification/clothing/mask/nightvision/advanced
+	name = "Nightvision II Generation"
+	cost = 30000
+	desc = "Установка прибора ночного видень&#255; второго поколени&#255;."
+	eng_desc = "Installation of a II gerantion nightvision device."
+	add_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	id = "visor_mask"
+	tier = 2
+	modificated_type = /obj/item/clothing/mask/gas/stalker
+
+/datum/data/modification/clothing/mask/nightvision/advanced/AffectEquipment(var/obj/item/clothing/mask/Gear)
+	if(!Gear.nvg)
+		Gear.nvg = new /obj/item/nightvision(Gear)
+	Gear.nvg.colour_matrix = NIGHTVISION_MATRIX_II
+	..(Gear)
+
+/////////////////////////////////////МОДИФИКАЦИИ КОСТЮМОВ////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /datum/data/modification/clothing/suit
 	name = "suit modification"
 	desc = "Это модификаци&#255; дл&#255; костюма."
 	eng_desc = "This is suit modification."
+	modificated_type = /obj/item/clothing/suit
 
 /datum/data/modification/clothing/suit/nightvision
 	name = "Nightvision I Generation"
@@ -104,12 +156,31 @@ var/id_ = 0
 	desc = "Установка прибора ночного видень&#255; первого поколени&#255;."
 	eng_desc = "Installation of a I gerantion nightvision device."
 	add_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	id = "visor"
+	id = "visor_suit"
+	modificated_type = /obj/item/clothing/suit/hooded/sealed
 
 /datum/data/modification/clothing/suit/nightvision/AffectEquipment(var/obj/item/clothing/mask/Gear)
-	Gear.nvg = new /obj/item/nightvision(Gear)
+	if(!Gear.nvg)
+		Gear.nvg = new /obj/item/nightvision(Gear)
+	Gear.nvg.colour_matrix = NIGHTVISION_MATRIX_I
 	..(Gear)
-/////////////////////////////////////МОДИФИКАЦИИ ОРУЖИЯ//
+
+/datum/data/modification/clothing/suit/nightvision/advanced
+	name = "Nightvision II Gen"
+	cost = 30000
+	desc = "Установка прибора ночного видень&#255; второго поколени&#255;."
+	eng_desc = "Installation of a II gerantion nightvision device."
+	add_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	id = "visor_suit"
+	modificated_type = /obj/item/clothing/suit/hooded/sealed
+
+/datum/data/modification/clothing/suit/nightvision/advanced/AffectEquipment(var/obj/item/clothing/mask/Gear)
+	if(!Gear.nvg)
+		Gear.nvg = new /obj/item/nightvision(Gear)
+	Gear.nvg.colour_matrix = NIGHTVISION_MATRIX_II
+	..(Gear)
+/////////////////////////////////////МОДИФИКАЦИИ ОРУЖИЯ//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /datum/data/modification/gun
 	name = "gun modification"
 	desc = "Это модификаци&#255; дл&#255; оружи&#255;."
@@ -194,37 +265,8 @@ var/id_ = 0
 	dat += "<A href='?src=\ref[src];eject=1'>Eject</A>"
 	dat += "<div class='lenta_scroll'>"
 	dat += "<br><BR><table border='0' width='400'>"
-	if(istype(modificated, /obj/item/clothing/head))
-		if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-			for(var/datum/data/modification/clothing/head/M in modifications_list)
-				dat += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.eng_desc]</td></tr>"
-		else
-			for(var/datum/data/modification/clothing/head/M in modifications_list)
-				dat += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.desc]</td></tr>"
-
-	else if(istype(modificated, /obj/item/clothing/mask))
-		if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-			for(var/datum/data/modification/clothing/mask/M in modifications_list)
-				dat += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.eng_desc]</td></tr>"
-		else
-			for(var/datum/data/modification/clothing/mask/M in modifications_list)
-				dat += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.desc]</td></tr>"
-
-	else if(istype(modificated, /obj/item/clothing/suit))
-		if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-			for(var/datum/data/modification/clothing/suit/M in modifications_list)
-				dat += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.eng_desc]</td></tr>"
-		else
-			for(var/datum/data/modification/clothing/suit/M in modifications_list)
-				dat += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.desc]</td></tr>"
-
-	else if(istype(modificated, /obj/item/weapon/gun/projectile))
-		if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
-			for(var/datum/data/modification/gun/M in modifications_list)
-				dat += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.eng_desc]</td></tr>"
-		else
-			for(var/datum/data/modification/gun/M in modifications_list)
-				dat += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.desc]</td></tr>"
+	for(var/datum/data/modification/M in modifications_list)
+		dat += SetMenu(H, M)
 
 	dat += "</table>"
 	dat += "</div>"
@@ -234,6 +276,18 @@ var/id_ = 0
 	popup.set_content(dat)
 	popup.open()
 	return
+
+/obj/structure/stalker/modification_table/proc/SetMenu(var/mob/living/carbon/human/H, var/datum/data/modification/M)
+	var/dat_
+	//if(modificated.type in typesof(M.modificated_type))
+		//if((!(M.id in modificated.modifications) && M.tier == 1) || (M.tier  == modificated.modifications[M.id] + 1))
+	if(M.id in modificated.modifications && M.tier == modificated.modifications[M.id] + 1)
+		if(M.SpecialCheck(modificated))
+			if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
+				dat_ += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>UPGRADE</A></td></tr><tr><td>[M.eng_desc]</td></tr>"
+			else
+				dat_ += "<tr><td><b>[M.name]</b></td><td><A href='?src=\ref[src];upgrade=\ref[M]'>АПГРЕЙД</A></td></tr><tr><td>[M.desc]</td></tr>"
+	return dat_
 
 /obj/structure/stalker/modification_table/Topic(href, href_list)
 	if(..())

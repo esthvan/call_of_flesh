@@ -315,8 +315,8 @@
 		var/mob/living/carbon/mob = loc
 		for(var/i=1,i<=artifact.art_armor.len,i++)
 			var/armortype = artifact.art_armor[i]
-			if(!mob.global_armor.Find(armortype))
-				mob.global_armor.Add(armortype)
+			if(!(armortype in mob.global_armor))
+				mob.global_armor += armortype
 			mob.global_armor[armortype] += artifact.art_armor[armortype]
 		return 1
 	return 0
@@ -327,8 +327,8 @@
 		var/mob/living/carbon/mob = loc
 		for(var/i=1,i<=artifact.art_armor.len,i++)
 			var/armortype = artifact.art_armor[i]
-			if(!mob.global_armor.Find(armortype))
-				mob.global_armor.Add(armortype)
+			if(!(armortype in mob.global_armor))
+				mob.global_armor += armortype
 			mob.global_armor[armortype] -= artifact.art_armor[armortype]
 		return 1
 	return 0

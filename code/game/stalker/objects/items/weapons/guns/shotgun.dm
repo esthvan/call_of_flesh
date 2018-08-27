@@ -163,7 +163,7 @@
 	recoil = 1
 	w_class = 4
 	randomspread = 0
-	spread = 5
+	spread = 3
 	force = 15
 	damagelose = 0.1
 	weapon_weight = WEAPON_MEDIUM

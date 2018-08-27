@@ -1,12 +1,13 @@
+/*
 /obj/item/clothing/head/New()
 	..()
 	sleep(5)
 	if(nvg)
 		if(nvg.colour_matrix == NIGHTVISION_MATRIX_I)
-			modifications_ids = "visor"
+			modifications += "visor"
 		else if(nvg.colour_matrix == NIGHTVISION_MATRIX_II)
-			modifications_ids = "visor"
-
+			modifications += "visor"
+*/
 /obj/item/clothing/head/steelhelmet
 	name = "Steel helmet"
 	desc = "Каска из темной, местами ржавой стали, такой ваши деды въебывали по щам нацистам. На ура держит прилетевшую по касательной пулю, но от хорошенького ножевого удара под козырек не спасет."
@@ -18,6 +19,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 40
+	modifications = list("material_head" = 0)
 
 /obj/item/clothing/head/tacticalhelmet
 	name = "Tactical helmet"
@@ -32,6 +34,8 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 300
+	//МОДИФИКАЦИИ//
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 1)
 
 /obj/item/clothing/head/tacticalhelmet/New()
 	nvg = new /obj/item/nightvision(src)
@@ -52,8 +56,11 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 200
+	//МОДИФИКАЦИИ//
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 1)
 
 /obj/item/clothing/head/hardhat/tacticalhelmet/light/New()
+	..()
 	return
 
 /obj/item/clothing/head/assaultmerc
@@ -67,7 +74,8 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 250
-
+	//МОДИФИКАЦИИ//
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 0)
 
 /obj/item/clothing/head/gopcap
 	name = "Сap"
@@ -94,6 +102,8 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
+	//МОДИФИКАЦИИ//
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 0)
 
 /obj/item/clothing/head/spheram/New()
 	nvg = new /obj/item/nightvision(src)
@@ -110,6 +120,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
+	modifications = list("visor_head" = 1)
 
 /obj/item/clothing/head/skathelmet/New()
 	nvg = new /obj/item/nightvision(src)
@@ -125,6 +136,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
+	modifications = list("visor_head" = 0)
 
 /obj/item/clothing/head/beret_ua
 	name = "military beret"
@@ -132,16 +144,16 @@
 	icon_state = "beret_ua"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 	strip_delay = 80
-
+/*
 /obj/item/clothing/mask/gas/New()
 	..()
 	sleep(5)
 	if(nvg)
 		if(nvg.colour_matrix == NIGHTVISION_MATRIX_I)
-			modifications_ids = "visor"
+			modifications += "visor"
 		else if(nvg.colour_matrix == NIGHTVISION_MATRIX_II)
-			modifications_ids = "visor"
-
+			modifications += "visor"
+*/
 /obj/item/clothing/mask/gas/stalker
 	name = "gas mask"
 	desc = "Стандартный противогаз, предназначенный дл&#255; фильтрации из воздуха радиоактивной пыли и отравл&#255;ющих веществ. Широко используетс&#255; как новичками, так и ветеранами всех группировок ввиду своей функциональной незаменимости. Не оснащён защитой от пуль, осколков и механических воздействий."
@@ -156,6 +168,8 @@
 	burn_state = FIRE_PROOF
 	unacidable = 1
 	durability = 400
+	//МОДИФИКАЦИИ//
+	modifications = list("padding_head" = 0, "material_mask" = 0, "visor_mask" = 0)
 
 /obj/item/clothing/mask/gas/stalker/mercenary
 	name = "gas mask"
@@ -171,3 +185,5 @@
 	burn_state = FIRE_PROOF
 	unacidable = 1
 	durability = 400
+	//МОДИФИКАЦИИ//
+	modifications = list("padding_head" = 0, "material_mask" = 0, "visor_mask" = 0)

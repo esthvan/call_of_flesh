@@ -324,7 +324,7 @@
 "gl" = (/obj/effect/spawner/lootdrop/stalker/mobspawner/bloodsucker_spawner,/turf/stalker/floor/plasteel/plitochka,/area/stalker/buildings/backwater/krug)
 "gm" = (/obj/effect/step_trigger/teleporter{teleport_x = 199; teleport_y = 12; teleport_z = 2},/turf/simulated/floor/plasteel/stairs,/area/stalker/buildings/backwater/waste)
 "gn" = (/obj/anomaly/holodec,/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/ironforest)
-"go" = (/obj/effect/step_trigger/teleporter{teleport_x = 28; teleport_y = 238; teleport_z = 2},/turf/simulated/floor/plasteel/stairs{tag = "icon-stairs (WEST)"; icon_state = "stairs"; dir = 8},/area/stalker/buildings/backwater/sawmill)
+"go" = (/obj/effect/step_trigger/teleporter{teleport_x = 50; teleport_y = 239; teleport_z = 2},/turf/simulated/floor/plasteel/stairs{tag = "icon-stairs (WEST)"; icon_state = "stairs"; dir = 8},/area/stalker/buildings/backwater/sawmill)
 "gp" = (/obj/structure/sign/electricshock{pixel_x = -32},/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/ironforest)
 "gq" = (/obj/structure/sign/biohazard{pixel_x = 32},/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/ironforest)
 "gr" = (/obj/structure/bed/stool,/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/ironforest)

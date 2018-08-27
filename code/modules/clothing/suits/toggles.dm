@@ -51,7 +51,7 @@
 			if(H.wear_suit != src)
 				H << "<span class='warning'>You must be wearing [src] to put up the hood!</span>"
 				return
-			if(H.head || (CCBS && H.wear_mask))
+			if(H.head)
 				H << "<span class='warning'>You're already wearing something on your head!</span>"
 				return
 			else

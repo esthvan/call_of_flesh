@@ -69,7 +69,7 @@
 	desc = "Oh god, this shouldn't be here"
 	ammo_type = /obj/item/ammo_casing/c762x51
 	caliber = "7.62x51mm"
-	max_ammo = 5
+	max_ammo = 10
 	multiload = 1
 
 /obj/item/ammo_box/magazine/stalker/usp45
@@ -173,10 +173,10 @@
 	max_ammo = 20
 	multiple_sprites = 2
 
-/obj/item/ammo_box/magazine/stalker/berettam3810
+/obj/item/ammo_box/magazine/stalker/berettam38
 	name = "SMG magazine (9x19mm)"
-	icon_state = "9x19b10"
+	icon_state = "9x19b"
 	ammo_type = /obj/item/ammo_casing/c9x19
 	caliber = "9x19mm"
-	max_ammo = 10
+	max_ammo = 20
 	multiple_sprites = 2
