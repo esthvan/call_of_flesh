@@ -20,7 +20,7 @@ var/global/list/global_weapon_list = list(
 	new /datum/data/stalker_equipment("Desert Eagle",	"Дёзерт Игл",		/obj/item/weapon/gun/projectile/automatic/pistol/desert, 	    	30000, EXPERIENCED),
 
 	///////////////////////////// **Автоматы, ПП** /////////////////////////////////////
-	new /datum/data/stalker_equipment("Beretta M38", 	"Беретта М38",		/obj/item/weapon/gun/projectile/automatic/berettam38,				7000, ROOKIE),
+	new /datum/data/stalker_equipment("Beretta M38", 	"Беретта М38",		/obj/item/weapon/gun/projectile/automatic/berettam38,				10000, ROOKIE),
 	new /datum/data/stalker_equipment("Kiparis", 		"Кипарис",			/obj/item/weapon/gun/projectile/automatic/kiparis,					10000, ROOKIE),
 	new /datum/data/stalker_equipment("PPSh",			"ППШ",				/obj/item/weapon/gun/projectile/automatic/ppsh,						15000, ROOKIE),
 	new /datum/data/stalker_equipment("MP-5", 			"МП-5",				/obj/item/weapon/gun/projectile/automatic/mp5,						18000, ROOKIE),
@@ -85,7 +85,7 @@ var/global/list/global_ammo_list = list(
 	new /datum/data/stalker_equipment("Vintorez Magazine",		"Магазин к Винторезу",						/obj/item/ammo_box/magazine/stalker/sp9x39vint,			3000, VETERAN),
 	new /datum/data/stalker_equipment("Colt M1911; SIG-Sauer P220 Magazine", "Магазин к Кольту; П-220",		/obj/item/ammo_box/magazine/stalker/sc45,				1400, ROOKIE),
 	new /datum/data/stalker_equipment("Beretta 92FS Magazine",	"Магазин к Беретте 92ФС",					/obj/item/ammo_box/magazine/stalker/m9x19marta,			1500, ROOKIE),
-	new /datum/data/stalker_equipment("Beretta M38 Magazine",	"Магазин к Беретте М38",					/obj/item/ammo_box/magazine/stalker/berettam3810,		1250, ROOKIE),
+	new /datum/data/stalker_equipment("Beretta M38 Magazine",	"Магазин к Беретте М38",					/obj/item/ammo_box/magazine/stalker/berettam38,		1250, ROOKIE),
 	new /datum/data/stalker_equipment("USP-match Magazine",		"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, ROOKIE),
 	new /datum/data/stalker_equipment("Desert Eagle Magazine", 	"Магазин к Desert Eagle",					/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERIENCED),
 	new /datum/data/stalker_equipment("PKM ammo belt box",		"Жестянка с лентой к ПКМ",				 	/obj/item/ammo_box/magazine/stalker/pkm,				20000, EXPERIENCED),
@@ -113,11 +113,11 @@ var/global/list/global_armor_list = list(
 	new /datum/data/stalker_equipment("Heavy merc armor",		"Тяжелая броня наёмников",		/obj/item/clothing/suit/assaultmerc,						50000, EXPERIENCED,	faction = "Mercenaries"),
 	new /datum/data/stalker_equipment("PSZ-9D",		    		"ПСЗ-9Д",						/obj/item/clothing/suit/psz9d,								60000, VETERAN,	faction = "Duty"),
 	new /datum/data/stalker_equipment("SKAT-9M",				"СКАТ-9М",						/obj/item/clothing/suit/skat,								75000, VETERAN),
-	new	/datum/data/stalker_equipment("PSZ-9Md",				"ПСЗ-9Мд",						/obj/item/clothing/suit/hooded/kombez/psz9md,				75000, VETERAN,	faction = "Duty"),
-	new	/datum/data/stalker_equipment("SSP-99 Ecologist",		"ССП-99 Эколог",				/obj/item/clothing/suit/hooded/kombez/ecolog,				75000, EXPERT),
-	new	/datum/data/stalker_equipment("SSP-99M Ecologist",		"ССП-99М Эколог",				/obj/item/clothing/suit/hooded/kombez/ecologm,			    100000, EXPERT),
-	new	/datum/data/stalker_equipment("SEVA",					"СЕВА",							/obj/item/clothing/suit/hooded/kombez/seva,					125000, EXPERT),
-	new	/datum/data/stalker_equipment("Exoskeleton",			"Экзоскелет",					/obj/item/clothing/suit/hooded/kombez/exoskelet,			150000, EXPERT, assortment_level = 5),
+	new	/datum/data/stalker_equipment("PSZ-9Md",				"ПСЗ-9Мд",						/obj/item/clothing/suit/hooded/sealed/psz9md,				75000, VETERAN,	faction = "Duty"),
+	new	/datum/data/stalker_equipment("SSP-99 Ecologist",		"ССП-99 Эколог",				/obj/item/clothing/suit/hooded/sealed/ecolog,				75000, EXPERT),
+	new	/datum/data/stalker_equipment("SSP-99M Ecologist",		"ССП-99М Эколог",				/obj/item/clothing/suit/hooded/sealed/ecologm,			    100000, EXPERT),
+	new	/datum/data/stalker_equipment("SEVA",					"СЕВА",							/obj/item/clothing/suit/hooded/sealed/seva,					125000, EXPERT),
+	new	/datum/data/stalker_equipment("Exoskeleton",			"Экзоскелет",					/obj/item/clothing/suit/hooded/sealed/exoskelet,			150000, EXPERT, assortment_level = 5),
 	)
 
 var/global/list/global_helmet_list = list(

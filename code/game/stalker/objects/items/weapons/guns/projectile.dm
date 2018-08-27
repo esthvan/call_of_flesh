@@ -398,9 +398,9 @@
 	icon_state = "berettam38"
 	item_state = "berettam38"
 	fire_sound = 'sound/stalker/weapons/berettam38_shot.ogg'
-	mag_type = /obj/item/ammo_box/magazine/stalker/berettam3810
+	mag_type = /obj/item/ammo_box/magazine/stalker/berettam38
 	can_suppress = 0
-	burst_size = 2
+	burst_size = 3
 	fire_delay = 1.7
 	slot_flags = SLOT_BELT
 	durability = 75
