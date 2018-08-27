@@ -5,7 +5,7 @@ var/global/isblowout = 0
 	var/inshelter = 0
 	var/inprivatezone = 0
 
-/area/stalker/blowout/Crossed(var/atom/movable/A)
+/area/stalker/blowout/Entered(var/atom/movable/A)
 	if(istype(A, /mob/living/carbon))
 		var/mob/living/carbon/C = A
 		CheckControl(C)
@@ -16,7 +16,7 @@ var/global/isblowout = 0
 				C << "<span class='warning'>Вы покидаете укрытие.</span>"
 			C.inshelter = 0
 
-/area/stalker/Crossed(var/atom/movable/A)
+/area/stalker/Entered(var/atom/movable/A)
 	if(istype(A, /mob/living/carbon))
 		var/mob/living/carbon/C = A
 		CheckControl(C)
@@ -31,7 +31,7 @@ var/global/isblowout = 0
 	if(!C.inprivatezone && controlled_by)
 
 		if(C.client && (C.client.prefs.chat_toggles & CHAT_LANGUAGE))
-			C << "<big><span class='warning'>You enter the zone controlled by [controlled_by]. [controlled_by] can kill you on sight if you are not allies with them.</warning></big>"
+			C << "<big><span class='warning'>You enter the zone controlled by [controlled_by]. [controlled_by] can kill you on sight if you are not allied.</warning></big>"
 		else
 			C << "<big><span class='warning'>Вы входите в зону, наход&#255;щуюс&#255; под контролем группировки [get_rus_faction(controlled_by)]. Вы можете быть убиты, если не находитесь в дружеских отношени&#255;х с группировкой.</warning></big>"
 
