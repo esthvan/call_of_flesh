@@ -112,6 +112,7 @@
 	M.adjustBruteLoss(-2.5)
 	M.adjustFireLoss(-2.5)
 	M.adjustToxLoss(-3)
+	M.nutrition -= 2
 	M.status_flags &= ~DISFIGURED
 	..()
 	return
@@ -128,6 +129,7 @@
 	M.adjustBruteLoss(-4.5)
 	M.adjustFireLoss(-4.5)
 	M.adjustToxLoss(-3)
+	M.nutrition -= 4
 	M.status_flags &= ~DISFIGURED
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -148,6 +150,7 @@
 	M.adjustBruteLoss(-8)
 	M.adjustFireLoss(-8)
 	M.adjustToxLoss(-5)
+	M.nutrition -= 8
 	M.status_flags &= ~DISFIGURED
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

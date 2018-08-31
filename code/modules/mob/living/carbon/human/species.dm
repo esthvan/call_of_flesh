@@ -903,9 +903,10 @@
 			if(health_deficiency >= 40)
 				. += (health_deficiency / 25)
 
-			var/hungry = (500 - H.nutrition) / 5	//So overeat would be 100 and default level would be 80
-			if(hungry >= 70)
-				. += hungry / 50
+			//var/hungry = (500 - H.nutrition) / 5	//So overeat would be 100 and default level would be 80
+			var/hungry = H.nutrition/500
+			if(hungry < 0.7)
+				. += 2*(1 - H.nutrition/400)
 
 			if(H.wear_suit)
 				. += H.wear_suit.slowdown
