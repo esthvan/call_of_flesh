@@ -589,10 +589,26 @@
 	..()
 
 	if(!cache_chance)
-		cache_chance = rand(5,11)
+		cache_chance = rand(6,8)
+
+	if(cache_quality == -1)
+		switch(z)
+			if(4 to INFINITY)
+				cache_quality = rand(1, 2)//rand(2, 3)
+			if(3)
+				cache_quality = rand(0, 1)
+			if(2)
+				cache_quality = 0
+				cache_chance += 2
+			if(1)
+				cache_quality = rand(1, 2)//0
+				cache_chance -= 4
 
 	if(!prob(cache_chance))
 		//internal_cache = null
+		return
+
+	if(get_area(src).controlled_by && get_area(src))
 		return
 
 	switch(cache_size)
@@ -604,17 +620,6 @@
 			internal_cache = new /obj/item/weapon/storage/stalker/cache/big(src)
 		if(3)
 			internal_cache = new /obj/item/weapon/storage/stalker/cache/large(src)
-
-	if(cache_quality == -1)
-		switch(z)
-			if(4 to INFINITY)
-				cache_quality = rand(1, 2)//rand(2, 3)
-			if(3)
-				cache_quality = rand(0, 1)
-			if(2)
-				cache_quality = 0
-			if(1)
-				cache_quality = rand(1, 2)//0
 
 	internal_cache.CreateContents(src)
 

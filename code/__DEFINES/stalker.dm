@@ -20,10 +20,10 @@
 #define DISGUSTING							0
 
 ///////////////ITEM TIERS
-#define TRASH_TIER_COST						10000
-#define LOW_TIER_COST						20000
-#define MEDIUM_TIER_COST					35000
-#define HIGH_TIER_COST						60000
+#define TRASH_TIER_COST						5000
+#define LOW_TIER_COST						12000
+#define MEDIUM_TIER_COST					36000
+#define HIGH_TIER_COST						72000
 
 ///////////////STAKLER_PDA
 #define FEED_SOUND							1
