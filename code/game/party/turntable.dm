@@ -116,6 +116,7 @@ var/global/turntable_channel = 4488
 		new /datum/data/turntable_soundtrack ("Leps G.",			"Rumka Vodki Na Stole",				'sound/turntable/rumka.ogg',								2360),
 		new /datum/data/turntable_soundtrack ("Leprikonsy",			"Hali-Gali, Paratruper",			'sound/turntable/leprikonsy_paratruper.ogg',				2060),
 		new /datum/data/turntable_soundtrack ("Lumen",				"Sid i Nensi",						'sound/turntable/lumen_sid_i_nensi.ogg',					2340),
+		new /datum/data/turntable_soundtrack ("Malchishnik",		"V poslendiy raz",					'sound/turntable/malchishnik_posledniy_raz.ogg',			3350),
 		new /datum/data/turntable_soundtrack ("Monokini",			"Adrenalin",						'sound/turntable/monokini_adrenalin.ogg',					1970),
 		new /datum/data/turntable_soundtrack ("Monokini",			"Dotyanusya Do Solntsa",			'sound/turntable/monokini_dotyanutsya_do_solntsa.ogg',		1600),
 		new /datum/data/turntable_soundtrack ("Mucuraev",			"O Allah",							'sound/turntable/mucuraev_o_allah.ogg',						3970),
@@ -205,6 +206,7 @@ var/global/turntable_channel = 4488
 		say("No access.")
 		return
 
+	H.set_machine(src)
 	//balance = KPK.profile.fields["money"]
 
 	var/dat
@@ -248,6 +250,12 @@ var/global/turntable_channel = 4488
 		return
 
 	var/mob/living/carbon/human/H = usr
+
+	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
+		say("Put on your KPK.")
+		updateUsrDialog()
+		return
+
 	var/obj/item/device/stalker_pda/KPK = H.wear_id
 
 	if(href_list["collect_money"])
