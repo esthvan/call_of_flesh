@@ -4,6 +4,10 @@
 
 /mob/living/carbon/New()
 	create_reagents(1000)
+	if(istype(get_area(src), /area/stalker/blowout))
+		inshelter = 0
+	else
+		inshelter = 1
 	..()
 
 /mob/living/carbon/prepare_huds()
