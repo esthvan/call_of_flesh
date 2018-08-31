@@ -156,6 +156,13 @@
 	mover.loc = newloc
 	mover.on_forcemove(newloc)
 
+	if(iscarbon(mover))
+		var/mob/living/carbon/C = mover
+		if(istype(get_area(mover), /area/stalker/blowout))
+			C.inshelter = 0
+		else
+			C.inshelter = 1
+
 /mob/proc/on_forcemove(atom/newloc)
 	return
 
