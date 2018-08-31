@@ -45,7 +45,7 @@
 
 	var/list/pipes_shown = list()
 	var/last_played_vent
-	var/list/global_armor = list()
+	var/list/global_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, psy = 0)
 	var/smoke_delay = 0 //used to prevent spam with smoke reagent reaction on mob.
 
 	var/list/say_log = list() //a log of what we've said, plain text, no spans or junk, essentially just each individual "message"
