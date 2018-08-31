@@ -92,13 +92,14 @@
 			if(newletter==" ")	newletter="...huuuhhh..."
 			if(newletter==".")	newletter=" *BURP*."
 		switch(rand(1,20))
-			if(1)	newletter+="'"
+			if(1)	newletter+="'"f
 			if(10)	newletter+="[newletter]"
 			if(20)	newletter+="[newletter][newletter]"
 		newphrase+="[newletter]";counter-=1
 	return newphrase*/
 
 proc/slur(phrase)
+	phrase = rhtml_decode(sanitize_simple(phrase))
 	var/output = ""
 
 	for(var/i = 1; i <= lentext(phrase); i++)
@@ -107,8 +108,9 @@ proc/slur(phrase)
 			output += " "
 			continue
 		if(letter == "&")
-			letter = "&#255;"
-			i += 5
+			if("&#255;" == copytext(phrase, i, i+6))
+				letter = "&#255;"
+				i += 5
 		if(prob(33))
 			if(lowerrustext(letter)=="î")	letter="ó"
 			if(lowerrustext(letter)=="û")	letter="i"
@@ -134,13 +136,10 @@ proc/slur(phrase)
 			if(11,12)		letter = "<big>[letter]</big>"
 			if(13)			letter = "<small>[letter]</small>"
 		output += letter
-
 	return output
 
 /proc/stutter(n)
-	var/te = rhtml_decode(sanitize_simple(n))
-	world << sanitize_simple(n)
-	world << te
+	var/te = rhtml_decode(sanitize_simple(n))//rhtml_decode(sanitize_simple(n))
 	var/t = ""//placed before the message. Not really sure what it's for.
 	n = length(n)//length of the entire word
 	var/p = null
@@ -148,9 +147,10 @@ proc/slur(phrase)
 	while(p <= n)//while P, which starts at 1 is less or equal to N which is the length.
 		var/n_letter = copytext(te, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
 		if(n_letter == "&")
-			n_letter = "&#255;"
-			p += 5
-		if (prob(80) && (ckey(n_letter) in list("á","â","ã","ä","æ","ç","ê","ë","ì","í","ï","ð","ñ","ò","ô","÷","õ","ö","ø","ù","b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")))
+			if("&#255;" == copytext(te, p, p+5))
+				n_letter = "&#255;"
+				p += 5
+		if (prob(80) && (lowertext(n_letter) in list("á","â","ã","ä","æ","ç","ê","ë","ì","í","ï","ð","ñ","ò","ô","÷","õ","ö","ø","ù","b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")))
 			if (prob(10))
 				n_letter = text("[n_letter]-[n_letter]-[n_letter]-[n_letter]")//replaces the current letter with this instead.
 			else
