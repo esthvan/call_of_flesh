@@ -52,7 +52,7 @@
 							var/obj/item/clothing/suit/S = C
 							S.durability -= 0.2
 
-						if(istype(C, /obj/item/clothing/head) && !istype(C, /obj/item/clothing/head/winterhood))
+						if(istype(C, /obj/item/clothing/head))
 							var/obj/item/clothing/head/H = C
 							H.durability -= 0.2
 
