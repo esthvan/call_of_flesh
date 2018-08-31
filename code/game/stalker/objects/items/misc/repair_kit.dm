@@ -19,11 +19,11 @@
 		var/obj/item/device/repair_kit/RK = A
 		if(src.loc == user)
 			user << "<span class='warning'>Place [src] on the floor or table.</span>"
-			return
+			return 0
 
 		if((src.durability/initial(durability)*100) < RK.min_durability)
 			user << "<span class='warning'>[src] duranility is too low. You can't repair it with kit of this type.</span>"
-			return
+			return 0
 
 		playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
 		user.visible_message("<span class='notice'>[user] starts repairing [src]...</span>", "<span class='notice'>You start repairing [src]...</span>")
@@ -39,22 +39,32 @@
 
 		if(durability > initial(durability))
 			durability = initial(durability)
+		return 1
+
+	if(internal_slot)
+		if(isrobot(user))
+			user << "<span class='warning'>You're a robot. No.</span>"
+			return 0	//Robots can't interact with storage items.
+
+		if(!internal_slot.can_be_inserted(A, 0 , user))
+			return 0
+
+		internal_slot.handle_item_insertion(A, 0 , user)
+		return 1
+
 
 /obj/item/clothing/head/attackby(obj/item/A, mob/user, params)
 	..()
-	if(istype(src, /obj/item/clothing/head/winterhood))
-		return
-
 	if(istype(A, /obj/item/device/repair_kit/clothing))
 		var/obj/item/device/repair_kit/RK = A
 
 		if(src.loc == user)
 			user << "<span class='warning'>Place [src] on the floor or table.</span>"
-			return
+			return 0
 
 		if((src.durability/initial(durability)*100) < RK.min_durability)
 			user << "<span class='warning'>[src] durability is too low. You can't repair it with kit of this type.</span>"
-			return
+			return 0
 
 		playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
 		user.visible_message("<span class='notice'>[user] starts repairing [src]...</span>", "<span class='notice'>You start repairing [src]...</span>")
@@ -70,6 +80,7 @@
 
 		if(durability > initial(durability))
 			durability = initial(durability)
+		return 1
 
 /obj/item/device/repair_kit/gun
 	name = "repair kit (for guns)"
@@ -86,11 +97,11 @@
 		var/obj/item/device/repair_kit/RK = A
 		if(src.loc == user)
 			user << "<span class='warning'>Place [src] on the floor or table.</span>"
-			return
+			return 0
 
 		if((src.durability/initial(durability)*100) < RK.min_durability)
 			user << "<span class='warning'>[src] durability is too low. You can't repair it with kit of this type.</span>"
-			return
+			return 0
 
 		playsound(user.loc, 'sound/stalker/inv_repair_spray_oil.ogg', 50, 1)
 		user.visible_message("<span class='notice'>[user] starts repairing [src]...</span>", "<span class='notice'>You start repairing [src]...</span>")
@@ -107,6 +118,7 @@
 
 		if(durability > initial(durability))
 			durability = initial(durability)
+		return 1
 
 /obj/item/device/repair_kit/examine(mob/user)
 	..()

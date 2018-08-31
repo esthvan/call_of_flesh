@@ -533,7 +533,7 @@
 			visible_message("<span class='danger'><b>[src]</b> stares at [H]!</span>")
 			last_attack_time = world.time
 
-			if(H in view(14, src))
+			if(H in view(15, src))
 				H << sound('sound/stalker/mobs/mutants/attack/controller_tube_prepare.ogg', wait = 0, channel = 47, volume = 50)
 				attack_stage++
 			else
@@ -541,19 +541,21 @@
 				attack_stage = 0
 
 
-		if(1 to 2)
-			if(H in view(14, src))
+		if(1)
+			if(H in view(15, src))
 				last_attack_time = world.time
 				attack_stage++
 			else
 				ranged_cooldown = max(0, ranged_cooldown_cap - attack_stage)
 				attack_stage = 0
-		if(3)
-			if(H in view(14, src))
+		if(2)
+			if(H in view(15, src))
 				last_attack_time = world.time
 				H << sound('sound/stalker/mobs/mutants/attack/controller_whoosh.ogg', wait = 0, channel = 47, volume = 50)
 				visible_message("<span class='danger'><b>[src]</b> stares right into [A] eyes!</span>")
-				H.apply_damage(100, PSY, null, blocked = getarmor("head", "psy", 0))
+				H.apply_damage(200, PSY, null, blocked = getarmor("head", "psy", 0))
+				if(H.psyloss >= 200)
+					H.zombiefied = 1
 
 			ranged_cooldown = max(0, ranged_cooldown_cap - attack_stage)
 			attack_stage = 0
