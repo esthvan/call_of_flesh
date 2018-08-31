@@ -10,7 +10,7 @@
 		overlays -= overlays_standing[TOP_LAYER]
 		overlays_standing[TOP_LAYER] = null
 
-	if(istype(src.loc, /turf/stalker/floor/water))
+	if(src.loc && istype(src.loc, /turf/stalker/floor/water))
 
 		var/image/standing //= image('icons/stalker/water.dmi', "water_overlay")
 		var/icon/I
