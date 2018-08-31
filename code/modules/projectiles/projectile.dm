@@ -193,7 +193,7 @@
 					new_y--
 
 				//speed = round(speed)
-				animate(src, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset, time = max(0.5, (speed <= 3 ? speed - 1 : speed)))
+				animate(src, pixel_x = pixel_x_offset, pixel_y = pixel_y_offset, time = max(0.4, (speed <= 3 ? speed - 1 : speed)))
 				for(var/i=0,i<1,i++)
 					step_towards(src, locate(new_x, new_y, z))
 					//if(speed <= 1)
@@ -207,7 +207,7 @@
 							if(!(original in permutated))
 								Bump(original, 1)
 					Range(damagelose)
-			sleep(max(0.5, speed))
+			sleep(max(0.4, speed))
 	else //old projectile system
 		set waitfor = 0
 		while(loc)
