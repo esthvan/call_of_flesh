@@ -117,6 +117,13 @@
 		A.y = teleport_y
 		A.z = teleport_z
 
+		if(iscarbon(A))
+			var/mob/living/carbon/C = A
+			if(istype(get_area(C), /area/stalker/blowout))
+				C.inshelter = 0
+			else
+				C.inshelter = 1
+
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 
 /obj/effect/step_trigger/teleporter/random
