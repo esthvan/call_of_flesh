@@ -305,7 +305,7 @@
 	mymob.damageoverlay.icon = 'icons/mob/screen_full.dmi'
 	mymob.damageoverlay.icon_state = "oxydamageoverlay0"
 	mymob.damageoverlay.name = "dmg"
-	mymob.damageoverlay.blend_mode = BLEND_MULTIPLY
+	mymob.damageoverlay.blend_mode = BLEND_OVERLAY
 	mymob.damageoverlay.screen_loc = "CENTER-7,CENTER-7"
 	mymob.damageoverlay.mouse_opacity = 0
 	mymob.damageoverlay.layer = 18.1 //The black screen overlay sets layer to 18 to display it, this one has to be just on top.
@@ -314,10 +314,10 @@
 	mymob.whitenoise.icon = 'icons/mob/screen_full.dmi'
 	mymob.whitenoise.icon_state = "whitenoise"
 	mymob.whitenoise.name = "whitenoise"
-	mymob.whitenoise.blend_mode = BLEND_MULTIPLY
+	mymob.whitenoise.blend_mode = BLEND_ADD
 	mymob.whitenoise.screen_loc = "CENTER-7,CENTER-7"
 	mymob.whitenoise.mouse_opacity = 0
-	mymob.whitenoise.layer = 19
+	mymob.whitenoise.layer = 18.05
 	mymob.whitenoise.alpha = 0
 
 	mymob.nightvision = new /obj/screen()
