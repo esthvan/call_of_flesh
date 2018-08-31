@@ -1,5 +1,7 @@
 
 ///////////////////////////// Пистолеты //////////////////////////////////////////
+/obj/item/weapon/gun/projectile/automatic/pistol
+	modifications = list("barrel_pistol" = 0, "frame_pistol" = 0, "grip_pistol" = 0)
 
 /obj/item/weapon/gun/projectile/automatic/pistol/pm   // Макаров
 	name = "PMm"
@@ -266,6 +268,9 @@
         . += image(icon = 'icons/effects/effects.dmi', icon_state = "[shield_state]")
 */
 
+/obj/item/weapon/gun/projectile/automatic
+	modifications = list("barrel_automatic" = 0, "frame_automatic" = 0, "grip_automatic" = 0, "compensator_automatic" = 0)
+
 /obj/item/weapon/gun/projectile/automatic/ak74  // AK-74
 	name = "AK 74"
 	desc = "Автомат образца 1974 года под патрон 5,45x39мм. Представл&#255;ет собой простое и надёжное оружие, хот&#255; дешевизна в производстве несколько сказалась на удобстве использовани&#255; и точности бо&#255;. В Зоне это основное оружие военных сталкеров и многих одиночек."
@@ -329,7 +334,7 @@
 	desc = "Одно из самых лучших в классе пистолетов-пулемётов оружие. В течении последних дес&#255;тилетий XX века был прин&#255;т на вооружение спецподразделений армии и полиции во многих странах мира. С началом его постепенной замены более современными модел&#255;ми стал часто по&#255;вл&#255;тьс&#255; на чёрном рынке, откуда массово попал и в Зону."
 	eng_desc = "This submachine gun has gained popularity around the world thanks to its reliability, ease of use and accuracy. Over the last few decades the MP5 was in service with special armed forces and police units worldwide. Not surprisingly, having flooded the global black markets, it eventually made its way to the Zone."
 	icon_state = "mp5"
-	item_state = "gun"
+	item_state = "arg"
 	fire_sound = 'sound/stalker/weapons/mp5_shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/stalker/m9x19mp5
 	can_suppress = 1

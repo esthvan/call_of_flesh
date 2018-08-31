@@ -49,3 +49,97 @@
 /obj/item/weapon/storage/backpack/stalker/attackby(obj/item/weapon/W, mob/user, params)
 	playsound(src.loc, "sound/stalker/objects/inv_open.ogg", 50, 1, -5)
 	..()
+
+//Some suit internal slots
+
+/obj/item/weapon/storage/internal_slot
+	name = "internal slot"
+	desc = "You shouldn't see this."
+	w_class = 4
+	max_w_class = 2
+	max_combined_w_class = 2
+	storage_slots = 1
+
+/obj/item/weapon/storage/internal_slot/attack_hand(mob/user)
+	playsound(loc, "rustle", 50, 1, -5)
+
+	orient2hud(user)
+	if(loc && loc.loc && (loc == user || loc.loc == user))
+		if(user.s_active)
+			user.s_active.close(user)
+		show_to(user)
+	add_fingerprint(user)
+
+/obj/item/weapon/storage/internal_slot/MouseDrop(atom/over_object)
+	if(iscarbon(usr) || isdrone(usr)) //all the check for item manipulation are in other places, you can safely open any storages as anything and its not buggy, i checked
+		var/mob/M = usr
+
+		if(!over_object)
+			return
+
+		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
+			return
+
+		if(over_object == M && Adjacent(M)) // this must come before the screen objects only block
+			orient2hud(M)					// dunno why it wasn't before
+			if(M.s_active)
+				M.s_active.close(M)
+			show_to(M)
+			return
+
+		if(!M.restrained() && !M.stat)
+			if(!istype(over_object, /obj/screen))
+				return content_can_dump(over_object, M)
+
+			if(loc != usr || (loc && loc.loc == usr))
+				return
+
+			playsound(loc, "rustle", 50, 1, -5)
+			add_fingerprint(usr)
+
+
+//Artifact container//
+
+/obj/item/weapon/storage/internal_slot/container
+	name = "mounted artifact container"
+	can_hold = list(/obj/item/weapon/artifact)
+	storage_slots = 1
+
+/obj/item/weapon/storage/internal_slot/container/advanced
+	name = "mounted advanced artifact container"
+	max_combined_w_class = 4
+	storage_slots = 2
+
+/obj/item/weapon/storage/internal_slot/container/modern
+	name = "mounted modern artifact container"
+	max_combined_w_class = 4
+	storage_slots = 2
+	radiation_protection = 1
+
+//Item slots//
+
+/obj/item/weapon/storage/internal_slot/webbing
+	name = "mounted webbing"
+	max_w_class = 2
+	max_combined_w_class = 4
+	storage_slots = 2
+
+/obj/item/weapon/storage/internal_slot/webbing/advanced
+	name = "mounted advanced webbing"
+	max_w_class = 2
+	max_combined_w_class = 6
+	storage_slots = 3
+
+/obj/item/weapon/storage/internal_slot/webbing/modern
+	name = "mounted modern webbing"
+	max_w_class = 3
+	max_combined_w_class = 12
+	storage_slots = 4
+
+//Gun slot//
+
+/obj/item/weapon/storage/internal_slot/gun_case
+	name = "mounted gan case"
+	max_w_class = 4
+	max_combined_w_class = 4
+	storage_slots = 1

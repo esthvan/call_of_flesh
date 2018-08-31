@@ -1,15 +1,20 @@
 /obj/item/clothing
 	var/durability = -1
 
+/obj/item/clothing/suit
+	var/obj/item/weapon/storage/internal_slot/internal_slot = null
+
+/obj/item/clothing/examine(mob/user)
+	..()
+
 /obj/item/clothing/head/examine(mob/user)
 	..()
-	if(!istype(src, /obj/item/clothing/head/winterhood))
-		if(durability)
-			var/percentage = (durability / (initial(durability)))*100
-			if(percentage >= 50)
-				user << "<span class='notice'>Durability - [percentage]%</span>"
-			else
-				user << "<span class='warning'>Durability - [percentage]%</span>"
+	if(durability)
+		var/percentage = (durability / (initial(durability)))*100
+		if(percentage >= 50)
+			user << "<span class='notice'>Durability - [percentage]%</span>"
+		else
+			user << "<span class='warning'>Durability - [percentage]%</span>"
 
 /obj/item/clothing/mask/examine(mob/user)
 	..()
@@ -41,6 +46,137 @@
 	..()
 	update_icon()
 
+/obj/item/clothing/suit/MouseDrop(atom/over_object)
+	if(!usr)
+		return
+	src.throwing = 0
+	if (loc == usr)
+		if(!usr.unEquip(src))
+			return
+
+	pickup(usr)
+	add_fingerprint(usr)
+	if(!usr.put_in_active_hand(src))
+		dropped(usr)
+	return
+
+/obj/item/clothing/suit/attack_hand(mob/user)
+	if(!ishuman(user))
+		return ..()
+
+	var/mob/living/carbon/human/H = user
+
+	if(!internal_slot || H.wear_suit != src)
+		return ..()
+
+	internal_slot.attack_hand(user)
+
+/////////////////////////////////////////////////////////////////////ШЛЕМЫ НОЧНОГО ВИДЕНЬЯ, ВНУТРЕННИЕ ХРАНИЛИЩА И Т.Д./////////////////////////////////////////////////////////////////////////////////////////
+
+/obj/item/clothing
+	var/obj/item/nightvision/nvg = null
+
+/obj/item/nightvision
+	var/vision_flags = 0
+	var/darkness_view = 4//Base human is 2
+	var/invis_view = SEE_INVISIBLE_LIVING
+	action_button_name = "Toggle Night Vision"
+	var/active = 0
+	var/list/colour_matrix = NIGHTVISION_MATRIX_I
+
+/obj/item/nightvision/advanced
+	colour_matrix = NIGHTVISION_MATRIX_II
+
+/obj/item/nightvision/New(var/newloc)
+	//..()
+	if(newloc)
+		loc = newloc
+		if(istype(loc, /obj/item/clothing/suit/hooded/sealed))
+			var/obj/item/clothing/suit/hooded/sealed/S = newloc
+			S.modifications["visor_suit"] = 1
+		else if(istype(loc, /obj/item/clothing/head))
+			var/obj/item/clothing/head/H = newloc
+			H.modifications["visor_head"] = 1
+		else if(istype(loc, /obj/item/clothing/mask))
+			var/obj/item/clothing/mask/M = newloc
+			//M.modifications["visor_mask"] = 1
+			M.modifications["visor_head"] = 1
+	if(istype(loc, /obj/item/clothing))
+		var/obj/item/clothing/C = loc
+		C.nvg = src
+		C.action_button_name = action_button_name
+
+/obj/item/nightvision/advanced/New(var/newloc)
+	if(newloc)
+		loc = newloc
+		if(istype(loc, /obj/item/clothing/suit/hooded/sealed))
+			var/obj/item/clothing/suit/hooded/sealed/S = newloc
+			S.modifications["visor_suit"] = 2
+		else if(istype(loc, /obj/item/clothing/head))
+			var/obj/item/clothing/head/H = newloc
+			H.modifications["visor_head"] = 2
+		else if(istype(loc, /obj/item/clothing/mask))
+			var/obj/item/clothing/mask/M = newloc
+			//M.modifications["visor_mask"] = 2
+			M.modifications["visor_head"] = 2
+	if(istype(loc, /obj/item/clothing))
+		var/obj/item/clothing/C = loc
+		C.nvg = src
+		C.action_button_name = action_button_name
+
+/obj/item/nightvision/attack_self(mob/user)
+
+	if(!loc || !loc.loc || !istype(loc.loc, /mob/living/carbon))
+		return
+
+	var/mob/living/carbon/C = loc.loc
+
+	if(C.head != src.loc && C.wear_mask != src.loc)
+		return
+
+
+	if(active)
+		active = 0
+		playsound(usr, 'sound/stalker/nv_off.ogg', 50, 1, -1)
+		usr << "You deactivate the optical matrix on the [src]."
+		//if(istype(usr, /mob/living/carbon/human))
+			//var/mob/living/carbon/human/H = usr
+			//H.nightvision.alpha = 0
+		//overlay = null
+		invis_view = SEE_INVISIBLE_LIVING
+		//sleep(5)
+	else
+		active = 1
+		playsound(usr, 'sound/stalker/nv_start.ogg', 50, 1, -1)
+		usr << "You activate the optical matrix on the [src]."
+		//if(istype(usr, /mob/living/carbon/human))
+			//var/mob/living/carbon/human/H = usr
+			//H.nightvision.alpha = 125
+		//overlay = global_hud.nvg
+		invis_view = SEE_INVISIBLE_MINIMUM
+		sleep(5)
+
+/obj/item/nightvision/proc/TurnOff(mob/user)
+	if(active)
+		active = 0
+		playsound(usr, 'sound/stalker/nv_off.ogg', 50, 1, -1)
+		user << "You deactivate the optical matrix on the [src]."
+		//if(istype(usr, /mob/living/carbon/human))
+		//	var/mob/living/carbon/human/H = user
+		//	H.nightvision.alpha = 0
+		invis_view = SEE_INVISIBLE_LIVING
+
+/obj/item/clothing/ui_action_click()
+	if(nvg)
+		nvg.attack_self()
+	else
+		..()
+
+/obj/item/nightvision/ui_action_click()
+	attack_self()
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /obj/item/clothing/suit/hooded/kozhanka
 	name = "leather jacket"
 	desc = "Обычна&#255; плотна&#255; кожана&#255; куртка, каких много. Слегка усиливает противопулевую и осколочную защиту. Неэффективна против аномальных и других воздействий."
@@ -67,6 +203,7 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags = NODROP//|BLOCKHEADHAIR
+	durability = -1
 
 /obj/item/clothing/head/winterhood/stalker/kozhanka
 	icon_state = "winterhood_kozhanka"
@@ -257,125 +394,6 @@
 obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	..()
 	nvg = new /obj/item/nightvision(src)
-
-/////////////////////////////////////////////////////////////////////ШЛЕМЫ НОЧНОГО ВИДЕНЬЯ/////////////////////////////////////////////////////////////////////////////////////////
-
-/obj/item/clothing
-	var/obj/item/nightvision/nvg = null
-
-/obj/item/nightvision
-	var/vision_flags = 0
-	var/darkness_view = 4//Base human is 2
-	var/invis_view = SEE_INVISIBLE_LIVING
-	action_button_name = "Toggle Night Vision"
-	var/active = 0
-	var/list/colour_matrix = NIGHTVISION_MATRIX_I
-
-/obj/item/nightvision/advanced
-	colour_matrix = NIGHTVISION_MATRIX_II
-
-/obj/item/nightvision/New(var/newloc)
-	//..()
-	if(newloc)
-		loc = newloc
-		if(istype(loc, /obj/item/clothing/suit/hooded/sealed))
-			var/obj/item/clothing/suit/hooded/sealed/S = newloc
-			S.modifications["visor_suit"] = 1
-		else if(istype(loc, /obj/item/clothing/head))
-			var/obj/item/clothing/head/H = newloc
-			H.modifications["visor_head"] = 1
-		else if(istype(loc, /obj/item/clothing/mask))
-			var/obj/item/clothing/mask/M = newloc
-			M.modifications["visor_mask"] = 1
-	if(istype(loc, /obj/item/clothing))
-		var/obj/item/clothing/C = loc
-		C.nvg = src
-		C.action_button_name = action_button_name
-
-/obj/item/nightvision/advanced/New(var/newloc)
-	if(newloc)
-		loc = newloc
-		if(istype(loc, /obj/item/clothing/suit/hooded/sealed))
-			var/obj/item/clothing/suit/hooded/sealed/S = newloc
-			S.modifications["visor_suit"] = 2
-		else if(istype(loc, /obj/item/clothing/head))
-			var/obj/item/clothing/head/H = newloc
-			H.modifications["visor_head"] = 2
-		else if(istype(loc, /obj/item/clothing/mask))
-			var/obj/item/clothing/mask/M = newloc
-			M.modifications["visor_mask"] = 2
-	if(istype(loc, /obj/item/clothing))
-		var/obj/item/clothing/C = loc
-		C.nvg = src
-		C.action_button_name = action_button_name
-
-/obj/item/nightvision/attack_self(mob/user)
-
-	if(!loc || !loc.loc || !istype(loc.loc, /mob/living/carbon))
-		return
-
-	var/mob/living/carbon/C = loc.loc
-
-	if(C.head != src.loc && C.wear_mask != src.loc)
-		return
-
-
-	if(active)
-		active = 0
-		playsound(usr, 'sound/stalker/nv_off.ogg', 50, 1, -1)
-		usr << "You deactivate the optical matrix on the [src]."
-		//if(istype(usr, /mob/living/carbon/human))
-			//var/mob/living/carbon/human/H = usr
-			//H.nightvision.alpha = 0
-		//overlay = null
-		invis_view = SEE_INVISIBLE_LIVING
-		//sleep(5)
-	else
-		active = 1
-		playsound(usr, 'sound/stalker/nv_start.ogg', 50, 1, -1)
-		usr << "You activate the optical matrix on the [src]."
-		//if(istype(usr, /mob/living/carbon/human))
-			//var/mob/living/carbon/human/H = usr
-			//H.nightvision.alpha = 125
-		//overlay = global_hud.nvg
-		invis_view = SEE_INVISIBLE_MINIMUM
-		sleep(5)
-
-/obj/item/nightvision/proc/TurnOff(mob/user)
-	if(active)
-		active = 0
-		playsound(usr, 'sound/stalker/nv_off.ogg', 50, 1, -1)
-		user << "You deactivate the optical matrix on the [src]."
-		//if(istype(usr, /mob/living/carbon/human))
-		//	var/mob/living/carbon/human/H = user
-		//	H.nightvision.alpha = 0
-		invis_view = SEE_INVISIBLE_LIVING
-
-/obj/item/clothing/ui_action_click()
-	if(nvg)
-		nvg.attack_self()
-	else
-		..()
-
-/obj/item/nightvision/ui_action_click()
-	attack_self()
-/*
-/obj/item/nightvision/New()
-	..()
-	overlay = global_hud.nvg
-*/
-/*
-/obj/item/clothing/suit/hooded/kombez/New()
-	..()
-	sleep(5)
-	if(hood && hood.nvg)
-		if(hood.nvg.colour_matrix == NIGHTVISION_MATRIX_I)
-			modifications += "visor"
-
-		else if (hood.nvg.colour_matrix == NIGHTVISION_MATRIX_II)
-			modifications += "visor"
-*/
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/clothing/suit/hooded/sealed/ecologm
 	name = "SSP-99M"

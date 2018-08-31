@@ -116,7 +116,7 @@
 	icon_state = "helmet_skat"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70, psy = 20)
+	armor = list(melee = 75, bullet = 75, laser = 60,burn = 70, bomb = 70, bio = 50, rad = 40, electro = 70, psy = 10)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
@@ -164,12 +164,12 @@
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
-	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30, psy = 5)
+	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30, psy = 0)
 	burn_state = FIRE_PROOF
 	unacidable = 1
 	durability = 400
 	//ÃŒƒ»‘» ¿÷»»//
-	modifications = list("padding_head" = 0, "material_mask" = 0, "visor_mask" = 0)
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 0)
 
 /obj/item/clothing/mask/gas/stalker/mercenary
 	name = "gas mask"
@@ -181,9 +181,9 @@
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	flags = BLOCKFACIALHAIR
-	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30, psy = 5)
+	armor = list(melee = 5, bullet = 0, laser = 30,burn = 30, bomb = 0, bio = 20, rad = 60, electro = 30, psy = 0)
 	burn_state = FIRE_PROOF
 	unacidable = 1
 	durability = 400
 	//ÃŒƒ»‘» ¿÷»»//
-	modifications = list("padding_head" = 0, "material_mask" = 0, "visor_mask" = 0)
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 0)

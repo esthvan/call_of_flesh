@@ -1,3 +1,6 @@
+/obj/item/weapon/gun/projectile/revolver
+	modifications = list("barrel_shotgun" = 0, "frame_shotgun" = 0, "grip_shotgun" = 0)
+
 /obj/item/weapon/gun/projectile/revolver/bm16  // Горизонталка
 	name = "BM-16"
 	desc = "Охотничье ружьё - горизонталка. Довольно мощное, в самый раз дл&#255; охоты."
@@ -62,6 +65,9 @@
 	damagelose = 0.15
 	distro = 10
 	weapon_weight = WEAPON_MEDIUM
+
+/obj/item/weapon/gun/projectile/shotgun
+	modifications = list("barrel_shotgun" = 0, "frame_shotgun" = 0, "grip_shotgun" = 0)
 
 /obj/item/weapon/gun/projectile/shotgun/ithaca  //  Ithaca M37
 	name = "Ithaca M37"
