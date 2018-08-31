@@ -479,7 +479,7 @@ var/list/binary = list("0","1")
 	for(var/text in c)
 		if(!first)
 			out += rep
-			first = 0
+		first = 0
 		out += html_decode(text)
 	return out
 
