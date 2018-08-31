@@ -375,6 +375,9 @@
 	if(stuttering)
 		stuttering = max(stuttering-1, 0)
 
+	if(getBruteLoss() + getFireLoss() >= 50)
+		stuttering += 1
+
 	if(slurring)
 		slurring = max(slurring-1,0)
 
@@ -484,7 +487,7 @@
 				damageoverlay.overlays += black
 		var/whitenoisealpha = 0
 		if(stat != DEAD)
-			whitenoisealpha = 100 - health + (radiation*0.125)
+			whitenoisealpha = min(75, radiation*0.3)
 		whitenoise.alpha = whitenoisealpha
 	..()
 
