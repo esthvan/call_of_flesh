@@ -124,7 +124,7 @@ var/global/isblowout = 0
 	world << sound('sound/stalker/blowout/blowout_siren.ogg', wait = 0, channel = 202, volume = 60)
 
 	for(var/mob/living/carbon/C in player_list)
-		if(C.inshelter)
+		if(!C.inshelter)
 			C << "<big><span class='warning'>Seek for shelter quick! You screen will be red until you enter a shelter.</span></big>"
 		else
 			C << "<big><span class='notice'>You are in the shelter now. Wait till blowout is over.</span></big>"
@@ -191,7 +191,7 @@ var/global/isblowout = 0
 
 		C.internal_cache = null
 
-		C.cache_chance = rand(2, 7)
+		C.cache_chance = rand(7, 12)
 
 		C.New()
 
