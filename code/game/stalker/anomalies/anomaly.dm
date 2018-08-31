@@ -5,6 +5,7 @@
 #define DMG_TYPE_RADIATION 16
 #define DMG_TYPE_IGNITION 32
 #define DMG_TYPE_BIO 64
+#define DMG_TYPE_LASTER 128
 /var/list/obj/anomaly/anomalies = list()
 /var/list/obj/item/weapon/spawned_artifacts = list()
 
@@ -226,9 +227,11 @@
 
 	switch(src.damage_type)
 		if(DMG_TYPE_ENERGY)
-			L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "electro"))
+			L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "energy"))
 		if(DMG_TYPE_BIO)
 			L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "bio"))
+		if(DMG_TYPE_LASTER)
+			L.apply_damage(src.damage_amount, BURN, null, L.getarmor(null, "laser"))
 		if(DMG_TYPE_RADIATION)
 			L.rad_act(src.damage_amount)
 		if(DMG_TYPE_GIB)
@@ -300,11 +303,11 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/nothing = 90,
-				/obj/item/weapon/artifact/meduza = 5,
-				/obj/item/weapon/artifact/stoneflower = 3,
-				/obj/item/weapon/artifact/nightstar = 1.5,
-				/obj/item/weapon/artifact/soul = 0.5
+	loot = list(/obj/nothing = 80,
+				/obj/item/weapon/artifact/meduza = 12,
+				/obj/item/weapon/artifact/stoneflower = 5,
+				/obj/item/weapon/artifact/nightstar = 2,
+				/obj/item/weapon/artifact/soul = 1
 				)
 
 /obj/anomaly/karusel/New()
@@ -335,10 +338,10 @@
 	damage_type = DMG_TYPE_GIB
 	active_invisibility = 0
 	inactive_invisibility = 101
-	loot = list(/obj/nothing = 90.5,
-				/obj/item/weapon/artifact/meduza = 5,
-				/obj/item/weapon/artifact/stoneflower = 3,
-				/obj/item/weapon/artifact/nightstar = 1.5
+	loot = list(/obj/nothing = 80,
+				/obj/item/weapon/artifact/meduza = 12,
+				/obj/item/weapon/artifact/stoneflower = 6,
+				/obj/item/weapon/artifact/nightstar = 2
 				)
 
 /obj/anomaly/jarka
@@ -478,7 +481,7 @@
 	activated_luminosity = 5
 	anomaly_color = "#70cc33"
 	sound = 'sound/stalker/anomalies/buzz_hit.ogg'
-	damage_type = DMG_TYPE_BIO
+	damage_type = DMG_TYPE_LASTER
 	damage_amount = 60
 	icon = 'icons/stalker/anomalies.dmi'
 	inactive_icon_state = "holodec"
