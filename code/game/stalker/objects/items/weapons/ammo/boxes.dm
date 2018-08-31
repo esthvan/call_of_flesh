@@ -156,5 +156,5 @@
 	eng_desc = "A stripper clip."
 	ammo_type = /obj/item/ammo_casing/c762x51
 	icon_state = "303"
-	max_ammo = 10
+	max_ammo = 5
 	multiple_sprites = 1
