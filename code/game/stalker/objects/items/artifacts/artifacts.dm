@@ -30,15 +30,22 @@
 	w_class = 2
 	var/obj/effect/fakeart/phantom = null
 
-/obj/item/weapon/artifact/proc/Think(user)
+/obj/item/weapon/artifact/proc/Think(mob/user)
 	if(!charge) return 0
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/mob = user
-		if(radiation)
-			mob.radiation += radiation
-		if(mob.radiation < 0)
-			mob.radiation = 0
-	return 1
+		if(istype(loc, user))
+			mob.radiation = max(0, mob.radiation + radiation)
+
+		else if(istype(loc, /obj/item/weapon/storage))
+			var/obj/item/weapon/storage/S = loc
+			if(radiation > 0)
+				mob.radiation = max(0, mob.radiation + (radiation*(1-S.radiation_protection)))
+			else
+				mob.radiation = max(0, mob.radiation + radiation)
+
+		return art_armor
+	return 0
 
 
 /obj/item/weapon/artifact/New()
@@ -91,7 +98,7 @@
 	radiation = 2
 	level_s = 4
 
-/obj/item/weapon/artifact/soul/Think(user)
+/obj/item/weapon/artifact/soul/Think(mob/user)
 	if(!..()) return 0
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/mob = user
@@ -105,7 +112,7 @@
 	desc = "Артефакт электростатической природы. Демонстрирует удивительную способность к поглощению электрических зар&#255;дов и последующему их рассеиванию. Способен защитить организм человека от воздействи&#255; электротоков большой силы и высокого напр&#255;жени&#255;. Радиоактивен."
 	eng_desc = "This electrostatic artifact is a powerful absorbent of electricity, which it later discharges. Flash is capable of protecting its bearer from electric shocks of up to 5,000 volts. Emits radiation."
 	icon_state = "flash"
-	art_armor = list(electro = 10)
+	art_armor = list(energy = 10)
 	radiation = 1
 	level_s = 1
 
@@ -114,7 +121,7 @@
 	desc = "Вырожденный случай активности аномалии Электра. Видимо, такую замечательную округлую форму можно получить, если подвергнуть аномалию термовоздействию. Дорогой артефакт."
 	eng_desc = "Degenerate case of the activity of the Electro anomaly. It seems that such a wonderful round form is created when the anomaly is subjected to thermal influences. Expensive artifact."
 	icon_state = "moonlight"
-	art_armor = list(electro = 25)
+	art_armor = list(energy = 25)
 	radiation = 2
 	level_s = 2
 
@@ -122,7 +129,7 @@
 	name = "pustishka"
 	desc = "Ранее этот артефакт считалс&#255; хламом, лишённым каких-либо полезных свойств. Однако некоторое врем&#255; назад вы&#255;снилось, что при посто&#255;нном контакте с телом человека данный артефакт оказывает защиту от электростатических аномалий. Радиоактивен."
 	icon_state = "pustishka"
-	art_armor = list(electro = 30)
+	art_armor = list(energy = 30)
 	radiation = 2
 	level_s = 3
 
@@ -131,7 +138,7 @@
 	desc = "Происхождение этой вещи окутано завесой научной тайны. Пон&#255;тно, что в его состав вход&#255;т диэлектрические элементы, но при каких физических услови&#255;х он формируетс&#255; - науке не известно. Не облучает носител&#255;."
 	eng_desc = "The composition of this artifact includes electrostatic elements, but scientists have yet to identify the exact physical conditions required for its formation. The artifact is popular in the Zone and valued by its residents and visitors for its energizing properties, although it can tire the body out through prolonged use. Doesn't emit radiation."
 	icon_state = "battery"
-	art_armor = list(electro = 30)
+	art_armor = list(energy = 30)
 	level_s = 4
 
 	/////////////////////////////////////////Огненные артефакты/////////////////////////////////////////
@@ -179,7 +186,7 @@
 	radiation = 5
 	level_s = 4
 
-/obj/item/weapon/artifact/maminibusi/Think(user)
+/obj/item/weapon/artifact/maminibusi/Think(mob/user)
 	if(!..()) return 0
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/mob = user
@@ -212,11 +219,11 @@
 	desc = "Аномали&#255; «Холодец» способна породить такой артефакт при редчайшем, экстремальном наборе физических условий. В результате получаетс&#255; полупрозрачный твёрдый объект. Артефакт дорогой и редкостный. Ношение артефакта на по&#255;се значительно уменьшает поражение от аномалий «Ржавые волосы» и «Жгучий пух» и отпугивает хищников, однако при длительном ношении приводит к тому что люба&#255; царапина становитс&#255; смертельно опасной из-за ускоренных кровотечений. Цена высока&#255;. Интерес к артефакту про&#255;вл&#255;ют научные организации."
 	eng_desc = "Anomaly \"Fruit Punch\" is able to create such an artifact at the rarest, most extreme collection of physical conditions. The result is a semi-transparent, hard object. A rare and expensive artifact."
 	icon_state = "mica"
-	art_armor = list(burn = -10, bio = -10)
+	art_armor = list(laser = -10, bio = -10)
 	radiation = 2
 	level_s = 3
 
-/obj/item/weapon/artifact/mica/Think(user)
+/obj/item/weapon/artifact/mica/Think(mob/user)
 	if(!..()) return 0
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -248,7 +255,7 @@
 	radiation = 5
 	level_s = 4
 
-/obj/item/weapon/artifact/firefly/Think(user)
+/obj/item/weapon/artifact/firefly/Think(mob/user)
 	if(!..()) return 0
 	if(istype(user, /mob/living/carbon))
 		var/mob/living/carbon/mob = user
@@ -277,6 +284,8 @@
 /obj/item/weapon/storage/belt/stalker/artifact_belt
 	var/thinkrate = 100
 	can_hold = list(
+		/obj/item/weapon/artifact
+		/*
 													//Гравитационные артефакты
 		/obj/item/weapon/artifact/meduza,
 		/obj/item/weapon/artifact/stoneflower,
@@ -300,15 +309,16 @@
 		/obj/item/weapon/artifact/bubble,
 		/obj/item/weapon/artifact/mica,
 		/obj/item/weapon/artifact/firefly
+		*/
 
 		)
 
-/obj/item/weapon/storage/belt/stalker/artifact_belt/proc/Think()
+/obj/item/weapon/storage/belt/stalker/artifact_belt/proc/Think(mob/user)
 	for(var/obj/item/weapon/artifact/A in contents)
-		A.Think(loc)
+		A.Think(user)
 	//spawn(thinkrate)
 	//	Think()
-
+/*
 /obj/item/weapon/storage/belt/stalker/artifact_belt/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	if(..(W, prevent_warning, user) && istype(W, /obj/item/weapon/artifact))
 		var/obj/item/weapon/artifact/artifact = W
@@ -332,3 +342,4 @@
 			mob.global_armor[armortype] -= artifact.art_armor[armortype]
 		return 1
 	return 0
+*/

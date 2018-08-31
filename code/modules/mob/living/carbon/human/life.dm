@@ -83,11 +83,21 @@
 
 
 /mob/living/carbon/human/proc/handle_artifacts()
+	src.global_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, psy = 0)
+
 	if(src.belt && istype(src.belt, /obj/item/weapon/storage/belt/stalker/artifact_belt))
-		var/obj/item/weapon/storage/belt/stalker/artifact_belt/art_belt = src.belt
-		art_belt.Think()
-	else
-		src.global_armor = list()
+		for(var/obj/item/weapon/artifact/A in src.belt.contents)
+			A.Think(src)
+			for(var/armor_ in A.art_armor)
+				global_armor[armor_] = A.art_armor[armor_]
+
+	if(src.wear_suit && istype(src.wear_suit, /obj/item/clothing/suit))
+		var/obj/item/clothing/suit/S = src.wear_suit
+		if(S.internal_slot)
+			for(var/obj/item/weapon/artifact/A in S.internal_slot.contents)
+				A.Think(src)
+				for(var/armor_ in A.art_armor)
+					global_armor[armor_] += A.art_armor[armor_]
 
 /mob/living/carbon/human/proc/handle_suit_durability()
 	if(health > 0)
@@ -96,7 +106,11 @@
 		return
 
 	var/obj/item/clothing/suit/S = src.wear_suit
-
+	/*
+	if(S.internal_slot && istype(S.internal_slot, /obj/item/weapon/storage/internal_slot/container))
+		for(var/obj/item/weapon/artifact/A in S.internal_slot.contents)
+			A.Think(src)
+	*/
 	if(S.durability == -1)
 		return
 
@@ -106,6 +120,7 @@
 	if(S.durability <= 0)
 		visible_message("<span class='danger'>[S] развалился пр&#255;мо на [src]</span>", "<span class='warning'>[S] развалилс&#255; пр&#255;мо на вас!</span>")
 		qdel(S)
+
 	update_icons()
 
 /mob/living/carbon/human/proc/handle_special_effects()
