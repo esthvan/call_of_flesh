@@ -89,38 +89,40 @@
 
 /obj/item/nightvision/New(var/newloc)
 	//..()
+	/*
 	if(newloc)
 		loc = newloc
-		if(istype(loc, /obj/item/clothing/suit/hooded/sealed))
-			var/obj/item/clothing/suit/hooded/sealed/S = newloc
+		if(loc.loc && istype(loc.loc, /obj/item/clothing/suit/hooded/sealed))
+			var/obj/item/clothing/suit/hooded/sealed/S = loc.loc
 			S.modifications["visor_suit"] = 1
-		else if(istype(loc, /obj/item/clothing/head))
+		else if(istype(newloc, /obj/item/clothing/head))
 			var/obj/item/clothing/head/H = newloc
 			H.modifications["visor_head"] = 1
-		else if(istype(loc, /obj/item/clothing/mask))
+		else if(istype(newloc, /obj/item/clothing/mask))
 			var/obj/item/clothing/mask/M = newloc
 			//M.modifications["visor_mask"] = 1
 			M.modifications["visor_head"] = 1
-	if(istype(loc, /obj/item/clothing))
-		var/obj/item/clothing/C = loc
+	*/
+	if(istype(newloc, /obj/item/clothing))
+		var/obj/item/clothing/C = newloc
 		C.nvg = src
 		C.action_button_name = action_button_name
 
 /obj/item/nightvision/advanced/New(var/newloc)
 	if(newloc)
 		loc = newloc
-		if(istype(loc, /obj/item/clothing/suit/hooded/sealed))
-			var/obj/item/clothing/suit/hooded/sealed/S = newloc
+		if(loc.loc && istype(loc.loc, /obj/item/clothing/suit/hooded/sealed))
+			var/obj/item/clothing/suit/hooded/sealed/S = loc.loc
 			S.modifications["visor_suit"] = 2
-		else if(istype(loc, /obj/item/clothing/head))
+		else if(istype(newloc, /obj/item/clothing/head))
 			var/obj/item/clothing/head/H = newloc
 			H.modifications["visor_head"] = 2
-		else if(istype(loc, /obj/item/clothing/mask))
+		else if(istype(newloc, /obj/item/clothing/mask))
 			var/obj/item/clothing/mask/M = newloc
 			//M.modifications["visor_mask"] = 2
 			M.modifications["visor_head"] = 2
-	if(istype(loc, /obj/item/clothing))
-		var/obj/item/clothing/C = loc
+	if(istype(newloc, /obj/item/clothing))
+		var/obj/item/clothing/C = newloc
 		C.nvg = src
 		C.action_button_name = action_button_name
 
@@ -332,10 +334,10 @@
 	durability = 200
 	//ÃŒƒ»‘» ¿÷»»//
 	modifications = list("lining_suit" = 0, "padding_suit" = 0, "material_suit" = 0, "accessory_slot" = 0)
-
+/*
 /obj/item/clothing/head/winterhood/stalker/sealed
 	modifications = list("visor_suit" = 0)
-
+*/
 /obj/item/clothing/suit/hooded/sealed/ToggleHood()
 	if(!suittoggled)
 		if(ishuman(src.loc))
@@ -356,9 +358,9 @@
 
 /obj/item/clothing/suit/hooded/sealed/New()
 	..()
-	spawn(10)
-		if(hood)
-			modifications += hood.modifications
+	//spawn(10)
+	//	if(hood)
+	//		modifications += hood.modifications
 	//if(hood.nvg)
 	//	if(hood.nvg.colour_matrix == NIGHTVISION_MATRIX_I)
 	//		modifications += "visor"
@@ -382,6 +384,7 @@
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/sealed/ecolog
 	burn_state = FIRE_PROOF
 	durability = 200
+	modifications = list("lining_suit" = 0, "padding_suit" = 0, "material_suit" = 0, "visor_suit" = 1, "accessory_slot" = 0)
 
 /obj/item/clothing/head/winterhood/stalker/sealed/ecolog
 	name = "SSP-99 helmet"
@@ -412,6 +415,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/sealed/ecologm
 	burn_state = FIRE_PROOF
 	durability = 250
+	modifications = list("lining_suit" = 0, "padding_suit" = 0, "material_suit" = 0, "visor_suit" = 1, "accessory_slot" = 0)
 
 /obj/item/clothing/head/winterhood/stalker/sealed/ecologm
 	name = "SSP-99M helmet"
@@ -443,6 +447,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/sealed/seva
 	burn_state = FIRE_PROOF
 	durability = 200
+	modifications = list("lining_suit" = 0, "padding_suit" = 0, "material_suit" = 0, "visor_suit" = 1, "accessory_slot" = 0)
 
 /obj/item/clothing/head/winterhood/stalker/sealed/seva
 	name = "SEVA helmet"
@@ -484,6 +489,7 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/sealed/psz9md
 	burn_state = FIRE_PROOF
 	durability = 150
+	modifications = list("lining_suit" = 0, "padding_suit" = 0, "material_suit" = 0, "visor_suit" = 1, "accessory_slot" = 0)
 
 /obj/item/clothing/head/winterhood/stalker/sealed/psz9md
 	name = "PSZ-9MD helmet"

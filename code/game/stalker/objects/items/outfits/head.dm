@@ -24,7 +24,7 @@
 /obj/item/clothing/head/tacticalhelmet
 	name = "Tactical helmet"
 	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; базовым количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
-	eng_desc = "A Western model of a tactical helmet that lacks camouflage. It is not known how it made its way into the Zone. The helmet is designed to provide a squad leader with strategic superiority over the enemy via its many scanners and satellite communications devices, which have not been installed in this particular helmet. Comes with multi-layered Kevlar protection and armored elements to protect electronic components. Includes a respirator and a nightvision device."
+	eng_desc = "A Western model of a tactical helmet that lacks ca	mouflage. It is not known how it made its way into the Zone. The helmet is designed to provide a squad leader with strategic superiority over the enemy via its many scanners and satellite communications devices, which have not been installed in this particular helmet. Comes with multi-layered Kevlar protection and armored elements to protect electronic components. Includes a respirator and a nightvision device."
 	icon_state = "hardhat0_tactical"
 	item_state = "hardhat0_tactical"
 	item_color = "tactical"
@@ -57,7 +57,7 @@
 	unacidable = 1
 	durability = 200
 	//МОДИФИКАЦИИ//
-	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 1)
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 0)
 
 /obj/item/clothing/head/hardhat/tacticalhelmet/light/New()
 	..()
@@ -98,7 +98,7 @@
 	icon_state = "sphera"
 	flags = BLOCKHAIR|BLOCKFACIALHAIR
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
-	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 30, psy = 15)
+	armor = list(melee = 60, bullet = 65, laser = 0,energy = 35, bomb = 0, bio = 30, rad = 30, psy = 20)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
@@ -120,7 +120,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
-	modifications = list("visor_head" = 1)
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 1)
 
 /obj/item/clothing/head/skathelmet/New()
 	nvg = new /obj/item/nightvision(src)
@@ -136,7 +136,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	unacidable = 1
 	durability = 400
-	modifications = list("visor_head" = 0)
+	modifications = list("padding_head" = 0, "material_head" = 0, "visor_head" = 0)
 
 /obj/item/clothing/head/beret_ua
 	name = "military beret"

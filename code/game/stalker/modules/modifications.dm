@@ -52,11 +52,11 @@ var/id_ = 0
 		),
 		"Visor" = list(
 		//NIGHTVISION I + II
-			new /datum/data/modification/clothing/suit/nightvision(),	//Костюм с замкнутой системой дыхания - ночное виденье
+			new /datum/data/modification/clothing/suit/nightvision/basic(),	//Костюм с замкнутой системой дыхания - ночное виденье
 			new /datum/data/modification/clothing/suit/nightvision/advanced(),
-			new /datum/data/modification/clothing/head/nightvision(),	//Шлем - ночное виденье
+			new /datum/data/modification/clothing/head/nightvision/basic(),	//Шлем - ночное виденье
 			new /datum/data/modification/clothing/head/nightvision/advanced(),
-			new /datum/data/modification/clothing/mask/nightvision(),	//Противогаз
+			new /datum/data/modification/clothing/mask/nightvision/basic(),	//Противогаз
 			new /datum/data/modification/clothing/mask/nightvision/advanced()
 		),
 		"Accessory Slot" = list(
@@ -170,15 +170,22 @@ var/id_ = 0
 	tier = 2
 
 /datum/data/modification/clothing/head/padding/filter_advanced
-	name = "Filter module"
+	name = "Advanced Filter Module"
 	cost = 25000
 	desc = "Установка улучшенного фильтра защитит не только от радиационного излучения, но и от кислотной атмосферы и высокой температуры." //&#x44F;
 	eng_desc = "Installation of advanced filter, protects user not only from radiation, but acidic atmosphere and high temperature."
 	add_armor = list(melee = 0, bullet = 0, laser = 5,energy = 0, bomb = 0, bio = 5, rad = 20, psy = 0)
-	tier = 1
+	tier = 2
 
 /////////////////////////////////////NIGHTVISION////////////////////////////////////////////////////////
+
 /datum/data/modification/clothing/head/nightvision
+	name = "Nightvision"
+
+/datum/data/modification/clothing/head/nightvision/AffectEquipment(var/obj/item/clothing/head/Gear)
+	return ..(Gear)
+
+/datum/data/modification/clothing/head/nightvision/basic
 	name = "Nightvision (Gen I)"
 	cost = 12000
 	desc = "Установка прибора ночного видень&#x44F; первого поколени&#x44F;."
@@ -187,7 +194,7 @@ var/id_ = 0
 	id = "visor_head"
 	tier = 1
 
-/datum/data/modification/clothing/head/nightvision/AffectEquipment(var/obj/item/clothing/head/Gear)
+/datum/data/modification/clothing/head/nightvision/basic/AffectEquipment(var/obj/item/clothing/head/Gear)
 	if(!Gear.nvg)
 		Gear.nvg = new /obj/item/nightvision(Gear)
 	Gear.nvg.colour_matrix = NIGHTVISION_MATRIX_I
@@ -197,7 +204,7 @@ var/id_ = 0
 	name = "Nightvision (Gen II)"
 	cost = 25000
 	desc = "Установка прибора ночного видень&#x44F; второго поколени&#x44F;."
-	eng_desc = "Installation of a II gerantion nightvision device."
+	eng_desc = "Installation of a II generation nightvision device."
 	add_armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, psy = 0)
 	id = "visor_head"
 	tier = 2
@@ -217,8 +224,14 @@ var/id_ = 0
 	eng_desc = "This is mask modification."
 	modificated_type = /obj/item/clothing/mask/gas/stalker
 
-/////////////////////////////////////NIGHTVISION///////////////////////////////////////////////////////
 /datum/data/modification/clothing/mask/nightvision
+	name = "Nightvision"
+
+/datum/data/modification/clothing/mask/nightvision/AffectEquipment(var/obj/item/clothing/mask/Gear)
+	return ..(Gear)
+
+/////////////////////////////////////NIGHTVISION///////////////////////////////////////////////////////
+/datum/data/modification/clothing/mask/nightvision/basic
 	name = "Nightvision (Gen I)"
 	cost = 12000
 	desc = "Установка прибора ночного видень&#x44F; первого поколени&#x44F;."
@@ -228,7 +241,7 @@ var/id_ = 0
 	tier = 1
 	modificated_type = /obj/item/clothing/mask/gas/stalker
 
-/datum/data/modification/clothing/mask/nightvision/AffectEquipment(var/obj/item/clothing/mask/Gear)
+/datum/data/modification/clothing/mask/nightvision/basic/AffectEquipment(var/obj/item/clothing/mask/Gear)
 	if(!Gear.nvg)
 		Gear.nvg = new /obj/item/nightvision(Gear)
 	Gear.nvg.colour_matrix = NIGHTVISION_MATRIX_I
@@ -401,7 +414,14 @@ var/id_ = 0
 	tier = 2
 
 /////////////////////////////////////NIGHTVISION///////////////////////////////////////////////////////
+
 /datum/data/modification/clothing/suit/nightvision
+	name = "Nightvision"
+
+/datum/data/modification/clothing/suit/nightvision/AffectEquipment(var/obj/item/clothing/suit/Gear)
+	return ..(Gear)
+
+/datum/data/modification/clothing/suit/nightvision/basic
 	name = "Nightvision (Gen I)"
 	cost = 20000
 	desc = "Установка прибора ночного видень&#x44F; первого поколени&#x44F;."
@@ -411,7 +431,7 @@ var/id_ = 0
 	tier = 1
 	modificated_type = /obj/item/clothing/suit/hooded/sealed
 
-/datum/data/modification/clothing/suit/nightvision/AffectEquipment(var/obj/item/clothing/suit/hooded/Gear)
+/datum/data/modification/clothing/suit/nightvision/basic/AffectEquipment(var/obj/item/clothing/suit/hooded/Gear)
 	if(!Gear.hood.nvg)
 		Gear.hood.nvg = new /obj/item/nightvision(Gear.hood)
 	Gear.hood.nvg.colour_matrix = NIGHTVISION_MATRIX_I
@@ -519,10 +539,10 @@ var/id_ = 0
 
 /////////////////////////////////////GUNCASE/////////////////////////////////////////////////////////////////
 /datum/data/modification/clothing/suit/accessory/guncase
-	name = "Internal Gun Slot"
+	name = "Integrated Gun Slot"
 	cost = 32000
 	desc = "Установка дополнительного хранилища дл&#x44F; огнестрельного оружи&#x44F;."
-	eng_desc = "Integrated container expansion allows user to carry more artifacts."
+	eng_desc = "Integrated container expansion allows user to carry another gun."
 	tier = 1
 	int_slot = /obj/item/weapon/storage/internal_slot/gun_case
 
@@ -638,8 +658,8 @@ var/id_ = 0
 	dat +="<div class='statusDisplay'>"
 	dat += "Balance: [balance] р.<br>"
 	dat += "<br><br>INSTRUCTION: Insert your gear in the modification table."
+	dat += "<br><A href='?src=\ref[src];eject=1'>Eject</A>"
 	dat += "</div>"
-	dat += "<A href='?src=\ref[src];eject=1'>Eject</A>"
 	dat += "<div class='lenta_scroll'>"
 	dat += "<br><BR><table border='0' width='400'>"
 	for(var/ML in modifications_list)
