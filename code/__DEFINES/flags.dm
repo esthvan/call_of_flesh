@@ -27,12 +27,12 @@
 #define OPENCONTAINER	4096	// is an open container for chemistry purposes
 
 // BLOCK_GAS_SMOKE_EFFECT only used in masks at the moment.
-#define BLOCK_GAS_SMOKE_EFFECT 8192	// blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY! (NOTE: flag shared with THICKMATERIAL)
-#define THICKMATERIAL 8192		//prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body. (NOTE: flag shared with BLOCK_GAS_SMOKE_EFFECT)
+#define BLOCK_GAS_SMOKE_EFFECT	8192	// blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY! (NOTE: flag shared with THICKMATERIAL)
+#define THICKMATERIAL 			8192		//prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body. (NOTE: flag shared with BLOCK_GAS_SMOKE_EFFECT)
+#define BLOCKFACIALHAIR			8192// Temporarily removes the user's facial head hair.
 
 #define	NOREACT		16384 		//Reagents dont' react inside this container.
 
-#define BLOCKFACIALHAIR			65536// Temporarily removes the user's facial head hair.
 #define BLOCKHAIR				32768// temporarily removes the user's hair icon
 
 //turf-only flags
