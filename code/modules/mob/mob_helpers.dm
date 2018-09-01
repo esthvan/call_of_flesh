@@ -461,7 +461,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 				colour_matrix = H.nvg.colour_matrix
 
-	else if(wear_mask)
+	if(wear_mask)
 		if(wear_mask.nvg && wear_mask.nvg.active)
 			colour_matrix = wear_mask.nvg.colour_matrix
 
