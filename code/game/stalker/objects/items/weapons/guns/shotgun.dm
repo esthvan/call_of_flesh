@@ -19,6 +19,7 @@
 	spread = 12
 	damagelose = 0.3
 	distro = 25
+	can_scope = 1
 	weapon_weight = WEAPON_MEDIUM
 	fire_sound = 'sound/stalker/weapons/bm16_shot.ogg'
 	loadsound = 'sound/stalker/weapons/load/obrez_load.ogg'
@@ -64,6 +65,7 @@
 	spread = 6
 	damagelose = 0.15
 	distro = 10
+	can_scope = 1
 	weapon_weight = WEAPON_MEDIUM
 
 /obj/item/weapon/gun/projectile/shotgun
@@ -85,6 +87,7 @@
 	force = 15
 	damagelose = 0.3
 	distro = 25
+	can_scope = 0
 	weapon_weight = WEAPON_MEDIUM
 	//fire_sound = 'sound/stalker/weapons/winchester1300_shot.ogg'
 	loadsound = 'sound/stalker/weapons/load/chaser_load.ogg'
