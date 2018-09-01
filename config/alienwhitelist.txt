@@ -4,6 +4,6 @@ xrenoid = Trader
 narcissf = Freedom
 narcissf = Freedom Lieutenant
 drunktess = Freedom Lieutenant
-allstar = Freedom Lieutenant
+diablo1326 = Freedom Lieutenant
 zergursh = Duty Lieutenant
 xrenoid = Duty Lieutenant
