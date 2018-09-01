@@ -552,7 +552,6 @@ var/global/list/global_sidormat_list = list(
 /obj/machinery/stalker/sidormat/proc/GetCost(itemtype)
 	for(var/datum/data/stalker_equipment/se in real_sidormat_items)
 		if(itemtype == se.equipment_path)
-			world << se.sale_price
 			return se.sale_price
 	return 0
 
