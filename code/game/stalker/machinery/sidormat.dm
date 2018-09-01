@@ -2,6 +2,7 @@ var/global/list/trash_tier_sidormatitems = list()
 var/global/list/low_tier_sidormatitems = list()
 var/global/list/medium_tier_sidormatitems = list()
 var/global/list/high_tier_sidormatitems = list()
+var/global/list/real_sidormat_items = list()
 
 var/global/list/global_sidormat_list = list(
 		///////////////////////////////  Оружие  /////////////////////////////////////////
@@ -212,7 +213,7 @@ var/global/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Canned meat",	"Тушенка",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/MREkonserva2,		700),
 		new /datum/data/stalker_equipment("Canned meat with vegetables","Тушенка с овощами",	/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/MREkonserva3,		850),
 		new /datum/data/stalker_equipment("Biscuits",		"Галеты",							/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/galets,			400),
-	/////////////////////////////////	Лут с мутантов	///////////////////////////////////////////
+		/////////////////////////////////	Лут с мутантов	///////////////////////////////////////////
 		new /datum/data/stalker_equipment("Песий хвост",	"Песий хвост",										/obj/item/weapon/stalker/loot/dog_tail,			2500, ROOKIE, sale_price = 1250),
 		new /datum/data/stalker_equipment("Плотий глаз",	"Плотий глаз",										/obj/item/weapon/stalker/loot/flesh_eye,		1800, ROOKIE, sale_price = 900),
 		new /datum/data/stalker_equipment("Кабаний ног",	"Кабаний ног",										/obj/item/weapon/stalker/loot/boar_leg,			6000, ROOKIE, sale_price = 3000),
@@ -241,16 +242,21 @@ var/global/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Слюда",				"Слюда",									/obj/item/weapon/artifact/mica,						20000,	ROOKIE,	sale_price = 10000),
 		new /datum/data/stalker_equipment("Светл&#x44F;к",		"Светл&#x44F;к",							/obj/item/weapon/artifact/firefly,					50000,	ROOKIE,	sale_price = 25000),
 		/////////////////////////////////	Мусор	//////////////////////////////////////////////
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva,						400,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/MREkonserva1,			200,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/MREkonserva2,			200,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/MREkonserva3,			200,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/bobi,					400,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/fish,					500,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/govyadina,				400,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/shproti,				600,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",				"Консервеа",							/obj/item/trash/konserva/soup,					500,	ROOKIE)
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva,							400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/MREkonserva1,				200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/MREkonserva2,				200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/MREkonserva3,				200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/bobi,						400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/fish,						500,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/govyadina,					400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/shproti,					600,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/soup,						500,	ROOKIE),
 		///////////////////////////////////////////////////////////////////////////////////////////
+		new /datum/data/stalker_equipment("50 RU",				"50 RU",									/obj/item/stack/spacecash/c50,						50,		ROOKIE,	sale_price = 50),
+		new /datum/data/stalker_equipment("100 RU",				"100 RU",									/obj/item/stack/spacecash/c100,						100,	ROOKIE,	sale_price = 100),
+		new /datum/data/stalker_equipment("500 RU",				"500 RU",									/obj/item/stack/spacecash/c500,						500,	ROOKIE,	sale_price = 500),
+		new /datum/data/stalker_equipment("1000 RU",			"1000 RU",									/obj/item/stack/spacecash/c1000,					1000,	ROOKIE,	sale_price = 1000),
+		new /datum/data/stalker_equipment("5000 RU",			"5000 RU",									/obj/item/stack/spacecash/c5000,					5000,	ROOKIE,	sale_price = 5000)
 		)
 	)
 
@@ -304,7 +310,7 @@ var/global/list/global_sidormat_list = list(
 
 		if(LOW_TIER_COST to HIGH_TIER_COST)
 			high_tier_sidormatitems += src
-
+	real_sidormat_items += src
 
 /obj/machinery/stalker/sidormat/New()
 	itemloc = locate(x - 1, y, z)
@@ -351,10 +357,10 @@ var/global/list/global_sidormat_list = list(
 	///////////////////////////////////////////////////////////АНГЛИЙСКИЙ СИДОРОМАТ///////////////////////////////////////////////////////////////////////
 
 		dat +="<div class='statusDisplay'>"
-		dat +="<A href='?src=\ref[src];choice=take'><b>Sell habar.</b></A><br>"
-
-		dat += "Balance: [balance] р.<br>"
-		dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table." // Забирать деньги и купленные вещи - на <b>правом</b>.
+		dat += "Balance: [balance] RU<br>"
+		dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table.<br>" // Забирать деньги и купленные вещи - на <b>правом</b>.
+		if(!(switches & SHOW_FACTION_EQUIPMENT))
+			dat +="<A href='?src=\ref[src];choice=take'><b>Sell habar.</b></A>"
 		dat += "</div>"
 		dat += "<div class='lenta_scroll'>"
 		dat += "<br><BR><table border='0' width='400'>" //<b>Item list:</b>
@@ -376,9 +382,10 @@ var/global/list/global_sidormat_list = list(
 		///////////////////////////////////////////////////////////РУССКИЙ СИДОРОМАТ///////////////////////////////////////////////////////////////////////
 
 		dat +="<div class='statusDisplay'>"
-		dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар.</b></A><br>"
-		dat += "На счету: [balance] р.<br>"
-		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе." //Забирать деньги и купленные вещи - на <b>правом</b>.
+		dat += "На счету: [balance] RU<br>"
+		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
+		if(!(switches & SHOW_FACTION_EQUIPMENT))
+			dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар.</b></A>"
 		dat += "</div>"
 		dat += "<div class='lenta_scroll'>"
 		dat += "<br><BR><table border='0' width='400'>" //<b>Список предметов:</b>
@@ -462,9 +469,6 @@ var/global/list/global_sidormat_list = list(
 
 
 /obj/machinery/stalker/sidormat/proc/SellItems()
-	var/list/ontable = GetItemsOnTable()
-	var/total_cost = GetOnTableCost(ontable)
-
 	var/mob/living/carbon/human/H = usr
 	if(!istype(H.wear_id, /obj/item/device/stalker_pda))
 		say("Put on your KPK.")
@@ -480,6 +484,9 @@ var/global/list/global_sidormat_list = list(
 	if(KPK.sid != H.sid)
 		say("No access.")
 		return
+
+	var/list/ontable = GetItemsOnTable()
+	var/total_cost = GetOnTableCost(ontable)
 
 	if(total_cost < 100)
 		say("Habar was not sold.")
@@ -505,7 +512,7 @@ var/global/list/global_sidormat_list = list(
 /obj/machinery/stalker/sidormat/proc/GetItemsOnTable()
 	var/list/ontable = list()
 	for(var/atom/movable/AM in itemloc)
-		if(!GetCost(AM.type) && !istype(AM, /obj/item/stack/spacecash))
+		if(!GetCost(AM.type))
 			continue
 
 		if(istype(AM, /obj/item/clothing))
@@ -514,7 +521,7 @@ var/global/list/global_sidormat_list = list(
 				say("[AM] is too broken for sale.")
 				continue
 
-		if(istype(AM, /obj/item/weapon/storage/backpack/) && AM.contents.len)
+		if(istype(AM, /obj/item/weapon/storage/backpack) && AM.contents.len)
 			say("Empty [AM] before selling.")
 			continue
 
@@ -537,28 +544,15 @@ var/global/list/global_sidormat_list = list(
 	var/total_cost = 0
 
 	for(var/atom/item_on_table in ontable)
-		var/obj/item/stack/spacecash/C = item_on_table
-		switch(item_on_table.type)
-			if(/obj/item/stack/spacecash/c50)
-				total_cost += 50 * C.amount
-			if(/obj/item/stack/spacecash/c100)
-				total_cost += 100 * C.amount
-			if(/obj/item/stack/spacecash/c500)
-				total_cost += 500 * C.amount
-			if(/obj/item/stack/spacecash/c1000)
-				total_cost += 1000 * C.amount
-			if(/obj/item/stack/spacecash/c5000)
-				total_cost += 5000 * C.amount
 		var/cost = GetCost(item_on_table.type)
 		if(cost)
 			total_cost += cost
-		else
-			ontable.Remove(item_on_table)
 	return total_cost
 
 /obj/machinery/stalker/sidormat/proc/GetCost(itemtype)
-	for(var/datum/data/stalker_equipment/se in global_sidormat_list)
+	for(var/datum/data/stalker_equipment/se in real_sidormat_items)
 		if(itemtype == se.equipment_path)
+			world << se.sale_price
 			return se.sale_price
 	return 0
 
