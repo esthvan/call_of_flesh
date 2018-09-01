@@ -149,7 +149,8 @@ var/global/turntable_channel = 4488
 		new /datum/data/turntable_soundtrack ("XS-project",			"Kolotushki",						'sound/turntable/xsproject_kolotushki.ogg',					1610),
 		new /datum/data/turntable_soundtrack ("Zemfira",			"Hochesh?",							'sound/turntable/zemfira_hochesh.ogg',						1920),
 		new /datum/data/turntable_soundtrack ("Zhuki",				"Batareyka",						'sound/turntable/zhuki_batareyka.ogg',						2240),
-		new /datum/data/turntable_soundtrack ("Zemlyane",			"Zemlya V Illuminatore",			'sound/turntable/zemlyane_zemlya_v_illuminatore.ogg',		2330)
+		new /datum/data/turntable_soundtrack ("Zemlyane",			"Zemlya V Illuminatore",			'sound/turntable/zemlyane_zemlya_v_illuminatore.ogg',		2330),
+		new /datum/data/turntable_soundtrack ("Mnogotochie",		"Shemit v dushe toska",				'sound/turntable/mnogotochie_shemit.ogg',					2310)
 	)
 	anchored = 1
 	density = 1
