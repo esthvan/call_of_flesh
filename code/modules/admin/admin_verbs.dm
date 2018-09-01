@@ -332,6 +332,9 @@ var/list/admin_verbs_hideable = list(
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortRealNames(KPK_mobs)
 
+	if(!selected)
+		return
+
 	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
 
 	if(!sk)
@@ -348,6 +351,9 @@ var/list/admin_verbs_hideable = list(
 	set category = "Stalker"
 
 	var/mob/living/carbon/human/selected = input("Please, select a stalker!", "S.T.A.L.K.E.R.", null) as null|anything in sortRealNames(KPK_mobs)
+
+	if(!selected)
+		return
 
 	var/datum/data/record/sk = find_record("sid", selected.sid, data_core.stalkers)
 
@@ -478,13 +484,25 @@ var/list/admin_verbs_hideable = list(
 	set name = "Set Time of Day"
 	set category = "Stalker"
 
-	var/daytime = input(usr, "1 - morning, 2 -  day, 3 - evening, 4 - night)", "S.T.A.L.K.E.R.") as num|null
+	var/daytime = input(usr, "Choose time of day to set)", "S.T.A.L.K.E.R.") as null|anything in list("Morning", "Day", "Evening", "Night")
 
-	if(1 <= daytime <= 4)
-		set_time_of_day(daytime)
-		usr << "<span class='interface'>Time of day successfully updated.</span>"
-		log_admin("[key_name(usr)] changed time of day to [daytime].")
-		message_admins("[key_name_admin(usr)] changed time of day to [daytime].")
+	if(!daytime)
+		return
+
+	switch(daytime)
+		if("Morning")
+			daytime = 1
+		if("Day")
+			daytime = 2
+		if("Evening")
+			daytime = 3
+		if("Night")
+			daytime = 4
+
+	set_time_of_day(daytime)
+	usr << "<span class='interface'>Time of day successfully updated.</span>"
+	log_admin("[key_name(usr)] changed time of day to [daytime].")
+	message_admins("[key_name_admin(usr)] changed time of day to [daytime].")
 
 /client/proc/SetAverageCooldownBlowout()
 	set name = "Set Blowout Cooldown"
@@ -507,10 +525,12 @@ var/list/admin_verbs_hideable = list(
 
 	var/cooldownreal = input(usr, "Input the blowout timer", "S.T.A.L.K.E.R.") as num|null
 
-	if(cooldownreal)
-		StalkerBlowout.lasttime = world.time
-		StalkerBlowout.cooldownreal = cooldownreal
-		src << "<span class='interface'>Blowout will start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1] min.</span>"
+	if(!cooldownreal)
+		return
+
+	StalkerBlowout.lasttime = world.time
+	StalkerBlowout.cooldownreal = cooldownreal
+	src << "<span class='interface'>Blowout will start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1] min.</span>"
 
 	log_admin("[key_name(usr)] forced blowout to start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
 	message_admins("[key_name_admin(usr)] forced blowout to start in [round((StalkerBlowout.lasttime + cooldownreal - world.time)/10/60) + 1].")
@@ -538,12 +558,15 @@ var/list/admin_verbs_hideable = list(
 	set category = "Stalker"
 
 	var/newrespawnrate = input(usr, "Input new respawn rate in minutes", "S.T.A.L.K.E.R.") as num|null
+
+	if(!newrespawnrate)
+		return
+
+	world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min to [newrespawnrate] min!</b></font color>"
+	config.respawn_timer = round(newrespawnrate * 600)
+
 	log_admin("[key_name(usr)] changed respawn rate from [round(config.respawn_timer/600)] to [newrespawnrate].")
 	message_admins("[key_name_admin(usr)] changed respawn rate from [round(config.respawn_timer/600)] to [newrespawnrate].")
-
-	if(newrespawnrate)
-		world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min to [newrespawnrate] min!</b></font color>"
-		config.respawn_timer = round(newrespawnrate * 600)
 
 /client/proc/admin_ghost()
 	set category = "Admin"
