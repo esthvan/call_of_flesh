@@ -40,7 +40,7 @@
 	types = list(/obj/item/weapon/gun/projectile/automatic/tpc301,
 				/obj/item/weapon/gun/projectile/automatic/mp5,
 				/obj/item/weapon/gun/projectile/automatic/sigsg550)
-	zoom_add = 3
+	zoom_add = 4
 
 /obj/item/weapon/attachment/scope/PS
 	types = list(/obj/item/weapon/gun/projectile/automatic/aksu74,
@@ -59,7 +59,7 @@
 				/obj/item/weapon/gun/projectile/automatic/abakan,
 				/obj/item/weapon/gun/projectile/automatic/val,
 				/obj/item/weapon/gun/projectile/automatic/groza)
-	zoom_add = 2
+	zoom_add = 3
 
 /obj/item/weapon/attachment/scope/PS/O1
 	name = "PSO-1"
@@ -70,13 +70,14 @@
 				 /obj/item/weapon/gun/projectile/automatic/abakan,
 				 /obj/item/weapon/gun/projectile/automatic/val,
 				 /obj/item/weapon/gun/projectile/automatic/groza)
-	zoom_add = 4
+	zoom_add = 5
 
 /obj/item/weapon/attachment/scope/rifle
 	name = "rifle scope"
 	desc = "WWII rifle scope"
 	icon_state = "rifle"
-	types = list(/obj/item/weapon/gun/projectile/shotgun/boltaction/enfield)
+	types = list(/obj/item/weapon/gun/projectile/shotgun/boltaction/enfield,
+				/obj/item/weapon/gun/projectile/revolver/bm16)
 	zoom_add = 6
 
 /obj/item/weapon/attachment/scope/fnf2000
