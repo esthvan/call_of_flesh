@@ -218,7 +218,7 @@
 #define PHORONGUARD				4096 // Does not get contaminated by phoron.
 #define NOREACT					4096 // Reagents don't react inside this container.
 //#define BLOCKHAIR				8192 // Temporarily removes the user's head hair.
-//#define BLOCKFACIALHAIR			16384// Temporarily removes the user's facial head hair.
+//#define BLOCKFACIALHAIR		16384// Temporarily removes the user's facial head hair.
 
 // Flags for pass_flags.
 #define PASSTABLE  1
