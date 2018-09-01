@@ -228,7 +228,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 		var/mob/living/carbon/C = user
 		var/datum/data/record/sk = (find_record("sid", C.sid, data_core.stalkers))
 		if(sk && sk.fields["faction_s"] == "Traders")
-			for(var/datum/data/stalker_equipment/SE in global_sidormat_list)
+			for(var/datum/data/stalker_equipment/SE in real_sidormat_items)
 				if(SE.equipment_path == type)
 					user << "<span class ='notice'>This item costs [SE.sale_price]RU</span>"
 					break
