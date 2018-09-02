@@ -24,7 +24,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/pistol/tt   // ТТ
 	name = "TT-33"
-	desc = "Старый пистолет, произведенный под столь же старый советский патрон. Весьма попул&#255;рен из-за того, что сотни таких экземпляров остались в складах, где их спустя почти полвека достали и выпустили в продажу бедным новичкам. Мало на что годен, но лучше чем ничего."
+	desc = "Старый пистолет, произведенный под столь же старый советский патрон. Весьма попул&#255;рен из-за того, что сотни таких экземпл&#255;ров остались в складах, где их спуст&#255; почти полвека достали и выпустили в продажу бедным новичкам. Мало на что годен, но лучше чем ничего."
 	eng_desc = "An old soviet pistol made for similiarly old soviet ammo. Extremely widespread because of large numbers of those pistols left in USSR army stashes around Pripyat. Isn't very powerful, but bullets penetrate armor well enough."
 	icon_state = "tt"
 	w_class = 2
@@ -353,7 +353,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/kiparis  // Кипарис
 	name = "Kiparis"
-	desc = "Небольшой, легкий и удобный пистолет-пулемет под маломощный калибр, разработанный по заказу Министерства Обороны СССР в 1972-ом году. Не нашел широкого распространения в армии из-за сложностей в производстве для тех времен, но был принят на вооружении службами МВД, ФСО, инкассаторами и некоторыми другими отечественными вооруженными группами."
+	desc = "Небольшой, легкий и удобный пистолет-пулемет под маломощный калибр, разработанный по заказу Министерства Обороны СССР в 1972-ом году. Не нашел широкого распространени&#255; в армии из-за сложностей в производстве дл&#255; тех времен, но был прин&#255;т на вооружении службами МВД, ФСО, инкассаторами и некоторыми другими отечественными вооруженными группами."
 	eng_desc = "A small, light submachine gun firing a low-powered bullet, was designed by USSR Defense Ministry in the year 1972. Wasn't adopted by army, but found use and popularity amongst different modern russian government military forces and police."
 	icon_state = "kiparis"
 	item_state = "arg"
@@ -398,7 +398,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/berettam38  // Моделло 38
 	name = "Beretta M38"
-	desc = "Итальянский пистолет-пулемёт, впервые представленный в 1938 году и применявшийся Италией во время Второй мировой войны. По общему количеству произведённых образцов Beretta MAB 38 проиграла магазинной винтовке Carcano M1891, но по эффективности она считается лучшим стрелковым оружием Италии времён Второй мировой войны."
+	desc = "Италь&#255;нский пистолет-пулемёт, впервые представленный в 1938 году и примен&#255;вшийс&#255; Италией во врем&#255; Второй мировой войны. По общему количеству произведённых образцов Beretta MAB 38 проиграла магазинной винтовке Carcano M1891, но по эффективности она считаетс&#255; лучшим стрелковым оружием Италии времён Второй мировой войны."
 	eng_desc = "Modello 38, or Model 38 and its variants were a series of official submachine guns of the Royal Italian Army introduced in 1938 and used during World War II."
 	icon_state = "berettam38"
 	item_state = "berettam38"
@@ -524,7 +524,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/gp37  // GP37
 	name = "GP37"
-	desc = "Штурмова&#255; винтовка нового поколения, производима&#255; в Германии в малых парти&#255;х дл&#255; отр&#255;дов специального назначени&#255;. Оборудована встроенным прицелом дл&#255; боя на средних дистанциях, крайне надежна и эффективна в любых условиях. Выбор многих мастеров группировок вроде Свободы и Наемников."
+	desc = "Штурмова&#255; винтовка нового поколени&#255;, производима&#255; в Германии в малых парти&#255;х дл&#255; отр&#255;дов специального назначени&#255;. Оборудована встроенным прицелом дл&#255; бо&#255; на средних дистанци&#255;х, крайне надежна и эффективна в любых услови&#255;х. Выбор многих мастеров группировок вроде Свободы и Наемников."
 	eng_desc = "A new addition to the Western-made assault rifle family, which differs significantly from previous models in the series built on an automatic foundation with a semi-open bolt assembly, this weapon is more like American automatic gas-operated assault rifles with a short-stroke gas piston system. These changes ensure that the rifle is a first-rate example of a modern weapon - lightweight, reliable and ergonomic."
 	icon_state = "gp37"
 	item_state = "gp37"
@@ -578,7 +578,7 @@
 
 /obj/item/weapon/gun/projectile/automatic/fnf2000s  // fnf2000
 	name = "FN-F2000-OTBS"
-	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне. В данную модель баллистическая система уже встроена и дает все преимущества."
+	desc = "ФН-Ф2000 — по-своему идеальное оружие. Возможность установки подствольного гранатомета и сложной баллистической вычислительной системы позволит быстро уложить даже псевдогиганта. При использовании автоматического огн&#255; будут очень быстро расходоватьс&#255; боеприпасы. Нар&#255;ду с ГП37 &#255;вл&#255;етс&#255; одним из лучших орудий убийства в Зоне. В данную модель баллистическа&#255; система уже встроена и дает все преимущества."
 	eng_desc = "This futuristic-looking weapon with a bullpup layout is actually a mass produced modular system, comprising a rifle grenade complex with a computerized fire control system and a 40-mm grenade launcher. Despite its bulky appearance, the weapon is highly ergonomic, easy to use and benefits from good technical characteristics."
 	icon_state = "fnf2000s"
 	item_state = "fnf2000s"
