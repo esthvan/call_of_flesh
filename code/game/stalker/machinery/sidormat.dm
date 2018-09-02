@@ -101,7 +101,7 @@ var/global/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("USP-match Magazine",		"Магазин к ЮСП-Матч",						/obj/item/ammo_box/magazine/stalker/usp45,				2500, ROOKIE),
 		new /datum/data/stalker_equipment("Desert Eagle Magazine",	"Магазин к Desert Eagle",					/obj/item/ammo_box/magazine/stalker/desert,				2000, EXPERIENCED),
 		new /datum/data/stalker_equipment("PKM ammo belt box",		"Жестянка с лентой к ПКМ",					/obj/item/ammo_box/magazine/stalker/pkm,				20000, EXPERIENCED),
-		new /datum/data/stalker_equipment("7.62x51 Clip",			"Обойма 7.62х51",				 			/obj/item/ammo_box/stalker/cl762x51,					800, ROOKIE),
+		new /datum/data/stalker_equipment("7.62x51 Clip",			"Обойма 7.62х51",				 			/obj/item/ammo_box/stalker/cl762x51,					800, ROOKIE)
 		),
 
 	"Suits" = list(
@@ -172,7 +172,7 @@ var/global/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Big Artifact belt",					"Большой по&#x44F;с дл&#x44F; артефактов",			/obj/item/weapon/storage/belt/stalker/artifact_belt,						60000, EXPERIENCED),
 		new /datum/data/stalker_equipment("Artifact belt",						"Маленький по&#x44F;с дл&#x44F; артефактов",		/obj/item/weapon/storage/belt/stalker/artifact_belt/small,					25000, ROOKIE),
 		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										800, ROOKIE),
-		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,					2500, ROOKIE),
+		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack/maxim,					2500, ROOKIE),
 		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,							10000, ROOKIE),
 		new /datum/data/stalker_equipment("Backpack",							"Рюкзак",											/obj/item/weapon/storage/backpack/stalker,									2500, ROOKIE),
 		new /datum/data/stalker_equipment("Satchel",							"Сумка",											/obj/item/weapon/storage/backpack/satchel/stalker,							2500, ROOKIE),
@@ -196,7 +196,7 @@ var/global/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("PSU-1",				"ПСУ-1",							/obj/item/weapon/attachment/scope/PS/U1,			6000,	EXPERIENCED),
 		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",							/obj/item/weapon/attachment/scope/PS/O1,			10000,	EXPERIENCED),
 		new /datum/data/stalker_equipment("WW2 rifles scope",	"Оптический прицел старых винтовок",/obj/item/weapon/attachment/scope/rifle,			8000,	ROOKIE),
-		new /datum/data/stalker_equipment("Universl suppressor","Универсальный глушитель",			/obj/item/weapon/attachment/suppressor,				2000,	ROOKIE),
+		new /datum/data/stalker_equipment("Universl suppressor","Универсальный глушитель",			/obj/item/weapon/attachment/suppressor,				2000,	ROOKIE)
 		///////////////////////////////////////////////////////////////////////////////////////////
 		),
 
@@ -238,9 +238,9 @@ var/global/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Мамины бусы",		"Мамины бусы",								/obj/item/weapon/artifact/maminibusi,				80000,	ROOKIE,	sale_price = 40000),
 		///////////////////////////////////////////////////////////////////////////////////////////
 		new /datum/data/stalker_equipment("Кровь Камн&#x44F;",	"Кровь Камн&#x44F;",						/obj/item/weapon/artifact/stone_blood,				4000,	ROOKIE,	sale_price = 2000),
-		new /datum/data/stalker_equipment("Пузырь",				"Пузырь",									/obj/item/weapon/artifact/bubble,					8000,	ROOKIE,	sale_price = 4000),
-		new /datum/data/stalker_equipment("Слюда",				"Слюда",									/obj/item/weapon/artifact/mica,						20000,	ROOKIE,	sale_price = 10000),
-		new /datum/data/stalker_equipment("Светл&#x44F;к",		"Светл&#x44F;к",							/obj/item/weapon/artifact/firefly,					50000,	ROOKIE,	sale_price = 25000),
+		new /datum/data/stalker_equipment("Пузырь",				"Пузырь",									/obj/item/weapon/artifact/bubble,					12000,	ROOKIE,	sale_price = 6000),
+		new /datum/data/stalker_equipment("Слюда",				"Слюда",									/obj/item/weapon/artifact/mica,						30000,	ROOKIE,	sale_price = 15000),
+		new /datum/data/stalker_equipment("Светл&#x44F;к",		"Светл&#x44F;к",							/obj/item/weapon/artifact/firefly,					60000,	ROOKIE,	sale_price = 30000),
 		/////////////////////////////////	Мусор	//////////////////////////////////////////////
 		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva,							400,	ROOKIE),
 		new /datum/data/stalker_equipment("Konserva",			"Консервеа",								/obj/item/trash/konserva/MREkonserva1,				200,	ROOKIE),
@@ -365,7 +365,7 @@ var/global/list/global_sidormat_list = list(
 		dat += "<div class='lenta_scroll'>"
 		dat += "<br><BR><table border='0' width='400'>" //<b>Item list:</b>
 		for(var/L in global_sidormat_list)
-			if(L == "Unbuyable")
+			if(L == "Unbuyable" && (switches & SELL_UNBUYABLE))
 				continue
 			dat += "<tr><td><center><big><b>[L]</b></big></center></td><td></td><td></td></tr>"
 			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
@@ -390,7 +390,7 @@ var/global/list/global_sidormat_list = list(
 		dat += "<div class='lenta_scroll'>"
 		dat += "<br><BR><table border='0' width='400'>" //<b>Список предметов:</b>
 		for(var/L in global_sidormat_list)
-			if(L == "Unbuyable")
+			if(L == "Unbuyable" && (switches & SELL_UNBUYABLE))
 				continue
 			dat += "<tr><td><center><b>[L]</b></center></td><td></td><td></td></tr>"
 			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
