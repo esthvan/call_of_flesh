@@ -62,7 +62,7 @@ var/global/turntable_channel = 4488
 	desc = "A jukebox is a partially automated music-playing device, usually a coin-operated machine, that will play a patron's selection from self-contained media."
 	icon = 'icons/effects/lasers2.dmi'
 	icon_state = "radio1"
-	var/timer_id = 0
+	//var/timer_id = 0
 	var/transition = 0
 	var/play_song_cost = 1000
 	var/skip_song_cost = 500
@@ -293,7 +293,7 @@ var/global/turntable_channel = 4488
 		if(alert("Do you want to play [TS.name] for [play_song_cost] RU?", "Turntable", "Yes", "No") == "No")
 			return
 
-		deltimer(timer_id)
+		//deltimer(timer_id)
 		skip_song(TS)
 
 		KPK.profile.fields["money"] -= play_song_cost
@@ -314,7 +314,7 @@ var/global/turntable_channel = 4488
 		if(alert("Skip [track.name] for [skip_song_cost] RU?", "Turntable", "Yes", "No") == "No")
 			return
 
-		deltimer(timer_id)
+		//deltimer(timer_id)
 		skip_song()
 
 		KPK.profile.fields["money"] -= skip_song_cost
@@ -366,11 +366,11 @@ var/global/turntable_channel = 4488
 		C.mob << C.mob.music
 	sleep(40)
 	transition = 0
-	timer_id = addtimer(src, "skip_song", TS.length - 10)
+	//timer_id = addtimer(src, "skip_song", TS.length - 10)
 	track = TS
 	say("Now playing: [track.f_name] - [track.name]")
-	start_time = world.time
-	update_sound()
+	start_time = world.timeofday
+	//update_sound()
 
 /obj/machinery/party/turntable/proc/turn_on(var/datum/data/turntable_soundtrack/selected)
 	if(playing)
@@ -393,8 +393,8 @@ var/global/turntable_channel = 4488
 	if(!playing)
 		return
 
-	deltimer(timer_id)
-	timer_id = 0
+	//deltimer(timer_id)
+	//timer_id = 0
 
 	for(var/client/C in melomans)
 		C.jukeboxplaying = 0
@@ -420,7 +420,7 @@ var/global/turntable_channel = 4488
 
 	var/area/A = get_area(src)
 
-	if(!track)// || start_time + track.length < world.time + 5)
+	if(!track || (start_time + track.length < world.timeofday + SSobj.wait))
 		skip_song()
 
 	for(var/client/C in clients)
