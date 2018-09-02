@@ -1,4 +1,4 @@
-/mob/living/proc/run_armor_check(def_zone = null, attack_flag = "melee", absorb_text = null, soften_text = null, armour_penetration, penetrated_text)
+/mob/living/proc/run_armor_check(def_zone = null, attack_flag = "melee", absorb_text = null, soften_text = null, armour_penetration, penetrated_text, var/ignore_limit = 0)
 	var/armor = getarmor(def_zone, attack_flag)
 	armor += src.global_armor[attack_flag]
 	//the if "armor" check is because this is used for everything on /living, including humans
@@ -19,6 +19,8 @@
 	//		src << "<span class='userdanger'>[soften_text]</span>"
 	//	else
 	//		src << "<span class='userdanger'>Your armor softens the blow!</span>"
+	if(!ignore_limit)
+		armor = min(90, armor)
 	return armor
 
 
