@@ -85,7 +85,7 @@
 	desc = "Этот замечательный артефакт формируетс&#255; гравитационным типом аномалий. Использование артефакта требует нейтрализации смертельного радиоактивного излучени&#255;."
 	eng_desc = "This wonderful artifact is formed by gravitional anomalies anomaly. The use of the artifact demands the neutralization of deadly radiation. Expensive and rare."
 	icon_state = "nightstar"
-	art_armor = list(bullet = 15)
+	art_armor = list(bullet = 20)
 	radiation = 3
 	level_s = 3
 
@@ -121,7 +121,7 @@
 	desc = "Вырожденный случай активности аномалии Электра. Видимо, такую замечательную округлую форму можно получить, если подвергнуть аномалию термовоздействию. Дорогой артефакт."
 	eng_desc = "Degenerate case of the activity of the Electro anomaly. It seems that such a wonderful round form is created when the anomaly is subjected to thermal influences. Expensive artifact."
 	icon_state = "moonlight"
-	art_armor = list(energy = 25)
+	art_armor = list(energy = 20)
 	radiation = 2
 	level_s = 2
 
@@ -164,7 +164,7 @@
 	desc = "Кристаллизируетс&#255; в аномалии «Жарка». Хорошо боретс&#255; с радиоактивностью, хот&#255; ускоренный энергообмен изнашивает мышцы двигательного аппарата. Долго бежать не получитс&#255;. Артефакт излучает тепло."
 	eng_desc = "Crystallizes in the anomaly Burner. Fights well with radioactivity, though the heightened rate of energy exchange wears out the muscles of the moving apparatus. Won't be able to run for long. Artifact emits heat."
 	icon_state = "fireball"
-	art_armor = list(rad = 10)
+	art_armor = list(rad = 15)
 	radiation = -2
 	level_s = 2
 
@@ -219,8 +219,8 @@
 	desc = "Аномали&#255; «Холодец» способна породить такой артефакт при редчайшем, экстремальном наборе физических условий. В результате получаетс&#255; полупрозрачный твёрдый объект. Артефакт дорогой и редкостный. Ношение артефакта на по&#255;се значительно уменьшает поражение от аномалий «Ржавые волосы» и «Жгучий пух» и отпугивает хищников, однако при длительном ношении приводит к тому что люба&#255; царапина становитс&#255; смертельно опасной из-за ускоренных кровотечений. Цена высока&#255;. Интерес к артефакту про&#255;вл&#255;ют научные организации."
 	eng_desc = "Anomaly \"Fruit Punch\" is able to create such an artifact at the rarest, most extreme collection of physical conditions. The result is a semi-transparent, hard object. A rare and expensive artifact."
 	icon_state = "mica"
-	art_armor = list(laser = -10, bio = -10)
-	radiation = 2
+	art_armor = list(laser = 10, bio = 10)
+	radiation = 3
 	level_s = 3
 
 /obj/item/weapon/artifact/mica/Think(mob/user)
