@@ -314,9 +314,9 @@
 	SSjob.EquipRank(character, rank, 1)					//equips the human
 	var/D = null
 	if(istype(jobnamelatejoin["JoinLate" + rank], /list))
-		D = pick(jobnamelatejoin["JoinLate" + rank])
+		D = safepick(jobnamelatejoin["JoinLate" + rank])
 	else
-		D = pick(latejoin)
+		D = safepick(latejoin)
 	if(!D)	return
 /*		for(var/turf/T in get_area_turfs(/area/shuttle/arrival))
 			if(!T.density)
