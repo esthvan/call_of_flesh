@@ -1,6 +1,6 @@
 var/global/list/trash_quality_items = list(
 									/obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian,
-									/obj/item/weapon/storage/fancy/cigarettes/cigpack_maxim,
+									/obj/item/weapon/storage/fancy/cigarettes/cigpack/maxim,
 									/obj/item/weapon/storage/box/matches,
 									/obj/item/device/geiger_counter,
 									/obj/item/device/flashlight/seclite,
