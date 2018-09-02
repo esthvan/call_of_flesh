@@ -447,7 +447,7 @@
 	new /obj/item/ammo_box/magazine/m556(src)
 	new /obj/item/ammo_box/a40mm(src)
 	new /obj/item/weapon/gun/projectile/automatic/m90(src)
-	new /obj/item/weapon/storage/fancy/cigarettes/cigpack_syndicate(src)
+	new /obj/item/weapon/storage/fancy/cigarettes/cigpack/syndicate(src)
 	return
 
 /obj/item/weapon/storage/backpack/dufflebag/syndie/bulldogbundle

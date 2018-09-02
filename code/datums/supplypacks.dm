@@ -1272,8 +1272,8 @@ var/list/all_supply_groups = list(supply_emergency,supply_security,supply_engine
 /datum/supply_packs/misc/randomised/contraband
 	num_contained = 5
 	contains = list(/obj/item/weapon/poster/contraband,
-					/obj/item/weapon/storage/fancy/cigarettes/dromedaryco,
-					/obj/item/weapon/storage/fancy/cigarettes/cigpack_shadyjims)
+					/obj/item/weapon/storage/fancy/cigarettes/cigpack/dromedaryco,
+					/obj/item/weapon/storage/fancy/cigarettes/cigpack/shadyjims)
 	name = "Contraband Crate"
 	cost = 30
 	containername = "crate"	//let's keep it subtle, eh?

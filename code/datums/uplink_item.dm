@@ -971,7 +971,7 @@ var/list/uplink_items = list()
 /datum/uplink_item/badass/syndiecigs
 	name = "Syndicate Smokes"
 	desc = "Strong flavor, dense smoke, infused with omnizine."
-	item = /obj/item/weapon/storage/fancy/cigarettes/cigpack_syndicate
+	item = /obj/item/weapon/storage/fancy/cigarettes/cigpack/syndicate
 	cost = 2
 
 /datum/uplink_item/badass/bundle
