@@ -351,6 +351,8 @@
 
 /mob/living/carbon/human/proc/CountAmmo(var/mag_type)
 	var/count = 0
+	if(!Zombo_Gun)
+		return count
 	for(var/obj/item/ammo_box/magazine/_mag in src.contents)
 		if(istype(_mag, Zombo_Gun.mag_type) && _mag.contents.len)
 			count += _mag.stored_ammo.len
