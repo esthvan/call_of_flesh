@@ -364,7 +364,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "claw"
 	move_to_delay = 1.8
-	speak_chance = 2
+	speak_chance = 0.5
 	rating_add = 150
 	vision_range = 7
 	aggro_vision_range = 7
@@ -486,7 +486,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	attack_type = "claw"
 	move_to_delay = 10
-	speak_chance = 10
+	speak_chance = 5
 	vision_range = 15
 	aggro_vision_range = 15
 	ranged_cooldown_cap = 1
