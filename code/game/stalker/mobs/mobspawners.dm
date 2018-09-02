@@ -16,22 +16,22 @@
 		if(!lootspawn || lootspawn == /obj/nothing)
 			return
 
-		var/turf/T = get_turf(src)
-
-		for(var/mob/living/carbon/human/H in view(7, T))
+		if(locate(/mob/living/carbon) in view(7, src))
 			SpawnLoot()
 			return
 
-		var/mob/living/M = new lootspawn(T)
+		var/mob/living/M = new lootspawn(get_turf(src))
 
 		spawned_loot.Add(M)
-		sleep(rand(5, 50))
+		sleep(rand(10, 50))
 
 	if(!enable_cooldown)
 		SpawnLoot()
-	else
-		spawn(rand(cooldown, cooldown + 3000))
-			SpawnLoot()
+		return
+
+	sleep(rand(cooldown, cooldown + 3000))
+	SpawnLoot()
+	return
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/CanSpawn()
 	var/count = 0
