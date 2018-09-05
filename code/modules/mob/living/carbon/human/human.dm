@@ -604,12 +604,8 @@
 								else
 									if(!(last_vote && world.time < last_vote + 3000))
 										last_vote = world.time
-										if((R.fields["reputation"] - 20) < 0)
-											R.fields["reputation"] = 0
-											usr << "<span class='notice'>Reputation limit reached.</span>"
-										else
-											R.fields["reputation"] -= 20
-											usr << "<span class='notice'>Reputation updated.</span>"
+										R.fields["reputation"] = max(0, R.fields["reputation"] - 20)
+										usr << "<span class='notice'>Reputation updated.</span>"
 									else
 										lefttime = round((3000 + last_vote - world.time)/10)
 										ending = ""
@@ -633,7 +629,7 @@
 									if(!(last_vote && world.time < last_vote + 3000))
 										last_vote = world.time
 										R.fields["reputation"] += 20
-										usr << "<span class='notice'>Репутаци&#255; обновлена.</span>"
+										usr << "<span class='notice'>Reputation updated.</span>"
 									else
 										lefttime = round((3000 + last_vote - world.time)/10)
 										ending = ""
