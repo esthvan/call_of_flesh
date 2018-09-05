@@ -46,10 +46,10 @@
 #define SELL_UNBUYABLE						2
 
 ///////////////COLOR MATRIXES
-#define NIGHTVISION_MATRIX_I list(0.1, 0.9, 0,\
-								0, 1, 0,\
-								0, 0.9, 0.1)
+#define NIGHTVISION_MATRIX_I			list(0.1, 0.9, 0,\
+											0, 1, 0,\
+											0, 0.9, 0.1)
 
-#define NIGHTVISION_MATRIX_II list(0.33, 0.33, 0.33,\
-								0.33, 0.33, 0.33,\
-								0.33, 0.33, 0.33)
+#define NIGHTVISION_MATRIX_II			list(0.33, 0.33, 0.33,\
+											0.33, 0.33, 0.33,\
+											0.33, 0.33, 0.33)
