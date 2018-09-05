@@ -485,7 +485,7 @@
 	can_suppress = 1
 	zoomable = 1
 	zoom_amt = 9
-	burst_size = 2
+	burst_size = 3
 	fire_delay = 1.8
 	pin = /obj/item/device/firing_pin
 	durability = 75
@@ -510,7 +510,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stalker/m556x45
 	can_suppress = 0
 	durability = 125
-	burst_size = 2
+	burst_size = 3
 	fire_delay = 1.3
 	w_class = 4
 	spread = 3
@@ -536,7 +536,7 @@
 	can_suppress = 1
 	zoomable = 1
 	zoom_amt = 10
-	burst_size = 2
+	burst_size = 3
 	fire_delay = 1.25
 	pin = /obj/item/device/firing_pin
 	durability = 150
