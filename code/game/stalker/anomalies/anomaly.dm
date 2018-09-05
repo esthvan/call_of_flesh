@@ -286,7 +286,7 @@
 /obj/anomaly/electro/New()
 	..()
 	SSobj.processing.Add(src)
-	src.set_light(luminosity)
+	src.set_light(idle_luminosity)
 	spawn(10)
 		SSobj.processing.Remove(src)
 
@@ -368,7 +368,7 @@
 /obj/anomaly/jarka/New()
 	..()
 	SSobj.processing.Add(src)
-	src.set_light(luminosity)
+	src.set_light(idle_luminosity)
 	spawn(10)
 		SSobj.processing.Remove(src)
 
