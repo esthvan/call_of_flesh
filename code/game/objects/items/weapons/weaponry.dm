@@ -178,7 +178,7 @@
 	extended = !extended
 	playsound(src.loc, 'sound/weapons/batonextend.ogg', 50, 1)
 	if(extended)
-		force = 20
+		force = 30
 		w_class = 3
 		throwforce = 23
 		icon_state = "switchblade_ext"
