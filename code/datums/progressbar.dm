@@ -13,6 +13,7 @@
 		goal = goal_number
 	bar = image('icons/effects/progessbar.dmi', target, "prog_bar_0", 10)
 	bar.pixel_y = 32
+	bar.plane = HUD_PLANE
 	user = User
 	if (user)
 		client = user.client
