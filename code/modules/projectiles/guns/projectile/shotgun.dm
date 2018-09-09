@@ -66,9 +66,7 @@
 		chambered.loc = get_turf(src)//Eject casing
 		chambered.SpinAnimation(5, 1)
 		if (!chambered.BB)
-			var/chambered_d = chambered
-			spawn(delay_clean_decals)
-			qdel(chambered_d)
+			addtimer(chambered, "delete_projectile", rand(CLEANABLE_CLEAN_DELAY*0.75, CLEANABLE_CLEAN_DELAY*1.25))
 		chambered = null
 
 /obj/item/weapon/gun/projectile/shotgun/proc/pump_reload(mob/M)

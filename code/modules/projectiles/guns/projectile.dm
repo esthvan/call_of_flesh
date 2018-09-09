@@ -92,14 +92,16 @@ var/global/list/obj/item/ammo_casing/ACs = list()
 	if(eject_casing)
 		AC.loc = get_turf(src) //Eject casing onto ground.
 		AC.SpinAnimation(10, 1) //next gen special effects
-		//spawn(rand(delay_clean_decals, delay_clean_decals*1.5))
-			//qdel(AC)
+		addtimer(AC, "delete_projectile", rand(CLEANABLE_CLEAN_DELAY*0.75, CLEANABLE_CLEAN_DELAY*1.25))
 		ACs += AC
 
 	if(empty_chamber)
 		chambered = null
 	chamber_round()
 	return
+
+/obj/item/ammo_casing/proc/delete_projectile()
+	qdel(src)
 
 /obj/item/weapon/gun/projectile/proc/chamber_round()
 	if (chambered || !magazine)

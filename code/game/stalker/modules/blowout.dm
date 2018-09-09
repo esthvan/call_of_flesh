@@ -102,9 +102,9 @@ var/global/isblowout = 0
 			BlowoutGib()
 			if(MC_TICK_CHECK)
 				return
-			BlowoutClean()
-			if(MC_TICK_CHECK)
-				return
+			//BlowoutClean()
+			//if(MC_TICK_CHECK)
+			//	return
 			if(!ACs.len && !(locate(/mob/living) in dead_mob_list))
 				cleaned = 1
 			return
