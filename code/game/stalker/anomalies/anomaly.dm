@@ -81,19 +81,18 @@
 		spawned_artifacts += O
 
 /obj/anomaly/proc/RandomMove(spawned)
-	if(spawned)
-		var/turf/T = get_turf(src)
-		if(T && istype(spawned, /obj))
-			var/obj/O = spawned
-			var/new_x = T.x + rand(-1, 1)
-			var/new_y = T.y + rand(-1, 1)
-			O.Move(locate(new_x, new_y, T.z))
+	if(!spawned || !istype(spawned, /obj))
+		return
+	var/turf/T = get_turf(src)
+	if(!T)
+		return
+	var/obj/O = spawned
+	var/new_x = T.x + rand(-1, 1)
+	var/new_y = T.y + rand(-1, 1)
+	O.Move(locate(new_x, new_y, T.z))
 
-			if(istype(get_turf(O), /turf/simulated))
-				sleep(5)
-				RandomMove(spawned)
-				return
-	return
+	if(istype(get_turf(O), /turf/simulated))
+		RandomMove(spawned)
 
 /obj/anomaly/Crossed(atom/A)
 	..()
@@ -137,12 +136,7 @@
 		return
 
 	if(lasttime + (cooldown * 10) > world.time)
-
-		//////////////////////////////////////////////
-		sleep(lasttime + (cooldown * 10) - world.time)
-		//////////////////////////////////////////////
-
-		Think()
+		addtimer(src, "Think", (lasttime + (cooldown * 10) - world.time))
 		return
 
 	incooldown = 1
@@ -214,10 +208,6 @@
 		S.do_quick_empty()
 
 	qdel(I)
-
-	sleep(src.cooldown * 10 - 5)
-
-	qdel(Q)
 
 /obj/anomaly/proc/DealDamage(var/mob/living/L)
 	if(!(L in src.trapped))
@@ -405,10 +395,6 @@
 
 	qdel(I)
 
-	sleep(src.cooldown * 10 - 5)
-
-	qdel(Q)
-
 /obj/anomaly/jarka/comet
 	name = "comet"
 	loot = list(/obj/item/weapon/artifact/droplet = 45,
@@ -536,10 +522,6 @@
 
 	qdel(I)
 
-	sleep(src.cooldown * 10 - 5)
-
-	qdel(Q)
-
 /obj/anomaly/holodec/process()
 	var/new_dir = rand(1, 10)
 
@@ -646,10 +628,6 @@
 		S.do_quick_empty()
 
 	qdel(I)
-
-	sleep(src.cooldown * 10 - 5)
-
-	qdel(Q)
 
 /obj/anomaly/puh/New()
 	..()
