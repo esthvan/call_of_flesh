@@ -1,4 +1,4 @@
-/mob/living/carbon/human/say
+/mob/living/carbon/human/say(message, bubble_type,)
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
 
 	if(stat == DEAD)
