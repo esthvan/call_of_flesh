@@ -150,7 +150,7 @@
 	if(!stop_automated_movement && wander)
 		if(isturf(src.loc) && !resting && !buckled && canmove)		//This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
-			if(!return_to_spawnpoint || (loc != initial(loc)))
+			if(!return_to_spawnpoint || (loc == initial(loc)))
 				if(turns_since_move >= turns_per_move)
 					if(!(stop_automated_movement_when_pulled && pulledby)) //Some animals don't move when pulled
 						var/anydir = pick(cardinal)
