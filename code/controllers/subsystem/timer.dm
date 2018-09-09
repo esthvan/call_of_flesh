@@ -29,6 +29,8 @@ var/datum/subsystem/timer/SStimer
 			spawn(-1)
 				call(event.thingToCall, event.procToCall)(arglist(event.argList))
 			qdel(event)
+		if (MC_TICK_CHECK)
+			break
 
 /datum/timedevent
 	var/thingToCall
