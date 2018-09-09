@@ -1,4 +1,5 @@
 #define SKADOVSK_LOCKDOWN_TIMER				2400
+#define CLEANABLE_CLEAN_DELAY				5000
 
 ///////////////JOB
 #define UNIFORMPICK (pick(/obj/item/clothing/under/color/switer, /obj/item/clothing/under/color/switer/dark, /obj/item/clothing/under/color/switer/lolg, /obj/item/clothing/under/color/switer/tracksuit))
