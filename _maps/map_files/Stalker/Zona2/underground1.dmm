@@ -40,7 +40,7 @@
 "aN" = (/obj/structure/stalker/cacheable/komod,/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/skadovsk_respawn)
 "aO" = (/obj/sidor_enter,/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_left"; dir = 4},/area/stalker/buildings/backwater/skadovsk_respawn)
 "aP" = (/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_left"; dir = 4},/area/stalker/buildings/backwater/skadovsk_respawn)
-"aQ" = (/obj/structure/stalker/list,/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/skadovsk_respawn)
+"aQ" = (/obj/structure/stalker/list,/obj/machinery/light/small{icon_state = "bulb1"; dir = 1},/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/skadovsk_respawn)
 "aR" = (/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_right"; dir = 4},/area/stalker/buildings/backwater/skadovsk_respawn)
 "aS" = (/obj/effect/step_trigger/teleporter{teleport_x = 113; teleport_y = 124; teleport_z = 2},/turf/simulated/floor/plasteel/stairs/stalker{tag = "icon-ladder (EAST)"; icon_state = "ladder_right"; dir = 4},/area/stalker/buildings/backwater/skadovsk_respawn)
 "aT" = (/obj/structure/table/stalker/wood,/obj/machinery/light/small{icon_state = "bulb1"; dir = 8},/turf/stalker/floor/lattice,/area/stalker/buildings/backwater/skadovsk_respawn)
