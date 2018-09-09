@@ -1,3 +1,61 @@
+/mob/living/carbon/human/say
+	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
+
+	if(stat == DEAD)
+		say_dead(message)
+		return
+
+	if(check_emote(message))
+		return
+
+	if(!can_speak_basic(message)) //Stat is seperate so I can handle whispers properly.
+		return
+
+	var/message_mode = get_message_mode(message)
+
+	if(stat && !(message_mode in crit_allowed_modes))
+		return
+
+	if(message_mode == MODE_HEADSET || message_mode == MODE_ROBOT)
+		message = copytext(message, 2)
+	else if(message_mode)
+		message = copytext(message, 3)
+	if(findtext(message, " ", 1, 2))
+		message = copytext(message, 2)
+
+	if(handle_inherent_channels(message, message_mode)) //Hiveminds, binary chat & holopad.
+		return
+
+	if(!can_speak_vocal(message))
+		src << "<span class='warning'>You find yourself unable to speak!</span>"
+		return
+
+	if(message_mode != MODE_WHISPER) //whisper() calls treat_message(); double process results in "hisspering"
+		message = treat_message(message)
+	var/spans = list()
+	spans += get_spans()
+
+	if(!message)
+		return
+
+	//Log of what we've said, plain message, no spans or junk
+	if(!zombiefied)
+		say_log += message
+
+	var/message_range = 7
+	var/radio_return = radio(message, message_mode, spans)
+	if(radio_return & NOPASS) //There's a whisper() message_mode, no need to continue the proc if that is called
+		return
+	if(radio_return & ITALICS)
+		spans |= SPAN_ITALICS
+	if(radio_return & REDUCE_RANGE)
+		message_range = 1
+
+	send_speech(message, message_range, src, bubble_type, spans)
+
+	log_say("[name]/[key] : [message]")
+	return 1
+
 /mob/living/carbon/human/say_quote(input, spans)
 	if(!input)
 		return "says, \"...\""	//not the best solution, but it will stop a large number of runtimes. The cause is somewhere in the Tcomms code

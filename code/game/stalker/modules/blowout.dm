@@ -105,7 +105,7 @@ var/global/isblowout = 0
 			//BlowoutClean()
 			//if(MC_TICK_CHECK)
 			//	return
-			if(!ACs.len && !(locate(/mob/living) in dead_mob_list))
+			if(!(locate(/mob/living) in dead_mob_list)) //!ACs.len &&
 				cleaned = 1
 			return
 ///////I STAGE OF BLOWOUT/////////////////////////////////////////////////////////
