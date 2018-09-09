@@ -1,6 +1,7 @@
 /obj/effect/spawner/lootdrop/stalker/mobspawner
 	name = "mob spawner"
 	cooldown = 1000
+	var/sticky_mob = 0
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/SpawnLoot(enable_cooldown = 1)
 	sleep(rand(10, 100))
@@ -21,6 +22,10 @@
 			return
 
 		var/mob/living/M = new lootspawn(get_turf(src))
+
+		if(sticky_mob && istype(M, /mob/living/simple_animal))
+			var/mob/living/simple_animal/SM = M
+			SM.return_to_spawnpoint = 1
 
 		spawned_loot.Add(M)
 		sleep(rand(10, 50))
@@ -78,6 +83,7 @@
 	radius = 1
 	cooldown = 15000
 	loot = list(/mob/living/simple_animal/hostile/mutant/bloodsucker = 100)
+	sticky_mob = 1
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/controller_spawner
 	name = "controller mutant"
@@ -85,3 +91,4 @@
 	radius = 1
 	cooldown = 15000
 	loot = list(/mob/living/simple_animal/hostile/mutant/controller = 100)
+	sticky_mob = 1

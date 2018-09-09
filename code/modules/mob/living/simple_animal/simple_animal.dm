@@ -83,6 +83,7 @@
 	//STALKER MOBOS
 	//var/ability_cooldown = 100 // 10 - 1 секунда
 	//var/ability = 0
+	var/return_to_spawnpoint = 0
 
 /mob/living/simple_animal/New()
 	..()
@@ -149,14 +150,17 @@
 	if(!stop_automated_movement && wander)
 		if(isturf(src.loc) && !resting && !buckled && canmove)		//This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
-			if(turns_since_move >= turns_per_move)
-				if(!(stop_automated_movement_when_pulled && pulledby)) //Some animals don't move when pulled
-					var/anydir = pick(cardinal)
-					if(Process_Spacemove(anydir))
-						for(var/obj/anomaly/A in get_step(src, anydir).contents)
-							return 1
-						Move(get_step(src, anydir), anydir)
-						turns_since_move = 0
+			if(!return_to_spawnpoint || (loc != initial(loc)))
+				if(turns_since_move >= turns_per_move)
+					if(!(stop_automated_movement_when_pulled && pulledby)) //Some animals don't move when pulled
+						var/anydir = pick(cardinal)
+						if(Process_Spacemove(anydir))
+							for(var/obj/anomaly/A in get_step(src, anydir).contents)
+								return 1
+							Move(get_step(src, anydir), anydir)
+							turns_since_move = 0
+			else
+				walk_to(src, initial(loc), 1, 3)
 			return 1
 
 /mob/living/simple_animal/proc/handle_automated_speech()
