@@ -1,6 +1,3 @@
-
-var/global/delay_clean_decals = 5000
-
 /obj/effect/decal/cleanable
 	var/list/random_icon_states = list()
 	var/blood_state = "" //I'm sorry but cleanable/blood code is ass, and so is blood_DNA
@@ -19,11 +16,11 @@ var/global/delay_clean_decals = 5000
 		for(var/obj/effect/decal/cleanable/C in src.loc)
 			if(C != src && C.type == src.type)
 				replace_decal(C)
-	spawn(rand(delay_clean_decals, delay_clean_decals*1.5)) //Кулдаун очистки декалей
-		qdel(src)
+	addtimer(src, "delete_decal", rand(CLEANABLE_CLEAN_DELAY * 0.75, CLEANABLE_CLEAN_DELAY * 1.25))
 	..()
 
-
+/obj/effect/decal/cleanable/proc/delete_decal()
+	qdel(src)
 
 /obj/effect/decal/cleanable/proc/replace_decal(obj/effect/decal/cleanable/C)
 	qdel(C)
