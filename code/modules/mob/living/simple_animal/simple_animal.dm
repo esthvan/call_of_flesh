@@ -160,7 +160,10 @@
 							Move(get_step(src, anydir), anydir)
 							turns_since_move = 0
 			else
-				walk_to(src, initial(loc), 1, 3)
+				if(src.z == initial(z))
+					walk_to(src, initial(loc), 1, 3)
+				else
+					src.forceMove(initial(loc))
 			return 1
 
 /mob/living/simple_animal/proc/handle_automated_speech()
