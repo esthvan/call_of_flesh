@@ -1,4 +1,4 @@
-var/global/sid_generator = 0
+var/sid_generator = 0
 
 /datum/datacore
 	var/medical[] = list()
