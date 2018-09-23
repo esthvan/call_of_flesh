@@ -4,6 +4,22 @@
 	anchored = 1
 	layer = 3.1
 
+/obj/structure/stalker/sign
+	name = "sign"
+	desc = "There is something this way!"
+
+/obj/structure/stalker/sign/vendor
+	name = "vendor sign"
+	desc = "There is a vendor this way!"
+	icon_state = "sign_vendor"
+	density = 0
+
+/obj/structure/stalker/sign/bar
+	name = "bar sign"
+	desc = "There is a bar this way!"
+	icon_state = "sign_bar"
+	density = 0
+
 /obj/structure/stalker/cacheable/polka
 	name = "shelf"
 	desc = "Дерев&#255;нный стеллаж."
