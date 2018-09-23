@@ -4,7 +4,7 @@
 		#include "map_files\Stalker\Zona2\backwater.dmm"
 
 		#define MAP_FILE "ungerground1.dmm"
-		#define MAP_NAME "Zona2"
+		#define MAP_NAME "Backwater"
 		#define MAP_TRANSITION_CONFIG list(MAIN_STATION = CROSSLINKED, CENTCOMM = SELFLOOPING)
 #elif !defined(MAP_OVERRIDE)
 
