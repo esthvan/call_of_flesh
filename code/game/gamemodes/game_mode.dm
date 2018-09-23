@@ -474,18 +474,18 @@
 			M << msg
 
 /datum/game_mode/proc/printplayer(datum/mind/ply, fleecheck)
-	var/text = "<br><b>[ply.key]</b> was <b>[ply.name]</b> the <b>[ply.assigned_role]</b> and"
+	var/text = "<br><b>[ply.key]</b> was <b>[ply.current.real_name]</b> the <b>[ply.assigned_role]</b> and"
 	if(ply.current)
 		if(ply.current.stat == DEAD)
-			text += " <span class='boldannounce'>died</span>"
+			text += " <span class='boldannounce'>MIA in the Zone</span>"
 		else
-			text += " <span class='greenannounce'>survived</span>"
-		if(fleecheck && ply.current.z > ZLEVEL_STATION)
-			text += " while <span class='boldannounce'>fleeing the station</span>"
-		if(ply.current.real_name != ply.name)
-			text += " as <b>[ply.current.real_name]</b>"
+			text += " <span class='greenannounce'>survived.</span>"
+		//if(fleecheck && ply.current.z > ZLEVEL_STATION)
+		//	text += " while <span class='boldannounce'>fleeing the station</span>"
+		//if(ply.current.real_name != ply.name)
+		//	text += " as <b>[ply.current.real_name]</b>"
 	else
-		text += " <span class='boldannounce'>had their body destroyed</span>"
+		text += " <span class='boldannounce'>had their body destroyed in the Zone</span>"
 	return text
 
 /datum/game_mode/proc/printobjectives(datum/mind/ply)
