@@ -44,7 +44,7 @@ var/global/turntable_channel = 4488
 
 */
 /mob/var/sound/music
-/client/var/jukeboxplaying = 0
+///client/var/jukeboxplaying = 0
 
 /datum/data/turntable_soundtrack
 	var/f_name
@@ -81,7 +81,7 @@ var/global/turntable_channel = 4488
 		new /datum/data/turntable_soundtrack ("7B",					"Molodie Vetra",					'sound/turntable/semb_molodie_vetra.ogg',					2610),
 		new /datum/data/turntable_soundtrack ("Addaraya",			"Gurza Dreaming",					'sound/turntable/gurza_dreaming.ogg',						2420),
 		new /datum/data/turntable_soundtrack ("Agata Kristi",		"Kak Na Voine",						'sound/turntable/agata_kristi_na_voine.ogg',				2470),
-		new /datum/data/turntable_soundtrack ("Aksenov V.",			"Murka",							'sound/turntable/murka.ogg',								3220),
+		new /datum/data/turntable_soundtrack ("Aksenov V",			"Murka",							'sound/turntable/murka.ogg',								3220),
 		new /datum/data/turntable_soundtrack ("Alai Oli",			"Krilya",							'sound/turntable/alai_oli_krilya.ogg',						2150),
 		new /datum/data/turntable_soundtrack ("Ariya",				"Bespechniy Angel",					'sound/turntable/ariya_bespechniy_angel.ogg',				2380),
 		new /datum/data/turntable_soundtrack ("Ariya",				"Potyeraniy Ray",					'sound/turntable/ariya_poteryaniy_ray.ogg',					3530),
@@ -105,15 +105,15 @@ var/global/turntable_channel = 4488
 		new /datum/data/turntable_soundtrack ("Firelake",			"Dirge For The Planet",				'sound/turntable/dirge_for_the_planet.ogg',					2850),
 		new /datum/data/turntable_soundtrack ("Firelake",			"Live To Forget",					'sound/turntable/live_to_forget.ogg',						2960),
 		new /datum/data/turntable_soundtrack ("Freedom",			"Smoke Weed",						'sound/turntable/freedom_radio.ogg',						1140),
-		new /datum/data/turntable_soundtrack ("Gazmanov M.",		"Putana",							'sound/turntable/putana.ogg',								2460),
-		new /datum/data/turntable_soundtrack ("Krug M.",			"Kolschik",							'sound/turntable/kolshik.ogg',								2850),
+		new /datum/data/turntable_soundtrack ("Gazmanov M",		"Putana",							'sound/turntable/putana.ogg',								2460),
+		new /datum/data/turntable_soundtrack ("Krug M",			"Kolschik",							'sound/turntable/kolshik.ogg',								2850),
 		new /datum/data/turntable_soundtrack ("Kino",				"Gruppa Krovy",						'sound/turntable/kino_gruppa_krovi.ogg',					2030),
 		new /datum/data/turntable_soundtrack ("Kino",				"Zvezda Po Imeni Soltnse",			'sound/turntable/kino_zvezda_po_imeni_solntse.ogg',			2245),
 		new /datum/data/turntable_soundtrack ("Korol I Shut",		"Kukla kolduna",					'sound/turntable/korol_i_shut_kukila_kolduna.ogg',			2040),
 		new /datum/data/turntable_soundtrack ("Korol I Shut",		"Lesnik",							'sound/turntable/korol_i_shut_lesnik.ogg',					1910),
 		new /datum/data/turntable_soundtrack ("Kraski",				"Mama ya polubila bandita",			'sound/turntable/kraski_ya_polubila_bandita.ogg',			2020),
 		new /datum/data/turntable_soundtrack ("Krovostok",			"Kurtec",							'sound/turntable/krovostok_kurtec.ogg',						2400),
-		new /datum/data/turntable_soundtrack ("Leps G.",			"Rumka Vodki Na Stole",				'sound/turntable/rumka.ogg',								2360),
+		new /datum/data/turntable_soundtrack ("Leps G",			"Rumka Vodki Na Stole",				'sound/turntable/rumka.ogg',								2360),
 		new /datum/data/turntable_soundtrack ("Leprikonsy",			"Hali-Gali, Paratruper",			'sound/turntable/leprikonsy_paratruper.ogg',				2060),
 		new /datum/data/turntable_soundtrack ("Lumen",				"Sid i Nensi",						'sound/turntable/lumen_sid_i_nensi.ogg',					2340),
 		new /datum/data/turntable_soundtrack ("Malchishnik",		"V poslendiy raz",					'sound/turntable/malchishnik_posledniy_raz.ogg',			3350),
@@ -278,6 +278,9 @@ var/global/turntable_channel = 4488
 			say("Jukebox is turned off.")
 			return
 
+		if(alert("Do you want to play [TS.name] for [play_song_cost] RU?", "Turntable", "Yes", "No") == "No")
+			return
+
 		if(transition)
 			return
 
@@ -288,9 +291,6 @@ var/global/turntable_channel = 4488
 		if(play_song_cost > KPK.profile.fields["money"])
 			say("You don't have enough money to order a song.")
 			updateUsrDialog()
-			return
-
-		if(alert("Do you want to play [TS.name] for [play_song_cost] RU?", "Turntable", "Yes", "No") == "No")
 			return
 
 		//deltimer(timer_id)
@@ -397,7 +397,7 @@ var/global/turntable_channel = 4488
 	//timer_id = 0
 
 	for(var/client/C in melomans)
-		C.jukeboxplaying = 0
+		//C.jukeboxplaying = 0
 		if(C.mob)
 			C.mob << sound(null, channel = music_channel, wait = 0)
 		melomans.Remove(C)
@@ -431,26 +431,35 @@ var/global/turntable_channel = 4488
 		if(!(get_area(C.mob) in A.related))
 			continue
 
-		if(!C.mob.client.jukeboxplaying)
-			C.jukeboxplaying = 1
+		//if(!C.mob.client.jukeboxplaying)
+		if(!(C.mob.client in melomans))
+			//create_sound(C.mob)
+			//C.mob.music.volume = volume
+			//C.mob << C.mob.music
+			//C.jukeboxplaying = 1
 			melomans.Add(C)
-			create_sound(C.mob)
-			C.mob.music.volume = volume
-			C.mob << C.mob.music
 
 	for (var/client/C in melomans)
 		//var/inRange = (get_area(C.mob) in A.related)
 
-		if(!C || !(C.mob))
+		if(!C)
 			melomans -= C
 			continue
 
+		if(!(C.mob))
+			C << sound(null, channel = music_channel, wait = 0)
+			melomans.Remove(C)
+			continue
+
 		if(!playing || !(get_area(C.mob) in A.related))
-			C.jukeboxplaying = 0
 			if(C.mob.music)
-				C.mob.music.status = SOUND_UPDATE
+				C.mob.music.status = SOUND_STREAM | SOUND_UPDATE
 				C.mob.music.volume = 0
 				C.mob << C.mob.music
+				C.mob.music.status = SOUND_STREAM
+			else
+				C.mob << sound(null, channel = music_channel, wait = 0)
+			//C.jukeboxplaying = 0
 			melomans.Remove(C)
 			continue
 
@@ -460,30 +469,31 @@ var/global/turntable_channel = 4488
 
 		if(!C.mob.music.transition && C.mob.music.file != track.path)
 			C.mob.music.file = track.path
-			C.mob.music.status = SOUND_STREAM
+			//C.mob.music.status = SOUND_STREAM
 		else
-			C.mob.music.status = SOUND_UPDATE
+			C.mob.music.status = SOUND_STREAM | SOUND_UPDATE
 
 		C.mob.music.volume = volume
 		C.mob << C.mob.music
+		C.mob.music.status = SOUND_STREAM
 
 /obj/machinery/party/turntable/proc/create_sound(mob/M)
 	if(!M.music || M.music.file != track.path)
 		var/sound/S = sound(track.path)
-		S.repeat = 1
+		S.repeat = 0
 		S.channel = music_channel
 		S.falloff = 2
 		S.wait = 0
 		S.volume = 0
-		S.status = 0 //SOUND_STREAM
+		S.status = SOUND_STREAM //SOUND_STREAM
 		S.environment = get_area(src).environment
-
 		M.music = S
 		M << S
 	else
-		M.music.status = SOUND_UPDATE
+		M.music.status = SOUND_STREAM | SOUND_UPDATE
 		M.music.volume = volume
 		M << M.music
+		M.music.status = SOUND_STREAM
 
 /obj/machinery/party/mixer
 	name = "mixer"

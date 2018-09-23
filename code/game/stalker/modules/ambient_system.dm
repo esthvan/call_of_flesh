@@ -43,7 +43,6 @@
 			ambient_music.last_time = world.time
 			////////////////////////
 			ambient_music.Set_Sound(707, 10, 0, -1)
-
 			src << ambient_music
 
 	if(!ambient_environment || world.time >= ambient_environment.last_time + ambient_environment.real_cooldown)
@@ -57,8 +56,10 @@
 
 			if(ambient_environment)
 
+				////////////////////////
 				ambient_environment.last_time = world.time
 				ambient_environment.real_cooldown = rand(A.ambient_environment_cooldown * 0.3, A.ambient_environment_cooldown * 1.5)
+				////////////////////////
 				ambient_environment.Set_Sound(708, rand(25, 60), rand(-100, 100), A.environment)
 				src << ambient_environment
 
@@ -75,7 +76,6 @@
 				ambient_background.last_time = world.time
 				////////////////////////
 				ambient_background.Set_Sound(709, 35, 0, A.environment)
-
 				src << ambient_background
 
 	return 1
@@ -91,24 +91,25 @@
 		ambient_psy.real_cooldown = 110
 		////////////////////////
 		ambient_psy.Set_Sound(710, 60*(psyloss/200), 0, -1)
-
 		src << ambient_psy
 
 
 /sound/proc/Transition(var/mob/M)
 	transition = 1
+	status = SOUND_STREAM | SOUND_UPDATE
 
 	while(volume > 0)
 		volume = max(volume - 2, 0)
-		status = SOUND_UPDATE
 		M << src
 		/////////
 		sleep(2.5)
 		/////////
 
+	status = SOUND_STREAM
 	transition = 0
 
 /sound/proc/Set_Sound(var/channel_, var/volume_, var/pan_ , var/environment_)
+	status = SOUND_STREAM
 	repeat = 0
 	wait = 0
 	channel = channel_
