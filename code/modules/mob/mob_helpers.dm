@@ -108,9 +108,9 @@ proc/slur(phrase)
 			output += " "
 			continue
 		if(letter == "&")
-			if("&#255;" == copytext(phrase, i, i+6))
-				letter = "&#255;"
-				i += 5
+			if(findtext(phrase, ";", i))
+				letter = copytext(phrase, i, findtext(phrase, ";", i))
+				i = findtext(phrase, ";", i)
 		if(prob(33))
 			if(lowerrustext(letter)=="î")	letter="ó"
 			if(lowerrustext(letter)=="û")	letter="i"
@@ -147,9 +147,9 @@ proc/slur(phrase)
 	while(p <= n)//while P, which starts at 1 is less or equal to N which is the length.
 		var/n_letter = copytext(te, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
 		if(n_letter == "&")
-			if("&#255;" == copytext(te, p, p+5))
-				n_letter = "&#255;"
-				p += 5
+			if(findtext(te, ";", p))
+				n_letter = copytext(te, p, findtext(te, ";", p))
+				p = findtext(te, ";", p)
 		if (prob(80) && (lowertext(n_letter) in list("á","â","ã","ä","æ","ç","ê","ë","ì","í","ï","ð","ñ","ò","ô","÷","õ","ö","ø","ù","b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")))
 			if (prob(10))
 				n_letter = text("[n_letter]-[n_letter]-[n_letter]-[n_letter]")//replaces the current letter with this instead.
