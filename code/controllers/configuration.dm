@@ -50,7 +50,7 @@
 
 	var/hostedby = null
 	var/respawn = 1
-	var/respawn_timer = 4200
+	var/respawn_timer = 2400
 	var/guest_jobban = 1
 	var/usewhitelist = 0
 	var/kick_inactive = 0				//force disconnect for inactive players
