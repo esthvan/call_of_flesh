@@ -217,11 +217,11 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += "byond 512 ONLY"
 	s += ")"
 
-	s += "<br><br>Discord: <a href=\"https://discord.gg/aBkc6NK\">https://discord.gg/P3EMVBW</a>"
+	s += "<br><br><b>Discord</b>: <a href=\"https://discord.gg/aBkc6NK\">https://discord.gg/P3EMVBW</a>"
 
 	if(ticker)
 		if(master_mode)
-			s += "<br>Mode: <b>[master_mode]</b>"
+			s += "<br><b>Mode</b>: [master_mode]"
 	else
 		s += "<br><b>STARTING</b>"
 
@@ -233,18 +233,18 @@ var/world_topic_spam_protect_time = world.timeofday
 	if(resp_rate == 1)
 		time_measure = "minute"
 
-	if(abandon_allowed)
-		s += "<br>Respawn Rate: <b>[resp_rate] [time_measure]</b>"
+	if(config.respawn)
+		s += "<br><b>Respawn Rate</b>: [resp_rate] [time_measure]"
 	else
-		s += "<br>Respawn: <b>Disabled</b>"
+		s += "<br><b>Respawn</b>: Disabled"
 
 	if (config)
-		s += "<br>Restart Vote:"
+		s += "<br><b>Restart Vote:</b>"
 
-	s += config.allow_vote_mode ? "<b>Can be forced by players.</b>" : "<b>Disabled</b>"
+	s += config.allow_vote_mode ? "Can be forced by players" : "Disabled"
 
 	if (!host && config && config.hostedby)
-		s += "<br>Hosted By: <b>Lebensraum</b><br>"
+		s += "<br>Hosted by: <b>Lebensraum</b><br><br>"
 /*
 	var/n = 0
 	for (var/mob/M in player_list)

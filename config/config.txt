@@ -1,5 +1,5 @@
 ## Server name: This appears at the top of the screen in-game. Remove the # infront of SERVERNAME and replace 'tgstation' with the name of your choice
-# SERVERNAME stalkerstation
+SERVERNAME S.T.A.L.K.E.R.
 
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
 STATIONNAME S.T.A.L.K.E.R.
@@ -131,21 +131,21 @@ GUEST_BAN
 # SERVER 107.150.32.114:13100
 
 ## forum address
-# FORUMURL https://discord.gg/P3EMVBW
+FORUMURL https://discord.gg/P3EMVBW
 
 
 ## Wiki address
-# WIKIURL https://discord.gg/P3EMVBW
+WIKIURL https://discord.gg/P3EMVBW
 
 
 ##Rules address
-# RULESURL https://discord.gg/P3EMVBW
+RULESURL https://discord.gg/P3EMVBW
 
 ##Github address
-# GITHUBURL https://github.com/esthvan/call_of_flesh
+GITHUBURL https://github.com/esthvan/call_of_flesh
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
-# BANAPPEALS https://discord.gg/P3EMVBW
+BANAPPEALS https://discord.gg/P3EMVBW
 
 ## In-game features
 ##Toggle for having jobs load up from the .txt
