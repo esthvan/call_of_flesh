@@ -13,4 +13,4 @@
 *.backup
 *.int
 data/
-config/config.txt
+#config/config.txt

@@ -142,7 +142,7 @@ GUEST_BAN
 # RULESURL https://discord.gg/P3EMVBW
 
 ##Github address
-# GITHUBURL https://discord.gg/P3EMVBW
+# GITHUBURL https://github.com/esthvan/call_of_flesh
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
 # BANAPPEALS https://discord.gg/P3EMVBW

@@ -217,7 +217,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += "byond 512 ONLY"
 	s += ")"
 
-	s += "Discord: <a href=\"https://discord.gg/aBkc6NK\">https://discord.gg/P3EMVBW</a><br>"
+	s += "<br><br>Discord: <a href=\"https://discord.gg/aBkc6NK\">https://discord.gg/P3EMVBW</a>"
 
 	if(ticker)
 		if(master_mode)
@@ -230,7 +230,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	var/resp_rate = round(config.respawn_timer/600)
 	var/time_measure = "minutes"
-	if(resp_rate > 1)
+	if(resp_rate == 1)
 		time_measure = "minute"
 
 	s += abandon_allowed ? "<br>Respawn Rate: <b>[resp_rate] [time_measure]</b>" : "<br>Respawn: <b>Disabled</b>"
