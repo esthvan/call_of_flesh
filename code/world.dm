@@ -206,17 +206,55 @@ var/world_topic_spam_protect_time = world.timeofday
 	if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "
 
-	s += "<b>\[INTERNATIONAL\][station_name()]</b>";
+	s += "<b>\[INTERNATIONAL\]</b>"; //[station_name()]
 	s += " ("
-	s += "<a href=\"https://discord.gg/aBkc6NK\">" //Change this to wherever you want the hub to link to.
+//	s += "<a href=\"https://discord.gg/aBkc6NK\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
-	s += "Our Discord Server"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
-	s += "</a>"
+//	s += "Our Discord Server"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
+//	s += "</a>"
 	s += ")"
 	s += " ("
 	s += "byond 512 ONLY"
 	s += ")"
 
+	s += "Discord: <a href=\"https://discord.gg/aBkc6NK\">https://discord.gg/P3EMVBW</a><br>"
+
+	if(ticker)
+		if(master_mode)
+			s += "<br>Mode: <b>[master_mode]</b>"
+	else
+		s += "<br><b>STARTING</b>"
+
+	if (!enter_allowed)
+		s += "<br>Closed"
+
+	var/resp_rate = round(config.respawn_timer/600)
+	var/time_measure = "minutes"
+	if(resp_rate > 1)
+		time_measure = "minute"
+
+	s += abandon_allowed ? "<br>Respawn Rate: <b>[resp_rate] [time_measure]</b>" : "<br>Respawn: <b>Disabled</b>"
+
+	if (config)
+		s += "<br>Restart Vote:"
+
+	s += config.allow_vote_mode ? "<b>Can be forced by players.</b>" : "<b>Disabled</b>"
+
+	if (!host && config && config.hostedby)
+		s += "<br>Hosted By: <b>Lebensraum</b><br>"
+/*
+	var/n = 0
+	for (var/mob/M in player_list)
+		if (M.client)
+			n++
+*/
+/*
+	if (n > 1)
+		s += "~[n] players"
+	else if (n > 0)
+		s += "~[n] player"
+*/
+/*
 	var/list/features = list()
 
 	if(ticker)
@@ -257,7 +295,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	if (features)
 		s += ": [list2text(features, ", ")]"
-
+*/
 	/* does this help? I do not know */
 	if (src.status != s)
 		src.status = s
