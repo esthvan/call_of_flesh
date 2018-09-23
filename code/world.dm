@@ -207,12 +207,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		s += "<b>[config.server_name]</b> &#8212; "
 
 	s += "<b>\[INTERNATIONAL\]</b>"; //[station_name()]
-	s += " ("
+//	s += " ("
 //	s += "<a href=\"https://discord.gg/aBkc6NK\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
 //	s += "Our Discord Server"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 //	s += "</a>"
-	s += ")"
+//	s += ")"
 	s += " ("
 	s += "byond 512 ONLY"
 	s += ")"
@@ -233,7 +233,10 @@ var/world_topic_spam_protect_time = world.timeofday
 	if(resp_rate == 1)
 		time_measure = "minute"
 
-	s += abandon_allowed ? "<br>Respawn Rate: <b>[resp_rate] [time_measure]</b>" : "<br>Respawn: <b>Disabled</b>"
+	if(abandon_allowed)
+		s += "<br>Respawn Rate: <b>[resp_rate] [time_measure]</b>"
+	else
+		s += "<br>Respawn: <b>Disabled</b>"
 
 	if (config)
 		s += "<br>Restart Vote:"
