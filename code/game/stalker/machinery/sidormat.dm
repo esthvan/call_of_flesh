@@ -275,6 +275,10 @@ var/global/list/global_sidormat_list = list(
 	var/rating = 0
 	var/switches = 0
 	var/real_assorment = list()
+	var/list/special_factions = list("Loners", "Bandits")
+	var/path_ending = null
+	//Faction Locker
+	var/obj/item/device/assembly/control/door_device = null
 
 /datum/data/stalker_equipment
 	//var/name = "generic"
@@ -316,6 +320,12 @@ var/global/list/global_sidormat_list = list(
 	itemloc = locate(x - 1, y, z)
 	itemloc2 = locate(x + 1, y, z)
 
+	sleep(10)
+
+	if(path_ending && !door_device)
+		door_device = new /obj/item/device/assembly/control(src)
+		door_device.id = path_ending
+
 /obj/machinery/stalker/sidormat/attack_hand(mob/user)
 	balance = 0
 	if(..())
@@ -336,8 +346,9 @@ var/global/list/global_sidormat_list = list(
 		say("Put on your KPK.")
 		return
 
-	var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
+	//find_record("sid", H.sid, data_core.stalkers)
 	var/obj/item/device/stalker_pda/KPK = H.wear_id
+	var/datum/data/record/sk = KPK.profile
 
 	if(!sk || !KPK.owner)
 		say("Activate your KPK profile.")
@@ -360,16 +371,18 @@ var/global/list/global_sidormat_list = list(
 		dat += "Balance: [balance] RU<br>"
 		dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table.<br>" // Забирать деньги и купленные вещи - на <b>правом</b>.
 		if(!(switches & SHOW_FACTION_EQUIPMENT))
-			dat +="<A href='?src=\ref[src];choice=take'><b>Sell habar.</b></A>"
+			dat +="<A href='?src=\ref[src];choice=take'><b>Sell habar</b></A><br>"
+		if(door_device && sk.fields["degree"])
+			dat +="<A href='?src=\ref[src];basement_toggle=1'><b>Toggle basement door</b></A><br>"
 		dat += "</div>"
 		dat += "<div class='lenta_scroll'>"
-		dat += "<br><BR><table border='0' width='400'>" //<b>Item list:</b>
+		dat += "<BR><table border='0' width='400'>" //<b>Item list:</b>
 		for(var/L in global_sidormat_list)
 			if(L == "Unbuyable" && !(switches & SELL_UNBUYABLE))
 				continue
 			dat += "<tr><td><center><big><b>[L]</b></big></center></td><td></td><td></td></tr>"
 			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
-				if((KPK.eng_faction_s == prize.faction && (KPK.eng_faction_s == "Loners" || KPK.eng_faction_s == "Bandits" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
+				if((KPK.eng_faction_s == prize.faction && (KPK.eng_faction_s in special_factions || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 					//if(rating >= prize.rating)
 					if(get_assortment_level(H) >= prize.assortment_level)
 						dat += "<tr><td>[prize.name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
@@ -385,16 +398,18 @@ var/global/list/global_sidormat_list = list(
 		dat += "На счету: [balance] RU<br>"
 		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
 		if(!(switches & SHOW_FACTION_EQUIPMENT))
-			dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар.</b></A>"
+			dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар</b></A><br>"
+		if(door_device && sk.fields["degree"])
+			dat +="<A href='?src=\ref[src];basement_toggle=1'><b>Открыть/Закрыть хранилище</b></A><br>"
 		dat += "</div>"
 		dat += "<div class='lenta_scroll'>"
-		dat += "<br><BR><table border='0' width='400'>" //<b>Список предметов:</b>
+		dat += "<BR><table border='0' width='400'>" //<b>Список предметов:</b>
 		for(var/L in global_sidormat_list)
 			if(L == "Unbuyable" && !(switches & SELL_UNBUYABLE))
 				continue
 			dat += "<tr><td><center><b>[L]</b></center></td><td></td><td></td></tr>"
 			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
-				if((KPK.eng_faction_s == prize.faction && (KPK.eng_faction_s == "Loners" || KPK.eng_faction_s == "Bandits" || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
+				if((KPK.eng_faction_s == prize.faction && (KPK.eng_faction_s in special_factions || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 					//if(rating >= prize.rating)
 					if(get_assortment_level(H) >= prize.assortment_level)
 						dat += "<tr><td>[prize.name_ru]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
@@ -463,6 +478,8 @@ var/global/list/global_sidormat_list = list(
 		//PoolOrNew(prize.equipment_path, itemloc2)
 		new prize.equipment_path(itemloc2)
 
+	if(href_list["basement_toggle"])
+		door_device.pulsed()
 
 	//updateUsrDialog()
 	return
