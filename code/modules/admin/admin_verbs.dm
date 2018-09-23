@@ -563,10 +563,11 @@ var/list/admin_verbs_hideable = list(
 		return
 
 	world << "<font color='red'><b>Respawn rate has been changed by admins from [round(config.respawn_timer/600)] min to [newrespawnrate] min!</b></font color>"
-	config.respawn_timer = round(newrespawnrate * 600)
 
 	log_admin("[key_name(usr)] changed respawn rate from [round(config.respawn_timer/600)] to [newrespawnrate].")
 	message_admins("[key_name_admin(usr)] changed respawn rate from [round(config.respawn_timer/600)] to [newrespawnrate].")
+
+	config.respawn_timer = round(newrespawnrate * 600)
 
 /client/proc/admin_ghost()
 	set category = "Admin"
