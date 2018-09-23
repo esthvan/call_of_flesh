@@ -32,23 +32,31 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 	noblowout_area = locate(text2path("/area/stalker/buildings/backwater/[path_ending]"))
 	update_desc()
 
+	if(!connected_sidormat)
+		connected_sidormat = locate(/obj/machinery/stalker/sidormat/special) in noblowout_area
+		if(!connected_sidormat)
+			connected_sidormat = locate(/obj/machinery/stalker/sidormat/special) in buildings_area
+		else if(!connected_sidormat)
+			connected_sidormat = locate(/obj/machinery/stalker/sidormat/special) in outdoor_area
+
+	if(connected_sidormat)
+		connected_sidormat.GetSidorPoint(src)
+
 /obj/machinery/stalker/sidorpoint/proc/update_desc()
 	if(controlled_by)
 
 		desc = "Точка находитс&#255; под контролем группировки [get_rus_faction(controlled_by)] на [control_percent]%"
 		eng_desc = "Point is under [controlled_by] control by [control_percent]%"
 
+	else if(control_percent)
+
+		desc = "Точка находитс&#255; под контролем группировки [get_rus_faction(capturing_faction)] на [control_percent]%"
+		eng_desc = "Point is under [capturing_faction] control by [control_percent]%"
+
 	else
 
-		if(control_percent)
-
-			desc = "Точка под контролем группировки [get_rus_faction(capturing_faction)] на [control_percent]%"
-			eng_desc = "Point is under [capturing_faction] control by [control_percent]%"
-
-		else
-
-			desc = "Точка свободна дл&#255; захвата"
-			eng_desc = "This point can be captured."
+		desc = "Точка свободна дл&#255; захвата"
+		eng_desc = "This point can be captured."
 
 /obj/machinery/stalker/sidorpoint/proc/update_icon_percent()
 	switch(control_percent)
@@ -69,14 +77,14 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 
 /obj/machinery/stalker/sidorpoint/proc/check_invader()
 	if(!capturing_faction)
-		return
+		return 1
 
 	for(var/mob/living/carbon/human/H in range(5, src))
 		var/datum/data/record/sk = find_record("sid", H.sid, data_core.stalkers)
 		if(sk && sk.fields["faction_s"] == capturing_faction)
-			return
+			return 1
 
-	capturing_faction = null
+	return 0
 
 /obj/machinery/stalker/sidorpoint/attack_hand(mob/user)
 	if(..())
@@ -148,7 +156,9 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 
 	//if(controlled_by && last_respawn_income)
 
-	check_invader()
+	if(!check_invader())
+		capturing_faction = null
+		return
 
 	if(capturing_faction && !controlled_by)
 		controlled_by = capturing_faction
@@ -196,6 +206,7 @@ var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
 
 /obj/machinery/stalker/sidormat/special/proc/GetSidorPoint(var/obj/machinery/stalker/sidorpoint/SP_)
 	SP = SP_
+	path_ending = SP_.path_ending
 
 /obj/machinery/stalker/sidormat/special/interact(mob/living/carbon/human/H)
 	if(!SP)
