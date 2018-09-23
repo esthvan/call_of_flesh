@@ -11,9 +11,9 @@ var/global/isblowout = 0
 		CheckControl(C)
 		if(isblowout && C.inshelter)
 			if(C.client && (C.client.prefs.chat_toggles & CHAT_LANGUAGE))
-				C << "<span class='warning'>You leave the shelter.</span>"
+				C << "<big><span class='warning'>You leave the shelter.</span></big>"
 			else
-				C << "<span class='warning'>Вы покидаете укрытие.</span>"
+				C << "<big><span class='warning'>Вы покидаете укрытие.</span></big>"
 		C.inshelter = 0
 
 /area/stalker/Entered(var/atom/movable/A)
@@ -22,14 +22,13 @@ var/global/isblowout = 0
 		CheckControl(C)
 		if(isblowout && !C.inshelter)
 			if(C.client && (C.client.prefs.chat_toggles & CHAT_LANGUAGE))
-				C << "<span class='notice'>You enter the shelter.</span>"
+				C << "<big><span class='notice'>You enter the shelter.</span></big>"
 			else
-				C << "<span class='notice'>Вы заходите в укрытие.</span>"
+				C << "<big><span class='notice'>Вы заходите в укрытие.</span></big>"
 		C.inshelter = 1
 
 /area/proc/CheckControl(var/mob/living/carbon/C)
 	if(!C.inprivatezone && controlled_by)
-
 		if(C.client && (C.client.prefs.chat_toggles & CHAT_LANGUAGE))
 			C << "<big><span class='warning'>You enter the zone controlled by [controlled_by]. [controlled_by] can kill you on sight if you are not allied.</warning></big>"
 		else
@@ -145,13 +144,13 @@ var/global/isblowout = 0
 		L.gib()
 		if(MC_TICK_CHECK)
 			return
+		CHECK_TICK
 
 /datum/subsystem/blowout/proc/BlowoutDealDamage()
 	for(var/mob/living/carbon/human/H)
-		//if(istype(get_area(H), /area/stalker/blowout))
 		if(!H.inshelter)
-			//H.radiation += 600
 			H.apply_damage(200, PSY)
+		CHECK_TICK
 
 /datum/subsystem/blowout/proc/StopBlowout()
 
@@ -188,12 +187,10 @@ var/global/isblowout = 0
 
 		if(C.internal_cache)
 			PlaceInPool(C.internal_cache)
-
 		C.internal_cache = null
-
 		C.cache_chance = rand(7, 12)
-
 		C.New()
+		CHECK_TICK
 
 /datum/subsystem/blowout/proc/AfterBlowout()
 
