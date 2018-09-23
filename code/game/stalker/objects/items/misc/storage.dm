@@ -59,6 +59,8 @@
 	max_w_class = 2
 	max_combined_w_class = 2
 	storage_slots = 1
+	w_class = 5
+	takeout_speed = 0
 
 /obj/item/weapon/storage/internal_slot/attack_hand(mob/user)
 	playsound(loc, "rustle", 50, 1, -5)

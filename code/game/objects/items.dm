@@ -261,7 +261,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 			var/obj/item/weapon/gun/G = src
 			playsound(src.loc, "rustle", 50, 1, -5)
 			user.visible_message("<span class='danger'>[user] starts to take out [G] from the [S]!</span>", "<span class='notice'>You start to take out [G] from the [S]...</span>")
-			if(do_after_inventory(user, G.weapon_weight * 15 + 5, 1, G))
+			if(do_after_inventory(user, (G.weapon_weight * 15 + 5)*S.takeout_speed, 1, G))
 				playsound(src, G.drawsound, 30, 1)
 				S.remove_from_storage(src, user.loc)
 				user.visible_message("<span class='danger'>[user] took out [G] from the [S]!</span>", "<span class='notice'>You took out the [G] from the [S].</span>")
