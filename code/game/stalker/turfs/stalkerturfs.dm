@@ -465,3 +465,6 @@ var/global/list/WaterEdgeCache
 /turf/stalker/floor/lattice/New()
 	icon_state = "lattice[rand(1, 4)]"
 */
+
+/turf/stalker/floor/plasteel/plita/orange
+	icon_state = "plita_orange"
