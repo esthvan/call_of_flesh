@@ -507,6 +507,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			attack_verb = list("burnt", "singed")
 			if(!istype(src, /obj/item/weapon/lighter/greyscale))
 				user.visible_message("Without even breaking stride, [user] flips open and lights [src] in one smooth movement.", "<span class='notice'>Without even breaking stride, you flip open and lights [src] in one smooth movement.</span>")
+				playsound(user, 'sound/stalker/objects/zippo_open.ogg', 100, 1)
 			else
 				if(prob(75))
 					user.visible_message("After a few attempts, [user] manages to light [src].", "<span class='notice'>After a few attempts, you manage to light [src].</span>")
@@ -514,6 +515,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					var/hitzone = user.r_hand == src ? "r_hand" : "l_hand"
 					user.apply_damage(5, BURN, hitzone)
 					user.visible_message("<span class='warning'>After a few attempts, [user] manages to light [src] - they however burn their finger in the process.</span>", "<span class='warning'>You burn yourself while lighting the lighter!</span>")
+				playsound(user, 'sound/stalker/objects/lighter_scratch.ogg', 100, 1)
 
 			user.add_light_range(1)
 			SSobj.processing |= src
@@ -525,6 +527,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			attack_verb = null //human_defense.dm takes care of it
 			if(!istype(src, /obj/item/weapon/lighter/greyscale))
 				user.visible_message("You hear a quiet click, as [user] shuts off [src] without even looking at what they're doing. Wow.", "<span class='notice'>You quietly shut off [src] without even looking at what you're doing. Wow.</span>")
+				playsound(user, 'sound/stalker/objects/zippo_open.ogg', 100, 1)
 			else
 				user.visible_message("[user] quietly shuts off [src].", "<span class='notice'>You quietly shut off [src].")
 			user.add_light_range(-1)
