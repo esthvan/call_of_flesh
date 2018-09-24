@@ -391,6 +391,9 @@ var/global/list/GryazEdgeCache
 			var/mob/living/carbon/human/H = A
 			if(H.shoes)
 				H.shoes.clean_blood()
+			if(H.fire_stacks)
+				H.fire_stacks = 0
+				H.ExtinguishMob()
 
 /turf/stalker/floor/water/Exited(atom/movable/A)
 	..()
