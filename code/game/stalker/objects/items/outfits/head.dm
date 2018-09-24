@@ -21,6 +21,23 @@
 	durability = 40
 	modifications = list("material_head" = 0)
 
+/obj/item/clothing/head/mob_can_equip(mob/M, slot, disable_warning = 0)
+	if(!iscarbon(M))
+		return ..()
+
+	var/mob/living/carbon/C = M
+
+	if(slot != slot_head)
+		return ..()
+
+	if(!(flags_cover & HEADCOVERSMOUTH))
+		return ..()
+
+	if(!(C.wear_mask) || !(istype(C.wear_mask, /obj/item/clothing/mask/gas)))
+		return ..()
+
+	return 0
+
 /obj/item/clothing/head/tacticalhelmet
 	name = "Tactical helmet"
 	desc = "Отечественный образец тактического шлема, лишённый какой-либо маркировки. Предназначен дл&#255; обеспечени&#255; командира подразделени&#255; базовым количеством тактической информации при установке соответствующей электронной начинки. Отличаетс&#255; крепкой конструкцией, также оснащён многослойной кевларовой защитой, респиратором и прибором ночного видень&#255; первого поколени&#255;."
