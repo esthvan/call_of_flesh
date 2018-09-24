@@ -565,6 +565,8 @@
 	w_class = 1
 	slot_flags = SLOT_BELT
 	can_hold = list(/obj/item/weapon/match)
+	touch_sound = 'sound/stalker/objects/matchbox_open.ogg'
+	insert_sound = null
 
 /obj/item/weapon/storage/box/matches/New()
 	..()

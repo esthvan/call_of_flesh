@@ -45,11 +45,11 @@
 	burn_state = FLAMMABLE
 	burntime = 20
 	display_contents_with_number = 1
-
+/*
 /obj/item/weapon/storage/backpack/stalker/attackby(obj/item/weapon/W, mob/user, params)
 	playsound(src.loc, "sound/stalker/objects/inv_open.ogg", 50, 1, -5)
 	..()
-
+*/
 //Some suit internal slots
 
 /obj/item/weapon/storage/internal_slot
@@ -61,9 +61,11 @@
 	storage_slots = 1
 	w_class = 5
 	takeout_speed = 0
+	touch_sound = 'sound/stalker/objects/internal_slot_toggle.ogg'
+	insert_sound = null
 
 /obj/item/weapon/storage/internal_slot/attack_hand(mob/user)
-	playsound(loc, "rustle", 50, 1, -5)
+	playsound(loc, touch_sound, 50, 1, -5)
 
 	orient2hud(user)
 	if(loc && loc.loc && (loc == user || loc.loc == user))
@@ -96,7 +98,7 @@
 			if(loc != usr || (loc && loc.loc == usr))
 				return
 
-			playsound(loc, "rustle", 50, 1, -5)
+			playsound(loc, touch_sound, 50, 1, -5)
 			add_fingerprint(usr)
 
 

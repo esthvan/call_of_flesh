@@ -26,6 +26,8 @@
 	var/preposition = "in" // You put things 'in' a bag, but trays need 'on'.
 	var/radiation_protection = 0
 	var/takeout_speed = 1
+	var/touch_sound = 'sound/stalker/objects/inv_open.ogg'
+	var/insert_sound = 'sound/stalker/objects/inv_slot.ogg'
 
 /obj/item/weapon/storage/MouseDrop(atom/over_object)
 	if(iscarbon(usr) || isdrone(usr)) //all the check for item manipulation are in other places, you can safely open any storages as anything and its not buggy, i checked
@@ -51,7 +53,7 @@
 			if(loc != usr || (loc && loc.loc == usr))
 				return
 
-			playsound(loc, "rustle", 50, 1, -5)
+			playsound(loc, touch_sound, 50, 1, -5)
 			switch(over_object.name)
 				if("r_hand")
 					if(!M.unEquip(src))
@@ -67,7 +69,6 @@
 /obj/item/weapon/storage/proc/content_can_dump(atom/dest_object, mob/user)
 	if(Adjacent(user) && dest_object.Adjacent(user))
 		if(dest_object.storage_contents_dump_act(src, user))
-			playsound(loc, "sound/stalker/objects/inv_slot.ogg", 50, 1, -5)
 			return 1
 	return 0
 
@@ -302,6 +303,7 @@
 			return 0
 	if(silent)
 		prevent_warning = 1
+	playsound(loc, insert_sound, 50, 1, -5)
 	W.loc = src
 	W.on_enter_storage(src)
 	if(usr)
@@ -383,7 +385,7 @@
 	. = ..()
 
 /obj/item/weapon/storage/attack_hand(mob/user)
-	playsound(loc, "rustle", 50, 1, -5)
+	playsound(loc, touch_sound, 50, 1, -5)
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -466,7 +468,7 @@
 	boxes.layer = 19
 	closer = new /obj/screen/close()
 	closer.master = src
-	closer.icon_state = "x"
+	closer.icon_state = "backpack_close"
 	closer.layer = 20
 	orient2hud()
 
