@@ -89,7 +89,7 @@
 	throwforce = 8
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	w_class = 3
-	butcher_speed = 0.7
+	butcher_speed = 0.6
 
 /obj/item/weapon/kitchen/knife/combat
 	name = "combat knife"
