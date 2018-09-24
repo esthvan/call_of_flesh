@@ -239,9 +239,9 @@ var/world_topic_spam_protect_time = world.timeofday
 		s += "<br><b>Respawn</b>: Disabled"
 
 	if (config)
-		s += "<br><b>Restart Vote:</b>"
+		s += "<br><b>Restart Vote: </b>"
 
-	s += config.allow_vote_mode ? "Can be forced by players" : "Disabled"
+	s += config.allow_vote_restart ? "Can be forced by players" : "Disabled"
 
 	if (!host && config && config.hostedby)
 		s += "<br>Hosted by: <b>Lebensraum</b><br><br>"
