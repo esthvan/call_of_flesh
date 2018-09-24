@@ -397,6 +397,8 @@
 
 /obj/anomaly/jarka/comet
 	name = "comet"
+	inactive_icon_state = "jarka1"
+	active_icon_state = "jarka1"
 	loot = list(/obj/item/weapon/artifact/droplet = 45,
 				/obj/item/weapon/artifact/fireball = 40,
 				/obj/item/weapon/artifact/crystal = 10,
@@ -405,48 +407,12 @@
 	loot_count = 2
 	var/stage = 0
 	var/radius = 3
-	var/list/x_cords = list()
-	var/list/y_cords = list()
+	var/list/turf/traectory = null
 
 /obj/anomaly/jarka/comet/New()
 	..()
 	SSobj.processing.Add(src)
-
-/obj/anomaly/jarka/comet/initialize()
-	..()
-	var/x1 = x + radius
-	var/y1 = y
-	var/i = 0
-	while(y1 < initial(y) + radius)
-		i++
-		y1++
-		x1 = (radius**2 - (y1 - initial(y))**2)**0.5
-		x_cords[i] = x1
-		y_cords[i] = y1
-
-	while(y1 > initial(y))
-		i++
-		y1--
-		x1 = -((radius**2 - (y1 - initial(y))**2)**0.5)
-		x_cords[i] = x1
-		y_cords[i] = y1
-
-	while(y1 > initial(y) - radius)
-		i++
-		y1--
-		x1 = -((radius**2 - (y1 - initial(y))**2)**0.5)
-		x_cords[i] = x1
-		y_cords[i] = y1
-
-	while(y1 < initial(y))
-		i++
-		y1++
-		x1 = (radius**2 - (y1 - initial(y))**2)**0.5
-		x_cords[i] = x1
-		y_cords[i] = y1
-
-	x_cords.len = i
-	y_cords.len = i
+	traectory = circleturfs(src, 4)
 
 /obj/anomaly/jarka/comet/Destroy()
 	..()
@@ -455,8 +421,8 @@
 /obj/anomaly/jarka/comet/process()
 	stage++
 	world << stage
-	src.throw_at(locate(x_cords[stage], y_cords[stage], src.z), radius, 1, null)
-	if(stage == x_cords.len)
+	forceMove(traectory[stage])
+	if(stage == traectory.len)
 		stage = 0
 
 /obj/anomaly/holodec
@@ -676,53 +642,53 @@
 
 /obj/rad/New()
 	..()
-	SSobj.processing.Remove(src)
+	SSobj.processing |= (src)
 
 /obj/rad/Destroy()
 	..()
-	SSobj.processing.Remove(src)
+	SSobj.processing &= (src)
 
 /obj/rad/Crossed(atom/A)
 	..()
-	if(lasttime + cooldown > world.time)
-		return
 
 	if(istype(A,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = A
-		src.trapped.Add(H)
+		src.trapped |= H
 
-		H.rad_act(src.damage_amount)
+		if(lasttime + cooldown < world.time)
+			H.rad_act(src.damage_amount)
+
 		if(istype(H.wear_id,/obj/item/device/stalker_pda))
 			H << sound(src.sound, repeat = 0, wait = 0, volume = 50, channel = 3)
 
-		if(src.trapped.len >= 1)
-			SSobj.processing |= src
+		//if(src.trapped.len >= 1)
+		//	SSobj.processing |= src
 
 /obj/rad/Uncrossed(atom/A)
 	..()
 	if (istype(A,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = A
-		src.trapped.Remove(H)
-		SSobj.processing.Remove(src)
+		src.trapped &= H
+		//SSobj.processing.Remove(src)
 
 /obj/rad/process()
 	if(src.trapped.len < 1)
-		SSobj.processing.Remove(src)
+		//SSobj.processing.Remove(src)
+		return
+
+	if(lasttime + cooldown > world.time)
 		return
 
 	for(var/atom/A in src.trapped)
 
-		if(lasttime + cooldown > world.time)
-			return
-
 		if(!istype(A, /mob/living/carbon/human))
-			trapped.Remove(A)
+			trapped &= A
 			continue
 
 		var/mob/living/carbon/human/H = A
 
 		if(H.stat == 2)
-			src.trapped.Remove(H)
+			trapped &= H
 			continue
 
 		H.rad_act(src.damage_amount)
