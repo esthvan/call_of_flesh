@@ -25,14 +25,14 @@
 	M.jitteriness = max(M.jitteriness-5,0)
 	if(current_cycle >= boozepwr*0.5)
 		var/drunk_value = sqrt(volume*1000/boozepwr)
-		if(volume >= boozepwr*0.2)
+		if(volume >= boozepwr*0.5)
 			if(M.slurring < drunk_value)
 				M.slurring += 4
 			M.Dizzy(drunk_value)
-		if(volume >= boozepwr*0.8)
+		if(volume >= boozepwr*1.5)
 			if(M.confused < drunk_value)
 				M.confused += 3
-		if(volume >= boozepwr*3.8)
+		if(volume >= boozepwr*4)
 			M.adjustToxLoss(1)
 	..()
 	return
@@ -53,8 +53,8 @@
 /datum/reagent/consumable/ethanol/reaction_mob(mob/living/M, method=TOUCH, reac_volume)//Splashing people with ethanol isn't quite as good as fuel.
 	if(!istype(M, /mob/living))
 		return
-	if(method == TOUCH || method == VAPOR)
-		M.adjust_fire_stacks(reac_volume / 15)
+	//if(method == TOUCH || method == VAPOR)
+	//	M.adjust_fire_stacks(reac_volume / 15)
 	..()
 
 /datum/reagent/consumable/ethanol/beer
