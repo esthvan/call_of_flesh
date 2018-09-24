@@ -394,7 +394,7 @@ var/global/global_lentahtml = ""
 					<b>Faction:</b> [eng_faction_s]<br>\
 					<b>Rank:</b> [eng_rank_name_s] ([rating])<br>\
 					<b>Reputation:</b> <font color=\"[rep_color_s]\">[eng_rep_name_s] ([reputation])</font><br>\
-					<b>Money:</b> [money] RU<br>"
+					<b>Balance:</b> [num2text(money, 8)] RU<br>"
 
 					else
 						mainhtml+="\
@@ -402,7 +402,7 @@ var/global/global_lentahtml = ""
 					<b>Группировка:</b> [rus_faction_s]<br>\
 					<b>Ранг:</b> [rus_rank_name_s] ([rating])<br>\
 					<b>Репутаци&#x44F;:</b> <font color=\"[rep_color_s]\">[rep_name_s] ([reputation])</font><br>\
-					<b>Деньги на счету:</b> [money] RU<br>"
+					<b>Баланс:</b> [num2text(money, 8)] RU<br>"
 
 					mainhtml +="\
 					</td>\
