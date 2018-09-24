@@ -623,10 +623,10 @@
 			cache_chance -= 2.5
 
 		if(1)
-			cache_chance += 1.5
+			cache_chance += 1
 
 		if(0)
-			cache_chance += 3
+			cache_chance += 2
 
 	if(!prob(cache_chance))
 		//internal_cache = null
