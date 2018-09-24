@@ -410,7 +410,7 @@
 			if(loot.len)
 				var/obj/item/weapon/kitchen/knife/K = O
 				user.visible_message("<span class='notice'>[user] started butchering [src]...</span>", "<span class='notice'>You started butchering [src]...</span>")
-				if(do_after(user, 50 * K.butcher_speed, 1, src))
+				if(do_after(user, 50*K.butcher_speed, 1, src))
 					user.visible_message("<span class='green'>[user] butchered [src].</span>", "<span class='green'>You butchered [src].</span>")
 					if(random_loot)
 						var/i = pickweight(loot)
