@@ -67,6 +67,11 @@
 		return
 
 	user.changeNext_move(CLICK_CD_MELEE)
+
+	if(user != src.loc)
+		..()
+		return
+
 	var/obj/item/weapon/stalker/bolt/P = PoolOrNew(/obj/item/weapon/stalker/bolt)
 	P.loc = user.loc
 	user.put_in_hands(P)
