@@ -58,8 +58,8 @@ var/global/list/global_sidormat_list = list(
 
 	"Melee Weapons" = list(
 		/////////////////////////////// **Другое** /////////////////////////////////////
-		new /datum/data/stalker_equipment("Kitchen Knife",		"Кухонный Нож",				/obj/item/weapon/kitchen/knife,												2000,	ROOKIE),
-		new /datum/data/stalker_equipment("Torist's Knife",		"Нож Туриста",				/obj/item/weapon/kitchen/knife/tourist,										3500,	ROOKIE),
+		new /datum/data/stalker_equipment("Kitchen Knife",		"Кухонный Нож",				/obj/item/weapon/kitchen/knife,												1500,	ROOKIE),
+		new /datum/data/stalker_equipment("Tourist's Knife",		"Нож Туриста",			/obj/item/weapon/kitchen/knife/tourist,										4000,	ROOKIE),
 		new /datum/data/stalker_equipment("Bayonet",			"Штык-нож",					/obj/item/weapon/kitchen/knife/bayonet,										7000,	ROOKIE),
 		new /datum/data/stalker_equipment("Butcher's Cleaver",	"Тесак М&#x44F;сника",		/obj/item/weapon/kitchen/knife/butcher,										10000,	ROOKIE)
 		),
