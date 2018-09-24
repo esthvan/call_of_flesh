@@ -4,19 +4,17 @@
 	anchored = 1
 	layer = 3.1
 
-/obj/structure/stalker/sign
-	name = "sign"
-	desc = "There is something this way!"
-
-/obj/structure/stalker/sign/vendor
+/obj/structure/sign/vendor
 	name = "vendor sign"
 	desc = "There is a vendor this way!"
+	icon = 'icons/stalker/decor.dmi'
 	icon_state = "sign_vendor"
 	density = 0
 
-/obj/structure/stalker/sign/bar
+/obj/structure/sign/skadovsk_bar
 	name = "bar sign"
 	desc = "There is a bar this way!"
+	icon = 'icons/stalker/decor.dmi'
 	icon_state = "sign_bar"
 	density = 0
 
@@ -619,6 +617,16 @@
 			if(1)
 				cache_quality = rand(1, 2)//0
 				cache_chance -= 4
+
+	switch(cache_quality)
+		if(3)
+			cache_chance -= 2.5
+
+		if(1)
+			cache_chance += 1.5
+
+		if(0)
+			cache_chance += 3
 
 	if(!prob(cache_chance))
 		//internal_cache = null
