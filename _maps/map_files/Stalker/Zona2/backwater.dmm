@@ -872,7 +872,7 @@
 "qN" = (/obj/structure/stalker/cacheable/shkaf64,/turf/stalker/floor/agroprom/beton,/area/stalker/blowout/buildings/backwater/ranger)
 "qO" = (/obj/structure/closet/stalker/shkaf,/obj/item/clothing/under/color/switer/lolg,/turf/stalker/floor/agroprom/beton,/area/stalker/blowout/buildings/backwater/ranger)
 "qP" = (/obj/structure/closet/stalker/shkaf,/obj/item/weapon/storage/box/matches,/obj/item/device/instrument/guitar,/turf/stalker/floor/agroprom/beton,/area/stalker/blowout/buildings/backwater/ranger)
-"qQ" = (/obj/structure/closet/stalker/shkaf,/obj/item/weapon/stalker/knife,/turf/stalker/floor/agroprom/beton,/area/stalker/blowout/buildings/backwater/ranger)
+"qQ" = (/obj/structure/closet/stalker/shkaf,/obj/item/weapon/kitchen/knife/tourist,/turf/stalker/floor/agroprom/beton,/area/stalker/blowout/buildings/backwater/ranger)
 "qR" = (/obj/structure/bed/stalker/matras,/turf/stalker/floor/agroprom/beton,/area/stalker/blowout/buildings/backwater/ranger)
 "qS" = (/obj/structure/table/stalker/wood,/turf/stalker/floor/agroprom/beton,/area/stalker/blowout/buildings/backwater/ranger)
 "qT" = (/obj/machinery/campfire/barrel,/turf/stalker/floor/agroprom/beton,/area/stalker/blowout/buildings/backwater/ranger)
