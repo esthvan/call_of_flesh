@@ -1,5 +1,3 @@
-//#define TURNTABLE_CHANNEL 4488
-var/global/turntable_channel = 4488
 /*
 /mob/var/datum/hear_music/hear_music
 #define NONE_MUSIC 0
@@ -68,7 +66,6 @@ var/global/turntable_channel = 4488
 	var/skip_song_cost = 500
 	var/start_time = 0
 	var/collected_money = 0
-	var/music_channel = 0
 	var/obj/item/weapon/disk/music/disk
 	var/playing = 1
 	var/datum/data/turntable_soundtrack/track = null
@@ -157,8 +154,6 @@ var/global/turntable_channel = 4488
 
 /obj/machinery/party/turntable/New()
 	..()
-	turntable_channel++
-	music_channel = turntable_channel
 	spawn(5)
 		turntable_soundtracks = sortSoundtrack(turntable_soundtracks)
 /*
@@ -399,7 +394,7 @@ var/global/turntable_channel = 4488
 	for(var/client/C in melomans)
 		//C.jukeboxplaying = 0
 		if(C.mob)
-			C.mob << sound(null, channel = music_channel, wait = 0)
+			C.mob << sound(null, channel = TURNTABLE_CHANNEL, wait = 0)
 		melomans.Remove(C)
 
 	playing = 0
@@ -447,7 +442,7 @@ var/global/turntable_channel = 4488
 			continue
 
 		if(!(C.mob))
-			C << sound(null, channel = music_channel, wait = 0)
+			C << sound(null, channel = TURNTABLE_CHANNEL, wait = 0)
 			melomans.Remove(C)
 			continue
 
@@ -458,7 +453,7 @@ var/global/turntable_channel = 4488
 				C.mob << C.mob.music
 				C.mob.music.status = SOUND_STREAM
 			else
-				C.mob << sound(null, channel = music_channel, wait = 0)
+				C.mob << sound(null, channel = TURNTABLE_CHANNEL, wait = 0)
 			//C.jukeboxplaying = 0
 			melomans.Remove(C)
 			continue
@@ -481,7 +476,7 @@ var/global/turntable_channel = 4488
 	if(!M.music || M.music.file != track.path)
 		var/sound/S = sound(track.path)
 		S.repeat = 0
-		S.channel = music_channel
+		S.channel = TURNTABLE_CHANNEL
 		S.falloff = 2
 		S.wait = 0
 		S.volume = 0

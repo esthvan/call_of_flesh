@@ -21,8 +21,8 @@
 #define DISGUSTING							0
 
 ///////////////ITEM TIERS
-#define TRASH_TIER_COST						5000
-#define LOW_TIER_COST						12000
+#define TRASH_TIER_COST						4000
+#define LOW_TIER_COST						9000
 #define MEDIUM_TIER_COST					36000
 #define HIGH_TIER_COST						72000
 
@@ -54,3 +54,11 @@
 #define NIGHTVISION_MATRIX_II			list(0.33, 0.33, 0.33,\
 											0.33, 0.33, 0.33,\
 											0.33, 0.33, 0.33)
+
+///////////////SOUND CHANNELS
+#define AMBIENT_MUSIC_CHANNEL				707
+#define AMBIENT_ENVIRONMENT_CHANNEL			708
+#define AMBIENT_BACKGROUND_CHANNEL			708
+#define AMBIENT_PSY_CHANNEL					710
+#define TURNTABLE_CHANNEL					711
+#define AMBIENT_CAMPFIRE_CHANNEL			712

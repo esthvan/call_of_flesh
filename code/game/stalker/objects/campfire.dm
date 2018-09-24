@@ -1,5 +1,3 @@
-/client/var/campfireplaying = 0
-
 /obj/machinery/campfire
 	name = "Campfire"
 	desc = "Бочка с парой сухих дровишек внутри. Можно зажечь спичками или зажигалкой."
@@ -13,7 +11,8 @@
 	var/incooldown = 0
 	var/on = 0
 	var/list/mob/living/carbon/campers = list()
-	var/KOSTIL = 0
+	var/do_after_check = 0
+	var/last_campfire_played = 0
 
 /obj/machinery/campfire/New()
 	..()
@@ -25,8 +24,8 @@
 
 /obj/machinery/campfire/Destroy()
 	for (var/client/C in campers)
-		C.campfireplaying = 0
-		C << sound(null, 0, 0 , 5, 80)
+		C << sound(null, channel = AMBIENT_CAMPFIRE_CHANNEL)
+		C.mob.ambient_campfire = null
 		campers -= C
 
 	SSmachine.processing.Remove(src)
@@ -40,17 +39,17 @@ obj/machinery/campfire/barrel
 
 /obj/machinery/campfire/attack_hand(mob/user)
 	..()
-	if(!on || KOSTIL)
+	if(!on || do_after_check)
 		return
 
 	user.visible_message("<span class='notice'>[user] started extinguishing a fire...</span>", "<span class='notice'>You started extinguishing a fire...</span>")
-	KOSTIL = 1
+	do_after_check = 1
 
 	if(!do_after(user, 10, 1, src))
-		KOSTIL = 0
+		do_after_check = 0
 		return
 
-	KOSTIL = 0
+	do_after_check = 0
 
 	user.visible_message("<span class='green'>[user] extinguished a fire.</span>", "<span class='green'>You extinguished a fire.</span>")
 	desc = initial(desc)
@@ -61,8 +60,8 @@ obj/machinery/campfire/barrel
 	set_light(0)
 
 	for (var/client/C in campers)
-		C.campfireplaying = 0
-		C << sound(null, 0, 0 , 5, 80)
+		C << sound(null, channel = AMBIENT_CAMPFIRE_CHANNEL)
+		C.mob.ambient_campfire = null
 		campers -= C
 	campers = list()
 
@@ -87,14 +86,17 @@ obj/machinery/campfire/barrel
 		sound_playing = 0
 
 /obj/machinery/campfire/proc/RefreshSound()
+	if(last_campfire_played + 2360 < world.timeofday)
+		last_campfire_played = world.timeofday
+		for (var/client/C in campers)
+			C.mob.ambient_campfire = null
+
 	for(var/mob/M in view(5, src))
 		if(!M || !M.client)
 			continue
 
-		if(!M.client.campfireplaying)
-			M.client.campfireplaying = 1
+		if(!(M.client in campers))
 			campers += M.client
-			M << sound('sound/stalker/objects/campfire.ogg', 1, 0 , 5, 80)
 
 	for (var/client/C in campers)
 		if(!C)
@@ -102,8 +104,8 @@ obj/machinery/campfire/barrel
 			continue
 
 		if(!on || !(C.mob in view(5, src)))
-			C.campfireplaying = 0
-			C << sound(null, 0, 0 , 5, 80)
+			C << sound(null, channel = AMBIENT_CAMPFIRE_CHANNEL)
+			C.mob.ambient_campfire = null
 			campers -= C
 			continue
 
@@ -115,6 +117,11 @@ obj/machinery/campfire/barrel
 			H.adjustFireLoss(-0.5)
 			H.adjustToxLoss(-0.5)
 			H.adjustPsyLoss(-2)
+
+		if(!C.mob.ambient_campfire)
+			C.mob.ambient_campfire = sound(file = 'sound/stalker/objects/campfire.ogg')
+			C.mob.ambient_campfire.Set_Sound(AMBIENT_CAMPFIRE_CHANNEL, 50, 0, get_area(src).environment)
+			C.mob << C.mob.ambient_campfire
 
 obj/machinery/campfire/process()
 	if(!on)

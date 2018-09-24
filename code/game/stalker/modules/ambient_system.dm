@@ -3,6 +3,7 @@
 	var/sound/ambient_environment	= null		//Случайные короткие звуки длительностью не более 12 секунд
 	var/sound/ambient_background	= null		//Залупленный звук
 	var/sound/ambient_psy			= null		//Пси-звук
+	var/sound/ambient_campfire		= null		//Звук от костра - campfire.dm
 
 /sound
 	var/last_time = 0
@@ -42,7 +43,7 @@
 			ambient_music.real_cooldown = rand(A.ambient_music_cooldown * 0.8, A.ambient_music_cooldown * 1.4)
 			ambient_music.last_time = world.time
 			////////////////////////
-			ambient_music.Set_Sound(707, 10, 0, -1)
+			ambient_music.Set_Sound(AMBIENT_MUSIC_CHANNEL, 10, 0, -1)
 			src << ambient_music
 
 	if(!ambient_environment || world.time >= ambient_environment.last_time + ambient_environment.real_cooldown)
@@ -60,7 +61,7 @@
 				ambient_environment.last_time = world.time
 				ambient_environment.real_cooldown = rand(A.ambient_environment_cooldown * 0.3, A.ambient_environment_cooldown * 1.5)
 				////////////////////////
-				ambient_environment.Set_Sound(708, rand(25, 60), rand(-100, 100), A.environment)
+				ambient_environment.Set_Sound(AMBIENT_ENVIRONMENT_CHANNEL, rand(25, 60), rand(-100, 100), A.environment)
 				src << ambient_environment
 
 	if(!ambient_background || (!ambient_background.transition && world.time >= ambient_background.last_time + ambient_background.real_cooldown))
@@ -75,7 +76,7 @@
 				////////////////////////
 				ambient_background.last_time = world.time
 				////////////////////////
-				ambient_background.Set_Sound(709, 35, 0, A.environment)
+				ambient_background.Set_Sound(AMBIENT_BACKGROUND_CHANNEL, 35, 0, A.environment)
 				src << ambient_background
 
 	return 1
@@ -90,7 +91,7 @@
 		ambient_psy.last_time = world.time
 		ambient_psy.real_cooldown = 110
 		////////////////////////
-		ambient_psy.Set_Sound(710, 60*(psyloss/200), 0, -1)
+		ambient_psy.Set_Sound(AMBIENT_PSY_CHANNEL, 60*(psyloss/200), 0, -1)
 		src << ambient_psy
 
 
