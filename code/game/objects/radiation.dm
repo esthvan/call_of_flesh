@@ -35,9 +35,7 @@
 		var/blocked = getarmor_rad()
 		//blocked += src.global_armor[attack_flag]
 
-		amount = (amount / 0.75) - blocked
-		if(amount < 0)
-			amount = 0
+		amount = max(0, ((amount * 0.75) - blocked)*(1 - blocked/100))
 
 		apply_effect(amount, IRRADIATE, 0)
 		for(var/obj/I in src) //Radiation is also applied to items held by the mob
