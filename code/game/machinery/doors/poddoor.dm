@@ -8,6 +8,7 @@
 	sub_door = 1
 	explosion_block = 3
 	heat_proof = 1
+	var/toggle_sound = 'sound/stalker/objects/door_closing.ogg'
 
 /obj/machinery/door/poddoor/preopen
 	icon_state = "open"
@@ -53,6 +54,7 @@
 	flick("opening", src)
 	icon_state = "open"
 	set_opacity(0)
+	playsound(src, toggle_sound, 100, 1)
 	sleep(5)
 	density = 0
 	sleep(5)
