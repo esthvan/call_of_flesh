@@ -238,7 +238,7 @@
 "eD" = (/obj/structure/stalker/panel,/turf/stalker/floor/wood/oldvert,/area/stalker/buildings/backwater/krug)
 "eE" = (/turf/stalker/floor/water,/area/stalker/buildings/backwater/ironforest)
 "eF" = (/obj/structure/closet/stalker/shkaf,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,/turf/stalker/floor/gryaz,/area/stalker/buildings/backwater/krug)
-"eG" = (/obj/structure/closet/stalker/shkaf,/obj/item/weapon/stalker/knife,/turf/stalker/floor/plasteel/plitochka,/area/stalker/buildings/backwater/krug)
+"eG" = (/obj/structure/closet/stalker/shkaf,/obj/item/weapon/kitchen/knife/tourist,/turf/stalker/floor/plasteel/plitochka,/area/stalker/buildings/backwater/krug)
 "eH" = (/turf/stalker/floor/plasteel/plitochka,/area/stalker/buildings/backwater/krug)
 "eI" = (/obj/structure/barricade/stalker/box,/turf/stalker/floor/gryaz,/area/stalker/buildings/backwater/krug)
 "eJ" = (/obj/structure/closet/crate/stalker/blue/stash/low,/obj/machinery/light/small{icon_state = "bulb1"; dir = 1},/turf/stalker/floor/agroprom/beton,/area/stalker/buildings/backwater/ironforest)
