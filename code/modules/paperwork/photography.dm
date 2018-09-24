@@ -180,12 +180,12 @@
 		atoms.Add(T)
 		for(var/atom/movable/A in T)
 			if(A.invisibility)
-				if(see_ghosts)
-					if(istype(A, /mob/dead/observer))
-						var/mob/dead/observer/O = A
-						if(O.orbiting) //so you dont see ghosts following people like antags, etc.
-							continue
-				else
+				if(!see_ghosts)
+					continue
+				if(!istype(A, /mob/dead/observer))
+					continue
+				var/mob/dead/observer/O = A
+				if(O.orbiting) //so you dont see ghosts following people like antags, etc.
 					continue
 			atoms.Add(A)
 
