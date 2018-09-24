@@ -70,7 +70,7 @@
 	suit = /obj/item/clothing/suit/hooded/kozhanka/banditka
 	ears = null
 	id = /obj/item/weapon/storage/wallet/stalker
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	mask = /obj/item/clothing/mask/balaclava
 	back = /obj/item/weapon/storage/backpack/stalker

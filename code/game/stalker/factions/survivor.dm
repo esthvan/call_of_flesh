@@ -54,7 +54,7 @@ Assistant
 	suit = pick(/obj/item/clothing/suit/hooded/kozhanka,/obj/item/clothing/suit/hooded/kozhanka/white)
 	ears = null
 	id = /obj/item/device/stalker_pda
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list()
@@ -68,7 +68,7 @@ Assistant
 	suit = /obj/item/clothing/suit/hooded/kozhanka
 	ears = null
 	id = /obj/item/device/stalker_pda
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/stack/spacecash/c5000 = 1, /obj/item/weapon/storage/box/matches = 1)
@@ -86,7 +86,7 @@ Assistant
 	suit = /obj/item/clothing/suit/hooded/kombez
 	ears = null
 	id = /obj/item/device/stalker_pda
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1, /obj/item/ammo_box/magazine/stalker/m545 = 2, /obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 1, /obj/item/stack/spacecash/c5000 = 1, /obj/item/device/flashlight/seclite = 1)
@@ -100,7 +100,7 @@ Assistant
 	suit = /obj/item/clothing/suit/hooded/kombez
 	ears = null
 	id = /obj/item/device/stalker_pda
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1, /obj/item/ammo_box/magazine/stalker/m545 = 2, /obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 1, /obj/item/stack/spacecash/c5000 = 1)

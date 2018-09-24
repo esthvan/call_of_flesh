@@ -39,7 +39,7 @@ Assistant
 		uniform = pick(/obj/item/clothing/under/color/switer,/obj/item/clothing/under/color/switer/dark)
 		suit = pick(/obj/item/clothing/suit/hooded/kozhanka,/obj/item/clothing/suit/hooded/kozhanka/white)
 		ears = null
-		belt = /obj/item/weapon/stalker/knife
+		belt = /obj/item/weapon/kitchen/knife/tourist
 		id = /obj/item/device/pda/stalker
 		shoes = /obj/item/clothing/shoes/jackboots/warm
 		backpack_contents = list(/obj/item/stack/spacecash/c500)

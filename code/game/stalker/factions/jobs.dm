@@ -122,7 +122,7 @@
 	suit = /obj/item/clothing/suit/hooded/kozhanka/white
 	ears = null
 	id = /obj/item/device/stalker_pda
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = null
 	back = /obj/item/weapon/storage/backpack/stalker

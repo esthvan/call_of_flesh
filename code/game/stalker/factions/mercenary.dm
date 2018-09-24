@@ -25,7 +25,7 @@
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/mercenary
 	ears = null
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	suit_store = /obj/item/weapon/gun/projectile/automatic/mp5
@@ -44,7 +44,7 @@
 	uniform = /obj/item/clothing/under/color/switer
 	suit = /obj/item/clothing/suit/hooded/kombez/mercenary
 	ears = null
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
@@ -88,12 +88,12 @@
 
 /datum/outfit/job/mercenary_sql/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = null
+	head = /obj/item/clothing/head/steelhelmet
 	mask = /obj/item/clothing/mask/gas/stalker/mercenary
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/mercenary
 	ears = null
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	suit_store = /obj/item/weapon/gun/projectile/automatic/mp5

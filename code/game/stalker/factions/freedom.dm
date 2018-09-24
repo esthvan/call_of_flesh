@@ -22,7 +22,7 @@
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	ears = null
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	suit_store = /obj/item/weapon/gun/projectile/automatic/tpc301
@@ -36,7 +36,7 @@
 	head = null
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	ears = null
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
@@ -75,15 +75,14 @@
 
 /datum/outfit/job/freedom_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/hardhat/tacticalhelmet/light
+	head = /obj/item/clothing/head/steelhelmet
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	suit_store = /obj/item/weapon/gun/projectile/automatic/mp5
 	backpack_contents = list(/obj/item/ammo_box/stalker/b9x19 = 1,
-							/obj/item/ammo_box/magazine/stalker/m9x19mp5 = 1,
 							/obj/item/device/flashlight/seclite = 1)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	r_pocket = /obj/item/weapon/stalker/bolts

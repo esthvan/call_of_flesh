@@ -320,7 +320,7 @@
 
 /sidoritem/knife
 	name = "Knife"
-	itemtype = /obj/item/weapon/stalker/knife
+	itemtype = /obj/item/weapon/kitchen/knife/tourist
 	cost = 600
 	words = list("Нож" = 5, "Ножик" = 10)
 

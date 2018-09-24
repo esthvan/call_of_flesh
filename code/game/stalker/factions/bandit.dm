@@ -57,7 +57,7 @@ Assistant
 	suit = /obj/item/clothing/suit/hooded/kozhanka/banditka
 	ears = null
 	id = /obj/item/device/stalker_pda
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	mask = /obj/item/clothing/mask/balaclava
@@ -110,7 +110,7 @@ Assistant
 	suit = /obj/item/clothing/suit/hooded/kozhanka/banditka
 	ears = null
 	id = /obj/item/device/stalker_pda
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	mask = /obj/item/clothing/mask/balaclava

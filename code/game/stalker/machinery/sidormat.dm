@@ -58,7 +58,10 @@ var/global/list/global_sidormat_list = list(
 
 	"Melee Weapons" = list(
 		/////////////////////////////// **Другое** /////////////////////////////////////
-		new /datum/data/stalker_equipment("Knife",			 "Нож",				/obj/item/weapon/stalker/knife,										3500,	ROOKIE)
+		new /datum/data/stalker_equipment("Kitchen Knife",		"Кухонный Нож",				/obj/item/weapon/kitchen/knife,												2000,	ROOKIE),
+		new /datum/data/stalker_equipment("Torist's Knife",		"Нож Туриста",				/obj/item/weapon/kitchen/knife/tourist,										3500,	ROOKIE),
+		new /datum/data/stalker_equipment("Bayonet",			"Штык-нож",					/obj/item/weapon/kitchen/knife/bayonet,										7000,	ROOKIE),
+		new /datum/data/stalker_equipment("Butcher's Cleaver",	"Тесак М&#x44F;сника",		/obj/item/weapon/kitchen/knife/butcher,										10000,	ROOKIE)
 		),
 
 	"Ammo Boxes" = list(
@@ -162,25 +165,35 @@ var/global/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Bread",				"Батон",							/obj/item/weapon/reagent_containers/food/snacks/stalker/baton,					400,	ROOKIE)
 		),
 
+	"Bacpacks" = list(
+		new /datum/data/stalker_equipment("Backpack",							"Рюкзак",											/obj/item/weapon/storage/backpack/stalker,									2500,	ROOKIE),
+		new /datum/data/stalker_equipment("Satchel",							"Сумка",											/obj/item/weapon/storage/backpack/satchel/stalker,							2500,	ROOKIE)
+		),
+
 	"Misc" = list(
 		/////////////////////////////////	Другое	/////////////////////////////////////////////
 		new /datum/data/stalker_equipment("Repair-kit for suits and helmets",	"Рем. комплект дл&#x44F; бронекостюмов и шлемов",	/obj/item/device/repair_kit/clothing,										10000,	ROOKIE),
-		new /datum/data/stalker_equipment("Repair-kit for guns",				"Рем. комплект дл&#x44F; огнестрельного оружи&#x44F;",/obj/item/device/repair_kit/gun,											3500,	ROOKIE),
+		new /datum/data/stalker_equipment("Repair-kit for guns",				"Рем. комплект дл&#x44F; огнестрельного оружи&#x44F;",/obj/item/device/repair_kit/gun,											4000,	ROOKIE),
 		new /datum/data/stalker_equipment("Guitar",								"Гитара",											/obj/item/device/instrument/guitar,											3000,	ROOKIE),
 		new /datum/data/stalker_equipment("Geiger counter",						"Дозиметр",											/obj/item/device/geiger_counter,											3000,	ROOKIE),
 		new /datum/data/stalker_equipment("Flashlight",							"Фонарик",											/obj/item/device/flashlight/seclite,										1000,	ROOKIE),
 		new /datum/data/stalker_equipment("Big Artifact belt",					"Большой по&#x44F;с дл&#x44F; артефактов",			/obj/item/weapon/storage/belt/stalker/artifact_belt,						60000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("Artifact belt",						"Маленький по&#x44F;с дл&#x44F; артефактов",		/obj/item/weapon/storage/belt/stalker/artifact_belt/small,					25000,	ROOKIE),
-		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										800,	ROOKIE),
-		new /datum/data/stalker_equipment("Cigarettes",							"Сигареты",											/obj/item/weapon/storage/fancy/cigarettes/cigpack/maxim,					2500,	ROOKIE),
-		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,							10000,	ROOKIE),
-		new /datum/data/stalker_equipment("Backpack",							"Рюкзак",											/obj/item/weapon/storage/backpack/stalker,									2500,	ROOKIE),
-		new /datum/data/stalker_equipment("Satchel",							"Сумка",											/obj/item/weapon/storage/backpack/satchel/stalker,							2500,	ROOKIE),
+		new /datum/data/stalker_equipment("Small Artifact belt",				"Маленький по&#x44F;с дл&#x44F; артефактов",/obj/item/weapon/storage/belt/stalker/artifact_belt/small,							25000,	ROOKIE),
+		new /datum/data/stalker_equipment("Matches",							"Спички",											/obj/item/weapon/storage/box/matches,										1000,	ROOKIE),
+		new /datum/data/stalker_equipment("Simple lighter",						"Пластикова&#x44F; зажигалка",						/obj/item/weapon/lighter/greyscale,											2000,	ROOKIE),
+		new /datum/data/stalker_equipment("Zippo lighter",						"Зажигалка \"Зиппо\"",								/obj/item/weapon/lighter,													4500,	ROOKIE),
+		new /datum/data/stalker_equipment("Cigarettes \"Maxim\"",				"Сигареты \"Maxim\"",								/obj/item/weapon/storage/fancy/cigarettes/cigpack/maxim,					2500,	ROOKIE),
+		new /datum/data/stalker_equipment("Cigars",								"Сигары",											/obj/item/weapon/storage/fancy/cigarettes/cigars,							10000,	ROOKIE)
+		),
+
+	"Clothing" = list(
 		new /datum/data/stalker_equipment("Under",								"Бабушкин свитер",									/obj/item/clothing/under/color/switer,										1000,	ROOKIE),
 		new /datum/data/stalker_equipment("Dark under",							"Тёмный бабушкин свитер",							/obj/item/clothing/under/color/switer/dark,									1500,	ROOKIE),
-		new /datum/data/stalker_equipment("Telnyashka",							"Тельняшка",										/obj/item/clothing/under/color/switer/lolg,									1500,	ROOKIE),
+		new /datum/data/stalker_equipment("Telnyashka",							"Тельн&#x44F;шка",									/obj/item/clothing/under/color/switer/lolg,									1500,	ROOKIE),
 		new /datum/data/stalker_equipment("Tracksuit",							"Спортивный костюм",								/obj/item/clothing/under/color/switer/tracksuit,							1500,	ROOKIE),
-		new /datum/data/stalker_equipment("Worn out army boots",				"Поношенные берцы",									/obj/item/clothing/shoes/jackboots/warm,									800,	ROOKIE)
+		new /datum/data/stalker_equipment("Worn out army boots",				"Поношенные берцы",									/obj/item/clothing/shoes/jackboots/warm,									800,	ROOKIE),
+		new /datum/data/stalker_equipment("Fingerless gloves",					"Перчатки без пальцев",								/obj/item/clothing/gloves/fingerless,										600,	ROOKIE),
+		new /datum/data/stalker_equipment("Balaclava",							"Балаклава",										/obj/item/clothing/mask/balaclava,											700,	ROOKIE)
 		),
 
 	"Detectors" = list(
@@ -192,11 +205,11 @@ var/global/list/global_sidormat_list = list(
 
 	"Attachments" = list(
 		/////////////////////////////////	Аттачменты	///////////////////////////////////////////
-		new /datum/data/stalker_equipment("SUSAT",				"СУСАТ",							/obj/item/weapon/attachment/scope/SUSAT,			8000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("PSU-1",				"ПСУ-1",							/obj/item/weapon/attachment/scope/PS/U1,			6000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",							/obj/item/weapon/attachment/scope/PS/O1,			10000,	EXPERIENCED),
-		new /datum/data/stalker_equipment("WW2 rifles scope",	"Оптический прицел старых винтовок",/obj/item/weapon/attachment/scope/rifle,			8000,	ROOKIE),
-		new /datum/data/stalker_equipment("Universl suppressor","Универсальный глушитель",			/obj/item/weapon/attachment/suppressor,				2000,	ROOKIE)
+		new /datum/data/stalker_equipment("Universl suppressor","Универсальный глушитель",				/obj/item/weapon/attachment/suppressor,				2000,	ROOKIE),
+		new /datum/data/stalker_equipment("SUSAT",				"СУСАТ",								/obj/item/weapon/attachment/scope/SUSAT,			8000,	EXPERIENCED),
+		new /datum/data/stalker_equipment("PSU-1",				"ПСУ-1",								/obj/item/weapon/attachment/scope/PS/U1,			6000,	EXPERIENCED),
+		new /datum/data/stalker_equipment("PSO-1",				"ПСО-1",								/obj/item/weapon/attachment/scope/PS/O1,			10000,	EXPERIENCED),
+		new /datum/data/stalker_equipment("Rifle/Shotgun scope","Прицел дл&#x44F; винтовок/дробовиков",	/obj/item/weapon/attachment/scope/rifle,			8000,	ROOKIE)
 		///////////////////////////////////////////////////////////////////////////////////////////
 		),
 
@@ -368,7 +381,7 @@ var/global/list/global_sidormat_list = list(
 	///////////////////////////////////////////////////////////АНГЛИЙСКИЙ СИДОРОМАТ///////////////////////////////////////////////////////////////////////
 
 		dat +="<div class='statusDisplay'>"
-		dat += "Balance: [balance] RU<br>"
+		dat += "Balance: [num2text(balance, 8)] RU<br>"
 		dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table.<br>" // Забирать деньги и купленные вещи - на <b>правом</b>.
 		if(!(switches & SHOW_FACTION_EQUIPMENT))
 			dat +="<A href='?src=\ref[src];choice=take'><b>Sell habar</b></A><br>"
@@ -395,7 +408,7 @@ var/global/list/global_sidormat_list = list(
 		///////////////////////////////////////////////////////////РУССКИЙ СИДОРОМАТ///////////////////////////////////////////////////////////////////////
 
 		dat +="<div class='statusDisplay'>"
-		dat += "На счету: [balance] RU<br>"
+		dat += "На счету: [num2text(balance, 8)] RU<br>"
 		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
 		if(!(switches & SHOW_FACTION_EQUIPMENT))
 			dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар</b></A><br>"

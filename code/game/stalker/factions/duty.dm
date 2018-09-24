@@ -27,7 +27,7 @@ Assistant
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	ears = null
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
@@ -43,7 +43,7 @@ Assistant
 	head = null
 	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	ears = null
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
 	back = /obj/item/weapon/storage/backpack/stalker
@@ -115,15 +115,14 @@ Assistant
 
 /datum/outfit/job/duty_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/hardhat/tacticalhelmet/light
+	head = /obj/item/clothing/head/steelhelmet
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
-	belt = /obj/item/weapon/stalker/knife
+	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
-	backpack_contents = list(/obj/item/ammo_box/magazine/stalker/m545 = 1,
-							/obj/item/device/flashlight/seclite = 1)
+	suit_store = /obj/item/weapon/gun/projectile/shotgun/ithaca
+	backpack_contents = list(/obj/item/device/flashlight/seclite = 1)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)

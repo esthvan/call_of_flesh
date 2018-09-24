@@ -37,7 +37,7 @@ var/global/list/trash_quality_items = list(
 var/global/list/low_quality_items = list(
 										/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army,
 										/obj/item/weapon/reagent_containers/hypospray/medipen/stalker/antirad,
-										/obj/item/weapon/stalker/knife,
+										/obj/item/weapon/kitchen/knife/tourist,
 										/obj/item/weapon/gun/projectile/revolver/bm16,
 										/obj/item/weapon/gun/projectile/revolver/bm16/toz34,
 										/obj/item/weapon/gun/projectile/automatic/mp5,
