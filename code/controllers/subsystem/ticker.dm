@@ -347,8 +347,8 @@ var/datum/subsystem/ticker/ticker
 
 /datum/subsystem/ticker/proc/declare_completion()
 	var/station_evacuated
-	if(SSshuttle.emergency.mode >= SHUTTLE_ESCAPE)
-		station_evacuated = 1
+	//if(SSshuttle.emergency.mode >= SHUTTLE_ESCAPE)
+	//	station_evacuated = 1
 	var/num_survivors = 0
 	var/num_escapees = 0
 
