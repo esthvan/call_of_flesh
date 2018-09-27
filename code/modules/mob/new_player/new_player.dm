@@ -197,9 +197,9 @@
 			if(J.title == href_list["SelectedJob"])
 				job = J
 				break
-		if(job.whitelist_only)
+		if(job.whitelist_only && job.activated)
 			if(!check_whitelist(usr.client.ckey, href_list["SelectedJob"]))
-				usr << "<span class='notice'>Mamku svoyu hakni))))))0</span>"
+				usr << "<span class='notice'>No</span>"
 				return
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
@@ -292,7 +292,7 @@
 		return 0
 	for(var/datum/job/job in SSjob.occupations)
 		if(job.title == rank)
-			if(job.whitelist_only)
+			if(job.whitelist_only && job.activated)
 				if(!check_whitelist(usr.client.ckey, job.title))
 					return
 			else
@@ -389,7 +389,7 @@
 
 	if(!job_count) //if there's nowhere to go, assistant opens up.
 		for(var/datum/job/job in SSjob.occupations)
-			if(job.whitelist_only)
+			if(job.whitelist_only && job.activated)
 				if(check_whitelist(usr.client.ckey, job.title))
 					dat += "<a class='otherPosition' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a><br>"
 			else if(job.title != "NOPE")
