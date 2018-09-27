@@ -18,6 +18,5 @@ var/datum/subsystem/assets/SSasset
 
 	for(var/client/C in clients)
 		// Doing this to a client too soon after they've connected can cause issues, also the proc we call sleeps.
-		spawn(10)
-			getFilesSlow(C, cache, FALSE)
+		addtimer(src, getFilesSlow(C, cache, FALSE), 10)
 	..()
