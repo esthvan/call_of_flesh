@@ -47,7 +47,7 @@
 	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/civilian
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/magazine/stalker/sc45 = 2,
 							/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army = 1,
@@ -88,7 +88,7 @@
 
 /datum/outfit/job/mercenary_sql/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/steelhelmet
+	head = /obj/item/clothing/head/steel
 	mask = /obj/item/clothing/mask/gas/stalker/mercenary
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/mercenary

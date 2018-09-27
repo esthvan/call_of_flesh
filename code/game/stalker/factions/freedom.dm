@@ -39,7 +39,7 @@
 	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/tourist
 	suit_store = /obj/item/weapon/gun/projectile/automatic/tpc301
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b55645 = 1,
@@ -75,7 +75,7 @@
 
 /datum/outfit/job/freedom_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/steelhelmet
+	head = /obj/item/clothing/head/steel
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	belt = /obj/item/weapon/kitchen/knife/tourist

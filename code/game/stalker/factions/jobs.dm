@@ -75,7 +75,7 @@
 	id = /obj/item/device/stalker_pda
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	suit = /obj/item/clothing/suit/hooded/kozhanka/strazh/atelerd
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/tourist
 	//back2 = /obj/item/weapon/gun/projectile/shotgun/chaser
 	suit_store = /obj/item/weapon/gun/projectile/shotgun/chaser
 	l_pocket = /obj/item/stack/spacecash/c5000
@@ -93,7 +93,7 @@
 	id = /obj/item/device/stalker_pda
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	suit = /obj/item/clothing/suit/hooded/kozhanka/white/monolith
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/civilian
 	//back2 = null
 	l_pocket = /obj/item/stack/spacecash/c5000
 
@@ -125,7 +125,7 @@
 	belt = /obj/item/weapon/kitchen/knife/tourist
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = null
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/civilian
 	l_pocket = /obj/item/stack/spacecash/c5000
 	r_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa
 	ears = null

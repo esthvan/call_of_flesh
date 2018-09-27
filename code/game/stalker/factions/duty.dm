@@ -4,8 +4,6 @@ Assistant
 /datum/job/duty
 	title = "Duty"
 	faction_s = "Duty"
-//	flag = ASSISTANT
-//	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 4
 	spawn_positions = 4
@@ -46,7 +44,7 @@ Assistant
 	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/tourist
 	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
@@ -115,7 +113,7 @@ Assistant
 
 /datum/outfit/job/duty_lieutenant/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/steelhelmet
+	head = /obj/item/clothing/head/steel
 	uniform = UNIFORMPICK
 	suit = /obj/item/clothing/suit/hooded/kombez/ps5m
 	belt = /obj/item/weapon/kitchen/knife/tourist

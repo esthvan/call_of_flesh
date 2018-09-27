@@ -33,10 +33,31 @@
 	burntime = 20
 	display_contents_with_number = 1
 
+/obj/item/weapon/storage/backpack/stalker/civilian
+	name = "civilian backpack"
+	icon_state = "backpack-civilian"
+	item_state = "backpack-civilian"
+	max_w_class = 3
+	max_combined_w_class = 20
+
+/obj/item/weapon/storage/backpack/stalker/tourist
+	name = "tourist backpack"
+	icon_state = "backpack-tourist"
+	item_state = "backpack-tourist"
+	max_w_class = 4
+	max_combined_w_class = 35
+
+/obj/item/weapon/storage/backpack/stalker/professional
+	name = "professional backpack"
+	icon_state = "backpack-professional"
+	item_state = "backpack-professional"
+	max_w_class = 4
+	max_combined_w_class = 55
+
 /obj/item/weapon/storage/backpack/satchel/stalker
 	name = "satchel"
-	icon_state = "satchel-tourist"
-	item_state = "satchel-tourist"
+	icon_state = "satchel"
+	item_state = "satchel"
 	w_class = 5
 	slot_flags = SLOT_BACK
 	max_w_class = 4
@@ -45,6 +66,13 @@
 	burn_state = FLAMMABLE
 	burntime = 20
 	display_contents_with_number = 1
+
+/obj/item/weapon/storage/backpack/satchel/stalker/civilian
+	name = "civilian satchel"
+	icon_state = "satchel-civilian"
+	item_state = "satchel-civilian"
+	max_w_class = 3
+	max_combined_w_class = 20
 /*
 /obj/item/weapon/storage/backpack/stalker/attackby(obj/item/weapon/W, mob/user, params)
 	playsound(src.loc, "sound/stalker/objects/inv_open.ogg", 50, 1, -5)

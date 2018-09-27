@@ -34,6 +34,8 @@
 
 	var/whitelist_only = 1
 
+	var/activated = 1
+
 	//If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 
@@ -147,8 +149,8 @@
 	back = /obj/item/weapon/storage/backpack
 	shoes = /obj/item/clothing/shoes/sneakers/black
 
-	var/backpack = /obj/item/weapon/storage/backpack/stalker
-	var/satchel  = /obj/item/weapon/storage/backpack/satchel/stalker
+	var/backpack = /obj/item/weapon/storage/backpack/stalker/civilian
+	var/satchel  = /obj/item/weapon/storage/backpack/satchel/stalker/civilian
 	var/box = /obj/item/weapon/storage/box/survival
 
 	var/pda_slot = slot_belt

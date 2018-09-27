@@ -89,7 +89,7 @@ Assistant
 	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/tourist
 	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545ap = 1,
@@ -108,7 +108,7 @@ Assistant
 	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/tourist
 	//back2 = /obj/item/weapon/gun/projectile/automatic/aksu74
 	suit_store = /obj/item/weapon/gun/projectile/automatic/aksu74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
@@ -136,7 +136,7 @@ Assistant
 	belt = /obj/item/weapon/gun/projectile/automatic/pistol/fort12
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	back = /obj/item/weapon/storage/backpack/stalker
+	back = /obj/item/weapon/storage/backpack/stalker/tourist
 	//back2 = /obj/item/weapon/gun/projectile/automatic/ak74
 	suit_store = /obj/item/weapon/gun/projectile/automatic/ak74
 	shoes = /obj/item/clothing/shoes/jackboots/warm
