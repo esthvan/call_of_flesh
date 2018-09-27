@@ -1,5 +1,6 @@
 narcissf = Duty Lieutenant
 narcissf = Mercenary Sql
+narcissf = Monolith Hegumen
 xrenoid = Trader
 narcissf = Freedom
 narcissf = Freedom Lieutenant
