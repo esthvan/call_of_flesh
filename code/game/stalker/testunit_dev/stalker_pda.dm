@@ -80,9 +80,9 @@ var/global/global_lentahtml = ""
 	assets = list(
 		"kpk_background.png"	= 'icons/stalker/images/kpk.png',
 		"nodata.png"			= 'icons/stalker/images/nodata.png',
-		"photo_0"				= 'icons/stalker/images/sidor.png',
+		"photo_0"				= 'icons/stalker/images/sidor.png'
 		//Курсор
-		"cursor"				= 'code/game/stalker/testunit_dev/cursors/StalkerCursor.ani'
+		//"cursor"				= 'code/game/stalker/testunit_dev/cursors/StalkerCursor.ani'
 	)
 
 
@@ -147,10 +147,10 @@ var/global/global_lentahtml = ""
 		a:active {color: #607D8B;}\
 		a:hover {\
 		background-color: #9E9E9E;\
-		cursor: url('cursor');\
+		}\
 	}\
 	a {text-decoration: none;}\
-	html {cursor: url('cursor');}\
+	html {cursor: url('html/cursors/arrow.ani');}\
 	body {\
 		background-image: url('kpk_background.png');\
 		padding-top: 18px;\

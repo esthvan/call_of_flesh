@@ -1,5 +1,5 @@
 /client/script = {"<style>
-body					{font-family: Verdana, sans-serif;}
+body					{font-family: Verdana, sans-serif; cursor: url('html/cursors/arrow.ani');}
 
 h1, h2, h3, h4, h5, h6	{color: #0000ff;	font-family: Georgia, Verdana, sans-serif;}
 
@@ -101,5 +101,41 @@ BIG IMG.icon 			{width: 32px; height: 32px;}
 
 .memo					{color: #638500;	text-align: center;}
 .memoedit				{text-align: center;	font-size: 2;}
-
 </style>"}
+
+/*
+.alias {cursor: alias;}
+.all-scroll {cursor: url('html/cursors/sizeall.ani');}
+.auto {cursor: auto;}
+.cell {cursor: url('html/cursors/help.ani');}
+.context-menu {cursor: url('html/cursors/help.ani');}
+.col-resize {cursor: url('html/cursors/col-resize.ani');}
+.copy {cursor: url('html/cursors/arrow.ani');}
+.crosshair {cursor: url('html/cursors/cross.ani');}
+.default {cursor: url('html/cursors/arrow.ani');}
+.e-resize {cursor: url('html/cursors/col-resize.ani');}
+.ew-resize {cursor: url('html/cursors/col-resize.ani');}
+.help {cursor: url('html/cursors/help.ani');}
+.move {cursor: url('html/cursors/move.ani');}
+.n-resize {cursor: url('html/cursors/sizens.ani');}
+.ne-resize {cursor: url('html/cursors/sizenesw.ani');}
+.nesw-resize {cursor: url('html/cursors/sizenesw.ani');}
+.ns-resize {cursor: url('html/cursors/sizens.ani');}
+.nw-resize {cursor: url('html/cursors/sizenwse.ani');}
+.nwse-resize {cursor: url('html/cursors/sizenwse.ani');}
+.no-drop {cursor: url('html/cursors/no.ani');}
+.none {cursor: none;}
+.not-allowed {cursor: url('html/cursors/no.ani');}
+.pointer {cursor: url('html/cursors/appstarting.ani');}
+.progress {cursor: url('html/cursors/busy.ani');}
+.row-resize {cursor: url('html/cursors/sizens.ani');}
+.s-resize {cursor: url('html/cursors/sizens.ani');}
+.se-resize {cursor: url('html/cursors/sizenwse.ani');}
+.sw-resize {cursor: url('html/cursors/sizenesw.ani');}
+.text {cursor: url('html/cursors/ibeam.ani');}
+.url {cursor: url('html/cursors/arrow.ani');}
+.w-resize {cursor: url('html/cursors/col-resize.ani');}
+.wait {cursor: url('html/cursors/busy.ani');}
+.zoom-in {cursor: zoom-in;}
+.zoom-out {cursor: zoom-out;}
+*/

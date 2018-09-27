@@ -51,4 +51,4 @@
 	//datum that controls the displaying and hiding of tooltips
 	var/datum/tooltip/tooltips
 
-
+	mouse_pointer_icon = 'icons/stalker/cursors.dmi'
