@@ -64,7 +64,7 @@
 	origin_tech = "materials=1"
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharpness = IS_SHARP_ACCURATE
-	var/butcher_speed = 0.9
+	var/butcher_speed = 1.1
 
 /obj/item/weapon/kitchen/knife/suicide_act(mob/user)
 	user.visible_message(pick("<span class='suicide'>[user] is slitting \his wrists with the [src.name]! It looks like \he's trying to commit suicide.</span>", \
@@ -100,7 +100,7 @@
 	throwforce = 25
 	origin_tech = "materials=2;combat=4"
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "cut")
-	butcher_speed = 1.15
+	butcher_speed = 0.9
 
 
 /obj/item/weapon/kitchen/rollingpin

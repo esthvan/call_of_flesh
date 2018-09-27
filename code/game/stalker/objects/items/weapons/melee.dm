@@ -1,5 +1,5 @@
 /obj/item/weapon/kitchen/knife/tourist
-	name = "tourist's knife"
+	name = "tourist knife"
 	desc = "Дешевый, но достаточно хороший дл&#255; туриста."
 	eng_desc = "Cheap knife but good enough for a tourist."
 	icon = 'icons/stalker/weapons.dmi'
@@ -12,7 +12,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharpness = IS_SHARP_ACCURATE
-	butcher_speed = 0.95
+	butcher_speed = 1
 
 /obj/item/weapon/kitchen/knife/bayonet
 	name = "bayonet"
