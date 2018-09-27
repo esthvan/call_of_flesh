@@ -608,15 +608,15 @@ obj/item/clothing/head/winterhood/stalker/ecolog/New()
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
 	flags_inv = HIDEJUMPSUIT
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL
-	armor = list(melee = 60, bullet = 60, laser = 70,burn = 70, bomb = 55, bio = 60, rad = 75, electro = 70, psy = 0)
+	armor = list(melee = 45, bullet = 50, laser = 45, burn = 45, bomb = 45, bio = 65, rad = 75, electro = 60, psy = 0)
 	hoodtype = /obj/item/clothing/head/winterhood/stalker/sealed/monolith
 	burn_state = FIRE_PROOF
 	durability = 200
-	modifications = list("lining_suit" = 0, "padding_suit" = 0, "material_suit" = 0, "visor_suit" = 1, "accessory_slot" = 0)
+	modifications = list("lining_suit" = 0, "padding_suit" = 0, "material_suit" = 0, "visor_suit" = 0, "accessory_slot" = 0)
 
 /obj/item/clothing/head/winterhood/stalker/sealed/monolith
 	name = "monolith scientific suit helmet"
-	armor = list(melee = 60, bullet = 55, laser = 70,burn = 70, bomb = 55, bio = 60, rad = 75, electro = 70, psy = 0)
+	armor = list(melee = 50, bullet = 50, laser = 45, burn = 45, bomb = 45, bio = 65, rad = 75, electro = 60, psy = 0)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
 	flags = NODROP|BLOCKHAIR|BLOCKFACIALHAIR
