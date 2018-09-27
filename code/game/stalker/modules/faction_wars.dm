@@ -1,4 +1,4 @@
-var/global/list/obj/machinery/stalker/sidorpoint/cps = list()
+var/list/obj/machinery/stalker/sidorpoint/cps = list()
 
 /obj/machinery/stalker/sidorpoint
 	name = "SIDORPOINT - null"
