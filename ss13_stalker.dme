@@ -14,7 +14,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\__MAP_DEFINES.dm"
-#include "_maps\Zona2.dm"
+#include "_maps\testmap2.dm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"
 #include "code\setup.dm"
@@ -388,6 +388,7 @@
 #include "code\game\gamemodes\miniantags\revenant\revenant_spawn_event.dm"
 #include "code\game\gamemodes\miniantags\slaughter\slaughter.dm"
 #include "code\game\gamemodes\miniantags\slaughter\slaughterevent.dm"
+#include "code\game\gamemodes\monolith\monolith_war.dm"
 #include "code\game\gamemodes\nuclear\nuclear.dm"
 #include "code\game\gamemodes\nuclear\nuclear_challenge.dm"
 #include "code\game\gamemodes\nuclear\nuclearbomb.dm"
@@ -798,6 +799,7 @@
 #include "code\game\stalker\factions\freedom.dm"
 #include "code\game\stalker\factions\jobs.dm"
 #include "code\game\stalker\factions\mercenary.dm"
+#include "code\game\stalker\factions\monolith.dm"
 #include "code\game\stalker\factions\phantoms.dm"
 #include "code\game\stalker\factions\survivor.dm"
 #include "code\game\stalker\machinery\door.dm"
@@ -827,7 +829,6 @@
 #include "code\game\stalker\objects\campfire.dm"
 #include "code\game\stalker\objects\donat-items.dm"
 #include "code\game\stalker\objects\lootspawners.dm"
-#include "code\game\stalker\objects\items\item_lists.dm"
 #include "code\game\stalker\objects\items\artifacts\artifacts.dm"
 #include "code\game\stalker\objects\items\device\detector.dm"
 #include "code\game\stalker\objects\items\device\fulton.dm"
