@@ -319,3 +319,9 @@
 
 /obj/effect/landmark/latejoin/freedom_lieutenant
 	name = "JoinLateFreedom Lieutenant"
+
+/obj/effect/landmark/latejoin/monolith
+	name = "JoinLateMonolith"
+
+/obj/effect/landmark/latejoin/monolith_hegumen
+	name = "JoinLateMonolith Hegumen"
