@@ -642,18 +642,18 @@
 
 /obj/rad/New()
 	..()
-	SSobj.processing |= (src)
+	SSobj.processing += (src)
 
 /obj/rad/Destroy()
 	..()
-	SSobj.processing &= (src)
+	SSobj.processing -= (src)
 
 /obj/rad/Crossed(atom/A)
 	..()
 
 	if(istype(A,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = A
-		src.trapped |= H
+		src.trapped += H
 
 		if(lasttime + cooldown < world.time)
 			H.rad_act(src.damage_amount)
@@ -668,7 +668,7 @@
 	..()
 	if (istype(A,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = A
-		src.trapped &= H
+		src.trapped -= H
 		//SSobj.processing.Remove(src)
 
 /obj/rad/process()
@@ -682,13 +682,13 @@
 	for(var/atom/A in src.trapped)
 
 		if(!istype(A, /mob/living/carbon/human))
-			trapped &= A
+			trapped -= A
 			continue
 
 		var/mob/living/carbon/human/H = A
 
 		if(H.stat == 2)
-			trapped &= H
+			trapped -= H
 			continue
 
 		H.rad_act(src.damage_amount)
@@ -696,4 +696,4 @@
 		if(istype(H.wear_id,/obj/item/device/stalker_pda))
 			H << sound(src.sound, repeat = 0, wait = 0, volume = 50, channel = 3)
 
-		src.lasttime = world.time
+	src.lasttime = world.time
