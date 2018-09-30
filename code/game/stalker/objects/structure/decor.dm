@@ -69,6 +69,18 @@
 /obj/structure/stalker/cacheable/truba/vert
 	icon_state = "truba_v"
 
+/obj/structure/stalker/cacheable/body
+	name = "stalker's body"
+	desc = "Полусгниший труп сталкера."
+	eng_desc = "Dead smelly stalker."
+	icon_state = "deadbody1"
+	density = 0
+	cache_size = 2
+
+/obj/structure/stalker/cacheable/body/New()
+	..()
+	icon_state = "deadbody[rand(1,6)]"
+
 /obj/structure/stalker/cacheable/bochka
 	name = "barrel"
 	desc = "Железна&#255; непримечательна&#255; бочка."

@@ -65,7 +65,7 @@
 #define AMBIENT_CAMPFIRE_CHANNEL			712
 
 ///////////////GAMEMODES
-#define MONOLITH_REVENGE_HOLD_TIME			600
+#define MONOLITH_REVENGE_HOLD_TIME			6000
 
 ///////////////MIND STATE
 #define MENTAL_STABLE						0

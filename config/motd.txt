@@ -3,5 +3,5 @@
 <h1>Welcome to S.T.A.L.K.E.R. Station!</h1>
 
 <i>This server is running a /stalker/station build.</i>
-<i>Check out our discord server for more info: https://discord.gg/P3EMVBW</i>
-<i>After enterting discord don't forget to type !s cheeki breeki to get special stalker access!</i>
+<i>Join our discord server: https://discord.gg/7Kg8qkK</i>
+<i>See our github: https://github.com/esthvan/call_of_flesh</i>

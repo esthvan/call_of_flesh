@@ -12,7 +12,7 @@
 
 /datum/game_mode/monolith_revenge/announce()
 	world << "<B>The current game mode is - Monolith Revenge!</B>"
-	world << "<B>Monolith sent forces to capture Backwater! If they will control over 75% of control points for 15 minutes, they will win the round!</B>"
+	world << "<B>Monolith sent forces to capture Backwater! If they will control over 75% of control points for 15 minutes, they win the round!</B>"
 	world << "<B><font color='green'>Due to psionic emission Skadovsk exit will be locked for next [round(SKADOVSK_LOCKDOWN_TIMER/600)] min.</font></B>"
 
 /datum/game_mode/monolith_revenge/pre_setup()
@@ -56,7 +56,7 @@
 	if(antag_base_check)
 		if((control_table["Monolith"]/cps.len) >= 0.6)
 			if(winning_faction != "Monolith")
-				add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600)] minutes!")
+				add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600) + 1] minutes!")
 				winning_faction = "Monolith"
 				start_hold_time = world.time
 		else
@@ -64,7 +64,7 @@
 			start_hold_time = world.time
 	else
 		if(winning_faction != "Stalkers")
-			add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600)] minutes!")
+			add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600) + 1] minutes!")
 			winning_faction = "Stalkers"
 			start_hold_time = world.time
 
@@ -74,8 +74,8 @@
 				finished = 1
 			else
 				finished = 2
-		else if(world.time in (start_hold_time + (MONOLITH_REVENGE_HOLD_TIME/2)) to (start_hold_time + (MONOLITH_REVENGE_HOLD_TIME/2) + world.tick_lag))
-			add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] should hold for next [round(MONOLITH_REVENGE_HOLD_TIME/1200)] minutes.")
+		else if(world.time in (start_hold_time + (MONOLITH_REVENGE_HOLD_TIME/2)) to (start_hold_time + (MONOLITH_REVENGE_HOLD_TIME/2) + 60))
+			add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] should hold for next [round(MONOLITH_REVENGE_HOLD_TIME/1200) + 1] minutes.")
 
 //////////////////////////////////////
 //Checks if the revs have won or not//

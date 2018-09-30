@@ -415,7 +415,7 @@ var/list/global_sidormat_list = list(
 		dat +="<div class='statusDisplay'>"
 		dat += "Balance: [num2text(balance, 8)] RU<br>"
 		dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table.<br>" // Забирать деньги и купленные вещи - на <b>правом</b>.
-		if(!(switches & BUY_STUFF))
+		if(switches & BUY_STUFF)
 			dat +="<A href='?src=\ref[src];choice=take'><b>Sell habar</b></A><br>"
 		if(door_device && sk.fields["degree"])
 			dat +="<A href='?src=\ref[src];basement_toggle=1'><b>Toggle basement door</b></A><br>"
@@ -442,7 +442,7 @@ var/list/global_sidormat_list = list(
 		dat +="<div class='statusDisplay'>"
 		dat += "На счету: [num2text(balance, 8)] RU<br>"
 		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
-		if(!(switches & BUY_STUFF))
+		if(switches & BUY_STUFF)
 			dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар</b></A><br>"
 		if(door_device && sk.fields["degree"])
 			dat +="<A href='?src=\ref[src];basement_toggle=1'><b>Открыть/Закрыть хранилище</b></A><br>"

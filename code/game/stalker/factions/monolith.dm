@@ -46,7 +46,7 @@
 	suit_store = /obj/item/weapon/gun/projectile/automatic/berettam38
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/magazine/stalker/berettam38 = 1,
-							/obj/item/device/flashlight/seclite = 1,)
+							/obj/item/device/flashlight/seclite = 1)
 	r_pocket = /obj/item/weapon/stalker/bolts
 	faction_s = "Monolith"
 
@@ -84,8 +84,10 @@
 	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	suit_store = /obj/item/weapon/gun/projectile/shotgun/ithaca
-	backpack_contents = list(/obj/item/device/flashlight/seclite = 1)
+	suit_store = /obj/item/weapon/gun/projectile/shotgun/boltaction/enfield
+	backpack_contents = list(/obj/item/ammo_box/stalker/cl762x51 = 2,
+							/obj/item/device/flashlight/seclite = 1,
+							/obj/item/weapon/attachment/scope/rifle = 1)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
