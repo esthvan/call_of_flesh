@@ -91,7 +91,6 @@
 	cooldown = 15000
 	loot = list(/mob/living/simple_animal/hostile/mutant/bloodsucker = 100)
 	sticky_mob = 1
-	monolith_controled = 1
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/bloodsucker_spawner/monolith
 	name = "bloodsucker mutant (monolith)"
@@ -99,6 +98,15 @@
 	radius = 1
 	cooldown = 15000
 	loot = list(/mob/living/simple_animal/hostile/mutant/bloodsucker = 100)
+	sticky_mob = 1
+	monolith_controled = 1
+
+/obj/effect/spawner/lootdrop/stalker/mobspawner/controller_spawner
+	name = "controller mutant"
+	lootcount = 1
+	radius = 1
+	cooldown = 15000
+	loot = list(/mob/living/simple_animal/hostile/mutant/controller = 100)
 	sticky_mob = 1
 
 /obj/effect/spawner/lootdrop/stalker/mobspawner/controller_spawner/monolith
