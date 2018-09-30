@@ -48,24 +48,25 @@
 		if(cp.control_percent >= 75)
 			if((cp.path_ending == "ranger") && (cp.controlled_by == "Monolith"))
 				antag_base_check = 1
-			control_table &= cp.controlled_by
-			if(!control_table[cp.controlled_by])
+			if(!(cp.controlled_by in control_table))
+				control_table += cp.controlled_by
+			if(control_table[cp.controlled_by] == null)
 				control_table[cp.controlled_by] = 0
 			control_table[cp.controlled_by]++
 
 	if(antag_base_check)
 		if((control_table["Monolith"]/cps.len) >= 0.6)
 			if(winning_faction != "Monolith")
-				add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600) + 1] minutes!")
 				winning_faction = "Monolith"
+				add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600) + 1] minutes!")
 				start_hold_time = world.time
 		else
 			winning_faction = null
 			start_hold_time = world.time
 	else
 		if(winning_faction != "Stalkers")
-			add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600) + 1] minutes!")
 			winning_faction = "Stalkers"
+			add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600) + 1] minutes!")
 			start_hold_time = world.time
 
 	if(winning_faction)
