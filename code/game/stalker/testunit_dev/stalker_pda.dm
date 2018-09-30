@@ -68,7 +68,7 @@ var/global/global_lentahtml = ""
 	var/article_img_width = 179
 	var/article_img_height = 128
 
-/datum/asset/simple/kpk/encyclopedia
+/datum/asset/simple/encyclopedia
 	assets = list(
 		//Фото для энциклопедии
 		"zone"					= 'icons/stalker/images/zone.png',
@@ -76,15 +76,21 @@ var/global/global_lentahtml = ""
 		"nodata.gif"			= 'icons/stalker/images/nodata.gif'
 	)
 
-/datum/asset/simple/kpk
+/datum/asset/simple/basics
 	assets = list(
 		"kpk_background.png"	= 'icons/stalker/images/kpk.png',
 		"nodata.png"			= 'icons/stalker/images/nodata.png',
 		"photo_0"				= 'icons/stalker/images/sidor.png'
-		//Курсор
-		//"cursor"				= 'code/game/stalker/testunit_dev/cursors/StalkerCursor.ani'
+		//Курсоры
 	)
 
+/datum/asset/simple/cursors
+	assets = list(
+		"cursor_normal.ani"		= 'html/cursors/arrow.ani',
+		"cursor_red.ani"		= 'html/cursors/wait.ani',
+		"cursor_green.ani"		= 'html/cursors/appstarting.ani',
+		"cursor_busy.ani"		= 'html/cursors/busy.ani'
+	)
 
 /obj/item/device/stalker_pda/New()
 	..()
@@ -142,15 +148,15 @@ var/global/global_lentahtml = ""
 	mainhtml ="<html> \
 	\
 	<style>\
-		a:link {color: #607D8B;}\
-		a:visited {color: #607D8B;}\
-		a:active {color: #607D8B;}\
-		a:hover {\
-		background-color: #9E9E9E;\
-		}\
+	a:link {color: #607D8B;}\
+	a:visited {color: #607D8B;}\
+	a:active {color: #607D8B;}\
+	a:hover {\
+	background-color: #9E9E9E;\
+	cursor: url('cursor_green.ani');\
 	}\
 	a {text-decoration: none;}\
-	html {cursor: url('html/cursors/arrow.ani');}\
+	html {cursor: url('cursor_normal.ani');}\
 	body {\
 		background-image: url('kpk_background.png');\
 		padding-top: 18px;\
@@ -614,7 +620,7 @@ var/global/global_lentahtml = ""
 		H << browse(null, "window=mainhtml")
 		return
 	//add_fingerprint(H)
-	//get_asset_datum(/datum/asset/simple/kpk).send(H)
+	//get_asset_datum(/datum/asset/simple/basics).send(H)
 
 	switch(href_list["choice"])
 		if("title")
@@ -706,8 +712,26 @@ var/global/global_lentahtml = ""
 				profile = sk
 				set_owner_info(profile)
 
+				for(var/obj/item/device/stalker_pda/KPK in KPKs)
+					if(KPK.owner == src.owner)
+						KPK.registered_name = null
+						KPK.eng_faction_s = null
+						KPK.rus_faction_s = null
+						KPK.rating = null
+						KPK.owner = null
+						KPK.money = 0
+						KPK.photo_owner_front = null
+						KPK.photo_owner_west = null
+						KPK.photo_owner_east = null
+						KPK.photo_owner_back = null
+						KPK.hacked = 0
+						KPK.password = null
+						KPK.profile = null
+
+						KPKs -= KPK
+
 		if("load_cache")
-			get_asset_datum(/datum/asset/simple/kpk).send(H)
+			//get_asset_datum(/datum/asset/simple/basics).send(H)
 
 		if("exit")
 			registered_name = null
@@ -720,10 +744,11 @@ var/global/global_lentahtml = ""
 			photo_owner_west = null
 			photo_owner_east = null
 			photo_owner_back = null
-			KPKs -= src
 			hacked = 0
 			password = null
 			profile = null
+
+			KPKs -= src
 
 		if("password_check")
 			var/t = message_input(H, "password", 10)
@@ -844,7 +869,7 @@ var/global/global_lentahtml = ""
 
 		if("2")			//ЭНЦИКЛОПЕДИЯ
 			mode = 2
-			get_asset_datum(/datum/asset/simple/kpk/encyclopedia).send(H)
+			get_asset_datum(/datum/asset/simple/encyclopedia).send(H)
 			if(href_list["page"])
 				if(H.client.prefs.chat_toggles & CHAT_LANGUAGE)
 					switch(href_list["page"])
@@ -1054,7 +1079,7 @@ var/global/global_lentahtml = ""
 		if(!sk_removed)
 			return
 
-		SSjob.AssignRole(owner, "Stalker", 1)
+		SSjob.AssignRole(owner, "Loner", 1)
 		sk_removed.fields["faction_s"] = "Loners"
 		J.current_positions--
 
@@ -1475,19 +1500,19 @@ var/global/global_lentahtml = ""
 
 	switch(rep)
 		if(AMAZING to INFINITY)
-			rep_name_s = "Свой пацан"
+			rep_name_s = "Блатной"
 		if(VERYGOOD to AMAZING)
 			rep_name_s = "Очень хороша&#x44F;"
 		if(GOOD to VERYGOOD)
 			rep_name_s = "Хороша&#x44F;"
-		if(NEUTRAL to GOOD)
+		if(BAD to GOOD)
 			rep_name_s = "Нейтральна&#x44F;"
-		if(BAD to NEUTRAL)
-			rep_name_s = "Плоха&#x44F;"
 		if(VERYBAD to BAD)
+			rep_name_s = "Плоха&#x44F;"
+		if(DISGUSTING to VERYBAD)
 			rep_name_s = "Очень плоха&#x44F;"
-		if(DISGUSTING)
-			rep_name_s = "Гнида"
+		if(-INFINITY to DISGUSTING)
+			rep_name_s = "Чёрт"
 
 	return rep_name_s
 
@@ -1501,14 +1526,14 @@ var/global/global_lentahtml = ""
 			eng_rep_name_s = "Very Good"
 		if(GOOD to VERYGOOD)
 			eng_rep_name_s = "Good"
-		if(NEUTRAL to GOOD)
+		if(BAD to GOOD)
 			eng_rep_name_s = "Neutral"
-		if(BAD to NEUTRAL)
-			eng_rep_name_s = "Bad"
 		if(VERYBAD to BAD)
+			eng_rep_name_s = "Bad"
+		if(DISGUSTING to VERYBAD)
 			eng_rep_name_s = "Very Bad"
-		if(DISGUSTING)
-			eng_rep_name_s = "Asshole"
+		if(-INFINITY to DISGUSTING)
+			eng_rep_name_s = "Satan"
 
 	return eng_rep_name_s
 
@@ -1521,14 +1546,14 @@ var/global/global_lentahtml = ""
 			rep_color_s = "#b6ff38" //#6ddb00
 		if(GOOD to VERYGOOD)
 			rep_color_s = "#daff21" //#b6db00
-		if(NEUTRAL to GOOD)
+		if(BAD to GOOD)
 			rep_color_s = "#ffe100" //#ffb200
-		if(BAD to NEUTRAL)
-			rep_color_s = "#ff6b3a" //#db5700
 		if(VERYBAD to BAD)
-			rep_color_s = "#db2b00" //#db2b00
-		if(DISGUSTING)
-			rep_color_s = "#7c0000"
+			rep_color_s = "#ff6b3a" //#db5700
+		if(DISGUSTING to VERYBAD)
+			rep_color_s = "#db2b00"
+		if(-INFINITY to DISGUSTING)
+			rep_color_s = "#7c0000" //#7c0000
 	return rep_color_s
 
 /proc/get_job_title(var/faction_s)
@@ -1548,4 +1573,4 @@ var/global/global_lentahtml = ""
 		if("Army")
 			return "Army"
 		else
-			return "Stalker"
+			return "Loner"

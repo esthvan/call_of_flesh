@@ -221,6 +221,14 @@ var/global/isblowout = 0
 
 	add_lenta_message(null, "0", "Sidorovich", "Loners", "Blowout is over! Leave the shelter.")
 
+	for(var/datum/data/record/sk in data_core.stalkers)
+		if(sk.fields["reputation"] <= VERYBAD)
+			var/name_ = sk.fields["name"]
+			var/rep_ = sk.fields["reputation"]
+			add_lenta_message(null, "0", "Sidorovich", "Loners", "[name_]'s - for at least [GetCostBasedOnReputation(rep_)] RU.")
+	add_lenta_message(null, "0", "Sidorovich", "Loners", "Find, kill and sell PDAs of these stalker with bad reputation!")
+
+
 /datum/subsystem/blowout/proc/ProcessBlowout()
 	if(isblowout)
 		for(var/mob/living/carbon/human/H)

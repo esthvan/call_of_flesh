@@ -47,7 +47,7 @@
 	update_icon()
 
 /obj/item/clothing/suit/MouseDrop(atom/over_object)
-	if(!usr)
+	if(!usr || (loc != usr))
 		return
 	src.throwing = 0
 	if (loc == usr)

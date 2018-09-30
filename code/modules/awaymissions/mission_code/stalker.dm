@@ -142,7 +142,9 @@
 /area/stalker/blowout/outdoor/backwater/skadovsk
 	name = "Backwater - Skadovsk \[O\]"
 	icon_state = "skadovsk"
-	safezone = 19
+	safezone = 1
+	environment = 19
+
 ////////////////////////////////////////////////////////////////
 
 ///////////////////////гюрнм - ьебвемйн/////////////////////////

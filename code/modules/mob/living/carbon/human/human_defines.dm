@@ -54,4 +54,4 @@
 
 	var/heart_attack = 0
 
-	var/zombiefied = 0
+	var/zombiefied = MENTAL_STABLE

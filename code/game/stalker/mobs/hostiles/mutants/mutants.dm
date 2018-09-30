@@ -15,17 +15,16 @@
 		spawn(300)
 			qdel(src)
 */
-
+/*
 /mob/living/simple_animal/hostile/mutant/Move(atom/NewLoc, direct)
-	var/area/B = get_area(NewLoc)
-	if(B.safezone)
+	if(get_area(NewLoc).safezone)
 		if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
 			src << "<span class='warning'>You can't be here!</span>"
 		else
 			src << "<span class='warning'>Вы не можете находитьc&#255; в этой зоне!</span>"
 		return 0
-	. = ..()
-
+	return ..()
+*/
 /mob/living/simple_animal/hostile/mutant/AttackingTarget()
 	..()
 	if(istype(target, /mob/living))
@@ -503,6 +502,14 @@
 	if(!.)
 		return 0
 	for(var/mob/living/carbon/human/H in view(15, src))
+		var/monol_ = 0
+		for(var/faction_ in faction)
+			if(faction_ in H.faction)
+				monol_ = 1
+
+		if(monol_)
+			continue
+
 		var/damage_ = 0
 		switch(get_dist(src, H))
 			if(0 to 2)
@@ -516,6 +523,8 @@
 			if(8 to INFINITY)
 				damage_ = 25 / get_dist(src, H)
 		H.apply_damage(damage_, PSY, null, blocked = getarmor("head", "psy", 0))
+		if(H.psyloss >= 200)
+			H.zombiefied = MENTAL_ZOMBIE
 
 /mob/living/simple_animal/hostile/mutant/controller/OpenFire(atom/A)
 	if(!istype(A, /mob/living/carbon/human))
@@ -555,7 +564,7 @@
 				visible_message("<span class='danger'><b>[src]</b> stares right into [A] eyes!</span>")
 				H.apply_damage(200, PSY, null, blocked = getarmor("head", "psy", 0))
 				if(H.psyloss >= 200)
-					H.zombiefied = 1
+					H.zombiefied = MENTAL_ZOMBIE
 
 			ranged_cooldown = max(0, ranged_cooldown_cap - attack_stage)
 			attack_stage = 0

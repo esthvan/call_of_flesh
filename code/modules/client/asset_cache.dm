@@ -181,6 +181,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 
 /datum/asset/simple/pda
 	assets = list(
+	/*
 		"pda_atmos.png"			= 'icons/pda_icons/pda_atmos.png',
 		"pda_back.png"			= 'icons/pda_icons/pda_back.png',
 		"pda_bell.png"			= 'icons/pda_icons/pda_bell.png',
@@ -207,10 +208,12 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"pda_scanner.png"		= 'icons/pda_icons/pda_scanner.png',
 		"pda_signaler.png"		= 'icons/pda_icons/pda_signaler.png',
 		"pda_status.png"		= 'icons/pda_icons/pda_status.png'
+	*/
 	)
 
 /datum/asset/simple/paper
 	assets = list(
+	/*
 		"large_stamp-clown.png" = 'icons/stamp_icons/large_stamp-clown.png',
 		"large_stamp-deny.png" = 'icons/stamp_icons/large_stamp-deny.png',
 		"large_stamp-ok.png" = 'icons/stamp_icons/large_stamp-ok.png',
@@ -222,6 +225,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"large_stamp-cap.png" = 'icons/stamp_icons/large_stamp-cap.png',
 		"large_stamp-qm.png" = 'icons/stamp_icons/large_stamp-qm.png',
 		"large_stamp-law.png" = 'icons/stamp_icons/large_stamp-law.png'
+	*/
 	)
 
 

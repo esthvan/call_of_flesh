@@ -41,7 +41,7 @@ var/onelive = 1
 			blind.layer = 0
 			blind.alpha = 0
 
-	if(zombiefied)
+	if(zombiefied == MENTAL_ZOMBIE)
 		LoseTarget()
 
 	if(job)

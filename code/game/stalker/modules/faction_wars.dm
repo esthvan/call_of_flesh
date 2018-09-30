@@ -127,6 +127,7 @@ var/list/obj/machinery/stalker/sidorpoint/cps = list()
 		return
 
 	capturing_faction = sk.fields["faction_s"]
+	add_lenta_message(null, "0", "Sidorovich", "Loners", "[capturing_faction] started capturing [get_area(src).name].")
 	say("[capturing_faction] started capturing [get_area(src).name]!")
 
 	return
@@ -163,28 +164,33 @@ var/list/obj/machinery/stalker/sidorpoint/cps = list()
 	if(capturing_faction && !controlled_by)
 		controlled_by = capturing_faction
 
-	if(!capturing_faction)
-		return
-
-	if(controlled_by == capturing_faction)
+	if((controlled_by == capturing_faction) && capturing_faction != null)
 
 		control_percent += 2
 
 		if(control_percent >= 100)
 
 			control_percent = 100
+			add_lenta_message(null, "0", "Sidorovich", "Loners", "[controlled_by] captured [get_area(src).name].")
 			say("[get_area(src).name] is captured  by [controlled_by]!")
 			capturing_faction = null
 
-	else
+		return
 
-		control_percent -= 2
+	if(control_percent in 1 to 99)
+		if(control_percent >= 50)
 
-		if(control_percent <= 0)
+			control_percent = min(100, control_percent + 2)
 
-			control_percent = 0
-			say("[controlled_by] lost control of [get_area(src).name]!")
-			controlled_by = capturing_faction
+		else
+
+			control_percent -= 2
+			if(control_percent <= 0)
+
+				control_percent = 0
+				add_lenta_message(null, "0", "Sidorovich", "Loners", "[controlled_by] lost control of [get_area(src).name].")
+				say("[controlled_by] lost control of [get_area(src).name]!")
+				controlled_by = capturing_faction
 
 /obj/machinery/stalker/sidorpoint/ex_act(severity, target)
 	return

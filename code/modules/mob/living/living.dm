@@ -503,6 +503,13 @@ Sorry Giacom. Please don't be mad :(
 	return
 
 /mob/living/Move(atom/newloc, direct)
+	if((stat != DEAD) && get_area(newloc).safezone && !("stalker_forces" in faction))
+		if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
+			src << "<span class='warning'>You can't be here!</span>"
+		else
+			src << "<span class='warning'>Вы не можете находитьc&#255; в этой зоне!</span>"
+		return 0
+
 	if (buckled && buckled.loc != newloc) //not updating position
 		if (!buckled.anchored)
 			return buckled.Move(newloc, direct)
@@ -1018,31 +1025,35 @@ mob/living/proc/let_justice_be_done(var/mob/killed_one)
 			var/datum/data/record/sk_H = find_record("sid", H.sid, data_core.stalkers)
 			/////////////////////////////////////////////////////////////////////////
 
-			if(sk && sk_H && !H.zombiefied)
+			var/list/bad_factions = list("Bandits", "Monolith")
+
+			if(sk && sk_H && (H.zombiefied != MENTAL_ZOMBIE))
 				switch(sk_H.fields["reputation"])
 					if(AMAZING to INFINITY)
-						if(H.faction_s != "Bandits")
+						if(!(H.faction_s in bad_factions))
 							sk.fields["reputation"] -= 800
 					if(VERYGOOD to AMAZING)
-						if(H.faction_s != "Bandits")
+						if(!(H.faction_s in bad_factions))
 							sk.fields["reputation"] -= 400
 					if(GOOD to VERYGOOD)
-						if(H.faction_s != "Bandits")
+						if(!(H.faction_s in bad_factions))
 							sk.fields["reputation"] -= 200
 					if(BAD to GOOD)
-						if(H.faction_s != "Bandits")
+						if(!(H.faction_s in bad_factions))
 							sk.fields["reputation"] -= 50
 					if(VERYBAD to BAD)
 						sk.fields["reputation"] += 50
 					if(DISGUSTING to VERYBAD)
 						sk.fields["reputation"] += 150
-					if(DISGUSTING)
+					if(-INFINITY to DISGUSTING)
 						sk.fields["reputation"] += 300
 
 				if(killer_h.faction_s == H.faction_s)
 					sk.fields["reputation"] -= 50
+					//message_admins("[killer_h.real_name] has killed [killed_one] in [src.loc.loc] [whereLink]")
 
-				sk.fields["reputation"] = Clamp(sk.fields["reputation"], DISGUSTING, AMAZING)
+
+				sk.fields["reputation"] = Clamp(sk.fields["reputation"], DISGUSTING - 1000, AMAZING + 1000)
 
 			if(sk && sk_H)
 

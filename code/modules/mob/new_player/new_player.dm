@@ -197,10 +197,13 @@
 			if(J.title == href_list["SelectedJob"])
 				job = J
 				break
-		if(job.whitelist_only && job.activated)
+		if(job.whitelist_only)
 			if(!check_whitelist(usr.client.ckey, href_list["SelectedJob"]))
 				usr << "<span class='notice'>No</span>"
 				return
+		if(!job.activated)
+			return
+
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
 
@@ -292,7 +295,9 @@
 		return 0
 	for(var/datum/job/job in SSjob.occupations)
 		if(job.title == rank)
-			if(job.whitelist_only && job.activated)
+			if(!job.activated)
+				return
+			if(job.whitelist_only)
 				if(!check_whitelist(usr.client.ckey, job.title))
 					return
 			else
@@ -311,6 +316,11 @@
 	SSjob.AssignRole(src, rank, 1)
 
 	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
+	switch(SSjob.GetJob(rank).faction_s)
+		if("Monolith")
+			character.faction = list("monolith_forces")
+		else
+			character.faction = list("stalker_forces")
 	SSjob.EquipRank(character, rank, 1)					//equips the human
 	var/D = null
 	if(istype(jobnamelatejoin["JoinLate" + rank], /list))
@@ -389,7 +399,9 @@
 
 	if(!job_count) //if there's nowhere to go, assistant opens up.
 		for(var/datum/job/job in SSjob.occupations)
-			if(job.whitelist_only && job.activated)
+			if(!job.activated)
+				continue
+			if(job.whitelist_only)
 				if(check_whitelist(usr.client.ckey, job.title))
 					dat += "<a class='otherPosition' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a><br>"
 			else if(job.title != "NOPE")

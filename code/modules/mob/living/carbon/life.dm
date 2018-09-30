@@ -487,7 +487,7 @@
 				damageoverlay.overlays += black
 		var/whitenoisealpha = 0
 		if(stat != DEAD)
-			whitenoisealpha = min(75, radiation*0.3)
+			whitenoisealpha = min(75, radiation*0.15)
 		whitenoise.alpha = whitenoisealpha
 	..()
 

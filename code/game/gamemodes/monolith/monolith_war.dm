@@ -23,6 +23,9 @@
 		if(cp.path_ending == "ranger")
 			cp.controlled_by = "Monolith"
 			cp.control_percent = 100
+	for(var/datum/job/J in SSjob.occupations)
+		if(J.faction_s == "Monolith")
+			J.activated = 1
 	return 1
 
 /datum/game_mode/monolith_revenge/post_setup()
@@ -53,6 +56,7 @@
 	if(antag_base_check)
 		if((control_table["Monolith"]/cps.len) >= 0.6)
 			if(winning_faction != "Monolith")
+				add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600)] minutes!")
 				winning_faction = "Monolith"
 				start_hold_time = world.time
 		else
@@ -60,14 +64,18 @@
 			start_hold_time = world.time
 	else
 		if(winning_faction != "Stalkers")
+			add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] captured most part of Backwater, they should hold their points for next [round(MONOLITH_REVENGE_HOLD_TIME/600)] minutes!")
 			winning_faction = "Stalkers"
 			start_hold_time = world.time
 
-	if(winning_faction && (start_hold_time + MONOLITH_REVENGER_HOLD_TIME <= world.time))
-		if(winning_faction == "Monolith")
-			finished = 1
-		else
-			finished = 2
+	if(winning_faction)
+		if(world.time >= (start_hold_time + MONOLITH_REVENGE_HOLD_TIME))
+			if(winning_faction == "Monolith")
+				finished = 1
+			else
+				finished = 2
+		else if(world.time in (start_hold_time + (MONOLITH_REVENGE_HOLD_TIME/2)) to (start_hold_time + (MONOLITH_REVENGE_HOLD_TIME/2) + world.tick_lag))
+			add_lenta_message(null, "0", "Sidorovich", "Loners", "[winning_faction] should hold for next [round(MONOLITH_REVENGE_HOLD_TIME/1200)] minutes.")
 
 //////////////////////////////////////
 //Checks if the revs have won or not//
@@ -100,6 +108,6 @@
 		world << "<span class='redtext'>Most of stalker bases were lost, stalkers retreat to the south of Zone.</span>"
 	else if(finished == 2)
 		feedback_set_details("round_end_result","is a failure.")
-		world << "<span class='redtext'>Monolith base lost!</span>"
+		world << "<span class='redtext'>Monolith base is lost! Monolith forces are leaving Backwater, stalkers reinforce their defences.</span>"
 	..()
 	return 1

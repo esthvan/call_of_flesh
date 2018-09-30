@@ -32,14 +32,14 @@
 		I.Insert(src)
 
 	make_blood()
-	if(client)
-		get_asset_datum(/datum/asset/simple/kpk).send(src)
-
+	//if(client)
+	//	get_asset_datum(/datum/asset/simple/basics).send(src)
+	//
 	//
 
 	..()
-	var/mob/M = src
-	faction |= "\ref[M]"
+	//var/mob/M = src
+	//faction |= "\ref[M]"
 
 /mob/living/carbon/human/prepare_data_huds()
 	//Update med hud images...
@@ -604,7 +604,7 @@
 								else
 									if(!(last_vote && world.time < last_vote + 3000))
 										last_vote = world.time
-										R.fields["reputation"] = max(0, R.fields["reputation"] - 20)
+										R.fields["reputation"] = R.fields["reputation"] - 20
 										usr << "<span class='notice'>Reputation updated.</span>"
 									else
 										lefttime = round((3000 + last_vote - world.time)/10)

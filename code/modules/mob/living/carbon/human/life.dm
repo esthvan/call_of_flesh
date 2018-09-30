@@ -35,7 +35,7 @@
 	if (notransform)
 		return
 
-	if(zombiefied)
+	if(zombiefied == MENTAL_ZOMBIE)
 		if(client)
 			src.timeofdeath = world.time
 			ghostize(0)
@@ -46,7 +46,7 @@
 			skin_tone = "zombie"
 			dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
 			update_mutcolor()
-		faction = list("stalker_mutants1")
+		faction = list("stalker_mutants1", "monolith_forces")
 		ZombieLife()
 
 	tinttotal = tintcheck() //here as both hud updates and status updates call it
@@ -130,8 +130,8 @@
 		if(200)
 			if(slurring < 100)
 				apply_effect(rand(20, 35), SLUR, 0)
-			if(!zombiefied)
-				zombiefied = 1
+			if(zombiefied == MENTAL_STABLE)
+				zombiefied = MENTAL_ZOMBIE
 			return
 		if(150 to 199)
 			if(slurring < 100)

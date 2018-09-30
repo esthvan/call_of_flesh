@@ -39,7 +39,7 @@
 		return
 
 	//Log of what we've said, plain message, no spans or junk
-	if(!zombiefied)
+	if(zombiefied != MENTAL_ZOMBIE)
 		say_log += message
 
 	var/message_range = 7

@@ -12,11 +12,11 @@
 #define ROOKIE								0
 
 ///////////////–≈œ”“¿÷»ﬂ
-#define AMAZING								2000
-#define VERYGOOD							1500
-#define GOOD								1100
-#define NEUTRAL								1000
-#define BAD									900
+#define AMAZING								3000
+#define VERYGOOD							2500
+#define GOOD								1750
+#define NEUTRAL								1500
+#define BAD									1250
 #define VERYBAD								500
 #define DISGUSTING							0
 
@@ -44,7 +44,8 @@
 
 ///////////////SIDORMAT
 #define SHOW_FACTION_EQUIPMENT				1
-#define SELL_UNBUYABLE						2
+#define BUY_STUFF							2
+#define SELL_UNBUYABLE						4
 
 ///////////////COLOR MATRIXES
 #define NIGHTVISION_MATRIX_I			list(0.1, 0.9, 0,\
@@ -64,4 +65,9 @@
 #define AMBIENT_CAMPFIRE_CHANNEL			712
 
 ///////////////GAMEMODES
-#define MONOLITH_REVENGER_HOLD_TIME			100
+#define MONOLITH_REVENGE_HOLD_TIME			600
+
+///////////////MIND STATE
+#define MENTAL_STABLE						0
+#define MENTAL_MONOLITH						1
+#define MENTAL_ZOMBIE						2

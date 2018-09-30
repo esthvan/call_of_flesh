@@ -121,7 +121,7 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Berill-5M",					"Берилл-5М",						/obj/item/clothing/suit/berill,								50000,	EXPERIENCED,faction = "Loners"),
 		new /datum/data/stalker_equipment("Wind of Freedom",	    	"Ветер Свободы",					/obj/item/clothing/suit/hooded/kombez/veter,				25000,	ROOKIE,		faction = "Freedom"),
 		new /datum/data/stalker_equipment("Guardian of Freedom",		"Страж Свободы",					/obj/item/clothing/suit/strazh,								40000,	EXPERIENCED,faction = "Freedom"),
-		new /datum/data/stalker_equipment("PZ-1	",						"ПЗ-1",								/obj/item/clothing/suit/hooded/kombez/monolith,				25000,	ROOKIE,		faction = "Monolith"),
+		new /datum/data/stalker_equipment("PZ-1	",						"ПЗ-1",								/obj/item/clothing/suit/hooded/kombez/monolith,				25000,	ROOKIE,		faction = "Monolith", sale_price = 8000),
 		new /datum/data/stalker_equipment("Monolith scientific suit	",	"Научный комбинезон монолита",		/obj/item/clothing/suit/hooded/sealed/monolith,				60000,	ROOKIE,		faction = "Monolith"),
 		new /datum/data/stalker_equipment("PS5-M",						"ПС5-М",							/obj/item/clothing/suit/hooded/kombez/ps5m,					25000,	ROOKIE,		faction = "Duty"),
 		new /datum/data/stalker_equipment("Heavy merc armor",			"Тяжелая броня наёмников",			/obj/item/clothing/suit/assaultmerc,						50000,	EXPERIENCED,faction = "Mercenaries"),
@@ -175,6 +175,7 @@ var/list/global_sidormat_list = list(
 
 	"Misc" = list(
 		/////////////////////////////////	Другое	/////////////////////////////////////////////
+		new /datum/data/stalker_equipment/stalker_pda("PDA",					"КПК",													/obj/item/device/stalker_pda,								4000,	ROOKIE),
 		new /datum/data/stalker_equipment("Repair-kit for suits and helmets",	"Рем. комплект дл&#x44F; бронекостюмов и шлемов",		/obj/item/device/repair_kit/clothing,						10000,	ROOKIE),
 		new /datum/data/stalker_equipment("Repair-kit for guns",				"Рем. комплект дл&#x44F; огнестрельного оружи&#x44F;",	/obj/item/device/repair_kit/gun,							4000,	ROOKIE),
 		new /datum/data/stalker_equipment("Guitar",								"Гитара",												/obj/item/device/instrument/guitar,							3000,	ROOKIE),
@@ -258,15 +259,15 @@ var/list/global_sidormat_list = list(
 		new /datum/data/stalker_equipment("Слюда",				"Слюда",							/obj/item/weapon/artifact/mica,						30000,	ROOKIE,	sale_price = 15000),
 		new /datum/data/stalker_equipment("Светл&#x44F;к",		"Светл&#x44F;к",					/obj/item/weapon/artifact/firefly,					60000,	ROOKIE,	sale_price = 30000),
 		/////////////////////////////////	Мусор	//////////////////////////////////////////////
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva,							400,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva/MREkonserva1,				200,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva/MREkonserva2,				200,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva/MREkonserva3,				200,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva/bobi,						400,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva/fish,						500,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva/govyadina,					400,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva/shproti,					600,	ROOKIE),
-		new /datum/data/stalker_equipment("Konserva",			"Консервеа",						/obj/item/trash/konserva/soup,						500,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva,							400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva/MREkonserva1,				200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva/MREkonserva2,				200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva/MREkonserva3,				200,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva/bobi,						400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva/fish,						500,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva/govyadina,					400,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva/shproti,					600,	ROOKIE),
+		new /datum/data/stalker_equipment("Konserva",			"Консерва",							/obj/item/trash/konserva/soup,						500,	ROOKIE),
 		///////////////////////////////////////////////////////////////////////////////////////////
 		new /datum/data/stalker_equipment("50 RU",				"50 RU",							/obj/item/stack/spacecash/c50,						50,		ROOKIE,	sale_price = 50),
 		new /datum/data/stalker_equipment("100 RU",				"100 RU",							/obj/item/stack/spacecash/c100,						100,	ROOKIE,	sale_price = 100),
@@ -289,7 +290,7 @@ var/list/global_sidormat_list = list(
 	var/itemloc2 = null
 	var/balance = 0
 	var/rating = 0
-	var/switches = 0
+	var/switches = BUY_STUFF
 	var/real_assorment = list()
 	var/list/special_factions = list("Loners", "Bandits")
 	var/path_ending = null
@@ -331,6 +332,34 @@ var/list/global_sidormat_list = list(
 		if(LOW_TIER_COST to HIGH_TIER_COST)
 			high_tier_sidormatitems += src
 	real_sidormat_items += src
+
+/datum/data/stalker_equipment/proc/GetCost()
+	return src.sale_price
+
+/datum/data/stalker_equipment/stalker_pda/GetCost(var/obj/item/device/stalker_pda/KPK)
+	var/cost_ = src.sale_price
+	if(KPK.owner && (KPK.owner.stat == DEAD))
+		var/rank_ = Clamp(KPK.profile.fields["rating"], ROOKIE, ZONE_LEGEND)
+		cost_ += GetCostBasedOnReputation(KPK.profile.fields["reputation"])
+		cost_ += rank_*2
+	return cost_
+
+/proc/GetCostBasedOnReputation(var/rep_)
+	switch(rep_)
+		if(AMAZING to INFINITY)
+			return ((NEUTRAL - rep_) * 20)
+		if(VERYGOOD to AMAZING)
+			return ((NEUTRAL - rep_) * 10)
+		if(GOOD to VERYGOOD)
+			return ((NEUTRAL - rep_) * 5)
+		if(BAD to GOOD)
+			return 0
+		if(VERYBAD to BAD)
+			return ((NEUTRAL - rep_) * 5)
+		if(DISGUSTING to VERYBAD)
+			return ((NEUTRAL - rep_) * 10)
+		if(-INFINITY to DISGUSTING)
+			return ((NEUTRAL - rep_) * 20)
 
 /obj/machinery/stalker/sidormat/New()
 	itemloc = locate(x - 1, y, z)
@@ -386,7 +415,7 @@ var/list/global_sidormat_list = list(
 		dat +="<div class='statusDisplay'>"
 		dat += "Balance: [num2text(balance, 8)] RU<br>"
 		dat += "<br><br>INSTRUCTION: Put habar for sale on the <b>left</b> table.<br>" // Забирать деньги и купленные вещи - на <b>правом</b>.
-		if(!(switches & SHOW_FACTION_EQUIPMENT))
+		if(!(switches & BUY_STUFF))
 			dat +="<A href='?src=\ref[src];choice=take'><b>Sell habar</b></A><br>"
 		if(door_device && sk.fields["degree"])
 			dat +="<A href='?src=\ref[src];basement_toggle=1'><b>Toggle basement door</b></A><br>"
@@ -398,7 +427,7 @@ var/list/global_sidormat_list = list(
 				continue
 			dat += "<tr><td><center><big><b>[L]</b></big></center></td><td></td><td></td></tr>"
 			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
-				if((KPK.eng_faction_s == prize.faction && (KPK.eng_faction_s in special_factions || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
+				if((sk.fields["faction_s"] == prize.faction && ((sk.fields["faction_s"] in special_factions) || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 					//if(rating >= prize.rating)
 					if(get_assortment_level(H) >= prize.assortment_level)
 						dat += "<tr><td>[prize.name]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Buy</A></td></tr>"
@@ -413,7 +442,7 @@ var/list/global_sidormat_list = list(
 		dat +="<div class='statusDisplay'>"
 		dat += "На счету: [num2text(balance, 8)] RU<br>"
 		dat += "<br><br>ИНСТРУКЦИЯ: Хабар складывать - на <b>левом</b> столе.<br>" //Забирать деньги и купленные вещи - на <b>правом</b>.
-		if(!(switches & SHOW_FACTION_EQUIPMENT))
+		if(!(switches & BUY_STUFF))
 			dat +="<A href='?src=\ref[src];choice=take'><b>Сбыть хабар</b></A><br>"
 		if(door_device && sk.fields["degree"])
 			dat +="<A href='?src=\ref[src];basement_toggle=1'><b>Открыть/Закрыть хранилище</b></A><br>"
@@ -425,7 +454,7 @@ var/list/global_sidormat_list = list(
 				continue
 			dat += "<tr><td><center><b>[L]</b></center></td><td></td><td></td></tr>"
 			for(var/datum/data/stalker_equipment/prize in global_sidormat_list[L])
-				if((KPK.eng_faction_s == prize.faction && (KPK.eng_faction_s in special_factions || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
+				if((sk.fields["faction_s"] == prize.faction && ((sk.fields["faction_s"] in special_factions) || (switches & SHOW_FACTION_EQUIPMENT))) || prize.faction == "Everyone")
 					//if(rating >= prize.rating)
 					if(get_assortment_level(H) >= prize.assortment_level)
 						dat += "<tr><td>[prize.name_ru]</td><td>[prize.cost]</td><td><A href='?src=\ref[src];purchase=\ref[prize]'>Купить</A></td></tr>"
@@ -518,7 +547,7 @@ var/list/global_sidormat_list = list(
 		say("No access.")
 		return
 
-	var/list/ontable = GetItemsOnTable()
+	var/list/atom/movable/ontable = GetItemsOnTable()
 	var/total_cost = GetOnTableCost(ontable)
 
 	if(total_cost < 100)
@@ -528,10 +557,10 @@ var/list/global_sidormat_list = list(
 		if(I.loc != itemloc)
 			continue
 
-		sk.fields["money"] += GetCost(I.type)
+		sk.fields["money"] += GetCost(I)
 		balance = sk.fields["money"]
 
-		say("[I] was sold for [GetCost(I.type)].")
+		say("[I] was sold for [GetCost(I)].")
 
 		PlaceInPool(I)
 		CHECK_TICK
@@ -545,7 +574,7 @@ var/list/global_sidormat_list = list(
 /obj/machinery/stalker/sidormat/proc/GetItemsOnTable()
 	var/list/ontable = list()
 	for(var/atom/movable/AM in itemloc)
-		if(!GetCost(AM.type))
+		if(GetCost(AM) <= 0)
 			continue
 
 		if(istype(AM, /obj/item/clothing))
@@ -576,16 +605,16 @@ var/list/global_sidormat_list = list(
 	//var/list/ontable = GetItemsOnTable()
 	var/total_cost = 0
 
-	for(var/atom/item_on_table in ontable)
-		var/cost = GetCost(item_on_table.type)
+	for(var/atom/movable/item_on_table in ontable)
+		var/cost = GetCost(item_on_table)
 		if(cost)
 			total_cost += cost
 	return total_cost
 
-/obj/machinery/stalker/sidormat/proc/GetCost(itemtype)
+/obj/machinery/stalker/sidormat/proc/GetCost(var/obj/item/I)
 	for(var/datum/data/stalker_equipment/se in real_sidormat_items)
-		if(itemtype == se.equipment_path)
-			return se.sale_price
+		if(I.type == se.equipment_path)
+			return se.GetCost(I)
 	return 0
 
 /obj/machinery/stalker/sidormat/ex_act(severity, target)
