@@ -30,16 +30,18 @@
 	return 1
 
 /mob/living/carbon/human/rad_act(amount)
-	if(amount)
-		//var/blocked = run_armor_check(null, "rad"/*, "Your clothes feel warm.", "Your clothes feel warm."*/)
-		var/blocked = getarmor_rad()
-		//blocked += src.global_armor[attack_flag]
+	if(amount <= 0)
+		return
 
-		amount = max(0, ((amount * 0.75) - blocked)*(1 - blocked/100))
+	//var/blocked = run_armor_check(null, "rad"/*, "Your clothes feel warm.", "Your clothes feel warm."*/)
+	var/blocked = getarmor_rad()
+	//blocked += src.global_armor[attack_flag]
 
-		apply_effect(amount, IRRADIATE, 0)
-		for(var/obj/I in src) //Radiation is also applied to items held by the mob
-			I.rad_act(amount)
+	amount = max(0, (amount - blocked)*(1 - blocked/100))
+
+	apply_effect(amount, IRRADIATE, 0)
+	for(var/obj/I in src) //Radiation is also applied to items held by the mob
+		I.rad_act(amount)
 
 /mob/living/carbon/human/proc/getarmor_rad()
 	var/armorval = 0
