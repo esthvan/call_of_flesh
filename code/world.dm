@@ -217,7 +217,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += "byond 512 ONLY"
 	s += ")"
 
-	s += "<br><br><b>Discord</b>: <a href=\"https://discord.gg/aBkc6NK\">https://discord.gg/P3EMVBW</a>"
+	s += "<br><br><b>Discord</b>: <a href=\"https://discord.gg/P3EMVBW\">Lebensraum</a>"
 
 	if(ticker)
 		if(master_mode)
@@ -239,12 +239,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		s += "<br><b>Respawn</b>: Disabled"
 
 	if (config)
-		s += "<br><b>Restart Vote: </b>"
+		s += "<br><b>Restart Vote</b>:"
 
-	s += config.allow_vote_restart ? "Can be forced by players" : "Disabled"
+	s += config.allow_vote_restart ? "Enabled" : "Disabled"
 
 	if (!host && config && config.hostedby)
-		s += "<br>Hosted by: <b>Lebensraum</b><br><br>"
+		s += "<br><b>Hosted by</b>: Lebensraum<br>"
 /*
 	var/n = 0
 	for (var/mob/M in player_list)
