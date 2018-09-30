@@ -111,9 +111,9 @@ var/list/obj/machinery/stalker/sidorpoint/cps = list()
 		say("No access.")
 		return
 
-	if(sk.fields["faction_s"] == "Loners" || sk.fields["faction_s"] == "Bandits")
-		say("No access.")
-		return
+	//if(sk.fields["faction_s"] == "Loners" || sk.fields["faction_s"] == "Bandits")
+	//	say("No access.")
+	//	return
 
 	if(control_percent == 100 && controlled_by == sk.fields["faction_s"])
 		say("[get_area(src).name] is already captured!")
@@ -178,12 +178,13 @@ var/list/obj/machinery/stalker/sidorpoint/cps = list()
 		return
 
 	if(control_percent in 1 to 100)
-		if(control_percent >= 50)
+		//if(control_percent >= 50)
 
-			control_percent = min(100, control_percent + 2)
+		//	control_percent = min(100, control_percent + 2)
 
-		else
+		//else
 
+		if(capturing_faction)
 			control_percent -= 2
 			if(control_percent <= 0)
 

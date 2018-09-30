@@ -309,7 +309,7 @@ var/record_id_num = 1001
 		if(sk.fields["faction_s"] == "Bandits")
 			sk.fields["money"] = 2000
 		else if(sk.fields["faction_s"] == "Monolith")
-			sk.fields["money"] = 1000
+			sk.fields["money"] = 2000
 		else
 			sk.fields["money"] = 5000
 

@@ -2,8 +2,8 @@
 	title = "Monolith"
 	faction_s = "Monolith"
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "Major"
 	selection_color = "#601919"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -26,10 +26,9 @@
 	belt = /obj/item/weapon/kitchen/knife/tourist
 	gloves = /obj/item/clothing/gloves/fingerless
 	id = /obj/item/device/stalker_pda
-	suit_store = /obj/item/weapon/gun/projectile/automatic/berettam38
+	suit_store = /obj/item/weapon/gun/projectile/revolver/bm16/sawnoff
 	shoes = /obj/item/clothing/shoes/jackboots/warm
-	backpack_contents = list(/obj/item/ammo_box/magazine/stalker/berettam38 = 1,
-							/obj/item/device/flashlight/seclite = 1)
+	backpack_contents = list(/obj/item/device/flashlight/seclite = 1)
 	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
