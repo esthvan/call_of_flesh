@@ -1,9 +1,9 @@
 /datum/job/monolith
 	title = "Monolith"
 	faction_s = "Monolith"
-	faction = "Monolith"
-	total_positions = 4
-	spawn_positions = 4
+	faction = "Station"
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "Major"
 	selection_color = "#601919"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -60,7 +60,7 @@
 /datum/job/monolith_hegumen
 	title = "Monolith Hegumen"
 	faction_s = "Monolith"
-	faction = "Monolith"
+	faction = "Station"
 	total_positions = 2
 	locked = 1
 	spawn_positions = 2

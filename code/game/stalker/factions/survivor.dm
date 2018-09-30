@@ -45,7 +45,7 @@ Assistant
 
 
 /datum/outfit/job/assistant
-	name = "Stalker"
+	name = "Loner"
 	faction_s = "Loners"
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
@@ -62,7 +62,7 @@ Assistant
 	r_pocket =pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/stack/medical/gauze/bint,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/outfit/stalker  // For select_equipment
-	name = "Stalker"
+	name = "Loner"
 	uniform = /obj/item/clothing/under/color/switer
 	suit = /obj/item/clothing/suit/hooded/kozhanka
 	ears = null

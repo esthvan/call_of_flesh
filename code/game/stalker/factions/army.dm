@@ -66,7 +66,7 @@ Assistant
 	title = "Petrovich"
 	faction_s = "Army"
 	outfit = /datum/outfit/job/petrovich
-	faction = "Военный"
+	faction = "Station"
 	total_positions = -1
 	locked = 1
 	spawn_positions = -1
