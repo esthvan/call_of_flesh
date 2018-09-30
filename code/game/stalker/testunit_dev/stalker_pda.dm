@@ -713,7 +713,7 @@ var/global/global_lentahtml = ""
 				set_owner_info(profile)
 
 				for(var/obj/item/device/stalker_pda/KPK in KPKs)
-					if(KPK.owner == src.owner)
+					if((KPK != src) && (KPK.owner == src.owner))
 						KPK.registered_name = null
 						KPK.eng_faction_s = null
 						KPK.rus_faction_s = null
@@ -1493,6 +1493,8 @@ var/global/global_lentahtml = ""
 			factioncolor = "#ff4d4d"
 		if("Freedom")
 			factioncolor = "#6cba3f"
+		if("Monolith")
+			factioncolor = "#7c26d3"
 	return factioncolor
 
 /proc/get_rep_name(var/rep)
