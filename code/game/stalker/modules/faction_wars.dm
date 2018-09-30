@@ -177,7 +177,7 @@ var/list/obj/machinery/stalker/sidorpoint/cps = list()
 
 		return
 
-	if(control_percent in 1 to 99)
+	if(control_percent in 1 to 100)
 		if(control_percent >= 50)
 
 			control_percent = min(100, control_percent + 2)
