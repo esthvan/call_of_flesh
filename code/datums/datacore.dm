@@ -281,7 +281,7 @@ var/record_id_num = 1001
 		//Разработка сталкера
 		var/datum/data/record/sk = new()
 
-		sk.fields["reputation"]		= 1000
+		sk.fields["reputation"]		= NEUTRAL
 		sk.fields["photo_front"]	= photo_front
 		sk.fields["photo_west"]		= photo_west
 		sk.fields["photo_east"]		= photo_east
@@ -307,9 +307,11 @@ var/record_id_num = 1001
 			sk.fields["faction_s"]	= "Loners"
 
 		if(sk.fields["faction_s"] == "Bandits")
-			sk.fields["money"]			= 2000
+			sk.fields["money"] = 2000
+		else if(sk.fields["faction_s"] == "Monolith")
+			sk.fields["money"] = 500
 		else
-			sk.fields["money"]			= 5000
+			sk.fields["money"] = 5000
 
 		stalkers += sk
 	return
