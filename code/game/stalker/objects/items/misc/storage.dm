@@ -172,6 +172,7 @@
 
 /obj/item/weapon/storage/internal_slot/gun_case
 	name = "mounted gan case"
-	max_w_class = 4
-	max_combined_w_class = 4
+	can_hold = list(/obj/item/weapon/gun/projectile)
+	max_w_class = 6
+	max_combined_w_class = 6
 	storage_slots = 1
