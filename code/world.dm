@@ -243,8 +243,8 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	s += config.allow_vote_restart ? "Enabled" : "Disabled"
 
-	if (!host && config && config.hostedby)
-		s += "<br><b>Hosted by</b>: Lebensraum<br>"
+	//if (!host && config && config.hostedby)
+	//	s += "<br><b>Hosted by</b>: Lebensraum<br>"
 /*
 	var/n = 0
 	for (var/mob/M in player_list)
