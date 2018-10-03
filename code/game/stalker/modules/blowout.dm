@@ -1,5 +1,6 @@
 var/datum/subsystem/blowout/StalkerBlowout
-var/global/isblowout = 0
+var/isblowout = 0
+var/blowout_count = 0
 
 /mob/living/carbon
 	var/inshelter = 0
@@ -219,6 +220,7 @@ var/global/isblowout = 0
 	for(var/obj/item/device/stalker_pda/KPK in KPKs)
 		KPK.lentahtml = ""
 
+	blowout_count++
 	add_lenta_message(null, "0", "Sidorovich", "Loners", "Blowout is over! Leave the shelter.")
 
 	for(var/datum/data/record/sk in data_core.stalkers)

@@ -90,6 +90,10 @@ var/list/obj/machinery/stalker/sidorpoint/cps = list()
 	if(..())
 		return
 
+	if(!blowout_count)
+		say("Psy emission damaged relay. Come after next blowout.")
+		return
+
 	if(!istype(user,/mob/living/carbon/human))
 		say("You are not a human.")
 		return
