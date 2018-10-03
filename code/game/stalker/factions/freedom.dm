@@ -44,7 +44,6 @@
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b55645 = 1,
 							/obj/item/ammo_box/magazine/stalker/m556x45 = 2,)
-	r_pocket = /obj/item/weapon/stalker/bolts
 	faction_s = "Freedom"
 
 /datum/outfit/freedom/pre_equip(mob/living/carbon/human/H)
@@ -53,7 +52,6 @@
 	suit = /obj/item/clothing/suit/hooded/kombez/veter
 	ears = null
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
-	r_pocket =/obj/item/weapon/stalker/bolts
 
 /datum/job/freedom_lieutenant
 	title = "Freedom Lieutenant"
@@ -85,5 +83,4 @@
 	backpack_contents = list(/obj/item/ammo_box/stalker/b9x19 = 1,
 							/obj/item/device/flashlight/seclite = 1)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
-	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)

@@ -32,7 +32,6 @@ Assistant
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
 							/obj/item/device/flashlight/seclite = 1)
-	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/outfit/duty  // For select_equipment
@@ -49,7 +48,6 @@ Assistant
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1,
 							/obj/item/ammo_box/magazine/stalker/m545 = 2,)
-	r_pocket = /obj/item/weapon/stalker/bolts
 	faction_s = "Duty"
 
 /datum/outfit/duty/pre_equip(mob/living/carbon/human/H)
@@ -59,7 +57,6 @@ Assistant
 	//back2 = /obj/item/weapon/gun/projectile/automatic/aksu74
 	ears = null
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
-	r_pocket =/obj/item/weapon/stalker/bolts
 
 /datum/job/barman2
 	title = "Barman2"
@@ -122,5 +119,4 @@ Assistant
 	suit_store = /obj/item/weapon/gun/projectile/shotgun/ithaca
 	backpack_contents = list(/obj/item/device/flashlight/seclite = 1)
 	shoes = /obj/item/clothing/shoes/jackboots/warm
-	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)

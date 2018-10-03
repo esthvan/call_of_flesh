@@ -175,6 +175,40 @@
 	else
 		icon_state = "pull0"
 
+/obj/screen/bolt
+	name = "bolt"
+	icon = 'icons/mob/screen_midnight.dmi'
+	icon_state = "bolt"
+	layer = 19
+	var/lastuse = 0
+
+/obj/screen/bolt/Click()
+	if((lastuse + 5) > world.time)
+		return
+
+	lastuse = world.time
+
+	if(!iscarbon(usr))
+		return
+
+	var/mob/living/carbon/C = usr
+
+	if(C.lying)
+		return
+
+	if(C.get_active_hand())
+		return
+
+	//usr.changeNext_move(CLICK_CD_MELEE)
+
+	var/obj/item/weapon/stalker/bolt/P = PoolOrNew(/obj/item/weapon/stalker/bolt)
+	P.loc = usr.loc
+	usr.put_in_hands(P)
+
+	C.throw_mode_on()
+
+	return
+
 /obj/screen/resist
 	name = "resist"
 	icon = 'icons/mob/screen_midnight.dmi'

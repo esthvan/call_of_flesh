@@ -80,7 +80,11 @@ Assistant
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	mask = /obj/item/clothing/mask/balaclava
 	back = /obj/item/weapon/storage/backpack/stalker/tourist
-	backpack_contents = list(/obj/item/stack/spacecash/c5000 = 1, /obj/item/ammo_box/stalker/b9x19 = 1, /obj/item/ammo_box/magazine/stalker/m9x19mp5 = 1, /obj/item/ammo_box/magazine/stalker/m9x18pm = 1, /obj/item/weapon/stalker/bolts = 1, /obj/item/device/flashlight/seclite = 1)
+	backpack_contents = list(/obj/item/stack/spacecash/c5000 = 1,
+							/obj/item/ammo_box/stalker/b9x19 = 1,
+							/obj/item/ammo_box/magazine/stalker/m9x19mp5 = 1,
+							/obj/item/ammo_box/magazine/stalker/m9x18pm = 1,
+							/obj/item/device/flashlight/seclite = 1)
 	l_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti
 	r_pocket = /obj/item/weapon/gun/projectile/automatic/pistol/pm
 
@@ -98,7 +102,9 @@ Assistant
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	head = /obj/item/clothing/head/bowler
 	back = /obj/item/weapon/storage/backpack/stalker/tourist
-	backpack_contents = list(/obj/item/stack/spacecash/c5000 = 3, /obj/item/ammo_box/stalker/b12x70 = 1, /obj/item/weapon/stalker/bolts = 1, /obj/item/device/flashlight/seclite = 1)
+	backpack_contents = list(/obj/item/stack/spacecash/c5000 = 3,
+						/obj/item/ammo_box/stalker/b12x70 = 1,
+						/obj/item/device/flashlight/seclite = 1)
 	l_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/konserva/shproti
 	r_pocket = /obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/kazaki
 
@@ -115,7 +121,6 @@ Assistant
 	mask = /obj/item/clothing/mask/balaclava
 	back = /obj/item/weapon/storage/backpack/stalker/tourist
 	backpack_contents = list(/obj/item/stack/spacecash/c1000 = 1, /obj/item/ammo_box/magazine/stalker/m9x18pm =  2)
-	l_pocket = /obj/item/weapon/stalker/bolts
 	r_pocket = /obj/item/weapon/gun/projectile/automatic/pistol/pm
 
 /datum/outfit/bandit/pre_equip(mob/living/carbon/human/H)

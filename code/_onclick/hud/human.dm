@@ -192,6 +192,11 @@
 	using.screen_loc = ui_pull_resist
 	hotkeybuttons += using
 
+	using = new /obj/screen/bolt()
+	using.icon = 'icons/mob/screen_midnight.dmi'//ui_style
+	using.screen_loc = ui_bolt
+	hotkeybuttons += using
+
 	using = new /obj/screen/human/toggle()
 	using.icon = ui_style
 	using.screen_loc = ui_inventory

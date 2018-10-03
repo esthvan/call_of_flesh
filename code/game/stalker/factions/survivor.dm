@@ -58,7 +58,6 @@ Assistant
 	gloves = /obj/item/clothing/gloves/fingerless
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list()
-	l_pocket = /obj/item/weapon/stalker/bolts
 	r_pocket =pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/stack/medical/gauze/bint,/obj/item/weapon/reagent_containers/food/snacks/stalker/konserva,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/outfit/stalker  // For select_equipment
@@ -72,7 +71,6 @@ Assistant
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/stack/spacecash/c5000 = 1, /obj/item/weapon/storage/box/matches = 1)
 	back = /obj/item/weapon/storage/backpack/stalker/civilian
-	l_pocket = /obj/item/weapon/stalker/bolts
 	r_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa
 	faction_s = "Loners"
 
@@ -105,6 +103,5 @@ Assistant
 	backpack_contents = list(/obj/item/ammo_box/stalker/b545 = 1, /obj/item/ammo_box/magazine/stalker/m545 = 2, /obj/item/weapon/reagent_containers/pill/stalker/aptechka/civilian = 1, /obj/item/stack/spacecash/c5000 = 1)
 	suit_store = /obj/item/weapon/gun/projectile/automatic/ak74
 	back = /obj/item/weapon/storage/backpack/stalker/tourist
-	l_pocket = /obj/item/weapon/stalker/bolts
 	r_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/konserva
 	faction_s = "Loners"

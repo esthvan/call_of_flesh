@@ -34,7 +34,6 @@
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/device/flashlight/seclite = 1,
 							/obj/item/ammo_box/magazine/stalker/m9x19mp5 = 1)
-	r_pocket = /obj/item/weapon/stalker/bolts
 
 /datum/outfit/mercenary  // For select_equipment
 	name = "Mercenary"
@@ -53,7 +52,6 @@
 							/obj/item/weapon/reagent_containers/pill/stalker/aptechka/army = 1,
 							/obj/item/weapon/gun/projectile/automatic/pistol/sip = 1,
 							/obj/item/device/flashlight/seclite = 1)
-	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = /obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa
 	faction_s = "Mercenaries"
 
@@ -63,7 +61,6 @@
 	suit = /obj/item/clothing/suit/hooded/kombez/mercenary
 	//back2 = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
 	suit_store = pick(/obj/item/weapon/gun/projectile/automatic/mp5, /obj/item/weapon/gun/projectile/shotgun/chaser)
-	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/job/mercenary_sql
@@ -100,4 +97,3 @@
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/device/flashlight/seclite = 1,
 							/obj/item/ammo_box/magazine/stalker/m9x19mp5 = 3)
-	r_pocket = /obj/item/weapon/stalker/bolts

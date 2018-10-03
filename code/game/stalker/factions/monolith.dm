@@ -29,7 +29,6 @@
 	suit_store = /obj/item/weapon/gun/projectile/revolver/bm16/sawnoff
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/device/flashlight/seclite = 1)
-	r_pocket = /obj/item/weapon/stalker/bolts
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
 
 /datum/outfit/monolith  // For select_equipment
@@ -46,7 +45,6 @@
 	shoes = /obj/item/clothing/shoes/jackboots/warm
 	backpack_contents = list(/obj/item/ammo_box/magazine/stalker/berettam38 = 1,
 							/obj/item/device/flashlight/seclite = 1)
-	r_pocket = /obj/item/weapon/stalker/bolts
 	faction_s = "Monolith"
 
 /datum/outfit/monolith/pre_equip(mob/living/carbon/human/H)
@@ -54,7 +52,6 @@
 	uniform = UNIFORMPICK
 	ears = null
 	l_pocket = pick(/obj/item/weapon/reagent_containers/food/snacks/stalker/kolbasa,/obj/item/weapon/reagent_containers/food/snacks/stalker/baton)
-	r_pocket = /obj/item/weapon/stalker/bolts
 
 /datum/job/monolith_hegumen
 	title = "Monolith Hegumen"
