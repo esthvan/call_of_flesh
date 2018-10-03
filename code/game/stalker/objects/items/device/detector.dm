@@ -189,6 +189,7 @@
 	anchored = 1
 	opacity = 0
 	layer = 3.5
+	plane = GAME_PLANE
 	var/image/currentimage = null
 	var/image/up
 	var/obj/item/weapon/artifact/my_target = null
