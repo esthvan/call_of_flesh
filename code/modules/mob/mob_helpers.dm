@@ -98,7 +98,7 @@
 		newphrase+="[newletter]";counter-=1
 	return newphrase*/
 
-proc/slur(phrase)
+/proc/slur(phrase)
 	phrase = rhtml_decode(sanitize_simple(phrase))
 	var/output = ""
 
@@ -109,7 +109,7 @@ proc/slur(phrase)
 			continue
 		if(letter == "&")
 			if(findtext(phrase, ";", i))
-				letter = copytext(phrase, i, findtext(phrase, ";", i))
+				letter = copytext(phrase, i, findtext(phrase, ";", i) + 1)
 				i = findtext(phrase, ";", i)
 		if(prob(33))
 			if(lowerrustext(letter)=="î")	letter="ó"
@@ -148,7 +148,7 @@ proc/slur(phrase)
 		var/n_letter = copytext(te, p, p + 1)//copies text from a certain distance. In this case, only one letter at a time.
 		if(n_letter == "&")
 			if(findtext(te, ";", p))
-				n_letter = copytext(te, p, findtext(te, ";", p))
+				n_letter = copytext(te, p, findtext(te, ";", p) + 1)
 				p = findtext(te, ";", p)
 		if (prob(80) && (lowertext(n_letter) in list("á","â","ã","ä","æ","ç","ê","ë","ì","í","ï","ð","ñ","ò","ô","÷","õ","ö","ø","ù","b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")))
 			if (prob(10))
@@ -163,7 +163,7 @@ proc/slur(phrase)
 						n_letter = text("[n_letter]-[n_letter]")
 		t = text("[t][n_letter]")//since the above is ran through for each letter, the text just adds up back to the original word.
 		p++//for each letter p is increased to find where the next letter will be.
-	return copytext(sanitize_russian(t),1,MAX_MESSAGE_LEN)
+	return copytext(sanitize(t),1,MAX_MESSAGE_LEN)
 
 /proc/derpspeech(message, stuttering)
 	message = replacetext(message, " am ", " ")
