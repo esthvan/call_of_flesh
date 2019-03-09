@@ -644,7 +644,7 @@
 		//internal_cache = null
 		return
 
-	if(get_area(src).controlled_by && get_area(src))
+	if(get_area(src).safezone || (get_area(src).controlled_by && get_area(src)))
 		return
 
 	switch(cache_size)
