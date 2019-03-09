@@ -338,6 +338,13 @@
 				return
 
 		if(href_list["pockets"])
+			if(get_area(src.loc).safezone || get_area(usr.loc).safezone)
+				if(usr.client && (usr.client.prefs.chat_toggles & CHAT_LANGUAGE))
+					usr << "<span class='warning'>You can't unequip people in the safezone!</span>"
+				else
+					usr << "<span class='warning'>¬ы не можете раздевать людей в этой зоне!</span>"
+				return
+
 			var/pocket_side = href_list["pockets"]
 			var/pocket_id = (pocket_side == "right" ? slot_r_store : slot_l_store)
 			var/obj/item/pocket_item = (pocket_id == slot_r_store ? r_store : l_store)

@@ -734,8 +734,7 @@ Sorry Giacom. Please don't be mad :(
 // The src mob is trying to strip an item from someone
 // Override if a certain type of mob should be behave differently when stripping items (can't, for example)
 /mob/living/stripPanelUnequip(obj/item/what, mob/who, where)
-	var/area/B = get_area(src.loc)
-	if(B.safezone)
+	if(get_area(src.loc).safezone || get_area(who.loc).safezone)
 		if(src.client && (src.client.prefs.chat_toggles & CHAT_LANGUAGE))
 			src << "<span class='warning'>You can't unequip people in the safezone!</span>"
 		else
