@@ -121,8 +121,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/Move(NewLoc, direct)
 	..()
-	if(!(src.client && src.client.holder))
-		return 0
+	//if(!(src.client && src.client.holder))
+	//	return 0
 	if(NewLoc)
 		loc = NewLoc
 		for(var/obj/effect/step_trigger/S in NewLoc)
@@ -140,8 +140,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		else if((direct & WEST) && x > 1)
 			x--
 		*/
-	for(var/obj/effect/step_trigger/S in NewLoc)
-		S.Crossed(src)
+	//for(var/obj/effect/step_trigger/S in NewLoc)
+	//	S.Crossed(src)
 	//HandleFollowers()
 
 /mob/dead/observer/is_active()
