@@ -363,7 +363,7 @@
 		SSobj.processing.Remove(src)
 
 /obj/anomaly/jarka/Uncrossed(atom/A)
-	..()
+	//..()
 	if(istype(A, /mob/living))
 		var/mob/living/L = A
 		src.trapped.Remove(L)
@@ -446,6 +446,7 @@
 				/obj/item/weapon/artifact/mica = 3,
 				/obj/item/weapon/artifact/firefly = 1.5
 				)
+	var/obj/anomaly/holodec/splash/son = null
 
 /obj/anomaly/holodec/New()
 	..()
@@ -456,7 +457,7 @@
 	SSobj.processing.Remove(src)
 
 /obj/anomaly/holodec/Uncrossed(atom/A)
-	..()
+	//..()
 	if(istype(A, /mob/living))
 		var/mob/living/L = A
 		src.trapped.Remove(L)
@@ -488,6 +489,8 @@
 
 	qdel(I)
 
+//HOLODEC 2.0
+/*
 /obj/anomaly/holodec/process()
 	var/new_dir = rand(1, 10)
 
@@ -502,6 +505,25 @@
 
 	var/obj/anomaly/holodec/splash/son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, new_dir))
 	src.do_attack_animation(son, 0)
+*/
+
+//HOLODEC 3.0
+
+/obj/anomaly/holodec/process()
+	if(son)
+		if(son.stage == DEATH_STAGE)
+			son = null
+		else
+			return
+	var/obj/item/I = locate(/obj/item) in view(1, src)
+	if(I && !I.unacidable && !(locate(/obj/anomaly/holodec) in get_step(src, get_dir(src, I))))
+		son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, get_dir(src, I)))
+		src.do_attack_animation(son, 0)
+		return
+	var/mob/living/L = locate(/mob/living) in view(1, src)
+	if(L && !locate(/obj/anomaly/holodec) in get_step(src, get_dir(src, L)))
+		son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, get_dir(src, L)))
+		src.do_attack_animation(son, 0)
 
 /obj/anomaly/holodec/splash
 	cooldown = 2
@@ -517,7 +539,7 @@
 	active_invisibility = 0
 	inactive_invisibility = 0
 	loot = list()
-	var/spawn_time = 0
+	var/stage = DEATH_STAGE
 
 /obj/anomaly/holodec/splash/ApplyEffects()
 	playsound(src.loc, src.sound, 50, 1, channel = 0)
@@ -525,27 +547,37 @@
 
 /obj/anomaly/holodec/splash/New()
 	//..()
-	spawn_time = world.time
+	//spawn_time = world.time
+	stage = BIRTH_STAGE
 	SSobj.processing.Add(src)
 	flick("holodec_splash_creation", src)
 	invisibility = inactive_invisibility
-	damage_amount = 0
-	sleep(8)
-	damage_amount = initial(damage_amount)
 	if(src && get_turf(src))
+		for(var/obj/item/I in get_turf(src).contents)
+			Crossed(I)
+
 		for(var/mob/living/L in get_turf(src).contents)
 			Crossed(L)
+	//damage_amount = 0
+	//sleep(6)
+	//damage_amount = initial(damage_amount)
+	//if(src && get_turf(src))
+	//	for(var/mob/living/L in get_turf(src).contents)
+	//		Crossed(L)
 /*
 /obj/anomaly/holodec/splash/Destroy()
 	//..()
 	SSobj.processing.Remove(src)
 */
 /obj/anomaly/holodec/splash/process()
-	if(spawn_time + 15 <= world.time)
-		flick("holodec_splash_destruction", src)
-		damage_amount = 0
+	//if(stage == BIRTH_STAGE)
+	//	stage = MIDAGE_STAGE
+	//	flick("holodec_splash_destruction", src)
+	//	damage_amount = 16
+	//	return
 
-	if(spawn_time + 25 <= world.time)
+	if(stage == BIRTH_STAGE)
+		stage = DEATH_STAGE
 		invisibility = 101
 		src.trapped = list()
 		PlaceInPool(src)
@@ -563,7 +595,7 @@
 	inactive_invisibility = 0
 
 /obj/anomaly/puh/Uncrossed(atom/A)
-	..()
+	//..()
 	if(istype(A, /mob/living))
 		var/mob/living/L = A
 		src.trapped.Remove(L)
