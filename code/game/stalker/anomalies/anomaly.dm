@@ -516,7 +516,7 @@
 		else
 			return
 	var/obj/item/I = locate(/obj/item) in view(1, src)
-	if(I && !I.unacidable && !(locate(/obj/anomaly/holodec) in get_step(src, get_dir(src, I))))
+	if(I && !istype(I, /obj/item/weapon/artifact) && !I.unacidable && !(locate(/obj/anomaly/holodec) in get_step(src, get_dir(src, I))))
 		son = PoolOrNew(/obj/anomaly/holodec/splash, get_step(src, get_dir(src, I)))
 		src.do_attack_animation(son, 0)
 		return
