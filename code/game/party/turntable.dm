@@ -62,13 +62,14 @@
 	icon_state = "radio1"
 	//var/timer_id = 0
 	var/transition = 0
-	var/play_song_cost = 1000
+	var/play_song_cost = 250
 	var/skip_song_cost = 500
 	var/start_time = 0
 	var/collected_money = 0
 	var/obj/item/weapon/disk/music/disk
 	var/playing = 1
 	var/datum/data/turntable_soundtrack/track = null
+	var/datum/data/turntable_soundtrack/next_track = null
 	var/volume = 40
 	var/list/mob/melomans = list()
 	var/list/turntable_soundtracks = list(
@@ -102,15 +103,15 @@
 		new /datum/data/turntable_soundtrack ("Firelake",			"Dirge For The Planet",				'sound/turntable/dirge_for_the_planet.ogg',					2850),
 		new /datum/data/turntable_soundtrack ("Firelake",			"Live To Forget",					'sound/turntable/live_to_forget.ogg',						2960),
 		new /datum/data/turntable_soundtrack ("Freedom",			"Smoke Weed",						'sound/turntable/freedom_radio.ogg',						1140),
-		new /datum/data/turntable_soundtrack ("Gazmanov M",		"Putana",							'sound/turntable/putana.ogg',								2460),
-		new /datum/data/turntable_soundtrack ("Krug M",			"Kolschik",							'sound/turntable/kolshik.ogg',								2850),
+		new /datum/data/turntable_soundtrack ("Gazmanov M",			"Putana",							'sound/turntable/putana.ogg',								2460),
+		new /datum/data/turntable_soundtrack ("Krug M",				"Kolschik",							'sound/turntable/kolshik.ogg',								2850),
 		new /datum/data/turntable_soundtrack ("Kino",				"Gruppa Krovy",						'sound/turntable/kino_gruppa_krovi.ogg',					2030),
 		new /datum/data/turntable_soundtrack ("Kino",				"Zvezda Po Imeni Soltnse",			'sound/turntable/kino_zvezda_po_imeni_solntse.ogg',			2245),
 		new /datum/data/turntable_soundtrack ("Korol I Shut",		"Kukla kolduna",					'sound/turntable/korol_i_shut_kukila_kolduna.ogg',			2040),
 		new /datum/data/turntable_soundtrack ("Korol I Shut",		"Lesnik",							'sound/turntable/korol_i_shut_lesnik.ogg',					1910),
 		new /datum/data/turntable_soundtrack ("Kraski",				"Mama ya polubila bandita",			'sound/turntable/kraski_ya_polubila_bandita.ogg',			2020),
 		new /datum/data/turntable_soundtrack ("Krovostok",			"Kurtec",							'sound/turntable/krovostok_kurtec.ogg',						2400),
-		new /datum/data/turntable_soundtrack ("Leps G",			"Rumka Vodki Na Stole",				'sound/turntable/rumka.ogg',								2360),
+		new /datum/data/turntable_soundtrack ("Leps G",				"Rumka Vodki Na Stole",				'sound/turntable/rumka.ogg',								2360),
 		new /datum/data/turntable_soundtrack ("Leprikonsy",			"Hali-Gali, Paratruper",			'sound/turntable/leprikonsy_paratruper.ogg',				2060),
 		new /datum/data/turntable_soundtrack ("Lumen",				"Sid i Nensi",						'sound/turntable/lumen_sid_i_nensi.ogg',					2340),
 		new /datum/data/turntable_soundtrack ("Malchishnik",		"V poslendiy raz",					'sound/turntable/malchishnik_posledniy_raz.ogg',			3350),
@@ -120,14 +121,14 @@
 		new /datum/data/turntable_soundtrack ("Mumiy Troll",		"Delfiny",							'sound/turntable/mumiy_troll_delfiny.ogg',					2780),
 		new /datum/data/turntable_soundtrack ("Mumiy Troll",		"Utekay",							'sound/turntable/mumiy_troll_utekay.ogg',					1410),
 		new /datum/data/turntable_soundtrack ("Mumiy Troll",		"Vladivostok 2000",					'sound/turntable/mumiy_troll_vladivostok2000.ogg',			1610),
-		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Apostol Andrey",					'sound/turntable/nautilus_pompilius_apostol_andrey.ogg',	2170),
-		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Krylya",							'sound/turntable/nautilus_pompilius_krylya.ogg',			2080),
-		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Skovanie",							'sound/turntable/nautilus_pompilius_skovanye.ogg',			2530),
-		new /datum/data/turntable_soundtrack ("Nautilus Pomilius",	"Ya hochu byt s toboy",				'sound/turntable/nautilus_pompilius_ya_hochu_byt_s_toboy.ogg',2710),
+		new /datum/data/turntable_soundtrack ("Nautilus Pompilius",	"Apostol Andrey",					'sound/turntable/nautilus_pompilius_apostol_andrey.ogg',	2170),
+		new /datum/data/turntable_soundtrack ("Nautilus Pompilius",	"Krylya",							'sound/turntable/nautilus_pompilius_krylya.ogg',			2080),
+		new /datum/data/turntable_soundtrack ("Nautilus Pompilius",	"Skovanie",							'sound/turntable/nautilus_pompilius_skovanye.ogg',			2530),
+		new /datum/data/turntable_soundtrack ("Nautilus Pompilius",	"Ya hochu byt s toboy",				'sound/turntable/nautilus_pompilius_ya_hochu_byt_s_toboy.ogg',2710),
 		new /datum/data/turntable_soundtrack ("Narodnaya Russkaya",	"Kaztosky Kick",					'sound/turntable/tf2_kazotsky_kic.ogg',						670),
 		new /datum/data/turntable_soundtrack ("Noggano",			"Armiya",							'sound/turntable/noggano_armiya.ogg',						3890),
-		new /datum/data/turntable_soundtrack ("Okean Elxi",			"Obime",							'sound/turntable/okean_elzi_obime.ogg',						2260),
-		new /datum/data/turntable_soundtrack ("Oken Elzi",			"Vidpusti",							'sound/turntable/okean_elzi_vidpusti.ogg',					2300),
+		new /datum/data/turntable_soundtrack ("Okean Elzi",			"Obime",							'sound/turntable/okean_elzi_obime.ogg',						2260),
+		new /datum/data/turntable_soundtrack ("Okean Elzi",			"Vidpusti",							'sound/turntable/okean_elzi_vidpusti.ogg',					2300),
 		new /datum/data/turntable_soundtrack ("Phil Collins",		"In The Air Tonight",				'sound/turntable/phil_collins_in_the_air_tonight.ogg',		3300),
 		new /datum/data/turntable_soundtrack ("Propaganda",			"Belim Melom",						'sound/turntable/propaganda_belim_melom.ogg',				1740),
 		new /datum/data/turntable_soundtrack ("Ranetki",			"O tebe",							'sound/turntable/ranetki_o_tebe.ogg',						1650),
@@ -218,7 +219,7 @@
 		else
 			dat += "<br><A href='?src\ref[src];turn_on=\ref[src]'>Turn On</A>"
 	dat += "<br><A href='?src=\ref[src];skip=\ref[src]'>Skip</A> - <b>[skip_song_cost] RU</b>"
-	dat += "<br>Play your song - <b>[play_song_cost] RU</b>"
+	dat += "<br>Choose next song - <b>[play_song_cost] RU</b>"
 	dat += "<br>Volume: <b>[volume]%</b>"
 	dat += "</div>"
 	dat += "<div class='lenta_scroll'>"
@@ -273,7 +274,11 @@
 			say("Jukebox is turned off.")
 			return
 
-		if(alert("Do you want to play [TS.name] for [play_song_cost] RU?", "Turntable", "Yes", "No") == "No")
+		if(next_track)
+			say("Next song is already picked: [next_track.f_name] - [next_track.name]")
+			return
+
+		if(alert("Do you want to play [TS.name] next for [play_song_cost] RU?", "Turntable", "Yes", "No") == "No")
 			return
 
 		if(transition)
@@ -289,7 +294,9 @@
 			return
 
 		//deltimer(timer_id)
-		skip_song(TS)
+		//skip_song(TS)
+		next_track = TS
+		say("Playing next: [next_track.f_name] - [next_track.name]")
 
 		KPK.profile.fields["money"] -= play_song_cost
 		collected_money += play_song_cost
@@ -301,6 +308,10 @@
 			say("Jukebox is turned off.")
 			return
 
+		//if(next_track)
+		//	say("You can't skip picked song.")
+		//	return
+
 		if(skip_song_cost > KPK.profile.fields["money"])
 			say("You don't have enough money to skip a song.")
 			updateUsrDialog()
@@ -310,7 +321,7 @@
 			return
 
 		//deltimer(timer_id)
-		skip_song()
+		skip_song(next_track)
 
 		KPK.profile.fields["money"] -= skip_song_cost
 		collected_money += skip_song_cost
@@ -341,7 +352,8 @@
 	if(playing)
 		update_sound()
 
-/obj/machinery/party/turntable/proc/skip_song(var/datum/data/turntable_soundtrack/TS = pick(turntable_soundtracks))
+/obj/machinery/party/turntable/proc/skip_song(var/datum/data/turntable_soundtrack/TS = pick(turntable_soundtracks - track))
+	next_track = null
 	var/area/A = get_area(src)
 	transition = 1
 	for(var/client/C in melomans)
