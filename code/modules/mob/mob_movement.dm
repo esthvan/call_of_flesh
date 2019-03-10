@@ -147,7 +147,9 @@
 
 	//We are now going to move
 	moving = 1
-	move_delay = mob.movement_delay() + world.time
+	var/MD = mob.movement_delay()
+	move_delay = MD + world.time
+	mob.glide_size = 32/(MD/10*min(32, world.fps))
 
 	//Something with pulling things
 	if(locate(/obj/item/weapon/grab, mob))
