@@ -33,7 +33,7 @@
 	pass_flags = LETPASSTHROW
 	density = 0
 	opacity = 0
-	var/unpassable = 0
+	//var/unpassable = 0
 
 /obj/structure/stalker/okno/window1
 	icon_state = "okno1"
