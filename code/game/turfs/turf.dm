@@ -24,6 +24,8 @@
 	var/windowed = 0
 	var/overlay_priority = 0
 
+	var/footstepsound = "erikafootsteps"
+
 	flags = 0
 
 	var/image/obscured	//camerachunks

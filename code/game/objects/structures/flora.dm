@@ -264,3 +264,8 @@
 /obj/structure/flora/stalker/bush/initialize()
 	..()
 	icon_state = "very_tall_grass_[rand(5,8)]"
+
+
+/obj/structure/flora/stalker/bush/Crossed(atom/movable/O)
+	if(istype(O, /mob/living))
+		playsound(src, "bushsound", 50, 1)

@@ -102,14 +102,12 @@ obj/structure/grille/stalker/beton/CanPass(atom/movable/mover, turf/target, heig
 /turf/stalker/floor/digable/grass
 	icon = 'icons/stalker/zemlya.dmi'
 	icon_state = "grass1"
+	footstepsound = "grassfootsteps"
 
 /turf/stalker/floor/digable/grass/dump
 	icon = 'icons/stalker/zemlya.dmi'
 	icon_state = "dump_grass1"
-/*
-/turf/stalker/floor/digable/grass/dump/New()
-	icon_state = "dump_grass[rand(1, 3)]"
-*/
+
 /turf/stalker/floor/digable/gryaz_rocky
 	icon_state = "gryaz_rocky1"
 
@@ -127,21 +125,20 @@ obj/structure/grille/stalker/beton/CanPass(atom/movable/mover, turf/target, heig
 /turf/stalker/floor/asphalt
 	name = "road"
 	icon = 'icons/stalker/Prishtina/asphalt.dmi'
-	icon_state = "road1"
+	icon_state = "road3"
 	layer = 2
 	overlay_priority = 1
 
 var/global/list/AsphaltEdgeCache
 
 /turf/stalker/floor/asphalt/New()
-	icon_state = "road[rand(1, 3)]"
 	if(!AsphaltEdgeCache || !AsphaltEdgeCache.len)
 		AsphaltEdgeCache = list()
 		AsphaltEdgeCache.len = 10
 		AsphaltEdgeCache[NORTH] = image('icons/stalker/Prishtina/asphalt.dmi', "roadn", layer = 2.01)
 		AsphaltEdgeCache[SOUTH] = image('icons/stalker/Prishtina/asphalt.dmi', "roads", layer = 2.01)
-		AsphaltEdgeCache[EAST] = image('icons/stalker/Prishtina/asphalt.dmi', "roade", layer = 2.01)
 		AsphaltEdgeCache[WEST] = image('icons/stalker/Prishtina/asphalt.dmi', "roadw", layer = 2.01)
+		AsphaltEdgeCache[EAST] = image('icons/stalker/Prishtina/asphalt.dmi', "roade", layer = 2.01)
 
 	spawn(1)
 		var/turf/T
@@ -160,6 +157,7 @@ var/global/list/AsphaltEdgeCache
 	icon_state = "tropa"
 	layer = 2
 	overlay_priority = 2
+	footstepsound = "sandfootsteps"
 
 var/global/list/TropaEdgeCache
 
@@ -169,8 +167,8 @@ var/global/list/TropaEdgeCache
 		TropaEdgeCache.len = 10
 		TropaEdgeCache[NORTH] = image('icons/stalker/tropa.dmi', "tropa_side_n", layer = 2.01)
 		TropaEdgeCache[SOUTH] = image('icons/stalker/tropa.dmi', "tropa_side_s", layer = 2.01)
-		TropaEdgeCache[EAST] = image('icons/stalker/tropa.dmi', "tropa_side_e", layer = 2.01)
 		TropaEdgeCache[WEST] = image('icons/stalker/tropa.dmi', "tropa_side_w", layer = 2.01)
+		TropaEdgeCache[EAST] = image('icons/stalker/tropa.dmi', "tropa_side_e", layer = 2.01)
 
 	spawn(1)
 		var/turf/T
@@ -210,8 +208,8 @@ var/global/list/WhiteRoadCache
 		WhiteRoadCache.len = 10
 		WhiteRoadCache[NORTH] = image('icons/effects/warning_stripes.dmi', "road_b5", layer = 2.01)
 		WhiteRoadCache[SOUTH] = image('icons/effects/warning_stripes.dmi', "road_b6", layer = 2.01)
-		WhiteRoadCache[EAST] = image('icons/effects/warning_stripes.dmi', "road_b8", layer = 2.01)
 		WhiteRoadCache[WEST] = image('icons/effects/warning_stripes.dmi', "road_b7", layer = 2.01)
+		WhiteRoadCache[EAST] = image('icons/effects/warning_stripes.dmi', "road_b8", layer = 2.01)
 
 	spawn(1)
 		for(var/i = 0, i <= 3, i++)
@@ -226,6 +224,7 @@ var/global/list/WhiteRoadCache
 	icon_state = "gryaz1"
 	layer = 2.01
 	overlay_priority = 4
+	footstepsound = "dirtfootsteps"
 
 var/global/list/GryazEdgeCache
 
@@ -236,8 +235,8 @@ var/global/list/GryazEdgeCache
 		GryazEdgeCache.len = 10
 		GryazEdgeCache[NORTH] = image('icons/stalker/zemlya.dmi', "gryaz_side_n", layer = 2.01)
 		GryazEdgeCache[SOUTH] = image('icons/stalker/zemlya.dmi', "gryaz_side_s", layer = 2.01)
-		GryazEdgeCache[EAST] = image('icons/stalker/zemlya.dmi', "gryaz_side_e", layer = 2.01)
 		GryazEdgeCache[WEST] = image('icons/stalker/zemlya.dmi', "gryaz_side_w", layer = 2.01)
+		GryazEdgeCache[EAST] = image('icons/stalker/zemlya.dmi', "gryaz_side_e", layer = 2.01)
 
 	spawn(1)
 		var/turf/T
@@ -293,7 +292,12 @@ var/global/list/GryazEdgeCache
 	icon_state = "water"
 	layer = TURF_LAYER
 	overlay_priority = 5
+	footstepsound = "waterfootsteps"
 	var/busy = 0
+
+/turf/stalker/floor/water/Entered(atom/A)
+	if(istype(A, /mob/living))
+		playsound(src, footstepsound, 65, 1)
 
 /turf/stalker/floor/water/attack_hand(mob/living/user)
 	if(!user || !istype(user))
@@ -410,8 +414,8 @@ var/global/list/WaterEdgeCache
 		WaterEdgeCache.len = 10
 		WaterEdgeCache[NORTH] = image('icons/stalker/water.dmi', "water_north", layer = 2.01)
 		WaterEdgeCache[SOUTH] = image('icons/stalker/water.dmi', "water_south", layer = 2.01)
-		WaterEdgeCache[EAST] = image('icons/stalker/water.dmi', "water_east", layer = 2.01)
 		WaterEdgeCache[WEST] = image('icons/stalker/water.dmi', "water_west", layer = 2.01)
+		WaterEdgeCache[EAST] = image('icons/stalker/water.dmi', "water_east", layer = 2.01)
 
 	spawn(1)
 		var/turf/T
@@ -427,6 +431,7 @@ var/global/list/WaterEdgeCache
 /turf/stalker/floor/wood
 	icon = 'icons/stalker/floor.dmi'
 	name = "floor"
+	footstepsound = "woodfootsteps"
 
 /turf/stalker/floor/wood/brown
 	icon_state = "wooden_floor"
@@ -455,6 +460,7 @@ var/global/list/WaterEdgeCache
 	name = "dirt"
 	icon = 'icons/stalker/pol_agroprom.dmi'
 	icon_state = "gryaz1"
+	footstepsound = "dirtfootsteps"
 
 /turf/stalker/floor/agroprom/gryaz/New()
 	icon_state = "gryaz[rand(1, 11)]"
@@ -464,6 +470,8 @@ var/global/list/WaterEdgeCache
 	icon = 'icons/stalker/floor.dmi'
 	icon_state = "lattice_new"
 	overlay_priority = 100
+	footstepsound = "metalfootsteps"
+
 /*
 /turf/stalker/floor/lattice/New()
 	icon_state = "lattice[rand(1, 4)]"
@@ -471,3 +479,4 @@ var/global/list/WaterEdgeCache
 
 /turf/stalker/floor/plasteel/plita/orange
 	icon_state = "plita_orange"
+	footstepsound = "metalfootsteps"

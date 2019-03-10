@@ -49,6 +49,7 @@
 	broken_states = list("damaged")
 	smooth = SMOOTH_TRUE
 	canSmoothWith = null
+	footstepsound = "carpetfootsteps"
 
 /turf/simulated/floor/carpet/New()
 	..()

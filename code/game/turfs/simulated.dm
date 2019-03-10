@@ -41,69 +41,66 @@
 		overlays -= wet_overlay
 
 /turf/simulated/Entered(atom/A, atom/OL)
-	..()
-	var/footstepsound
-	if (istype(A,/mob/living/carbon))
-		var/mob/living/carbon/M = A
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-
-			//clown shoes
-			if(istype(H.shoes, /obj/item/clothing/shoes/clown_shoes))
-				if(M.m_intent == "run")
-					if(M.footstep >= 3)
-						M.footstep = 0
-						playsound(src, "clownstep", 30, 1) // this will get annoying very fast.
-					else
-						M.footstep++
+	//..()
+	if(istype(A, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = A
+/*
+		//clown shoes
+		if(istype(H.shoes, /obj/item/clothing/shoes/clown_shoes))
+			if(M.m_intent == "run")
+				if(M.footstep >= 3)
+					M.footstep = 0
+					playsound(src, "clownstep", 30, 1) // this will get annoying very fast.
 				else
-					playsound(src, "clownstep", 60, 1)
-
-			//shoes
-			if(istype(src, /turf/stalker/floor/digable/grass))
-				footstepsound = "grassfootsteps"
-			else 	if(istype(src, /turf/stalker/floor/tropa))
-				footstepsound = "sandfootsteps"
-			else 	if(istype(src, /turf/simulated/floor/plating/beach/water))
-				footstepsound = "waterfootsteps"
-			else 	if(istype(src, /turf/stalker/floor/wood || /turf/stalker/floor/wood/oldgor || /turf/stalker/floor/wood/oldvert))
-				footstepsound = "woodfootsteps"
-			else 	if(istype(src, /turf/simulated/floor/carpet))
-				footstepsound = "carpetfootsteps"
-			else 	if(istype(src, /turf/stalker/floor/gryaz || /turf/stalker/floor/gryaz/gryaz2 ))
-				footstepsound = "dirtfootsteps"
+					M.footstep++
 			else
-				footstepsound = "erikafootsteps"
+				playsound(src, "clownstep", 60, 1)
 
-			if(istype(H.shoes, /obj/item/clothing/shoes))
-				if(istype(H.shoes, /obj/item/clothing/shoes/space_ninja)) return
-				if(istype(H.shoes, /obj/item/clothing/shoes/sneakers/mime)) return
-				if(M.m_intent == "run")
-					if(M.footstep >= 3)
-						M.footstep = 0
-						playsound(src, footstepsound, 30, 1) // this will get annoying very fast.
-					else
-						M.footstep++
+		//shoes
+		if(istype(src, /turf/stalker/floor/digable/grass))
+			footstepsound = "grassfootsteps"
+		else 	if(istype(src, /turf/stalker/floor/tropa))
+			footstepsound = "sandfootsteps"
+		else 	if(istype(src, /turf/simulated/floor/plating/beach/water))
+			footstepsound = "waterfootsteps"
+		else 	if(istype(src, /turf/stalker/floor/wood || /turf/stalker/floor/wood/oldgor || /turf/stalker/floor/wood/oldvert))
+			footstepsound = "woodfootsteps"
+		else 	if(istype(src, /turf/simulated/floor/carpet))
+			footstepsound = "carpetfootsteps"
+		else 	if(istype(src, /turf/stalker/floor/gryaz || /turf/stalker/floor/gryaz/gryaz2 ))
+			footstepsound = "dirtfootsteps"
+		else
+			footstepsound = "erikafootsteps"
+*/
+		//footstepsound = "erikafootsteps"
+		if(istype(H.shoes, /obj/item/clothing/shoes))
+			//if(istype(H.shoes, /obj/item/clothing/shoes/space_ninja)) return
+			//if(istype(H.shoes, /obj/item/clothing/shoes/sneakers/mime)) return
+			if(H.m_intent == "run")
+				if(H.footstep >= 3)
+					H.footstep = 0
+					playsound(src, footstepsound, 30, 1) // this will get annoying very fast.
 				else
-					if(M.footstep >= 6)
-						M.footstep = 0
-						playsound(src, footstepsound, 60, 1)
-					else
-						M.footstep++
-
+					H.footstep++
+			else
+				if(H.footstep >= 6)
+					H.footstep = 0
+					playsound(src, footstepsound, 5, 1)
+				else
+					H.footstep++
 
 		switch(wet)
 			if(TURF_WET_WATER)
-				if(!M.slip(3, 1, null, NO_SLIP_WHEN_WALKING))
-					M.inertia_dir = 0
+				if(!H.slip(3, 1, null, NO_SLIP_WHEN_WALKING))
+					H.inertia_dir = 0
 				return
 			if(TURF_WET_LUBE)
-				M.slip(0, 7, null, (SLIDE|GALOSHES_DONT_HELP))
+				H.slip(0, 7, null, (SLIDE|GALOSHES_DONT_HELP))
 				return
 			if(TURF_WET_ICE)
-				M.slip(0, 4, null, (SLIDE|NO_SLIP_WHEN_WALKING))
+				H.slip(0, 4, null, (SLIDE|NO_SLIP_WHEN_WALKING))
 				return
-	..()
+	//..()
 /*Чтобы не потерять
 /turf
 
@@ -116,63 +113,31 @@
 */
 
 /turf/stalker/Entered(atom/A, atom/OL)
-	..()
-	var/footstepsound
-	if(istype(A, /mob/living))
-		if(istype(src, /turf/stalker/floor/water))
-			footstepsound = "waterfootsteps"
-			playsound(src, footstepsound, 60, 1)
-			..()
-			return
+	//..()
+	//var/footstepsound
+	//if(istype(A, /mob/living))
+	//	if(istype(src, /turf/stalker/floor/water))
+	//		footstepsound = "waterfootsteps"
+	//		playsound(src, footstepsound, 60, 1)
+	//		..()
+	//		return
 
-	if(istype(A,/mob/living/carbon))
-		var/mob/living/carbon/M = A
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-
-			//clown shoes
-			if(istype(H.shoes, /obj/item/clothing/shoes/clown_shoes))
-				if(M.m_intent == "run")
-					if(M.footstep >= 3)
-						M.footstep = 0
-						playsound(src, "clownstep", 30, 1) // this will get annoying very fast.
-					else
-						M.footstep++
+	if(istype(A, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = A
+		if(istype(H.shoes, /obj/item/clothing/shoes))
+			if(H.m_intent == "run")
+				if(H.footstep >= 3)
+					H.footstep = 0
+					playsound(src, footstepsound, 30, 1) // this will get annoying very fast.
 				else
-					playsound(src, "clownstep", 60, 1)
-
-			//shoes
-			if(istype(src, /turf/stalker/floor/digable/grass))
-				footstepsound = "grassfootsteps"
-			else if(istype(src, /turf/stalker/floor/tropa))
-				footstepsound = "sandfootsteps"
-			else if(istype(src, /turf/simulated/floor/plating/beach/water))
-				footstepsound = "waterfootsteps"
-			else if(istype(src, /turf/stalker/floor/wood || /turf/stalker/floor/wood/oldgor || /turf/stalker/floor/wood/oldvert))
-				footstepsound = "woodfootsteps"
-			else if(istype(src, /turf/simulated/floor/carpet))
-				footstepsound = "carpetfootsteps"
-			else if(istype(src, /turf/stalker/floor/gryaz || /turf/stalker/floor/gryaz/gryaz2))
-				footstepsound = "dirtfootsteps"
-			else if(istype(src, /turf/stalker/floor/water))
-				footstepsound = "waterfootsteps"
+					H.footstep++
 			else
-				footstepsound = "erikafootsteps"
-
-			if(istype(H.shoes, /obj/item/clothing/shoes))
-				if(M.m_intent == "run")
-					if(M.footstep >= 3)
-						M.footstep = 0
-						playsound(src, footstepsound, 30, 1) // this will get annoying very fast.
-					else
-						M.footstep++
+				if(H.footstep >= 6)
+					H.footstep = 0
+					playsound(src, footstepsound, 5, 1)
 				else
-					if(M.footstep >= 6)
-						M.footstep = 0
-						playsound(src, footstepsound, 60, 1)
-					else
-						M.footstep++
-	..()
+					H.footstep++
+	//..()
 
 /turf/simulated/ChangeTurf(var/path)
 	. = ..()
