@@ -27,6 +27,7 @@
 	density = 1
 	anchored = 1
 	cache_size = 0
+	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/radiation
 	name = "radiation sign"
@@ -136,21 +137,22 @@
 	cache_size = 1
 
 /obj/structure/stalker/shina
-	name = "shina"
+	name = "tire"
 	desc = "Т&#255;жела&#255; стара&#255; пробита&#255; шина."
 	eng_desc = "Heavy old flat tire."
 	icon_state = "shina"
 	density = 1
+	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/shina2
-	name = "two shina"
+	name = "bunch of tires"
 	desc = "Т&#255;желые старые пробитые шины."
 	eng_desc = "A couple of heavy old flat tires."
 	icon_state = "shina2"
 	density = 1
 
 /obj/structure/stalker/cacheable/shina3
-	name = "three shina"
+	name = "pile of tires"
 	desc = "Т&#255;желые старые пробитые шины."
 	eng_desc = "A couple of heavy old flat tires."
 	icon_state = "shina3a"
@@ -170,7 +172,7 @@
 	eng_desc = "Broken planks."
 	icon_state = "doski_oblomki"
 	layer = 2.8
-	pass_flags = LETPASSTHROW
+	//pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/doski/doski2
 	icon_state = "doski_oblomki2"
@@ -196,6 +198,7 @@
 	icon_state = "vanna"
 	density = 1
 	cache_size =  2
+	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/list
 	name = "stain-roof sheet"
@@ -232,8 +235,8 @@
 
 /obj/structure/stalker/propane
 	name = "propane"
-	desc = "Баллон с пропаном. Огнеопасно."
-	eng_desc = "Propane balloon."
+	desc = "Баллон с пропаном. Огнеопасно. Наверное."
+	eng_desc = "Propane balloon. Flammable. Probably."
 	icon = 'icons/stalker/decorations_32x64.dmi'
 	icon_state = "propane"
 	density = 1
@@ -265,6 +268,7 @@
 	icon_state = "radio"
 	density = 1
 	cache_size = 1
+	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/cacheable/apc
 	name = "switchboard"
@@ -310,6 +314,7 @@
 	icon_state = "TV"
 	density = 1
 	cache_size = 1
+	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/cacheable/clocks
 	name =  "clocks"
@@ -358,6 +363,7 @@
 	desc = "Старый разбитый советский телевизор."
 	density = 1
 	cache_size = 2
+	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/bigyashik
 	name = "Metal Container"
@@ -462,6 +468,7 @@
 	desc = ""
 	icon_state = "oscillograph_off"
 	density = 1
+	pass_flags = LETPASSTHROW
 
 /obj/structure/stalker/panel
 	name = "machine"
